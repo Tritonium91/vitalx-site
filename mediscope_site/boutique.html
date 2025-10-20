@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="fr" class="h-full scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VitalX — Boutique</title>
+  <meta name="description" content="Boutique officielle VitalX : Pack complet, licences 3/6/12 mois et autres produits." />
+  <link rel="icon" href="/favicon.ico" />
+
+  <!-- Tailwind (config en amont pour conserver les couleurs/typo du site) -->
+  <script>
+    tailwind = window.tailwind || {}; // avoid re-def if embedded
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: [
+              'SF Pro Display','SF Pro Text','Inter','system-ui','-apple-system','Segoe UI','Roboto','Ubuntu','Cantarell','Noto Sans','Helvetica Neue','Arial','sans-serif'
+            ]
+          },
+          colors: {
+            brand: { 50:'#eff6ff',100:'#dbeafe',200:'#bfdbfe',300:'#93c5fd',400:'#60a5fa',500:'#3b82f6',600:'#2563eb',700:'#1d4ed8',800:'#1e40af',900:'#1e3a8a' }
+          },
+          boxShadow: {
+            soft: '0 10px 30px rgba(0,0,0,0.12)'
+          }
+        }
+      }
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .ring-gradient{box-shadow:0 0 0 1px rgba(255,255,255,.06), inset 0 0 0 1px rgba(255,255,255,.05)}
+    .glass{background:rgba(20,20,25,.6);backdrop-filter:saturate(120%) blur(10px)}
+    .grad{background: radial-gradient(1200px 600px at 10% 0%, rgba(59,130,246,.15), transparent),
+                  radial-gradient(1200px 600px at 90% 20%, rgba(16,185,129,.12), transparent),
+                  linear-gradient(180deg, #0a0a0b 0%, #0b0b0c 100%);}
+    .cta-anim{transition:transform .08s ease, box-shadow .12s ease}
+    .cta-anim:active{transform:translateY(1px)}
+  </style>
+</head>
+<body class="min-h-full bg-black text-white">
+  <!-- Header simple -->
+  <header class="sticky top-0 z-40 backdrop-blur bg-black/40 border-b border-white/10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2">
+        <img src="/assets/logo.png" alt="Logo VitalX" class="h-7 w-auto" />
+        <span class="font-bold tracking-tight">VitalX</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm text-zinc-300">
+        <a href="/" class="hover:text-white">Accueil</a>
+        <a href="#licenses" class="hover:text-white">Licences</a>
+        <a href="#accessoires" class="hover:text-white">Accessoires</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <a href="#catalogue" class="inline-flex items-center rounded-xl bg-emerald-500 text-white px-4 py-2 text-sm font-semibold shadow-soft hover:bg-emerald-400 cta-anim">Voir le catalogue</a>
+        <button id="openCart" type="button" class="relative inline-flex items-center rounded-xl bg-white/10 text-white px-3 py-2 text-sm font-semibold ring-1 ring-white/15 hover:bg-white/15">
+          🛒 Panier <span id="cartCount" class="ml-2 inline-flex items-center justify-center rounded-full bg-emerald-500 text-white text-[11px] font-bold px-2 py-0.5">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero boutique -->
+  <section class="bg-black">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight">
+          Boutique <span class="text-white/80">officielle</span> Vital<span class="text-red-500">X</span>
+        </h1>
+        <p class="mt-4 text-xl md:text-2xl font-semibold">
+          <span class="text-white">SIMULATION</span>
+          <span class="mx-2 text-white/60">&amp;</span>
+          <span class="text-white">FORMATION</span>
+        </p>
+        <p class="mt-3 text-white/70">Matériel, licences et accessoires pour un entraînement réaliste.</p>
+
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-3" role="tablist" aria-label="Parcourir la Boutique">
+          <a id="pick-pack" href="#pack" role="tab" aria-selected="true" class="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold shadow-soft focus:outline-none focus:ring-2 focus:ring-white ring-2 ring-white/60 bg-white text-black hover:bg-zinc-100">
+            🎒 Voir le Pack
+          </a>
+          <a id="pick-lic" href="#licenses" role="tab" aria-selected="false" class="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-white ring-1 ring-white/40 text-white hover:bg-white/10">
+            🔑 Licences
+          </a>
+          <a id="pick-acc" href="#accessoires" role="tab" aria-selected="false" class="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-white ring-1 ring-white/40 text-white hover:bg-white/10">
+            🧩 Accessoires
+          </a>
+        </div>
+
+        <div class="mt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-white/70">
+          <div class="inline-flex items-center gap-1"><span>🔒</span><span>Paiement sécurisé</span></div>
+          <div class="inline-flex items-center gap-1"><span>⏱️</span><span>Activation sous 48 h</span></div>
+          <div class="inline-flex items-center gap-1"><span>💬</span><span>Support e‑mail</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="py-12">
+    <!-- SECTION PACK -->
+    <section id="pack" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-16">
+      <div class="flex flex-col lg:flex-row gap-8 items-start">
+        <div class="flex-1">
+          <h2 class="text-2xl md:text-3xl font-extrabold">Pack VitalX</h2>
+          <p class="mt-2 text-zinc-300">Le kit complet prêt à l’emploi : matériel + 3 mois de licence offerts.</p>
+          <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+            <div class="glass rounded-xl px-4 py-3 ring-gradient">
+              <div class="font-semibold text-white">2 iPad A16 (11")</div>
+              <div class="text-zinc-400">Formateur + Moniteur, prêts à l’emploi</div>
+            </div>
+            <div class="glass rounded-xl px-4 py-3 ring-gradient">
+              <div class="font-semibold text-white">Boîtier VitalX</div>
+              <div class="text-zinc-400">Boîtier 3D support pour l’iPad</div>
+            </div>
+            <div class="glass rounded-xl px-4 py-3 ring-gradient">
+              <div class="font-semibold text-white">Housse de transport</div>
+              <div class="text-zinc-400">Protection et rangement dédiés</div>
+            </div>
+            <div class="glass rounded-xl px-4 py-3 ring-gradient">
+              <div class="font-semibold text-white">Connectiques complètes</div>
+              <div class="text-zinc-400">PNI, SpO₂, ECG 12D, patchs DSA, température, ETCO₂</div>
+            </div>
+            <div class="glass rounded-xl px-4 py-3 ring-gradient md:col-span-2">
+              <div class="font-semibold text-white">Licence VitalX incluse (3 mois)</div>
+              <div class="text-zinc-400">Activation sous 48 h + mises à jour incluses</div>
+            </div>
+          </div>
+        </div>
+        <article class="w-full lg:max-w-md glass ring-gradient rounded-2xl p-6 flex flex-col ring-2 ring-red-500/30 shadow-[0_0_40px_-10px_rgba(239,68,68,0.6)]">
+          <img src="/assets/pack-vitalx.png" alt="Pack VitalX complet" class="w-full max-h-56 object-contain rounded-xl mb-4 bg-zinc-900/40 p-2" loading="lazy" />
+          <div class="flex items-center justify-between gap-3">
+            <h3 class="text-lg font-semibold">Pack VitalX</h3>
+          </div>
+          <div class="mt-4 text-5xl font-extrabold tracking-tight">4 560 €</div>
+          <button data-sku="sku_pack" data-name="Pack VitalX" data-price="456000" data-image="/assets/pack-vitalx.png" class="add-to-cart mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-red-600 via-red-500 to-red-400 text-white px-5 py-3 font-semibold shadow-soft hover:from-red-500 hover:via-red-400 hover:to-red-300 cta-anim">Ajouter au panier</button>
+        </article>
+      </div>
+    </section>
+
+    <!-- SECTION LICENCES -->
+    <section id="licenses" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-16">
+      <div class="flex items-center justify-between">
+        <h2 class="text-2xl md:text-3xl font-extrabold">Licences</h2>
+      </div>
+      <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Licence 3 mois -->
+        <article class="relative glass ring-gradient rounded-2xl p-6 flex flex-col ring-2 ring-blue-400/40 shadow-[0_0_40px_-10px_rgba(59,130,246,0.6)]">
+          <div class="flex items-center justify-between gap-3">
+            <h3 class="text-lg font-semibold">Licence 3 mois</h3>
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-sky-500 via-blue-500 to-indigo-500 text-white text-xs font-extrabold px-3 py-1 shadow-soft">🔷 Starter</span>
+          </div>
+          <div class="mt-2 text-3xl font-extrabold flex items-baseline gap-2">144 €</div>
+          <ul class="mt-4 text-sm text-zinc-300 space-y-2">
+            <li>✔️ Accès complet à l’app</li>
+            <li>✔️ Mises à jour incluses</li>
+            <li>✔️ Support e‑mail</li>
+          </ul>
+          <div class="mt-4 text-sm text-blue-300">48 €/mois</div>
+          <button data-sku="sku_lic_3" data-name="Licence 3 mois" data-price="14400" data-image="/assets/licence-3.png" class="add-to-cart mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-sky-500 via-blue-500 to-indigo-500 text-white px-5 py-3 font-semibold shadow-soft hover:from-sky-400 hover:via-blue-400 hover:to-indigo-400 cta-anim">Ajouter au panier</button>
+        </article>
+
+        <!-- Licence 6 mois -->
+        <article class="glass ring-gradient rounded-2xl p-6 flex flex-col ring-2 ring-pink-400/30 shadow-[0_0_40px_-10px_rgba(236,72,153,0.6)]">
+          <div class="flex items-center justify-between gap-3">
+            <h3 class="text-lg font-semibold">Licence 6 mois</h3>
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-rose-500 via-fuchsia-500 to-purple-500 text-white text-xs font-extrabold px-3 py-1 shadow-soft">⭐ Recommandée</span>
+          </div>
+          <div class="mt-2 text-3xl font-extrabold flex items-baseline gap-2">
+            <span>252 €</span>
+          </div>
+          <ul class="mt-4 text-sm text-zinc-300 space-y-2">
+            <li>✔️ Accès complet à l’app</li>
+            <li>✔️ Mises à jour incluses</li>
+            <li>✔️ Support e‑mail</li>
+          </ul>
+          <div class="mt-4 text-sm text-pink-300">42 €/mois</div>
+          <button data-sku="sku_lic_6" data-name="Licence 6 mois" data-price="25200" data-image="/assets/licence-6.png" class="add-to-cart mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-fuchsia-500 via-pink-500 to-rose-500 text-white px-5 py-3 font-semibold shadow-soft hover:from-fuchsia-400 hover:via-pink-400 hover:to-rose-400 cta-anim">Ajouter au panier</button>
+        </article>
+
+        <!-- Licence 12 mois -->
+        <article class="glass ring-gradient rounded-2xl p-6 flex flex-col ring-2 ring-amber-400/40 shadow-[0_0_40px_-10px_rgba(251,191,36,0.6)]">
+          <div class="flex items-center justify-between gap-3">
+            <h3 class="text-lg font-semibold">Licence 12 mois</h3>
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-orange-400 text-white text-xs font-extrabold px-3 py-1 shadow-soft">💎 Plus rentable</span>
+          </div>
+          <div class="mt-2 text-3xl font-extrabold flex items-baseline gap-2">
+            <span>456 €</span>
+          </div>
+          <ul class="mt-4 text-sm text-zinc-300 space-y-2">
+            <li>✔️ Accès complet à l’app</li>
+            <li>✔️ Mises à jour incluses</li>
+            <li>✔️ Support e‑mail</li>
+          </ul>
+          <div class="mt-4 text-sm text-amber-300">38 €/mois</div>
+          <button data-sku="sku_lic_12" data-name="Licence 12 mois" data-price="45600" data-image="/assets/licence-12.png" class="add-to-cart mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-amber-500 via-yellow-500 to-orange-500 text-white px-5 py-3 font-semibold shadow-soft hover:from-amber-400 hover:via-yellow-400 hover:to-orange-400 cta-anim">Ajouter au panier</button>
+        </article>
+      </div>
+      <!-- Licence 24 mois (Esprit tranquille) -->
+      <div class="mt-6">
+        <article class="glass ring-gradient rounded-2xl p-6 md:p-8 flex flex-col ring-2 ring-pink-300/30 shadow-[0_0_50px_-10px_rgba(236,72,153,0.45)] bg-gradient-to-r from-sky-500/10 via-pink-500/10 to-amber-400/10">
+          <div class="flex items-center justify-between gap-3 flex-wrap">
+            <h3 class="text-xl md:text-2xl font-semibold">Licence 24 mois</h3>
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-sky-500 via-pink-500 to-amber-400 text-white text-xs font-extrabold px-3 py-1 shadow-soft">🧘 Esprit tranquille</span>
+          </div>
+          <div class="mt-3 text-4xl md:text-5xl font-extrabold tracking-tight flex items-baseline gap-3">
+            <span>864 €</span>
+          </div>
+          <ul class="mt-5 text-sm text-zinc-200 space-y-2 md:columns-2 md:space-y-1">
+            <li>✔️ Accès complet à l’app</li>
+            <li>✔️ Mises à jour incluses</li>
+            <li>✔️ Support e‑mail</li>
+            <li>✔️ Sérénité 2 ans, sans renouvellement intermédiaire</li>
+          </ul>
+          <div class="mt-4 text-sm text-sky-300">36 €/mois</div>
+          <button data-sku="sku_lic_24" data-name="Licence 24 mois" data-price="86400" data-image="/assets/licence-24.png" class="add-to-cart mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-sky-500 via-pink-500 to-amber-400 text-white px-5 py-3 font-semibold shadow-soft hover:from-sky-400 hover:via-pink-400 hover:to-amber-300 cta-anim">Ajouter au panier</button>
+        </article>
+      </div>
+    </section>
+
+    <!-- SECTION ACCESSOIRES -->
+    <section id="accessoires" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between">
+        <h2 class="text-2xl md:text-3xl font-extrabold">Accessoires</h2>
+      </div>
+      <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- DSA Adultes -->
+        <article class="glass ring-gradient rounded-2xl p-6 flex flex-col">
+          <img src="/assets/patch-dsa-adult.jpg" alt="Patch DSA Adultes" class="w-full max-h-44 object-contain rounded-xl mb-4 bg-zinc-900/40 p-2" loading="lazy" />
+          <h3 class="text-lg font-semibold">Patch DSA Adultes</h3>
+          <p class="mt-2 text-sm text-zinc-300">Paires de patchs adultes compatibles DSA pour entraînement.</p>
+          <div class="mt-3 text-2xl font-extrabold">50 €</div>
+          <button data-sku="sku_acc_dsa_adult" data-name="Patch DSA Adultes" data-price="5000" data-image="/assets/patch-dsa-adult.jpg" class="add-to-cart mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-emerald-500 text-white px-5 py-3 font-semibold shadow-soft hover:bg-emerald-400">Ajouter au panier</button>
+        </article>
+
+        <!-- DSA Pédiatrique -->
+        <article class="glass ring-gradient rounded-2xl p-6 flex flex-col">
+          <img src="/assets/patch-dsa-pediatrique.jpg" alt="Patch DSA Pédiatrique" class="w-full max-h-44 object-contain rounded-xl mb-4 bg-zinc-900/40 p-2" loading="lazy" />
+          <h3 class="text-lg font-semibold">Patch DSA Pédiatrique</h3>
+          <p class="mt-2 text-sm text-zinc-300">Patchs pédiatriques pour scénarios enfant.</p>
+          <div class="mt-3 text-2xl font-extrabold">50 €</div>
+          <button data-sku="sku_acc_dsa_pedia" data-name="Patch DSA Pédiatrique" data-price="5000" data-image="/assets/patch-dsa-pediatrique.jpg" class="add-to-cart mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-emerald-500 text-white px-5 py-3 font-semibold shadow-soft hover:bg-emerald-400">Ajouter au panier</button>
+        </article>
+
+        <!-- Câble ECG -->
+        <article class="glass ring-gradient rounded-2xl p-6 flex flex-col">
+          <img src="/assets/cable-ecg.jpg" alt="Câble ECG" class="w-full max-h-44 object-contain rounded-xl mb-4 bg-zinc-900/40 p-2" loading="lazy" />
+          <h3 class="text-lg font-semibold">Câble ECG</h3>
+          <p class="mt-2 text-sm text-zinc-300">Câble ECG durable pour connexion multi-derivations.</p>
+          <div class="mt-3 text-2xl font-extrabold">50 €</div>
+          <button data-sku="sku_acc_cable_ecg" data-name="Câble ECG" data-price="5000" data-image="/assets/cable-ecg.jpg" class="add-to-cart mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-emerald-500 text-white px-5 py-3 font-semibold shadow-soft hover:bg-emerald-400">Ajouter au panier</button>
+        </article>
+
+        <!-- Capteur SpO2 -->
+        <article class="glass ring-gradient rounded-2xl p-6 flex flex-col">
+          <img src="/assets/capteur-spo2.jpg" alt="Capteur SpO₂" class="w-full max-h-44 object-contain rounded-xl mb-4 bg-zinc-900/40 p-2" loading="lazy" />
+          <h3 class="text-lg font-semibold">Capteur SpO₂</h3>
+          <p class="mt-2 text-sm text-zinc-300">Capteur d’oxymétrie de pouls pour simulation fidèle.</p>
+          <div class="mt-3 text-2xl font-extrabold">50 €</div>
+          <button data-sku="sku_acc_spo2" data-name="Capteur SpO₂" data-price="5000" data-image="/assets/capteur-spo2.jpg" class="add-to-cart mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-emerald-500 text-white px-5 py-3 font-semibold shadow-soft hover:bg-emerald-400">Ajouter au panier</button>
+        </article>
+
+        <!-- Capteur ETCO2 -->
+        <article class="glass ring-gradient rounded-2xl p-6 flex flex-col">
+          <img src="/assets/capteur-etco2.jpg" alt="Capteur ETCO₂" class="w-full max-h-44 object-contain rounded-xl mb-4 bg-zinc-900/40 p-2" loading="lazy" />
+          <h3 class="text-lg font-semibold">Capteur ETCO₂</h3>
+          <p class="mt-2 text-sm text-zinc-300">Capteur EtCO₂ pour capnographie d’entraînement.</p>
+          <div class="mt-3 text-2xl font-extrabold">50 €</div>
+          <button data-sku="sku_acc_etco2" data-name="Capteur ETCO₂" data-price="5000" data-image="/assets/capteur-etco2.jpg" class="add-to-cart mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-emerald-500 text-white px-5 py-3 font-semibold shadow-soft hover:bg-emerald-400">Ajouter au panier</button>
+        </article>
+
+        <!-- Brassard Adulte -->
+        <article class="glass ring-gradient rounded-2xl p-6 flex flex-col">
+          <img src="/assets/brassard-adulte.jpg" alt="Brassard tension adulte" class="w-full max-h-44 object-contain rounded-xl mb-4 bg-zinc-900/40 p-2" loading="lazy" />
+          <h3 class="text-lg font-semibold">Brassard Tension Adulte</h3>
+          <p class="mt-2 text-sm text-zinc-300">Brassard adulte compatible PNI pour scénarios réalistes.</p>
+          <div class="mt-3 text-2xl font-extrabold">50 €</div>
+          <button data-sku="sku_acc_bp_adult" data-name="Brassard Tension Adulte" data-price="5000" data-image="/assets/brassard-adulte.jpg" class="add-to-cart mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-emerald-500 text-white px-5 py-3 font-semibold shadow-soft hover:bg-emerald-400">Ajouter au panier</button>
+        </article>
+
+        <!-- Brassard Enfant -->
+        <article class="glass ring-gradient rounded-2xl p-6 flex flex-col">
+          <img src="/assets/brassard-enfant.jpg" alt="Brassard tension enfant" class="w-full max-h-44 object-contain rounded-xl mb-4 bg-zinc-900/40 p-2" loading="lazy" />
+          <h3 class="text-lg font-semibold">Brassard Tension Enfant</h3>
+          <p class="mt-2 text-sm text-zinc-300">Brassard enfant compatible PNI pour scénarios pédiatriques.</p>
+          <div class="mt-3 text-2xl font-extrabold">50 €</div>
+          <button data-sku="sku_acc_bp_child" data-name="Brassard Tension Enfant" data-price="5000" data-image="/assets/brassard-enfant.jpg" class="add-to-cart mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-emerald-500 text-white px-5 py-3 font-semibold shadow-soft hover:bg-emerald-400">Ajouter au panier</button>
+        </article>
+
+        <!-- Capteur Températures -->
+        <article class="glass ring-gradient rounded-2xl p-6 flex flex-col">
+          <img src="/assets/capteur-temperature.jpg" alt="Capteur de températures" class="w-full max-h-44 object-contain rounded-xl mb-4 bg-zinc-900/40 p-2" loading="lazy" />
+          <h3 class="text-lg font-semibold">Capteur Températures</h3>
+          <p class="mt-2 text-sm text-zinc-300">Capteur de température cutanée/centrale pour scénarios avancés.</p>
+          <div class="mt-3 text-2xl font-extrabold">50 €</div>
+          <button data-sku="sku_acc_temp" data-name="Capteur Températures" data-price="5000" data-image="/assets/capteur-temperature.jpg" class="add-to-cart mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-emerald-500 text-white px-5 py-3 font-semibold shadow-soft hover:bg-emerald-400">Ajouter au panier</button>
+        </article>
+      </div>
+    </section>
+    <!-- Cart Drawer -->
+    <div id="cartOverlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden z-50"></div>
+    <aside id="cartDrawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-zinc-950 text-white shadow-2xl transform translate-x-full transition-transform duration-200 z-50">
+      <div class="h-14 flex items-center justify-between px-4 border-b border-white/10">
+        <div class="flex items-center gap-2 font-semibold">🛒 Votre panier</div>
+        <button id="closeCart" class="rounded-lg bg-white/5 px-3 py-1.5 hover:bg-white/10">Fermer</button>
+      </div>
+      <div id="cartItems" class="p-4 space-y-3 overflow-y-auto max-h-[calc(100vh-200px)]"></div>
+      <div class="absolute bottom-0 left-0 right-0 border-t border-white/10 p-4 bg-zinc-950">
+        <div class="flex items-center justify-between text-sm text-zinc-300">
+          <span>Sous-total</span>
+          <span id="cartSubtotal" class="font-bold text-white">0 €</span>
+        </div>
+        <button id="checkoutBtn" class="mt-3 w-full inline-flex justify-center items-center gap-2 rounded-xl bg-white text-black px-5 py-3 font-semibold shadow-soft hover:bg-zinc-100 cta-anim">Payer</button>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-10 border-t border-white/10 text-sm text-zinc-400">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p>© <span id="y"></span> VitalX — Tous droits réservés. <span class="text-zinc-500">— Tarifs affichés en prix public.</span></p>
+      <nav class="flex items-center gap-4">
+        <a href="/" class="hover:text-white">Accueil</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // Année dynamique
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Liens Stripe (live)
+    const STRIPE_PACK = 'https://buy.stripe.com/fZueV6bTZ3QH0AP29x6kg07';    // Pack complet
+    const STRIPE_LIC_3 = 'https://buy.stripe.com/7sY14g6zFbj983h6pN6kg0a';   // Licence 3 mois
+    const STRIPE_LIC_6 = 'https://buy.stripe.com/14AfZa3ntcnd1ETdSf6kg09';   // Licence 6 mois
+    const STRIPE_LIC_12 = 'https://buy.stripe.com/fZufZa1fl86XerFeWj6kg08';  // Licence 12 mois
+    const STRIPE_LIC_24 = 'https://buy.stripe.com/eVqaEQcY34ULgzNbK76kg06';  // Licence 24 mois
+
+    const STRIPE_DSA_ADULT = '#';
+    const STRIPE_DSA_PEDIA = '#';
+    const STRIPE_CABLE_ECG = '#';
+    const STRIPE_SPO2 = '#';
+    const STRIPE_ETCO2 = '#';
+    const STRIPE_BP_ADULT = '#';
+    const STRIPE_BP_CHILD = '#';
+    const STRIPE_TEMP = '#';
+
+    const map = [
+      ['buyPack', STRIPE_PACK],
+      ['buyL3', STRIPE_LIC_3],
+      ['buyL6', STRIPE_LIC_6],
+      ['buyL12', STRIPE_LIC_12],
+      ['buyL24', STRIPE_LIC_24],
+      ['buyDSAAdult', STRIPE_DSA_ADULT],
+      ['buyDSAPedia', STRIPE_DSA_PEDIA],
+      ['buyCableECG', STRIPE_CABLE_ECG],
+      ['buySpO2', STRIPE_SPO2],
+      ['buyETCO2', STRIPE_ETCO2],
+      ['buyBPAdult', STRIPE_BP_ADULT],
+      ['buyBPChild', STRIPE_BP_CHILD],
+      ['buyTemp', STRIPE_TEMP],
+    ];
+    map.forEach(([id, url]) => { const el = document.getElementById(id); if (el) el.href = url; });
+
+
+    // Picker color state (hero tabs)
+    const pickPack = document.getElementById('pick-pack');
+    const pickLic  = document.getElementById('pick-lic');
+    const pickAcc  = document.getElementById('pick-acc');
+
+    function setActivePicker(target) {
+      const sets = [
+        [pickPack, 'pink'],
+        [pickLic,  'emerald'],
+        [pickAcc,  'sky']
+      ];
+      sets.forEach(([el, color]) => {
+        if (!el) return;
+        el.setAttribute('aria-selected','false');
+        el.classList.remove('bg-white','text-black','hover:bg-zinc-100');
+        el.classList.remove('text-white','bg-emerald-500/30','bg-sky-500/30','text-emerald-300','text-sky-300','bg-emerald-500/10','hover:bg-emerald-500/15','bg-sky-500/10','hover:bg-sky-500/15');
+        // keep white rings as defined in markup
+      });
+      if (target === 'pack' && pickPack){
+        pickPack.setAttribute('aria-selected','true');
+        pickPack.classList.add('bg-white','text-black','hover:bg-zinc-100');
+      }
+      if (target === 'licenses' && pickLic){
+        pickLic.setAttribute('aria-selected','true');
+        pickLic.classList.add('text-white','bg-white/10');
+      }
+      if (target === 'accessoires' && pickAcc){
+        pickAcc.setAttribute('aria-selected','true');
+        pickAcc.classList.add('text-white','bg-white/10');
+      }
+    }
+
+    function syncPickerWithHash(){
+      const h = (location.hash || '#pack').replace('#','');
+      setActivePicker(h);
+    }
+
+    // Initialize and bind
+    syncPickerWithHash();
+    window.addEventListener('hashchange', syncPickerWithHash);
+    [pickPack, pickLic, pickAcc].forEach(el => el && el.addEventListener('click', () => setTimeout(syncPickerWithHash, 0)));
+
+
+    // Accessibilité : scroll au hash si fourni
+    if (location.hash) {
+      const target = document.querySelector(location.hash);
+      if (target) target.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+  </script>
+  <script>
+    // --- CART (localStorage) ---
+    const CART_KEY = 'vitalx_cart_v1';
+    const elCart = document.getElementById('cartDrawer');
+    const elOverlay = document.getElementById('cartOverlay');
+    const elOpen = document.getElementById('openCart');
+    const elClose = document.getElementById('closeCart');
+    const elItems = document.getElementById('cartItems');
+    const elSubtotal = document.getElementById('cartSubtotal');
+    const elCount = document.getElementById('cartCount');
+    const elCheckout = document.getElementById('checkoutBtn');
+
+    function loadCart(){ try { return JSON.parse(localStorage.getItem(CART_KEY)||'[]'); } catch { return []; } }
+    function saveCart(c){ localStorage.setItem(CART_KEY, JSON.stringify(c)); updateCount(c); }
+    function euros(cents){ return (cents/100).toLocaleString('fr-FR', { style:'currency', currency:'EUR' }); }
+
+    function updateCount(c){ const n = c.reduce((s,i)=>s+i.quantity,0); if(elCount) elCount.textContent = n; }
+
+    function render(){
+      const cart = loadCart();
+      updateCount(cart);
+      elItems.innerHTML = '';
+      if (!cart.length){
+        elItems.innerHTML = '<div class="text-zinc-400 text-sm">Votre panier est vide.</div>';
+      } else {
+        cart.forEach(item => {
+          const row = document.createElement('div');
+          row.className = 'flex items-center gap-3 p-3 rounded-xl bg-white/5 ring-1 ring-white/10';
+          row.innerHTML = `
+            <img src="${item.image||''}" alt="" class="h-14 w-14 object-contain rounded-lg bg-zinc-900/50 p-1"/>
+            <div class="flex-1">
+              <div class="font-semibold">${item.name}</div>
+              <div class="text-xs text-zinc-400">${euros(item.price)}</div>
+              <div class="mt-1 inline-flex items-center gap-2">
+                <button data-act="dec" data-sku="${item.sku}" class="rounded bg-white/10 px-2 text-sm">−</button>
+                <span class="text-sm">${item.quantity}</span>
+                <button data-act="inc" data-sku="${item.sku}" class="rounded bg-white/10 px-2 text-sm">+</button>
+                <button data-act="del" data-sku="${item.sku}" class="ml-3 text-xs text-red-400 hover:text-red-300">Supprimer</button>
+              </div>
+            </div>
+            <div class="font-bold">${euros(item.price*item.quantity)}</div>
+          `;
+          elItems.appendChild(row);
+        });
+      }
+      const subtotal = cart.reduce((s,i)=> s + i.price*i.quantity, 0);
+      elSubtotal.textContent = euros(subtotal);
+    }
+
+    function openCart(){ elOverlay.classList.remove('hidden'); elCart.classList.remove('translate-x-full'); render(); }
+    function closeCart(){ elOverlay.classList.add('hidden'); elCart.classList.add('translate-x-full'); }
+
+    elOpen && elOpen.addEventListener('click', openCart);
+    elOverlay && elOverlay.addEventListener('click', closeCart);
+    elClose && elClose.addEventListener('click', closeCart);
+
+    // Bind +/−/delete actions
+    elItems && elItems.addEventListener('click', (e)=>{
+      const t = e.target.closest('button'); if(!t) return;
+      const sku = t.getAttribute('data-sku'); const act = t.getAttribute('data-act');
+      if(!sku||!act) return;
+      const cart = loadCart();
+      const i = cart.findIndex(x=>x.sku===sku);
+      if(i<0) return;
+      if(act==='inc') cart[i].quantity = Math.min(99, cart[i].quantity+1);
+      if(act==='dec') cart[i].quantity = Math.max(1, cart[i].quantity-1);
+      if(act==='del') cart.splice(i,1);
+      saveCart(cart); render();
+    });
+
+    // Add-to-cart binders
+    document.querySelectorAll('.add-to-cart').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const sku = btn.getAttribute('data-sku');
+        const name = btn.getAttribute('data-name');
+        const price = parseInt(btn.getAttribute('data-price'),10);
+        const image = btn.getAttribute('data-image');
+        const cart = loadCart();
+        const i = cart.findIndex(x=>x.sku===sku);
+        if(i>=0) cart[i].quantity = Math.min(99, cart[i].quantity+1);
+        else cart.push({ sku, name, price, image, quantity: 1 });
+        saveCart(cart);
+        openCart();
+      });
+    });
+
+    // Checkout → Netlify Function
+    elCheckout && elCheckout.addEventListener('click', async ()=>{
+      const cart = loadCart();
+      if(!cart.length) { alert('Votre panier est vide.'); return; }
+      // Send only SKU & quantity; server map → Stripe Price IDs
+      const items = cart.map(({sku, quantity}) => ({ sku, quantity }));
+      try{
+        const res = await fetch('/.netlify/functions/create-checkout',{
+          method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({ items, mode: 'payment' })
+        });
+        const data = await res.json();
+        if(data && data.url){ location.href = data.url; }
+        else { throw new Error(data && data.error ? data.error : 'Erreur inconnue'); }
+      } catch(err){
+        console.error(err);
+        alert("Le paiement n'est pas encore configuré. Dis-moi quand tu auras ajouté la function 'create-checkout' côté Netlify et je l’activerai.");
+      }
+    });
+
+    // Initialize badge from storage
+    updateCount(loadCart());
+  </script>
+</body>
+</html>
+
+<style>
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animate-gradientMove {
+  animation: gradientMove 6s ease infinite;
+}
+/* Desktop hover interactions for product cards */
+@media (hover:hover) and (pointer:fine) {
+  /* Pack purchase card, all licence cards, all accessory cards */
+  #pack article,
+  #licenses article,
+  #accessoires article {
+    transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+    will-change: transform;
+  }
+  #pack article:hover,
+  #licenses article:hover,
+  #accessoires article:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 12px 40px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.06) inset;
+    filter: saturate(1.05);
+  }
+
+  /* Contextual colored glows on hover */
+  /* Pack: red glow */
+  #pack article:hover {
+    box-shadow: 0 14px 44px rgba(239,68,68,.55), 0 0 0 1px rgba(239,68,68,.35) inset;
+    filter: saturate(1.08);
+  }
+  /* Licences grid: 3 mois (blue), 6 mois (fuchsia), 12 mois (amber) */
+  #licenses .grid > article:nth-child(1):hover {
+    box-shadow: 0 14px 44px rgba(59,130,246,.55), 0 0 0 1px rgba(59,130,246,.35) inset;
+    filter: saturate(1.08);
+  }
+  #licenses .grid > article:nth-child(2):hover {
+    box-shadow: 0 14px 44px rgba(236,72,153,.55), 0 0 0 1px rgba(236,72,153,.35) inset;
+    filter: saturate(1.08);
+  }
+  #licenses .grid > article:nth-child(3):hover {
+    box-shadow: 0 14px 44px rgba(251,191,36,.55), 0 0 0 1px rgba(251,191,36,.35) inset;
+    filter: saturate(1.08);
+  }
+  /* Accessories: emerald/green glow */
+  #accessoires article:hover {
+    box-shadow: 0 14px 44px rgba(16,185,129,.55), 0 0 0 1px rgba(16,185,129,.35) inset;
+    filter: saturate(1.08);
+  }
+
+  /* Licence 24 mois: whole card multicolor glow */
+  #licenses article:last-of-type:hover {
+    box-shadow:
+      0 14px 44px rgba(0,0,0,.35),
+      0 0 18px rgba(59,130,246,.45),   /* blue */
+      0 0 28px rgba(236,72,153,.45),   /* pink */
+      0 0 38px rgba(251,191,36,.45);   /* yellow */
+    filter: saturate(1.06);
+    transform: translateY(-4px) scale(1.01);
+  }
+}
+</style>

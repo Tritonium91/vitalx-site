@@ -1,0 +1,958 @@
+<!doctype html>
+<html lang="fr" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VitalX — Simulation & Formation</title>
+    <meta name="description" content="VitalX : un système tout‑en‑un pour la simulation médicale. Démonstrations, fonctionnalités, tarifs et achat en ligne." />
+    <meta property="og:title" content="VitalX — Simulation & Formation" />
+    <meta property="og:description" content="Un système tout‑en‑un pour la simulation  : app iOS, scénarios, capteurs et moniteur. Style épuré, performance, simplicité." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/og-image.png" />
+    <meta name="theme-color" content="#0a0a0a" />
+
+    <!-- Favicon & PWA basics -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#0a0a0a">
+
+    <!-- TailwindCSS CDN (pour un déploiement rapide sur Netlify) -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: [
+                'SF Pro Display', 'SF Pro Text', 'Inter', 'system-ui',
+                '-apple-system', 'Segoe UI', 'Roboto', 'Ubuntu', 'Cantarell', 'Noto Sans', 'Helvetica Neue', 'Arial', 'sans-serif'
+              ]
+            },
+            colors: {
+              brand: {
+                50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 300: '#93c5fd', 400: '#60a5fa',
+                500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8', 800: '#1e40af', 900: '#1e3a8a'
+              }
+            },
+            boxShadow: {
+              soft: '0 10px 30px rgba(0,0,0,0.12)'
+            }
+          }
+        }
+      }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+      .text-glow {
+        color: #fff;
+        text-shadow: 0 0 6px rgba(255,255,255,0.6);
+      }
+      .text-orange-glow {
+        color: #f59e0b;
+        text-shadow: 0 0 6px rgba(245,158,11,0.6);
+      }
+      /* Feature cards: sober by default, reveal details on hover or tap */
+      .feature-card { cursor: pointer; }
+      .feature-card:hover, .feature-card:focus { box-shadow: 0 10px 30px rgba(0,0,0,0.25); }
+      .feature-card .reveal { max-height: 0; opacity: 0; overflow: hidden; transition: max-height .4s ease, opacity .3s ease; }
+      .feature-card.group:hover .reveal, .feature-card[data-open="true"] .reveal { max-height: 220px; opacity: 1; }
+      .feature-card .title-row { display: flex; align-items: center; justify-content: space-between; }
+      .feature-card .chev { transition: transform .3s ease, opacity .3s ease; opacity: .6; }
+      .feature-card.group:hover .chev, .feature-card[data-open="true"] .chev { transform: rotate(180deg); opacity: 1; }
+      /* Rendu typographique doux façon Apple/Whoop */
+      html, body {
+        background: #000000;
+        color: #e7e7ea;
+      }
+      .glass { background: rgba(255,255,255,0.06); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.08); }
+      .ring-gradient { box-shadow: 0 0 0 1px rgba(255,255,255,0.06), inset 0 0 0 1px rgba(255,255,255,0.06); }
+      .grad { background: transparent !important; }
+      .text-gradient { background: linear-gradient(90deg, #fff, #93c5fd); -webkit-background-clip: text; background-clip: text; color: transparent; }
+      .text-orange-grad { background: linear-gradient(90deg, #ffffff 0%, #f59e0b 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+      .text-orange { color: #f59e0b; }
+      .badge-accent { background: rgba(245,158,11,0.15); color: #fed7aa; }
+      .shadow-hero { box-shadow: 0 40px 80px rgba(0,0,0,0.45); }
+      .section { scroll-margin-top: 80px; }
+      /* Simple carousel CSS (sans JS lourd) */
+      .snap-x { scroll-snap-type: x mandatory; }
+      .snap-center { scroll-snap-align: center; }
+      /* Lightbox */
+      .lb__overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.85); display: none; align-items: center; justify-content: center; z-index: 9999; }
+      .lb__overlay.is-open { display: flex; }
+      .lb__img { max-width: 90vw; max-height: 90vh; border-radius: 1rem; box-shadow: 0 25px 80px rgba(0,0,0,0.6); }
+      .lb__caption { color: #cfcfd3; font-size: 0.85rem; margin-top: 0.75rem; text-align: center; max-width: 90vw; }
+      .lb__close { position: fixed; top: 16px; right: 16px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 9999px; padding: 8px 10px; color: #fff; font-size: 0.9rem; }
+      .lb__overlay { cursor: zoom-out; }
+      body.lb-open { overflow: hidden; }
+
+      /* Offer banner animation */
+      @keyframes pulseGlow {
+        0%, 100% { text-shadow: 0 0 0 rgba(251,191,36,0.0); filter: drop-shadow(0 0 0 rgba(251,191,36,0)); }
+        50% { text-shadow: 0 0 18px rgba(251,191,36,0.6); filter: drop-shadow(0 0 10px rgba(251,191,36,0.35)); }
+      }
+      @keyframes rocketBob {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-4px); }
+      }
+      .offer-anim { position: relative; animation: pulseGlow 2.2s ease-in-out infinite; }
+      .offer-anim::after {
+        content: ""; position: absolute; left: 50%; transform: translateX(-50%);
+        bottom: -6px; width: 160px; height: 2px;
+        background: linear-gradient(90deg, transparent, rgba(251,191,36,0.9), transparent);
+        opacity: 0.9;
+      }
+      .rocket-anim { display: inline-block; animation: rocketBob 1.6s ease-in-out infinite; }
+
+      /* === CTA Buy button animation (green pulse + shimmer) === */
+      @keyframes ctaPulse {
+        0%, 100% { transform: translateZ(0) scale(1); box-shadow: 0 10px 30px rgba(16,185,129,0.15), 0 0 0 0 rgba(16,185,129,0.35); }
+        50% { transform: translateZ(0) scale(1.02); box-shadow: 0 14px 38px rgba(16,185,129,0.35), 0 0 0 12px rgba(16,185,129,0.08); }
+      }
+      @keyframes ctaShimmer {
+        0% { transform: translateX(-120%) skewX(-12deg); opacity: 0; }
+        40% { opacity: 0.7; }
+        60% { opacity: 0.7; }
+        100% { transform: translateX(120%) skewX(-12deg); opacity: 0; }
+      }
+      .cta-anim { position: relative; overflow: hidden; isolation: isolate; border-radius: 0.75rem; }
+      .cta-anim::before { content: ""; position: absolute; inset: -1px; border-radius: inherit; pointer-events: none; box-shadow: inset 0 0 0 2px rgba(16,185,129,0.55); }
+      .cta-anim::after { content: ""; position: absolute; top: 0; bottom: 0; width: 120px; background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(16,185,129,0.2) 35%, rgba(255,255,255,0.6) 50%, rgba(16,185,129,0.2) 65%, rgba(255,255,255,0) 100%); filter: blur(1px); transform: translateX(-120%) skewX(-12deg); animation: ctaShimmer 2.8s ease-in-out infinite; }
+      .cta-anim { animation: ctaPulse 2.2s ease-in-out infinite; }
+      .cta-anim:hover { transform: translateY(-2px); }
+      .cta-anim:active { transform: translateY(0); box-shadow: 0 8px 20px rgba(16,185,129,0.25); }
+
+      /* Disable pulse for specific CTA while keeping shimmer */
+      .cta-anim.no-pulse { animation: none; }
+      @media (prefers-reduced-motion: reduce) {
+        .cta-anim { animation: none; }
+        .cta-anim::after { animation: none; }
+      }
+
+      /* --- Hero auto slideshow --- */
+      @keyframes heroSlideX {
+        0%, 45%   { transform: translateX(0); }
+        55%, 100% { transform: translateX(-100%); }
+      }
+      .hero-slides {
+        width: 200%;
+        display: flex;
+        animation: heroSlideX 8s ease-in-out infinite;
+      }
+      .hero-slides img {
+        width: 100%;
+        max-height: 500px;
+        flex: 0 0 100%;
+        object-fit: contain;
+        object-position: left center;
+      }
+      /* Responsive sizing for Hero slideshow on small screens */
+      @media (max-width: 640px) {
+        .hero-slides img {
+          max-height: 300px; /* reduce height on phones */
+          
+        }
+      }
+      @media (max-width: 380px) {
+        .hero-slides img {
+          max-height: 260px; /* very small devices */
+          
+        }
+      }
+    </style>
+  </head>
+
+  <body class="font-sans antialiased">
+    <!-- Header -->
+    <header class="fixed top-0 inset-x-0 z-50">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mt-4 glass ring-gradient rounded-2xl shadow-soft">
+          <div class="flex items-center justify-between px-4 py-3">
+            <a href="#top" class="flex items-center gap-2">
+              <img src="/logo.png" alt="VitalX" class="h-8 w-8 object-contain" data-no-lightbox="true" />
+              <span class="text-sm md:text-base font-semibold tracking-tight">VitalX</span>
+            </a>
+            <nav class="hidden md:flex items-center gap-6 text-sm text-zinc-200/90">
+              <a href="#features" class="hover:text-white">Fonctionnalités</a>
+              <a href="#app" class="hover:text-white">L'app</a>
+              <a href="#pricing" class="hover:text-white">Tarifs</a>
+              <a href="#faq" class="hover:text-white">FAQ</a>
+              <a href="#contact" class="hover:text-white">Contact</a>
+              <a href="/boutique.html" class="hover:text-white">Boutique</a>
+            </nav>
+            <div class="flex items-center gap-2">
+              <a href="/boutique.html" aria-label="Aller à la Boutique" class="hidden sm:inline-flex items-center gap-2 rounded-full bg-emerald-500 text-white px-4 py-2 text-sm font-semibold shadow-soft hover:bg-emerald-400 cta-anim no-pulse">Boutique</a>
+              <button id="menuBtn" class="md:hidden inline-flex h-9 w-9 items-center justify-center rounded-full glass" aria-label="Ouvrir le menu">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+              </button>
+            </div>
+          </div>
+          <!-- Mobile menu -->
+          <div id="mobileMenu" class="hidden px-4 pb-4 md:hidden">
+            <div class="grid gap-2 text-sm">
+              <a href="#features" class="glass rounded-xl px-4 py-3">Fonctionnalités</a>
+              <a href="#app" class="glass rounded-xl px-4 py-3">L'app</a>
+              <a href="#pricing" class="glass rounded-xl px-4 py-3">Tarifs</a>
+              <a href="#faq" class="glass rounded-xl px-4 py-3">FAQ</a>
+              <a href="#contact" class="glass rounded-xl px-4 py-3">Contact</a>
+              <a href="/boutique.html" class="glass rounded-xl px-4 py-3">Boutique</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section id="top" class="pt-36 md:pt-40 pb-20 grad">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-10 items-center">
+          <div>
+            <p class="uppercase tracking-[0.2em] text-xs text-zinc-400">Simulation et Formation</p>
+            <h1 class="mt-4 text-4xl md:text-6xl font-extrabold leading-tight text-glow">
+             Le moniteur qui transforme vos formations
+            </h1>
+            <p class="mt-6 text-lg text-zinc-300 max-w-xl">VitalX est un système complet pour scénariser, piloter et afficher des constantes vitales en temps réel. Simple, fiable, design.</p>
+            <div class="mt-8 flex flex-wrap gap-3">
+              <a href="/boutique.html" aria-label="Voir la Boutique" class="inline-flex items-center gap-2 rounded-full bg-emerald-500 text-white px-6 py-3 text-sm font-semibold shadow-soft hover:bg-emerald-400 cta-anim no-pulse">Voir la Boutique</a>
+              <a href="#features" class="inline-flex items-center gap-2 rounded-full glass px-6 py-3 text-sm font-semibold hover:bg-white/10">Découvrir les fonctionnalités</a>
+            </div>
+          </div>
+
+          <div>
+            <div class="relative overflow-hidden rounded-[1.5rem]">
+              <div class="hero-slides">
+                <img src="/hero-monitor.png" alt="VitalX sur iPad" class="w-full object-contain" />
+                <img src="/hero-monitor3.png" alt="VitalX sur iPad (variante)" class="w-full object-contain" />
+              </div>
+              <p class="mt-3 text-center text-sm text-zinc-400">VitalX Pack</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Logos / Social proof -->
+    <section class="py-6">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div>
+          <p class="text-center text-lg md:text-2xl font-bold text-glow">Former comme si c’était vrai.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="section py-20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="text-3xl md:text-5xl font-bold text-orange-glow">Tout pour former efficacement</h2>
+          <p class="mt-4 text-zinc-100 max-w-3xl mx-auto">
+            <span class="block">
+              <span class="inline-flex items-center gap-2 rounded-full badge-accent px-3 py-1 text-xs font-semibold align-middle">Formateur</span>
+              <span class="ml-2">
+                <strong class="text-orange">pilote à distance</strong> les constantes —
+                <strong class="text-orange">pouls</strong>, <strong class="text-orange">SpO₂</strong>, <strong class="text-orange">respiration</strong>, <strong class="text-orange">tension/PNI</strong>, <strong class="text-orange">température</strong> — et déclenche des
+                <span class="text-orange-grad font-semibold">scénarios prêts à l’emploi</span>.
+              </span>
+            </span>
+            <span class="block mt-3">
+              <span class="inline-flex items-center gap-2 rounded-full bg-blue-500/20 text-blue-300 px-3 py-1 text-xs font-semibold align-middle">Moniteur</span>
+              <span class="ml-2">
+                <strong class="text-blue-400">affiche instantanément</strong> : valeurs, courbes & alertes pour des cas concrets <strong class="text-white">ultra réalistes</strong> en formation <span class="text-zinc-100">secouriste/paramédicale</span>.
+              </span>
+            </span>
+          </p>
+        </div>
+        <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Card 1 -->
+          <div class="glass ring-gradient rounded-2xl p-6 group feature-card" role="button" tabindex="0" aria-expanded="false">
+            <div class="h-10 w-10 rounded-xl bg-brand-500/20 grid place-items-center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></div>
+            <h3 class="mt-4 text-xl font-semibold title-row">Scénarios dynamiques <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 21 6 15"></polyline></svg></h3>
+            <div class="reveal mt-2">
+              <p class="text-sm text-zinc-300">Bibliothèque de scénarios pré‑enregistrés avec cas concrets détaillés (AVC, douleur thoracique, polytrauma…), étapes guidées, minuteur et transitions.</p>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="glass ring-gradient rounded-2xl p-6 group feature-card" role="button" tabindex="0" aria-expanded="false">
+            <div class="h-10 w-10 rounded-xl bg-brand-500/20 grid place-items-center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2" ry="2"></rect><line x1="8" y1="12" x2="16" y2="12"></line></svg></div>
+            <h3 class="mt-4 text-xl font-semibold title-row">Moniteur réaliste <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 21 6 15"></polyline></svg></h3>
+            <div class="reveal mt-2">
+              <p class="text-sm text-zinc-300">Le scope reçoit les paramètres du formateur : constantes en temps réel, PNI auto/manuel (historique & PAM), alertes visuelles, tendances et courbes ECG/SpO₂.</p>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="glass ring-gradient rounded-2xl p-6 group feature-card" role="button" tabindex="0" aria-expanded="false">
+            <div class="h-10 w-10 rounded-xl bg-brand-500/20 grid place-items-center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9"></path><path d="M14 17H5"></path><circle cx="17" cy="17" r="3"></circle><circle cx="7" cy="7" r="3"></circle></svg></div>
+            <h3 class="mt-4 text-xl font-semibold title-row">Pilotage formateur <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 21 6 15"></polyline></svg></h3>
+            <div class="reveal mt-2">
+              <p class="text-sm text-zinc-300">Contrôle à distance des constantes (pouls, SpO₂, respiration, tension/PNI, température), scénarios, <strong>mode ECG 12D</strong> et <strong>mode DSA</strong> depuis l’app formateur.</p>
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div class="glass ring-gradient rounded-2xl p-6 group feature-card" role="button" tabindex="0" aria-expanded="false">
+            <div class="h-10 w-10 rounded-xl bg-brand-500/20 grid place-items-center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41A2 2 0 0 0 22 12V8a2 2 0 0 0-2-2h-4"></path><path d="M3.41 10.59A2 2 0 0 0 2 12v4a2 2 0 0 0 2 2h4"></path><line x1="7" y1="12" x2="17" y2="12"></line></svg></div>
+            <h3 class="mt-4 text-xl font-semibold title-row">Sync instantanée <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 21 6 15"></polyline></svg></h3>
+            <div class="reveal mt-2">
+              <p class="text-sm text-zinc-300">Contrôle à distance et synchronisation multi‑appareils via le cloud (session code).</p>
+            </div>
+          </div>
+          <!-- Card 5 -->
+          <div class="glass ring-gradient rounded-2xl p-6 group feature-card" role="button" tabindex="0" aria-expanded="false">
+            <div class="h-10 w-10 rounded-xl bg-brand-500/20 grid place-items-center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21V7a2 2 0 0 0-2-2h-4"></path><rect x="2" y="7" width="12" height="13" rx="2" ry="2"></rect></svg></div>
+            <h3 class="mt-4 text-xl font-semibold title-row">Design premium <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 21 6 15"></polyline></svg></h3>
+            <div class="reveal mt-2">
+              <p class="text-sm text-zinc-300">UI claire, cartes, micro‑animations et lisibilité optimale en salle de cours.</p>
+            </div>
+          </div>
+          <!-- Card 6 -->
+          <div class="glass ring-gradient rounded-2xl p-6 group feature-card" role="button" tabindex="0" aria-expanded="false">
+            <div class="h-10 w-10 rounded-xl bg-brand-500/20 grid place-items-center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H10"></path><path d="M4 12h2"></path><path d="M10 6v12"></path></svg></div>
+            <h3 class="mt-4 text-xl font-semibold title-row">Évolutif <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 21 6 15"></polyline></svg></h3>
+            <div class="reveal mt-2">
+              <p class="text-sm text-zinc-300">Mises à jour régulières : nouveaux scénarios, améliorations et optimisations.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- App section (carousel) -->
+    <section id="app" class="section py-20 grad">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-10 items-center">
+          <div>
+            <h2 class="text-3xl md:text-5xl font-bold text-glow text-white">L'app VitalX</h2>
+            <p class="mt-4 text-zinc-300 max-w-xl">
+              <span class="block"><strong>Formateur</strong> 👨🏻‍💻 — pilote à distance les constantes (pouls, SpO₂, respiration, tension/PNI, température), enchaîne des <strong>scénarios</strong> prêts à l’emploi et déclenche les modes <strong>ECG 12 dérivations</strong> & <strong>DSA</strong>.</span>
+              <span class="block mt-2"><strong>Moniteur</strong> 🖥️ — affiche instantanément les valeurs, courbes et alertes pour des mises en situation <strong>ultra réalistes</strong> en salle de cours.</span>
+            </p>
+            <ul class="mt-6 space-y-3 text-zinc-300">
+              <li class="flex gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-brand-500"></span> 👨🏻‍💻 <strong>Formateur</strong> : contrôle à distance — Pouls, SpO₂, Respiration, Tension (PNI), Température</li>
+              <li class="flex gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-brand-500"></span> 🧪 <strong>Scénarios</strong> : cas concrets détaillés et multiples</li>
+              <li class="flex gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-brand-500"></span> 🫀 <strong>Modes</strong> : ECG 12 dérivations & DSA (analyses, prompts, chocs simulés)</li>
+              <li class="flex gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-brand-500"></span> 🖥️ <strong>Moniteur</strong> : temps réel, PNI auto + manuel (historique, PAM), courbes ECG/SpO₂, alertes</li>
+              <li class="flex gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-brand-500"></span> ☁️ <strong>Sync &amp; sécurité</strong> : CO détecté & alertes visuelles/sonores</li>
+              <li class="flex gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-brand-500"></span> 🐾 <strong>Mode Animal</strong> (option)</li>
+            </ul>
+            <div class="mt-8 flex gap-3">
+              <a href="/boutique.html" aria-label="Voir la Boutique" class="inline-flex items-center gap-2 rounded-full bg-emerald-500 text-white px-6 py-3 text-sm font-semibold shadow-soft hover:bg-emerald-400 cta-anim no-pulse">Voir la Boutique</a>
+            </div>
+          </div>
+          <div>
+            <div class="glass ring-gradient rounded-2xl p-3">
+              <div class="overflow-x-auto snap-x flex gap-4" tabindex="0">
+                <img src="/app-1.png" alt="TrainerView" class="snap-center rounded-xl w-[95%] md:w-[80%] lg:w-[85%] object-contain" />
+                <img src="/app-2.png" alt="MonitorView" class="snap-center rounded-xl w-[95%] md:w-[80%] lg:w-[85%] object-contain" />
+                <img src="/app-4.png" alt="DSA Monitor" class="snap-center rounded-xl w-[95%] md:w-[80%] lg:w-[85%] object-contain" />
+                <img src="/app-3.png" alt="ECG Monitor" class="snap-center rounded-xl w-[95%] md:w-[80%] lg:w-[85%] object-contain" />
+                <img src="/app-5.png" alt="Trainer Scenarios" class="snap-center rounded-xl w-[95%] md:w-[80%] lg:w-[85%] object-contain" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What's in the box -->
+    <section class="py-20 section" id="in-the-box">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="text-3xl md:text-5xl font-bold text-glow text-white">
+            Dans le pack
+          </h2>
+          <p class="mt-4 text-white">
+            Tout ce qu'il faut pour démarrer :
+            <span class="text-blue-400 font-bold">matériel complet</span>
+            +
+            <span class="text-blue-400 font-bold">licence 3 mois offerte</span>.
+          </p>
+        </div>
+
+        <div class="mt-10 grid md:grid-cols-3 gap-6">
+          <!-- 2 iPad (10 ou 11) -->
+          <div class="glass ring-gradient rounded-2xl p-6">
+            <div class="h-10 w-10 rounded-xl bg-brand-500/20 grid place-items-center">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="3"></rect><circle cx="12" cy="18" r="1"></circle></svg>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold">
+              <span class="text-blue-400 font-bold">2 iPad A16</span>
+              <span class="text-zinc-400"> (11&quot;)</span>
+            </h3>
+            <p class="mt-2 text-sm text-white">
+              Deux tablettes dédiées : une pour le <strong class="text-blue-400 font-bold">Formateur</strong>, une pour le <strong class="text-blue-400 font-bold">Moniteur</strong>.
+            </p>
+          </div>
+
+          <!-- Boîtier -->
+          <div class="glass ring-gradient rounded-2xl p-6">
+            <div class="h-10 w-10 rounded-xl bg-brand-500/20 grid place-items-center">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="10" rx="2"></rect><path d="M7 7v-2h10v2"></path></svg>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold">
+              <span class="text-blue-400 font-bold">1 Boîtier</span>
+            </h3>
+            <p class="mt-2 text-sm text-white">
+              Boîtier dédié <strong class="text-blue-400 font-bold">VitalX</strong> pour une installation propre et robuste.
+            </p>
+          </div>
+
+          <!-- Sacoche Bagheera -->
+          <div class="glass ring-gradient rounded-2xl p-6">
+            <div class="h-10 w-10 rounded-xl bg-brand-500/20 grid place-items-center">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-8Z"></path><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold">
+              <span class="text-blue-400 font-bold">1 Housse Bagheera</span>
+            </h3>
+            <p class="mt-2 text-sm text-white">
+              Transport sécurisé du boîtier, des iPad et des accessoires.
+            </p>
+          </div>
+
+          <!-- Connectiques -->
+          <div class="glass ring-gradient rounded-2xl p-6">
+            <div class="h-10 w-10 rounded-xl bg-brand-500/20 grid place-items-center">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10H7z"></path><path d="M3 12h4"></path><path d="M17 12h4"></path></svg>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold">
+              <span class="text-blue-400 font-bold">Connectiques</span>
+            </h3>
+            <ul class="mt-2 text-sm text-white list-disc list-inside space-y-1">
+              <li><span class="text-blue-400 font-bold">Tension (PNI)</span></li>
+              <li><span class="text-blue-400 font-bold">SpO₂</span></li>
+              <li><span class="text-blue-400 font-bold">ECG 12D</span></li>
+              <li><span class="text-blue-400 font-bold">Patchs DSA</span></li>
+              <li><span class="text-blue-400 font-bold">Capteur de température</span></li>
+              <li><span class="text-blue-400 font-bold">ETCO₂</span></li>
+            </ul>
+          </div>
+
+          <!-- Licence à vie -->
+          <div class="glass ring-gradient rounded-2xl p-6">
+            <div class="h-10 w-10 rounded-xl bg-brand-500/20 grid place-items-center">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4 2.5 7-7-4.5L5.5 20 8 13 2 9h7z"></path></svg>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold flex items-center gap-2">
+              <span class="text-blue-400 font-bold">Licence VitalX (3 mois offerts)</span>
+            </h3>
+            <p class="mt-2 text-sm text-white">
+              Accès à l’app <strong class="text-blue-400 font-bold">VitalX</strong> <span class="text-zinc-400">(iOS & iPadOS)</span>, <span class="text-blue-400 font-bold">3 mois offerts</span> avec le pack.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="section py-20 grad">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="text-3xl md:text-5xl font-bold text-glow text-white">Tarif unique</h2>
+          <p class="mt-4 text-zinc-300">Un seul prix, <span class="text-orange font-bold">pack complet</span> + <span class="text-orange font-bold">3 mois de licence offerts</span>.</p>
+        </div>
+
+        <div class="mt-10 grid lg:grid-cols-3 gap-8 items-center">
+          <!-- Left: big logo -->
+          <div class="hidden lg:block">
+            <img src="/logovitalx4.png" alt="VitalX — Logo" class="w-3/4 max-w-sm object-contain mx-auto" />
+          </div>
+
+          <!-- Center: pricing card -->
+          <div>
+            <div class="glass ring-gradient rounded-2xl p-6 flex flex-col border border-white/10">
+              <div class="flex flex-wrap gap-2 justify-center">
+                <span class="inline-flex items-center rounded-full bg-brand-500/20 text-brand-200 px-3 py-1 text-xs font-semibold">📦 <strong> Pack complet</strong></span>
+                <span class="inline-flex items-center rounded-full bg-emerald-500/20 text-emerald-200 px-3 py-1 text-xs font-semibold">♾️ <strong>3 mois de licence offerts</strong></span>
+                <span class="inline-flex items-center rounded-full bg-zinc-100 text-black px-3 py-1 text-xs font-semibold">💬 <strong> Support 7j/7</strong></span>
+                <span class="inline-flex items-center rounded-full bg-zinc-900/60 border border-white/10 px-3 py-1 text-xs">🇫🇷 <strong> MADE IN FRANCE</strong></span>
+              </div>
+
+              
+              <div class="mt-6 text-sm text-zinc-300 text-center">Découvrez les offres et configurations dans notre Boutique.</div>
+              <div class="h-px bg-white/10 my-6"></div>
+
+              <a href="/boutique.html" aria-label="Ouvrir la Boutique" class="mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-emerald-500 text-white px-5 py-3 font-semibold shadow-soft hover:bg-emerald-400 cta-anim no-pulse">
+                Ouvrir la Boutique 🛍️
+              </a>
+
+              <p class="mt-3 text-xs text-zinc-400 text-center">
+                En procédant au paiement, vous acceptez nos <a href="/cgv.html" class="underline hover:text-white">CGV</a>.
+              </p>
+              <p class="mt-3 text-xs text-zinc-400 text-center">Facturation en €. <span class="text-brand-300 font-medium">TVA non applicable (art. 293B CGI)</span>. Livraison estimée <span class="text-brand-300 font-medium">15–30 jours</span>.</p>
+            </div>
+          </div>
+
+          <!-- Right: price comparison chart -->
+          <div class="hidden lg:block">
+            <div class="glass ring-gradient rounded-2xl p-6 h-full">
+              <h4 class="text-sm font-semibold text-zinc-300 mb-3">Comparatif de prix (≈)</h4>
+              <div class="relative w-full h-[360px]">
+                <canvas id="priceChart" aria-label="Comparatif de prix Medical Scope vs concurrents" role="img"></canvas>
+              </div>
+              <p class="mt-3 text-xs text-zinc-400">Sources publiques & estimations. VitalX : <span class="text-emerald-300 font-medium">4 560 €</span> — Concurrents : 6 500 à 15 000 €.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Licences only -->
+    <section id="licenses" class="section py-20 grad">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="text-3xl md:text-5xl font-bold text-glow text-white">Acheter une licence uniquement</h2>
+          <p class="mt-4 text-zinc-300">Choisissez la durée qui vous convient. Idéal pour prolonger l’accès après l’offre de 3 mois incluse avec le pack.</p>
+        </div>
+        <div class="mt-10 max-w-2xl mx-auto">
+          <div class="glass ring-gradient rounded-2xl p-8 text-center">
+            <h3 class="text-xl font-semibold">Licences VitalX</h3>
+            <p class="mt-2 text-zinc-300">Choisissez 3, 6 ou 12 mois selon vos besoins. Achat et renouvellement directement dans la Boutique.</p>
+            <a href="/boutique.html" class="mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-emerald-500 text-white px-5 py-3 font-semibold shadow-soft hover:bg-emerald-400 cta-anim no-pulse">Voir les licences dans la Boutique</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Specs / Trust -->
+    <section class="py-20 section">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-3 gap-6">
+          <div class="glass ring-gradient rounded-2xl p-6">
+            <h3 class="text-lg font-semibold">Compatibilité</h3>
+            <p class="mt-2 text-sm text-zinc-300">iPadOS 18+ et iOS 18+. Mode paysage recommandé pour le moniteur.</p>
+          </div>
+          <div class="glass ring-gradient rounded-2xl p-6">
+            <h3 class="text-lg font-semibold">Performances</h3>
+            <p class="mt-2 text-sm text-zinc-300">Un système fiable et performant, pensé pour les sessions intensives de formation.</p>
+          </div>
+          <div class="glass ring-gradient rounded-2xl p-6">
+            <h3 class="text-lg font-semibold">Sécurité</h3>
+            <p class="mt-2 text-sm text-zinc-300">Sessions par code.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="section py-20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="text-3xl md:text-5xl font-bold text-glow text-white">Ils recommandent VitalX</h2>
+          <p class="mt-4 text-zinc-300">Des retours enthousiastes de centres de formation, instructeurs et associations.</p>
+        </div>
+        <div class="mt-10 grid md:grid-cols-3 gap-6">
+          <figure class="glass ring-gradient rounded-2xl p-6">
+            <div class="flex items-center gap-2 text-amber-300" aria-label="5 étoiles">
+              <span>★★★★★</span>
+            </div>
+            <blockquote class="mt-3 text-sm text-zinc-200">“Le réalisme est bluffant. On gagne un temps fou pour préparer des cas concrets.”</blockquote>
+            <div class="mt-4 grid grid-cols-2 gap-2">
+              <img src="/reviews/scope-1.jpg" alt="Photo produit – Medical Scope" class="h-28 w-full object-cover rounded-xl" />
+              <img src="/reviews/scope-2.jpg" alt="Photo produit – Medical Scope" class="h-28 w-full object-cover rounded-xl" />
+            </div>
+            <figcaption class="mt-4 text-xs text-zinc-400">— Claire M., Instructrice PSE</figcaption>
+          </figure>
+          <figure class="glass ring-gradient rounded-2xl p-6">
+            <div class="flex items-center gap-2 text-amber-300" aria-label="5 étoiles">
+              <span>★★★★★</span>
+            </div>
+            <blockquote class="mt-3 text-sm text-zinc-200">“Pilotage à distance ultra simple, nos élèves sont à fond. Excellente lisibilité.”</blockquote>
+            <div class="mt-4">
+              <img src="/reviews/scope-3.jpg" alt="Photo produit – Medical Scope" class="h-36 w-full object-cover rounded-xl" />
+            </div>
+            <figcaption class="mt-4 text-xs text-zinc-400">— Julien R., Formateur SST</figcaption>
+          </figure>
+          <figure class="glass ring-gradient rounded-2xl p-6">
+            <div class="flex items-center gap-2 text-amber-300" aria-label="5 étoiles">
+              <span>★★★★★</span>
+            </div>
+            <blockquote class="mt-3 text-sm text-zinc-200">“Le meilleur rapport qualité/prix pour nos ateliers simulation. Je recommande.”</blockquote>
+            <div class="mt-4 grid grid-cols-3 gap-2">
+              <img src="/reviews/scope-4.jpg" alt="Photo produit – Medical Scope" class="h-24 w-full object-cover rounded-xl" />
+              <img src="/reviews/scope-5.jpg" alt="Photo produit – Medical Scope" class="h-24 w-full object-cover rounded-xl" />
+              <img src="/reviews/scope-6.jpg" alt="Photo produit – Medical Scope" class="h-24 w-full object-cover rounded-xl" />
+            </div>
+            <figcaption class="mt-4 text-xs text-zinc-400">— Assoc. Croix Blanche 91</figcaption>
+          </figure>
+        </div>
+
+        <!-- Partners / Logos -->
+        <div class="mt-12 glass ring-gradient rounded-2xl p-6">
+          <p class="text-center text-sm text-zinc-400 mb-4">Partenaires & utilisateurs</p>
+          <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 gap-6 items-center">
+            <img src="/partner-1.png" alt="Partenaire 1" class="h-10 mx-auto opacity-80 hover:opacity-100 transition" />
+            <img src="/partner-2.png" alt="Partenaire 2" class="h-10 mx-auto opacity-80 hover:opacity-100 transition" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section py-20 grad">
+      <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="text-3xl md:text-5xl font-bold text-glow text-white">Contact</h2>
+          <p class="mt-4 text-white/80">Besoin de nous contacter pour un devis, un renseignement ou autre&nbsp;?</p>
+        </div>
+
+        <div class="mt-10 max-w-3xl mx-auto">
+          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/merci.html" class="glass ring-gradient rounded-2xl p-6 md:p-8">
+            <!-- Netlify required hidden input -->
+            <input type="hidden" name="form-name" value="contact">
+            <!-- Honeypot -->
+            <p class="hidden">
+              <label>Ne pas remplir&nbsp;: <input name="bot-field" /></label>
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <label for="nom" class="block text-sm font-medium text-white/80">Nom</label>
+                <input id="nom" name="nom" type="text" required class="mt-2 w-full rounded-xl bg-zinc-900/60 border border-white/10 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-emerald-400" placeholder="Dupont" />
+              </div>
+              <div>
+                <label for="prenom" class="block text-sm font-medium text-white/80">Prénom</label>
+                <input id="prenom" name="prenom" type="text" required class="mt-2 w-full rounded-xl bg-zinc-900/60 border border-white/10 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-emerald-400" placeholder="Yann" />
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <label for="email" class="block text-sm font-medium text-white/80">Email</label>
+              <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required class="mt-2 w-full rounded-xl bg-zinc-900/60 border border-white/10 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-emerald-400" placeholder="vous@exemple.com" />
+            </div>
+
+            <div class="mt-4">
+              <label for="message" class="block text-sm font-medium text-white/80">Message</label>
+              <textarea id="message" name="message" rows="6" required class="mt-2 w-full rounded-xl bg-zinc-900/60 border border-white/10 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-emerald-400" placeholder="Votre demande..."></textarea>
+            </div>
+
+            <!-- Optional Netlify reCAPTCHA (enable in Netlify Forms settings) -->
+            <!-- <div class="mt-6" data-netlify-recaptcha="true"></div> -->
+
+            <div class="mt-6 flex items-center justify-between gap-3">
+              <p class="text-xs text-white/60">En envoyant ce formulaire, vous acceptez d’être recontacté par e‑mail.</p>
+              <button type="submit" class="inline-flex items-center gap-2 rounded-xl bg-emerald-500 text-white px-6 py-3 text-sm font-semibold shadow-soft hover:bg-emerald-400 cta-anim no-pulse">Envoyer</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section py-20 grad">
+      <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+          <h2 class="text-3xl md:text-5xl font-bold">FAQ</h2>
+          <div class="flex items-center gap-2">
+            <button id="faqToggle" aria-expanded="false" class="rounded-full glass px-4 py-2 text-sm hover:bg-white/10">Afficher la FAQ</button>
+          </div>
+        </div>
+
+        <div id="faqPanel" class="mt-6 hidden">
+          <div class="flex items-center gap-2 mb-4">
+            <button id="faqExpandAll" class="rounded-full glass px-4 py-2 text-sm hover:bg-white/10">Tout déplier</button>
+            <button id="faqCollapseAll" class="rounded-full glass px-4 py-2 text-sm hover:bg-white/10">Tout replier</button>
+          </div>
+          <div id="faqGrid" class="grid md:grid-cols-2 gap-4">
+
+            <details class="glass ring-gradient rounded-2xl p-5" data-faq>
+              <summary class="cursor-pointer text-base md:text-lg font-semibold flex items-center justify-between">
+                <span>L'app fonctionne‑t‑elle sans internet ?</span>
+                <span class="ml-2 text-zinc-400">+</span>
+              </summary>
+              <p class="mt-3 text-sm text-zinc-300">Oui, le <strong>Moniteur</strong> peut afficher vos scénarios et constantes en local. La <strong>synchronisation à distance</strong> Formateur → Moniteur et le partage multi‑appareils nécessitent une connexion.</p>
+            </details>
+
+            <details class="glass ring-gradient rounded-2xl p-5" data-faq>
+              <summary class="cursor-pointer text-base md:text-lg font-semibold flex items-center justify-between">
+                <span>Puis‑je utiliser plusieurs iPads ?</span>
+                <span class="ml-2 text-zinc-400">+</span>
+              </summary>
+              <p class="mt-3 text-sm text-zinc-300">Oui. Un <strong>Formateur</strong> peut piloter plusieurs <strong>Moniteurs</strong> avec le même code de session (classe entière possible).</p>
+            </details>
+
+            <details class="glass ring-gradient rounded-2xl p-5" data-faq>
+              <summary class="cursor-pointer text-base md:text-lg font-semibold flex items-center justify-between">
+                <span>Compatibilité iOS / iPadOS</span>
+                <span class="ml-2 text-zinc-400">+</span>
+              </summary>
+              <p class="mt-3 text-sm text-zinc-300">VitalX fonctionne sur <strong>iOS 18+</strong> et <strong>iPadOS 18+</strong>. Pour le moniteur, nous recommandons le <strong>mode paysage</strong>.</p>
+            </details>
+
+            <details class="glass ring-gradient rounded-2xl p-5" data-faq>
+              <summary class="cursor-pointer text-base md:text-lg font-semibold flex items-center justify-between">
+                <span>Quels capteurs et paramètres sont simulés&nbsp;?</span>
+                <span class="ml-2 text-zinc-400">+</span>
+              </summary>
+              <p class="mt-3 text-sm text-zinc-300">Pouls, <strong>SpO₂</strong>, respiration, <strong>tension/PNI</strong> (auto + manuel, historique & PAM), température, courbes <strong>ECG</strong>, mode <strong>ECG 12 dérivations</strong>, mode <strong>DSA</strong> (analyses, prompts, chocs simulés) et alertes visuelles/sonores.</p>
+            </details>
+
+            <details class="glass ring-gradient rounded-2xl p-5" data-faq>
+              <summary class="cursor-pointer text-base md:text-lg font-semibold flex items-center justify-between">
+                <span>Comment se passe l'achat et le paiement&nbsp;?</span>
+                <span class="ml-2 text-zinc-400">+</span>
+              </summary>
+              <p class="mt-3 text-sm text-zinc-300">Le paiement s’effectue via <strong>Stripe</strong> (lien sécurisé) par carte bancaire. Une <strong>facture</strong> est envoyée automatiquement après l’achat. <em>TVA non applicable (art. 293B CGI)</em>.</p>
+            </details>
+
+            <details class="glass ring-gradient rounded-2xl p-5" data-faq>
+              <summary class="cursor-pointer text-base md:text-lg font-semibold flex items-center justify-between">
+                <span>Délais et livraison</span>
+                <span class="ml-2 text-zinc-400">+</span>
+              </summary>
+              <p class="mt-3 text-sm text-zinc-300">Préparation et expédition en <strong>15–30 jours</strong> ouvrés selon le stock matériel. Vous recevez un suivi d’expédition dès l’envoi.</p>
+            </details>
+
+            <details class="glass ring-gradient rounded-2xl p-5" data-faq>
+              <summary class="cursor-pointer text-base md:text-lg font-semibold flex items-center justify-between">
+                <span>Licence et mises à jour</span>
+                <span class="ml-2 text-zinc-400">+</span>
+              </summary>
+              <p class="mt-3 text-sm text-zinc-300">
+                La licence fonctionne par abonnement. <strong>3 mois sont offerts</strong> à l’achat du pack. Vous pouvez ensuite prolonger pour 3, 6 ou 12 mois. Les mises à jour fonctionnelles et correctives sont incluses durant la période active.
+              </p>
+            </details>
+
+            <details class="glass ring-gradient rounded-2xl p-5" data-faq>
+              <summary class="cursor-pointer text-base md:text-lg font-semibold flex items-center justify-between">
+                <span>Support & assistance</span>
+                <span class="ml-2 text-zinc-400">+</span>
+              </summary>
+              <p class="mt-3 text-sm text-zinc-300">Nous répondons 7j/7 par e‑mail. Guides rapides et scénarios prêts à l’emploi fournis pour démarrer sereinement.</p>
+            </details>
+
+            <details class="glass ring-gradient rounded-2xl p-5" data-faq>
+              <summary class="cursor-pointer text-base md:text-lg font-semibold flex items-center justify-between">
+                <span>Matériel inclus dans le pack</span>
+                <span class="ml-2 text-zinc-400">+</span>
+              </summary>
+              <p class="mt-3 text-sm text-zinc-300">Le pack comprend <strong>2 iPad (9 ou 10)</strong>, <strong>1 boîtier</strong>, <strong>1 housse Bagheera</strong>, les <strong>connectiques</strong> (PNI, SpO₂, ECG 12D, patchs DSA, capteur de température) et la <strong>licence 3 mois offerte</strong>.</p>
+            </details>
+
+            <details class="glass ring-gradient rounded-2xl p-5" data-faq>
+              <summary class="cursor-pointer text-base md:text-lg font-semibold flex items-center justify-between">
+                <span>Sécurité des données</span>
+                <span class="ml-2 text-zinc-400">+</span>
+              </summary>
+              <p class="mt-3 text-sm text-zinc-300">Les sessions sont protégées par <strong>code</strong>. Aucune <strong>donnée patient réelle</strong> n’est stockée par l’app.</p>
+            </details>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-2 items-center gap-6">
+          <div class="text-sm text-zinc-400">© <span id="year"></span> VitalX. Tous droits réservés.</div>
+          <div class="flex justify-start md:justify-end gap-6 text-sm">
+            <a href="/mentions-legales.html" class="text-zinc-400 hover:text-white">Mentions légales</a>
+            <a href="/politique-confidentialite.html" class="text-zinc-400 hover:text-white">Politique de confidentialité</a>
+            <a href="/cgv.html" class="text-zinc-400 hover:text-white">CGV</a>
+            <a href="/formulaire_retractation.pdf" class="text-zinc-400 hover:text-white" download>Formulaire de rétractation (PDF)</a>
+            <a href="/garantie.html" class="text-zinc-400 hover:text-white">Garantie &amp; entretien</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Lightbox container -->
+    <div id="lightbox" class="lb__overlay" aria-hidden="true">
+      <div class="lb__inner">
+        <img id="lightboxImg" class="lb__img" alt="" />
+        <div id="lightboxCaption" class="lb__caption"></div>
+      </div>
+      <button id="lightboxClose" class="lb__close" aria-label="Fermer">✕</button>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+      // Année dynamique
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Mobile menu toggle
+      const menuBtn = document.getElementById('menuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      if (menuBtn) menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+
+      // FAQ show/hide panel toggle
+      const faqToggleBtn = document.getElementById('faqToggle');
+      const faqPanel = document.getElementById('faqPanel');
+      if (faqToggleBtn && faqPanel) {
+        faqToggleBtn.addEventListener('click', () => {
+          const hidden = faqPanel.classList.toggle('hidden');
+          faqToggleBtn.setAttribute('aria-expanded', String(!hidden));
+          faqToggleBtn.textContent = hidden ? 'Afficher la FAQ' : 'Masquer la FAQ';
+        });
+      }
+
+      // Price comparison chart (Chart.js)
+      (function(){
+        const el = document.getElementById('priceChart');
+        if (!el || !(window.Chart)) return;
+        const ctx = el.getContext('2d');
+        const data = {
+          labels: ['VitalX', 'Concurrent A', 'Concurrent B', 'Concurrent C'],
+          datasets: [{
+            label: 'Prix (€)',
+            data: [4560, 6500, 9000, 15000],
+            backgroundColor: [
+              'rgba(16,185,129,0.85)', // emerald for Medical Scope
+              'rgba(161,161,170,0.5)',
+              'rgba(161,161,170,0.5)',
+              'rgba(161,161,170,0.5)'
+            ],
+            borderColor: [
+              'rgba(16,185,129,1)',
+              'rgba(161,161,170,0.8)',
+              'rgba(161,161,170,0.8)',
+              'rgba(161,161,170,0.8)'
+            ],
+            borderWidth: 1.5,
+            borderRadius: 6,
+          }]
+        };
+        const fmtEuro = (v) => new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(v);
+        new Chart(ctx, {
+          type: 'bar',
+          data,
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                callbacks: { label: (ctx) => ` ${fmtEuro(ctx.parsed.y)}` },
+                backgroundColor: 'rgba(24,24,27,0.95)',
+                borderColor: 'rgba(255,255,255,0.08)',
+                borderWidth: 1,
+                titleColor: '#e7e7ea',
+                bodyColor: '#e7e7ea',
+              },
+            },
+            scales: {
+              x: {
+                ticks: { color: '#cfcfd3' },
+                grid: { display: false },
+              },
+              y: {
+                beginAtZero: true,
+                suggestedMax: 16000,
+                ticks: {
+                  color: '#a5a5ab',
+                  callback: (val) => fmtEuro(val)
+                },
+                grid: { color: 'rgba(255,255,255,0.06)' },
+              }
+            }
+          }
+        });
+      })();
+
+      // FAQ controls (expand/collapse all) and single-open behavior on md+ screens
+      const faqDetails = Array.from(document.querySelectorAll('details[data-faq]'));
+      const expandAllBtn = document.getElementById('faqExpandAll');
+      const collapseAllBtn = document.getElementById('faqCollapseAll');
+
+      if (expandAllBtn) expandAllBtn.addEventListener('click', () => {
+        faqDetails.forEach(d => d.open = true);
+      });
+      if (collapseAllBtn) collapseAllBtn.addEventListener('click', () => {
+        faqDetails.forEach(d => d.open = false);
+      });
+
+      // On desktop, keep only one item open at a time to reduce scrolling
+      function singleOpenHandler(e) {
+        if (!e.target.closest('summary')) return;
+        if (window.matchMedia('(min-width: 768px)').matches) {
+          const current = e.currentTarget;
+          // Delay to allow the clicked details to toggle open first
+          requestAnimationFrame(() => {
+            if (current.open) {
+              faqDetails.forEach(d => { if (d !== current) d.open = false; });
+            }
+          });
+        }
+      }
+      faqDetails.forEach(d => d.addEventListener('click', singleOpenHandler));
+      // Feature cards: tap/click to toggle details on mobile; keep hover on desktop
+      const featureCards = Array.from(document.querySelectorAll('.feature-card'));
+      featureCards.forEach(card => {
+        // Click / tap
+        card.addEventListener('click', (e) => {
+          // Avoid toggle when clicking links or interactive children
+          if (e.target.closest('a, button')) return;
+          const isOpen = card.getAttribute('data-open') === 'true';
+          card.setAttribute('data-open', String(!isOpen));
+          card.setAttribute('aria-expanded', String(!isOpen));
+        });
+        // Keyboard (Enter/Space)
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            const isOpen = card.getAttribute('data-open') === 'true';
+            card.setAttribute('data-open', String(!isOpen));
+            card.setAttribute('aria-expanded', String(!isOpen));
+          }
+        });
+      });
+
+      // === Lightbox (all images, except those with data-no-lightbox and hero images) ===
+      (function(){
+        const overlay = document.getElementById('lightbox');
+        const imgEl = document.getElementById('lightboxImg');
+        const captionEl = document.getElementById('lightboxCaption');
+        const closeBtn = document.getElementById('lightboxClose');
+        const imgs = Array.from(document.querySelectorAll('img')).filter(img => !img.hasAttribute('data-no-lightbox') && !img.closest('.hero-slides'));
+
+        function openLB(src, alt){
+          imgEl.src = src;
+          imgEl.alt = alt || '';
+          captionEl.textContent = alt || '';
+          overlay.classList.add('is-open');
+          document.body.classList.add('lb-open');
+        }
+        function closeLB(){
+          overlay.classList.remove('is-open');
+          document.body.classList.remove('lb-open');
+          imgEl.src = '';
+          captionEl.textContent = '';
+        }
+
+        imgs.forEach(img => {
+          img.addEventListener('click', (e) => {
+            // Ignore if image is inside a link to prevent navigation
+            if (img.closest('a')) return;
+            openLB(img.currentSrc || img.src, img.alt);
+          });
+        });
+
+        overlay.addEventListener('click', (e) => {
+          if (e.target === overlay) closeLB();
+        });
+        closeBtn.addEventListener('click', closeLB);
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') closeLB();
+        });
+      })();
+</script>
+
+    <!-- Sticky mobile buy bar -->
+    <div class="fixed bottom-0 inset-x-0 z-[60] md:hidden" aria-hidden="false">
+      <div class="mx-auto max-w-7xl px-4 pb-3" style="padding-bottom: env(safe-area-inset-bottom);">
+        <div class="glass ring-gradient rounded-t-2xl p-3 flex items-center justify-between gap-3">
+          <div class="text-sm leading-tight">
+            <div class="font-semibold text-white">VitalX — Boutique</div>
+            <div class="text-zinc-300 text-xs">Packs, licences et accessoires</div>
+          </div>
+          <a href="/boutique.html" aria-label="Ouvrir la Boutique" class="inline-flex items-center gap-2 rounded-xl bg-emerald-500 text-white px-4 py-2 text-sm font-semibold shadow-soft hover:bg-emerald-400 cta-anim no-pulse">
+            Boutique
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
