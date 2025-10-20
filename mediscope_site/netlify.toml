@@ -1,0 +1,4 @@
+[build]
+  base = "mediscope_site"
+  publish = "."
+  functions = "netlify/functions"
