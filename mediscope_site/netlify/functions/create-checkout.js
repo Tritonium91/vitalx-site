@@ -26,7 +26,7 @@ exports.handler = async (event) => {
     const { items, mode = 'payment' } = JSON.parse(event.body || '{}');
     if (!Array.isArray(items) || !items.length) return json(400, { error: 'Panier vide' });
 
-    // Détecte si le panier contient au moins une licence pour afficher le champ perso dans Checkout
+    // Au moins une licence dans le panier ?
     const hasLicense = items.some(({ sku }) => String(sku || '').startsWith('sku_lic_'));
 
     const lineItems = [];
@@ -51,28 +51,31 @@ exports.handler = async (event) => {
     body.append('phone_number_collection[enabled]', 'true'); // téléphone utile transporteurs
 
     // === Champs personnalisés Stripe Checkout ===
-    // (1) Code licence actuel (uniquement si licence dans le panier)
+    let cfIndex = 0;
+
+    // (1) Code licence actuel (si licence dans le panier)
     if (hasLicense) {
-      body.append('custom_fields[0][key]', 'current_license_code');
-      body.append('custom_fields[0][label][type]', 'custom');
-      body.append('custom_fields[0][label][custom]', 'Code licence actuel (facultatif)');
-      body.append('custom_fields[0][type]', 'text');
-      body.append('custom_fields[0][text][minimum_length]', '4');
-      body.append('custom_fields[0][text][maximum_length]', '40');
-      body.append('custom_fields[0][optional]', 'true');
+      body.append(`custom_fields[${cfIndex}][key]`, 'current_license_code');
+      body.append(`custom_fields[${cfIndex}][label][type]`, 'custom');
+      body.append(`custom_fields[${cfIndex}][label][custom]`, 'Code licence actuel (facultatif)');
+      body.append(`custom_fields[${cfIndex}][type]`, 'text');
+      body.append(`custom_fields[${cfIndex}][text][minimum_length]`, '4');
+      body.append(`custom_fields[${cfIndex}][text][maximum_length]`, '40');
+      body.append(`custom_fields[${cfIndex}][optional]`, 'true');
+      cfIndex++;
 
       // Message sous le bouton Payer (facultatif)
       body.append('custom_text[submit][message]', 'Vous avez déjà une licence ? Indiquez votre code pour accélérer la prolongation.');
     }
 
-    // (2) Point relais (champ toujours visible, mais facultatif)
-    body.append('custom_fields[1][key]', 'pickup_point');
-    body.append('custom_fields[1][label][type]', 'custom');
-    body.append('custom_fields[1][label][custom]', 'Point relais (nom ou ID) — si vous choisissez l’option Point relais');
-    body.append('custom_fields[1][type]', 'text');
-    body.append('custom_fields[1][text][minimum_length]', '2');
-    body.append('custom_fields[1][text][maximum_length]', '64');
-    body.append('custom_fields[1][optional]', 'true');
+    // (2) Point relais (champ facultatif, affiché pour tous)
+    body.append(`custom_fields[${cfIndex}][key]`, 'pickup_point');
+    body.append(`custom_fields[${cfIndex}][label][type]`, 'custom');
+    body.append(`custom_fields[${cfIndex}][label][custom]`, 'Point relais (nom ou ID) — si vous choisissez l’option Point relais');
+    body.append(`custom_fields[${cfIndex}][type]`, 'text');
+    body.append(`custom_fields[${cfIndex}][text][minimum_length]`, '2');
+    body.append(`custom_fields[${cfIndex}][text][maximum_length]`, '64');
+    body.append(`custom_fields[${cfIndex}][optional]`, 'true');
     // === Fin champs personnalisés ===
 
     // Adresse & options de livraison (affichées dans Checkout)
