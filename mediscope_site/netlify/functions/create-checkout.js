@@ -45,7 +45,7 @@ exports.handler = async (event) => {
     body.append('shipping_options[0][shipping_rate_data][type]', 'fixed_amount');
     body.append('shipping_options[0][shipping_rate_data][fixed_amount][amount]', '0');
     body.append('shipping_options[0][shipping_rate_data][fixed_amount][currency]', 'eur');
-    body.append('shipping_options[0][shipping_rate_data][display_name]', 'Livraison gratuite (2–5 jours)');
+    body.append('shipping_options[0][shipping_rate_data][display_name]', 'Livraison gratuite (15–40 jours)');
 
     lineItems.forEach((li, i) => {
       body.append(`line_items[${i}][price]`, li.price);
