@@ -44,10 +44,14 @@ exports.handler = async (event) => {
     body.append('mode', mode);
     body.append('success_url', `${siteUrl}/merci-commande.html?session_id={CHECKOUT_SESSION_ID}`);
     body.append('cancel_url', `${siteUrl}/boutique.html`);
-    body.append('billing_address_collection', 'auto');
-    body.append('allow_promotion_codes', 'true');
 
-    // === Champ personnalisé Stripe Checkout (uniquement si licence dans le panier) ===
+    // FACTURATION / LIVRAISON
+    body.append('billing_address_collection', 'required'); // adresse de facturation distincte
+    body.append('allow_promotion_codes', 'true');
+    body.append('phone_number_collection[enabled]', 'true'); // téléphone utile transporteurs
+
+    // === Champs personnalisés Stripe Checkout ===
+    // (1) Code licence actuel (uniquement si licence dans le panier)
     if (hasLicense) {
       body.append('custom_fields[0][key]', 'current_license_code');
       body.append('custom_fields[0][label][type]', 'custom');
@@ -57,13 +61,24 @@ exports.handler = async (event) => {
       body.append('custom_fields[0][text][maximum_length]', '40');
       body.append('custom_fields[0][optional]', 'true');
 
-      // Petit texte d’aide sous le bouton Payer (facultatif)
+      // Message sous le bouton Payer (facultatif)
       body.append('custom_text[submit][message]', 'Vous avez déjà une licence ? Indiquez votre code pour accélérer la prolongation.');
     }
-    // === Fin champ personnalisé ===
+
+    // (2) Point relais (champ toujours visible, mais facultatif)
+    body.append('custom_fields[1][key]', 'pickup_point');
+    body.append('custom_fields[1][label][type]', 'custom');
+    body.append('custom_fields[1][label][custom]', 'Point relais (nom ou ID) — si vous choisissez l’option Point relais');
+    body.append('custom_fields[1][type]', 'text');
+    body.append('custom_fields[1][text][minimum_length]', '2');
+    body.append('custom_fields[1][text][maximum_length]', '64');
+    body.append('custom_fields[1][optional]', 'true');
+    // === Fin champs personnalisés ===
 
     // Adresse & options de livraison (affichées dans Checkout)
     ['FR', 'BE', 'CH', 'LU'].forEach(c => body.append('shipping_address_collection[allowed_countries][]', c));
+
+    // Option 1 : Livraison économique (gratuite, 15–30 jours calendaires)
     body.append('shipping_options[0][shipping_rate_data][type]', 'fixed_amount');
     body.append('shipping_options[0][shipping_rate_data][fixed_amount][amount]', '0');
     body.append('shipping_options[0][shipping_rate_data][fixed_amount][currency]', 'eur');
@@ -72,6 +87,16 @@ exports.handler = async (event) => {
     body.append('shipping_options[0][shipping_rate_data][delivery_estimate][minimum][value]', '15');
     body.append('shipping_options[0][shipping_rate_data][delivery_estimate][maximum][unit]', 'day');
     body.append('shipping_options[0][shipping_rate_data][delivery_estimate][maximum][value]', '30');
+
+    // Option 2 : Point relais (FR)
+    body.append('shipping_options[1][shipping_rate_data][type]', 'fixed_amount');
+    body.append('shipping_options[1][shipping_rate_data][fixed_amount][amount]', '0');
+    body.append('shipping_options[1][shipping_rate_data][fixed_amount][currency]', 'eur');
+    body.append('shipping_options[1][shipping_rate_data][display_name]', 'Point relais (France)');
+    body.append('shipping_options[1][shipping_rate_data][delivery_estimate][minimum][unit]', 'business_day');
+    body.append('shipping_options[1][shipping_rate_data][delivery_estimate][minimum][value]', '15');
+    body.append('shipping_options[1][shipping_rate_data][delivery_estimate][maximum][unit]', 'business_day');
+    body.append('shipping_options[1][shipping_rate_data][delivery_estimate][maximum][value]', '30');
 
     // Lignes articles
     lineItems.forEach((li, i) => {
