@@ -1,10 +1,10 @@
 const PRICE_BY_SKU = {
   // === PRODUITS PRINCIPAUX ===
-  'sku_pack': 'price_1SKKrJ2MFaCyLMvRVVm5EAck',       // Pack VitalX
-  'sku_lic_3': 'price_1SKKss2MFaCyLMvRaACquyFa',       // Licence 3 mois
-  'sku_lic_6': 'price_1SKKsU2MFaCyLMvRA6BHUYj4',       // Licence 6 mois
-  'sku_lic_12': 'price_1SKKrw2MFaCyLMvRTcw4ip9j',      // Licence 12 mois
-  'sku_lic_24': 'price_1SKKuD2MFaCyLMvRM4hosxwg',      // Licence 24 mois
+  'sku_pack': 'price_1SKdaZ2MFaCyLMvRkHyTb6I7',       // Pack VitalX
+  'sku_lic_3': 'price_1SJPj52MFaCyLMvRBbYPwyy3',       // Licence 3 mois
+  'sku_lic_6': 'price_1SKdbq2MFaCyLMvRLCndPBiG',       // Licence 6 mois
+  'sku_lic_12': 'price_1SKdbT2MFaCyLMvR1LNROlFy',      // Licence 12 mois
+  'sku_lic_24': 'price_1SKdb62MFaCyLMvRjncRyuM3',      // Licence 24 mois
 
   // === ACCESSOIRES (à compléter plus tard) ===
   'sku_acc_dsa_adult': 'price_ACC_DSA_ADULT_REPLACE',
