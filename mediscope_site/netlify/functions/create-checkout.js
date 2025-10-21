@@ -1,3 +1,5 @@
+// mediscop_site/netlify/functions/create-checkout.js
+
 const PRICE_BY_SKU = {
   // === PRODUITS PRINCIPAUX ===
   'sku_pack': 'price_1SKdaZ2MFaCyLMvRkHyTb6I7',       // Pack VitalX
@@ -24,6 +26,9 @@ exports.handler = async (event) => {
     const { items, mode = 'payment' } = JSON.parse(event.body || '{}');
     if (!Array.isArray(items) || !items.length) return json(400, { error: 'Panier vide' });
 
+    // Détecte si le panier contient au moins une licence pour afficher le champ perso dans Checkout
+    const hasLicense = items.some(({ sku }) => String(sku || '').startsWith('sku_lic_'));
+
     const lineItems = [];
     for (const { sku, quantity } of items) {
       const price = PRICE_BY_SKU[sku];
@@ -41,12 +46,34 @@ exports.handler = async (event) => {
     body.append('cancel_url', `${siteUrl}/boutique.html`);
     body.append('billing_address_collection', 'auto');
     body.append('allow_promotion_codes', 'true');
+
+    // === Champ personnalisé Stripe Checkout (uniquement si licence dans le panier) ===
+    if (hasLicense) {
+      body.append('custom_fields[0][key]', 'current_license_code');
+      body.append('custom_fields[0][label][type]', 'custom');
+      body.append('custom_fields[0][label][custom]', 'Code licence actuel (facultatif)');
+      body.append('custom_fields[0][type]', 'text');
+      body.append('custom_fields[0][text][minimum_length]', '4');
+      body.append('custom_fields[0][text][maximum_length]', '40');
+      body.append('custom_fields[0][optional]', 'true');
+
+      // Petit texte d’aide sous le bouton Payer (facultatif)
+      body.append('custom_text[submit][message]', 'Vous avez déjà une licence ? Indiquez votre code pour accélérer la prolongation.');
+    }
+    // === Fin champ personnalisé ===
+
+    // Adresse & options de livraison (affichées dans Checkout)
     ['FR', 'BE', 'CH', 'LU'].forEach(c => body.append('shipping_address_collection[allowed_countries][]', c));
     body.append('shipping_options[0][shipping_rate_data][type]', 'fixed_amount');
     body.append('shipping_options[0][shipping_rate_data][fixed_amount][amount]', '0');
     body.append('shipping_options[0][shipping_rate_data][fixed_amount][currency]', 'eur');
-    body.append('shipping_options[0][shipping_rate_data][display_name]', 'Livraison gratuite (15–40 jours)');
+    body.append('shipping_options[0][shipping_rate_data][display_name]', 'Livraison économique (15–30 jours)');
+    body.append('shipping_options[0][shipping_rate_data][delivery_estimate][minimum][unit]', 'day');
+    body.append('shipping_options[0][shipping_rate_data][delivery_estimate][minimum][value]', '15');
+    body.append('shipping_options[0][shipping_rate_data][delivery_estimate][maximum][unit]', 'day');
+    body.append('shipping_options[0][shipping_rate_data][delivery_estimate][maximum][value]', '30');
 
+    // Lignes articles
     lineItems.forEach((li, i) => {
       body.append(`line_items[${i}][price]`, li.price);
       body.append(`line_items[${i}][quantity]`, String(li.quantity));
