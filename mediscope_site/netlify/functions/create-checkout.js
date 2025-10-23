@@ -2,21 +2,22 @@
 
 const PRICE_BY_SKU = {
   // === PRODUITS PRINCIPAUX ===
-  'sku_pack': 'price_1SKdaZ2MFaCyLMvRkHyTb6I7',       // Pack VitalX
-  'sku_lic_3': 'price_1SJPj52MFaCyLMvRBbYPwyy3',       // Licence 3 mois
-  'sku_lic_6': 'price_1SKdbq2MFaCyLMvRLCndPBiG',       // Licence 6 mois
-  'sku_lic_12': 'price_1SKdbT2MFaCyLMvR1LNROlFy',      // Licence 12 mois
-  'sku_lic_24': 'price_1SKdb62MFaCyLMvRjncRyuM3',      // Licence 24 mois
+  'sku_pack':        'price_1SKdaZ2MFaCyLMvRkHyTb6I7', // Pack VitalX (complet)
+  'sku_pack_basic':  'price_1SLWy82MFaCyLMvREJhJjRBO', // Pack VitalX Basique  
+  'sku_lic_3':       'price_1SJPj52MFaCyLMvRBbYPwyy3', // Licence 3 mois
+  'sku_lic_6':       'price_1SKdbq2MFaCyLMvRLCndPBiG', // Licence 6 mois
+  'sku_lic_12':      'price_1SKdbT2MFaCyLMvR1LNROlFy', // Licence 12 mois
+  'sku_lic_24':      'price_1SKdb62MFaCyLMvRjncRyuM3', // Licence 24 mois
 
   // === ACCESSOIRES (à compléter plus tard) ===
   'sku_acc_dsa_adult': 'price_ACC_DSA_ADULT_REPLACE',
   'sku_acc_dsa_pedia': 'price_ACC_DSA_PEDIA_REPLACE',
   'sku_acc_cable_ecg': 'price_ACC_CABLE_ECG_REPLACE',
-  'sku_acc_spo2': 'price_ACC_SPO2_REPLACE',
-  'sku_acc_etco2': 'price_ACC_ETCO2_REPLACE',
-  'sku_acc_bp_adult': 'price_ACC_BP_ADULT_REPLACE',
-  'sku_acc_bp_child': 'price_ACC_BP_CHILD_REPLACE',
-  'sku_acc_temp': 'price_ACC_TEMP_REPLACE',
+  'sku_acc_spo2':      'price_ACC_SPO2_REPLACE',
+  'sku_acc_etco2':     'price_ACC_ETCO2_REPLACE',
+  'sku_acc_bp_adult':  'price_ACC_BP_ADULT_REPLACE',
+  'sku_acc_bp_child':  'price_ACC_BP_CHILD_REPLACE',
+  'sku_acc_temp':      'price_ACC_TEMP_REPLACE',
 };
 
 exports.handler = async (event) => {
