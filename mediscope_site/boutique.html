@@ -170,7 +170,7 @@
             </div>
           </div>
         </div>
-        <article class="w-full lg:max-w-md glass ring-gradient rounded-2xl p-6 flex flex-col ring-2 ring-blue-500/30 shadow-[0_0_40px_-10px_rgba(59,130,246,0.6)]">
+        <article class="w-full lg:max-w-md glass ring-gradient rounded-2xl p-6 flex flex-col ring-2 ring-blue-500/30 shadow-[0_0_40px_-10px_rgba(59,130,246,0.6)] card-basic">
           <img src="/assets/pack-vitalx1.png" alt="Pack VitalX Basique" class="w-full max-h-56 object-contain rounded-xl mb-4 bg-zinc-900/40 p-2" loading="lazy" />
           <div class="flex items-center justify-between gap-3">
             <h3 class="text-lg font-semibold">Pack VitalX Basique</h3>
@@ -181,7 +181,7 @@
           <a href="fiche-technique.html" class="mt-3 inline-flex justify-center items-center gap-2 rounded-xl bg-white/10 text-white px-5 py-2 font-semibold hover:bg-white/15 cta-anim">
             📄 Voir la fiche technique
           </a>
-          <button data-sku="sku_pack_basic" data-name="Pack VitalX Basique" data-price="350000" data-image="/assets/pack-vitalx.png" class="add-to-cart mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 via-blue-500 to-sky-400 text-white px-5 py-3 font-semibold shadow-soft hover:from-blue-500 hover:via-blue-400 hover:to-sky-300 cta-anim">Ajouter au panier</button>
+          <button data-sku="sku_pack_basic" data-name="Pack VitalX Basique" data-price="349900" data-image="/assets/pack-vitalx1.png" class="add-to-cart mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 via-blue-500 to-sky-400 text-white px-5 py-3 font-semibold shadow-soft hover:from-blue-500 hover:via-blue-400 hover:to-sky-300 cta-anim">Ajouter au panier</button>
         </article>
       </div>
     </section>
@@ -672,6 +672,11 @@
       0 0 38px rgba(251,191,36,.45);   /* yellow */
     filter: saturate(1.06);
     transform: translateY(-4px) scale(1.01);
+  }
+  /* Basic Pack: blue glow on hover */
+  #pack .card-basic:hover {
+    box-shadow: 0 14px 44px rgba(59,130,246,.55), 0 0 0 1px rgba(59,130,246,.35) inset;
+    filter: saturate(1.08);
   }
 }
 </style>
