@@ -57,7 +57,7 @@
   <section class="grad">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
       <div class="max-w-4xl mx-auto text-center">
-        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">Fiche technique — Pack Vital<span class="text-red-500">X</span></h1>
+        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">Fiche technique — <span id="packName">Pack Vital<span class="text-red-500">X</span></span></h1>
         <p class="mt-3 text-white/70">Solution complète de simulation paramédicale pour la formation et l'entraînement</p>
       </div>
     </div>
@@ -77,7 +77,7 @@
       <section class="glass rounded-2xl p-6">
         <h2 class="text-2xl font-bold mb-3 text-red-400">Contenu du pack</h2>
         <ul class="space-y-2 text-white/80 list-disc ml-6">
-          <li>2 iPad A16 (11”) — Formateur & Moniteur (autonomie 8h, recharge USB-C)</li>
+          <li id="ipadLine">2 iPad A16 (11”) — Formateur & Moniteur (autonomie 8h, recharge USB-C)</li>
           <li>Boîtier VitalX 3D — impression haute résistance, support ergonomique</li>
           <li>Housse Bagheera — transport rigide et protection optimisée</li>
           <li>Accessoires inclus :
@@ -118,8 +118,8 @@
 
       <section class="glass rounded-2xl p-6">
         <h2 class="text-2xl font-bold mb-3 text-red-400">Prix public TTC</h2>
-        <p class="text-3xl font-extrabold text-white">3 799 € TTC</p>
-        <p class="text-white/60">≈ 3 166 € HT — Auto-entrepreneur non assujetti à la TVA</p>
+        <p class="text-3xl font-extrabold text-white"><span id="priceTTC">3 799 € TTC</span></p>
+        <p class="text-white/60" id="priceHT">≈ 3 166 € HT — Auto-entrepreneur non assujetti à la TVA</p>
       </section>
 
       <section class="glass rounded-2xl p-6">
@@ -142,6 +142,44 @@
       </div>
     </footer>
     <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+    <script>
+      (function(){
+        const params = new URLSearchParams(location.search);
+        const packParam = (params.get('pack')||'').toLowerCase();
+        const isBasique = packParam === 'basique' || packParam === 'basic' || packParam === 'b';
+
+        const elPackName = document.getElementById('packName');
+        const elIpadLine = document.getElementById('ipadLine');
+        const elPriceTTC = document.getElementById('priceTTC');
+        const elPriceHT  = document.getElementById('priceHT');
+
+        // Default: Pack complet
+        let nameHtml = 'Pack Vital<span class="text-red-500">X</span>';
+        let ipadText = '2 iPad A16 (11”) — Formateur & Moniteur (autonomie 8h, recharge USB-C)';
+        let priceTtc = 3799;
+
+        if (isBasique) {
+          nameHtml = 'Pack Vital<span class="text-red-500">X</span> Basique';
+          ipadText = '1 iPad A16 (11”) — Moniteur prêt à l’emploi (autonomie 8h, recharge USB-C)';
+          priceTtc = 3499;
+        }
+
+        // Update title (and page <title>)
+        if (elPackName) elPackName.innerHTML = nameHtml;
+        document.title = `VitalX — Fiche technique (${isBasique ? 'Basique' : 'Complet'})`;
+
+        // Update content
+        if (elIpadLine) elIpadLine.textContent = ipadText;
+
+        // Prices format fr-FR
+        const euro = n => n.toLocaleString('fr-FR', { style: 'currency', currency: 'EUR' });
+        if (elPriceTTC) elPriceTTC.textContent = `${euro(priceTtc)} TTC`;
+
+        // HT approximation (info indicative)
+        const priceHt = Math.round((priceTtc / 1.2) / 1) * 1; // arrondi simple
+        if (elPriceHT) elPriceHT.textContent = `≈ ${euro(priceHt)} HT — Auto-entrepreneur non assujetti à la TVA`;
+      })();
+    </script>
   </main>
 </body>
 </html>
