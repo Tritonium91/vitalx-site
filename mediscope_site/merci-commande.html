@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr" class="h-full">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Merci pour votre commande — VitalX</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="/favicon.ico" />
+
+  <!-- Tailwind minimal (même famille/ambiances que la boutique) -->
+  <script>
+    tailwind = window.tailwind || {};
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['SF Pro Display','SF Pro Text','Inter','system-ui','-apple-system','Segoe UI','Roboto','Ubuntu','Cantarell','Noto Sans','Helvetica Neue','Arial','sans-serif']
+          },
+          boxShadow: { soft: '0 10px 30px rgba(0,0,0,0.12)' }
+        }
+      }
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body{background:#0b0b0c}
+    .ring-gradient{box-shadow:0 0 0 1px rgba(255,255,255,.06), inset 0 0 0 1px rgba(255,255,255,.05)}
+    .glass{background:rgba(20,20,25,.6);backdrop-filter:saturate(120%) blur(10px)}
+    .cta-anim{transition:transform .08s ease, box-shadow .12s ease}
+    .cta-anim:active{transform:translateY(1px)}
+  </style>
+</head>
+<body class="min-h-full text-white font-sans">
+  <!-- Header -->
+  <header class="sticky top-0 z-40 backdrop-blur bg-black/40 border-b border-white/10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2">
+        <img src="/assets/logo.png" alt="Logo VitalX" class="h-7 w-auto" />
+        <span class="font-bold tracking-tight">VitalX</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm text-zinc-300">
+        <a href="/boutique.html" class="hover:text-white">Boutique</a>
+        <a href="/" class="hover:text-white">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-12">
+    <section class="glass ring-gradient rounded-2xl p-6 sm:p-8 shadow-soft">
+      <div class="inline-flex items-center gap-2 rounded-full bg-emerald-500/15 text-emerald-300 text-xs font-bold px-3 py-1">
+        ✅ Paiement confirmé
+      </div>
+
+      <h1 class="mt-4 text-3xl sm:text-4xl font-extrabold tracking-tight">
+        Merci pour votre commande
+      </h1>
+
+      <p class="mt-3 text-zinc-300">
+        Votre paiement a bien été validé. Nous préparons l’activation de votre licence et/ou l’expédition de votre pack.
+        Vous recevrez un e-mail de confirmation avec votre <strong>code licence</strong> sous 48&nbsp;heures maximum.
+      </p>
+
+      <!-- Bloc d'infos -->
+      <div class="mt-6 grid grid-cols-1 gap-4">
+        <div class="rounded-xl bg-white/5 ring-1 ring-white/10 p-4">
+          <div class="text-sm text-zinc-400">ID de session Stripe</div>
+          <div class="mt-1 flex items-center gap-3">
+            <code id="sid" class="text-sm bg-black/40 border border-white/10 rounded-md px-2 py-1 select-all">…</code>
+            <button id="copySid" class="inline-flex items-center rounded-md bg-white/10 px-3 py-1.5 text-sm hover:bg-white/15 cta-anim">Copier</button>
+          </div>
+          <p class="mt-2 text-xs text-zinc-500">Communiquez cet identifiant si vous contactez le support, cela nous aidera à retrouver votre commande.</p>
+        </div>
+
+        <div class="rounded-xl bg-white/5 ring-1 ring-white/10 p-4">
+          <div class="text-sm text-zinc-400">Besoin d’aide ?</div>
+          <p class="mt-1 text-sm text-zinc-300">
+            Écrivez-nous à
+            <a class="underline hover:text-white" href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a>.
+          </p>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-8 flex flex-wrap items-center gap-3">
+        <a href="/boutique.html" class="inline-flex items-center rounded-xl bg-white text-black px-5 py-3 font-semibold shadow-soft hover:bg-zinc-100 cta-anim">↩︎ Retour à la boutique</a>
+        <a href="/" class="inline-flex items-center rounded-xl bg-white/10 text-white px-5 py-3 font-semibold ring-1 ring-white/15 hover:bg-white/15 cta-anim">Aller à l’accueil</a>
+      </div>
+    </section>
+
+    <!-- Conseils post-achat -->
+    <section class="mt-10 text-sm text-zinc-400">
+      <h2 class="text-white font-semibold">Et maintenant ?</h2>
+      <ul class="mt-2 list-disc pl-5 space-y-1">
+        <li>Surveillez votre e-mail : vous recevrez les instructions d’activation (iOS) et votre code licence.</li>
+        <li>Si vous avez acheté un <strong>pack</strong>, nous vous enverrons le numéro de suivi dès l’expédition.</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-10 border-t border-white/10 text-sm text-zinc-400">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p>© <span id="y"></span> VitalX — Tous droits réservés.</p>
+      <nav class="flex items-center gap-4">
+        <a href="/boutique.html" class="hover:text-white">Boutique</a>
+        <a href="/" class="hover:text-white">Accueil</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // Année dynamique
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Récupère et affiche l'ID de session Stripe
+    const p = new URLSearchParams(location.search);
+    const sid = p.get('session_id') || 'inconnu';
+    document.getElementById('sid').textContent = sid;
+
+    // Copier l'ID
+    document.getElementById('copySid').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(sid);
+        const b = document.getElementById('copySid');
+        const old = b.textContent;
+        b.textContent = 'Copié ✓';
+        setTimeout(()=> b.textContent = old, 1200);
+      } catch(e){}
+    });
+
+    // (Optionnel) Si tu crées une function Netlify /get-session, tu peux l'appeler ici :
+    // fetch('/.netlify/functions/get-session?session_id=' + encodeURIComponent(sid))
+    //   .then(r => r.json())
+    //   .then(data => console.log('Stripe session:', data))
+    //   .catch(console.warn);
+  </script>
+</body>
+</html>
