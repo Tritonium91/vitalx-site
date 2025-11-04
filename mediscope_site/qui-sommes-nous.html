@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Qui sommes-nous ? — VitalX</title>
+  <meta name="description" content="VitalX conçoit un scope de formation accessible, moderne et réaliste pour former aux gestes qui sauvent." />
+  <meta property="og:title" content="Qui sommes-nous ? — VitalX" />
+  <meta property="og:description" content="Un scope de formation pensé par et pour les secouristes. Histoire, mission, valeurs et contact." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/assets/og-vitaliks.jpg" />
+  <meta name="theme-color" content="#0a0a0a" />
+
+  <style>
+    :root{
+      --bg: #000000;
+      --card: rgba(255,255,255,0.06);
+      --stroke: rgba(255,255,255,0.08);
+      --text: #e7e7ea;
+      --muted: #cfcfd3;
+      --accent: #93c5fd; /* blue-300 like on index */
+      --accent-2: #f59e0b; /* amber-500 used on index */
+      --ring: rgba(255,255,255,0.10);
+      --shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05);
+      --radius: 18px;
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg: #f7f9ff;
+        --card: rgba(10,20,40,0.035);
+        --stroke: rgba(10,20,40,0.08);
+        --text: #0b1020;
+        --muted: #55617a;
+        --ring: rgba(47,107,255,.25);
+        --shadow: 0 8px 24px rgba(15,23,42,.08), inset 0 1px 0 rgba(255,255,255,.6);
+      }
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background: var(--bg);
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1100px; margin:0 auto; padding:24px}
+    .hero{
+      position:relative; overflow:hidden; border-radius:calc(var(--radius) * 1.2);
+      padding:56px 28px; background:var(--card); border:1px solid var(--stroke); box-shadow:var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+    .hero-grid{display:grid; grid-template-columns: 1.1fr .9fr; gap:28px}
+    @media (max-width:920px){ .hero-grid{grid-template-columns:1fr} }
+    .badge{
+      display:inline-flex; align-items:center; gap:10px; padding:8px 14px;
+      border-radius:999px; border:1px solid var(--stroke); background:rgba(255,255,255,.04);
+      box-shadow: inset 0 0 0 3px rgba(255,255,255,.02);
+      font-weight:600; letter-spacing:.2px; color:var(--muted);
+    }
+    .badge i{width:10px; height:10px; border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, #fff, #9fd0ff 35%, #3a78ff 80%);
+      box-shadow: 0 0 0 4px var(--ring);
+    }
+    h1{font-size:clamp(28px,4vw,46px); line-height:1.15; margin:14px 0 10px}
+    .lead{font-size:clamp(16px,2.1vw,19px); color:var(--muted); margin:0 0 16px}
+    .hero-cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px}
+    .btn{
+      display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:12px;
+      border:1px solid var(--stroke); background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+      box-shadow: var(--shadow); color:var(--text); text-decoration:none; font-weight:600;
+    }
+    .btn.primary{
+      background: linear-gradient(180deg, rgba(16,185,129,.85), rgba(16,185,129,.70));
+      border-color: rgba(16,185,129,.55);
+      color: #ffffff;
+    }
+    .btn:hover{transform: translateY(-1px); transition:.15s ease; text-decoration:none}
+    .card{
+      background:var(--card); border:1px solid var(--stroke); border-radius:var(--radius);
+      box-shadow:var(--shadow); padding:24px;
+    }
+    section{margin:38px 0}
+    h2{font-size:clamp(22px,2.8vw,30px); margin:0 0 10px}
+    p{margin:0 0 12px}
+    .grid{display:grid; gap:18px}
+    .grid.cols-3{grid-template-columns: repeat(3, 1fr)}
+    .grid.cols-2{grid-template-columns: repeat(2, 1fr)}
+    @media (max-width:920px){ .grid.cols-3, .grid.cols-2{grid-template-columns:1fr} }
+    .pill{display:inline-block; padding:6px 12px; border-radius:999px; font-size:12px; color:var(--muted); border:1px solid var(--stroke)}
+    .kv{display:grid; grid-template-columns: 120px 1fr; gap:12px; padding:12px 0; border-top:1px dashed var(--stroke)}
+    .kv:first-child{border-top:none}
+    .timeline{position:relative}
+    .timeline::before{content:""; position:absolute; left:12px; top:0; bottom:0; width:2px; background:linear-gradient(var(--accent), transparent)}
+    .t-item{position:relative; margin-left:34px; padding-left:20px; padding-bottom:18px}
+    .t-dot{position:absolute; left:-3px; top:4px; width:14px; height:14px; border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, #fff, var(--accent));
+      box-shadow: 0 0 0 3px var(--ring), 0 2px 8px rgba(0,0,0,.3);
+      border: 1px solid rgba(255,255,255,.5);
+    }
+    .values{display:grid; grid-template-columns:repeat(3, 1fr); gap:16px}
+    @media (max-width:920px){ .values{grid-template-columns:1fr} }
+    .value{padding:18px; border-radius:16px; border:1px dashed var(--stroke); background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02))}
+    .cta{
+      text-align:center; padding:26px; border-radius:var(--radius);
+      background:linear-gradient(100deg, rgba(106,168,255,.18), rgba(255,90,106,.14));
+      border:1px solid var(--stroke); box-shadow:var(--shadow)
+    }
+    .logo{
+      width:160px; height:48px; object-fit:contain; filter: drop-shadow(0 2px 6px rgba(0,0,0,.3));
+    }
+    .founder{
+      display:grid; grid-template-columns: 140px 1fr; gap:18px; align-items:center
+    }
+    @media (max-width:700px){ .founder{grid-template-columns:1fr} }
+    .avatar{
+      width:140px; height:140px; border-radius:20px; border:1px solid var(--stroke);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); display:flex; align-items:center; justify-content:center;
+      font-weight:800; letter-spacing:.6px; color:var(--muted)
+    }
+    footer{margin:24px 0 8px; text-align:center; color:var(--muted); font-size:14px}
+    /* Subtle reveal */
+    .reveal{opacity:0; transform: translateY(8px); transition: .5s ease}
+    .reveal.show{opacity:1; transform:none}
+    /* Utility */
+    .mt-6{margin-top:24px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <div class="hero-grid">
+        <div>
+          <span class="badge"><i></i> VitalX — Scope de formation</span>
+          <h1>Qui sommes-nous&nbsp;?</h1>
+          <p class="lead">
+            VitalX conçoit un <strong>scope de formation</strong> moderne, simple et abordable
+            pour renforcer le réalisme des cas concrets et élever le niveau des équipes de secours.
+          </p>
+          <div class="hero-cta">
+            <a class="btn primary" href="/boutique">Voir la boutique</a>
+            <a class="btn" href="#contact">Nous contacter</a>
+          </div>
+          <div class="mt-6 pill">Basé en France · pensé par des professionnels de terrain</div>
+        </div>
+        <div class="card">
+          <!-- Remplace l'image ci-dessous par un visuel du scope -->
+          <img src="/logovitalx4.png" alt="Aperçu du scope de formation VitalX" style="width:100%; border-radius:14px; border:1px solid var(--stroke); box-shadow:var(--shadow)">
+          <div class="kv">
+            <div>Objectif</div><div>Rendre la simulation <strong>accessible</strong> sans compromis sur le réalisme.</div>
+            <div>Public</div><div>Associations, centres de formation, équipes préhospitalières, établissements scolaires.</div>
+            <div>Philosophie</div><div>Par des secouristes, pour les secouristes.</div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section class="card reveal">
+      <h2>Le fondateur</h2>
+      <div class="founder">
+        <!-- Remplace par une vraie photo si tu veux -->
+        <div class="avatar">YANN</div>
+        <div>
+          <p><strong>Yann Usseglio</strong> — Ambulancier privé, en lien opérationnel avec le SAMU, et formateur de secourisme.</p>
+          <p>
+            Plus de <strong>10 ans</strong> d’expérience de terrain en ambulance.
+            Formateur depuis l’âge de 18 ans (aujourd’hui 31), sur les modules
+            <strong>PSC</strong>, <strong>SST</strong>, <strong>PSE&nbsp;1/2</strong> et <strong>BNSSA</strong>.
+          </p>
+          <p>
+            Cette double casquette terrain &amp; pédagogie a façonné VitalX&nbsp;: un outil pragmatique,
+            pensé pour les contraintes réelles des cours et des interventions simulées.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card reveal">
+      <h2>Notre histoire</h2>
+      <div class="timeline">
+        <div class="t-item">
+          <span class="t-dot"></span>
+          <p><strong>Janvier 2025 — Naissance du projet</strong><br>
+            Le projet débute sous le nom <strong>Medical Scope</strong>, une version très simple sur une seule page web.
+          </p>
+        </div>
+
+        <div class="t-item">
+          <span class="t-dot"></span>
+          <p><strong>Mars 2025 — Première ligne de code</strong><br>
+            Démarrage du développement <strong>SwiftUI</strong> : base de l’app, architecture claire et premiers écrans.
+            Concept de <em>code de session</em> pour relier Formateur ↔ Moniteur.
+          </p>
+        </div>
+
+        <div class="t-item">
+          <span class="t-dot"></span>
+          <p><strong>Juin 2025 — Refonte UX</strong><br>
+            Nouveau design <strong>glass</strong> & cartes, lisibilité renforcée, réglages plus rapides
+            et ajout du <em>Scenario Builder</em> pour enchaîner des cas concrets.
+          </p>
+        </div>
+
+        <div class="t-item">
+          <span class="t-dot"></span>
+          <p><strong>Août 2025 — Modes DSA & ECG</strong><br>
+            Arrivée des modes <strong>DSA</strong> (analyses, prompts, chocs simulés) et <strong>ECG 12 dérivations</strong> :
+            alertes, courbes et paramètres réalistes pour booster l’immersion.
+          </p>
+        </div>
+
+        <div class="t-item">
+          <span class="t-dot"></span>
+          <p><strong>Septembre 2025 — Matériel dédié</strong><br>
+            Conception du <strong>boîtier 3D</strong> et sélection de la <strong>housse Bagheera</strong> :
+            un setup robuste, propre et prêt pour le terrain.
+          </p>
+        </div>
+
+        <div class="t-item">
+          <span class="t-dot"></span>
+          <p><strong>Octobre 2025 — Commercialisation & changement de nom</strong><br>
+            Medical Scope devient <strong>Vital<strong style="color:red;">X</strong></strong> : un nom plus fort, plus direct, symbole d’évolution.
+            Lancement officiel des packs et premières présentations auprès des formateurs.
+          </p>
+        </div>
+
+        <div class="t-item">
+          <span class="t-dot"></span>
+          <p><strong>Aujourd’hui — Accélération</strong><br>
+            Roadmap active, nouvelles features et scénarios réguliers.
+            Objectif : un outil <strong>simple, beau et redoutablement efficace</strong> pour toutes vos formations.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid cols-2 reveal">
+      <div class="card">
+        <h2>Notre mission</h2>
+        <p>
+          Offrir un outil de simulation <strong>fiable, intuitif et économique</strong> pour former efficacement aux gestes qui sauvent.
+          Les simulateurs historiques sont souvent inabordables ; VitalX démocratise la simulation
+          en proposant un scope complet, pensé pour le terrain et l’enseignement.
+        </p>
+        <p>
+          Notre promesse&nbsp;: <em>moins de friction, plus de pédagogie, un budget maîtrisé</em>.
+        </p>
+      </div>
+      <div class="card">
+        <h2>Pourquoi VitalX&nbsp;?</h2>
+        <p>
+          Parce que la qualité de la formation ne doit pas dépendre d’un budget à cinq chiffres.
+          VitalX est né d’un besoin réel&nbsp;: disposer d’un scope <strong>créditable</strong> en simulation,
+          sans complexité inutile, et <strong>adaptable</strong> aux scénarios de PSC, SST, PSE, BNSSA et formations professionnelles.
+        </p>
+      </div>
+    </section>
+
+    <section class="grid cols-3 reveal">
+      <div class="value">
+        <h3 style="margin:0 0 6px">Accessibilité</h3>
+        <p>Un scope de formation à un <strong>coût maîtrisé</strong>, sans rogner sur l’essentiel.</p>
+      </div>
+      <div class="value">
+        <h3 style="margin:0 0 6px">Simplicité</h3>
+        <p>Une interface claire, des scénarios rapides à mettre en place, et une prise en main immédiate.</p>
+      </div>
+      <div class="value">
+        <h3 style="margin:0 0 6px">Réalisme</h3>
+        <p>Des retours visuels et des paramètres fidèles aux situations de terrain pour une immersion utile.</p>
+      </div>
+    </section>
+
+    <section class="grid cols-2 reveal">
+      <div class="card">
+        <h2>Ce que nous faisons</h2>
+        <ul>
+          <li>Un scope de formation complet (application + matériels compatibles).</li>
+          <li>Des scénarios pédagogiques adaptés aux référentiels (PSC, SST, PSE, BNSSA…).</li>
+          <li>Des mises à jour continues guidées par les retours des formateurs.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Pour qui&nbsp;?</h2>
+        <ul>
+          <li>Associations de secours et ONG.</li>
+          <li>Centres de formation et structures éducatives.</li>
+          <li>Services préhospitaliers et équipes terrain.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="cta reveal" id="contact">
+      <p style="margin-top:18px; font-weight:600; font-size:18px;">🚀 Découvrez le pack VitalX dès maintenant</p>
+      <div class="hero-cta" style="justify-content:center">
+        <a class="btn primary" href="/boutique">Boutique</a>
+      </div>
+    </section>
+
+    <footer>
+      <img class="logo" src="/hero-boutique.png" alt="Logo Vitaliks" />
+      <div style="margin-top:8px">© <span id="year"></span> VitalX — Tous droits réservés.</div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const reveal = () => {
+      const els = document.querySelectorAll('.reveal');
+      const y = window.scrollY, h = window.innerHeight;
+      els.forEach(el => {
+        const top = el.getBoundingClientRect().top + y;
+        if (y + h > top + 60) el.classList.add('show');
+      });
+    };
+    reveal(); window.addEventListener('scroll', reveal, {passive:true});
+  </script>
+</body>
+</html>
