@@ -23,6 +23,13 @@
       --ring: rgba(255,255,255,0.10);
       --shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05);
       --radius: 18px;
+      --c-janv: #60a5fa;   /* blue-400 */
+      --c-mars: #a78bfa;   /* violet-400 */
+      --c-juin: #34d399;   /* emerald-400 */
+      --c-aout: #f472b6;   /* pink-400 */
+      --c-sept: #f59e0b;   /* amber-500 */
+      --c-oct: #ff2d55;    /* apple red */
+      --c-now: #22d3ee;    /* cyan-400 */
     }
     @media (prefers-color-scheme: light){
       :root{
@@ -128,6 +135,25 @@
     .reveal.show{opacity:1; transform:none}
     /* Utility */
     .mt-6{margin-top:24px}
+    .t-month-janv{ color: var(--c-janv); }
+    .t-month-mars{ color: var(--c-mars); }
+    .t-month-juin{ color: var(--c-juin); }
+    .t-month-aout{ color: var(--c-aout); }
+    .t-month-sept{ color: var(--c-sept); }
+    .t-month-oct{ color: var(--c-oct); }
+    .t-month-now{ color: var(--c-now); }
+
+
+    .x-highlight{
+      color:#ff2d55;
+      font-weight:900;
+      display:inline-block;
+      animation: xPulse 1.6s ease-in-out infinite;
+    }
+    @keyframes xPulse{
+      0%,100%{ transform:scale(1); text-shadow:0 0 0 rgba(255,45,85,.5); }
+      50%{ transform:scale(1.18); text-shadow:0 0 12px rgba(255,45,85,.9); }
+    }
   </style>
 </head>
 <body>
@@ -180,56 +206,56 @@
     <section class="card reveal">
       <h2>Notre histoire</h2>
       <div class="timeline">
-        <div class="t-item">
+        <div class="t-item" id="m-janv">
           <span class="t-dot"></span>
-          <p><strong>Janvier 2025 — Naissance du projet</strong><br>
+          <p><strong>💡 <span class="t-month-janv">Janvier 2025</span> — Naissance du projet</strong><br>
             Le projet débute sous le nom <strong>Medical Scope</strong>, une version très simple sur une seule page web.
           </p>
         </div>
 
-        <div class="t-item">
+        <div class="t-item" id="m-mars">
           <span class="t-dot"></span>
-          <p><strong>Mars 2025 — Première ligne de code</strong><br>
+          <p><strong>🧪 <span class="t-month-mars">Mars 2025</span> — Première ligne de code</strong><br>
             Démarrage du développement <strong>SwiftUI</strong> : base de l’app, architecture claire et premiers écrans.
             Concept de <em>code de session</em> pour relier Formateur ↔ Moniteur.
           </p>
         </div>
 
-        <div class="t-item">
+        <div class="t-item" id="m-juin">
           <span class="t-dot"></span>
-          <p><strong>Juin 2025 — Refonte UX</strong><br>
+          <p><strong>🎨 <span class="t-month-juin">Juin 2025</span> — Refonte UX</strong><br>
             Nouveau design <strong>glass</strong> & cartes, lisibilité renforcée, réglages plus rapides
             et ajout du <em>Scenario Builder</em> pour enchaîner des cas concrets.
           </p>
         </div>
 
-        <div class="t-item">
+        <div class="t-item" id="m-aout">
           <span class="t-dot"></span>
-          <p><strong>Août 2025 — Modes DSA & ECG</strong><br>
+          <p><strong>⚡ <span class="t-month-aout">Août 2025</span> — Modes DSA & ECG</strong><br>
             Arrivée des modes <strong>DSA</strong> (analyses, prompts, chocs simulés) et <strong>ECG 12 dérivations</strong> :
             alertes, courbes et paramètres réalistes pour booster l’immersion.
           </p>
         </div>
 
-        <div class="t-item">
+        <div class="t-item" id="m-sept">
           <span class="t-dot"></span>
-          <p><strong>Septembre 2025 — Matériel dédié</strong><br>
+          <p><strong>🛠️ <span class="t-month-sept">Septembre 2025</span> — Matériel dédié</strong><br>
             Conception du <strong>boîtier 3D</strong> et sélection de la <strong>housse Bagheera</strong> :
             un setup robuste, propre et prêt pour le terrain.
           </p>
         </div>
 
-        <div class="t-item">
+        <div class="t-item" id="m-oct">
           <span class="t-dot"></span>
-          <p><strong>Octobre 2025 — Commercialisation & changement de nom</strong><br>
-            Medical Scope devient <strong>Vital<strong style="color:red;">X</strong></strong> : un nom plus fort, plus direct, symbole d’évolution.
+          <p><strong>🚀 <span class="t-month-oct">Octobre 2025</span> — Commercialisation & changement de nom</strong><br>
+            Medical Scope devient <strong>Vital<span class="x-highlight">X</span></strong> : un nom plus fort, plus direct, symbole d’évolution.
             Lancement officiel des packs et premières présentations auprès des formateurs.
           </p>
         </div>
 
-        <div class="t-item">
+        <div class="t-item" id="m-now">
           <span class="t-dot"></span>
-          <p><strong>Aujourd’hui — Accélération</strong><br>
+          <p><strong>🔥 <span class="t-month-now">Aujourd’hui</span> — Accélération</strong><br>
             Roadmap active, nouvelles features et scénarios réguliers.
             Objectif : un outil <strong>simple, beau et redoutablement efficace</strong> pour toutes vos formations.
           </p>
