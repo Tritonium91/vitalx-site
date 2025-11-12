@@ -162,9 +162,10 @@
   <main class="py-12">
     <!-- SECTION PACK -->
     <section id="pack" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-20">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+      <div class="group/pack -mx-4 px-4 overflow-x-auto md:overflow-visible [scrollbar-width:none] [-ms-overflow-style:none]">
+        <div class="flex gap-4 snap-x snap-mandatory md:grid md:grid-cols-3 md:gap-8 md:snap-none">
         <!-- RECONDITIONNÉ PACK (à gauche) -->
-        <article class="pack-refurb relative rounded-3xl overflow-hidden ring-2 ring-purple-400/40 bg-gradient-to-b from-zinc-900/70 to-black glass ring-gradient">
+        <article class="pack-refurb shrink-0 snap-center w-[85%] sm:w-[70%] md:w-auto relative rounded-3xl overflow-hidden ring-2 ring-purple-400/40 bg-gradient-to-b from-zinc-900/70 to-black glass ring-gradient">
           <!-- Encart violet horizontal -->
           <div class="absolute top-0 inset-x-0 h-12 bg-purple-600 text-white flex items-center justify-center text-[13px] sm:text-[14px] font-extrabold uppercase tracking-wider ring-1 ring-purple-400/40">Reconditionné</div>
           <div class="p-6 md:p-8 pt-20 md:pt-24">
@@ -192,7 +193,7 @@
         </article>
 
         <!-- CLASSIC PACK (Basique) -->
-        <article class="pack-classic relative rounded-3xl overflow-hidden ring-2 ring-blue-400/40 bg-gradient-to-b from-zinc-900/70 to-black glass ring-gradient shadow-[0_30px_80px_-40px_rgba(0,0,0,.6)]">
+        <article class="pack-classic shrink-0 snap-center w-[85%] sm:w-[70%] md:w-auto relative rounded-3xl overflow-hidden ring-2 ring-blue-400/40 bg-gradient-to-b from-zinc-900/70 to-black glass ring-gradient shadow-[0_30px_80px_-40px_rgba(0,0,0,.6)]">
         <div class="absolute top-0 inset-x-0 h-12 bg-blue-500 text-white flex items-center justify-center text-[13px] sm:text-[14px] font-extrabold uppercase tracking-wider ring-1 ring-blue-400/40">-40% Black Friday</div>
           <div class="p-6 md:p-8 pt-20 md:pt-24">
             <h3 class="bf-font text-2xl md:text-3xl tracking-wide font-extrabold uppercase text-white/90">Pack Classic</h3>
@@ -215,7 +216,7 @@
 
 
         <!-- COLLECTOR BOX (Pack complet) -->
-        <article class="pack-premium relative rounded-3xl overflow-hidden ring-2 ring-red-500/40 bg-gradient-to-b from-zinc-900/70 to-black glass ring-gradient">
+        <article class="pack-premium shrink-0 snap-center w-[85%] sm:w-[70%] md:w-auto relative rounded-3xl overflow-hidden ring-2 ring-red-500/40 bg-gradient-to-b from-zinc-900/70 to-black glass ring-gradient">
         <div class="absolute top-0 inset-x-0 h-12 bg-red-500 text-white flex items-center justify-center text-[13px] sm:text-[14px] font-extrabold uppercase tracking-wider ring-1 ring-red-400/40">-35% Black Friday</div>
           <div class="p-6 md:p-8 pt-20 md:pt-24">
             <h3 class="bf-font text-2xl md:text-3xl tracking-wide font-extrabold uppercase text-white/90">Pack Premium</h3>
@@ -238,6 +239,7 @@
             <button data-sku="sku_pack" data-name="Pack VitalX — Black Friday" data-price="248900" data-image="/assets/pack-vitalx.png" class="add-to-cart mt-6 w-full inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-red-600 via-red-500 to-rose-400 text-white px-5 py-3 font-extrabold shadow-soft hover:from-red-500 hover:via-red-400 hover:to-rose-300 cta-anim">Ajouter — Pack Premium</button>
           </div>
         </article>
+        </div>
       </div>
     </section>
 
@@ -246,9 +248,10 @@
       <div class="flex items-center justify-center">
         <h2 class="text-4xl md:text-5xl font-extrabold text-center">Licences</h2>
       </div>
-      <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="mt-6 group/lic -mx-4 px-4 overflow-x-auto md:overflow-visible [scrollbar-width:none] [-ms-overflow-style:none]">
+        <div class="flex gap-4 snap-x snap-mandatory sm:grid sm:grid-cols-2 lg:grid-cols-4 md:gap-6 md:snap-none">
         <!-- Licence 3 mois -->
-        <article class="relative glass ring-gradient rounded-2xl p-6 flex flex-col ring-2 ring-blue-400/40 shadow-[0_0_40px_-10px_rgba(59,130,246,0.6)]">
+        <article class="shrink-0 snap-center w-[80%] sm:w-[60%] md:w-auto relative glass ring-gradient rounded-2xl p-6 flex flex-col ring-2 ring-blue-400/40 shadow-[0_0_40px_-10px_rgba(59,130,246,0.6)]">
           <div class="flex items-center justify-between gap-3">
             <h3 class="text-lg font-semibold">Licence 3 mois</h3>
             <span class="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-sky-500 via-blue-500 to-indigo-500 text-white text-xs font-extrabold px-3 py-1 shadow-soft">🔷 Starter</span>
@@ -265,7 +268,7 @@
         </article>
 
         <!-- Licence 6 mois -->
-        <article class="glass ring-gradient rounded-2xl p-6 flex flex-col ring-2 ring-pink-400/30 shadow-[0_0_40px_-10px_rgba(236,72,153,0.6)]">
+        <article class="shrink-0 snap-center w-[80%] sm:w-[60%] md:w-auto glass ring-gradient rounded-2xl p-6 flex flex-col ring-2 ring-pink-400/30 shadow-[0_0_40px_-10px_rgba(236,72,153,0.6)]">
           <div class="flex items-center justify-between gap-3">
             <h3 class="text-lg font-semibold">Licence 6 mois</h3>
             <span class="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-rose-500 via-fuchsia-500 to-purple-500 text-white text-xs font-extrabold px-3 py-1 shadow-soft">⭐ Recommandée</span>
@@ -284,7 +287,7 @@
         </article>
 
         <!-- Licence 12 mois -->
-        <article class="glass ring-gradient rounded-2xl p-6 flex flex-col ring-2 ring-amber-400/40 shadow-[0_0_40px_-10px_rgba(251,191,36,0.6)]">
+        <article class="shrink-0 snap-center w-[80%] sm:w-[60%] md:w-auto glass ring-gradient rounded-2xl p-6 flex flex-col ring-2 ring-amber-400/40 shadow-[0_0_40px_-10px_rgba(251,191,36,0.6)]">
           <div class="flex items-center justify-between gap-3">
             <h3 class="text-lg font-semibold">Licence 12 mois</h3>
             <span class="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-orange-400 text-white text-xs font-extrabold px-3 py-1 shadow-soft">💎 Plus rentable</span>
@@ -303,7 +306,7 @@
         </article>
 
         <!-- Licence 24 mois -->
-        <article class="glass ring-gradient rounded-2xl p-6 flex flex-col ring-2 ring-emerald-400/40 shadow-[0_0_40px_-10px_rgba(16,185,129,0.6)]">
+        <article class="shrink-0 snap-center w-[80%] sm:w-[60%] md:w-auto glass ring-gradient rounded-2xl p-6 flex flex-col ring-2 ring-emerald-400/40 shadow-[0_0_40px_-10px_rgba(16,185,129,0.6)]">
           <div class="flex items-center justify-between gap-3">
             <h3 class="text-lg font-semibold">Licence 24 mois</h3>
             <span class="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-emerald-500 via-teal-500 to-green-500 text-white text-xs font-extrabold px-3 py-1 shadow-soft">🧘 Esprit tranquille</span>
@@ -321,6 +324,7 @@
           <div class="mt-4 text-sm text-emerald-300">20 €/mois</div>
           <button data-sku="sku_lic_24" data-name="Licence 24 mois" data-price="48000" data-image="/assets/licence-24.png" class="add-to-cart mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-400 text-white px-5 py-3 font-semibold shadow-soft hover:from-emerald-500 hover:via-emerald-400 hover:to-teal-300 cta-anim">Ajouter au panier</button>
         </article>
+        </div>
       </div>
       <!-- Licence à vie (Grand encart) -->
       <div class="mt-6">
@@ -785,4 +789,7 @@
     filter: saturate(1.12);
   }
 }
+/* Hide horizontal scrollbar for mobile carousels */
+.group\/pack::-webkit-scrollbar,
+.group\/lic::-webkit-scrollbar { display:none; height:0; }
 </style>
