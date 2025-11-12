@@ -86,6 +86,16 @@
     .cta-anim{transition:transform .08s ease, box-shadow .12s ease}
     .cta-anim:active{transform:translateY(1px)}
   </style>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <style>
+    .bf-shimmer{background:linear-gradient(90deg,rgba(255,255,255,.1),rgba(255,255,255,.35),rgba(255,255,255,.1));background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:bfShimmer 2s linear infinite}
+    @keyframes bfShimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+    .bf-pulse{animation:bfPulse 1.4s ease-in-out infinite}
+    @keyframes bfPulse{0%{transform:scale(1);filter:drop-shadow(0 0 0 rgba(250,204,21,.0))}50%{transform:scale(1.03);filter:drop-shadow(0 0 24px rgba(250,204,21,.35))}100%{transform:scale(1)} }
+    .bf-font{font-family:'Bebas Neue', 'SF Pro Display', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; letter-spacing:.5px}
+    .bf-badge{position:relative;overflow:hidden}
+    .bf-badge::after{content:"";position:absolute;inset:-2px;pointer-events:none;border-radius:9999px;box-shadow:0 0 0 1px rgba(250,204,21,.35),0 10px 30px rgba(250,204,21,.25);}
+  </style>
 </head>
 <body class="min-h-full bg-black text-white">
   <!-- Header simple -->
@@ -121,123 +131,120 @@
           <span class="mx-2 text-white/60">&amp;</span>
           <span class="text-white">FORMATION</span>
         </p>
-        <p class="mt-3 text-white/70">Matériel, licences et accessoires pour un entraînement réaliste.</p>
+        
+      </div>
+    </div>
+  </section>
 
-        <div class="mt-8 flex flex-wrap items-center justify-center gap-3" role="tablist" aria-label="Parcourir la Boutique">
-          <a id="pick-pack" href="#pack" role="tab" aria-selected="true" class="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold shadow-soft focus:outline-none focus:ring-2 focus:ring-white ring-2 ring-white/60 bg-white text-black hover:bg-zinc-100">
-            🎒 Voir le Pack
-          </a>
-          <a id="pick-lic" href="#licenses" role="tab" aria-selected="false" class="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-white ring-1 ring-white/40 text-white hover:bg-white/10">
-            🔑 Licences
-          </a>
-          <a id="pick-acc" href="#accessoires" role="tab" aria-selected="false" class="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-white ring-1 ring-white/40 text-white hover:bg-white/10">
-            🧩 Accessoires
-          </a>
-        </div>
+  <!-- Black Friday Announcement Bar -->
+  <!-- Black Friday Announcement Bar -->
+  <section id="bf-bar" class="sticky top-14 z-30 border-y border-yellow-400/30 bg-zinc-900/90 backdrop-blur">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6">
 
-        <div class="mt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-white/70">
-          <div class="inline-flex items-center gap-1"><span>🔒</span><span>Paiement sécurisé</span></div>
-          <div class="inline-flex items-center gap-1"><span>⏱️</span><span>Activation sous 48 h</span></div>
-          <div class="inline-flex items-center gap-1"><span>💬</span><span>Support e‑mail</span></div>
-        </div>
+        <div class="flex items-center gap-3">
+         
+
+        <!-- TITRE BLACK FRIDAY (GRAND + IMPACT) -->
+        <span class="bf-font bf-shimmer tracking-wide text-yellow-300 text-4xl sm:text-5xl md:text-6xl font-extrabold uppercase">
+          BLACK FRIDAY
+        </span>
+      </div>
+
+      <div class="flex items-center gap-3 text-center sm:text-left text-white/90 text-sm sm:text-base">
+        <span class="hidden sm:inline text-white/40">•</span>
+        <span>Offre exceptionnelle sur le Pack VitalX</span>
+        <span class="hidden sm:inline text-white/40">•</span>
+        <span>Se termine dans <strong id="bfCountdown" class="text-yellow-300 font-extrabold text-base sm:text-lg"></strong></span>
       </div>
     </div>
   </section>
 
   <main class="py-12">
     <!-- SECTION PACK -->
-    <section id="pack" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-16">
-      <div class="flex flex-col lg:flex-row gap-8 items-start">
-        <div class="flex-1">
-          <h2 class="text-2xl md:text-3xl font-extrabold">Pack VitalX</h2>
-          <p class="mt-2 text-zinc-300">Le kit complet prêt à l’emploi : matériel + 3 mois de licence offerts.</p>
-          <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
-            <div class="glass rounded-xl px-4 py-3 ring-gradient">
-              <div class="font-semibold text-white">2 iPad A16 (11")</div>
-              <div class="text-zinc-400">Formateur + Moniteur, prêts à l’emploi</div>
+    <section id="pack" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-20">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <!-- RECONDITIONNÉ PACK (à gauche) -->
+        <article class="pack-refurb relative rounded-3xl overflow-hidden ring-2 ring-purple-400/40 bg-gradient-to-b from-zinc-900/70 to-black glass ring-gradient">
+          <!-- Encart violet horizontal -->
+          <div class="absolute top-0 inset-x-0 h-12 bg-purple-600 text-white flex items-center justify-center text-[13px] sm:text-[14px] font-extrabold uppercase tracking-wider ring-1 ring-purple-400/40">Reconditionné</div>
+          <div class="p-6 md:p-8 pt-20 md:pt-24">
+            <h3 class="bf-font text-2xl md:text-3xl tracking-wide font-extrabold uppercase text-white/90">Pack Reconditionné</h3>
+            <div class="mt-1 text-sm text-white/60">Pack VitalX Reconditionné</div>
+            <div class="mt-3 text-4xl font-extrabold text-white/90">
+              <span class="bf-font text-yellow-300 bf-pulse text-6xl leading-none">1 989 €</span>
             </div>
-            <div class="glass rounded-xl px-4 py-3 ring-gradient">
-              <div class="font-semibold text-white">Boîtier VitalX</div>
-              <div class="text-zinc-400">Boîtier 3D support pour l’iPad</div>
-            </div>
-            <div class="glass rounded-xl px-4 py-3 ring-gradient">
-              <div class="font-semibold text-white">Housse de transport</div>
-              <div class="text-zinc-400">Protection et rangement dédiés</div>
-            </div>
-            <div class="glass rounded-xl px-4 py-3 ring-gradient">
-              <div class="font-semibold text-white">Connectiques complètes</div>
-              <div class="text-zinc-400">PNI, SpO₂, ECG 12D, patchs DSA, température, ETCO₂</div>
-            </div>
-            <div class="glass rounded-xl px-4 py-3 ring-gradient md:col-span-2">
-              <div class="font-semibold text-white">Licence VitalX incluse (3 mois)</div>
-              <div class="text-zinc-400">Activation sous 48 h + mises à jour incluses</div>
-            </div>
+            <div class="text-xs text-zinc-400 mb-1">≈ 1 658 € HT</div>
+            <ul class="mt-4 space-y-3 text-sm text-zinc-200">
+              <li class="flex items-start gap-2"><span>✅</span><span>2 iPad 10ᵉ gén. (reconditionnés)</span></li>
+              <li class="flex items-start gap-2"><span>✅</span><span>Boîtier VitalX + housse ( Neuf ) </span></li>
+              <li class="flex items-start gap-2"><span>✅</span><span>Connectiques complètes ( Neuves )</span></li>
+              <li class="flex items-start gap-2"><span>✅</span><span>Licence 3 mois incluse</span></li>
+            </ul>
           </div>
-        </div>
-        <article class="w-full lg:max-w-md glass ring-gradient rounded-2xl p-6 flex flex-col ring-2 ring-red-500/30 shadow-[0_0_40px_-10px_rgba(239,68,68,0.6)]">
-          <img src="/assets/pack-vitalx.png" alt="Pack VitalX complet" class="w-full max-h-56 object-contain rounded-xl mb-4 bg-zinc-900/40 p-2" loading="lazy" />
-          <div class="flex items-center justify-between gap-3">
-            <h3 class="text-lg font-semibold">Pack VitalX</h3>
+          <div class="px-6 md:px-8 pb-6">
+            <img src="/assets/pack-vitalx2.png" alt="Pack VitalX reconditionné" class="w-full max-h-64 object-contain rounded-xl bg-zinc-900/40 p-3" loading="lazy" />
+            <!-- Pas de bouton fiche technique -->
+            <button data-sku="sku_pack_refurb" data-name="Pack VitalX Reconditionné" data-price="198900" data-image="/assets/pack-vitalx2.png" class="add-to-cart mt-6 w-full inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 via-purple-500 to-fuchsia-500 text-white px-5 py-3 font-extrabold shadow-soft hover:from-purple-500 hover:via-purple-400 hover:to-fuchsia-400 cta-anim">
+              Ajouter — Pack Reconditionné
+              <span class="ml-2 inline-flex items-center rounded-full bg-white/20 text-white text-[11px] font-black uppercase tracking-wide px-2 py-0.5 ring-1 ring-white/30">Stock limité</span>
+            </button>
           </div>
-          <div class="mt-4 text-5xl font-extrabold tracking-tight">3 799 €</div>
-          <div class="text-sm text-zinc-400 mb-1">≈ 3 166 € HT</div>
-          <a href="fiche-technique.html" class="mt-3 inline-flex justify-center items-center gap-2 rounded-xl bg-white/10 text-white px-5 py-2 font-semibold hover:bg-white/15 cta-anim">
-            📄 Voir la fiche technique
-          </a>
-          <button data-sku="sku_pack" data-name="Pack VitalX" data-price="379900" data-image="/assets/pack-vitalx.png" class="add-to-cart mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-red-600 via-red-500 to-red-400 text-white px-5 py-3 font-semibold shadow-soft hover:from-red-500 hover:via-red-400 hover:to-red-300 cta-anim">Ajouter au panier</button>
         </article>
-      </div>
 
-      <!-- PACK VITALX BASIQUE -->
-      <div class="mt-16 flex flex-col lg:flex-row gap-8 items-start">
-        <div class="flex-1">
-          <h2 class="text-2xl md:text-3xl font-extrabold flex items-center gap-2">Pack VitalX Basique
-            <span class="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-blue-500 via-sky-500 to-cyan-400 text-white text-xs font-extrabold px-3 py-1 shadow-soft">💸 Économique</span>
-          </h2>
-          <p class="mt-2 text-zinc-300">Une version allégée du pack VitalX, idéale si vous possédez déjà un iPad ou un iPhone pour servir de contrôleur formateur.</p>
-          <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
-            <div class="glass rounded-xl px-4 py-3 ring-gradient">
-              <div class="font-semibold text-white">1 iPad A16 (11")</div>
-              <div class="text-zinc-400">Moniteur prêt à l’emploi</div>
-            </div>
-            <div class="glass rounded-xl px-4 py-3 ring-gradient">
-              <div class="font-semibold text-white">Boîtier VitalX</div>
-              <div class="text-zinc-400">Boîtier 3D support pour l’iPad</div>
-            </div>
-            <div class="glass rounded-xl px-4 py-3 ring-gradient">
-              <div class="font-semibold text-white">Housse de transport</div>
-              <div class="text-zinc-400">Protection et rangement dédiés</div>
-            </div>
-            <div class="glass rounded-xl px-4 py-3 ring-gradient">
-              <div class="font-semibold text-white">Connectiques complètes</div>
-              <div class="text-zinc-400">PNI, SpO₂, ECG 12D, patchs DSA, température, ETCO₂</div>
-            </div>
-            <div class="glass rounded-xl px-4 py-3 ring-gradient md:col-span-2">
-              <div class="font-semibold text-white">Licence VitalX incluse (3 mois)</div>
-              <div class="text-zinc-400">Activation sous 48 h + mises à jour incluses</div>
-            </div>
+        <!-- CLASSIC PACK (Basique) -->
+        <article class="pack-classic relative rounded-3xl overflow-hidden ring-2 ring-blue-400/40 bg-gradient-to-b from-zinc-900/70 to-black glass ring-gradient shadow-[0_30px_80px_-40px_rgba(0,0,0,.6)]">
+        <div class="absolute top-0 inset-x-0 h-12 bg-blue-500 text-white flex items-center justify-center text-[13px] sm:text-[14px] font-extrabold uppercase tracking-wider ring-1 ring-blue-400/40">-40% Black Friday</div>
+          <div class="p-6 md:p-8 pt-20 md:pt-24">
+            <h3 class="bf-font text-2xl md:text-3xl tracking-wide font-extrabold uppercase text-white/90">Pack Classic</h3>
+            <div class="mt-1 text-sm text-white/60">Pack VitalX Basique</div>
+            <div class="mt-3 text-4xl font-extrabold text-white/90"><span class="line-through text-white/40 text-2xl align-middle mr-2">3 499 €</span><span class="bf-font text-yellow-300 bf-pulse text-6xl leading-none">2 139 €</span></div>
+            <div class="text-xs text-zinc-400 mb-1">≈ 1 783 € HT</div>
+            <ul class="mt-4 space-y-3 text-sm text-zinc-200">
+              <li class="flex items-start gap-2"><span>✅</span><span>1 iPad moniteur (A16 11")</span></li>
+              <li class="flex items-start gap-2"><span>✅</span><span>Boîtier VitalX + housse</span></li>
+              <li class="flex items-start gap-2"><span>✅</span><span>Connectiques complètes (PNI, SpO₂, ECG 12D, DSA, température, EtCO₂)</span></li>
+              <li class="flex items-start gap-2"><span>✅</span><span>Licence 3 mois incluse</span></li>
+            </ul>
           </div>
-        </div>
-        <article class="w-full lg:max-w-md glass ring-gradient rounded-2xl p-6 flex flex-col ring-2 ring-blue-500/30 shadow-[0_0_40px_-10px_rgba(59,130,246,0.6)] card-basic">
-          <img src="/assets/pack-vitalx1.png" alt="Pack VitalX Basique" class="w-full max-h-56 object-contain rounded-xl mb-4 bg-zinc-900/40 p-2" loading="lazy" />
-          <div class="flex items-center justify-between gap-3">
-            <h3 class="text-lg font-semibold">Pack VitalX Basique</h3>
-            <span class="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-blue-500 via-sky-500 to-cyan-400 text-white text-xs font-extrabold px-3 py-1 shadow-soft">💸 Économique</span>
+          <div class="px-6 md:px-8 pb-6">
+            <img src="/assets/pack-vitalx1.png" alt="Pack VitalX Basique" class="w-full max-h-64 object-contain rounded-xl bg-zinc-900/40 p-3" loading="lazy" />
+            <a href="fiche-technique-basique.html" class="mt-3 inline-flex justify-center items-center gap-2 w-full rounded-xl bg-white/10 text-white px-5 py-2 font-semibold hover:bg-white/15 cta-anim">📄 Voir la fiche technique</a>
+            <button data-sku="sku_pack_basic" data-name="Pack VitalX Basique — Black Friday" data-price="213900" data-image="/assets/pack-vitalx1.png" class="add-to-cart mt-6 w-full inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 via-blue-500 to-sky-400 text-white px-5 py-3 font-extrabold shadow-soft hover:from-blue-500 hover:via-blue-400 hover:to-sky-300 cta-anim">Ajouter — Pack Classic</button>
           </div>
-          <div class="mt-4 text-5xl font-extrabold tracking-tight">3 499 €</div>
-          <div class="text-sm text-zinc-400 mb-1">≈ 2 915 € HT</div>
-          <a href="fiche-technique-basique.html" class="mt-3 inline-flex justify-center items-center gap-2 rounded-xl bg-white/10 text-white px-5 py-2 font-semibold hover:bg-white/15 cta-anim">
-            📄 Voir la fiche technique
-          </a>
-          <button data-sku="sku_pack_basic" data-name="Pack VitalX Basique" data-price="349900" data-image="/assets/pack-vitalx1.png" class="add-to-cart mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 via-blue-500 to-sky-400 text-white px-5 py-3 font-semibold shadow-soft hover:from-blue-500 hover:via-blue-400 hover:to-sky-300 cta-anim">Ajouter au panier</button>
+        </article>
+
+
+        <!-- COLLECTOR BOX (Pack complet) -->
+        <article class="pack-premium relative rounded-3xl overflow-hidden ring-2 ring-red-500/40 bg-gradient-to-b from-zinc-900/70 to-black glass ring-gradient">
+        <div class="absolute top-0 inset-x-0 h-12 bg-red-500 text-white flex items-center justify-center text-[13px] sm:text-[14px] font-extrabold uppercase tracking-wider ring-1 ring-red-400/40">-35% Black Friday</div>
+          <div class="p-6 md:p-8 pt-20 md:pt-24">
+            <h3 class="bf-font text-2xl md:text-3xl tracking-wide font-extrabold uppercase text-white/90">Pack Premium</h3>
+            <div class="mt-1 text-sm text-white/60">Pack VitalX Complet</div>
+            <div class="mt-3 text-4xl font-extrabold text-white/90">
+              <span class="line-through text-white/40 text-2xl align-middle mr-2">3 799 €</span>
+              <span class="bf-font text-yellow-300 bf-pulse text-6xl leading-none">2 489 €</span>
+            </div>
+            <div class="text-xs text-zinc-400 mb-1">≈ 2 074 € HT</div>
+            <ul class="mt-4 space-y-3 text-sm text-zinc-200">
+              <li class="flex items-start gap-2"><span>✅</span><span>2 iPad A16 (Formateur + Moniteur)</span></li>
+              <li class="flex items-start gap-2"><span>✅</span><span>Boîtier VitalX + housse</span></li>
+              <li class="flex items-start gap-2"><span>✅</span><span>Connectiques complètes (PNI, SpO₂, ECG 12D, DSA, température, EtCO₂)</span></li>
+              <li class="flex items-start gap-2"><span>✅</span><span>Licence 3 mois incluse</span></li>
+            </ul>
+          </div>
+          <div class="px-6 md:px-8 pb-6">
+            <img src="/assets/pack-vitalx.png" alt="Pack VitalX complet" class="w-full max-h-64 object-contain rounded-xl bg-zinc-900/40 p-3" loading="lazy" />
+            <a href="fiche-technique.html" class="mt-3 inline-flex justify-center items-center gap-2 w-full rounded-xl bg-white/10 text-white px-5 py-2 font-semibold hover:bg-white/15 cta-anim">📄 Voir la fiche technique</a>
+            <button data-sku="sku_pack" data-name="Pack VitalX — Black Friday" data-price="248900" data-image="/assets/pack-vitalx.png" class="add-to-cart mt-6 w-full inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-red-600 via-red-500 to-rose-400 text-white px-5 py-3 font-extrabold shadow-soft hover:from-red-500 hover:via-red-400 hover:to-rose-300 cta-anim">Ajouter — Pack Premium</button>
+          </div>
         </article>
       </div>
     </section>
 
     <!-- SECTION LICENCES -->
     <section id="licenses" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-16">
-      <div class="flex items-center justify-between">
-        <h2 class="text-2xl md:text-3xl font-extrabold">Licences</h2>
+      <div class="flex items-center justify-center">
+        <h2 class="text-4xl md:text-5xl font-extrabold text-center">Licences</h2>
       </div>
       <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <!-- Licence 3 mois -->
@@ -340,8 +347,8 @@
 
     <!-- SECTION ACCESSOIRES -->
     <section id="accessoires" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between">
-        <h2 class="text-2xl md:text-3xl font-extrabold">Accessoires</h2>
+      <div class="flex items-center justify-center">
+        <h2 class="text-2xl md:text-3xl font-extrabold text-center">Accessoires</h2>
       </div>
       <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
@@ -567,6 +574,25 @@
       const target = document.querySelector(location.hash);
       if (target) target.scrollIntoView({behavior:'smooth', block:'start'});
     }
+
+    // --- Black Friday Countdown ---
+    (function(){
+      const el = document.getElementById('bfCountdown');
+      if(!el) return;
+      // Black Friday deadline (Europe/Paris): Nov 29, 2025 00:00:00
+      const deadline = new Date('2025-11-29T00:00:00+01:00').getTime();
+      function tick(){
+        const now = Date.now();
+        const d = Math.max(0, deadline - now);
+        const days = Math.floor(d / (1000*60*60*24));
+        const hours = Math.floor((d % (1000*60*60*24)) / (1000*60*60));
+        const mins = Math.floor((d % (1000*60*60)) / (1000*60));
+        const secs = Math.floor((d % (1000*60)) / 1000);
+        el.textContent = `${days}j ${hours}h ${mins}m ${secs}s`;
+        if(d <= 0){ clearInterval(iv); document.getElementById('bf-bar')?.classList.add('hidden'); }
+      }
+      const iv = setInterval(tick, 1000); tick();
+    })();
   </script>
   <script>
     // --- CART (localStorage) ---
@@ -705,13 +731,6 @@
     box-shadow: 0 12px 40px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.06) inset;
     filter: saturate(1.05);
   }
-
-  /* Contextual colored glows on hover */
-  /* Pack: red glow */
-  #pack article:hover {
-    box-shadow: 0 14px 44px rgba(239,68,68,.55), 0 0 0 1px rgba(239,68,68,.35) inset;
-    filter: saturate(1.08);
-  }
   /* Licences grid: 3 mois (blue), 6 mois (fuchsia), 12 mois (amber) */
   #licenses .grid > article:nth-child(1):hover {
     box-shadow: 0 14px 44px rgba(59,130,246,.55), 0 0 0 1px rgba(59,130,246,.35) inset;
@@ -730,7 +749,6 @@
     box-shadow: 0 14px 44px rgba(16,185,129,.55), 0 0 0 1px rgba(16,185,129,.35) inset;
     filter: saturate(1.08);
   }
-
   /* Licence à vie (grand encart): whole card multicolor glow */
   #licenses article:last-of-type:hover {
     box-shadow:
@@ -749,6 +767,22 @@
   #pack .card-basic:hover {
     box-shadow: 0 14px 44px rgba(59,130,246,.55), 0 0 0 1px rgba(59,130,246,.35) inset;
     filter: saturate(1.08);
+  }
+  /* Specific colored hover glow for packs */
+  #pack .pack-classic:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 18px 56px rgba(59,130,246,.55), 0 0 0 2px rgba(59,130,246,.45) inset; /* blue */
+    filter: saturate(1.12);
+  }
+  #pack .pack-refurb:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 18px 56px rgba(168,85,247,.60), 0 0 0 2px rgba(168,85,247,.50) inset; /* purple */
+    filter: saturate(1.12);
+  }
+  #pack .pack-premium:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 18px 56px rgba(239,68,68,.60), 0 0 0 2px rgba(239,68,68,.50) inset; /* red */
+    filter: saturate(1.12);
   }
 }
 </style>
