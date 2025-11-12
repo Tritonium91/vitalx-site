@@ -2,8 +2,9 @@
 
 const PRICE_BY_SKU = {
   // === PRODUITS PRINCIPAUX ===
-  'sku_pack':        'price_1SKdaZ2MFaCyLMvRkHyTb6I7', // Pack VitalX (complet)
-  'sku_pack_basic':  'price_1SLWy82MFaCyLMvREJhJjRBO', // Pack VitalX Basique
+  'sku_pack':        'price_1SSeCZ2MFaCyLMvR73np4bYa', // Pack VitalX (complet)
+  'sku_pack_basic':  'price_1SSeBc2MFaCyLMvRlQulIRhg', // Pack VitalX Basique
+  'sku_pack_refurb': 'price_1SSeAY2MFaCyLMvR1OQmh2iX',      // ✅ Pack VitalX Reconditionné 
 
   // === LICENCES ===
   'sku_lic_3':       'price_1SJPj52MFaCyLMvRBbYPwyy3', // Licence 3 mois (150 €)
