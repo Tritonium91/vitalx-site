@@ -10,199 +10,721 @@
   <meta property="og:type" content="website" />
   <meta property="og:image" content="/assets/og-vitaliks.jpg" />
   <meta name="theme-color" content="#0a0a0a" />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg: #000000;
-      --card: rgba(255,255,255,0.06);
+      --bg-primary: #0a0a0b;
+      --bg-secondary: #14141a;
+      --card: rgba(30, 30, 40, 0.6);
+      --card-hover: rgba(40, 40, 55, 0.7);
       --stroke: rgba(255,255,255,0.08);
       --text: #e7e7ea;
-      --muted: #cfcfd3;
-      --accent: #93c5fd; /* blue-300 like on index */
-      --accent-2: #f59e0b; /* amber-500 used on index */
-      --ring: rgba(255,255,255,0.10);
-      --shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05);
-      --radius: 18px;
-      --c-janv: #60a5fa;   /* blue-400 */
-      --c-mars: #a78bfa;   /* violet-400 */
-      --c-juin: #34d399;   /* emerald-400 */
-      --c-aout: #f472b6;   /* pink-400 */
-      --c-sept: #f59e0b;   /* amber-500 */
-      --c-oct: #ff2d55;    /* apple red */
-      --c-now: #22d3ee;    /* cyan-400 */
+      --muted: #a1a1aa;
+      --accent: #10b981;
+      --accent-light: #34d399;
+      --accent-dark: #059669;
+      --blue: #60a5fa;
+      --purple: #a78bfa;
+      --pink: #f472b6;
+      --orange: #fb923c;
+      --cyan: #22d3ee;
+      --red: #ff2d55;
+      --ring: rgba(16, 185, 129, 0.2);
+      --shadow: 0 20px 50px rgba(0,0,0,.4);
+      --radius: 20px;
     }
-    @media (prefers-color-scheme: light){
-      :root{
-        --bg: #f7f9ff;
-        --card: rgba(10,20,40,0.035);
-        --stroke: rgba(10,20,40,0.08);
-        --text: #0b1020;
-        --muted: #55617a;
-        --ring: rgba(47,107,255,.25);
-        --shadow: 0 8px 24px rgba(15,23,42,.08), inset 0 1px 0 rgba(255,255,255,.6);
-      }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--text);
-      background: var(--bg);
-      line-height:1.6;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
+    
+    html, body {
+      height: 100%;
+      scroll-behavior: smooth;
     }
-    a{color:var(--accent); text-decoration:none}
-    a:hover{text-decoration:underline}
-    .wrap{max-width:1100px; margin:0 auto; padding:24px}
-    .hero{
-      position:relative; overflow:hidden; border-radius:calc(var(--radius) * 1.2);
-      padding:56px 28px; background:var(--card); border:1px solid var(--stroke); box-shadow:var(--shadow);
+    
+    body {
+      font-family: 'Inter', -apple-system, system-ui, sans-serif;
+      color: var(--text);
+      background: var(--bg-primary);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+    
+    /* Animated Background */
+    .bg-gradient {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at 20% 20%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 80%, rgba(96, 165, 250, 0.06) 0%, transparent 50%),
+                  radial-gradient(circle at 50% 50%, rgba(167, 139, 250, 0.04) 0%, transparent 70%);
+      animation: gradientShift 15s ease infinite;
+    }
+    
+    @keyframes gradientShift {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.05); }
+    }
+    
+    /* Floating particles */
+    .particle {
+      position: fixed;
+      width: 3px;
+      height: 3px;
+      background: rgba(16, 185, 129, 0.3);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+      animation: float 20s linear infinite;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.5; }
+      90% { opacity: 0.5; }
+      100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+    }
+    
+    .particle:nth-child(2) { left: 20%; animation-delay: -5s; animation-duration: 25s; }
+    .particle:nth-child(3) { left: 40%; animation-delay: -10s; animation-duration: 22s; }
+    .particle:nth-child(4) { left: 60%; animation-delay: -15s; animation-duration: 28s; }
+    .particle:nth-child(5) { left: 80%; animation-delay: -20s; animation-duration: 24s; }
+    
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    /* Hero Section */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      padding: 64px 40px;
+      margin: 40px 0 60px;
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(30, 30, 40, 0.8) 50%, rgba(96, 165, 250, 0.1) 100%);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--stroke);
+      box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,0.05);
+      animation: fadeInUp 0.8s ease;
+    }
+    
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      background: linear-gradient(45deg, var(--accent), var(--blue), var(--purple));
+      border-radius: 24px;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+    
+    .hero:hover::before {
+      opacity: 0.15;
+    }
+    
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    
+    @media (max-width: 968px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+      .hero { padding: 48px 32px; }
+    }
+    
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.3px;
+      color: var(--accent-light);
+      animation: pulse 2s ease-in-out infinite;
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+    
+    .badge-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #fff, var(--accent-light));
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
+      animation: blink 2s ease-in-out infinite;
+    }
+    
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 800;
+      line-height: 1.15;
+      margin: 20px 0 16px;
+      background: linear-gradient(135deg, #fff 0%, var(--accent-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 3s linear infinite;
+      background-size: 200% 100%;
+    }
+    
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    
+    .lead {
+      font-size: clamp(16px, 2vw, 20px);
+      color: var(--muted);
+      margin: 0 0 24px;
+      line-height: 1.7;
+    }
+    
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: 14px;
+      font-weight: 600;
+      font-size: 16px;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--stroke);
+    }
+    
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+    
+    .btn:hover::before {
+      left: 100%;
+    }
+    
+    .btn.primary {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+      border-color: var(--accent);
+      color: #ffffff;
+      box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+    }
+    
+    .btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 40px rgba(16, 185, 129, 0.4);
+    }
+    
+    .btn.secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text);
+    }
+    
+    .btn.secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+    
+    .pill {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--muted);
+      border: 1px solid var(--stroke);
+      background: rgba(255, 255, 255, 0.03);
+      margin-top: 16px;
+    }
+    
+    /* Card Styles */
+    .card {
+      background: var(--card);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 32px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(16, 185, 129, 0.1), transparent 50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+    
+    .card:hover::after {
+      opacity: 1;
+    }
+    
+    .card:hover {
+      background: var(--card-hover);
+      transform: translateY(-4px);
+      box-shadow: 0 25px 60px rgba(0,0,0,.5), 0 0 40px rgba(16, 185, 129, 0.15);
+    }
+    
+    .hero-card {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--stroke);
+      background: rgba(20, 20, 30, 0.5);
       backdrop-filter: blur(10px);
     }
-    .hero-grid{display:grid; grid-template-columns: 1.1fr .9fr; gap:28px}
-    @media (max-width:920px){ .hero-grid{grid-template-columns:1fr} }
-    .badge{
-      display:inline-flex; align-items:center; gap:10px; padding:8px 14px;
-      border-radius:999px; border:1px solid var(--stroke); background:rgba(255,255,255,.04);
-      box-shadow: inset 0 0 0 3px rgba(255,255,255,.02);
-      font-weight:600; letter-spacing:.2px; color:var(--muted);
+    
+    .hero-card img {
+      width: 100%;
+      border-radius: 16px 16px 0 0;
+      border-bottom: 1px solid var(--stroke);
+      transition: transform 0.5s ease;
     }
-    .badge i{width:10px; height:10px; border-radius:50%;
-      background: radial-gradient(circle at 30% 30%, #fff, #9fd0ff 35%, #3a78ff 80%);
-      box-shadow: 0 0 0 4px var(--ring);
+    
+    .hero-card:hover img {
+      transform: scale(1.05);
     }
-    h1{font-size:clamp(28px,4vw,46px); line-height:1.15; margin:14px 0 10px}
-    .lead{font-size:clamp(16px,2.1vw,19px); color:var(--muted); margin:0 0 16px}
-    .hero-cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px}
-    .btn{
-      display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:12px;
-      border:1px solid var(--stroke); background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
-      box-shadow: var(--shadow); color:var(--text); text-decoration:none; font-weight:600;
+    
+    .kv {
+      padding: 24px;
     }
-    .btn.primary{
-      background: linear-gradient(180deg, rgba(16,185,129,.85), rgba(16,185,129,.70));
-      border-color: rgba(16,185,129,.55);
-      color: #ffffff;
+    
+    .kv-item {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 16px;
+      padding: 16px 0;
+      border-top: 1px dashed var(--stroke);
     }
-    .btn:hover{transform: translateY(-1px); transition:.15s ease; text-decoration:none}
-    .card{
-      background:var(--card); border:1px solid var(--stroke); border-radius:var(--radius);
-      box-shadow:var(--shadow); padding:24px;
+    
+    .kv-item:first-child {
+      border-top: none;
+      padding-top: 0;
     }
-    section{margin:38px 0}
-    h2{font-size:clamp(22px,2.8vw,30px); margin:0 0 10px}
-    p{margin:0 0 12px}
-    .grid{display:grid; gap:18px}
-    .grid.cols-3{grid-template-columns: repeat(3, 1fr)}
-    .grid.cols-2{grid-template-columns: repeat(2, 1fr)}
-    @media (max-width:920px){ .grid.cols-3, .grid.cols-2{grid-template-columns:1fr} }
-    .pill{display:inline-block; padding:6px 12px; border-radius:999px; font-size:12px; color:var(--muted); border:1px solid var(--stroke)}
-    .kv{display:grid; grid-template-columns: 120px 1fr; gap:12px; padding:12px 0; border-top:1px dashed var(--stroke)}
-    .kv:first-child{border-top:none}
-    .timeline{position:relative}
-    .timeline::before{content:""; position:absolute; left:12px; top:0; bottom:0; width:2px; background:linear-gradient(var(--accent), transparent)}
-    .t-item{position:relative; margin-left:34px; padding-left:20px; padding-bottom:18px}
-    .t-dot{position:absolute; left:-3px; top:4px; width:14px; height:14px; border-radius:50%;
+    
+    .kv-label {
+      font-weight: 600;
+      color: var(--accent-light);
+      font-size: 14px;
+    }
+    
+    .kv-value {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    
+    h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 700;
+      margin: 0 0 20px;
+      color: #fff;
+    }
+    
+    h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0 0 12px;
+      color: #fff;
+    }
+    
+    p {
+      margin: 0 0 16px;
+      color: var(--muted);
+    }
+    
+    section {
+      margin: 60px 0;
+    }
+    
+    .grid {
+      display: grid;
+      gap: 24px;
+    }
+    
+    .grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+    
+    @media (max-width: 968px) {
+      .grid.cols-2, .grid.cols-3 { grid-template-columns: 1fr; }
+    }
+    
+    /* Founder Section */
+    .founder {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+    
+    @media (max-width: 768px) {
+      .founder { grid-template-columns: 1fr; text-align: center; }
+    }
+    
+    .avatar {
+      width: 180px;
+      height: 180px;
+      border-radius: 24px;
+      border: 2px solid var(--accent);
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(30, 30, 40, 0.9) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 32px;
+      letter-spacing: 2px;
+      color: var(--accent-light);
+      position: relative;
+      box-shadow: 0 10px 40px rgba(16, 185, 129, 0.3);
+      animation: avatarGlow 3s ease-in-out infinite;
+    }
+    
+    @keyframes avatarGlow {
+      0%, 100% { box-shadow: 0 10px 40px rgba(16, 185, 129, 0.3); }
+      50% { box-shadow: 0 10px 60px rgba(16, 185, 129, 0.5); }
+    }
+    
+    @media (max-width: 768px) {
+      .avatar { margin: 0 auto; }
+    }
+    
+    /* Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 40px;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 16px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg,
+        var(--blue) 0%,
+        var(--purple) 20%,
+        var(--accent) 40%,
+        var(--pink) 60%,
+        var(--orange) 80%,
+        var(--cyan) 100%
+      );
+      opacity: 0.5;
+    }
+    
+    .t-item {
+      position: relative;
+      margin-bottom: 32px;
+      padding-left: 28px;
+    }
+    
+    .t-dot {
+      position: absolute;
+      left: -32px;
+      top: 4px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
       background: radial-gradient(circle at 30% 30%, #fff, var(--accent));
-      box-shadow: 0 0 0 3px var(--ring), 0 2px 8px rgba(0,0,0,.3);
-      border: 1px solid rgba(255,255,255,.5);
+      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2), 0 0 20px rgba(16, 185, 129, 0.4);
+      border: 2px solid var(--bg-primary);
+      animation: dotPulse 2s ease-in-out infinite;
     }
-    .values{display:grid; grid-template-columns:repeat(3, 1fr); gap:16px}
-    @media (max-width:920px){ .values{grid-template-columns:1fr} }
-    .value{padding:18px; border-radius:16px; border:1px dashed var(--stroke); background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02))}
-    .cta{
-      text-align:center; padding:26px; border-radius:var(--radius);
-      background:linear-gradient(100deg, rgba(106,168,255,.18), rgba(255,90,106,.14));
-      border:1px solid var(--stroke); box-shadow:var(--shadow)
+    
+    @keyframes dotPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
     }
-    .logo{
-      width:160px; height:48px; object-fit:contain; filter: drop-shadow(0 2px 6px rgba(0,0,0,.3));
+    
+    .t-item#m-janv .t-dot { background: radial-gradient(circle at 30% 30%, #fff, var(--blue)); box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.2), 0 0 20px var(--blue); }
+    .t-item#m-mars .t-dot { background: radial-gradient(circle at 30% 30%, #fff, var(--purple)); box-shadow: 0 0 0 4px rgba(167, 139, 250, 0.2), 0 0 20px var(--purple); }
+    .t-item#m-juin .t-dot { background: radial-gradient(circle at 30% 30%, #fff, var(--accent)); box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2), 0 0 20px var(--accent); }
+    .t-item#m-aout .t-dot { background: radial-gradient(circle at 30% 30%, #fff, var(--pink)); box-shadow: 0 0 0 4px rgba(244, 114, 182, 0.2), 0 0 20px var(--pink); }
+    .t-item#m-sept .t-dot { background: radial-gradient(circle at 30% 30%, #fff, var(--orange)); box-shadow: 0 0 0 4px rgba(251, 146, 60, 0.2), 0 0 20px var(--orange); }
+    .t-item#m-oct .t-dot { background: radial-gradient(circle at 30% 30%, #fff, var(--red)); box-shadow: 0 0 0 4px rgba(255, 45, 85, 0.2), 0 0 20px var(--red); }
+    .t-item#m-now .t-dot { background: radial-gradient(circle at 30% 30%, #fff, var(--cyan)); box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.2), 0 0 20px var(--cyan); animation: dotPulse 1s ease-in-out infinite; }
+    
+    .t-month-janv { color: var(--blue); font-weight: 700; }
+    .t-month-mars { color: var(--purple); font-weight: 700; }
+    .t-month-juin { color: var(--accent-light); font-weight: 700; }
+    .t-month-aout { color: var(--pink); font-weight: 700; }
+    .t-month-sept { color: var(--orange); font-weight: 700; }
+    .t-month-oct { color: var(--red); font-weight: 700; }
+    .t-month-now { color: var(--cyan); font-weight: 700; }
+    
+    /* Values Grid */
+    .value {
+      padding: 32px;
+      border-radius: 16px;
+      border: 1px solid var(--stroke);
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
     }
-    .founder{
-      display:grid; grid-template-columns: 140px 1fr; gap:18px; align-items:center
+    
+    .value::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--blue));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s ease;
     }
-    @media (max-width:700px){ .founder{grid-template-columns:1fr} }
-    .avatar{
-      width:140px; height:140px; border-radius:20px; border:1px solid var(--stroke);
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); display:flex; align-items:center; justify-content:center;
-      font-weight:800; letter-spacing:.6px; color:var(--muted)
+    
+    .value:hover::before {
+      transform: scaleX(1);
     }
-    footer{margin:24px 0 8px; text-align:center; color:var(--muted); font-size:14px}
-    /* Subtle reveal */
-    .reveal{opacity:0; transform: translateY(8px); transition: .5s ease}
-    .reveal.show{opacity:1; transform:none}
-    /* Utility */
-    .mt-6{margin-top:24px}
-    .t-month-janv{ color: var(--c-janv); }
-    .t-month-mars{ color: var(--c-mars); }
-    .t-month-juin{ color: var(--c-juin); }
-    .t-month-aout{ color: var(--c-aout); }
-    .t-month-sept{ color: var(--c-sept); }
-    .t-month-oct{ color: var(--c-oct); }
-    .t-month-now{ color: var(--c-now); }
-
-
-    .x-highlight{
-      color:#ff2d55;
-      font-weight:900;
-      display:inline-block;
+    
+    .value:hover {
+      transform: translateY(-6px);
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+      box-shadow: 0 15px 40px rgba(16, 185, 129, 0.2);
+    }
+    
+    /* CTA Section */
+    .cta {
+      text-align: center;
+      padding: 48px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(96, 165, 250, 0.1) 100%);
+      border: 1px solid var(--stroke);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .cta::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      background: linear-gradient(45deg, var(--accent), var(--blue), var(--purple), var(--accent));
+      background-size: 300% 300%;
+      animation: gradientRotate 6s ease infinite;
+      opacity: 0.2;
+      z-index: -1;
+      filter: blur(20px);
+    }
+    
+    @keyframes gradientRotate {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .cta h2 {
+      margin-bottom: 12px;
+    }
+    
+    .cta p {
+      font-size: 18px;
+      margin-bottom: 24px;
+    }
+    
+    /* X Highlight */
+    .x-highlight {
+      color: var(--red);
+      font-weight: 900;
+      display: inline-block;
       animation: xPulse 1.6s ease-in-out infinite;
     }
-    @keyframes xPulse{
-      0%,100%{ transform:scale(1); text-shadow:0 0 0 rgba(255,45,85,.5); }
-      50%{ transform:scale(1.18); text-shadow:0 0 12px rgba(255,45,85,.9); }
+    
+    @keyframes xPulse {
+      0%, 100% { transform: scale(1); text-shadow: 0 0 0 rgba(255, 45, 85, 0.5); }
+      50% { transform: scale(1.15); text-shadow: 0 0 15px rgba(255, 45, 85, 0.9); }
     }
+    
+    /* Lists */
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    ul li {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 12px;
+      color: var(--muted);
+    }
+    
+    ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+    
+    /* Footer */
+    footer {
+      margin: 60px 0 32px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      padding-top: 32px;
+      border-top: 1px solid var(--stroke);
+    }
+    
+    /* Reveal Animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Utilities */
+    .mt-6 { margin-top: 24px; }
+    strong { color: #fff; font-weight: 600; }
   </style>
 </head>
 <body>
+  <!-- Animated Background -->
+  <div class="bg-gradient"></div>
+  
+  <!-- Floating Particles -->
+  <div class="particle" style="left: 10%;"></div>
+  <div class="particle" style="left: 30%;"></div>
+  <div class="particle" style="left: 50%;"></div>
+  <div class="particle" style="left: 70%;"></div>
+  <div class="particle" style="left: 90%;"></div>
+  
   <div class="wrap">
+    <!-- Hero Section -->
     <header class="hero">
       <div class="hero-grid">
         <div>
-          <span class="badge"><i></i> VitalX — Scope de formation</span>
-          <h1>Qui sommes-nous&nbsp;?</h1>
+          <span class="badge">
+            <span class="badge-dot"></span>
+            VitalX — Scope de formation
+          </span>
+          <h1>Qui sommes-nous ?</h1>
           <p class="lead">
             VitalX conçoit un <strong>scope de formation</strong> moderne, simple et abordable
             pour renforcer le réalisme des cas concrets et élever le niveau des équipes de secours.
           </p>
           <div class="hero-cta">
-            <a class="btn primary" href="/boutique">Voir la boutique</a>
+            <a class="btn primary" href="/boutique">
+              <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+              Voir la boutique
+            </a>
+            <a class="btn secondary" href="#contact">
+              <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+              Nous contacter
+            </a>
           </div>
-          <div class="mt-6 pill">Basé en France · pensé par des professionnels de terrain</div>
+          <div class="pill">🇫🇷 Basé en France · pensé par des professionnels de terrain</div>
         </div>
-        <div class="card">
-          <!-- Remplace l'image ci-dessous par un visuel du scope -->
-          <img src="/logovitalx4.png" alt="Aperçu du scope de formation VitalX" style="width:100%; border-radius:14px; border:1px solid var(--stroke); box-shadow:var(--shadow)">
+        
+        <div class="hero-card">
+          <img src="/logovitalx4.png" alt="Aperçu du scope de formation VitalX">
           <div class="kv">
-            <div>Objectif</div><div>Rendre la simulation <strong>accessible</strong> sans compromis sur le réalisme.</div>
-            <div>Public</div><div>Associations, centres de formation, équipes préhospitalières, établissements scolaires.</div>
-            <div>Philosophie</div><div>Par des secouristes, pour les secouristes.</div>
+            <div class="kv-item">
+              <div class="kv-label">Objectif</div>
+              <div class="kv-value">Rendre la simulation <strong>accessible</strong> sans compromis sur le réalisme.</div>
+            </div>
+            <div class="kv-item">
+              <div class="kv-label">Public</div>
+              <div class="kv-value">Associations, centres de formation, équipes préhospitalières, établissements scolaires.</div>
+            </div>
+            <div class="kv-item">
+              <div class="kv-label">Philosophie</div>
+              <div class="kv-value">Par des secouristes, pour les secouristes.</div>
+            </div>
           </div>
         </div>
       </div>
     </header>
+
+    <!-- Founder Section -->
     <section class="card reveal">
       <h2>Le fondateur</h2>
       <div class="founder">
-        <!-- Remplace par une vraie photo si tu veux -->
         <div class="avatar">YANN</div>
         <div>
           <p><strong>Yann Usseglio</strong> — Ambulancier privé, en lien opérationnel avec le SAMU, et formateur de secourisme.</p>
           <p>
-            Plus de <strong>10 ans</strong> d’expérience de terrain en ambulance.
-            Formateur depuis l’âge de 18 ans (aujourd’hui 31), sur les modules
-            <strong>PSC</strong>, <strong>SST</strong>, <strong>PSE&nbsp;1/2</strong> et <strong>BNSSA</strong>.
+            Plus de <strong>10 ans</strong> d'expérience de terrain en ambulance.
+            Formateur depuis l'âge de 18 ans (aujourd'hui 31), sur les modules
+            <strong>PSC</strong>, <strong>SST</strong>, <strong>PSE 1/2</strong> et <strong>BNSSA</strong>.
           </p>
           <p>
-            Cette double casquette terrain &amp; pédagogie a façonné VitalX&nbsp;: un outil pragmatique,
+            Cette double casquette terrain &amp; pédagogie a façonné VitalX : un outil pragmatique,
             pensé pour les contraintes réelles des cours et des interventions simulées.
           </p>
         </div>
       </div>
     </section>
 
+    <!-- Timeline Section -->
     <section class="card reveal">
       <h2>Notre histoire</h2>
       <div class="timeline">
@@ -216,7 +738,7 @@
         <div class="t-item" id="m-mars">
           <span class="t-dot"></span>
           <p><strong>🧪 <span class="t-month-mars">Mars 2025</span> — Première ligne de code</strong><br>
-            Démarrage du développement <strong>SwiftUI</strong> : base de l’app, architecture claire et premiers écrans.
+            Démarrage du développement <strong>SwiftUI</strong> : base de l'app, architecture claire et premiers écrans.
             Concept de <em>code de session</em> pour relier Formateur ↔ Moniteur.
           </p>
         </div>
@@ -224,16 +746,16 @@
         <div class="t-item" id="m-juin">
           <span class="t-dot"></span>
           <p><strong>🎨 <span class="t-month-juin">Juin 2025</span> — Refonte UX</strong><br>
-            Nouveau design <strong>glass</strong> & cartes, lisibilité renforcée, réglages plus rapides
+            Nouveau design <strong>glass</strong> &amp; cartes, lisibilité renforcée, réglages plus rapides
             et ajout du <em>Scenario Builder</em> pour enchaîner des cas concrets.
           </p>
         </div>
 
         <div class="t-item" id="m-aout">
           <span class="t-dot"></span>
-          <p><strong>⚡ <span class="t-month-aout">Août 2025</span> — Modes DSA & ECG</strong><br>
+          <p><strong>⚡ <span class="t-month-aout">Août 2025</span> — Modes DSA &amp; ECG</strong><br>
             Arrivée des modes <strong>DSA</strong> (analyses, prompts, chocs simulés) et <strong>ECG 12 dérivations</strong> :
-            alertes, courbes et paramètres réalistes pour booster l’immersion.
+            alertes, courbes et paramètres réalistes pour booster l'immersion.
           </p>
         </div>
 
@@ -247,15 +769,15 @@
 
         <div class="t-item" id="m-oct">
           <span class="t-dot"></span>
-          <p><strong>🚀 <span class="t-month-oct">Octobre 2025</span> — Commercialisation & changement de nom</strong><br>
-            Medical Scope devient <strong>Vital<span class="x-highlight">X</span></strong> : un nom plus fort, plus direct, symbole d’évolution.
+          <p><strong>🚀 <span class="t-month-oct">Octobre 2025</span> — Commercialisation &amp; changement de nom</strong><br>
+            Medical Scope devient <strong>Vital<span class="x-highlight">X</span></strong> : un nom plus fort, plus direct, symbole d'évolution.
             Lancement officiel des packs et premières présentations auprès des formateurs.
           </p>
         </div>
 
         <div class="t-item" id="m-now">
           <span class="t-dot"></span>
-          <p><strong>🔥 <span class="t-month-now">Aujourd’hui</span> — Accélération</strong><br>
+          <p><strong>🔥 <span class="t-month-now">Aujourd'hui</span> — Accélération</strong><br>
             Roadmap active, nouvelles features et scénarios réguliers.
             Objectif : un outil <strong>simple, beau et redoutablement efficace</strong> pour toutes vos formations.
           </p>
@@ -263,43 +785,46 @@
       </div>
     </section>
 
+    <!-- Mission & Why Section -->
     <section class="grid cols-2 reveal">
       <div class="card">
         <h2>Notre mission</h2>
         <p>
           Offrir un outil de simulation <strong>fiable, intuitif et économique</strong> pour former efficacement aux gestes qui sauvent.
           Les simulateurs historiques sont souvent inabordables ; VitalX démocratise la simulation
-          en proposant un scope complet, pensé pour le terrain et l’enseignement.
+          en proposant un scope complet, pensé pour le terrain et l'enseignement.
         </p>
         <p>
-          Notre promesse&nbsp;: <em>moins de friction, plus de pédagogie, un budget maîtrisé</em>.
+          Notre promesse : <em>moins de friction, plus de pédagogie, un budget maîtrisé</em>.
         </p>
       </div>
       <div class="card">
-        <h2>Pourquoi VitalX&nbsp;?</h2>
+        <h2>Pourquoi VitalX ?</h2>
         <p>
-          Parce que la qualité de la formation ne doit pas dépendre d’un budget à cinq chiffres.
-          VitalX est né d’un besoin réel&nbsp;: disposer d’un scope <strong>créditable</strong> en simulation,
+          Parce que la qualité de la formation ne doit pas dépendre d'un budget à cinq chiffres.
+          VitalX est né d'un besoin réel : disposer d'un scope <strong>créditable</strong> en simulation,
           sans complexité inutile, et <strong>adaptable</strong> aux scénarios de PSC, SST, PSE, BNSSA et formations professionnelles.
         </p>
       </div>
     </section>
 
+    <!-- Values Section -->
     <section class="grid cols-3 reveal">
       <div class="value">
-        <h3 style="margin:0 0 6px">Accessibilité</h3>
-        <p>Un scope de formation à un <strong>coût maîtrisé</strong>, sans rogner sur l’essentiel.</p>
+        <h3>💰 Accessibilité</h3>
+        <p>Un scope de formation à un <strong>coût maîtrisé</strong>, sans rogner sur l'essentiel.</p>
       </div>
       <div class="value">
-        <h3 style="margin:0 0 6px">Simplicité</h3>
+        <h3>⚡ Simplicité</h3>
         <p>Une interface claire, des scénarios rapides à mettre en place, et une prise en main immédiate.</p>
       </div>
       <div class="value">
-        <h3 style="margin:0 0 6px">Réalisme</h3>
+        <h3>🎯 Réalisme</h3>
         <p>Des retours visuels et des paramètres fidèles aux situations de terrain pour une immersion utile.</p>
       </div>
     </section>
 
+    <!-- What We Do & For Whom Section -->
     <section class="grid cols-2 reveal">
       <div class="card">
         <h2>Ce que nous faisons</h2>
@@ -310,7 +835,7 @@
         </ul>
       </div>
       <div class="card">
-        <h2>Pour qui&nbsp;?</h2>
+        <h2>Pour qui ?</h2>
         <ul>
           <li>Associations de secours et ONG.</li>
           <li>Centres de formation et structures éducatives.</li>
@@ -319,30 +844,62 @@
       </div>
     </section>
 
+    <!-- CTA Section -->
     <section class="cta reveal" id="contact">
-      <p style="margin-top:18px; font-weight:600; font-size:18px;">🚀 Découvrez le pack VitalX dès maintenant</p>
+      <h2>🚀 Découvrez le pack VitalX dès maintenant</h2>
+      <p>Rejoignez les formateurs qui ont choisi l'excellence accessible</p>
       <div class="hero-cta" style="justify-content:center">
-        <a class="btn primary" href="/boutique">Boutique</a>
+        <a class="btn primary" href="/boutique">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+          </svg>
+          Voir la boutique
+        </a>
+        <a class="btn secondary" href="mailto:vitalxscope@gmail.com">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+          </svg>
+          Nous contacter
+        </a>
       </div>
     </section>
 
+    <!-- Footer -->
     <footer>
-      
-      <div style="margin-top:8px">© <span id="year"></span> VitalX — Tous droits réservés.</div>
+      <div>© <span id="year"></span> VitalX — Tous droits réservés.</div>
     </footer>
   </div>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Reveal animation on scroll
     const reveal = () => {
       const els = document.querySelectorAll('.reveal');
-      const y = window.scrollY, h = window.innerHeight;
+      const windowHeight = window.innerHeight;
+      const scrollY = window.scrollY;
+      
       els.forEach(el => {
-        const top = el.getBoundingClientRect().top + y;
-        if (y + h > top + 60) el.classList.add('show');
+        const top = el.getBoundingClientRect().top + scrollY;
+        if (scrollY + windowHeight > top + 80) {
+          el.classList.add('show');
+        }
       });
     };
-    reveal(); window.addEventListener('scroll', reveal, {passive:true});
+    
+    reveal();
+    window.addEventListener('scroll', reveal, { passive: true });
+    
+    // Card mouse tracking effect
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        card.style.setProperty('--mouse-x', `${x}%`);
+        card.style.setProperty('--mouse-y', `${y}%`);
+      });
+    });
   </script>
 </body>
 </html>
