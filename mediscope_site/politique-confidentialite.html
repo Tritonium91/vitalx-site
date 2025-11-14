@@ -5,67 +5,601 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Politique de confidentialité — VitalX</title>
   <meta name="description" content="Politique de confidentialité de VitalX : données collectées, usage, durée, droits RGPD.">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="alternate icon" href="/favicon.ico" sizes="any">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
   <style>
-    body{margin:0;background:#0b0b0c;color:#e7e7ea;font-family:system-ui,-apple-system,Segoe UI,Inter,Roboto,Ubuntu}
-    main{max-width:860px;margin:40px auto;padding:0 20px}
-    a{color:#93c5fd}
-    .card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:24px}
-    h1{font-size:clamp(28px,4vw,40px);margin:0 0 16px}
-    h2{font-size:20px;margin:24px 0 8px}
-    p,li{color:#cfcfd3;line-height:1.6}
-    .back{display:inline-block;margin:16px 0 0}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    :root {
+      --bg-primary: #0a0a0b;
+      --accent: #10b981;
+      --accent-light: #34d399;
+      --blue: #60a5fa;
+      --purple: #a78bfa;
+      --pink: #f472b6;
+      --orange: #fb923c;
+      --text: #e5e7eb;
+      --text-muted: #9ca3af;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #0a0a0b 0%, #1a0f1f 50%, #0f1419 100%);
+      background-attachment: fixed;
+      color: var(--text);
+      font-family: 'Inter', -apple-system, system-ui, sans-serif;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+    
+    /* Background Pattern */
+    .bg-pattern {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(96, 165, 250, 0.06) 0%, transparent 50%);
+      animation: bgShift 15s ease infinite;
+    }
+    
+    @keyframes bgShift {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+    
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+      animation: fadeInUp 0.8s ease;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 20px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent-light);
+      margin-bottom: 20px;
+    }
+    
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 800;
+      line-height: 1.2;
+      background: linear-gradient(135deg, #fff 0%, var(--accent-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+    }
+    
+    .subtitle {
+      font-size: clamp(16px, 2vw, 18px);
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    /* Section Card */
+    .section {
+      background: rgba(30, 30, 40, 0.6);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 24px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 0.8s ease;
+      animation-fill-mode: both;
+    }
+    
+    .section:nth-child(1) { animation-delay: 0.1s; }
+    .section:nth-child(2) { animation-delay: 0.2s; }
+    .section:nth-child(3) { animation-delay: 0.3s; }
+    .section:nth-child(4) { animation-delay: 0.4s; }
+    .section:nth-child(5) { animation-delay: 0.5s; }
+    .section:nth-child(6) { animation-delay: 0.6s; }
+    .section:nth-child(7) { animation-delay: 0.7s; }
+    .section:nth-child(8) { animation-delay: 0.8s; }
+    
+    .section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--blue), var(--purple));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s;
+    }
+    
+    .section:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .section:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      border-color: rgba(16, 185, 129, 0.3);
+    }
+    
+    /* Section Header */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    
+    .section-icon {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(16, 185, 129, 0.1));
+      border-radius: 12px;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+    
+    h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(20px, 3vw, 26px);
+      font-weight: 700;
+      color: #fff;
+      margin: 0;
+    }
+    
+    .section-number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    
+    /* Content */
+    p {
+      color: var(--text-muted);
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    
+    p:last-child {
+      margin-bottom: 0;
+    }
+    
+    strong {
+      color: #fff;
+      font-weight: 600;
+    }
+    
+    /* Lists */
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 16px 0;
+    }
+    
+    ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      margin-bottom: 12px;
+      color: var(--text-muted);
+      font-size: 15px;
+      transition: all 0.3s;
+    }
+    
+    ul li:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(16, 185, 129, 0.3);
+      transform: translateX(4px);
+    }
+    
+    ul li::before {
+      content: '→';
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    
+    /* Links */
+    a {
+      color: var(--accent-light);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+      position: relative;
+    }
+    
+    a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s;
+    }
+    
+    a:hover {
+      color: var(--accent);
+    }
+    
+    a:hover::after {
+      width: 100%;
+    }
+    
+    /* Highlight Box */
+    .highlight {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(59, 130, 246, 0.1));
+      border: 2px solid rgba(16, 185, 129, 0.3);
+      border-radius: 16px;
+      padding: 20px;
+      margin: 20px 0;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    
+    .highlight-icon {
+      font-size: 32px;
+      flex-shrink: 0;
+    }
+    
+    .highlight-content {
+      flex: 1;
+    }
+    
+    .highlight-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--accent-light);
+      margin-bottom: 8px;
+    }
+    
+    .highlight-text {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    
+    /* Footer Info */
+    .footer-info {
+      background: rgba(20, 20, 30, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 24px;
+      margin-top: 24px;
+      text-align: center;
+    }
+    
+    .footer-info p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin: 8px 0;
+    }
+    
+    .updated {
+      font-size: 12px;
+      color: #6b7280;
+      font-style: italic;
+    }
+    
+    /* Back Button */
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      margin-top: 40px;
+      transition: all 0.3s;
+    }
+    
+    .back-button::after {
+      display: none;
+    }
+    
+    .back-button:hover {
+      background: rgba(16, 185, 129, 0.1);
+      border-color: rgba(16, 185, 129, 0.3);
+      transform: translateX(-4px);
+    }
+    
+    /* Icon Colors */
+    .icon-green { color: var(--accent); }
+    .icon-blue { color: var(--blue); }
+    .icon-purple { color: var(--purple); }
+    .icon-pink { color: var(--pink); }
+    .icon-orange { color: var(--orange); }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      main {
+        padding: 60px 20px;
+      }
+      
+      .section {
+        padding: 24px;
+      }
+      
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      
+      .highlight {
+        flex-direction: column;
+      }
+    }
   </style>
 </head>
 <body>
+  <!-- Background Pattern -->
+  <div class="bg-pattern"></div>
+  
   <main>
-    <h1>Politique de confidentialité</h1>
-    <div class="card">
-      <h2>1) Données collectées</h2>
-      <p>Nous collectons uniquement les données nécessaires au fonctionnement du site et au suivi des commandes/demandes : nom, email, message du formulaire, informations de paiement via Stripe (traitées par Stripe en tant que sous‑traitant), et, le cas échéant, des données techniques (adresse IP, user‑agent) à des fins de sécurité et d’audit.</p>
-
-      <h2>2) Finalités</h2>
-      <ul>
-        <li>Répondre aux demandes (formulaire de contact).</li>
-        <li>Gérer l’achat et la facturation (Stripe).</li>
-        <li>Améliorer le produit et l’expérience utilisateur (statistiques anonymisées si activées).</li>
-      </ul>
-
-      <h2>2 bis) Bases légales (RGPD, art. 6)</h2>
-      <ul>
-        <li><strong>Exécution d’un contrat</strong> : gestion des commandes et accès au service.</li>
-        <li><strong>Intérêt légitime</strong> : sécurité, prévention de la fraude, amélioration du site.</li>
-        <li><strong>Consentement</strong> : mesure d’audience non essentielle (si activée).</li>
-      </ul>
-
-      <h2>3) Paiement</h2>
-      <p>Les paiements sont traités par <strong>Stripe</strong>. Nous n’avons pas accès aux numéros de carte. Consultez la politique de confidentialité de Stripe pour plus d’informations : <a href="https://stripe.com/fr/privacy" target="_blank" rel="noopener">stripe.com/fr/privacy</a>.</p>
-
-      <h2>4) Cookies & mesure d’audience</h2>
-      <p>Par défaut, le site ne dépose pas de cookies non essentiels. Si un outil d’analyse est activé (ex. Netlify Analytics, Plausible), seules des statistiques anonymisées peuvent être utilisées. Vous pouvez configurer votre navigateur pour bloquer les cookies et, le cas échéant, retirer votre consentement à tout moment.</p>
-
-      <h2>5) Durée de conservation</h2>
-      <ul>
-        <li><strong>Formulaire de contact</strong> : durée du traitement + 12 mois maximum.</li>
-        <li><strong>Facturation/commande</strong> : 10 ans (obligation légale comptable).</li>
-        <li><strong>Données techniques (logs)</strong> : 6 mois à des fins de sécurité.</li>
-      </ul>
-
-      <h2>6) Vos droits (RGPD)</h2>
-      <p>Vous disposez d’un droit d’accès, de rectification, d’effacement, de limitation, d’opposition et de portabilité. Vous pouvez également introduire une réclamation auprès de la <a href="https://www.cnil.fr/" target="_blank" rel="noopener">CNIL</a>. Pour exercer vos droits : <a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a>.</p>
-
-      <h2>7) Sécurité</h2>
-      <p>Les échanges sont chiffrés (HTTPS). Aucune donnée patient réelle n’est stockée par l’app. L’accès aux sessions est sécurisé par code. Le site est hébergé par Netlify (infrastructures sécurisées) et fait l’objet de mises à jour régulières.</p>
-
-      <h2>8) Contact</h2>
-      <p>Responsable de traitement : VitalX — <a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a></p>
-
-      <p style="margin-top:8px;font-size:12px;color:#a5a5ab;">Dernière mise à jour : 24 septembre 2025</p>
+    <!-- Header -->
+    <div class="header">
+      <div class="badge">
+        🔒 RGPD Compliant
+      </div>
+      <h1>Politique de confidentialité</h1>
+      <p class="subtitle">
+        Transparence totale sur la collecte, l'utilisation et la protection de vos données personnelles
+      </p>
     </div>
-    <p style="margin:12px 0 0;font-size:12px;color:#a5a5ab;">Cette politique est conforme au RGPD et aux exigences d’Apple en matière de confidentialité. Elle pourra être mise à jour en cas d’évolution légale ou technique.</p>
-    <a class="back" href="/">← Retour au site</a>
+
+    <!-- Section 1: Données collectées -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon icon-green">📊</div>
+        <div>
+          <div class="section-number">SECTION 1</div>
+          <h2>Données collectées</h2>
+        </div>
+      </div>
+      <p>
+        Nous collectons <strong>uniquement les données nécessaires</strong> au fonctionnement du site et au suivi des commandes/demandes :
+      </p>
+      <ul>
+        <li>Nom et email (formulaire de contact)</li>
+        <li>Message et demande (formulaire)</li>
+        <li>Informations de paiement via Stripe (traitées par Stripe en tant que sous‑traitant)</li>
+        <li>Données techniques (adresse IP, user‑agent) à des fins de sécurité et d'audit</li>
+      </ul>
+    </div>
+
+    <!-- Section 2: Finalités -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon icon-blue">🎯</div>
+        <div>
+          <div class="section-number">SECTION 2</div>
+          <h2>Finalités d'utilisation</h2>
+        </div>
+      </div>
+      <p>Vos données sont utilisées exclusivement pour :</p>
+      <ul>
+        <li>Répondre à vos demandes (formulaire de contact)</li>
+        <li>Gérer l'achat et la facturation (via Stripe)</li>
+        <li>Améliorer le produit et l'expérience utilisateur (statistiques anonymisées si activées)</li>
+      </ul>
+      
+      <div class="highlight">
+        <div class="highlight-icon">⚖️</div>
+        <div class="highlight-content">
+          <div class="highlight-title">Bases légales (RGPD, art. 6)</div>
+          <div class="highlight-text">
+            <strong style="color: var(--accent-light);">Exécution d'un contrat</strong> : gestion des commandes et accès au service<br>
+            <strong style="color: var(--blue);">Intérêt légitime</strong> : sécurité, prévention de la fraude, amélioration du site<br>
+            <strong style="color: var(--purple);">Consentement</strong> : mesure d'audience non essentielle (si activée)
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3: Paiement -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon icon-purple">💳</div>
+        <div>
+          <div class="section-number">SECTION 3</div>
+          <h2>Paiement & sécurité</h2>
+        </div>
+      </div>
+      <p>
+        Les paiements sont traités par <strong>Stripe</strong>, leader mondial du paiement en ligne. 
+        <strong>Nous n'avons jamais accès à vos numéros de carte bancaire</strong>.
+      </p>
+      <p>
+        Pour en savoir plus : <a href="https://stripe.com/fr/privacy" target="_blank" rel="noopener">Politique de confidentialité Stripe</a>
+      </p>
+    </div>
+
+    <!-- Section 4: Cookies -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon icon-orange">🍪</div>
+        <div>
+          <div class="section-number">SECTION 4</div>
+          <h2>Cookies & mesure d'audience</h2>
+        </div>
+      </div>
+      <p>
+        Par défaut, le site <strong>ne dépose pas de cookies non essentiels</strong>. Si un outil d'analyse est activé (ex. Netlify Analytics, Plausible), seules des <strong>statistiques anonymisées</strong> peuvent être utilisées.
+      </p>
+      <p>
+        Vous pouvez configurer votre navigateur pour bloquer les cookies et, le cas échéant, retirer votre consentement à tout moment.
+      </p>
+    </div>
+
+    <!-- Section 5: Durée -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon icon-pink">⏱️</div>
+        <div>
+          <div class="section-number">SECTION 5</div>
+          <h2>Durée de conservation</h2>
+        </div>
+      </div>
+      <ul>
+        <li><strong>Formulaire de contact</strong> : durée du traitement + 12 mois maximum</li>
+        <li><strong>Facturation/commande</strong> : 10 ans (obligation légale comptable)</li>
+        <li><strong>Données techniques (logs)</strong> : 6 mois à des fins de sécurité</li>
+      </ul>
+      <p style="margin-top: 16px;">
+        Après ces délais, vos données sont automatiquement supprimées de nos systèmes.
+      </p>
+    </div>
+
+    <!-- Section 6: Droits -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon icon-green">✋</div>
+        <div>
+          <div class="section-number">SECTION 6</div>
+          <h2>Vos droits (RGPD)</h2>
+        </div>
+      </div>
+      <p>Conformément au RGPD, vous disposez des droits suivants :</p>
+      <ul>
+        <li><strong>Droit d'accès</strong> : obtenir une copie de vos données</li>
+        <li><strong>Droit de rectification</strong> : corriger vos données inexactes</li>
+        <li><strong>Droit à l'effacement</strong> : supprimer vos données</li>
+        <li><strong>Droit de limitation</strong> : limiter le traitement de vos données</li>
+        <li><strong>Droit d'opposition</strong> : vous opposer au traitement</li>
+        <li><strong>Droit à la portabilité</strong> : récupérer vos données dans un format structuré</li>
+      </ul>
+      
+      <div class="highlight">
+        <div class="highlight-icon">📧</div>
+        <div class="highlight-content">
+          <div class="highlight-title">Comment exercer vos droits ?</div>
+          <div class="highlight-text">
+            Contactez-nous à <a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a><br>
+            Vous pouvez également introduire une réclamation auprès de la <a href="https://www.cnil.fr/" target="_blank" rel="noopener">CNIL</a>.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 7: Sécurité -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon icon-blue">🔐</div>
+        <div>
+          <div class="section-number">SECTION 7</div>
+          <h2>Sécurité & protection</h2>
+        </div>
+      </div>
+      <ul>
+        <li><strong>Chiffrement HTTPS</strong> : tous les échanges sont sécurisés</li>
+        <li><strong>Aucune donnée patient réelle</strong> : l'app ne stocke pas de données médicales</li>
+        <li><strong>Accès par code</strong> : sessions sécurisées par code unique</li>
+        <li><strong>Hébergement sécurisé</strong> : infrastructures Netlify certifiées</li>
+        <li><strong>Mises à jour régulières</strong> : sécurité renforcée en continu</li>
+      </ul>
+    </div>
+
+    <!-- Section 8: Contact -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon icon-purple">💬</div>
+        <div>
+          <div class="section-number">SECTION 8</div>
+          <h2>Contact & responsable</h2>
+        </div>
+      </div>
+      <p>
+        <strong>Responsable de traitement :</strong> VitalX<br>
+        <strong>Email :</strong> <a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a>
+      </p>
+      <p style="margin-top: 16px;">
+        Pour toute question concernant cette politique de confidentialité ou l'exercice de vos droits, n'hésitez pas à nous contacter.
+      </p>
+    </div>
+
+    <!-- Footer Info -->
+    <div class="footer-info">
+      <p class="updated">📅 Dernière mise à jour : 24 septembre 2025</p>
+      <p>
+        Cette politique est conforme au <strong>RGPD</strong> et aux exigences d'<strong>Apple</strong> en matière de confidentialité.
+      </p>
+      <p style="font-size: 12px; margin-top: 8px;">
+        Elle pourra être mise à jour en cas d'évolution légale ou technique.
+      </p>
+    </div>
+
+    <!-- Back Button -->
+    <a href="/" class="back-button">
+      <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+      </svg>
+      Retour au site
+    </a>
   </main>
 </body>
 </html>
