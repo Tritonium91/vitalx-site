@@ -2,8 +2,8 @@
 
 const PRICE_BY_SKU = {
   // === PRODUITS PRINCIPAUX ===
-  'sku_pack':           'price_1SSeCZ2MFaCyLMvR73np4bYa', // Pack VitalX (complet)
-  'sku_pack_basic':     'price_1SSeBc2MFaCyLMvRlQulIRhg', // Pack VitalX Basique
+  'sku_pack':           'price_1SKdaZ2MFaCyLMvRkHyTb6I7', // Pack VitalX (complet)
+  'sku_pack_basic':     'price_1SLWy82MFaCyLMvREJhJjRBO', // Pack VitalX Basique
 
   // Packs reconditionnés (nouveaux)
   'sku_pack_refurb_1':  'price_1SSqRK2MFaCyLMvRPnF7A5Ia',    // ✅ Pack Reconditionné 1 iPad — 1 489 € (TTC)
@@ -14,8 +14,8 @@ const PRICE_BY_SKU = {
   'sku_lic_annual':     'price_1SSqNq2MFaCyLMvRxOOlrLly',   // Licence 1 an — 180 €
 
   // Licence à vie
-  // Actuellement Black Friday à 649 € (prix normal 800 €)
-  'sku_lic_life':       'price_1SSqRy2MFaCyLMvRVYWXEv7a',     // Licence à vie — 649 € BF (à remettre à 800 € après promo)
+  // Actuellement Black Friday à 500 € 
+  'sku_lic_life':       'price_1Sc9ie2MFaCyLMvR64EP2e2C',     // Licence à vie — 500 €
 
   // === ACCESSOIRES (à compléter plus tard) ===
   'sku_acc_dsa_adult':  'price_ACC_DSA_ADULT_REPLACE',
