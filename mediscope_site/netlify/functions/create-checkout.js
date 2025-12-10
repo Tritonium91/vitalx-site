@@ -2,16 +2,16 @@
 
 const PRICE_BY_SKU = {
   // === PRODUITS PRINCIPAUX ===
-  'sku_pack':           'price_1SKdaZ2MFaCyLMvRkHyTb6I7', // Pack VitalX (complet)
-  'sku_pack_basic':     'price_1SLWy82MFaCyLMvREJhJjRBO', // Pack VitalX Basique
+  'sku_pack':           'price_1ScrWQ2MFaCyLMvRSpMRJuf5', // Pack VitalX Premium 2999
+  'sku_pack_basic':     'price_1ScrUy2MFaCyLMvR0FMhQ9VO', // Pack VitalX Basique 2689
 
   // Packs reconditionnés (nouveaux)
   'sku_pack_refurb_1':  'price_1SSqRK2MFaCyLMvRPnF7A5Ia',    // ✅ Pack Reconditionné 1 iPad — 1 489 € (TTC)
   'sku_pack_refurb_2':  'price_1SSqQC2MFaCyLMvRTh5uoL8T',    // ✅ Pack Reconditionné 2 iPad — 1 849 € (TTC)
 
   // === POD'S (nouveaux) ===
-  'sku_pods_classic':   'price_PODS_CLASSIC_REPLACE',        // ✅ POD'S Classic — 1 189 € (TTC)
-  'sku_pods_premium':   'price_PODS_PREMIUM_REPLACE',        // ✅ POD'S Premium — 1 489 € (TTC)
+  'sku_pods_classic':   'price_PODS_CLASSIC_REPLACE',        // ✅ POD'S Classic — 1 589 € (TTC)
+  'sku_pods_premium':   'price_PODS_PREMIUM_REPLACE',        // ✅ POD'S Premium — 1 889 € (TTC)
 
   // === LICENCES ===
   // Abonnement 1 an (15 €/mois → 180 €/an)
