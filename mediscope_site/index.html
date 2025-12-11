@@ -492,7 +492,7 @@
               <div class="relative w-full h-[360px]">
                 <canvas id="priceChart" aria-label="Comparatif de prix Medical Scope vs concurrents" role="img"></canvas>
               </div>
-              <p class="mt-3 text-xs text-zinc-400">Sources publiques & estimations. VitalX : <span class="text-emerald-300 font-medium">3 799 €</span> — Concurrents : 6 500 à 15 000 €.</p>
+              <p class="mt-3 text-xs text-zinc-400">Sources publiques & estimations. VitalX : <span class="text-emerald-300 font-medium">2 999 €</span> — Concurrents : 6 500 à 15 000 €.</p>
             </div>
           </div>
         </div>
@@ -513,6 +513,81 @@
             <a href="/boutique.html" class="mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-emerald-500 text-white px-5 py-3 font-semibold shadow-soft hover:bg-emerald-400 cta-anim no-pulse">Voir les licences dans la Boutique</a>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- POD'S Section -->
+    <section id="pods" class="section py-20 grad">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="text-3xl md:text-5xl font-bold text-glow text-white">VitalX POD'S</h2>
+          <p class="mt-4 text-zinc-300">
+            La version compacte de VitalX qui transforme un <span class="text-blue-400 font-semibold">iPhone en moniteur</span>,
+            idéale pour les formations mobiles, les ateliers en petit groupe et les démonstrations rapides.
+          </p>
+        </div>
+
+        <div class="mt-10 grid md:grid-cols-2 gap-6">
+          <!-- Pack POD'S Classic -->
+          <div class="glass ring-gradient rounded-2xl p-6 flex flex-col justify-between h-full">
+            <div>
+              <h3 class="text-2xl font-semibold text-white">Pack POD'S Classic</h3>
+              <p class="mt-2 text-sm text-zinc-300">
+                Pack destiné à ceux qui possèdent déjà un <strong class="text-blue-400">iPhone ou iPad pour la partie formateur</strong>.
+                Transformez un iPhone en moniteur VitalX POD'S avec constantes, PNI et mode DSA simplifié.
+              </p>
+
+              <ul class="mt-4 text-sm text-white list-disc list-inside space-y-1">
+                <li>1 iPhone 11 ou 12 configuré en <strong class="text-blue-400">moniteur VitalX POD'S</strong></li>
+                <li>1 brassard tension adulte / enfant</li>
+                <li>1 câble SpO₂ / SpCO</li>
+                <li>1 patch DSA adulte / enfant</li>
+                <li>1 boîtier VitalX POD'S</li>
+                <li>1 housse Bagheera</li>
+                <li>Licence à vie <strong class="text-blue-400">VitalX POD'S</strong> (moniteur + DSA simplifié avec métronome)</li>
+              </ul>
+            </div>
+
+            <div class="mt-6 flex items-center justify-end">
+              <a href="/boutique.html#pods" class="inline-flex items-center gap-2 rounded-xl bg-emerald-500 text-white px-4 py-2 text-sm font-semibold shadow-soft hover:bg-emerald-400 cta-anim no-pulse">
+                Voir le pack Classic
+              </a>
+            </div>
+          </div>
+
+          <!-- Pack POD'S Premium -->
+          <div class="glass ring-gradient rounded-2xl p-6 flex flex-col justify-between h-full">
+            <div>
+              <h3 class="text-2xl font-semibold text-white">Pack POD'S Premium</h3>
+              <p class="mt-2 text-sm text-zinc-300">
+                Pack clé en main pour les centres de formation : un <strong class="text-blue-400">iPad formateur dédié</strong>
+                + un iPhone POD'S utilisé comme moniteur médical.
+              </p>
+
+              <ul class="mt-4 text-sm text-white list-disc list-inside space-y-1">
+                <li>1 iPhone 11 ou 12 configuré en <strong class="text-blue-400">moniteur VitalX POD'S</strong></li>
+                <li>1 iPad 11" A16 dédié au <strong class="text-blue-400">formateur</strong></li>
+                <li>1 brassard tension adulte / enfant</li>
+                <li>1 câble SpO₂ / SpCO</li>
+                <li>1 patch DSA adulte / enfant</li>
+                <li>1 boîtier VitalX POD'S</li>
+                <li>1 housse Bagheera</li>
+                <li>Licence à vie <strong class="text-blue-400">VitalX POD'S</strong> (moniteur + DSA simplifié avec métronome)</li>
+              </ul>
+            </div>
+
+            <div class="mt-6 flex items-center justify-end">
+              <a href="/boutique.html#pods" class="inline-flex items-center gap-2 rounded-xl bg-emerald-500 text-white px-4 py-2 text-sm font-semibold shadow-soft hover:bg-emerald-400 cta-anim no-pulse">
+                Voir le pack Premium
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <p class="mt-6 text-xs text-zinc-400 text-center max-w-2xl mx-auto">
+          Compatibilité minimale recommandée : <strong>iOS 18+</strong> pour l'iPhone (moniteur POD'S) et <strong>iPadOS 18+</strong> pour l'iPad
+          formateur.
+        </p>
       </div>
     </section>
 
@@ -801,7 +876,7 @@
           labels: ['VitalX', 'Concurrent A', 'Concurrent B', 'Concurrent C'],
           datasets: [{
             label: 'Prix (€)',
-            data: [3799, 6500, 9000, 15000],
+            data: [2999, 6500, 9000, 15000],
             backgroundColor: [
               'rgba(16,185,129,0.85)', // emerald for Medical Scope
               'rgba(161,161,170,0.5)',
