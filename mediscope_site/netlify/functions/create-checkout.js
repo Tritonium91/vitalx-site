@@ -10,8 +10,8 @@ const PRICE_BY_SKU = {
   'sku_pack_refurb_2':  'price_1SSqQC2MFaCyLMvRTh5uoL8T',    // ✅ Pack Reconditionné 2 iPad — 1 849 € (TTC)
 
   // === POD'S (nouveaux) ===
-  'sku_pods_classic':   'price_PODS_CLASSIC_REPLACE',        // ✅ POD'S Classic — 1 589 € (TTC)
-  'sku_pods_premium':   'price_PODS_PREMIUM_REPLACE',        // ✅ POD'S Premium — 1 889 € (TTC)
+  'sku_pods_classic':   'price_1T4lur2MFaCyLMvRIe4ApI19',        // ✅ POD'S Classic — 1 300 € (TTC)
+  'sku_pods_premium':   'price_1T4lvf2MFaCyLMvRZPaFFxTz',        // ✅ POD'S Premium — 1 600 € (TTC)
 
   // === LICENCES ===
   // Abonnement 1 an (15 €/mois → 180 €/an)
