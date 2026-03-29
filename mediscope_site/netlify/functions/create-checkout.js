@@ -21,6 +21,12 @@ const PRICE_BY_SKU = {
   // Actuellement Black Friday à 500 € 
   'sku_lic_life':       'price_1Sc9ie2MFaCyLMvR64EP2e2C',   // Licence à vie — 500 €
 
+
+    // === ECUSSONS ===
+  'sku_ecusson_chat_noir':  'price_1TGJiR2MFaCyLMvRNRTfejPp',
+  'sku_ecusson_vitalx_2k26': 'price_1TGJmJ2MFaCyLMvRc54chMoQ',
+  'sku_ecusson_stop_blood': 'price_1TGJlS2MFaCyLMvRaF0mNB5f',
+
   // === ACCESSOIRES (à compléter plus tard) ===
   'sku_acc_dsa_adult':  'price_ACC_DSA_ADULT_REPLACE',
   'sku_acc_dsa_pedia':  'price_ACC_DSA_PEDIA_REPLACE',
