@@ -100,6 +100,7 @@
         <a href="/" class="hover:text-white">Accueil</a>
         <a href="#licenses" class="hover:text-white">Licences</a>
         <a href="#accessoires" class="hover:text-white">Accessoires</a>
+        <a href="#ecussons" class="hover:text-white">Écussons</a>
         <a href="/#contact" class="hover:text-white">Contact</a>
       </nav>
       <div class="flex items-center gap-3">
@@ -388,6 +389,38 @@
           <p class="mt-2 text-sm text-zinc-300">Capteur de température cutanée/centrale pour scénarios avancés.</p>
           <div class="mt-3 text-2xl font-extrabold">50 €</div>
           <button disabled class="mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-gray-700 text-white/60 px-5 py-3 font-semibold cursor-not-allowed opacity-60">Indisponible</button>
+        </article>
+      </div>
+    </section>
+    <!-- SECTION ECUSSONS -->
+    <section id="ecussons" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-12">
+      <div class="flex items-center justify-center">
+        <h2 class="text-2xl md:text-3xl font-extrabold text-center">Écussons</h2>
+      </div>
+      <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Écusson Chat Noir -->
+        <article class="glass ring-gradient rounded-2xl p-6 flex flex-col">
+          <img src="/assets/logo chat noir.png" alt="Écusson logo chat noir" class="w-full max-h-44 object-contain rounded-xl mb-4 bg-zinc-900/40 p-2" loading="lazy" />
+          <h3 class="text-lg font-semibold">Écusson logo chat noir</h3>
+          <div class="mt-3 text-2xl font-extrabold">7,90 € TTC</div>
+          <button data-sku="sku_ecusson_chat_noir" data-name="Écusson logo chat noir" data-price="790" data-image="/assets/logo chat noir.png" class="add-to-cart mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-400 text-white px-5 py-3 font-semibold shadow-soft hover:from-emerald-500 hover:via-emerald-400 hover:to-teal-300 cta-anim">Ajouter au panier</button>
+        </article>
+
+        <!-- Écusson VitalX 2K26 -->
+        <article class="glass ring-gradient rounded-2xl p-6 flex flex-col">
+          <img src="/assets/logo vitalx 2K26.png" alt="Écusson logo VitalX 2K26" class="w-full max-h-44 object-contain rounded-xl mb-4 bg-zinc-900/40 p-2" loading="lazy" />
+          <h3 class="text-lg font-semibold">Écusson logo VitalX 2K26</h3>
+          <div class="mt-3 text-2xl font-extrabold">7,90 € TTC</div>
+          <button data-sku="sku_ecusson_vitalx_2k26" data-name="Écusson logo VitalX 2K26" data-price="790" data-image="/assets/logo vitalx 2K26.png" class="add-to-cart mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-400 text-white px-5 py-3 font-semibold shadow-soft hover:from-emerald-500 hover:via-emerald-400 hover:to-teal-300 cta-anim">Ajouter au panier</button>
+        </article>
+
+        <!-- Écusson Stop Blood -->
+        <article class="glass ring-gradient rounded-2xl p-6 flex flex-col">
+          <img src="/assets/logo stop blood.png" alt="Écusson logo stop blood" class="w-full max-h-44 object-contain rounded-xl mb-4 bg-zinc-900/40 p-2" loading="lazy" />
+          <h3 class="text-lg font-semibold">Écusson logo stop blood</h3>
+          <div class="mt-3 text-2xl font-extrabold">7,90 € TTC</div>
+          <button data-sku="sku_ecusson_stop_blood" data-name="Écusson logo stop blood" data-price="790" data-image="/assets/logo stop blood.png" class="add-to-cart mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-400 text-white px-5 py-3 font-semibold shadow-soft hover:from-emerald-500 hover:via-emerald-400 hover:to-teal-300 cta-anim">Ajouter au panier</button>
         </article>
       </div>
     </section>
@@ -729,13 +762,15 @@
   /* Pack purchase card, all licence cards, all accessory cards */
   #pack article,
   #licenses article,
-  #accessoires article {
+  #accessoires article,
+  #ecussons article {
     transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
     will-change: transform;
   }
   #pack article:hover,
   #licenses article:hover,
-  #accessoires article:hover {
+  #accessoires article:hover,
+  #ecussons article:hover {
     transform: translateY(-4px) scale(1.01);
     box-shadow: 0 12px 40px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.06) inset;
     filter: saturate(1.05);
@@ -753,8 +788,9 @@
     box-shadow: 0 14px 44px rgba(251,191,36,.55), 0 0 0 1px rgba(251,191,36,.35) inset;
     filter: saturate(1.08);
   }
-  /* Accessories: emerald/green glow */
-  #accessoires article:hover {
+  /* Accessories + écussons: emerald/green glow */
+  #accessoires article:hover,
+  #ecussons article:hover {
     box-shadow: 0 14px 44px rgba(16,185,129,.55), 0 0 0 1px rgba(16,185,129,.35) inset;
     filter: saturate(1.08);
   }
