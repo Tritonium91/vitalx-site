@@ -1,33 +1,26 @@
-// mediscop_site/netlify/functions/create-checkout.js
-
 const PRICE_BY_SKU = {
   // === PRODUITS PRINCIPAUX ===
   'sku_pack':           'price_1ScrWQ2MFaCyLMvRSpMRJuf5', // Pack VitalX Premium 2999
   'sku_pack_basic':     'price_1ScrUy2MFaCyLMvR0FMhQ9VO', // Pack VitalX Basique 2689
 
-  // Packs reconditionnés (nouveaux)
-  'sku_pack_refurb_1':  'price_1SSqRK2MFaCyLMvRPnF7A5Ia',    // ✅ Pack Reconditionné 1 iPad — 1 489 € (TTC)
-  'sku_pack_refurb_2':  'price_1SSqQC2MFaCyLMvRTh5uoL8T',    // ✅ Pack Reconditionné 2 iPad — 1 849 € (TTC)
+  // Packs reconditionnés
+  'sku_pack_refurb_1':  'price_1SSqRK2MFaCyLMvRPnF7A5Ia', // Pack Reconditionné 1 iPad — 1 489 €
+  'sku_pack_refurb_2':  'price_1SSqQC2MFaCyLMvRTh5uoL8T', // Pack Reconditionné 2 iPad — 1 849 €
 
-  // === POD'S (nouveaux) ===
-  'sku_pods_classic':   'price_1T4lur2MFaCyLMvRIe4ApI19',        // ✅ POD'S Classic — 1 300 € (TTC)
-  'sku_pods_premium':   'price_1T4lvf2MFaCyLMvRZPaFFxTz',        // ✅ POD'S Premium — 1 600 € (TTC)
+  // === POD'S ===
+  'sku_pods_classic':   'price_1T4lur2MFaCyLMvRIe4ApI19', // POD'S Classic — 1 300 €
+  'sku_pods_premium':   'price_1T4lvf2MFaCyLMvRZPaFFxTz', // POD'S Premium — 1 600 €
 
   // === LICENCES ===
-  // Abonnement 1 an (15 €/mois → 180 €/an)
-  'sku_lic_annual':     'price_1SSqNq2MFaCyLMvRxOOlrLly',   // Licence 1 an — 180 €
+  'sku_lic_annual':     'price_1SSqNq2MFaCyLMvRxOOlrLly', // Licence 1 an — 180 €
+  'sku_lic_life':       'price_1Sc9ie2MFaCyLMvR64EP2e2C', // Licence à vie — 500 €
 
-  // Licence à vie
-  // Actuellement Black Friday à 500 € 
-  'sku_lic_life':       'price_1Sc9ie2MFaCyLMvR64EP2e2C',   // Licence à vie — 500 €
-
-
-    // === ECUSSONS ===
-  'sku_ecusson_chat_noir':  'price_1TGJiR2MFaCyLMvRNRTfejPp',
+  // === ECUSSONS ===
+  'sku_ecusson_chat_noir':   'price_1TGJiR2MFaCyLMvRNRTfejPp',
   'sku_ecusson_vitalx_2k26': 'price_1TGJmJ2MFaCyLMvRc54chMoQ',
-  'sku_ecusson_stop_blood': 'price_1TGJlS2MFaCyLMvRaF0mNB5f',
+  'sku_ecusson_stop_blood':  'price_1TGJlS2MFaCyLMvRaF0mNB5f',
 
-  // === ACCESSOIRES (à compléter plus tard) ===
+  // === ACCESSOIRES ===
   'sku_acc_dsa_adult':  'price_ACC_DSA_ADULT_REPLACE',
   'sku_acc_dsa_pedia':  'price_ACC_DSA_PEDIA_REPLACE',
   'sku_acc_cable_ecg':  'price_ACC_CABLE_ECG_REPLACE',
@@ -38,26 +31,51 @@ const PRICE_BY_SKU = {
   'sku_acc_temp':       'price_ACC_TEMP_REPLACE',
 };
 
+const PATCH_SKUS = new Set([
+  'sku_ecusson_chat_noir',
+  'sku_ecusson_vitalx_2k26',
+  'sku_ecusson_stop_blood',
+]);
+
 exports.handler = async (event) => {
   try {
-    if (event.httpMethod !== 'POST') return json(405, { error: 'Méthode non autorisée' });
+    if (event.httpMethod !== 'POST') {
+      return json(405, { error: 'Méthode non autorisée' });
+    }
 
     const { items, mode = 'payment' } = JSON.parse(event.body || '{}');
-    if (!Array.isArray(items) || !items.length) return json(400, { error: 'Panier vide' });
 
-    // Détecte si le panier contient au moins une licence pour afficher le champ perso dans Checkout
-    const hasLicense = items.some(({ sku }) => String(sku || '').startsWith('sku_lic_'));
+    if (!Array.isArray(items) || !items.length) {
+      return json(400, { error: 'Panier vide' });
+    }
+
+    // Détecte les licences
+    const hasLicense = items.some(({ sku }) =>
+      String(sku || '').startsWith('sku_lic_')
+    );
+
+    // Détecte les écussons
+    const hasPatch = items.some(({ sku }) => PATCH_SKUS.has(String(sku || '')));
 
     const lineItems = [];
     for (const { sku, quantity } of items) {
       const price = PRICE_BY_SKU[sku];
-      if (!price) return json(400, { error: `Article invalide: ${sku}` });
-      lineItems.push({ price, quantity: Math.max(1, Math.min(99, Number(quantity) || 1)) });
+      if (!price) {
+        return json(400, { error: `Article invalide: ${sku}` });
+      }
+
+      lineItems.push({
+        price,
+        quantity: Math.max(1, Math.min(99, Number(quantity) || 1)),
+      });
     }
 
     const siteUrl = process.env.SITE_URL || 'https://vitalx.org';
     const secret = process.env.STRIPE_SECRET_KEY;
-    if (!secret) return json(500, { error: 'Clé Stripe manquante (STRIPE_SECRET_KEY)' });
+
+    if (!secret) {
+      return json(500, { error: 'Clé Stripe manquante (STRIPE_SECRET_KEY)' });
+    }
 
     const body = new URLSearchParams();
     body.append('mode', mode);
@@ -66,7 +84,7 @@ exports.handler = async (event) => {
     body.append('billing_address_collection', 'auto');
     body.append('allow_promotion_codes', 'true');
 
-    // === Champ personnalisé Stripe Checkout (uniquement si licence dans le panier) ===
+    // Champ personnalisé si licence
     if (hasLicense) {
       body.append('custom_fields[0][key]', 'current_license_code');
       body.append('custom_fields[0][label][type]', 'custom');
@@ -76,21 +94,27 @@ exports.handler = async (event) => {
       body.append('custom_fields[0][text][maximum_length]', '40');
       body.append('custom_fields[0][optional]', 'true');
 
-      // Petit texte d’aide sous le bouton Payer (facultatif)
-      body.append('custom_text[submit][message]', 'Vous avez déjà une licence ? Indiquez votre code pour accélérer la prolongation.');
+      body.append(
+        'custom_text[submit][message]',
+        'Vous avez déjà une licence ? Indiquez votre code pour accélérer la prolongation.'
+      );
     }
-    // === Fin champ personnalisé ===
 
-    // Adresse & options de livraison (affichées dans Checkout)
-    ['FR', 'BE', 'CH', 'LU'].forEach(c => body.append('shipping_address_collection[allowed_countries][]', c));
-    body.append('shipping_options[0][shipping_rate_data][type]', 'fixed_amount');
-    body.append('shipping_options[0][shipping_rate_data][fixed_amount][amount]', '0');
-    body.append('shipping_options[0][shipping_rate_data][fixed_amount][currency]', 'eur');
-    body.append('shipping_options[0][shipping_rate_data][display_name]', 'Livraison économique (15–30 jours)');
-    body.append('shipping_options[0][shipping_rate_data][delivery_estimate][minimum][unit]', 'day');
-    body.append('shipping_options[0][shipping_rate_data][delivery_estimate][minimum][value]', '15');
-    body.append('shipping_options[0][shipping_rate_data][delivery_estimate][maximum][unit]', 'day');
-    body.append('shipping_options[0][shipping_rate_data][delivery_estimate][maximum][value]', '30');
+    // Livraison uniquement si écusson présent
+    if (hasPatch) {
+      ['FR', 'BE', 'CH', 'LU'].forEach((c) => {
+        body.append('shipping_address_collection[allowed_countries][]', c);
+      });
+
+      body.append('shipping_options[0][shipping_rate_data][type]', 'fixed_amount');
+      body.append('shipping_options[0][shipping_rate_data][fixed_amount][amount]', '380'); // 3,80 €
+      body.append('shipping_options[0][shipping_rate_data][fixed_amount][currency]', 'eur');
+      body.append('shipping_options[0][shipping_rate_data][display_name]', 'Livraison écussons');
+      body.append('shipping_options[0][shipping_rate_data][delivery_estimate][minimum][unit]', 'day');
+      body.append('shipping_options[0][shipping_rate_data][delivery_estimate][minimum][value]', '4');
+      body.append('shipping_options[0][shipping_rate_data][delivery_estimate][maximum][unit]', 'day');
+      body.append('shipping_options[0][shipping_rate_data][delivery_estimate][maximum][value]', '8');
+    }
 
     // Lignes articles
     lineItems.forEach((li, i) => {
@@ -101,14 +125,17 @@ exports.handler = async (event) => {
     const resp = await fetch('https://api.stripe.com/v1/checkout/sessions', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${secret}`,
+        Authorization: `Bearer ${secret}`,
         'Content-Type': 'application/x-www-form-urlencoded',
       },
       body,
     });
 
     const data = await resp.json();
-    if (!resp.ok) return json(400, { error: data.error?.message || 'Erreur Stripe' });
+
+    if (!resp.ok) {
+      return json(400, { error: data.error?.message || 'Erreur Stripe' });
+    }
 
     return json(200, { url: data.url });
   } catch (e) {
