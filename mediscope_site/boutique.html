@@ -544,9 +544,10 @@
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') close();
       });
+    })();
 
-      // Année dynamique
-      document.getElementById('y').textContent = new Date().getFullYear();
+    // Année dynamique
+    document.getElementById('y').textContent = new Date().getFullYear();
 
     // Liens Stripe (live)
     const STRIPE_PACK = 'https://buy.stripe.com/fZueV6bTZ3QH0AP29x6kg07';    // Pack complet
