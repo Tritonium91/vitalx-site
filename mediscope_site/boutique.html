@@ -401,7 +401,7 @@
 
         <!-- Écusson Chat Noir -->
         <article class="glass ring-gradient rounded-2xl p-6 flex flex-col">
-          <img src="/assets/logo chat noir.png" alt="Écusson logo chat noir" class="w-full max-h-44 object-contain rounded-xl mb-4 bg-zinc-900/40 p-2" loading="lazy" />
+          <img src="/assets/logo chat noir.png" alt="Écusson logo chat noir" class="ecusson-img cursor-zoom-in w-full max-h-44 object-contain rounded-xl mb-4 bg-zinc-900/40 p-2" loading="lazy" />
           <h3 class="text-lg font-semibold">Écusson logo chat noir</h3>
           <div class="mt-3 text-2xl font-extrabold">7,90 € TTC</div>
           <button data-sku="sku_ecusson_chat_noir" data-name="Écusson logo chat noir" data-price="790" data-image="/assets/logo chat noir.png" class="add-to-cart mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-400 text-white px-5 py-3 font-semibold shadow-soft hover:from-emerald-500 hover:via-emerald-400 hover:to-teal-300 cta-anim">Ajouter au panier</button>
@@ -409,7 +409,7 @@
 
         <!-- Écusson VitalX 2K26 -->
         <article class="glass ring-gradient rounded-2xl p-6 flex flex-col">
-          <img src="/assets/logo vitalx 2K26.png" alt="Écusson logo VitalX 2K26" class="w-full max-h-44 object-contain rounded-xl mb-4 bg-zinc-900/40 p-2" loading="lazy" />
+          <img src="/assets/logo vitalx 2K26.png" alt="Écusson logo VitalX 2K26" class="ecusson-img cursor-zoom-in w-full max-h-44 object-contain rounded-xl mb-4 bg-zinc-900/40 p-2" loading="lazy" />
           <h3 class="text-lg font-semibold">Écusson logo VitalX 2K26</h3>
           <div class="mt-3 text-2xl font-extrabold">7,90 € TTC</div>
           <button data-sku="sku_ecusson_vitalx_2k26" data-name="Écusson logo VitalX 2K26" data-price="790" data-image="/assets/logo vitalx 2K26.png" class="add-to-cart mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-400 text-white px-5 py-3 font-semibold shadow-soft hover:from-emerald-500 hover:via-emerald-400 hover:to-teal-300 cta-anim">Ajouter au panier</button>
@@ -417,7 +417,7 @@
 
         <!-- Écusson Stop Blood -->
         <article class="glass ring-gradient rounded-2xl p-6 flex flex-col">
-          <img src="/assets/logo stop blood.png" alt="Écusson logo stop blood" class="w-full max-h-44 object-contain rounded-xl mb-4 bg-zinc-900/40 p-2" loading="lazy" />
+          <img src="/assets/logo stop blood.png" alt="Écusson logo stop blood" class="ecusson-img cursor-zoom-in w-full max-h-44 object-contain rounded-xl mb-4 bg-zinc-900/40 p-2" loading="lazy" />
           <h3 class="text-lg font-semibold">Écusson logo stop blood</h3>
           <div class="mt-3 text-2xl font-extrabold">7,90 € TTC</div>
           <button data-sku="sku_ecusson_stop_blood" data-name="Écusson logo stop blood" data-price="790" data-image="/assets/logo stop blood.png" class="add-to-cart mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-400 text-white px-5 py-3 font-semibold shadow-soft hover:from-emerald-500 hover:via-emerald-400 hover:to-teal-300 cta-anim">Ajouter au panier</button>
@@ -508,9 +508,45 @@
     </div>
   </footer>
 
+  <!-- ECUSSON LIGHTBOX -->
+  <div id="ecussonLightbox" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden items-center justify-center z-50">
+    <button id="ecussonLightboxClose" class="absolute top-4 right-4 text-white text-2xl font-bold">✕</button>
+    <img id="ecussonLightboxImg" src="" alt="" class="max-w-[90vw] max-h-[85vh] object-contain rounded-xl shadow-2xl" />
+  </div>
+
   <script>
-    // Année dynamique
-    document.getElementById('y').textContent = new Date().getFullYear();
+    (function(){
+      const lightbox = document.getElementById('ecussonLightbox');
+      const imgBox = document.getElementById('ecussonLightboxImg');
+      const btnClose = document.getElementById('ecussonLightboxClose');
+
+      if (!lightbox || !imgBox) return;
+
+      document.querySelectorAll('#ecussons .ecusson-img').forEach(img => {
+        img.addEventListener('click', () => {
+          imgBox.src = img.src;
+          imgBox.alt = img.alt || '';
+          lightbox.classList.remove('hidden');
+          lightbox.classList.add('flex');
+        });
+      });
+
+      function close() {
+        lightbox.classList.add('hidden');
+        lightbox.classList.remove('flex');
+        imgBox.src = '';
+      }
+
+      if (btnClose) btnClose.addEventListener('click', close);
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) close();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') close();
+      });
+
+      // Année dynamique
+      document.getElementById('y').textContent = new Date().getFullYear();
 
     // Liens Stripe (live)
     const STRIPE_PACK = 'https://buy.stripe.com/fZueV6bTZ3QH0AP29x6kg07';    // Pack complet
