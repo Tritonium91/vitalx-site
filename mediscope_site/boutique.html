@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>VitalX — Boutique</title>
-  <meta name="description" content="Boutique officielle VitalX : Pack complet, licences 3/6/12 mois et autres produits." />
+  <meta name="description" content="Boutique officielle VitalX : Pack complet, licences et accessoires." />
   <link rel="icon" href="/favicon.ico" />
 
   <!-- Rich Results: Product structured data for Google -->
@@ -13,20 +13,15 @@
     "@context": "https://schema.org/",
     "@type": "Product",
     "name": "Pack VitalX (simulateur de monitorage d'entraînement)",
-    "image": [
-      "https://vitalx.org/assets/pack-vitalx.png"
-    ],
+    "image": ["https://vitalx.org/assets/pack-vitalx.png"],
     "description": "Simulateur de monitorage réaliste pour la formation médicale et paramédicale : ECG, DSA, PNI, SpO2, EtCO2, température. Pack complet avec 2 iPad.",
     "sku": "VITALX_PACK",
-    "brand": {
-      "@type": "Brand",
-      "name": "VitalX"
-    },
+    "brand": { "@type": "Brand", "name": "VitalX" },
     "offers": {
       "@type": "Offer",
       "url": "https://vitalx.org/boutique.html#pack",
       "priceCurrency": "EUR",
-      "price": "2999.00",
+      "price": "3600.00",
       "availability": "https://schema.org/InStock"
     }
   }
@@ -36,41 +31,44 @@
     "@context": "https://schema.org/",
     "@type": "Product",
     "name": "Pack VitalX Basique (simulateur de monitorage d'entraînement)",
-    "image": [
-      "https://vitalx.org/assets/pack-vitalx1.png"
-    ],
-    "description": "Version basique du simulateur VitalX : ECG, DSA, PNI, SpO2, EtCO2, température. 1 iPad inclus. Idéal si vous possédez déjà un iPad/iPhone pour le contrôle.",
+    "image": ["https://vitalx.org/assets/pack-vitalx1.png"],
+    "description": "Version basique du simulateur VitalX : ECG, DSA, PNI, SpO2, EtCO2, température. 1 iPad inclus.",
     "sku": "VITALX_PACK_BASIC",
-    "brand": {
-      "@type": "Brand",
-      "name": "VitalX"
-    },
+    "brand": { "@type": "Brand", "name": "VitalX" },
     "offers": {
       "@type": "Offer",
       "url": "https://vitalx.org/boutique.html#pack",
       "priceCurrency": "EUR",
-      "price": "2689.00",
+      "price": "3300.00",
       "availability": "https://schema.org/InStock"
     }
   }
   </script>
 
-  <!-- Tailwind (config en amont pour conserver les couleurs/typo du site) -->
   <script>
-    tailwind = window.tailwind || {}; // avoid re-def if embedded
+    tailwind = window.tailwind || {};
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: {
-            sans: [
-              'SF Pro Display','SF Pro Text','Inter','system-ui','-apple-system','Segoe UI','Roboto','Ubuntu','Cantarell','Noto Sans','Helvetica Neue','Arial','sans-serif'
-            ]
+            sans: ['SF Pro Display','SF Pro Text','Inter','system-ui','-apple-system','Segoe UI','Roboto','Helvetica Neue','Arial','sans-serif']
           },
           colors: {
             brand: { 50:'#eff6ff',100:'#dbeafe',200:'#bfdbfe',300:'#93c5fd',400:'#60a5fa',500:'#3b82f6',600:'#2563eb',700:'#1d4ed8',800:'#1e40af',900:'#1e3a8a' }
           },
           boxShadow: {
-            soft: '0 10px 30px rgba(0,0,0,0.12)'
+            soft: '0 10px 30px rgba(0,0,0,0.12)',
+            glow: '0 20px 60px -20px rgba(59,130,246,.45)'
+          },
+          animation: {
+            'fade-up': 'fadeUp .6s ease both',
+            'shimmer': 'shimmer 2.4s linear infinite',
+            'float': 'float 6s ease-in-out infinite'
+          },
+          keyframes: {
+            fadeUp: { '0%':{opacity:0, transform:'translateY(12px)'}, '100%':{opacity:1, transform:'translateY(0)'} },
+            shimmer: { '0%':{backgroundPosition:'-200% 0'}, '100%':{backgroundPosition:'200% 0'} },
+            float: { '0%,100%':{transform:'translateY(0)'}, '50%':{transform:'translateY(-6px)'} }
           }
         }
       }
@@ -78,59 +76,145 @@
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
+    :root {
+      --bg-0:#070709;
+      --bg-1:#0b0b10;
+    }
+    html, body { background: var(--bg-0); }
     .ring-gradient{box-shadow:0 0 0 1px rgba(255,255,255,.06), inset 0 0 0 1px rgba(255,255,255,.05)}
-    .glass{background:rgba(20,20,25,.6);backdrop-filter:saturate(120%)}
-    .grad{background: radial-gradient(1200px 600px at 10% 0%, rgba(59,130,246,.15), transparent),
-                  radial-gradient(1200px 600px at 90% 20%, rgba(16,185,129,.12), transparent),
-                  linear-gradient(180deg, #0a0a0b 0%, #0b0b0c 100%);}
-    .cta-anim{transition:transform .08s ease, box-shadow .12s ease}
-    .cta-anim:active{transform:translateY(1px)}
+    .glass{background:rgba(18,18,24,.62);backdrop-filter:saturate(140%) blur(8px)}
+    .grad-bg{
+      background:
+        radial-gradient(900px 500px at 12% -10%, rgba(59,130,246,.18), transparent 60%),
+        radial-gradient(900px 500px at 88% 0%, rgba(236,72,153,.12), transparent 60%),
+        radial-gradient(900px 500px at 50% 110%, rgba(16,185,129,.10), transparent 60%),
+        linear-gradient(180deg, #07070a 0%, #0a0a10 100%);
+    }
+    .cta-anim{transition:transform .12s ease, box-shadow .15s ease, filter .15s ease}
+    .cta-anim:hover{filter:brightness(1.06)}
+    .cta-anim:active{transform:translateY(1px) scale(.99)}
     #refurbPicker button{ transition: background-color .12s ease, color .12s ease }
+
+    /* Section title underline */
+    .title-bar{
+      display:inline-block;
+      background: linear-gradient(90deg, #60a5fa, #ec4899, #f59e0b);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .divider-glow{
+      height:1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent);
+    }
+
+    /* Card hover lift */
+    .card-lift { transition: transform .25s ease, box-shadow .25s ease, filter .25s ease; }
+    @media (hover:hover) and (pointer:fine) {
+      .card-lift:hover { transform: translateY(-6px); }
+    }
+
+    /* Price tag */
+    .price {
+      background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+
+    /* Shimmer button */
+    .btn-shimmer{
+      background-size:200% 100%;
+      background-image: linear-gradient(110deg, rgba(255,255,255,0) 30%, rgba(255,255,255,.25) 50%, rgba(255,255,255,0) 70%);
+    }
+
+    /* Floating cart bubble */
+    .cart-fab{
+      position:fixed; right:18px; bottom:18px; z-index:45;
+      box-shadow: 0 18px 40px -10px rgba(16,185,129,.55), 0 0 0 1px rgba(255,255,255,.08) inset;
+    }
+
+    /* Quiet scrollbar inside drawer */
+    #cartItems::-webkit-scrollbar{ width:8px }
+    #cartItems::-webkit-scrollbar-thumb{ background:rgba(255,255,255,.12); border-radius:8px }
+
+    /* Toast */
+    .toast{
+      position: fixed; left:50%; bottom:24px; transform:translate(-50%, 20px);
+      background: rgba(16,185,129,.95); color:white; padding:10px 16px;
+      border-radius: 12px; font-weight:600; font-size:14px;
+      box-shadow: 0 14px 40px -10px rgba(16,185,129,.6);
+      opacity:0; pointer-events:none; transition: all .25s ease; z-index: 80;
+    }
+    .toast.show{ opacity:1; transform: translate(-50%, 0); }
+
+    /* Subtle grid noise overlay */
+    .noise::before{
+      content:""; position:absolute; inset:0; pointer-events:none; opacity:.05;
+      background-image: radial-gradient(rgba(255,255,255,.6) 1px, transparent 1px);
+      background-size: 3px 3px;
+    }
   </style>
 </head>
-<body class="min-h-full bg-black text-white">
-  <!-- Header simple -->
-  <header class="sticky top-0 z-40 backdrop-blur bg-black/40 border-b border-white/10">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-2">
-        <img src="/assets/logo.png" alt="Logo VitalX" class="h-7 w-auto" />
-        <span class="font-bold tracking-tight">VitalX</span>
+<body class="min-h-full text-white grad-bg">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 backdrop-blur-md bg-black/50 border-b border-white/10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2.5 group">
+        <img src="/assets/logo.png" alt="Logo VitalX" class="h-8 w-auto group-hover:scale-105 transition" />
+        <span class="font-bold tracking-tight text-lg">VitalX</span>
       </a>
-      <nav class="hidden md:flex items-center gap-6 text-sm text-zinc-300">
-        <a href="/" class="hover:text-white">Accueil</a>
-        <a href="#licenses" class="hover:text-white">Licences</a>
-        <a href="#accessoires" class="hover:text-white">Accessoires</a>
-        <a href="#ecussons" class="hover:text-white">Écussons</a>
-        <a href="/#contact" class="hover:text-white">Contact</a>
+      <nav class="hidden md:flex items-center gap-7 text-sm text-zinc-300">
+        <a href="/" class="hover:text-white transition">Accueil</a>
+        <a href="#pack" class="hover:text-white transition">Packs</a>
+        <a href="#licenses" class="hover:text-white transition">Licences</a>
+        <a href="#ecussons" class="hover:text-white transition">Écussons</a>
+        <a href="/#contact" class="hover:text-white transition">Contact</a>
       </nav>
       <div class="flex items-center gap-3">
-        <a href="#catalogue" class="inline-flex items-center rounded-xl bg-emerald-500 text-white px-4 py-2 text-sm font-semibold shadow-soft hover:bg-emerald-400 cta-anim">Voir le catalogue</a>
-        <button id="openCart" type="button" class="relative inline-flex items-center rounded-xl bg-white/10 text-white px-3 py-2 text-sm font-semibold ring-1 ring-white/15 hover:bg-white/15">
-          🛒 Panier <span id="cartCount" class="ml-2 inline-flex items-center justify-center rounded-full bg-emerald-500 text-white text-[11px] font-bold px-2 py-0.5">0</span>
+        <a href="#pack" class="hidden sm:inline-flex items-center rounded-xl bg-emerald-500 text-white px-4 py-2 text-sm font-semibold shadow-soft hover:bg-emerald-400 cta-anim">Voir les packs</a>
+        <button id="openCart" type="button" class="relative inline-flex items-center gap-2 rounded-xl bg-white/10 text-white px-3.5 py-2 text-sm font-semibold ring-1 ring-white/15 hover:bg-white/15 cta-anim">
+          <span aria-hidden="true">🛒</span>
+          <span class="hidden sm:inline">Panier</span>
+          <span id="cartCount" class="inline-flex items-center justify-center rounded-full bg-emerald-500 text-white text-[11px] font-bold px-2 py-0.5 min-w-[20px]">0</span>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- Hero boutique -->
-  <section class="bg-black">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-      <div class="max-w-4xl mx-auto text-center">
-        <img src="/assets/medxbyvitalx.png" alt="Logo VitalX" class="mx-auto w-full max-w-2xl object-contain" />
-        
+  <!-- Hero -->
+  <section class="relative overflow-hidden noise">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 md:py-20">
+      <div class="max-w-4xl mx-auto text-center animate-fade-up">
+        <span class="inline-flex items-center gap-2 rounded-full bg-white/5 ring-1 ring-white/15 px-3 py-1 text-xs font-medium text-zinc-200 mb-5">
+          <span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          Boutique officielle VitalX
+        </span>
+        <img src="/assets/medxbyvitalx.png" alt="MedX by VitalX" class="mx-auto w-full max-w-2xl object-contain animate-float" />
+        <p class="mt-6 text-zinc-300 text-base md:text-lg max-w-2xl mx-auto">
+          Simulateurs de monitorage réalistes, licences et accessoires pour la formation médicale et paramédicale.
+        </p>
+        <div class="mt-7 flex flex-wrap items-center justify-center gap-3 text-xs text-zinc-400">
+          <span class="inline-flex items-center gap-1.5 rounded-full bg-white/5 ring-1 ring-white/10 px-3 py-1.5">🔒 Paiement sécurisé</span>
+          <span class="inline-flex items-center gap-1.5 rounded-full bg-white/5 ring-1 ring-white/10 px-3 py-1.5">🚚 Expédition rapide</span>
+          <span class="inline-flex items-center gap-1.5 rounded-full bg-white/5 ring-1 ring-white/10 px-3 py-1.5">🇫🇷 Support FR</span>
+          <span class="inline-flex items-center gap-1.5 rounded-full bg-white/5 ring-1 ring-white/10 px-3 py-1.5">♾️ Licence à vie</span>
+        </div>
       </div>
     </div>
   </section>
 
+  <main class="py-10 md:py-16">
 
-  <main class="py-12">
-    <!-- SECTION PACK -->
-    <section id="pack" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-20">
-      <!-- NOTE: Passer à md:grid-cols-3 quand le pack reconditionné sera ré-affiché -->
+    <!-- SECTION PACKS -->
+    <section id="pack" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-24">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight"><span class="title-bar">Choisissez votre Pack</span></h2>
+        <div class="mt-3 mx-auto max-w-lg divider-glow"></div>
+        <p class="mt-4 text-zinc-400 text-sm md:text-base">Deux configurations, une seule promesse : un simulateur fiable et complet.</p>
+      </div>
+
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-        <!-- RECONDITIONNÉ PACK (à gauche) -->
+
+        <!-- RECONDITIONNÉ (caché — conservé pour logique) -->
         <article class="pack-refurb hidden relative rounded-3xl overflow-hidden ring-2 ring-purple-400/40 bg-gradient-to-b from-zinc-900/70 to-black glass ring-gradient">
-          <!-- Encart violet horizontal -->
           <div class="absolute top-0 inset-x-0 h-12 bg-purple-600 text-white flex items-center justify-center text-[13px] sm:text-[14px] font-extrabold uppercase tracking-wider ring-1 ring-purple-400/40">Reconditionné</div>
           <div class="p-6 md:p-8 pt-20 md:pt-24">
             <h3 class="text-2xl md:text-3xl tracking-wide font-extrabold uppercase text-white/90">Pack Reconditionné</h3>
@@ -139,341 +223,332 @@
               <button type="button" data-variant="1" aria-selected="false" class="px-3 py-1.5 hover:bg-white/10">1 iPad</button>
               <button type="button" data-variant="2" aria-selected="true" class="px-3 py-1.5 bg-white text-black font-semibold">2 iPad</button>
             </div>
-            <div class="mt-3 inline-flex items-center gap-2 rounded-full bg-red-500/15 text-red-300 text-xs font-semibold px-3 py-1 ring-1 ring-red-500/40">
-              <span>🛑</span>
-              <span>Actuellement en rupture de stock</span>
-            </div>
             <div class="mt-3 text-4xl font-extrabold text-white/90" id="refurbPriceWrap">
-              <span id="refurbPrice" class="leading-none">1 849 €</span>
+              <span id="refurbPrice" class="leading-none">1 849 €</span>
             </div>
             <ul class="mt-4 space-y-3 text-sm text-zinc-200">
               <li class="flex items-start gap-2"><span>✅</span><span id="refurbIpads">2 iPad 10ᵉ gén. (reconditionnés)</span></li>
-              <li class="flex items-start gap-2"><span>✅</span><span>Boîtier VitalX + housse ( Neuf ) </span></li>
-              <li class="flex items-start gap-2"><span>✅</span><span>Connectiques complètes ( Neuves )</span></li>
+              <li class="flex items-start gap-2"><span>✅</span><span>Boîtier VitalX + housse</span></li>
+              <li class="flex items-start gap-2"><span>✅</span><span>Connectiques complètes</span></li>
               <li class="flex items-start gap-2"><span>✅</span><span>Licence 3 mois incluse</span></li>
             </ul>
           </div>
           <div class="px-6 md:px-8 pb-6">
             <img src="/assets/pack-vitalx2.png" alt="Pack VitalX reconditionné" class="w-full max-h-64 object-contain rounded-xl bg-zinc-900/40 p-3" loading="lazy" />
-            <!-- Pas de bouton fiche technique -->
             <button id="refurbAddBtn" type="button" disabled class="mt-6 w-full inline-flex justify-center items-center gap-2 rounded-xl bg-zinc-900/80 text-zinc-400 px-5 py-3 font-semibold ring-1 ring-white/15 cursor-not-allowed">
               🛑 Rupture de stock
-              <span class="ml-2 inline-flex items-center rounded-full bg-red-500/15 text-red-300 text-[11px] font-bold uppercase tracking-wide px-2 py-0.5 ring-1 ring-red-500/40">Indisponibles</span>
             </button>
           </div>
         </article>
 
-        <!-- CLASSIC PACK (Basique) -->
-        <article class="pack-classic relative rounded-3xl overflow-hidden ring-2 ring-blue-400/40 bg-gradient-to-b from-zinc-900/70 to-black glass ring-gradient shadow-[0_30px_80px_-40px_rgba(0,0,0,.6)]">
-        <div class="absolute top-0 inset-x-0 h-12 bg-blue-500 text-white flex items-center justify-center text-[13px] sm:text-[14px] font-extrabold uppercase tracking-wider ring-1 ring-blue-400/40">Pack Basique</div>
+        <!-- PACK CLASSIC (Basique) -->
+        <article class="pack-classic card-lift relative rounded-3xl overflow-hidden ring-2 ring-blue-400/40 bg-gradient-to-b from-zinc-900/80 to-black glass ring-gradient shadow-[0_30px_80px_-40px_rgba(59,130,246,.6)]">
+          <div class="absolute top-0 inset-x-0 h-12 bg-gradient-to-r from-blue-600 to-sky-500 text-white flex items-center justify-center text-[13px] sm:text-[14px] font-extrabold uppercase tracking-wider">
+            ⭐ Pack Classic — Le plus accessible
+          </div>
           <div class="p-6 md:p-8 pt-20 md:pt-24">
-            <h3 class="text-2xl md:text-3xl tracking-wide font-extrabold uppercase text-white/90">Pack Classic</h3>
-            <div class="mt-1 text-sm text-white/60">Pack VitalX Basique</div>
-            <div class="mt-3 text-4xl font-extrabold text-white/90"><span>2 689 €</span></div>
-            <ul class="mt-4 space-y-3 text-sm text-zinc-200">
-              <li class="flex items-start gap-2"><span>✅</span><span>1 iPad 11ᵉ gén. (A16)</span></li>
-              <li class="flex items-start gap-2"><span>✅</span><span>Boîtier VitalX + housse</span></li>
-              <li class="flex items-start gap-2"><span>✅</span><span>Connectiques complètes (PNI, SpO₂, ECG 12D, DSA, température, EtCO₂)</span></li>
-              <li class="flex items-start gap-2"><span>✅</span><span><strong>Licence à vie incluse</strong></span></li>
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <h3 class="text-2xl md:text-3xl tracking-wide font-extrabold uppercase text-white">Pack Classic</h3>
+                <div class="mt-1 text-sm text-white/60">Pack VitalX Basique — 1 iPad</div>
+              </div>
+              <span class="shrink-0 inline-flex items-center rounded-full bg-blue-500/15 text-blue-300 ring-1 ring-blue-500/40 text-[11px] font-bold uppercase px-2.5 py-1">Idéal solo</span>
+            </div>
+
+            <div class="mt-5 flex items-baseline gap-2">
+              <span class="text-5xl font-extrabold price">3 300 €</span>
+              <span class="text-sm text-zinc-400">TTC</span>
+            </div>
+
+            <ul class="mt-5 space-y-2.5 text-sm text-zinc-200">
+              <li class="flex items-start gap-2"><span class="text-blue-400 mt-0.5">✓</span><span>1 iPad 11ᵉ gén. (A16)</span></li>
+              <li class="flex items-start gap-2"><span class="text-blue-400 mt-0.5">✓</span><span>Boîtier VitalX + housse de transport</span></li>
+              <li class="flex items-start gap-2"><span class="text-blue-400 mt-0.5">✓</span><span>Connectiques complètes (PNI, SpO₂, ECG 12D, DSA, T°, EtCO₂)</span></li>
+              <li class="flex items-start gap-2"><span class="text-blue-400 mt-0.5">✓</span><span><strong>Licence à vie incluse</strong></span></li>
             </ul>
           </div>
           <div class="px-6 md:px-8 pb-6">
-            <img src="/assets/pack-vitalx1.png" alt="Pack VitalX Basique" class="w-full max-h-64 object-contain rounded-xl bg-zinc-900/40 p-3" loading="lazy" />
-            <a href="fiche-technique-basique.html" class="mt-3 inline-flex justify-center items-center gap-2 w-full rounded-xl bg-white/10 text-white px-5 py-2 font-semibold hover:bg-white/15 cta-anim">📄 Voir la fiche technique</a>
-            <button data-sku="sku_pack_basic" data-name="Pack VitalX Basique" data-price="268900" data-image="/assets/pack-vitalx1.png" class="add-to-cart mt-6 w-full inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 via-blue-500 to-sky-400 text-white px-5 py-3 font-extrabold shadow-soft hover:from-blue-500 hover:via-blue-400 hover:to-sky-300 cta-anim">Ajouter — Pack Classic</button>
+            <div class="rounded-xl bg-zinc-900/40 p-3 ring-1 ring-white/5">
+              <img src="/assets/pack-vitalx1.png" alt="Pack VitalX Basique" class="w-full max-h-60 object-contain" loading="lazy" />
+            </div>
+            <a href="fiche-technique-basique.html" class="mt-4 inline-flex justify-center items-center gap-2 w-full rounded-xl bg-white/5 text-white px-5 py-2.5 font-semibold hover:bg-white/10 ring-1 ring-white/10 cta-anim text-sm">
+              📄 Voir la fiche technique
+            </a>
+            <button data-sku="sku_pack_basic" data-name="Pack VitalX Basique" data-price="330000" data-image="/assets/pack-vitalx1.png" class="add-to-cart mt-3 w-full inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 via-blue-500 to-sky-400 text-white px-5 py-3.5 font-extrabold shadow-glow hover:from-blue-500 hover:via-blue-400 hover:to-sky-300 cta-anim">
+              <span>🛒 Ajouter au panier</span>
+            </button>
           </div>
         </article>
 
-
-        <!-- COLLECTOR BOX (Pack complet) -->
-        <article class="pack-premium relative rounded-3xl overflow-hidden ring-2 ring-red-500/40 bg-gradient-to-b from-zinc-900/70 to-black glass ring-gradient">
-        <div class="absolute top-0 inset-x-0 h-12 bg-red-500 text-white flex items-center justify-center text-[13px] sm:text-[14px] font-extrabold uppercase tracking-wider ring-1 ring-red-400/40">Pack Complet</div>
+        <!-- PACK PREMIUM (Complet) -->
+        <article class="pack-premium card-lift relative rounded-3xl overflow-hidden ring-2 ring-red-500/50 bg-gradient-to-b from-zinc-900/80 to-black glass ring-gradient shadow-[0_30px_80px_-40px_rgba(239,68,68,.65)]">
+          <div class="absolute top-0 inset-x-0 h-12 bg-gradient-to-r from-red-600 via-rose-500 to-pink-500 text-white flex items-center justify-center text-[13px] sm:text-[14px] font-extrabold uppercase tracking-wider">
+            🔥 Pack Premium — Le plus complet
+          </div>
           <div class="p-6 md:p-8 pt-20 md:pt-24">
-            <h3 class="text-2xl md:text-3xl tracking-wide font-extrabold uppercase text-white/90">Pack Premium</h3>
-            <div class="mt-1 text-sm text-white/60">Pack VitalX Complet</div>
-            <div class="mt-3 text-4xl font-extrabold text-white/90">
-              <span>2 999 €</span>
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <h3 class="text-2xl md:text-3xl tracking-wide font-extrabold uppercase text-white">Pack Premium</h3>
+                <div class="mt-1 text-sm text-white/60">Pack VitalX Complet — 2 iPad</div>
+              </div>
+              <span class="shrink-0 inline-flex items-center rounded-full bg-red-500/15 text-red-300 ring-1 ring-red-500/40 text-[11px] font-bold uppercase px-2.5 py-1">Best-seller</span>
             </div>
-            <ul class="mt-4 space-y-3 text-sm text-zinc-200">
-              <li class="flex items-start gap-2"><span>✅</span><span>2 iPad 11ᵉ gén. (A16)</span></li>
-              <li class="flex items-start gap-2"><span>✅</span><span>Boîtier VitalX + housse</span></li>
-              <li class="flex items-start gap-2"><span>✅</span><span>Connectiques complètes (PNI, SpO₂, ECG 12D, DSA, température, EtCO₂)</span></li>
-              <li class="flex items-start gap-2"><span>✅</span><span><strong>Licence à vie incluse</strong></span></li>
+
+            <div class="mt-5 flex items-baseline gap-2">
+              <span class="text-5xl font-extrabold price">3 600 €</span>
+              <span class="text-sm text-zinc-400">TTC</span>
+            </div>
+
+            <ul class="mt-5 space-y-2.5 text-sm text-zinc-200">
+              <li class="flex items-start gap-2"><span class="text-rose-400 mt-0.5">✓</span><span><strong>2 iPad 11ᵉ gén. (A16)</strong> — formateur + élève</span></li>
+              <li class="flex items-start gap-2"><span class="text-rose-400 mt-0.5">✓</span><span>Boîtier VitalX + housse de transport</span></li>
+              <li class="flex items-start gap-2"><span class="text-rose-400 mt-0.5">✓</span><span>Connectiques complètes (PNI, SpO₂, ECG 12D, DSA, T°, EtCO₂)</span></li>
+              <li class="flex items-start gap-2"><span class="text-rose-400 mt-0.5">✓</span><span><strong>Licence à vie incluse</strong></span></li>
             </ul>
           </div>
           <div class="px-6 md:px-8 pb-6">
-            <img src="/assets/pack-vitalx.png" alt="Pack VitalX complet" class="w-full max-h-64 object-contain rounded-xl bg-zinc-900/40 p-3" loading="lazy" />
-            <a href="fiche-technique.html" class="mt-3 inline-flex justify-center items-center gap-2 w-full rounded-xl bg-white/10 text-white px-5 py-2 font-semibold hover:bg-white/15 cta-anim">📄 Voir la fiche technique</a>
-            <button data-sku="sku_pack" data-name="Pack VitalX" data-price="299900" data-image="/assets/pack-vitalx.png" class="add-to-cart mt-6 w-full inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-red-600 via-red-500 to-rose-400 text-white px-5 py-3 font-extrabold shadow-soft hover:from-red-500 hover:via-red-400 hover:to-rose-300 cta-anim">Ajouter — Pack Premium</button>
+            <div class="rounded-xl bg-zinc-900/40 p-3 ring-1 ring-white/5">
+              <img src="/assets/pack-vitalx.png" alt="Pack VitalX complet" class="w-full max-h-60 object-contain" loading="lazy" />
+            </div>
+            <a href="fiche-technique.html" class="mt-4 inline-flex justify-center items-center gap-2 w-full rounded-xl bg-white/5 text-white px-5 py-2.5 font-semibold hover:bg-white/10 ring-1 ring-white/10 cta-anim text-sm">
+              📄 Voir la fiche technique
+            </a>
+            <button data-sku="sku_pack" data-name="Pack VitalX" data-price="360000" data-image="/assets/pack-vitalx.png" class="add-to-cart mt-3 w-full inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-red-600 via-rose-500 to-pink-500 text-white px-5 py-3.5 font-extrabold shadow-glow hover:brightness-110 cta-anim">
+              <span>🛒 Ajouter au panier</span>
+            </button>
           </div>
         </article>
       </div>
     </section>
 
     <!-- SECTION LICENCES -->
-    <section id="licenses" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-16">
-      <div class="flex items-center justify-center">
-        <h2 class="text-4xl md:text-5xl font-extrabold text-center">Licences</h2>
+    <section id="licenses" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-24">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight"><span class="title-bar">Licences logicielles</span></h2>
+        <div class="mt-3 mx-auto max-w-lg divider-glow"></div>
+        <p class="mt-4 text-zinc-400 text-sm md:text-base">Activez VitalX sur vos appareils existants.</p>
       </div>
-      <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <!-- Abonnement 1 an -->
-        <article class="relative glass ring-gradient rounded-2xl p-6 md:p-8 flex flex-col ring-2 ring-blue-400/40 shadow-[0_0_40px_-10px_rgba(59,130,246,0.6)]">
+        <article class="card-lift relative glass ring-gradient rounded-3xl p-7 md:p-8 flex flex-col ring-2 ring-blue-400/40 shadow-[0_0_50px_-15px_rgba(59,130,246,0.6)]">
           <div class="flex items-center justify-between gap-3 flex-wrap">
-            <h3 class="text-xl md:text-2xl font-semibold">Abonnement 1 an</h3>
-            <span class="inline-flex items-center gap-1.5 rounded-full bg-blue-600 text-white text-xs font-extrabold px-3 py-1 shadow-soft">15 €/mois</span>
+            <h3 class="text-xl md:text-2xl font-bold">Abonnement 1 an</h3>
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-blue-600 text-white text-xs font-extrabold px-3 py-1 shadow-soft">15 €/mois</span>
           </div>
-          <div class="mt-3 text-4xl md:text-5xl font-extrabold tracking-tight">180 €</div>
+          <div class="mt-4 flex items-baseline gap-2">
+            <span class="text-5xl font-extrabold price">180 €</span>
+            <span class="text-sm text-zinc-400">/an</span>
+          </div>
           <ul class="mt-5 text-sm text-zinc-200 space-y-2">
-            <li>✔️ Accès complet à l’app</li>
-            <li>✔️ Mises à jour incluses</li>
-            <li>✔️ Support e‑mail</li>
+            <li class="flex items-start gap-2"><span class="text-blue-400">✓</span><span>Accès complet à l'application</span></li>
+            <li class="flex items-start gap-2"><span class="text-blue-400">✓</span><span>Mises à jour incluses</span></li>
+            <li class="flex items-start gap-2"><span class="text-blue-400">✓</span><span>Support e-mail</span></li>
           </ul>
-          <button data-sku="sku_lic_annual" data-name="Licence 1 an" data-price="18000" data-image="/assets/licence-12.png" class="add-to-cart mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-sky-500 via-blue-500 to-indigo-500 text-white px-5 py-3 font-semibold shadow-soft hover:from-sky-400 hover:via-blue-400 hover:to-indigo-400 cta-anim">Ajouter au panier</button>
+          <button data-sku="sku_lic_annual" data-name="Licence 1 an" data-price="18000" data-image="/assets/licence-12.png" class="add-to-cart mt-7 inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-sky-500 via-blue-500 to-indigo-500 text-white px-5 py-3.5 font-bold shadow-soft hover:brightness-110 cta-anim">
+            🛒 Ajouter au panier
+          </button>
         </article>
 
         <!-- Licence à vie -->
-        <article class="relative glass ring-gradient rounded-2xl p-6 md:p-8 flex flex-col ring-2 ring-pink-300/30 shadow-[0_0_50px_-10px_rgba(236,72,153,0.45)] bg-gradient-to-r from-sky-500/10 via-pink-500/10 to-amber-400/10 overflow-hidden">
-          <div class="flex items-center justify-between gap-3 flex-wrap pt-12">
-            <h3 class="text-xl md:text-2xl font-semibold">Licence à vie</h3>
+        <article class="card-lift relative glass ring-gradient rounded-3xl p-7 md:p-8 flex flex-col ring-2 ring-pink-300/40 shadow-[0_0_60px_-15px_rgba(236,72,153,0.55)] bg-gradient-to-br from-sky-500/10 via-pink-500/10 to-amber-400/10 overflow-hidden">
+          <div class="absolute -top-16 -right-16 h-48 w-48 rounded-full bg-gradient-to-br from-amber-400/30 via-pink-500/30 to-sky-500/30 blur-3xl pointer-events-none"></div>
+          <div class="flex items-center justify-between gap-3 flex-wrap relative">
+            <h3 class="text-xl md:text-2xl font-bold">Licence à vie</h3>
             <span class="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-amber-400 via-fuchsia-500 to-sky-500 text-white text-xs font-extrabold px-3 py-1 shadow-soft">♾️ À vie</span>
           </div>
-          <div class="mt-3 text-4xl md:text-5xl font-extrabold tracking-tight flex items-baseline gap-3">
-            <span class="text-white">500 €</span>
+          <div class="mt-4 flex items-baseline gap-2 relative">
+            <span class="text-5xl font-extrabold price">500 €</span>
+            <span class="text-sm text-zinc-400">paiement unique</span>
           </div>
-          <ul class="mt-5 text-sm text-zinc-200 space-y-2 md:columns-2 md:space-y-1">
-            <li>✔️ Accès complet à l’app</li>
-            <li>✔️ Mises à jour incluses</li>
-            <li>✔️ Support e‑mail</li>
-            <li>✔️ Paiement unique, aucun renouvellement</li>
+          <ul class="mt-5 text-sm text-zinc-200 space-y-2 relative">
+            <li class="flex items-start gap-2"><span class="text-fuchsia-400">✓</span><span>Accès complet à l'application</span></li>
+            <li class="flex items-start gap-2"><span class="text-fuchsia-400">✓</span><span>Mises à jour incluses à vie</span></li>
+            <li class="flex items-start gap-2"><span class="text-fuchsia-400">✓</span><span>Support e-mail prioritaire</span></li>
+            <li class="flex items-start gap-2"><span class="text-fuchsia-400">✓</span><span>Aucun renouvellement</span></li>
           </ul>
-          <button data-sku="sku_lic_life" data-name="Licence à vie" data-price="50000" data-image="/assets/licence-life.png" class="add-to-cart mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-sky-500 via-pink-500 to-amber-400 text-white px-5 py-3 font-semibold shadow-soft hover:from-sky-400 hover:via-pink-400 hover:to-amber-300 cta-anim">Ajouter au panier</button>
+          <button data-sku="sku_lic_life" data-name="Licence à vie" data-price="50000" data-image="/assets/licence-life.png" class="add-to-cart mt-7 inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-sky-500 via-pink-500 to-amber-400 text-white px-5 py-3.5 font-bold shadow-soft hover:brightness-110 cta-anim relative">
+            🛒 Ajouter au panier
+          </button>
         </article>
       </div>
 
-      <!-- VitalX POD'S block under licences -->
-      <div class="mt-12 flex flex-col items-center">
-        <img src="/assets/vitalxpods.png" alt="VitalX POD'S" class="w-full max-w-3xl object-contain rounded-3xl shadow-soft" loading="lazy" />
-        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
-          <!-- Pack VitalX POD'S Classic -->
-          <article class="pack-pods-classic relative rounded-3xl overflow-hidden ring-2 ring-blue-400/40 bg-gradient-to-b from-zinc-900/70 to-black glass ring-gradient shadow-[0_30px_80px_-40px_rgba(0,0,0,.6)]">
-            <div class="absolute top-0 inset-x-0 h-10 bg-blue-500 text-white flex items-center justify-center text-[12px] sm:text-[13px] font-extrabold uppercase tracking-wider ring-1 ring-blue-400/40">
-              Pack VitalX POD'S Classic
+      <!-- VitalX POD'S -->
+      <div class="mt-16">
+        <div class="text-center mb-8">
+          <img src="/assets/vitalxpods.png" alt="VitalX POD'S" class="mx-auto w-full max-w-xl object-contain" loading="lazy" />
+          <p class="mt-3 text-zinc-400 text-sm md:text-base">La version compacte VitalX, propulsée par iPhone.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- POD'S Classic -->
+          <article class="pack-pods-classic card-lift relative rounded-3xl overflow-hidden ring-2 ring-blue-400/40 bg-gradient-to-b from-zinc-900/80 to-black glass ring-gradient">
+            <div class="absolute top-0 inset-x-0 h-11 bg-gradient-to-r from-blue-600 to-sky-500 text-white flex items-center justify-center text-[12px] sm:text-[13px] font-extrabold uppercase tracking-wider">
+              POD'S Classic
             </div>
-            <div class="p-6 md:p-8 pt-16 md:pt-20">
-              <h3 class="text-2xl tracking-wide font-extrabold uppercase text-white/90">POD'S Classic</h3>
+            <div class="p-6 md:p-7 pt-16 md:pt-20">
+              <h3 class="text-2xl tracking-wide font-extrabold uppercase text-white">POD'S Classic</h3>
               <div class="mt-1 text-sm text-white/60">Pack VitalX POD'S Classic</div>
-              <div class="mt-3 text-3xl font-extrabold text-white/90">1 300 €</div>
-              <ul class="mt-4 space-y-3 text-sm text-zinc-200">
-                <li class="flex items-start gap-2"><span>✅</span><span>1 iPhone 11 ou 12 (reconditionné)</span></li>
-                <li class="flex items-start gap-2"><span>✅</span><span>1 brassard tension adulte / enfant</span></li>
-                <li class="flex items-start gap-2"><span>✅</span><span>1 capteur SpO₂ / SpCO</span></li>
-                <li class="flex items-start gap-2"><span>✅</span><span>1 Patch DSA adulte / pedia</span></li>
-                <li class="flex items-start gap-2"><span>✅</span><span>1 boîtier VitalX POD'S</span></li>
-                <li class="flex items-start gap-2"><span>✅</span><span>Licence à vie incluse</span></li>
+              <div class="mt-4 flex items-baseline gap-2">
+                <span class="text-4xl font-extrabold price">1 300 €</span>
+                <span class="text-xs text-zinc-400">TTC</span>
+              </div>
+              <ul class="mt-4 space-y-2 text-sm text-zinc-200">
+                <li class="flex items-start gap-2"><span class="text-blue-400">✓</span><span>1 iPhone 11 ou 12 (reconditionné)</span></li>
+                <li class="flex items-start gap-2"><span class="text-blue-400">✓</span><span>Brassard tension adulte / enfant</span></li>
+                <li class="flex items-start gap-2"><span class="text-blue-400">✓</span><span>Capteur SpO₂ / SpCO</span></li>
+                <li class="flex items-start gap-2"><span class="text-blue-400">✓</span><span>Patch DSA adulte / pédia</span></li>
+                <li class="flex items-start gap-2"><span class="text-blue-400">✓</span><span>Boîtier VitalX POD'S</span></li>
+                <li class="flex items-start gap-2"><span class="text-blue-400">✓</span><span><strong>Licence à vie incluse</strong></span></li>
               </ul>
             </div>
-            <div class="px-6 md:px-8 pb-6">
-              <img src="/assets/vitalxpodsclassic.png" alt="Pack VitalX POD'S Classic" class="w-full max-h-56 object-contain rounded-xl bg-zinc-900/40 p-3" loading="lazy" />
-              <a href="vitalx-pods.html" class="mt-3 inline-flex justify-center items-center gap-2 w-full rounded-xl bg-white/10 text-white px-5 py-2 font-semibold hover:bg-white/15 cta-anim">
-                📄 Voir la fiche technique VitalX POD'S
+            <div class="px-6 md:px-7 pb-6">
+              <div class="rounded-xl bg-zinc-900/40 p-3 ring-1 ring-white/5">
+                <img src="/assets/vitalxpodsclassic.png" alt="Pack VitalX POD'S Classic" class="w-full max-h-52 object-contain" loading="lazy" />
+              </div>
+              <a href="vitalx-pods.html" class="mt-3 inline-flex justify-center items-center gap-2 w-full rounded-xl bg-white/5 text-white px-5 py-2.5 font-semibold hover:bg-white/10 ring-1 ring-white/10 cta-anim text-sm">
+                📄 Fiche technique
               </a>
-              <button data-sku="sku_pods_classic" data-name="Pack VitalX POD'S Classic" data-price="130000" data-image="/assets/vitalxpodsclassic.png" class="add-to-cart mt-6 w-full inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 via-blue-500 to-sky-400 text-white px-5 py-3 font-extrabold shadow-soft hover:from-blue-500 hover:via-blue-400 hover:to-sky-300 cta-anim">Ajouter — POD'S Classic</button>
+              <button data-sku="sku_pods_classic" data-name="Pack VitalX POD'S Classic" data-price="130000" data-image="/assets/vitalxpodsclassic.png" class="add-to-cart mt-3 w-full inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 via-blue-500 to-sky-400 text-white px-5 py-3.5 font-extrabold shadow-glow hover:brightness-110 cta-anim">
+                🛒 Ajouter — POD'S Classic
+              </button>
             </div>
           </article>
 
-          <!-- Pack VitalX POD'S Premium -->
-          <article class="pack-pods-premium relative rounded-3xl overflow-hidden ring-2 ring-red-500/40 bg-gradient-to-b from-zinc-900/70 to-black glass ring-gradient">
-            <div class="absolute top-0 inset-x-0 h-10 bg-red-500 text-white flex items-center justify-center text-[12px] sm:text-[13px] font-extrabold uppercase tracking-wider ring-1 ring-red-400/40">
-              Pack VitalX POD'S Premium
+          <!-- POD'S Premium -->
+          <article class="pack-pods-premium card-lift relative rounded-3xl overflow-hidden ring-2 ring-red-500/50 bg-gradient-to-b from-zinc-900/80 to-black glass ring-gradient">
+            <div class="absolute top-0 inset-x-0 h-11 bg-gradient-to-r from-red-600 via-rose-500 to-pink-500 text-white flex items-center justify-center text-[12px] sm:text-[13px] font-extrabold uppercase tracking-wider">
+              POD'S Premium
             </div>
-            <div class="p-6 md:p-8 pt-16 md:pt-20">
-              <h3 class="text-2xl tracking-wide font-extrabold uppercase text-white/90">POD'S Premium</h3>
+            <div class="p-6 md:p-7 pt-16 md:pt-20">
+              <h3 class="text-2xl tracking-wide font-extrabold uppercase text-white">POD'S Premium</h3>
               <div class="mt-1 text-sm text-white/60">Pack VitalX POD'S Premium</div>
-              <div class="mt-3 text-3xl font-extrabold text-white/90">1 600 €</div>
-              <ul class="mt-4 space-y-3 text-sm text-zinc-200">
-                <li class="flex items-start gap-2"><span>✅</span><span>1 iPhone 11 ou 12 (reconditionné)</span></li>
-                <li class="flex items-start gap-2"><span>✅</span><span>1 brassard tension adulte / enfant</span></li>
-                <li class="flex items-start gap-2"><span>✅</span><span>1 capteur SpO₂ / SpCO</span></li>
-                <li class="flex items-start gap-2"><span>✅</span><span>1 Patch DSA adulte / pedia</span></li>
-                <li class="flex items-start gap-2"><span>✅</span><span>1 boîtier VitalX POD'S</span></li>
-                <li class="flex items-start gap-2"><span>✅</span><span>Licence à vie incluse</span></li>
-                <li class="flex items-start gap-2"><span>✅</span><span>+ 1 iPad 11ᵉ génération (neuf)</span></li>
+              <div class="mt-4 flex items-baseline gap-2">
+                <span class="text-4xl font-extrabold price">1 600 €</span>
+                <span class="text-xs text-zinc-400">TTC</span>
+              </div>
+              <ul class="mt-4 space-y-2 text-sm text-zinc-200">
+                <li class="flex items-start gap-2"><span class="text-rose-400">✓</span><span>1 iPhone 11 ou 12 (reconditionné)</span></li>
+                <li class="flex items-start gap-2"><span class="text-rose-400">✓</span><span>Brassard tension adulte / enfant</span></li>
+                <li class="flex items-start gap-2"><span class="text-rose-400">✓</span><span>Capteur SpO₂ / SpCO</span></li>
+                <li class="flex items-start gap-2"><span class="text-rose-400">✓</span><span>Patch DSA adulte / pédia</span></li>
+                <li class="flex items-start gap-2"><span class="text-rose-400">✓</span><span>Boîtier VitalX POD'S</span></li>
+                <li class="flex items-start gap-2"><span class="text-rose-400">✓</span><span><strong>+ 1 iPad 11ᵉ génération (neuf)</strong></span></li>
+                <li class="flex items-start gap-2"><span class="text-rose-400">✓</span><span><strong>Licence à vie incluse</strong></span></li>
               </ul>
             </div>
-            <div class="px-6 md:px-8 pb-6">
-              <img src="/assets/vitalxpodspremium.png" alt="Pack VitalX POD'S Premium" class="w-full max-h-56 object-contain rounded-xl bg-zinc-900/40 p-3" loading="lazy" />
-              <a href="vitalx-pods.html" class="mt-3 inline-flex justify-center items-center gap-2 w-full rounded-xl bg-white/10 text-white px-5 py-2 font-semibold hover:bg-white/15 cta-anim">
-                📄 Voir la fiche technique VitalX POD'S
+            <div class="px-6 md:px-7 pb-6">
+              <div class="rounded-xl bg-zinc-900/40 p-3 ring-1 ring-white/5">
+                <img src="/assets/vitalxpodspremium.png" alt="Pack VitalX POD'S Premium" class="w-full max-h-52 object-contain" loading="lazy" />
+              </div>
+              <a href="vitalx-pods.html" class="mt-3 inline-flex justify-center items-center gap-2 w-full rounded-xl bg-white/5 text-white px-5 py-2.5 font-semibold hover:bg-white/10 ring-1 ring-white/10 cta-anim text-sm">
+                📄 Fiche technique
               </a>
-              <button data-sku="sku_pods_premium" data-name="Pack VitalX POD'S Premium" data-price="160000" data-image="/assets/vitalxpodspremium.png" class="add-to-cart mt-6 w-full inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-red-600 via-red-500 to-rose-400 text-white px-5 py-3 font-extrabold shadow-soft hover:from-red-500 hover:via-red-400 hover:to-rose-300 cta-anim">Ajouter — POD'S Premium</button>
+              <button data-sku="sku_pods_premium" data-name="Pack VitalX POD'S Premium" data-price="160000" data-image="/assets/vitalxpodspremium.png" class="add-to-cart mt-3 w-full inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-red-600 via-rose-500 to-pink-500 text-white px-5 py-3.5 font-extrabold shadow-glow hover:brightness-110 cta-anim">
+                🛒 Ajouter — POD'S Premium
+              </button>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- SECTION ACCESSOIRES -->
-    <section id="accessoires" class="hidden mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-hidden="true">
-      <div class="flex items-center justify-center">
-        <h2 class="text-2xl md:text-3xl font-extrabold text-center">Accessoires</h2>
-      </div>
-      <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- SECTION ACCESSOIRES (caché — conservé) -->
+    <section id="accessoires" class="hidden mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-hidden="true"></section>
 
-        <!-- DSA Adultes -->
-        <article class="glass ring-gradient rounded-2xl p-6 flex flex-col">
-          <img src="/assets/patch-dsa-adult.jpg" alt="Patch DSA Adultes" class="w-full max-h-44 object-contain rounded-xl mb-4 bg-zinc-900/40 p-2" loading="lazy" />
-          <h3 class="text-lg font-semibold">Patch DSA Adultes</h3>
-          <p class="mt-2 text-sm text-zinc-300">Paires de patchs adultes compatibles DSA pour entraînement.</p>
-          <div class="mt-3 text-2xl font-extrabold">50 €</div>
-          <button disabled class="mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-gray-700 text-white/60 px-5 py-3 font-semibold cursor-not-allowed opacity-60">Indisponible</button>
-        </article>
-
-        <!-- DSA Pédiatrique -->
-        <article class="glass ring-gradient rounded-2xl p-6 flex flex-col">
-          <img src="/assets/patch-dsa-pediatrique.jpg" alt="Patch DSA Pédiatrique" class="w-full max-h-44 object-contain rounded-xl mb-4 bg-zinc-900/40 p-2" loading="lazy" />
-          <h3 class="text-lg font-semibold">Patch DSA Pédiatrique</h3>
-          <p class="mt-2 text-sm text-zinc-300">Patchs pédiatriques pour scénarios enfant.</p>
-          <div class="mt-3 text-2xl font-extrabold">50 €</div>
-          <button disabled class="mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-gray-700 text-white/60 px-5 py-3 font-semibold cursor-not-allowed opacity-60">Indisponible</button>
-        </article>
-
-        <!-- Câble ECG -->
-        <article class="glass ring-gradient rounded-2xl p-6 flex flex-col">
-          <img src="/assets/cable-ecg.jpg" alt="Câble ECG" class="w-full max-h-44 object-contain rounded-xl mb-4 bg-zinc-900/40 p-2" loading="lazy" />
-          <h3 class="text-lg font-semibold">Câble ECG</h3>
-          <p class="mt-2 text-sm text-zinc-300">Câble ECG durable pour connexion multi-derivations.</p>
-          <div class="mt-3 text-2xl font-extrabold">50 €</div>
-          <button disabled class="mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-gray-700 text-white/60 px-5 py-3 font-semibold cursor-not-allowed opacity-60">Indisponible</button>
-        </article>
-
-        <!-- Capteur SpO2 -->
-        <article class="glass ring-gradient rounded-2xl p-6 flex flex-col">
-          <img src="/assets/capteur-spo2.jpg" alt="Capteur SpO₂" class="w-full max-h-44 object-contain rounded-xl mb-4 bg-zinc-900/40 p-2" loading="lazy" />
-          <h3 class="text-lg font-semibold">Capteur SpO₂</h3>
-          <p class="mt-2 text-sm text-zinc-300">Capteur d’oxymétrie de pouls pour simulation fidèle.</p>
-          <div class="mt-3 text-2xl font-extrabold">50 €</div>
-          <button disabled class="mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-gray-700 text-white/60 px-5 py-3 font-semibold cursor-not-allowed opacity-60">Indisponible</button>
-        </article>
-
-        <!-- Capteur ETCO2 -->
-        <article class="glass ring-gradient rounded-2xl p-6 flex flex-col">
-          <img src="/assets/capteur-etco2.jpg" alt="Capteur ETCO₂" class="w-full max-h-44 object-contain rounded-xl mb-4 bg-zinc-900/40 p-2" loading="lazy" />
-          <h3 class="text-lg font-semibold">Capteur ETCO₂</h3>
-          <p class="mt-2 text-sm text-zinc-300">Capteur EtCO₂ pour capnographie d’entraînement.</p>
-          <div class="mt-3 text-2xl font-extrabold">50 €</div>
-          <button disabled class="mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-gray-700 text-white/60 px-5 py-3 font-semibold cursor-not-allowed opacity-60">Indisponible</button>
-        </article>
-
-        <!-- Brassard Adulte -->
-        <article class="glass ring-gradient rounded-2xl p-6 flex flex-col">
-          <img src="/assets/brassard-adulte.jpg" alt="Brassard tension adulte" class="w-full max-h-44 object-contain rounded-xl mb-4 bg-zinc-900/40 p-2" loading="lazy" />
-          <h3 class="text-lg font-semibold">Brassard Tension Adulte</h3>
-          <p class="mt-2 text-sm text-zinc-300">Brassard adulte compatible PNI pour scénarios réalistes.</p>
-          <div class="mt-3 text-2xl font-extrabold">50 €</div>
-          <button disabled class="mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-gray-700 text-white/60 px-5 py-3 font-semibold cursor-not-allowed opacity-60">Indisponible</button>
-        </article>
-
-        <!-- Brassard Enfant -->
-        <article class="glass ring-gradient rounded-2xl p-6 flex flex-col">
-          <img src="/assets/brassard-enfant.jpg" alt="Brassard tension enfant" class="w-full max-h-44 object-contain rounded-xl mb-4 bg-zinc-900/40 p-2" loading="lazy" />
-          <h3 class="text-lg font-semibold">Brassard Tension Enfant</h3>
-          <p class="mt-2 text-sm text-zinc-300">Brassard enfant compatible PNI pour scénarios pédiatriques.</p>
-          <div class="mt-3 text-2xl font-extrabold">50 €</div>
-          <button disabled class="mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-gray-700 text-white/60 px-5 py-3 font-semibold cursor-not-allowed opacity-60">Indisponible</button>
-        </article>
-
-        <!-- Capteur Températures -->
-        <article class="glass ring-gradient rounded-2xl p-6 flex flex-col">
-          <img src="/assets/capteur-temperature.jpg" alt="Capteur de températures" class="w-full max-h-44 object-contain rounded-xl mb-4 bg-zinc-900/40 p-2" loading="lazy" />
-          <h3 class="text-lg font-semibold">Capteur Températures</h3>
-          <p class="mt-2 text-sm text-zinc-300">Capteur de température cutanée/centrale pour scénarios avancés.</p>
-          <div class="mt-3 text-2xl font-extrabold">50 €</div>
-          <button disabled class="mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-gray-700 text-white/60 px-5 py-3 font-semibold cursor-not-allowed opacity-60">Indisponible</button>
-        </article>
-      </div>
-    </section>
     <!-- SECTION ECUSSONS -->
-    <section id="ecussons" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-12">
-      <div class="flex items-center justify-center">
-        <h2 class="text-2xl md:text-3xl font-extrabold text-center">Écussons</h2>
+    <section id="ecussons" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-16">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight"><span class="title-bar">Écussons</span></h2>
+        <div class="mt-3 mx-auto max-w-lg divider-glow"></div>
+        <p class="mt-4 text-zinc-400 text-sm md:text-base">Personnalisez votre tenue avec nos écussons brodés.</p>
       </div>
-      <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-        <!-- Écusson Chat Noir -->
-        <article class="glass ring-gradient rounded-2xl p-6 flex flex-col">
-          <img src="/assets/logo chat noir.png" alt="Écusson logo chat noir" class="ecusson-img cursor-zoom-in w-full max-h-44 object-contain rounded-xl mb-4 bg-zinc-900/40 p-2" loading="lazy" />
-          <h3 class="text-lg font-semibold">Écusson logo chat noir</h3>
-          <div class="mt-3 text-2xl font-extrabold">7,90 € TTC</div>
-          <button data-sku="sku_ecusson_chat_noir" data-name="Écusson logo chat noir" data-price="790" data-image="/assets/logo chat noir.png" class="add-to-cart mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-400 text-white px-5 py-3 font-semibold shadow-soft hover:from-emerald-500 hover:via-emerald-400 hover:to-teal-300 cta-anim">Ajouter au panier</button>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Chat noir -->
+        <article class="card-lift glass ring-gradient rounded-3xl p-6 flex flex-col">
+          <div class="rounded-xl bg-zinc-900/40 p-3 ring-1 ring-white/5 mb-4">
+            <img src="/assets/logo chat noir.png" alt="Écusson logo chat noir" class="ecusson-img cursor-zoom-in w-full max-h-44 object-contain" loading="lazy" />
+          </div>
+          <h3 class="text-lg font-bold">Écusson Chat Noir</h3>
+          <div class="mt-2 flex items-baseline gap-2">
+            <span class="text-2xl font-extrabold price">7,90 €</span>
+            <span class="text-xs text-zinc-400">TTC</span>
+          </div>
+          <button data-sku="sku_ecusson_chat_noir" data-name="Écusson logo chat noir" data-price="790" data-image="/assets/logo chat noir.png" class="add-to-cart mt-5 inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-400 text-white px-5 py-3 font-bold shadow-soft hover:brightness-110 cta-anim">
+            🛒 Ajouter au panier
+          </button>
         </article>
 
-        <!-- Écusson VitalX 2K26 -->
-        <article class="glass ring-gradient rounded-2xl p-6 flex flex-col">
-          <img src="/assets/logo vitalx 2K26.png" alt="Écusson logo VitalX 2K26" class="ecusson-img cursor-zoom-in w-full max-h-44 object-contain rounded-xl mb-4 bg-zinc-900/40 p-2" loading="lazy" />
-          <h3 class="text-lg font-semibold">Écusson logo VitalX 2K26</h3>
-          <div class="mt-3 text-2xl font-extrabold">7,90 € TTC</div>
-          <button data-sku="sku_ecusson_vitalx_2k26" data-name="Écusson logo VitalX 2K26" data-price="790" data-image="/assets/logo vitalx 2K26.png" class="add-to-cart mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-400 text-white px-5 py-3 font-semibold shadow-soft hover:from-emerald-500 hover:via-emerald-400 hover:to-teal-300 cta-anim">Ajouter au panier</button>
+        <!-- VitalX 2K26 -->
+        <article class="card-lift glass ring-gradient rounded-3xl p-6 flex flex-col">
+          <div class="rounded-xl bg-zinc-900/40 p-3 ring-1 ring-white/5 mb-4">
+            <img src="/assets/logo vitalx 2K26.png" alt="Écusson logo VitalX 2K26" class="ecusson-img cursor-zoom-in w-full max-h-44 object-contain" loading="lazy" />
+          </div>
+          <h3 class="text-lg font-bold">Écusson VitalX 2K26</h3>
+          <div class="mt-2 flex items-baseline gap-2">
+            <span class="text-2xl font-extrabold price">7,90 €</span>
+            <span class="text-xs text-zinc-400">TTC</span>
+          </div>
+          <button data-sku="sku_ecusson_vitalx_2k26" data-name="Écusson logo VitalX 2K26" data-price="790" data-image="/assets/logo vitalx 2K26.png" class="add-to-cart mt-5 inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-400 text-white px-5 py-3 font-bold shadow-soft hover:brightness-110 cta-anim">
+            🛒 Ajouter au panier
+          </button>
         </article>
 
-        <!-- Écusson Stop Blood -->
-        <article class="glass ring-gradient rounded-2xl p-6 flex flex-col">
-          <img src="/assets/logo stop blood.png" alt="Écusson logo stop blood" class="ecusson-img cursor-zoom-in w-full max-h-44 object-contain rounded-xl mb-4 bg-zinc-900/40 p-2" loading="lazy" />
-          <h3 class="text-lg font-semibold">Écusson logo stop blood</h3>
-          <div class="mt-3 text-2xl font-extrabold">7,90 € TTC</div>
-          <button data-sku="sku_ecusson_stop_blood" data-name="Écusson logo stop blood" data-price="790" data-image="/assets/logo stop blood.png" class="add-to-cart mt-6 inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-400 text-white px-5 py-3 font-semibold shadow-soft hover:from-emerald-500 hover:via-emerald-400 hover:to-teal-300 cta-anim">Ajouter au panier</button>
+        <!-- Stop Blood -->
+        <article class="card-lift glass ring-gradient rounded-3xl p-6 flex flex-col">
+          <div class="rounded-xl bg-zinc-900/40 p-3 ring-1 ring-white/5 mb-4">
+            <img src="/assets/logo stop blood.png" alt="Écusson logo stop blood" class="ecusson-img cursor-zoom-in w-full max-h-44 object-contain" loading="lazy" />
+          </div>
+          <h3 class="text-lg font-bold">Écusson Stop Blood</h3>
+          <div class="mt-2 flex items-baseline gap-2">
+            <span class="text-2xl font-extrabold price">7,90 €</span>
+            <span class="text-xs text-zinc-400">TTC</span>
+          </div>
+          <button data-sku="sku_ecusson_stop_blood" data-name="Écusson logo stop blood" data-price="790" data-image="/assets/logo stop blood.png" class="add-to-cart mt-5 inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-400 text-white px-5 py-3 font-bold shadow-soft hover:brightness-110 cta-anim">
+            🛒 Ajouter au panier
+          </button>
         </article>
       </div>
     </section>
-    <!-- Cart Drawer -->
-    <div id="cartOverlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden z-50"></div>
-    <aside id="cartDrawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-zinc-950 text-white shadow-2xl transform translate-x-full transition-transform duration-200 z-50">
-      <div class="h-14 flex items-center justify-between px-4 border-b border-white/10">
-        <div class="flex items-center gap-2 font-semibold">🛒 Votre panier</div>
-        <button id="closeCart" class="rounded-lg bg-white/5 px-3 py-1.5 hover:bg-white/10">Fermer</button>
-      </div>
-      <div id="cartItems" class="p-4 space-y-3 overflow-y-auto max-h-[calc(100vh-200px)]"></div>
-      <div class="absolute bottom-0 left-0 right-0 border-t border-white/10 p-4 bg-zinc-950">
-        <div class="flex items-center justify-between text-sm text-zinc-300">
-          <span>Sous-total</span>
-          <span id="cartSubtotal" class="font-bold text-white">0 €</span>
-        </div>
-        <button id="checkoutBtn" class="mt-3 w-full inline-flex justify-center items-center gap-2 rounded-xl bg-white text-black px-5 py-3 font-semibold shadow-soft hover:bg-zinc-100 cta-anim">Payer</button>
-        <!-- Paiement sécurisé & logos partenaires -->
-        <div class="mt-4 flex flex-wrap items-center justify-center gap-3 opacity-80">
-          <span class="inline-flex items-center gap-2 rounded-md bg-white/10 px-2.5 py-1.5 text-[11px] font-semibold text-white">
-            <span class="text-amber-300" aria-hidden="true">🔒</span>
-            Paiement sécurisé
-          </span>
 
-          <!-- Stripe logo (SVG wordmark) -->
+    <!-- Cart Drawer -->
+    <div id="cartOverlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden z-50"></div>
+    <aside id="cartDrawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-zinc-950 text-white shadow-2xl transform translate-x-full transition-transform duration-300 z-50 ring-1 ring-white/10">
+      <div class="h-16 flex items-center justify-between px-5 border-b border-white/10">
+        <div class="flex items-center gap-2 font-bold text-lg">🛒 Votre panier</div>
+        <button id="closeCart" class="rounded-lg bg-white/5 px-3 py-1.5 hover:bg-white/10 text-sm">Fermer ✕</button>
+      </div>
+      <div id="cartItems" class="p-4 space-y-3 overflow-y-auto" style="max-height: calc(100vh - 260px)"></div>
+      <div class="absolute bottom-0 left-0 right-0 border-t border-white/10 p-5 bg-zinc-950">
+        <div class="flex items-center justify-between text-sm text-zinc-300 mb-1">
+          <span>Sous-total</span>
+          <span id="cartSubtotal" class="font-extrabold text-white text-xl">0 €</span>
+        </div>
+        <p class="text-[11px] text-zinc-500 mb-3">Frais de livraison calculés à l'étape suivante.</p>
+        <button id="checkoutBtn" class="w-full inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-400 text-black px-5 py-3.5 font-extrabold shadow-glow hover:brightness-110 cta-anim">
+          🔒 Payer maintenant
+        </button>
+        <div class="mt-4 flex flex-wrap items-center justify-center gap-2 opacity-90">
+          <span class="inline-flex items-center gap-1.5 rounded-md bg-white/10 px-2.5 py-1.5 text-[11px] font-semibold text-white">🔒 Sécurisé</span>
           <span class="inline-flex items-center rounded-md bg-white px-2.5 py-1.5">
             <svg width="56" height="16" viewBox="0 0 56 16" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stripe">
               <text x="0" y="12" font-size="12" font-weight="700" fill="#635BFF" font-family="Arial, Helvetica, sans-serif">stripe</text>
             </svg>
           </span>
-
-          <!-- VISA logo (inline SVG) -->
           <span class="inline-flex items-center rounded-md bg-white/10 px-2.5 py-1.5">
             <svg width="36" height="12" viewBox="0 0 36 12" aria-label="VISA" xmlns="http://www.w3.org/2000/svg" role="img">
               <rect x="0" y="9" width="36" height="2" fill="#F7A600"/>
               <text x="0" y="9" font-size="9" font-weight="700" fill="#1A1F71" font-family="Arial, Helvetica, sans-serif">VISA</text>
             </svg>
           </span>
-
-          <!-- Mastercard logo (inline SVG) -->
           <span class="inline-flex items-center rounded-md bg-white/10 px-2.5 py-1.5">
             <svg width="28" height="16" viewBox="0 0 28 16" aria-label="Mastercard" xmlns="http://www.w3.org/2000/svg" role="img">
               <circle cx="10" cy="8" r="6" fill="#EB001B"/>
               <circle cx="18" cy="8" r="6" fill="#F79E1B" fill-opacity="0.9"/>
             </svg>
           </span>
-
-          <!-- Apple Pay (wordmark) -->
-          <span class="inline-flex items-center gap-1 rounded-md bg-white px-2.5 py-1.5 text-[11px] font-semibold text-black">
-            <span aria-hidden="true"></span><span>Pay</span>
-          </span>
-
-          <!-- PayPal logo (wordmark SVG) -->
+          <span class="inline-flex items-center gap-1 rounded-md bg-white px-2.5 py-1.5 text-[11px] font-semibold text-black">Pay</span>
           <span class="inline-flex items-center rounded-md bg-white px-2.5 py-1.5">
             <svg width="52" height="14" viewBox="0 0 52 14" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="PayPal">
               <rect x="0" y="1" width="52" height="12" rx="3" fill="#003087" />
@@ -485,15 +560,23 @@
     </aside>
   </main>
 
+  <!-- Floating cart FAB (mobile-friendly) -->
+  <button id="cartFab" type="button" class="cart-fab inline-flex items-center gap-2 rounded-full bg-emerald-500 text-white px-4 py-3 font-bold cta-anim md:hidden">
+    🛒 <span id="cartFabCount" class="rounded-full bg-white text-emerald-600 text-xs font-extrabold px-2 py-0.5">0</span>
+  </button>
+
+  <!-- Toast -->
+  <div id="toast" class="toast">Ajouté au panier ✓</div>
+
   <!-- Banner: visio demo contact -->
-  <section class="border-t border-white/10 bg-zinc-950/90">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
-      <p class="text-sm md:text-base text-white/80 text-center md:text-left">
+  <section class="border-t border-white/10 bg-gradient-to-r from-zinc-950 via-zinc-900 to-zinc-950">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-sm md:text-base text-white/85 text-center md:text-left">
         Vous souhaitez voir VitalX en action ?
         <span class="font-semibold text-white">Contactez-nous pour organiser une démonstration en visio.</span>
       </p>
-      <a href="/#contact" class="inline-flex items-center gap-2 rounded-xl bg-emerald-500 text-white px-5 py-2.5 text-sm font-semibold shadow-soft hover:bg-emerald-400 cta-anim">
-        📞 Demander une démo en visio
+      <a href="/#contact" class="inline-flex items-center gap-2 rounded-xl bg-emerald-500 text-white px-5 py-3 text-sm font-bold shadow-soft hover:bg-emerald-400 cta-anim">
+        📞 Demander une démo
       </a>
     </div>
   </section>
@@ -501,7 +584,7 @@
   <!-- Footer -->
   <footer class="py-10 border-t border-white/10 text-sm text-zinc-400">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
-      <p>© <span id="y"></span> VitalX — Tous droits réservés. <span class="text-zinc-500">— Tarifs affichés en prix public.</span></p>
+      <p>© <span id="y"></span> VitalX — Tous droits réservés. <span class="text-zinc-500">— Tarifs en prix public TTC.</span></p>
       <nav class="flex items-center gap-4">
         <a href="/" class="hover:text-white">Accueil</a>
       </nav>
@@ -509,8 +592,8 @@
   </footer>
 
   <!-- ECUSSON LIGHTBOX -->
-  <div id="ecussonLightbox" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden items-center justify-center z-50">
-    <button id="ecussonLightboxClose" class="absolute top-4 right-4 text-white text-2xl font-bold">✕</button>
+  <div id="ecussonLightbox" class="fixed inset-0 bg-black/85 backdrop-blur-sm hidden items-center justify-center z-50">
+    <button id="ecussonLightboxClose" class="absolute top-4 right-4 text-white text-2xl font-bold hover:scale-110 transition">✕</button>
     <img id="ecussonLightboxImg" src="" alt="" class="max-w-[90vw] max-h-[85vh] object-contain rounded-xl shadow-2xl" />
   </div>
 
@@ -519,122 +602,29 @@
       const lightbox = document.getElementById('ecussonLightbox');
       const imgBox = document.getElementById('ecussonLightboxImg');
       const btnClose = document.getElementById('ecussonLightboxClose');
-
       if (!lightbox || !imgBox) return;
-
       document.querySelectorAll('#ecussons .ecusson-img').forEach(img => {
         img.addEventListener('click', () => {
-          imgBox.src = img.src;
-          imgBox.alt = img.alt || '';
-          lightbox.classList.remove('hidden');
-          lightbox.classList.add('flex');
+          imgBox.src = img.src; imgBox.alt = img.alt || '';
+          lightbox.classList.remove('hidden'); lightbox.classList.add('flex');
         });
       });
-
-      function close() {
-        lightbox.classList.add('hidden');
-        lightbox.classList.remove('flex');
-        imgBox.src = '';
-      }
-
+      function close() { lightbox.classList.add('hidden'); lightbox.classList.remove('flex'); imgBox.src = ''; }
       if (btnClose) btnClose.addEventListener('click', close);
-      lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) close();
-      });
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') close();
-      });
+      lightbox.addEventListener('click', (e) => { if (e.target === lightbox) close(); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
     })();
 
-    // Année dynamique
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Liens Stripe (live)
-    const STRIPE_PACK = 'https://buy.stripe.com/fZueV6bTZ3QH0AP29x6kg07';    // Pack complet
-    const STRIPE_LIC_3 = 'https://buy.stripe.com/7sY14g6zFbj983h6pN6kg0a';   // Licence 3 mois
-    const STRIPE_LIC_6 = 'https://buy.stripe.com/14AfZa3ntcnd1ETdSf6kg09';   // Licence 6 mois
-    const STRIPE_LIC_12 = 'https://buy.stripe.com/fZufZa1fl86XerFeWj6kg08';  // Licence 12 mois
-    const STRIPE_LIC_24 = 'https://buy.stripe.com/eVqaEQcY34ULgzNbK76kg06';  // Licence 24 mois
-
-    const STRIPE_DSA_ADULT = '#';
-    const STRIPE_DSA_PEDIA = '#';
-    const STRIPE_CABLE_ECG = '#';
-    const STRIPE_SPO2 = '#';
-    const STRIPE_ETCO2 = '#';
-    const STRIPE_BP_ADULT = '#';
-    const STRIPE_BP_CHILD = '#';
-    const STRIPE_TEMP = '#';
-
-    const map = [
-      ['buyPack', STRIPE_PACK],
-      ['buyL3', STRIPE_LIC_3],
-      ['buyL6', STRIPE_LIC_6],
-      ['buyL12', STRIPE_LIC_12],
-      ['buyL24', STRIPE_LIC_24],
-      ['buyDSAAdult', STRIPE_DSA_ADULT],
-      ['buyDSAPedia', STRIPE_DSA_PEDIA],
-      ['buyCableECG', STRIPE_CABLE_ECG],
-      ['buySpO2', STRIPE_SPO2],
-      ['buyETCO2', STRIPE_ETCO2],
-      ['buyBPAdult', STRIPE_BP_ADULT],
-      ['buyBPChild', STRIPE_BP_CHILD],
-      ['buyTemp', STRIPE_TEMP],
-    ];
-    map.forEach(([id, url]) => { const el = document.getElementById(id); if (el) el.href = url; });
-
-
-    // Picker color state (hero tabs)
-    const pickPack = document.getElementById('pick-pack');
-    const pickLic  = document.getElementById('pick-lic');
-    const pickAcc  = document.getElementById('pick-acc');
-
-    function setActivePicker(target) {
-      const sets = [
-        [pickPack, 'pink'],
-        [pickLic,  'emerald'],
-        [pickAcc,  'sky']
-      ];
-      sets.forEach(([el, color]) => {
-        if (!el) return;
-        el.setAttribute('aria-selected','false');
-        el.classList.remove('bg-white','text-black','hover:bg-zinc-100');
-        el.classList.remove('text-white','bg-emerald-500/30','bg-sky-500/30','text-emerald-300','text-sky-300','bg-emerald-500/10','hover:bg-emerald-500/15','bg-sky-500/10','hover:bg-sky-500/15');
-        // keep white rings as defined in markup
-      });
-      if (target === 'pack' && pickPack){
-        pickPack.setAttribute('aria-selected','true');
-        pickPack.classList.add('bg-white','text-black','hover:bg-zinc-100');
-      }
-      if (target === 'licenses' && pickLic){
-        pickLic.setAttribute('aria-selected','true');
-        pickLic.classList.add('text-white','bg-white/10');
-      }
-      if (target === 'accessoires' && pickAcc){
-        pickAcc.setAttribute('aria-selected','true');
-        pickAcc.classList.add('text-white','bg-white/10');
-      }
-    }
-
-    function syncPickerWithHash(){
-      const h = (location.hash || '#pack').replace('#','');
-      setActivePicker(h);
-    }
-
-    // Initialize and bind
-    syncPickerWithHash();
-    window.addEventListener('hashchange', syncPickerWithHash);
-    [pickPack, pickLic, pickAcc].forEach(el => el && el.addEventListener('click', () => setTimeout(syncPickerWithHash, 0)));
-
-
-    // Accessibilité : scroll au hash si fourni
     if (location.hash) {
       const target = document.querySelector(location.hash);
       if (target) target.scrollIntoView({behavior:'smooth', block:'start'});
     }
-
   </script>
+
   <script>
-    // --- CART (localStorage) ---
+    // --- CART (localStorage) — logic preserved ---
     const CART_KEY = 'vitalx_cart_v1';
     const elCart = document.getElementById('cartDrawer');
     const elOverlay = document.getElementById('cartOverlay');
@@ -643,37 +633,57 @@
     const elItems = document.getElementById('cartItems');
     const elSubtotal = document.getElementById('cartSubtotal');
     const elCount = document.getElementById('cartCount');
+    const elFabCount = document.getElementById('cartFabCount');
+    const elFab = document.getElementById('cartFab');
     const elCheckout = document.getElementById('checkoutBtn');
+    const elToast = document.getElementById('toast');
 
     function loadCart(){ try { return JSON.parse(localStorage.getItem(CART_KEY)||'[]'); } catch { return []; } }
     function saveCart(c){ localStorage.setItem(CART_KEY, JSON.stringify(c)); updateCount(c); }
     function euros(cents){ return (cents/100).toLocaleString('fr-FR', { style:'currency', currency:'EUR' }); }
 
-    function updateCount(c){ const n = c.reduce((s,i)=>s+i.quantity,0); if(elCount) elCount.textContent = n; }
+    function updateCount(c){
+      const n = c.reduce((s,i)=>s+i.quantity,0);
+      if(elCount) elCount.textContent = n;
+      if(elFabCount) elFabCount.textContent = n;
+    }
+
+    function showToast(msg){
+      if(!elToast) return;
+      elToast.textContent = msg || 'Ajouté au panier ✓';
+      elToast.classList.add('show');
+      clearTimeout(showToast._t);
+      showToast._t = setTimeout(()=> elToast.classList.remove('show'), 1600);
+    }
 
     function render(){
       const cart = loadCart();
       updateCount(cart);
       elItems.innerHTML = '';
       if (!cart.length){
-        elItems.innerHTML = '<div class="text-zinc-400 text-sm">Votre panier est vide.</div>';
+        elItems.innerHTML = `
+          <div class="text-center py-12">
+            <div class="text-5xl mb-3">🛒</div>
+            <div class="text-zinc-300 font-semibold">Votre panier est vide</div>
+            <div class="text-zinc-500 text-sm mt-1">Ajoutez un produit pour commencer.</div>
+          </div>`;
       } else {
         cart.forEach(item => {
           const row = document.createElement('div');
-          row.className = 'flex items-center gap-3 p-3 rounded-xl bg-white/5 ring-1 ring-white/10';
+          row.className = 'flex items-center gap-3 p-3 rounded-2xl bg-white/5 ring-1 ring-white/10 hover:bg-white/[0.07] transition';
           row.innerHTML = `
-            <img src="${item.image||''}" alt="" class="h-14 w-14 object-contain rounded-lg bg-zinc-900/50 p-1"/>
-            <div class="flex-1">
-              <div class="font-semibold">${item.name}</div>
-              <div class="text-xs text-zinc-400">${euros(item.price)}</div>
-              <div class="mt-1 inline-flex items-center gap-2">
-                <button data-act="dec" data-sku="${item.sku}" class="rounded bg-white/10 px-2 text-sm">−</button>
-                <span class="text-sm">${item.quantity}</span>
-                <button data-act="inc" data-sku="${item.sku}" class="rounded bg-white/10 px-2 text-sm">+</button>
-                <button data-act="del" data-sku="${item.sku}" class="ml-3 text-xs text-red-400 hover:text-red-300">Supprimer</button>
+            <img src="${item.image||''}" alt="" class="h-16 w-16 object-contain rounded-lg bg-zinc-900/60 p-1.5 ring-1 ring-white/5"/>
+            <div class="flex-1 min-w-0">
+              <div class="font-semibold truncate">${item.name}</div>
+              <div class="text-xs text-zinc-400">${euros(item.price)} l'unité</div>
+              <div class="mt-1.5 inline-flex items-center gap-1 rounded-lg bg-white/5 ring-1 ring-white/10 p-0.5">
+                <button data-act="dec" data-sku="${item.sku}" class="rounded-md bg-white/5 hover:bg-white/15 w-7 h-7 text-sm font-bold">−</button>
+                <span class="text-sm font-semibold w-7 text-center">${item.quantity}</span>
+                <button data-act="inc" data-sku="${item.sku}" class="rounded-md bg-white/5 hover:bg-white/15 w-7 h-7 text-sm font-bold">+</button>
+                <button data-act="del" data-sku="${item.sku}" class="ml-2 text-[11px] text-red-400 hover:text-red-300 px-1.5">Supprimer</button>
               </div>
             </div>
-            <div class="font-bold">${euros(item.price*item.quantity)}</div>
+            <div class="font-extrabold whitespace-nowrap">${euros(item.price*item.quantity)}</div>
           `;
           elItems.appendChild(row);
         });
@@ -686,10 +696,10 @@
     function closeCart(){ elOverlay.classList.add('hidden'); elCart.classList.add('translate-x-full'); }
 
     elOpen && elOpen.addEventListener('click', openCart);
+    elFab && elFab.addEventListener('click', openCart);
     elOverlay && elOverlay.addEventListener('click', closeCart);
     elClose && elClose.addEventListener('click', closeCart);
 
-    // Bind +/−/delete actions
     elItems && elItems.addEventListener('click', (e)=>{
       const t = e.target.closest('button'); if(!t) return;
       const sku = t.getAttribute('data-sku'); const act = t.getAttribute('data-act');
@@ -703,7 +713,6 @@
       saveCart(cart); render();
     });
 
-    // Add-to-cart binders
     document.querySelectorAll('.add-to-cart').forEach(btn=>{
       btn.addEventListener('click', ()=>{
         const sku = btn.getAttribute('data-sku');
@@ -715,11 +724,12 @@
         if(i>=0) cart[i].quantity = Math.min(99, cart[i].quantity+1);
         else cart.push({ sku, name, price, image, quantity: 1 });
         saveCart(cart);
+        showToast(`${name} ajouté ✓`);
         openCart();
       });
     });
 
-    // --- Refurb picker (1 iPad / 2 iPad) ---
+    // --- Refurb picker ---
     (function(){
       const picker = document.getElementById('refurbPicker');
       if(!picker) return;
@@ -727,8 +737,6 @@
       const priceEl = document.getElementById('refurbPrice');
       const ipadsEl = document.getElementById('refurbIpads');
       const addBtn = document.getElementById('refurbAddBtn');
-
-      function fmtEUR(n){ return n.toLocaleString('fr-FR') + ' €'; }
       function setActive(v){
         btns.forEach(b=>{
           const on = b.getAttribute('data-variant') === String(v);
@@ -736,16 +744,15 @@
           b.className = 'px-3 py-1.5 ' + (on ? 'bg-white text-black font-semibold' : 'hover:bg-white/10');
         });
       }
-
       function selectVariant(v){
         if(v===1){
-          priceEl.textContent = '1 489 €';
+          priceEl.textContent = '1 489 €';
           ipadsEl.textContent = '1 iPad 10ᵉ gén. (reconditionné)';
           addBtn.setAttribute('data-sku','sku_pack_refurb_1');
           addBtn.setAttribute('data-name','Pack VitalX Reconditionné (1 iPad)');
           addBtn.setAttribute('data-price','148900');
         } else {
-          priceEl.textContent = '1 849 €';
+          priceEl.textContent = '1 849 €';
           ipadsEl.textContent = '2 iPad 10ᵉ gén. (reconditionnés)';
           addBtn.setAttribute('data-sku','sku_pack_refurb_2');
           addBtn.setAttribute('data-name','Pack VitalX Reconditionné (2 iPad)');
@@ -753,8 +760,6 @@
         }
         setActive(v);
       }
-
-      // default: 2 iPad
       selectVariant(2);
       btns.forEach(b=> b.addEventListener('click', ()=> selectVariant(parseInt(b.getAttribute('data-variant'),10))));
     })();
@@ -763,7 +768,6 @@
     elCheckout && elCheckout.addEventListener('click', async ()=>{
       const cart = loadCart();
       if(!cart.length) { alert('Votre panier est vide.'); return; }
-      // Send only SKU & quantity; server map → Stripe Price IDs
       const items = cart.map(({sku, quantity}) => ({ sku, quantity }));
       try{
         const res = await fetch('/.netlify/functions/create-checkout',{
@@ -775,96 +779,11 @@
         else { throw new Error(data && data.error ? data.error : 'Erreur inconnue'); }
       } catch(err){
         console.error(err);
-        alert("Le paiement n'est pas encore configuré. Dis-moi quand tu auras ajouté la function 'create-checkout' côté Netlify et je l’activerai.");
+        alert("Le paiement n'est pas encore configuré. Dis-moi quand tu auras ajouté la function 'create-checkout' côté Netlify et je l'activerai.");
       }
     });
 
-    // Initialize badge from storage
     updateCount(loadCart());
   </script>
 </body>
 </html>
-
-<style>
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-.animate-gradientMove {
-  animation: gradientMove 6s ease infinite;
-}
-/* Desktop hover interactions for product cards */
-@media (hover:hover) and (pointer:fine) {
-  /* Pack purchase card, all licence cards, all accessory cards */
-  #pack article,
-  #licenses article,
-  #accessoires article,
-  #ecussons article {
-    transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
-    will-change: transform;
-  }
-  #pack article:hover,
-  #licenses article:hover,
-  #accessoires article:hover,
-  #ecussons article:hover {
-    transform: translateY(-4px) scale(1.01);
-    box-shadow: 0 12px 40px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.06) inset;
-    filter: saturate(1.05);
-  }
-  /* Licences grid: 3 mois (blue), 6 mois (fuchsia), 12 mois (amber) */
-  #licenses .grid > article:nth-child(1):hover {
-    box-shadow: 0 14px 44px rgba(59,130,246,.55), 0 0 0 1px rgba(59,130,246,.35) inset;
-    filter: saturate(1.08);
-  }
-  #licenses .grid > article:nth-child(2):hover {
-    box-shadow: 0 14px 44px rgba(236,72,153,.55), 0 0 0 1px rgba(236,72,153,.35) inset;
-    filter: saturate(1.08);
-  }
-  #licenses .grid > article:nth-child(3):hover {
-    box-shadow: 0 14px 44px rgba(251,191,36,.55), 0 0 0 1px rgba(251,191,36,.35) inset;
-    filter: saturate(1.08);
-  }
-  /* Accessories + écussons: emerald/green glow */
-  #accessoires article:hover,
-  #ecussons article:hover {
-    box-shadow: 0 14px 44px rgba(16,185,129,.55), 0 0 0 1px rgba(16,185,129,.35) inset;
-    filter: saturate(1.08);
-  }
-  /* Licence à vie (grand encart): whole card multicolor glow */
-  #licenses article:last-of-type:hover {
-    box-shadow:
-      0 14px 44px rgba(0,0,0,.35),
-      0 0 18px rgba(59,130,246,.45),   /* blue */
-      0 0 28px rgba(236,72,153,.45),   /* pink */
-      0 0 38px rgba(251,191,36,.45);   /* yellow */
-    filter: saturate(1.06);
-    transform: translateY(-4px) scale(1.01);
-  }
-  #licenses .grid > article:nth-child(4):hover {
-    box-shadow: 0 14px 44px rgba(16,185,129,.55), 0 0 0 1px rgba(16,185,129,.35) inset;
-    filter: saturate(1.08);
-  }
-  /* Basic Pack: blue glow on hover */
-  #pack .card-basic:hover {
-    box-shadow: 0 14px 44px rgba(59,130,246,.55), 0 0 0 1px rgba(59,130,246,.35) inset;
-    filter: saturate(1.08);
-  }
-  /* Specific colored hover glow for packs */
-  #pack .pack-classic:hover {
-    transform: translateY(-4px) scale(1.01);
-    box-shadow: 0 18px 56px rgba(59,130,246,.55), 0 0 0 2px rgba(59,130,246,.45) inset; /* blue */
-    filter: saturate(1.12);
-  }
-  #pack .pack-refurb:hover {
-    transform: translateY(-4px) scale(1.01);
-    box-shadow: 0 18px 56px rgba(168,85,247,.60), 0 0 0 2px rgba(168,85,247,.50) inset; /* purple */
-    filter: saturate(1.12);
-  }
-  #pack .pack-premium:hover {
-    transform: translateY(-4px) scale(1.01);
-    box-shadow: 0 18px 56px rgba(239,68,68,.60), 0 0 0 2px rgba(239,68,68,.50) inset; /* red */
-    filter: saturate(1.12);
-  }
-}
-</style>
