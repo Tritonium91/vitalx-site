@@ -1,7 +1,7 @@
 const PRICE_BY_SKU = {
   // === PRODUITS PRINCIPAUX ===
-  'sku_pack':           'price_1ScrWQ2MFaCyLMvRSpMRJuf5', // Pack VitalX Premium 2999
-  'sku_pack_basic':     'price_1ScrUy2MFaCyLMvR0FMhQ9VO', // Pack VitalX Basique 2689
+  'sku_pack':           'price_1ScrWQ2MFaCyLMvRSpMRJuf5', // Pack VitalX Premium 3600
+  'sku_pack_basic':     'price_1ScrUy2MFaCyLMvR0FMhQ9VO', // Pack VitalX Basique 3300
 
   // Packs reconditionnés
   'sku_pack_refurb_1':  'price_1SSqRK2MFaCyLMvRPnF7A5Ia', // Pack Reconditionné 1 iPad — 1 489 €
