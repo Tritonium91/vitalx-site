@@ -7,9 +7,12 @@ const PRICE_BY_SKU = {
   'sku_pack_refurb_1':  'price_1SSqRK2MFaCyLMvRPnF7A5Ia', // Pack Reconditionné 1 iPad — 1 489 €
   'sku_pack_refurb_2':  'price_1SSqQC2MFaCyLMvRTh5uoL8T', // Pack Reconditionné 2 iPad — 1 849 €
 
+  // === MODE ULTRA ===
+  'sku_mode_ultra':     'price_1TWHL02MFaCyLMvRIg7KAaJh',         // Mode Ultra — 400 € (GUARDIAN, ANGEL, NEXUS, CTG, VENT)
+
   // === POD'S ===
-  'sku_pods_classic':   'price_1T4lur2MFaCyLMvRIe4ApI19', // POD'S Classic — 1 300 €
-  'sku_pods_premium':   'price_1T4lvf2MFaCyLMvRZPaFFxTz', // POD'S Premium — 1 600 €
+  'sku_pods_classic':   'price_1TWHMV2MFaCyLMvRYYMmpv0d', // POD'S Classic — 1 700 €
+  'sku_pods_premium':   'price_1TWHLu2MFaCyLMvR9hB7ryqT', // POD'S Premium — 2 000 €
 
   // === LICENCES ===
   'sku_lic_annual':     'price_1SSqNq2MFaCyLMvRxOOlrLly', // Licence 1 an — 180 €
@@ -49,9 +52,9 @@ exports.handler = async (event) => {
       return json(400, { error: 'Panier vide' });
     }
 
-    // Détecte les licences
+    // Détecte les licences ou le mode ultra
     const hasLicense = items.some(({ sku }) =>
-      String(sku || '').startsWith('sku_lic_')
+      String(sku || '').startsWith('sku_lic_') || sku === 'sku_mode_ultra'
     );
 
     // Détecte les écussons
@@ -84,7 +87,7 @@ exports.handler = async (event) => {
     body.append('billing_address_collection', 'auto');
     body.append('allow_promotion_codes', 'true');
 
-    // Champ personnalisé si licence
+    // Champ personnalisé si licence ou mode ultra
     if (hasLicense) {
       body.append('custom_fields[0][key]', 'current_license_code');
       body.append('custom_fields[0][label][type]', 'custom');
