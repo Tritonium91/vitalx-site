@@ -86,23 +86,10 @@
       /* ===== Feature cards reveal ===== */
       .feature-card { cursor: pointer; }
       .feature-card .reveal { max-height: 0; opacity: 0; overflow: hidden; transition: max-height .4s ease, opacity .3s ease; }
-      .feature-card.group:hover .reveal, .feature-card[data-open="true"] .reveal { max-height: 380px; opacity: 1; }
+      .feature-card.group:hover .reveal, .feature-card[data-open="true"] .reveal { max-height: 220px; opacity: 1; }
       .feature-card .title-row { display: flex; align-items: center; justify-content: space-between; }
       .feature-card .chev { transition: transform .3s ease, opacity .3s ease; opacity: .6; }
       .feature-card.group:hover .chev, .feature-card[data-open="true"] .chev { transform: rotate(180deg); opacity: 1; }
-
-      /* ===== NEW badge sur cartes nouvelles fonctionnalités ===== */
-      .new-badge {
-        background: linear-gradient(90deg, #f59e0b, #ec4899);
-        color: white;
-        font-size: 9px;
-        font-weight: 800;
-        letter-spacing: 1.2px;
-        padding: 2px 7px;
-        border-radius: 4px;
-        display: inline-block;
-        text-transform: uppercase;
-      }
 
       .section { scroll-margin-top: 96px; }
       .snap-x { scroll-snap-type: x mandatory; }
@@ -141,17 +128,6 @@
       .hero-slides img { width: 100%; max-height: 500px; flex: 0 0 100%; object-fit: contain; object-position: left center; }
       @media (max-width: 640px) { .hero-slides img { max-height: 300px; } }
       @media (max-width: 380px) { .hero-slides img { max-height: 260px; } }
-
-      /* ===== Mini sparkline animée pour la carte Historique ===== */
-      @keyframes sparklineDraw {
-        from { stroke-dashoffset: 200; }
-        to { stroke-dashoffset: 0; }
-      }
-      .sparkline-anim {
-        stroke-dasharray: 200;
-        stroke-dashoffset: 200;
-        animation: sparklineDraw 3s ease-out infinite alternate;
-      }
     </style>
   </head>
 
@@ -266,147 +242,43 @@
             </span>
           </p>
         </div>
-
         <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-          <!-- ⭐ NEW : Historique multi-constantes -->
-          <div class="glass ring-gradient rounded-3xl p-6 group feature-card card-lift relative overflow-hidden" role="button" tabindex="0" aria-expanded="false">
-            <div class="absolute -top-12 -right-12 h-40 w-40 rounded-full bg-gradient-to-br from-cyan-500/15 to-blue-500/10 blur-2xl pointer-events-none"></div>
-            <div class="relative">
-              <div class="flex items-center gap-2 mb-2">
-                <span class="new-badge">Nouveau</span>
-              </div>
-              <div class="h-11 w-11 rounded-xl bg-gradient-to-br from-cyan-500/30 to-blue-500/10 ring-1 ring-cyan-500/30 grid place-items-center">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="M7 14l4-4 4 4 5-5"></path></svg>
-              </div>
-              <h3 class="mt-4 text-xl font-bold title-row">Historique multi-constantes <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 21 6 15"></polyline></svg></h3>
-
-              <!-- Mini sparkline visualisation -->
-              <div class="mt-3 h-10 rounded-lg bg-black/40 ring-1 ring-white/5 overflow-hidden p-1.5">
-                <svg viewBox="0 0 200 30" class="w-full h-full" preserveAspectRatio="none">
-                  <polyline class="sparkline-anim" fill="none" stroke="#60a5fa" stroke-width="1.5" points="0,20 20,15 40,18 60,8 80,12 100,5 120,10 140,7 160,14 180,6 200,9"/>
-                  <polyline class="sparkline-anim" style="animation-delay:.4s" fill="none" stroke="#f472b6" stroke-width="1.5" points="0,12 20,18 40,10 60,15 80,20 100,12 120,18 140,10 160,8 180,14 200,11"/>
-                </svg>
-              </div>
-
-              <div class="reveal mt-3">
-                <p class="text-sm text-zinc-300">Suivi <strong>complet et chronologique</strong> de toutes les constantes pendant la séance :</p>
-                <ul class="mt-2 text-sm text-zinc-300 space-y-1">
-                  <li class="flex gap-2"><span class="text-cyan-400">›</span><strong>Snapshots automatiques toutes les 5 minutes</strong> (HR, SpO₂, RR, TEMP, NIBP, EtCO₂…)</li>
-                  <li class="flex gap-2"><span class="text-cyan-400">›</span><strong>Mesures PNI tracées à chaque prise</strong> avec horodatage</li>
-                  <li class="flex gap-2"><span class="text-cyan-400">›</span><strong>Sparklines colorées</strong> + min / moyenne / max par constante</li>
-                  <li class="flex gap-2"><span class="text-cyan-400">›</span>Constantes secondaires : glycémie, cétones, lactates, hémoglobine, SpCO</li>
-                  <li class="flex gap-2"><span class="text-cyan-400">›</span>Disponible <strong>partout dans l'app</strong> (Scope & module ECG)</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- ⭐ NEW : ECG 12 dérivations + interprétation + impression -->
-          <div class="glass ring-gradient rounded-3xl p-6 group feature-card card-lift relative overflow-hidden" role="button" tabindex="0" aria-expanded="false">
-            <div class="absolute -top-12 -right-12 h-40 w-40 rounded-full bg-gradient-to-br from-rose-500/15 to-pink-500/10 blur-2xl pointer-events-none"></div>
-            <div class="relative">
-              <div class="flex items-center gap-2 mb-2">
-                <span class="new-badge">Nouveau</span>
-              </div>
-              <div class="h-11 w-11 rounded-xl bg-gradient-to-br from-rose-500/30 to-pink-500/10 ring-1 ring-rose-500/30 grid place-items-center">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-              </div>
-              <h3 class="mt-4 text-xl font-bold title-row">ECG 12D + Interprétation <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 21 6 15"></polyline></svg></h3>
-
-              <!-- Mini ECG line -->
-              <div class="mt-3 h-10 rounded-lg bg-black/40 ring-1 ring-white/5 overflow-hidden p-1.5">
-                <svg viewBox="0 0 200 30" class="w-full h-full" preserveAspectRatio="none">
-                  <polyline class="sparkline-anim" fill="none" stroke="#22d3ee" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" points="0,15 30,15 35,15 38,5 41,25 44,15 60,15 90,15 95,15 98,5 101,25 104,15 120,15 150,15 155,15 158,5 161,25 164,15 200,15"/>
-                </svg>
-              </div>
-
-              <div class="reveal mt-3">
-                <p class="text-sm text-zinc-300">Module <strong>ECG complet</strong> intégré au moniteur :</p>
-                <ul class="mt-2 text-sm text-zinc-300 space-y-1">
-                  <li class="flex gap-2"><span class="text-rose-400">›</span><strong>Acquisition 12 dérivations</strong> avec countdown 10s réaliste</li>
-                  <li class="flex gap-2"><span class="text-rose-400">›</span><strong>20+ tracés synthétiques</strong> : sinus, infarctus STEMI, FA, flutter, TV, FV, BAV, torsades, WPW, pace…</li>
-                  <li class="flex gap-2"><span class="text-rose-400">›</span><strong>Panneau d'interprétation</strong> intégré (analyse rythme, fréquence, axe)</li>
-                  <li class="flex gap-2"><span class="text-rose-400">›</span><strong>Impression simulée</strong> sur papier ECG millimétré</li>
-                  <li class="flex gap-2"><span class="text-rose-400">›</span><strong>Envoi simulé au SAMU</strong> (transmission télémétrique)</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- ⭐ NEW : DLU / Radio - fiches patient intégrées -->
-          <div class="glass ring-gradient rounded-3xl p-6 group feature-card card-lift relative overflow-hidden" role="button" tabindex="0" aria-expanded="false">
-            <div class="absolute -top-12 -right-12 h-40 w-40 rounded-full bg-gradient-to-br from-indigo-500/15 to-violet-500/10 blur-2xl pointer-events-none"></div>
-            <div class="relative">
-              <div class="flex items-center gap-2 mb-2">
-                <span class="new-badge">Nouveau</span>
-              </div>
-              <div class="h-11 w-11 rounded-xl bg-gradient-to-br from-indigo-500/30 to-violet-500/10 ring-1 ring-indigo-500/30 grid place-items-center">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="9" y1="13" x2="15" y2="13"></line><line x1="9" y1="17" x2="15" y2="17"></line></svg>
-              </div>
-              <h3 class="mt-4 text-xl font-bold title-row">DLU & Radio intégrés <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 21 6 15"></polyline></svg></h3>
-
-              <!-- Mini fiche preview -->
-              <div class="mt-3 h-10 rounded-lg bg-black/40 ring-1 ring-white/5 overflow-hidden p-1.5 flex items-center gap-1">
-                <div class="h-1 flex-1 bg-indigo-400/60 rounded-full"></div>
-                <div class="h-1 w-2/3 bg-indigo-400/40 rounded-full"></div>
-                <div class="h-1 w-1/3 bg-indigo-400/60 rounded-full"></div>
-              </div>
-
-              <div class="reveal mt-3">
-                <p class="text-sm text-zinc-300">Fiches patient et imagerie <strong>directement accessibles</strong> en simulation :</p>
-                <ul class="mt-2 text-sm text-zinc-300 space-y-1">
-                  <li class="flex gap-2"><span class="text-indigo-400">›</span><strong>DLU patient</strong> : antécédents, traitements, allergies</li>
-                  <li class="flex gap-2"><span class="text-indigo-400">›</span><strong>Imagerie radio</strong> intégrée pour scénarios contextualisés</li>
-                  <li class="flex gap-2"><span class="text-indigo-400">›</span>Cohérence pédagogique <strong>parfaite</strong> avec le scénario joué</li>
-                  <li class="flex gap-2"><span class="text-indigo-400">›</span>Disponible depuis <strong>Scope et module ECG</strong></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card classique : Scénarios dynamiques -->
+          <!-- Card 1 -->
           <div class="glass ring-gradient rounded-3xl p-6 group feature-card card-lift" role="button" tabindex="0" aria-expanded="false">
             <div class="h-11 w-11 rounded-xl bg-gradient-to-br from-blue-500/30 to-sky-500/10 ring-1 ring-blue-500/30 grid place-items-center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></div>
             <h3 class="mt-4 text-xl font-bold title-row">Scénarios dynamiques <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 21 6 15"></polyline></svg></h3>
             <div class="reveal mt-2"><p class="text-sm text-zinc-300">Bibliothèque de scénarios pré‑enregistrés avec cas concrets détaillés (AVC, douleur thoracique, polytrauma…), étapes guidées, minuteur et transitions.</p></div>
           </div>
-
-          <!-- Card classique : Moniteur réaliste -->
+          <!-- Card 2 -->
           <div class="glass ring-gradient rounded-3xl p-6 group feature-card card-lift" role="button" tabindex="0" aria-expanded="false">
             <div class="h-11 w-11 rounded-xl bg-gradient-to-br from-pink-500/30 to-rose-500/10 ring-1 ring-pink-500/30 grid place-items-center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2" ry="2"></rect><line x1="8" y1="12" x2="16" y2="12"></line></svg></div>
             <h3 class="mt-4 text-xl font-bold title-row">Moniteur réaliste <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 21 6 15"></polyline></svg></h3>
-            <div class="reveal mt-2"><p class="text-sm text-zinc-300">Le scope reçoit les paramètres du formateur : constantes en temps réel, PNI auto/manuel (PAM intégrée), alertes visuelles, tendances et courbes ECG/SpO₂. Profils <strong>adulte / enfant</strong> avec normes adaptées.</p></div>
+            <div class="reveal mt-2"><p class="text-sm text-zinc-300">Le scope reçoit les paramètres du formateur : constantes en temps réel, PNI auto/manuel (historique & PAM), alertes visuelles, tendances et courbes ECG/SpO₂.</p></div>
           </div>
-
-          <!-- Card classique : Pilotage formateur -->
+          <!-- Card 3 -->
           <div class="glass ring-gradient rounded-3xl p-6 group feature-card card-lift" role="button" tabindex="0" aria-expanded="false">
             <div class="h-11 w-11 rounded-xl bg-gradient-to-br from-amber-500/30 to-orange-500/10 ring-1 ring-amber-500/30 grid place-items-center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9"></path><path d="M14 17H5"></path><circle cx="17" cy="17" r="3"></circle><circle cx="7" cy="7" r="3"></circle></svg></div>
             <h3 class="mt-4 text-xl font-bold title-row">Pilotage formateur <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 21 6 15"></polyline></svg></h3>
             <div class="reveal mt-2"><p class="text-sm text-zinc-300">Contrôle à distance des constantes (pouls, SpO₂, respiration, tension/PNI, température), scénarios, <strong>mode ECG 12D</strong> et <strong>mode DSA</strong> depuis l'app formateur.</p></div>
           </div>
-
-          <!-- Card classique : Sync instantanée -->
+          <!-- Card 4 -->
           <div class="glass ring-gradient rounded-3xl p-6 group feature-card card-lift" role="button" tabindex="0" aria-expanded="false">
             <div class="h-11 w-11 rounded-xl bg-gradient-to-br from-emerald-500/30 to-teal-500/10 ring-1 ring-emerald-500/30 grid place-items-center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41A2 2 0 0 0 22 12V8a2 2 0 0 0-2-2h-4"></path><path d="M3.41 10.59A2 2 0 0 0 2 12v4a2 2 0 0 0 2 2h4"></path><line x1="7" y1="12" x2="17" y2="12"></line></svg></div>
             <h3 class="mt-4 text-xl font-bold title-row">Sync instantanée <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 21 6 15"></polyline></svg></h3>
             <div class="reveal mt-2"><p class="text-sm text-zinc-300">Contrôle à distance et synchronisation multi‑appareils via le cloud (session code).</p></div>
           </div>
-
-          <!-- Card classique : Design premium -->
+          <!-- Card 5 -->
           <div class="glass ring-gradient rounded-3xl p-6 group feature-card card-lift" role="button" tabindex="0" aria-expanded="false">
             <div class="h-11 w-11 rounded-xl bg-gradient-to-br from-purple-500/30 to-fuchsia-500/10 ring-1 ring-purple-500/30 grid place-items-center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21V7a2 2 0 0 0-2-2h-4"></path><rect x="2" y="7" width="12" height="13" rx="2" ry="2"></rect></svg></div>
             <h3 class="mt-4 text-xl font-bold title-row">Design premium <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 21 6 15"></polyline></svg></h3>
             <div class="reveal mt-2"><p class="text-sm text-zinc-300">UI claire, cartes, micro‑animations et lisibilité optimale en salle de cours.</p></div>
           </div>
-
-          <!-- Card classique : Évolutif -->
+          <!-- Card 6 -->
           <div class="glass ring-gradient rounded-3xl p-6 group feature-card card-lift" role="button" tabindex="0" aria-expanded="false">
             <div class="h-11 w-11 rounded-xl bg-gradient-to-br from-red-500/30 to-rose-500/10 ring-1 ring-red-500/30 grid place-items-center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H10"></path><path d="M4 12h2"></path><path d="M10 6v12"></path></svg></div>
             <h3 class="mt-4 text-xl font-bold title-row">Évolutif <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 21 6 15"></polyline></svg></h3>
             <div class="reveal mt-2"><p class="text-sm text-zinc-300">Mises à jour régulières : nouveaux scénarios, améliorations et optimisations.</p></div>
           </div>
-
         </div>
       </div>
     </section>
@@ -423,15 +295,12 @@
               <span class="block mt-2"><strong>Moniteur</strong> 🖥️ — affiche instantanément les valeurs, courbes et alertes pour des mises en situation <strong>ultra réalistes</strong> en salle de cours.</span>
             </p>
             <ul class="mt-6 space-y-3 text-zinc-300">
-              <li class="flex gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-blue-500 shrink-0"></span> 👨🏻‍💻 <span><strong>Formateur</strong> : contrôle à distance — Pouls, SpO₂, Respiration, Tension (PNI), Température</span></li>
-              <li class="flex gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-pink-500 shrink-0"></span> 🧪 <span><strong>Scénarios</strong> : cas concrets détaillés et multiples</span></li>
-              <li class="flex gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-rose-500 shrink-0"></span> 🫀 <span><strong>ECG 12D</strong> : 20+ tracés synthétiques + <strong>panneau d'interprétation</strong> + <strong>impression simulée</strong> + envoi SAMU</span></li>
-              <li class="flex gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-cyan-500 shrink-0"></span> 📊 <span><strong>Historique multi-constantes</strong> : sparklines, snapshots auto 5 min, PNI tracée, min/avg/max</span></li>
-              <li class="flex gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-indigo-500 shrink-0"></span> 📋 <span><strong>DLU & Radio</strong> : fiches patient intégrées et imagerie contextuelle pour scénarios</span></li>
-              <li class="flex gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-red-500 shrink-0"></span> ⚡ <span><strong>DSA</strong> : analyses, prompts, chocs simulés</span></li>
-              <li class="flex gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-amber-500 shrink-0"></span> 🖥️ <span><strong>Moniteur</strong> : temps réel, PNI auto + manuel (PAM intégrée), courbes ECG/SpO₂, alertes</span></li>
-              <li class="flex gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-emerald-500 shrink-0"></span> 🔔 <span><strong>Alertes & Sécurité</strong> : CO détecté, batterie faible, mute global, alertes visuelles/sonores</span></li>
-              <li class="flex gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-fuchsia-500 shrink-0"></span> 🐾 <span><strong>Mode Animal</strong> + Profils <strong>adulte / enfant</strong> avec normes adaptées</span></li>
+              <li class="flex gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-blue-500"></span> 👨🏻‍💻 <strong>Formateur</strong> : contrôle à distance — Pouls, SpO₂, Respiration, Tension (PNI), Température</li>
+              <li class="flex gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-pink-500"></span> 🧪 <strong>Scénarios</strong> : cas concrets détaillés et multiples</li>
+              <li class="flex gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-rose-500"></span> 🫀 <strong>Modes</strong> : ECG 12 dérivations & DSA (analyses, prompts, chocs simulés)</li>
+              <li class="flex gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-amber-500"></span> 🖥️ <strong>Moniteur</strong> : temps réel, PNI auto + manuel (historique, PAM), courbes ECG/SpO₂, alertes</li>
+              <li class="flex gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-emerald-500"></span> ☁️ <strong>Sync &amp; sécurité</strong> : CO détecté & alertes visuelles/sonores</li>
+              <li class="flex gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-fuchsia-500"></span> 🐾 <strong>Mode Animal</strong> (option)</li>
             </ul>
             <div class="mt-8 flex gap-3">
               <a href="/boutique.html" aria-label="Voir la Boutique" class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-400 text-white px-6 py-3 text-sm font-bold shadow-glow cta-anim with-shimmer">🛍️ Voir la Boutique</a>
@@ -600,29 +469,17 @@
             <div class="relative">
               <span class="inline-flex items-center rounded-full bg-blue-500/20 text-blue-300 ring-1 ring-blue-500/40 text-[11px] font-bold uppercase tracking-widest px-2.5 py-1 mb-3">POD'S Classic</span>
               <h3 class="text-2xl font-extrabold text-white">Pack POD'S Classic</h3>
-              <div class="mt-2 text-3xl font-extrabold price-text">1 300 €</div>
+              <div class="mt-2 text-3xl font-extrabold price-text">1 700 €</div>
               <p class="mt-3 text-sm text-zinc-300">
                 Pack destiné à ceux qui possèdent déjà un <strong class="text-blue-400">iPhone ou iPad pour la partie formateur</strong>.
               </p>
-              <div class="mt-4 text-xs text-zinc-400 uppercase tracking-widest font-bold">Matériel inclus</div>
-              <ul class="mt-2 text-sm text-zinc-300 space-y-1.5">
+              <ul class="mt-4 text-sm text-zinc-300 space-y-1.5">
                 <li class="flex gap-2"><span class="text-blue-400">✓</span>1 iPhone 11 ou 12 (moniteur POD'S)</li>
                 <li class="flex gap-2"><span class="text-blue-400">✓</span>1 brassard tension adulte / enfant</li>
                 <li class="flex gap-2"><span class="text-blue-400">✓</span>1 câble SpO₂ / SpCO</li>
                 <li class="flex gap-2"><span class="text-blue-400">✓</span>1 patch DSA adulte / enfant</li>
                 <li class="flex gap-2"><span class="text-blue-400">✓</span>1 boîtier VitalX POD'S + 1 housse Bagheera</li>
                 <li class="flex gap-2"><span class="text-blue-400">✓</span><strong class="text-blue-400">Licence à vie VitalX POD'S</strong></li>
-              </ul>
-              <div class="mt-4 text-xs text-zinc-400 uppercase tracking-widest font-bold">Fonctionnalités logicielles</div>
-              <ul class="mt-2 text-sm text-zinc-300 space-y-1.5">
-                <li class="flex gap-2"><span class="text-blue-400">›</span>Constantes vitales temps réel (pouls, SpO₂, RR, tension, T°)</li>
-                <li class="flex gap-2"><span class="text-blue-400">›</span><strong>Historique multi-constantes</strong> avec sparklines</li>
-                <li class="flex gap-2"><span class="text-blue-400">›</span><strong>ECG 12D</strong> + interprétation + impression simulée</li>
-                <li class="flex gap-2"><span class="text-blue-400">›</span><strong>Mode DSA</strong> de poche</li>
-                <li class="flex gap-2"><span class="text-blue-400">›</span><strong>DLU & Radio</strong> intégrés</li>
-                <li class="flex gap-2"><span class="text-blue-400">›</span>PNI auto + manuel avec PAM intégrée</li>
-                <li class="flex gap-2"><span class="text-blue-400">›</span>Profils adulte / enfant + Mode animal</li>
-                <li class="flex gap-2"><span class="text-blue-400">›</span>Alertes CO, batterie, mute global</li>
               </ul>
             </div>
             <div class="relative mt-6 flex items-center justify-end">
@@ -636,12 +493,11 @@
             <div class="relative">
               <span class="inline-flex items-center rounded-full bg-red-500/20 text-red-300 ring-1 ring-red-500/40 text-[11px] font-bold uppercase tracking-widest px-2.5 py-1 mb-3">POD'S Premium</span>
               <h3 class="text-2xl font-extrabold text-white">Pack POD'S Premium</h3>
-              <div class="mt-2 text-3xl font-extrabold price-text">1 600 €</div>
+              <div class="mt-2 text-3xl font-extrabold price-text">2 000 €</div>
               <p class="mt-3 text-sm text-zinc-300">
                 Pack clé en main pour les centres de formation : un <strong class="text-blue-400">iPad formateur dédié</strong> + un iPhone POD'S.
               </p>
-              <div class="mt-4 text-xs text-zinc-400 uppercase tracking-widest font-bold">Matériel inclus</div>
-              <ul class="mt-2 text-sm text-zinc-300 space-y-1.5">
+              <ul class="mt-4 text-sm text-zinc-300 space-y-1.5">
                 <li class="flex gap-2"><span class="text-rose-400">✓</span>1 iPhone 11 ou 12 (moniteur POD'S)</li>
                 <li class="flex gap-2"><span class="text-rose-400">✓</span><strong class="text-blue-400">1 iPad 11" A16</strong> dédié formateur</li>
                 <li class="flex gap-2"><span class="text-rose-400">✓</span>1 brassard tension adulte / enfant</li>
@@ -649,16 +505,6 @@
                 <li class="flex gap-2"><span class="text-rose-400">✓</span>1 patch DSA adulte / enfant</li>
                 <li class="flex gap-2"><span class="text-rose-400">✓</span>1 boîtier POD'S + 1 housse Bagheera</li>
                 <li class="flex gap-2"><span class="text-rose-400">✓</span><strong class="text-blue-400">Licence à vie VitalX POD'S</strong></li>
-              </ul>
-              <div class="mt-4 text-xs text-zinc-400 uppercase tracking-widest font-bold">Fonctionnalités logicielles</div>
-              <ul class="mt-2 text-sm text-zinc-300 space-y-1.5">
-                <li class="flex gap-2"><span class="text-rose-400">›</span>Toutes les fonctions du POD'S Classic</li>
-                <li class="flex gap-2"><span class="text-rose-400">›</span><strong>Historique multi-constantes</strong> sync iPad ↔ iPhone</li>
-                <li class="flex gap-2"><span class="text-rose-400">›</span><strong>ECG 12D</strong> piloté depuis l'iPad formateur</li>
-                <li class="flex gap-2"><span class="text-rose-400">›</span><strong>DLU & Radio</strong> contextuels par scénario</li>
-                <li class="flex gap-2"><span class="text-rose-400">›</span>Bibliothèque complète de scénarios</li>
-                <li class="flex gap-2"><span class="text-rose-400">›</span>Sync cloud multi-appareils par session code</li>
-                <li class="flex gap-2"><span class="text-rose-400">›</span>Idéal pour ateliers et petits groupes</li>
               </ul>
             </div>
             <div class="relative mt-6 flex items-center justify-end">
@@ -826,12 +672,7 @@
 
             <details class="glass ring-gradient rounded-2xl p-5" data-faq>
               <summary class="cursor-pointer text-base md:text-lg font-semibold flex items-center justify-between"><span>Quels capteurs et paramètres sont simulés&nbsp;?</span><span class="ml-2 text-zinc-400">+</span></summary>
-              <p class="mt-3 text-sm text-zinc-300">Pouls, <strong>SpO₂</strong>, respiration, <strong>tension/PNI</strong> (auto + manuel, PAM intégrée), température, <strong>EtCO₂</strong>, courbes <strong>ECG</strong>, mode <strong>ECG 12 dérivations</strong> (20+ tracés), mode <strong>DSA</strong>, et constantes secondaires (glycémie, cétones, lactates, hémoglobine, SpCO).</p>
-            </details>
-
-            <details class="glass ring-gradient rounded-2xl p-5" data-faq>
-              <summary class="cursor-pointer text-base md:text-lg font-semibold flex items-center justify-between"><span>L'historique des constantes est-il enregistré&nbsp;?</span><span class="ml-2 text-zinc-400">+</span></summary>
-              <p class="mt-3 text-sm text-zinc-300">Oui. Chaque session capture <strong>automatiquement les constantes toutes les 5 minutes</strong>, et chaque <strong>mesure PNI est tracée</strong> avec son horodatage. L'historique propose des <strong>sparklines</strong>, des moyennes (min/avg/max) et reste accessible depuis le moniteur et le module ECG.</p>
+              <p class="mt-3 text-sm text-zinc-300">Pouls, <strong>SpO₂</strong>, respiration, <strong>tension/PNI</strong> (auto + manuel, historique & PAM), température, courbes <strong>ECG</strong>, mode <strong>ECG 12 dérivations</strong>, mode <strong>DSA</strong> (analyses, prompts, chocs simulés) et alertes visuelles/sonores.</p>
             </details>
 
             <details class="glass ring-gradient rounded-2xl p-5" data-faq>
