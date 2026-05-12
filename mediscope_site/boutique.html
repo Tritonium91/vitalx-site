@@ -41,14 +41,15 @@
     .cta-anim::after{content:"";position:absolute;top:0;width:60px;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);left:-100%;transform:skewX(-15deg);animation:ctaShine 3s ease-in-out infinite;pointer-events:none}
 
     /* 3D Card */
-    .card-3d{perspective:800px;transform-style:preserve-3d}
-    .card-3d-inner{transition:transform .4s ease,box-shadow .4s ease;transform-style:preserve-3d;will-change:transform}
-    .card-glow{position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .4s ease;background:radial-gradient(600px circle at var(--gx,50%) var(--gy,50%),rgba(255,255,255,.06),transparent 40%);z-index:2}
+    .card-3d{perspective:800px}
+    .card-3d-inner{transition:transform .4s ease,box-shadow .4s ease;will-change:transform}
+    .card-glow{position:absolute;inset:0;border-radius:inherit;pointer-events:none!important;opacity:0;transition:opacity .4s ease;background:radial-gradient(600px circle at var(--gx,50%) var(--gy,50%),rgba(255,255,255,.06),transparent 40%);z-index:0}
     .card-3d:hover .card-glow{opacity:1}
-    .card-shine{position:absolute;inset:-1px;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .5s;background:conic-gradient(from var(--angle,0deg) at 50% 50%,transparent 0%,rgba(255,255,255,.15) 10%,transparent 20%);z-index:1;filter:blur(1px)}
+    .card-shine{position:absolute;inset:-1px;border-radius:inherit;pointer-events:none!important;opacity:0;transition:opacity .5s;background:conic-gradient(from var(--angle,0deg) at 50% 50%,transparent 0%,rgba(255,255,255,.15) 10%,transparent 20%);z-index:0;filter:blur(1px)}
     .card-3d:hover .card-shine{opacity:1}
+    .card-3d a,.card-3d button{position:relative;z-index:5;pointer-events:auto!important}
     .img-parallax{transition:transform .5s ease}
-    .card-3d:hover .img-parallax{transform:translateZ(20px) scale(1.03)}
+    .card-3d:hover .img-parallax{transform:scale(1.04)}
 
     /* Scroll reveal */
     .sr{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.4,0,.2,1),transform .7s cubic-bezier(.4,0,.2,1)}
