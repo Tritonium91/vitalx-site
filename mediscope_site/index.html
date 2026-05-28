@@ -46,7 +46,7 @@
     .cta-anim.with-shimmer::after{content:"";position:absolute;top:0;bottom:0;width:120px;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.25),rgba(255,255,255,0));filter:blur(1px);transform:translateX(-120%) skewX(-12deg);animation:ctaShimmer 3.2s ease-in-out infinite}
     @keyframes heroSlideX{0%,45%{transform:translateX(0)}55%,100%{transform:translateX(-100%)}}
     .hero-slides{width:200%;display:flex;animation:heroSlideX 8s ease-in-out infinite}
-    .hero-slides img{width:100%;max-height:500px;flex:0 0 100%;object-fit:contain}
+    .hero-slides img{width:100%;max-height:500px;flex:0 0 100%;object-fit:contain;object-position:center}
     @media(max-width:640px){.hero-slides img{max-height:300px}}
     .pillar-icon{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;position:relative;overflow:hidden}
     .pillar-icon::after{content:"";position:absolute;inset:0;background:inherit;filter:blur(16px);opacity:.4;z-index:-1}
@@ -94,7 +94,6 @@
 <section id="top" class="pt-36 md:pt-44 pb-12 relative noise">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="max-w-4xl mx-auto text-center animate-fade-up">
-      <img src="/assets/logo.png" alt="VitalX" class="h-14 w-auto mx-auto mb-6 animate-float" data-no-lightbox="true"/>
       <h1 class="text-4xl md:text-7xl font-extrabold leading-[1.1] tracking-tight"><span class="title-bar">Solutions de simulation médicale et paramédicale</span></h1>
       <p class="mt-6 text-lg md:text-xl text-zinc-300 max-w-2xl mx-auto">Formez-vous partout et à tout moment grâce à nos systèmes de simulation mobiles, réalistes et économiques.</p>
       <div class="mt-8 flex flex-wrap gap-3 justify-center">
@@ -103,8 +102,8 @@
       </div>
     </div>
     <div class="mt-12 max-w-4xl mx-auto">
-      <div class="relative overflow-hidden rounded-[1.5rem] glass ring-gradient p-4 shadow-[0_40px_100px_-30px_rgba(59,130,246,.3)]">
-        <div class="hero-slides"><img src="/hero-monitor.png" alt="VitalX sur iPad" class="w-full object-contain"/><img src="/hero-monitor3.png" alt="VitalX variante" class="w-full object-contain"/></div>
+      <div class="relative overflow-hidden rounded-[1.5rem] glass ring-gradient p-4 shadow-[0_40px_100px_-30px_rgba(59,130,246,.3)] flex items-center justify-center">
+        <div class="hero-slides items-center"><img src="/hero-monitor.png" alt="VitalX sur iPad" class="w-full object-contain"/><img src="/hero-monitor3.png" alt="VitalX variante" class="w-full object-contain"/></div>
       </div>
     </div>
   </div>
@@ -128,9 +127,9 @@
     <div class="text-center mb-14 sr"><h2 class="text-3xl md:text-5xl font-extrabold tracking-tight"><span class="title-bar">Nos produits</span></h2><div class="mt-3 mx-auto max-w-lg divider-glow"></div><p class="mt-5 text-zinc-300">Découvrez notre écosystème de simulation : packs complets, version mobile et extensions logicielles.</p></div>
 
     <div class="grid lg:grid-cols-2 gap-8 mb-8">
-      <div class="sr sr-d1 product-card glass ring-gradient rounded-3xl overflow-hidden ring-2 ring-blue-400/30 shadow-[0_0_60px_-20px_rgba(59,130,246,.4)]"><div class="p-6 md:p-8"><div class="rounded-2xl bg-zinc-900/50 ring-1 ring-white/5 p-4 mb-6"><img src="/hero-monitor.png" alt="VitalX Pack" class="product-img w-full max-h-64 object-contain" loading="lazy"/></div><img src="/logovitalx4.png" alt="Logo VitalX" class="h-10 object-contain mb-4" data-no-lightbox="true"/><p class="text-zinc-300 text-sm mb-5">Système complet de simulation multiparamétrique : 2 iPad 11", boîtier, connectiques (PNI, SpO₂, ECG 12D, DSA, T°, EtCO₂) et licence à vie. Le pack référence pour la formation.</p><div class="flex items-center gap-3 flex-wrap mb-5"><span class="text-3xl font-extrabold price-text">3 300 €</span><span class="text-xs text-zinc-500">à partir de — TTC</span></div><a href="/boutique.html#pack" class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 via-blue-500 to-sky-400 text-white px-6 py-3 text-sm font-bold shadow-soft cta-anim with-shimmer">En savoir plus →</a></div></div>
+      <div class="sr sr-d1 product-card glass ring-gradient rounded-3xl overflow-hidden ring-2 ring-blue-400/30 shadow-[0_0_60px_-20px_rgba(59,130,246,.4)]"><div class="p-6 md:p-8"><div class="rounded-2xl bg-zinc-900/50 ring-1 ring-white/5 p-4 mb-6"><img src="/assets/medxbyvitalx.png" alt="VitalX Pack" class="product-img w-full max-h-64 object-contain" loading="lazy"/></div><img src="/logovitalx4.png" alt="Logo VitalX" class="h-10 object-contain mb-4" data-no-lightbox="true"/><p class="text-zinc-300 text-sm mb-5">Système complet de simulation multiparamétrique : 2 iPad 11", boîtier, connectiques (PNI, SpO₂, ECG 12D, DSA, T°, EtCO₂) et licence à vie. Le pack référence pour la formation.</p><div class="flex items-center gap-3 flex-wrap mb-5"><span class="text-3xl font-extrabold price-text">3 300 €</span><span class="text-xs text-zinc-500">à partir de — TTC</span></div><a href="/boutique.html#pack" class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 via-blue-500 to-sky-400 text-white px-6 py-3 text-sm font-bold shadow-soft cta-anim with-shimmer">En savoir plus →</a></div></div>
 
-      <div class="sr sr-d2 product-card glass ring-gradient rounded-3xl overflow-hidden ring-2 ring-purple-400/30 shadow-[0_0_60px_-20px_rgba(168,85,247,.35)]"><div class="p-6 md:p-8"><div class="rounded-2xl bg-zinc-900/50 ring-1 ring-white/5 p-4 mb-6"><img src="/pods1.png" alt="VitalX POD'S" class="product-img w-full max-h-64 object-contain" loading="lazy"/></div><img src="/vitalxpods.png" alt="Logo VitalX POD'S" class="h-14 object-contain mb-4" data-no-lightbox="true"/><p class="text-zinc-300 text-sm mb-5">La version compacte propulsée par iPhone : transformez un iPhone en moniteur patient. Idéal pour les formations mobiles et les démonstrations rapides.</p><div class="flex items-center gap-3 flex-wrap mb-5"><span class="text-3xl font-extrabold price-text">1 700 €</span><span class="text-xs text-zinc-500">à partir de — TTC</span></div><a href="/boutique.html#licenses" class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 via-fuchsia-500 to-pink-500 text-white px-6 py-3 text-sm font-bold shadow-soft cta-anim with-shimmer">En savoir plus →</a></div></div>
+      <div class="sr sr-d2 product-card glass ring-gradient rounded-3xl overflow-hidden ring-2 ring-purple-400/30 shadow-[0_0_60px_-20px_rgba(168,85,247,.35)]"><div class="p-6 md:p-8"><div class="rounded-2xl bg-zinc-900/50 ring-1 ring-white/5 p-4 mb-6"><img src="/assets/vitalxpodsclassic.png" alt="VitalX POD'S" class="product-img w-full max-h-64 object-contain" loading="lazy"/></div><img src="/vitalxpods.png" alt="Logo VitalX POD'S" class="h-14 object-contain mb-4" data-no-lightbox="true"/><p class="text-zinc-300 text-sm mb-5">La version compacte propulsée par iPhone : transformez un iPhone en moniteur patient. Idéal pour les formations mobiles et les démonstrations rapides.</p><div class="flex items-center gap-3 flex-wrap mb-5"><span class="text-3xl font-extrabold price-text">1 700 €</span><span class="text-xs text-zinc-500">à partir de — TTC</span></div><a href="/boutique.html#licenses" class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 via-fuchsia-500 to-pink-500 text-white px-6 py-3 text-sm font-bold shadow-soft cta-anim with-shimmer">En savoir plus →</a></div></div>
     </div>
 
     <!-- Mode Ultra -->
