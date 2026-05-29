@@ -179,13 +179,46 @@
 <section id="app" class="section py-20">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-12 sr"><h2 class="text-3xl md:text-5xl font-extrabold tracking-tight"><span class="title-bar">L'app VitalX</span></h2><div class="mt-3 mx-auto max-w-lg divider-glow"></div><p class="mt-5 text-zinc-300">Le formateur pilote, le moniteur affiche. Simple, fiable, réaliste.</p></div>
-    <div class="glass ring-gradient rounded-3xl p-4"><div class="overflow-x-auto snap-x flex gap-4" tabindex="0">
-      <img src="/app-1.png" alt="TrainerView" class="snap-center rounded-xl w-[90%] md:w-[70%] lg:w-[60%] object-contain"/>
-      <img src="/app-2.png" alt="MonitorView" class="snap-center rounded-xl w-[90%] md:w-[70%] lg:w-[60%] object-contain"/>
-      <img src="/app-4.png" alt="DSA Monitor" class="snap-center rounded-xl w-[90%] md:w-[70%] lg:w-[60%] object-contain"/>
-      <img src="/app-3.png" alt="ECG Monitor" class="snap-center rounded-xl w-[90%] md:w-[70%] lg:w-[60%] object-contain"/>
-      <img src="/app-5.png" alt="Trainer Scenarios" class="snap-center rounded-xl w-[90%] md:w-[70%] lg:w-[60%] object-contain"/>
-    </div></div>
+
+    <!-- Screenshots grid with captions -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <figure class="sr sr-d1 glass ring-gradient rounded-2xl overflow-hidden card-lift">
+        <img src="/app-scope.png" alt="Scope monitoring" class="w-full aspect-[4/3] object-cover object-top" loading="lazy"/>
+        <figcaption class="px-4 py-3 text-sm text-zinc-300"><strong class="text-white">Scope Monitoring</strong> — Courbes ECG, SpO₂ et EtCO₂ en temps réel avec valeurs vitales et PNI</figcaption>
+      </figure>
+      <figure class="sr sr-d2 glass ring-gradient rounded-2xl overflow-hidden card-lift">
+        <img src="/app-monitoring.png" alt="Monitoring multiparamétrique" class="w-full aspect-[4/3] object-cover object-top" loading="lazy"/>
+        <figcaption class="px-4 py-3 text-sm text-zinc-300"><strong class="text-white">Vue Multiparamétrique</strong> — Tuiles colorées HR, SpO₂, EtCO₂, Temp, FR et PNI avec historique</figcaption>
+      </figure>
+      <figure class="sr sr-d3 glass ring-gradient rounded-2xl overflow-hidden card-lift">
+        <img src="/app-anatomie.png" alt="Vue anatomique cardio-pulmonaire" class="w-full aspect-[4/3] object-cover object-top" loading="lazy"/>
+        <figcaption class="px-4 py-3 text-sm text-zinc-300"><strong class="text-white">Vue Anatomique</strong> — Cœur, poumons et flux sanguin animés avec constantes vitales en direct</figcaption>
+      </figure>
+      <figure class="sr sr-d1 glass ring-gradient rounded-2xl overflow-hidden card-lift">
+        <img src="/app-ecg-electrodes.png" alt="Placement électrodes ECG 12D" class="w-full aspect-[4/3] object-cover object-top" loading="lazy"/>
+        <figcaption class="px-4 py-3 text-sm text-zinc-300"><strong class="text-white">ECG 12D — Électrodes</strong> — Positionnement guidé des 10 électrodes sur anatomie 3D</figcaption>
+      </figure>
+      <figure class="sr sr-d2 glass ring-gradient rounded-2xl overflow-hidden card-lift">
+        <img src="/app-ecg12d.png" alt="ECG 12 dérivations STEMI" class="w-full aspect-[4/3] object-cover object-top" loading="lazy"/>
+        <figcaption class="px-4 py-3 text-sm text-zinc-300"><strong class="text-white">ECG 12 Dérivations</strong> — Tracé complet avec interprétation automatique (ici STEMI probable)</figcaption>
+      </figure>
+      <figure class="sr sr-d3 glass ring-gradient rounded-2xl overflow-hidden card-lift">
+        <img src="/app-dsa.png" alt="Mode DSA défibrillation" class="w-full aspect-[4/3] object-cover object-top" loading="lazy"/>
+        <figcaption class="px-4 py-3 text-sm text-zinc-300"><strong class="text-white">Mode DSA</strong> — Défibrillation semi-automatique avec compteur de chocs et métronome RCP</figcaption>
+      </figure>
+      <figure class="sr sr-d1 glass ring-gradient rounded-2xl overflow-hidden card-lift">
+        <img src="/app-radio.png" alt="Radiologie intégrée" class="w-full aspect-[4/3] object-cover object-top" loading="lazy"/>
+        <figcaption class="px-4 py-3 text-sm text-zinc-300"><strong class="text-white">Radiologie</strong> — Imagerie abdomen, thorax et bassin intégrée aux scénarios de simulation</figcaption>
+      </figure>
+      <figure class="sr sr-d2 glass ring-gradient rounded-2xl overflow-hidden card-lift">
+        <img src="/app-bandelette.png" alt="Bandelette urinaire" class="w-full aspect-[4/3] object-cover object-top" loading="lazy"/>
+        <figcaption class="px-4 py-3 text-sm text-zinc-300"><strong class="text-white">Bandelette Urinaire</strong> — Analyse complète avec 10 paramètres et comparaison colorimétrique</figcaption>
+      </figure>
+      <figure class="sr sr-d3 glass ring-gradient rounded-2xl overflow-hidden card-lift">
+        <img src="/app-formateur.png" alt="Vue formateur" class="w-full aspect-[4/3] object-cover object-top" loading="lazy"/>
+        <figcaption class="px-4 py-3 text-sm text-zinc-300"><strong class="text-white">Vue Formateur</strong> — Pilotage complet : constantes, PNI, scénarios ACR, rythmes ECG et modes</figcaption>
+      </figure>
+    </div>
     <div class="mt-8 flex justify-center"><a href="/boutique.html" class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-400 text-white px-6 py-3 text-sm font-bold shadow-glow cta-anim with-shimmer">🛍️ Voir la Boutique</a></div>
   </div>
 </section>
