@@ -338,12 +338,113 @@
 <!-- Lightbox -->
 <div id="lightbox" class="lb__overlay" aria-hidden="true"><div class="lb__inner"><img id="lightboxImg" class="lb__img" alt=""/><div id="lightboxCaption" class="lb__caption"></div></div><button id="lightboxClose" class="lb__close" aria-label="Fermer">✕</button></div>
 
+<!-- POPUP NOUVEAUTÉS -->
+<div id="popupOverlay" class="fixed inset-0 z-[70] flex items-center justify-center p-4" style="display:none">
+  <div class="absolute inset-0 bg-black/70 backdrop-blur-md"></div>
+  <div id="popupCard" class="relative max-w-lg w-full" style="animation:popIn .5s cubic-bezier(.16,1,.3,1) both">
+    <!-- Animated border glow -->
+    <div class="absolute -inset-[2px] rounded-[26px] bg-gradient-to-r from-fuchsia-500 via-blue-500 to-emerald-500 opacity-60" style="animation:borderSpin 4s linear infinite;background-size:300% 300%"></div>
+    <div class="relative rounded-3xl bg-[#0c0c14] p-7 md:p-10 overflow-hidden">
+      <!-- Floating orbs -->
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-gradient-to-br from-fuchsia-500/30 via-blue-500/20 to-transparent blur-3xl pointer-events-none" style="animation:orbPulse 3s ease-in-out infinite"></div>
+      <div class="absolute -bottom-20 -left-20 w-48 h-48 rounded-full bg-gradient-to-br from-emerald-500/20 to-amber-500/15 blur-3xl pointer-events-none" style="animation:orbPulse 4s ease-in-out infinite 1s"></div>
+      <div class="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-gradient-to-br from-amber-500/25 to-fuchsia-500/15 blur-2xl pointer-events-none" style="animation:orbPulse 3.5s ease-in-out infinite .5s"></div>
+
+      <!-- Sparkle particles -->
+      <div class="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl">
+        <div class="absolute w-1 h-1 bg-fuchsia-400 rounded-full" style="top:15%;left:20%;animation:sparkle 2s ease-in-out infinite"></div>
+        <div class="absolute w-1 h-1 bg-blue-400 rounded-full" style="top:30%;left:75%;animation:sparkle 2.5s ease-in-out infinite .5s"></div>
+        <div class="absolute w-1 h-1 bg-emerald-400 rounded-full" style="top:70%;left:85%;animation:sparkle 2s ease-in-out infinite 1s"></div>
+        <div class="absolute w-1 h-1 bg-amber-400 rounded-full" style="top:80%;left:15%;animation:sparkle 3s ease-in-out infinite 1.5s"></div>
+        <div class="absolute w-1.5 h-1.5 bg-white/60 rounded-full" style="top:10%;left:60%;animation:sparkle 2.2s ease-in-out infinite .8s"></div>
+      </div>
+
+      <button id="popupClose" class="absolute top-4 right-4 rounded-full bg-white/10 hover:bg-white/20 w-8 h-8 flex items-center justify-center text-white text-sm font-bold transition z-10 ring-1 ring-white/10">✕</button>
+
+      <div class="relative z-[2]">
+        <!-- Header badges -->
+        <div class="flex items-center gap-2 mb-5 flex-wrap">
+          <span class="inline-flex items-center gap-2 rounded-full text-white text-xs font-extrabold px-4 py-1.5 shadow-lg" style="background:linear-gradient(135deg,#ec4899,#8b5cf6,#3b82f6);animation:badgeGlow 2s ease-in-out infinite">
+            <span style="animation:starSpin 3s linear infinite">✦</span> Nouveautés 2026
+          </span>
+          <span class="inline-flex items-center rounded-full bg-emerald-500/15 ring-1 ring-emerald-500/40 text-emerald-300 text-[11px] font-bold px-3 py-1" style="animation:pulseBadge 2s ease-in-out infinite">Bientôt disponible</span>
+        </div>
+
+        <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-1" style="background:linear-gradient(90deg,#fff,#e0e7ff,#fff);-webkit-background-clip:text;background-clip:text;color:transparent">De nouvelles fonctionnalités arrivent</h3>
+        <p class="text-sm text-zinc-400 mb-7">VitalX continue d'évoluer — découvrez les prochaines intégrations.</p>
+
+        <div class="space-y-3 mb-7">
+          <!-- QCPR -->
+          <div class="group flex items-start gap-4 p-4 rounded-2xl bg-white/[.03] ring-1 ring-blue-400/20 hover:ring-blue-400/50 hover:bg-white/[.06] transition-all duration-300">
+            <div class="shrink-0 h-12 w-12 rounded-xl bg-gradient-to-br from-blue-500 to-sky-400 grid place-items-center shadow-lg shadow-blue-500/25 group-hover:scale-110 transition-transform">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            </div>
+            <div>
+              <h4 class="text-base font-bold text-white">Capteur QCPR</h4>
+              <p class="text-sm text-zinc-400 mt-1">Capteur universel adaptable à tous les mannequins. Le formateur reçoit un feedback RCP complet sur l'iPad (profondeur, fréquence, relâchement), tandis que l'élève voit les compressions en direct sur le scope : fréquence cardiaque et fluctuations de la courbe pulse.</p>
+            </div>
+          </div>
+
+          <!-- Balise 4 gaz -->
+          <div class="group flex items-start gap-4 p-4 rounded-2xl bg-white/[.03] ring-1 ring-amber-400/20 hover:ring-amber-400/50 hover:bg-white/[.06] transition-all duration-300">
+            <div class="shrink-0 h-12 w-12 rounded-xl bg-gradient-to-br from-amber-500 to-orange-400 grid place-items-center shadow-lg shadow-amber-500/25 group-hover:scale-110 transition-transform">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>
+            </div>
+            <div>
+              <h4 class="text-base font-bold text-white">Balise 4 Gaz</h4>
+              <p class="text-sm text-zinc-400 mt-1">Balises physiques simulant des sources de gaz (O₂, CO, H₂S, LIE). En mode 4 Gaz sur l'iPhone, les valeurs augmentent ou diminuent automatiquement en fonction de la proximité de l'appareil par rapport à la balise — immersion totale en situation réelle.</p>
+            </div>
+          </div>
+
+          <!-- POD'S LITE -->
+          <div class="group flex items-start gap-4 p-4 rounded-2xl bg-white/[.03] ring-1 ring-emerald-400/20 hover:ring-emerald-400/50 hover:bg-white/[.06] transition-all duration-300">
+            <div class="shrink-0 h-12 w-12 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-400 grid place-items-center shadow-lg shadow-emerald-500/25 group-hover:scale-110 transition-transform">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"></rect><circle cx="12" cy="18" r="1"></circle></svg>
+            </div>
+            <div>
+              <h4 class="text-base font-bold text-white">POD'S LITE</h4>
+              <p class="text-sm text-zinc-400 mt-1">Le nouveau pack ultra-compact : iPad + boîtier + connectiques incluses (PNI, HR, SpO₂ avec courbe pléthysmographique, SpCO simulé). L'essentiel de la simulation à prix accessible.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="#contact" id="popupCTA" class="flex-1 inline-flex justify-center items-center gap-2 rounded-xl text-white px-5 py-3.5 text-sm font-bold shadow-lg cta-anim with-shimmer" style="background:linear-gradient(135deg,#10b981,#14b8a6,#3b82f6)">📞 Me tenir informé</a>
+          <button id="popupDismiss" class="flex-1 inline-flex justify-center items-center gap-2 rounded-xl bg-white/5 ring-1 ring-white/15 px-5 py-3.5 text-sm font-semibold text-zinc-300 hover:bg-white/10 transition">Plus tard</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+@keyframes popIn{0%{opacity:0;transform:scale(.88) translateY(30px)}60%{transform:scale(1.02) translateY(-4px)}100%{opacity:1;transform:scale(1) translateY(0)}}
+@keyframes borderSpin{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes orbPulse{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:.7;transform:scale(1.15)}}
+@keyframes sparkle{0%,100%{opacity:0;transform:scale(0)}50%{opacity:1;transform:scale(1)}}
+@keyframes badgeGlow{0%,100%{box-shadow:0 0 12px rgba(236,72,153,.3)}50%{box-shadow:0 0 24px rgba(139,92,246,.5),0 0 48px rgba(59,130,246,.2)}}
+@keyframes pulseBadge{0%,100%{opacity:.8}50%{opacity:1}}
+@keyframes starSpin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+</style>
+
 <!-- Sticky mobile bar -->
 <div class="fixed bottom-0 inset-x-0 z-[60] md:hidden"><div class="mx-auto max-w-7xl px-4 pb-3" style="padding-bottom:env(safe-area-inset-bottom)"><div class="glass ring-gradient rounded-t-2xl p-3 flex items-center justify-between gap-3"><div class="text-sm leading-tight"><div class="font-bold text-white">VitalX — Boutique</div><div class="text-zinc-400 text-xs">Packs, licences et accessoires</div></div><a href="/boutique.html" class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-400 text-white px-4 py-2 text-sm font-bold shadow-soft cta-anim with-shimmer">🛍️ Boutique</a></div></div></div>
 
 <!-- SCRIPTS -->
 <script>
 document.getElementById('year').textContent=new Date().getFullYear();
+
+// Popup nouveautés (1x par session)
+(function(){
+  const ov=document.getElementById('popupOverlay'),cl=document.getElementById('popupClose'),di=document.getElementById('popupDismiss'),cta=document.getElementById('popupCTA');
+  if(!ov||sessionStorage.getItem('vx_popup_seen')) return;
+  function close(){ov.style.display='none';sessionStorage.setItem('vx_popup_seen','1')}
+  setTimeout(()=>{ov.style.display='flex'},1500);
+  cl?.addEventListener('click',close);
+  di?.addEventListener('click',close);
+  cta?.addEventListener('click',close);
+  ov.addEventListener('click',e=>{if(e.target===ov) close()});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&ov.style.display==='flex') close()});
+})();
 document.getElementById('menuBtn')?.addEventListener('click',()=>document.getElementById('mobileMenu').classList.toggle('hidden'));
 const faqToggleBtn=document.getElementById('faqToggle'),faqPanel=document.getElementById('faqPanel');
 if(faqToggleBtn&&faqPanel){faqToggleBtn.addEventListener('click',()=>{const h=faqPanel.classList.toggle('hidden');faqToggleBtn.setAttribute('aria-expanded',String(!h));faqToggleBtn.textContent=h?'Afficher la FAQ':'Masquer la FAQ'})}
