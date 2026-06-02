@@ -73,7 +73,7 @@
           <a href="#products" class="hover:text-white transition">Produits</a>
           <a href="#features" class="hover:text-white transition">Fonctionnalités</a>
           <a href="#pricing" class="hover:text-white transition">Tarifs</a>
-          <a href="#faq" class="hover:text-white transition">FAQ</a>
+          <a href="#" id="navNews" class="hover:text-white transition">News</a>
           <a href="#contact" class="hover:text-white transition">Contact</a>
           <a href="/qui-sommes-nous.html" class="hover:text-white transition">Qui sommes‑nous ?</a>
           <a href="/boutique.html" class="hover:text-white transition">Boutique</a>
@@ -84,7 +84,7 @@
         </div>
       </div>
       <div id="mobileMenu" class="hidden px-4 pb-4 md:hidden"><div class="grid gap-2 text-sm">
-        <a href="#products" class="glass rounded-xl px-4 py-3">Produits</a><a href="#features" class="glass rounded-xl px-4 py-3">Fonctionnalités</a><a href="#pricing" class="glass rounded-xl px-4 py-3">Tarifs</a><a href="#faq" class="glass rounded-xl px-4 py-3">FAQ</a><a href="#contact" class="glass rounded-xl px-4 py-3">Contact</a><a href="/qui-sommes-nous.html" class="glass rounded-xl px-4 py-3">Qui sommes‑nous ?</a><a href="/boutique.html" class="glass rounded-xl px-4 py-3">Boutique</a>
+        <a href="#products" class="glass rounded-xl px-4 py-3">Produits</a><a href="#features" class="glass rounded-xl px-4 py-3">Fonctionnalités</a><a href="#pricing" class="glass rounded-xl px-4 py-3">Tarifs</a><a href="#" id="navNewsMobile" class="glass rounded-xl px-4 py-3">News</a><a href="#contact" class="glass rounded-xl px-4 py-3">Contact</a><a href="/qui-sommes-nous.html" class="glass rounded-xl px-4 py-3">Qui sommes‑nous ?</a><a href="/boutique.html" class="glass rounded-xl px-4 py-3">Boutique</a>
       </div></div>
     </div>
   </div>
@@ -312,25 +312,7 @@
   </div>
 </section>
 
-<!-- FAQ -->
-<section id="faq" class="section py-20">
-  <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6"><h2 class="text-3xl md:text-5xl font-extrabold tracking-tight"><span class="title-bar">FAQ</span></h2><button id="faqToggle" aria-expanded="false" class="rounded-xl glass px-4 py-2 text-sm hover:bg-white/10 cta-anim">Afficher la FAQ</button></div>
-    <div id="faqPanel" class="hidden">
-      <div class="flex items-center gap-2 mb-4"><button id="faqExpandAll" class="rounded-xl glass px-4 py-2 text-sm hover:bg-white/10">Tout déplier</button><button id="faqCollapseAll" class="rounded-xl glass px-4 py-2 text-sm hover:bg-white/10">Tout replier</button></div>
-      <div class="grid md:grid-cols-2 gap-4">
-        <details class="glass ring-gradient rounded-2xl p-5" data-faq><summary class="cursor-pointer text-base font-semibold flex items-center justify-between"><span>L'app fonctionne‑t‑elle sans internet ?</span><span class="ml-2 text-zinc-400">+</span></summary><p class="mt-3 text-sm text-zinc-300">Oui, le Moniteur fonctionne en local. La synchronisation à distance nécessite une connexion.</p></details>
-        <details class="glass ring-gradient rounded-2xl p-5" data-faq><summary class="cursor-pointer text-base font-semibold flex items-center justify-between"><span>Puis‑je utiliser plusieurs iPads ?</span><span class="ml-2 text-zinc-400">+</span></summary><p class="mt-3 text-sm text-zinc-300">Oui. Un Formateur peut piloter plusieurs Moniteurs avec le même code de session.</p></details>
-        <details class="glass ring-gradient rounded-2xl p-5" data-faq><summary class="cursor-pointer text-base font-semibold flex items-center justify-between"><span>Compatibilité iOS / iPadOS</span><span class="ml-2 text-zinc-400">+</span></summary><p class="mt-3 text-sm text-zinc-300">iOS 18+ et iPadOS 18+. Mode paysage recommandé.</p></details>
-        <details class="glass ring-gradient rounded-2xl p-5" data-faq><summary class="cursor-pointer text-base font-semibold flex items-center justify-between"><span>Quels capteurs sont simulés ?</span><span class="ml-2 text-zinc-400">+</span></summary><p class="mt-3 text-sm text-zinc-300">Pouls, SpO₂, respiration, tension/PNI, température, ECG 12D, DSA, EtCO₂ et alertes.</p></details>
-        <details class="glass ring-gradient rounded-2xl p-5" data-faq><summary class="cursor-pointer text-base font-semibold flex items-center justify-between"><span>Comment se passe l'achat ?</span><span class="ml-2 text-zinc-400">+</span></summary><p class="mt-3 text-sm text-zinc-300">Paiement via Stripe par carte bancaire. Facture automatique. TVA non applicable (art. 293B CGI).</p></details>
-        <details class="glass ring-gradient rounded-2xl p-5" data-faq><summary class="cursor-pointer text-base font-semibold flex items-center justify-between"><span>Délais et livraison</span><span class="ml-2 text-zinc-400">+</span></summary><p class="mt-3 text-sm text-zinc-300">15–30 jours ouvrés. Suivi d'expédition fourni.</p></details>
-        <details class="glass ring-gradient rounded-2xl p-5" data-faq><summary class="cursor-pointer text-base font-semibold flex items-center justify-between"><span>Licence et mises à jour</span><span class="ml-2 text-zinc-400">+</span></summary><p class="mt-3 text-sm text-zinc-300">Licence à vie incluse, sans abonnement. Mises à jour incluses à vie.</p></details>
-        <details class="glass ring-gradient rounded-2xl p-5" data-faq><summary class="cursor-pointer text-base font-semibold flex items-center justify-between"><span>Support & assistance</span><span class="ml-2 text-zinc-400">+</span></summary><p class="mt-3 text-sm text-zinc-300">Réponse 7j/7 par e‑mail. Guides rapides et scénarios fournis.</p></details>
-      </div>
-    </div>
-  </div>
-</section>
+
 
 <!-- FOOTER -->
 <footer class="py-12 border-t border-white/10"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div class="grid md:grid-cols-2 items-center gap-6"><div class="text-sm text-zinc-400">© <span id="year"></span> VitalX. Tous droits réservés.</div><div class="flex flex-wrap justify-start md:justify-end gap-x-6 gap-y-2 text-sm"><a href="/mentions-legales.html" class="text-zinc-400 hover:text-white">Mentions légales</a><a href="/politique-confidentialite.html" class="text-zinc-400 hover:text-white">Politique de confidentialité</a><a href="/cgv.html" class="text-zinc-400 hover:text-white">CGV</a><a href="/formulaire_retractation.pdf" class="text-zinc-400 hover:text-white" download>Rétractation</a><a href="/garantie.html" class="text-zinc-400 hover:text-white">Garantie</a><a href="/qui-sommes-nous.html" class="text-zinc-400 hover:text-white">Qui sommes‑nous ?</a></div></div></div></footer>
@@ -436,22 +418,21 @@ document.getElementById('year').textContent=new Date().getFullYear();
 // Popup nouveautés (1x par session)
 (function(){
   const ov=document.getElementById('popupOverlay'),cl=document.getElementById('popupClose'),di=document.getElementById('popupDismiss'),cta=document.getElementById('popupCTA');
-  if(!ov||sessionStorage.getItem('vx_popup_seen')) return;
-  function close(){ov.style.display='none';sessionStorage.setItem('vx_popup_seen','1')}
+  if(!ov) return;
+  function close(){ov.style.display='none';}
   setTimeout(()=>{ov.style.display='flex'},1500);
   cl?.addEventListener('click',close);
   di?.addEventListener('click',close);
   cta?.addEventListener('click',close);
-  ov.addEventListener('click',e=>{if(e.target===ov) close()});
+  ov.addEventListener('click',e=>{if(e.target===ov||e.target.closest('.absolute.inset-0')) close()});
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&ov.style.display==='flex') close()});
+  // News nav opens popup
+  document.getElementById('navNews')?.addEventListener('click',e=>{e.preventDefault();ov.style.display='flex'});
+  document.getElementById('navNewsMobile')?.addEventListener('click',e=>{e.preventDefault();ov.style.display='flex';document.getElementById('mobileMenu')?.classList.add('hidden')});
 })();
 document.getElementById('menuBtn')?.addEventListener('click',()=>document.getElementById('mobileMenu').classList.toggle('hidden'));
-const faqToggleBtn=document.getElementById('faqToggle'),faqPanel=document.getElementById('faqPanel');
-if(faqToggleBtn&&faqPanel){faqToggleBtn.addEventListener('click',()=>{const h=faqPanel.classList.toggle('hidden');faqToggleBtn.setAttribute('aria-expanded',String(!h));faqToggleBtn.textContent=h?'Afficher la FAQ':'Masquer la FAQ'})}
-const faqDetails=Array.from(document.querySelectorAll('details[data-faq]'));
-document.getElementById('faqExpandAll')?.addEventListener('click',()=>faqDetails.forEach(d=>d.open=true));
-document.getElementById('faqCollapseAll')?.addEventListener('click',()=>faqDetails.forEach(d=>d.open=false));
-faqDetails.forEach(d=>d.addEventListener('click',function(e){if(!e.target.closest('summary'))return;if(matchMedia('(min-width:768px)').matches){const c=this;requestAnimationFrame(()=>{if(c.open)faqDetails.forEach(x=>{if(x!==c)x.open=false})})}}));
+
+
 (function(){const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.sr').forEach(el=>io.observe(el))})();
 // Chart (3300)
 (function(){const el=document.getElementById('priceChart');if(!el||!window.Chart)return;const ctx=el.getContext('2d');const eG=ctx.createLinearGradient(0,0,0,340);eG.addColorStop(0,'rgba(16,185,129,1)');eG.addColorStop(1,'rgba(20,184,166,.55)');const gG=ctx.createLinearGradient(0,0,0,340);gG.addColorStop(0,'rgba(161,161,170,.55)');gG.addColorStop(1,'rgba(161,161,170,.18)');const fmt=v=>new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(v);const dlp={id:'dl',afterDatasetsDraw(c){c.data.datasets.forEach((ds,di)=>{c.getDatasetMeta(di).data.forEach((bar,i)=>{const v=ds.data[i],vx=i===0;c.ctx.save();c.ctx.font=`${vx?'700':'600'} ${vx?13:11}px "SF Pro Text",Inter,sans-serif`;c.ctx.fillStyle=vx?'#6ee7b7':'#d4d4d8';c.ctx.textAlign='center';c.ctx.textBaseline='bottom';c.ctx.fillText(fmt(v),bar.x,bar.y-6);c.ctx.restore()})})}};new Chart(ctx,{type:'bar',data:{labels:['VitalX','Concurrent A','Concurrent B','Concurrent C'],datasets:[{label:'Prix (€)',data:[3300,6500,9000,15000],backgroundColor:[eG,gG,gG,gG],borderColor:['rgba(16,185,129,1)','rgba(161,161,170,.7)','rgba(161,161,170,.7)','rgba(161,161,170,.7)'],borderWidth:1.5,borderRadius:10,borderSkipped:false,maxBarThickness:56}]},options:{responsive:true,maintainAspectRatio:false,layout:{padding:{top:24}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${fmt(c.parsed.y)}`},backgroundColor:'rgba(10,10,14,.95)',borderColor:'rgba(255,255,255,.08)',borderWidth:1,titleColor:'#e7e7ea',bodyColor:'#e7e7ea',padding:10,cornerRadius:10}},scales:{x:{ticks:{color:'#cfcfd3',font:{weight:'600'}},grid:{display:false},border:{color:'rgba(255,255,255,.08)'}},y:{beginAtZero:true,suggestedMax:17000,ticks:{color:'#a5a5ab',callback:v=>fmt(v),maxTicksLimit:6},grid:{color:'rgba(255,255,255,.06)'},border:{display:false}}}},plugins:[dlp]})})();
