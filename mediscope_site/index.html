@@ -51,9 +51,9 @@ html,body{background:#000;color:#f5f5f7;font-family:'SF Pro Display','SF Pro Tex
 .sr-d1{transition-delay:.1s}.sr-d2{transition-delay:.2s}.sr-d3{transition-delay:.3s}
 
 /* Hero slideshow */
-@keyframes heroSlideX{0%,45%{transform:translateX(0)}55%,100%{transform:translateX(-100%)}}
+@keyframes heroSlideX{0%,45%{transform:translateX(0)}55%,100%{transform:translateX(-50%)}}
 .hero-slides{width:200%;display:flex;animation:heroSlideX 9s ease-in-out infinite}
-.hero-slides img{width:100%;max-height:560px;flex:0 0 100%;object-fit:contain;object-position:center}
+.hero-slides img{width:50%;flex:0 0 50%;max-height:560px;object-fit:contain;object-position:center;margin:0 auto}
 @media(max-width:640px){.hero-slides img{max-height:320px}}
 
 /* Feature icon */
@@ -129,7 +129,7 @@ html,body{background:#000;color:#f5f5f7;font-family:'SF Pro Display','SF Pro Tex
 <section id="top" class="pt-32 md:pt-40 pb-16 text-center">
   <div class="mx-auto max-w-4xl px-6">
     <h1 class="h-hero sr show">Simulation médicale.<br><span class="grad-txt">Réinventée.</span></h1>
-    <p class="sub mt-5 max-w-2xl mx-auto sr show sr-d1">Des scopes de formation réalistes, mobiles et économiques.<br class="hidden md:block"> Conçus par des secouristes, pour des secouristes.</p>
+    <p class="sub mt-5 max-w-2xl mx-auto sr show sr-d1">Des scopes de formation réalistes, mobiles et économiques.<br class="hidden md:block"> Pensés pour les pompiers, paramédicaux et secouristes.</p>
     <div class="mt-7 flex items-center justify-center gap-5 sr show sr-d2">
       <a href="/boutique.html" class="btn-blue">Acheter</a>
       <a href="#medx" class="a-link">En savoir plus</a>
@@ -376,26 +376,46 @@ html,body{background:#000;color:#f5f5f7;font-family:'SF Pro Display','SF Pro Tex
 <!-- POPUP NOUVEAUTÉS -->
 <div id="popupOverlay" class="fixed inset-0 z-[70] items-center justify-center p-4" style="display:none">
   <div class="absolute inset-0 bg-black/80" style="backdrop-filter:blur(20px);animation:fadeIn .3s ease both"></div>
-  <div id="popupCard" class="relative max-w-md w-full" style="animation:popIn .45s cubic-bezier(.25,.1,.25,1) both">
-    <div class="relative rounded-3xl bg-[#161618] p-8 overflow-hidden border border-white/10">
+  <div id="popupCard" class="relative max-w-xl w-full" style="animation:popIn .45s cubic-bezier(.25,.1,.25,1) both">
+    <div class="relative rounded-3xl bg-[#161618] p-7 md:p-8 overflow-hidden border border-white/10">
       <button id="popupClose" class="absolute top-4 right-4 rounded-full bg-white/10 hover:bg-white/20 w-7 h-7 flex items-center justify-center text-white text-[12px] transition z-10">✕</button>
       <p class="text-[12px] font-semibold uppercase tracking-[.15em] text-[#2997ff] mb-2">Nouveautés 2026</p>
       <h3 class="text-[26px] font-bold tracking-tight leading-tight mb-1">Bientôt sur VitalX.</h3>
       <p class="text-[13px] text-[#86868b] mb-6">Trois nouveautés arrivent.</p>
-      <div class="space-y-4 mb-7">
-        <div class="flex gap-4">
-          <div class="shrink-0 h-10 w-10 rounded-xl bg-gradient-to-br from-[#2997ff] to-[#0a84ff] grid place-items-center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
-          <div><div class="text-[15px] font-semibold">Capteur QCPR</div><p class="text-[13px] text-[#86868b] leading-relaxed mt-0.5">Feedback RCP complet sur iPad — profondeur, fréquence, relâchement. L'élève voit les compressions en direct sur le scope.</p></div>
+
+      <!-- Bento grid -->
+      <div class="grid grid-cols-2 gap-3 mb-6">
+        <!-- QCPR — large tile -->
+        <div class="col-span-2 rounded-2xl bg-[#1c1c1e] hover:bg-[#222226] transition-colors p-5 relative overflow-hidden group">
+          <div class="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-[#2997ff]/10 blur-3xl pointer-events-none"></div>
+          <div class="relative flex items-start gap-4">
+            <div class="shrink-0 h-11 w-11 rounded-xl bg-gradient-to-br from-[#2997ff] to-[#0a84ff] grid place-items-center group-hover:scale-105 transition-transform"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+            <div>
+              <div class="text-[16px] font-semibold">Capteur QCPR</div>
+              <p class="text-[12.5px] text-[#86868b] leading-relaxed mt-1">Feedback RCP complet sur iPad — profondeur, fréquence, relâchement. L'élève voit les compressions en direct sur le scope.</p>
+            </div>
+          </div>
         </div>
-        <div class="flex gap-4">
-          <div class="shrink-0 h-10 w-10 rounded-xl bg-gradient-to-br from-[#ff9f0a] to-[#ff6b00] grid place-items-center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg></div>
-          <div><div class="text-[15px] font-semibold">Balise 4 Gaz</div><p class="text-[13px] text-[#86868b] leading-relaxed mt-0.5">Balises physiques O₂, CO, H₂S, LIE. Les valeurs évoluent selon la proximité de l'iPhone.</p></div>
+        <!-- Balise 4 Gaz -->
+        <div class="rounded-2xl bg-[#1c1c1e] hover:bg-[#222226] transition-colors p-5 relative overflow-hidden group">
+          <div class="absolute -bottom-8 -right-8 w-28 h-28 rounded-full bg-[#ff9f0a]/10 blur-2xl pointer-events-none"></div>
+          <div class="relative">
+            <div class="h-11 w-11 rounded-xl bg-gradient-to-br from-[#ff9f0a] to-[#ff6b00] grid place-items-center mb-3 group-hover:scale-105 transition-transform"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg></div>
+            <div class="text-[15px] font-semibold">Balise 4 Gaz</div>
+            <p class="text-[12px] text-[#86868b] leading-relaxed mt-1">O₂, CO, H₂S, LIE. Les valeurs évoluent selon la proximité de l'iPhone.</p>
+          </div>
         </div>
-        <div class="flex gap-4">
-          <div class="shrink-0 h-10 w-10 rounded-xl bg-gradient-to-br from-[#30d158] to-[#34c759] grid place-items-center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="3"/><circle cx="12" cy="18" r="1"/></svg></div>
-          <div><div class="text-[15px] font-semibold">POD'S LITE</div><p class="text-[13px] text-[#86868b] leading-relaxed mt-0.5">iPad + boîtier + connectiques — PNI, HR, SpO₂ avec courbe pleth, SpCO simulé. L'essentiel, accessible.</p></div>
+        <!-- POD'S LITE -->
+        <div class="rounded-2xl bg-[#1c1c1e] hover:bg-[#222226] transition-colors p-5 relative overflow-hidden group">
+          <div class="absolute -bottom-8 -right-8 w-28 h-28 rounded-full bg-[#30d158]/10 blur-2xl pointer-events-none"></div>
+          <div class="relative">
+            <div class="h-11 w-11 rounded-xl bg-gradient-to-br from-[#30d158] to-[#34c759] grid place-items-center mb-3 group-hover:scale-105 transition-transform"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="3"/><circle cx="12" cy="18" r="1"/></svg></div>
+            <div class="text-[15px] font-semibold">POD'S LITE</div>
+            <p class="text-[12px] text-[#86868b] leading-relaxed mt-1">iPad + boîtier + connectiques. PNI, HR, SpO₂ pleth, SpCO simulé.</p>
+          </div>
         </div>
       </div>
+
       <div class="flex gap-3">
         <a href="#contact" id="popupCTA" class="flex-1 btn-blue justify-center text-[14px]">Me tenir informé</a>
         <button id="popupDismiss" class="flex-1 rounded-full border border-white/15 text-[14px] font-medium text-[#d6d6d9] hover:bg-white/5 transition px-5 py-3">Plus tard</button>
