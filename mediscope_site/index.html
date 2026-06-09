@@ -81,6 +81,10 @@ html,body{background:#000;color:#f5f5f7;font-family:'SF Pro Display','SF Pro Tex
 @keyframes popIn{0%{opacity:0;transform:scale(.94) translateY(20px)}100%{opacity:1;transform:scale(1) translateY(0)}}
 @keyframes fadeIn{0%{opacity:0}100%{opacity:1}}
 
+/* Scroll text zoom (Apple style) */
+.txt-zoom{opacity:0;transform:scale(1.45);transform-origin:center 60%;will-change:transform,opacity}
+@media(prefers-reduced-motion:reduce){.txt-zoom{opacity:1!important;transform:none!important}}
+
 /* Gradient text accent */
 .grad-txt{background:linear-gradient(90deg,#2997ff,#5e5ce6,#bf5af2);-webkit-background-clip:text;background-clip:text;color:transparent}
 .grad-warm{background:linear-gradient(90deg,#ff9f0a,#ff375f);-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -146,7 +150,7 @@ html,body{background:#000;color:#f5f5f7;font-family:'SF Pro Display','SF Pro Tex
 <section id="medx" class="sec sec-alt text-center">
   <div class="mx-auto max-w-5xl px-6">
     <img src="/assets/medxbyvitalx.png" alt="MED'X by VitalX" class="h-10 mx-auto mb-6 object-contain sr" data-no-lightbox="true"/>
-    <h2 class="h-section sr">Le pack référence.</h2>
+    <h2 class="h-section txt-zoom">Le pack référence.</h2>
     <p class="sub mt-4 max-w-2xl mx-auto sr sr-d1">2 iPad 11", boîtier, connectiques complètes — PNI, SpO₂, ECG 12D, DSA, T°, EtCO₂ — et licence à vie.</p>
     <div class="mt-5 flex items-center justify-center gap-6 sr sr-d2">
       <span class="text-[21px] font-semibold">À partir de 3 300 €</span>
@@ -163,7 +167,7 @@ html,body{background:#000;color:#f5f5f7;font-family:'SF Pro Display','SF Pro Tex
 <section id="pods" class="sec text-center">
   <div class="mx-auto max-w-5xl px-6">
     <img src="/vitalxpods.png" alt="VitalX POD'S" class="h-12 mx-auto mb-6 object-contain sr" data-no-lightbox="true"/>
-    <h2 class="h-section sr">Compact. Mobile.<br>Toujours prêt.</h2>
+    <h2 class="h-section txt-zoom">Compact. Mobile.<br>Toujours prêt.</h2>
     <p class="sub mt-4 max-w-2xl mx-auto sr sr-d1">POD'S transforme un iPhone en moniteur patient. Idéal pour les formations mobiles et les démonstrations.</p>
     <div class="mt-5 sr sr-d2"><span class="text-[21px] font-semibold">À partir de 1 700 €</span></div>
     <div class="mt-4 flex items-center justify-center gap-6 sr sr-d2">
@@ -178,8 +182,8 @@ html,body{background:#000;color:#f5f5f7;font-family:'SF Pro Display','SF Pro Tex
 <section class="sec-tight sec-alt">
   <div class="mx-auto max-w-5xl px-6 text-center">
     <p class="text-[13px] font-semibold uppercase tracking-[.15em] text-[#ff9f0a] mb-3 sr">Extension</p>
-    <h2 class="h-card sr"><span class="grad-warm">Mode Ultra.</span> 4 modules avancés.</h2>
-    <p class="sub-sm mt-3 max-w-xl mx-auto sr sr-d1">GUARDIAN · NEXUS (Scope IAO) · CTG (Cardiotocographe) · VENT (Ventilateur)</p>
+    <h2 class="h-card txt-zoom"><span class="grad-warm">Mode Ultra.</span> 4 modules avancés.</h2>
+    <p class="sub-sm mt-3 max-w-xl mx-auto sr sr-d1">GUARDIAN · NEXUS (Scope IAO) · CTG (Cardiotocographe) · VENT (Respirateur)</p>
     <div class="mt-5 flex items-center justify-center gap-6 sr sr-d2">
       <span class="text-[19px] font-semibold">400 €</span>
       <a href="/boutique.html#licenses" class="a-link">Découvrir</a>
@@ -188,7 +192,7 @@ html,body{background:#000;color:#f5f5f7;font-family:'SF Pro Display','SF Pro Tex
       <div class="card py-4 px-3"><div class="text-[15px] font-semibold text-[#ff9f0a]">GUARDIAN</div><div class="text-[11px] text-[#86868b] mt-0.5">Scope</div></div>
       <div class="card py-4 px-3"><div class="text-[15px] font-semibold text-[#ff9f0a]">NEXUS</div><div class="text-[11px] text-[#86868b] mt-0.5">Scope IAO</div></div>
       <div class="card py-4 px-3"><div class="text-[15px] font-semibold text-[#ff9f0a]">CTG</div><div class="text-[11px] text-[#86868b] mt-0.5">Cardiotoco.</div></div>
-      <div class="card py-4 px-3"><div class="text-[15px] font-semibold text-[#ff9f0a]">VENT</div><div class="text-[11px] text-[#86868b] mt-0.5">Ventilateur</div></div>
+      <div class="card py-4 px-3"><div class="text-[15px] font-semibold text-[#ff9f0a]">VENT</div><div class="text-[11px] text-[#86868b] mt-0.5">Respirateur</div></div>
     </div>
   </div>
 </section>
@@ -197,7 +201,7 @@ html,body{background:#000;color:#f5f5f7;font-family:'SF Pro Display','SF Pro Tex
 <section id="features" class="sec">
   <div class="mx-auto max-w-6xl px-6">
     <div class="text-center mb-16">
-      <h2 class="h-section sr">Tout pour former.<br>Rien de superflu.</h2>
+      <h2 class="h-section txt-zoom">Tout pour former.<br>Rien de superflu.</h2>
     </div>
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14 text-center">
       <div class="sr"><div class="f-ico bg-gradient-to-br from-[#2997ff] to-[#0a84ff]"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><h3 class="text-[19px] font-semibold mb-2">Scénarios dynamiques</h3><p class="sub-sm">Bibliothèque de cas concrets — AVC, douleur thoracique, polytrauma — avec étapes guidées et transitions automatiques.</p></div>
@@ -217,7 +221,7 @@ html,body{background:#000;color:#f5f5f7;font-family:'SF Pro Display','SF Pro Tex
 <section id="app" class="sec sec-alt">
   <div class="mx-auto max-w-6xl px-6">
     <div class="text-center mb-14">
-      <h2 class="h-section sr">L'app VitalX.</h2>
+      <h2 class="h-section txt-zoom">L'app VitalX.</h2>
       <p class="sub mt-4 sr sr-d1">Le formateur pilote. Le moniteur affiche.</p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -238,7 +242,7 @@ html,body{background:#000;color:#f5f5f7;font-family:'SF Pro Display','SF Pro Tex
 <section class="sec-tight">
   <div class="mx-auto max-w-4xl px-6 text-center">
     <p class="text-[13px] font-semibold uppercase tracking-[.15em] text-[#ff9f0a] mb-3 sr">Nouveau</p>
-    <h2 class="h-card sr">Mode Formateur. Sur le web.</h2>
+    <h2 class="h-card txt-zoom">Mode Formateur. Sur le web.</h2>
     <p class="sub-sm mt-3 max-w-lg mx-auto sr sr-d1">Pilotez vos sessions depuis n'importe quel ordinateur ou smartphone. Aucune installation.</p>
     <div class="mt-5 sr sr-d2"><a href="https://vitalxtrainer.app" target="_blank" class="a-link">vitalxtrainer.app</a></div>
   </div>
@@ -247,7 +251,7 @@ html,body{background:#000;color:#f5f5f7;font-family:'SF Pro Display','SF Pro Tex
 <!-- PACK -->
 <section id="in-the-box" class="sec sec-alt">
   <div class="mx-auto max-w-5xl px-6">
-    <div class="text-center mb-14"><h2 class="h-section sr">Dans le pack.</h2></div>
+    <div class="text-center mb-14"><h2 class="h-section txt-zoom">Dans le pack.</h2></div>
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
       <div class="card p-7 text-center sr"><div class="text-3xl mb-3">📱</div><h3 class="text-[17px] font-semibold mb-1.5">2 iPad 11"</h3><p class="text-[13px] text-[#86868b]">Formateur + moniteur</p></div>
       <div class="card p-7 text-center sr sr-d1"><div class="text-3xl mb-3">🧰</div><h3 class="text-[17px] font-semibold mb-1.5">Boîtier VitalX</h3><p class="text-[13px] text-[#86868b]">+ housse Bagheera</p></div>
@@ -261,7 +265,7 @@ html,body{background:#000;color:#f5f5f7;font-family:'SF Pro Display','SF Pro Tex
 <section id="pricing" class="sec">
   <div class="mx-auto max-w-6xl px-6">
     <div class="text-center mb-14">
-      <h2 class="h-section sr">Un prix juste.</h2>
+      <h2 class="h-section txt-zoom">Un prix juste.</h2>
       <p class="sub mt-4 sr sr-d1">Jusqu'à 4× moins cher que la concurrence.</p>
     </div>
     <div class="grid lg:grid-cols-2 gap-6 items-stretch max-w-5xl mx-auto">
@@ -295,7 +299,7 @@ html,body{background:#000;color:#f5f5f7;font-family:'SF Pro Display','SF Pro Tex
 <!-- TESTIMONIALS -->
 <section id="testimonials" class="sec sec-alt">
   <div class="mx-auto max-w-6xl px-6">
-    <div class="text-center mb-14"><h2 class="h-section sr">Ils forment avec VitalX.</h2></div>
+    <div class="text-center mb-14"><h2 class="h-section txt-zoom">Ils forment avec VitalX.</h2></div>
 
     <div class="grid md:grid-cols-3 gap-5 mb-8">
       <figure class="card p-6 sr"><div class="text-[#ffd60a] text-[13px] mb-3">★★★★★</div><blockquote class="text-[15px] leading-relaxed">"Le réalisme est bluffant. On gagne un temps fou pour préparer des cas concrets."</blockquote><div class="mt-4 grid grid-cols-2 gap-2"><img src="/reviews/scope-1.jpg" alt="" class="h-24 w-full object-cover rounded-xl"/><img src="/reviews/scope-2.jpg" alt="" class="h-24 w-full object-cover rounded-xl"/></div><figcaption class="mt-4 text-[12px] text-[#86868b]">Claire M. — Instructrice PSE</figcaption></figure>
@@ -330,7 +334,7 @@ html,body{background:#000;color:#f5f5f7;font-family:'SF Pro Display','SF Pro Tex
 <section id="contact" class="sec">
   <div class="mx-auto max-w-2xl px-6">
     <div class="text-center mb-12">
-      <h2 class="h-section sr">Parlons-en.</h2>
+      <h2 class="h-section txt-zoom">Parlons-en.</h2>
       <p class="sub mt-4 sr sr-d1">Devis, renseignement ou démonstration.</p>
     </div>
     <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/merci.html" class="sr sr-d2">
@@ -448,6 +452,33 @@ document.getElementById('menuBtn')?.addEventListener('click',()=>document.getEle
 
 // Scroll reveal
 (function(){const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.sr').forEach(el=>io.observe(el))})();
+
+// Apple-style scroll text zoom (big fade-in, shrinks to place)
+(function(){
+  const els=Array.from(document.querySelectorAll('.txt-zoom'));
+  if(!els.length) return;
+  const rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(rm){els.forEach(el=>{el.style.opacity=1;el.style.transform='none'});return}
+  let ticking=false;
+  function update(){
+    ticking=false;
+    const vh=innerHeight;
+    els.forEach(el=>{
+      const r=el.getBoundingClientRect();
+      if(r.bottom<-100||r.top>vh+100) return;
+      const start=vh*0.96, end=vh*0.45;           // progress window
+      let p=(start-r.top)/(start-end);
+      p=Math.min(1,Math.max(0,p));
+      const ease=1-Math.pow(1-p,3);               // easeOutCubic
+      el.style.opacity=ease;
+      el.style.transform=`scale(${(1.45-0.45*ease).toFixed(4)})`;
+    });
+  }
+  function onScroll(){if(!ticking){ticking=true;requestAnimationFrame(update)}}
+  addEventListener('scroll',onScroll,{passive:true});
+  addEventListener('resize',onScroll,{passive:true});
+  update();
+})();
 
 // Chart
 (function(){
