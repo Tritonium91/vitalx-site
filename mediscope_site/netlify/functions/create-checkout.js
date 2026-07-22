@@ -8,15 +8,11 @@ const PRICE_BY_SKU = {
   'sku_pack_refurb_2':  'price_1SSqQC2MFaCyLMvRTh5uoL8T', // Pack Reconditionné 2 iPad — 1 849 €
 
   // === MODE ULTRA ===
-  'sku_mode_ultra':     'price_1TWHL02MFaCyLMvRIg7KAaJh',         // Mode Ultra — 400 € (GUARDIAN, ANGEL, NEXUS, CTG, VENT)
+  'sku_mode_ultra':     'price_1TWHL02MFaCyLMvRIg7KAaJh', // Mode Ultra — 400 € (GUARDIAN, ANGEL, NEXUS, CTG, VENT)
 
   // === POD'S ===
   'sku_pods_classic':   'price_1TWHMV2MFaCyLMvRYYMmpv0d', // POD'S Classic — 1 700 €
   'sku_pods_premium':   'price_1TWHLu2MFaCyLMvR9hB7ryqT', // POD'S Premium — 2 000 €
-
-  // === LICENCES ===
-  'sku_lic_annual':     'price_1SSqNq2MFaCyLMvRxOOlrLly', // Licence 1 an — 180 €
-  'sku_lic_life':       'price_1Sc9ie2MFaCyLMvR64EP2e2C', // Licence à vie — 500 €
 
   // === ECUSSONS ===
   'sku_ecusson_chat_noir':   'price_1TGJiR2MFaCyLMvRNRTfejPp',
@@ -52,10 +48,8 @@ exports.handler = async (event) => {
       return json(400, { error: 'Panier vide' });
     }
 
-    // Détecte les licences ou le mode ultra
-    const hasLicense = items.some(({ sku }) =>
-      String(sku || '').startsWith('sku_lic_') || sku === 'sku_mode_ultra'
-    );
+    // Détecte le Mode Ultra (champ code d'activation)
+    const hasUltra = items.some(({ sku }) => sku === 'sku_mode_ultra');
 
     // Détecte les écussons
     const hasPatch = items.some(({ sku }) => PATCH_SKUS.has(String(sku || '')));
@@ -87,11 +81,11 @@ exports.handler = async (event) => {
     body.append('billing_address_collection', 'auto');
     body.append('allow_promotion_codes', 'true');
 
-    // Champ personnalisé si licence ou mode ultra
-    if (hasLicense) {
-      body.append('custom_fields[0][key]', 'current_license_code');
+    // Champ personnalisé si Mode Ultra (code d'activation du scope)
+    if (hasUltra) {
+      body.append('custom_fields[0][key]', 'scope_activation_code');
       body.append('custom_fields[0][label][type]', 'custom');
-      body.append('custom_fields[0][label][custom]', 'Code licence actuel (facultatif)');
+      body.append('custom_fields[0][label][custom]', "Code d'activation de votre scope (facultatif)");
       body.append('custom_fields[0][type]', 'text');
       body.append('custom_fields[0][text][minimum_length]', '4');
       body.append('custom_fields[0][text][maximum_length]', '40');
@@ -99,7 +93,7 @@ exports.handler = async (event) => {
 
       body.append(
         'custom_text[submit][message]',
-        'Vous avez déjà une licence ? Indiquez votre code pour accélérer la prolongation.'
+        "Indiquez le code de votre scope VitalX pour accélérer l'activation du Mode Ultra."
       );
     }
 
