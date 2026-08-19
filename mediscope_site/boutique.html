@@ -24,6 +24,11 @@
     /* 🇫🇷 Bandeaux tricolores — épaisseur augmentée */
     .tricolor{height:10px;background:linear-gradient(90deg,#0046b8 0 33.33%,#fff 33.33% 66.66%,#e1000f 66.66% 100%)}
     .tricolor-thin{height:6px;background:linear-gradient(90deg,#0046b8 0 33.33%,#fff 33.33% 66.66%,#e1000f 66.66% 100%)}
+    /* 🌍 Sélecteur de langue */
+    .lang-btn{width:26px;height:18px;border-radius:3px;overflow:hidden;display:block;line-height:0;padding:0;border:0;background:none;cursor:pointer;opacity:.4;transition:opacity .15s,box-shadow .15s}
+    .lang-btn:hover{opacity:.85}
+    .lang-btn.is-active{opacity:1;box-shadow:0 0 0 1.5px rgba(255,255,255,.9)}
+    .lang-btn svg{display:block;width:100%;height:100%}
     .title-bar{display:inline-block;color:#0a2240}
     .divider-glow{height:2px;width:80px;background:linear-gradient(90deg,#0046b8,#e1000f);border-radius:2px}
     .card{background:#fff;border:1px solid var(--line)}
@@ -49,9 +54,20 @@
   <div class="bg-[#06203f] text-white text-[12px]">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-9 flex items-center justify-between">
       <span class="flex items-center gap-2 font-semibold tracking-wide"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e1000f" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Con&ccedil;u &amp; assembl&eacute; en France 🇫🇷</span>
-      <span class="hidden sm:flex items-center gap-4">
-        <a href="mailto:vitalxscope@gmail.com" class="hover:text-[#7eb0ff] transition">vitalxscope@gmail.com</a>
-        <a href="https://vitalxtrainer.app" target="_blank" class="text-[#ffb340] hover:text-[#ffc970] font-semibold transition">Mode Formateur (web) ›</a>
+      <span class="flex items-center gap-4">
+        <span class="hidden sm:flex items-center gap-4">
+          <a href="mailto:vitalxscope@gmail.com" class="hover:text-[#7eb0ff] transition">vitalxscope@gmail.com</a>
+          <a href="https://vitalxtrainer.app" target="_blank" class="text-[#ffb340] hover:text-[#ffc970] font-semibold transition">Mode Formateur (web) ›</a>
+        </span>
+        <!-- 🌍 Choix de la langue -->
+        <span id="langSwitch" class="flex items-center gap-1.5">
+          <button type="button" data-lang="fr" class="lang-btn is-active" title="Français" aria-label="Français">
+            <svg viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="36" fill="#0046b8"/><rect x="20" width="20" height="36" fill="#fff"/><rect x="40" width="20" height="36" fill="#e1000f"/></svg>
+          </button>
+          <button type="button" data-lang="en" class="lang-btn" title="English" aria-label="English">
+            <svg viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="36" fill="#012169"/><path d="M0 0 L60 36 M60 0 L0 36" stroke="#fff" stroke-width="7"/><path d="M0 0 L60 36 M60 0 L0 36" stroke="#C8102E" stroke-width="4"/><path d="M30 0 V36 M0 18 H60" stroke="#fff" stroke-width="12"/><path d="M30 0 V36 M0 18 H60" stroke="#C8102E" stroke-width="7"/></svg>
+          </button>
+        </span>
       </span>
     </div>
   </div>
@@ -179,5 +195,6 @@
     elCheckout&&elCheckout.addEventListener('click',async()=>{const cart=loadCart();if(!cart.length){alert('Votre panier est vide.');return}const items=cart.map(({sku,quantity})=>({sku,quantity}));try{const res=await fetch('/.netlify/functions/create-checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items,mode:'payment'})});const data=await res.json();if(data&&data.url){location.href=data.url}else{throw new Error(data&&data.error?data.error:'Erreur inconnue')}}catch(err){console.error(err);alert("Le paiement n'est pas encore configuré.")}});
     updateCount(loadCart());
   </script>
+  <script src="/i18n.js" defer></script>
 </body>
 </html>
