@@ -1,4 +1,5 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <!--
   mentions-legales.html — VitalX
   🆕 v2.0 — 19/08/2026 — Yann USSEGLIO
@@ -6,14 +7,14 @@
 -->
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>Mentions légales — VitalX</title>
-<meta name="description" content="Mentions légales de VitalX — éditeur, hébergeur, propriété intellectuelle.">
-<meta name="theme-color" content="#0a2240">
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+<meta content="Mentions légales de VitalX — éditeur, hébergeur, propriété intellectuelle." name="description"/>
+<meta content="#0a2240" name="theme-color"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
 <style>
 *{-webkit-font-smoothing:antialiased;box-sizing:border-box}
 html,body{margin:0;padding:0;background:#f4f6f9;color:#0c1828;overflow-x:clip;max-width:100vw;line-height:1.7;
@@ -134,109 +135,113 @@ footer.site .row{max-width:1152px;margin:0 auto;padding:0 24px;display:flex;flex
   align-items:center;justify-content:space-between}
 footer.site a{color:#9fb3cc;border:0;font-weight:600}
 footer.site a:hover{color:#fff}
+
+/* 🌍 Sélecteur de langue */
+.lang-btn{width:26px;height:18px;border-radius:3px;overflow:hidden;display:block;line-height:0;padding:0;border:0;background:none;cursor:pointer;opacity:.4;transition:opacity .15s,box-shadow .15s}
+.lang-btn:hover{opacity:.85}
+.lang-btn.is-active{opacity:1;box-shadow:0 0 0 1.5px rgba(255,255,255,.9)}
+.lang-btn svg{display:block;width:100%;height:100%}
+#langSwitch{display:flex;align-items:center;gap:6px}
+.topstrip .right{display:flex;align-items:center;gap:16px}
+.legal-notice{font-size:13.5px;color:#9fb3cc;max-width:640px;margin:14px auto 0;font-style:italic}
 </style>
 </head>
 <body>
-
 <div class="topstrip">
-  <div class="row">
-    <span>Conçu &amp; assemblé en France 🇫🇷</span>
-    <span class="hide-sm"><a class="mail" href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a></span>
-  </div>
+<div class="row">
+<span>Conçu &amp; assemblé en France 🇫🇷</span>
+<span class="right">
+      <span class="hide-sm"><a class="mail" href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a></span>
+      <span id="langSwitch">
+        <button type="button" data-lang="fr" class="lang-btn is-active" title="Français" aria-label="Français"><svg viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="36" fill="#0046b8"/><rect x="20" width="20" height="36" fill="#fff"/><rect x="40" width="20" height="36" fill="#e1000f"/></svg></button>
+        <button type="button" data-lang="en" class="lang-btn" title="English" aria-label="English"><svg viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="36" fill="#012169"/><path d="M0 0 L60 36 M60 0 L0 36" stroke="#fff" stroke-width="7"/><path d="M0 0 L60 36 M60 0 L0 36" stroke="#C8102E" stroke-width="4"/><path d="M30 0 V36 M0 18 H60" stroke="#fff" stroke-width="12"/><path d="M30 0 V36 M0 18 H60" stroke="#C8102E" stroke-width="7"/></svg></button>
+        <button type="button" data-lang="de" class="lang-btn" title="Deutsch" aria-label="Deutsch"><svg viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="12" fill="#000"/><rect y="12" width="60" height="12" fill="#DD0000"/><rect y="24" width="60" height="12" fill="#FFCE00"/></svg></button>
+      </span>
+    </span>
+</div>
 </div>
 <div class="tricolor-thin"></div>
-
 <header class="nav">
-  <div class="row">
-    <a class="brand" href="/"><img src="/logo.png" alt="" onerror="this.style.display='none'">Vital<span>X</span></a>
-    <nav class="navlinks">
-      <a href="/">Accueil</a>
-      <a href="/boutique.html">Boutique</a>
-      <a href="/garantie.html">Garantie</a>
-      <a href="/#contact">Contact</a>
-    </nav>
-    <a href="/#contact" class="btn-red">Demander un devis</a>
-  </div>
-</header>
-
-<section class="sec-dark hero">
-  <div class="glow-a"></div><div class="glow-b"></div>
-  <div class="wrap inner">
-    <p class="eyebrow eyebrow-light">Informations légales</p>
-    <h1 class="h-hero">Mentions légales</h1>
-    <p class="sub">Éditeur, hébergement, propriété intellectuelle et responsabilité.</p>
-  </div>
-  <div class="tricolor" style="position:absolute;left:0;right:0;bottom:0"></div>
-</section>
-
-<main>
-  <div class="wrap">
-
-    <div class="card">
-      <h2><span class="num">1</span>Éditeur du site</h2>
-      <p><strong>VitalX</strong> — Entreprise individuelle (micro-entreprise).<br>
-      Responsable de la publication : <em>à compléter</em><br>
-      Adresse du siège : <em>à compléter</em><br>
-      Contact : <a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a></p>
-    </div>
-
-    <div class="card">
-      <h2><span class="num">2</span>Statut &amp; immatriculation</h2>
-      <p>Micro-entrepreneur — <strong>TVA non applicable</strong>, article 293B du Code général des impôts.</p>
-      <p>N° SIREN / SIRET : <strong>894 175 744 00016</strong>.</p>
-    </div>
-
-    <div class="card">
-      <h2><span class="num">3</span>Hébergement</h2>
-      <p>Le site est hébergé par <strong>Netlify, Inc.</strong><br>
-      2325 3rd Street, Suite 296, San Francisco, CA 94107, États-Unis — <a href="https://www.netlify.com" target="_blank" rel="noopener">netlify.com</a></p>
-    </div>
-
-    <div class="card">
-      <h2><span class="num red">4</span>Propriété intellectuelle</h2>
-      <p>L'ensemble des contenus du site (textes, images, graphismes, logos, vidéos, icônes, code) est protégé par le droit d'auteur. Toute reproduction, représentation ou adaptation, même partielle, est interdite sans autorisation écrite préalable de VitalX.</p>
-      <p>Les marques et logos tiers cités restent la propriété de leurs titulaires respectifs.</p>
-    </div>
-
-    <div class="card">
-      <h2><span class="num navy">5</span>Responsabilité</h2>
-      <p>VitalX s'efforce d'assurer l'exactitude et la mise à jour des informations publiées sur ce site, sans pouvoir garantir l'absence d'erreurs ou d'omissions.</p>
-      <div class="note amber">
-        <div class="ico">⚠️</div>
-        <div>
-          <p class="t">Usage pédagogique uniquement</p>
-          <p>Les scopes et applications VitalX sont des <strong>outils de simulation destinés à la formation</strong>. Ils ne constituent pas des dispositifs médicaux et ne doivent jamais servir au diagnostic, à la surveillance ou à la prise de décision clinique sur un patient réel.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2><span class="num">6</span>Contact</h2>
-      <p>Pour toute question relative au site ou aux présentes mentions : <a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a></p>
-      <p>Voir aussi la <a href="/politique-confidentialite.html">politique de confidentialité</a>, les <a href="/cgv.html">conditions générales de vente</a> et la <a href="/garantie.html">garantie</a>.</p>
-    </div>
-
-  </div>
-</main>
-
-<div class="wrap backrow">
-  <a href="/" class="btn-out">← Retour au site</a>
+<div class="row">
+<a class="brand" href="/"><img alt="" onerror="this.style.display='none'" src="/logo.png"/>Vital<span>X</span></a>
+<nav class="navlinks">
+<a href="/">Accueil</a>
+<a href="/boutique.html">Boutique</a>
+<a href="/garantie.html">Garantie</a>
+<a href="/#contact">Contact</a>
+</nav>
+<a class="btn-red" href="/#contact">Demander un devis</a>
 </div>
-
+</header>
+<section class="sec-dark hero">
+<div class="glow-a"></div><div class="glow-b"></div>
+<div class="wrap inner">
+<p class="eyebrow eyebrow-light">Informations légales</p>
+<h1 class="h-hero">Mentions légales</h1>
+<p class="sub">Éditeur, hébergement, propriété intellectuelle et responsabilité.</p>
+    <p class="legal-notice">Seule la version française de ce document fait foi ; les traductions sont fournies à titre indicatif.</p>
+</div>
+<div class="tricolor" style="position:absolute;left:0;right:0;bottom:0"></div>
+</section>
+<main>
+<div class="wrap">
+<div class="card">
+<h2><span class="num">1</span>Éditeur du site</h2>
+<p data-i18n-html=""><strong>VitalX</strong> — Entreprise individuelle (micro-entreprise).<br/>
+      Responsable de la publication : <em>à compléter</em><br/>
+      Adresse du siège : <em>à compléter</em><br/>
+      Contact : <a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a></p>
+</div>
+<div class="card">
+<h2><span class="num">2</span>Statut &amp; immatriculation</h2>
+<p data-i18n-html="">Micro-entrepreneur — <strong>TVA non applicable</strong>, article 293B du Code général des impôts.</p>
+<p data-i18n-html="">N° SIREN / SIRET : <strong>894 175 744 00016</strong>.</p>
+</div>
+<div class="card">
+<h2><span class="num">3</span>Hébergement</h2>
+<p data-i18n-html="">Le site est hébergé par <strong>Netlify, Inc.</strong><br/>
+      2325 3rd Street, Suite 296, San Francisco, CA 94107, États-Unis — <a href="https://www.netlify.com" rel="noopener" target="_blank">netlify.com</a></p>
+</div>
+<div class="card">
+<h2><span class="num red">4</span>Propriété intellectuelle</h2>
+<p>L'ensemble des contenus du site (textes, images, graphismes, logos, vidéos, icônes, code) est protégé par le droit d'auteur. Toute reproduction, représentation ou adaptation, même partielle, est interdite sans autorisation écrite préalable de VitalX.</p>
+<p>Les marques et logos tiers cités restent la propriété de leurs titulaires respectifs.</p>
+</div>
+<div class="card">
+<h2><span class="num navy">5</span>Responsabilité</h2>
+<p>VitalX s'efforce d'assurer l'exactitude et la mise à jour des informations publiées sur ce site, sans pouvoir garantir l'absence d'erreurs ou d'omissions.</p>
+<div class="note amber">
+<div class="ico">⚠️</div>
+<div>
+<p class="t">Usage pédagogique uniquement</p>
+<p data-i18n-html="">Les scopes et applications VitalX sont des <strong>outils de simulation destinés à la formation</strong>. Ils ne constituent pas des dispositifs médicaux et ne doivent jamais servir au diagnostic, à la surveillance ou à la prise de décision clinique sur un patient réel.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<h2><span class="num">6</span>Contact</h2>
+<p data-i18n-html="">Pour toute question relative au site ou aux présentes mentions : <a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a></p>
+<p data-i18n-html="">Voir aussi la <a href="/politique-confidentialite.html">politique de confidentialité</a>, les <a href="/cgv.html">conditions générales de vente</a> et la <a href="/garantie.html">garantie</a>.</p>
+</div>
+</div>
+</main>
+<div class="wrap backrow">
+<a class="btn-out" href="/">← Retour au site</a>
+</div>
 <footer class="site">
-  <div class="tricolor-thin" style="margin-bottom:26px"></div>
-  <div class="row">
-    <div>© <span id="year"></span> VitalX — Tous droits réservés. Conçu &amp; assemblé en France 🇫🇷</div>
-    <div style="display:flex;gap:18px;flex-wrap:wrap">
-      <a href="/mentions-legales.html">Mentions légales</a>
-      <a href="/cgv.html">CGV</a>
-      <a href="/politique-confidentialite.html">Confidentialité</a>
-      <a href="/garantie.html">Garantie</a>
-    </div>
-  </div>
+<div class="tricolor-thin" style="margin-bottom:26px"></div>
+<div class="row">
+<div>© <span id="year"></span> VitalX — Tous droits réservés. Conçu &amp; assemblé en France 🇫🇷</div>
+<div style="display:flex;gap:18px;flex-wrap:wrap">
+<a href="/mentions-legales.html">Mentions légales</a>
+<a href="/cgv.html">CGV</a>
+<a href="/politique-confidentialite.html">Confidentialité</a>
+<a href="/garantie.html">Garantie</a>
+</div>
+</div>
 </footer>
-
 <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
-
+<script src="/i18n-legal.js" defer></script>
+<script src="/i18n.js" defer></script>
 </body>
 </html>
