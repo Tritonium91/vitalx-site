@@ -1,4 +1,13 @@
 <!doctype html>
+<!--
+  index.html — VitalX
+  Description : Page d'accueil VitalX (simulation médicale française)
+  🆕 v2.0 — 19/08/2026 — Yann USSEGLIO
+     • Popup Nouveautés entièrement refaite : VITALX V2 Disponible (+ photo vitalxv2pro)
+     • ⚠️ 1. Tous les prix supprimés du site → CTA "Demander un devis"
+     • ⚠️ 2. Section Tarifs remplacée par une section Devis (graphique Chart.js retiré)
+     • Bandeaux tricolores épaissis (10px / 6px)
+-->
 <html lang="fr" class="scroll-smooth">
 <head>
 <meta charset="utf-8"/>
@@ -15,7 +24,6 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
 <link rel="manifest" href="/site.webmanifest">
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
 *{-webkit-font-smoothing:antialiased}
 html,body{background:#f4f6f9;color:#0c1828;overflow-x:clip;max-width:100vw;font-family:'Inter','Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,'Helvetica Neue',Arial,sans-serif}
@@ -34,9 +42,9 @@ html,body{background:#f4f6f9;color:#0c1828;overflow-x:clip;max-width:100vw;font-
 .h-card{font-size:clamp(22px,3vw,36px);font-weight:800;letter-spacing:-.01em;line-height:1.1;text-transform:uppercase}
 .eyebrow{font-size:13px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--fr-red)}
 
-/* Tricolor bar */
-.tricolor{height:4px;background:linear-gradient(90deg,#0046b8 0 33.33%,#fff 33.33% 66.66%,#e1000f 66.66% 100%)}
-.tricolor-thin{height:3px;background:linear-gradient(90deg,#0046b8 0 33.33%,#fff 33.33% 66.66%,#e1000f 66.66% 100%)}
+/* 🇫🇷 Tricolor bar — épaisseur augmentée */
+.tricolor{height:10px;background:linear-gradient(90deg,#0046b8 0 33.33%,#fff 33.33% 66.66%,#e1000f 66.66% 100%)}
+.tricolor-thin{height:6px;background:linear-gradient(90deg,#0046b8 0 33.33%,#fff 33.33% 66.66%,#e1000f 66.66% 100%)}
 
 /* Buttons */
 .btn-red{background:var(--fr-red);color:#fff;border-radius:6px;padding:13px 28px;font-size:14px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px;transition:.15s;box-shadow:0 6px 18px -8px rgba(225,0,15,.6)}
@@ -119,7 +127,7 @@ html,body{background:#f4f6f9;color:#0c1828;overflow-x:clip;max-width:100vw;font-
       <a href="#medx" class="hover:text-[#0046b8] transition">MED'X</a>
       <a href="#pods" class="hover:text-[#0046b8] transition">POD'S</a>
       <a href="#features" class="hover:text-[#0046b8] transition">Fonctions</a>
-      <a href="#pricing" class="hover:text-[#0046b8] transition">Tarifs</a>
+      <a href="#devis" class="hover:text-[#0046b8] transition">Devis</a>
       <a href="#" id="navNews" class="hover:text-[#0046b8] transition">News</a>
       <a href="/affiliation.html" class="hover:text-[#0046b8] transition">Affiliation</a>
       <a href="/qui-sommes-nous.html" class="hover:text-[#0046b8] transition">Société</a>
@@ -134,7 +142,7 @@ html,body{background:#f4f6f9;color:#0c1828;overflow-x:clip;max-width:100vw;font-
       <a href="#medx" class="py-2 border-b border-[#eef1f6]">MED'X</a>
       <a href="#pods" class="py-2 border-b border-[#eef1f6]">POD'S</a>
       <a href="#features" class="py-2 border-b border-[#eef1f6]">Fonctions</a>
-      <a href="#pricing" class="py-2 border-b border-[#eef1f6]">Tarifs</a>
+      <a href="#devis" class="py-2 border-b border-[#eef1f6]">Devis</a>
       <a href="#" id="navNewsMobile" class="py-2 border-b border-[#eef1f6]">News</a>
       <a href="/affiliation.html" class="py-2 border-b border-[#eef1f6]">Affiliation</a>
       <a href="/qui-sommes-nous.html" class="py-2 border-b border-[#eef1f6]">Société</a>
@@ -146,7 +154,6 @@ html,body{background:#f4f6f9;color:#0c1828;overflow-x:clip;max-width:100vw;font-
 
 <!-- HERO -->
 <section id="top" class="relative sec-dark overflow-hidden">
-  <!-- subtle FR glow -->
   <div class="absolute -top-32 -left-24 w-[420px] h-[420px] rounded-full bg-[#0046b8]/25 blur-[120px] pointer-events-none"></div>
   <div class="absolute -bottom-32 -right-24 w-[420px] h-[420px] rounded-full bg-[#e1000f]/15 blur-[120px] pointer-events-none"></div>
   <div class="relative mx-auto max-w-6xl px-6 pt-16 pb-14 text-center">
@@ -156,8 +163,8 @@ html,body{background:#f4f6f9;color:#0c1828;overflow-x:clip;max-width:100vw;font-
     <h1 class="h-hero sr show">Formez comme<br><span class="text-[#e1000f]">sur le terrain.</span></h1>
     <p class="mt-5 max-w-2xl mx-auto text-[17px] md:text-[19px] text-[#b9c8dc] leading-relaxed sr show sr-d1">Scopes de simulation réalistes, mobiles et économiques. Conçus et assemblés en France pour les <strong class="text-white">pompiers</strong>, <strong class="text-white">paramédicaux</strong> et <strong class="text-white">secouristes</strong>.</p>
     <div class="mt-8 flex flex-wrap items-center justify-center gap-4 sr show sr-d2">
-      <a href="/boutique.html" class="btn-red">🛍️ Voir la boutique</a>
-      <a href="#contact" class="btn-out !bg-transparent !text-white !border-white/40 hover:!bg-white hover:!text-[#0a2240]">Planifier une démo</a>
+      <a href="#contact" class="btn-red">📝 Demander un devis</a>
+      <a href="/boutique.html" class="btn-out !bg-transparent !text-white !border-white/40 hover:!bg-white hover:!text-[#0a2240]">Voir la boutique</a>
     </div>
     <div class="mt-12 mx-auto max-w-4xl sr show sr-d3">
       <div class="rounded-2xl overflow-hidden bg-white/[.04] ring-1 ring-white/10 p-3">
@@ -219,6 +226,33 @@ html,body{background:#f4f6f9;color:#0c1828;overflow-x:clip;max-width:100vw;font-
   </div>
 </section>
 
+<!-- VITALX V2 -->
+<section id="v2" class="sec sec-light">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="sr">
+        <p class="eyebrow">Nouvelle génération</p>
+        <h2 class="h-section mt-2 text-[#0a2240]">VitalX V2.<br>Disponible.</h2>
+        <p class="mt-4 text-[16px] text-[#5b6b80] leading-relaxed">Le pack le plus complet jamais assemblé par VitalX : grand écran moniteur, châssis redessiné et housse premium.</p>
+        <ul class="mt-6 space-y-3 text-[15px] text-[#0c1828]">
+          <li class="flex gap-3"><span class="text-[#0046b8] font-bold">✓</span>iPad Air 13" — Moniteur</li>
+          <li class="flex gap-3"><span class="text-[#0046b8] font-bold">✓</span>iPad 11" — Formateur</li>
+          <li class="flex gap-3"><span class="text-[#0046b8] font-bold">✓</span>Châssis VitalX V2</li>
+          <li class="flex gap-3"><span class="text-[#0046b8] font-bold">✓</span>Housse Bagheera V2 Premium</li>
+          <li class="flex gap-3"><span class="text-[#0046b8] font-bold">✓</span>Connectique complète (PNI, SpO₂, ECG 12D, DSA, T°, EtCO₂)</li>
+        </ul>
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a href="#contact" class="btn-red">📝 Demander un devis</a>
+          <a href="/boutique.html#pack" class="btn-out">Voir le pack</a>
+        </div>
+      </div>
+      <div class="sr sr-d1 bg-[#f4f6f9] rounded-2xl border border-[#dde3ec] p-6">
+        <img src="/assets/vitalxv2pro.png" alt="Pack VitalX V2 — moniteur et tablette formateur" class="w-full object-contain mx-auto" style="max-height:48vh"/>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- MED'X -->
 <section id="medx" class="sec" style="background:#eef2f7">
   <div class="mx-auto max-w-6xl px-6">
@@ -228,9 +262,8 @@ html,body{background:#f4f6f9;color:#0c1828;overflow-x:clip;max-width:100vw;font-
         <p class="eyebrow">Le pack référence</p>
         <h2 class="h-section mt-2 text-[#0a2240]">MED'X.<br>Tout-en-un.</h2>
         <p class="mt-4 text-[16px] text-[#5b6b80] leading-relaxed">2 iPad 11", boîtier renforcé, connectiques complètes — PNI, SpO₂, ECG 12 dérivations, DSA, température, EtCO₂ — et licence à vie incluse.</p>
-        <div class="mt-5 flex items-baseline gap-3"><span class="text-[34px] font-black text-[#0a2240]">3 300 €</span><span class="text-[13px] text-[#5b6b80] uppercase font-bold tracking-wide">TTC · à partir de</span></div>
         <div class="mt-6 flex flex-wrap gap-3">
-          <a href="/boutique.html#pack" class="btn-blue">Découvrir le pack</a>
+          <a href="#contact" class="btn-blue">📝 Demander un devis</a>
           <a href="#features" class="btn-out">Fonctionnalités</a>
         </div>
       </div>
@@ -253,9 +286,8 @@ html,body{background:#f4f6f9;color:#0c1828;overflow-x:clip;max-width:100vw;font-
         <p class="eyebrow">Version compacte</p>
         <h2 class="h-section mt-2 text-[#0a2240]">POD'S.<br>Mobile &amp; prêt.</h2>
         <p class="mt-4 text-[16px] text-[#5b6b80] leading-relaxed">POD'S transforme un iPhone en moniteur patient. Idéal pour les formations mobiles, les démonstrations rapides et les interventions sur le terrain.</p>
-        <div class="mt-5 flex items-baseline gap-3"><span class="text-[34px] font-black text-[#0a2240]">1 700 €</span><span class="text-[13px] text-[#5b6b80] uppercase font-bold tracking-wide">TTC · à partir de</span></div>
         <div class="mt-6 flex flex-wrap gap-3">
-          <a href="/boutique.html#licenses" class="btn-blue">Découvrir POD'S</a>
+          <a href="#contact" class="btn-blue">📝 Demander un devis</a>
           <a href="#contact" class="btn-out">Demander une démo</a>
         </div>
       </div>
@@ -269,9 +301,8 @@ html,body{background:#f4f6f9;color:#0c1828;overflow-x:clip;max-width:100vw;font-
     <p class="text-[13px] font-bold uppercase tracking-[.18em] text-[#ffb340] mb-2 sr">Extension</p>
     <h2 class="h-card text-white txt-zoom">Mode Ultra · 4 modules</h2>
     <p class="text-[15px] text-[#b9c8dc] mt-3 sr sr-d1">GUARDIAN · NEXUS (Scope IAO) · CTG (Cardiotocographe) · VENT (Respirateur)</p>
-    <div class="mt-5 flex items-center justify-center gap-6 sr sr-d2">
-      <span class="text-[24px] font-black text-white">400 €</span>
-      <a href="/boutique.html#licenses" class="text-[#ffb340] hover:text-[#ffc970] font-bold text-[14px] uppercase tracking-wide transition">Découvrir ›</a>
+    <div class="mt-5 sr sr-d2">
+      <a href="/boutique.html#licenses" class="text-[#ffb340] hover:text-[#ffc970] font-bold text-[14px] uppercase tracking-wide transition">Découvrir le Mode Ultra ›</a>
     </div>
     <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3 max-w-2xl mx-auto sr sr-d3">
       <div class="bg-white/[.06] ring-1 ring-white/10 rounded-lg py-4 px-3"><div class="text-[15px] font-black text-[#ffb340]">GUARDIAN</div><div class="text-[11px] text-[#9fb3cc] mt-0.5">Scope</div></div>
@@ -341,46 +372,49 @@ html,body{background:#f4f6f9;color:#0c1828;overflow-x:clip;max-width:100vw;font-
   <div class="mx-auto max-w-6xl px-6">
     <div class="text-center mb-12"><p class="eyebrow sr">Contenu</p><h2 class="h-section mt-2 text-[#0a2240] txt-zoom">Dans le pack.</h2></div>
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-      <div class="card p-7 text-center sr"><div class="text-3xl mb-3">📱</div><h3 class="text-[16px] font-extrabold text-[#0a2240] uppercase mb-1.5">2 iPad 11"</h3><p class="text-[13px] text-[#5b6b80]">Formateur + moniteur</p></div>
-      <div class="card p-7 text-center sr sr-d1"><div class="text-3xl mb-3">🧰</div><h3 class="text-[16px] font-extrabold text-[#0a2240] uppercase mb-1.5">Boîtier VitalX</h3><p class="text-[13px] text-[#5b6b80]">+ housse Bagheera</p></div>
+      <div class="card p-7 text-center sr"><div class="text-3xl mb-3">📱</div><h3 class="text-[16px] font-extrabold text-[#0a2240] uppercase mb-1.5">iPad formateur + moniteur</h3><p class="text-[13px] text-[#5b6b80]">Jusqu'à un iPad Air 13" en V2</p></div>
+      <div class="card p-7 text-center sr sr-d1"><div class="text-3xl mb-3">🧰</div><h3 class="text-[16px] font-extrabold text-[#0a2240] uppercase mb-1.5">Châssis VitalX</h3><p class="text-[13px] text-[#5b6b80]">+ housse Bagheera</p></div>
       <div class="card p-7 text-center sr sr-d2"><div class="text-3xl mb-3">🔌</div><h3 class="text-[16px] font-extrabold text-[#0a2240] uppercase mb-1.5">Connectiques</h3><p class="text-[13px] text-[#5b6b80]">PNI, SpO₂, ECG 12D, DSA, T°, EtCO₂</p></div>
       <div class="card p-7 text-center sr sr-d3"><div class="text-3xl mb-3">♾️</div><h3 class="text-[16px] font-extrabold text-[#0a2240] uppercase mb-1.5">Licence à vie</h3><p class="text-[13px] text-[#5b6b80]">Mises à jour incluses</p></div>
     </div>
   </div>
 </section>
 
-<!-- PRICING -->
-<section id="pricing" class="sec" style="background:#eef2f7">
+<!-- DEVIS (ex-Tarifs) -->
+<section id="devis" class="sec" style="background:#eef2f7">
   <div class="mx-auto max-w-6xl px-6">
     <div class="text-center mb-12">
-      <p class="eyebrow sr">Tarif</p>
-      <h2 class="h-section mt-2 text-[#0a2240] txt-zoom">Un prix juste.</h2>
-      <p class="text-[16px] text-[#5b6b80] mt-3 sr sr-d1">Jusqu'à 4× moins cher que la concurrence.</p>
+      <p class="eyebrow sr">Devis</p>
+      <h2 class="h-section mt-2 text-[#0a2240] txt-zoom">Un devis sous 24 h.</h2>
+      <p class="text-[16px] text-[#5b6b80] mt-3 sr sr-d1">Chaque structure a ses contraintes. On construit votre configuration avec vous.</p>
     </div>
     <div class="grid lg:grid-cols-2 gap-6 items-stretch max-w-5xl mx-auto">
       <div class="bg-white rounded-2xl border-2 border-[#0046b8] p-9 flex flex-col sr relative overflow-hidden shadow-lg">
         <div class="absolute top-0 inset-x-0 tricolor-thin"></div>
-        <div class="text-[12px] font-extrabold uppercase tracking-[.12em] text-[#5b6b80]">Pack Classic</div>
-        <div class="mt-4 flex items-baseline gap-2"><span class="text-[52px] font-black leading-none text-[#0a2240]">3 300 €</span></div>
-        <div class="text-[13px] text-[#5b6b80] mt-2 uppercase font-bold tracking-wide">TTC — à partir de</div>
+        <div class="text-[12px] font-extrabold uppercase tracking-[.12em] text-[#5b6b80] mt-2">Ce que comprend votre pack</div>
         <div class="h-px bg-[#dde3ec] my-7"></div>
         <ul class="space-y-3.5 text-[15px] flex-1 text-[#0c1828]">
-          <li class="flex gap-3"><span class="text-[#0046b8] font-bold">✓</span>2 iPad 11" + boîtier + housse</li>
+          <li class="flex gap-3"><span class="text-[#0046b8] font-bold">✓</span>iPad + châssis VitalX + housse de transport</li>
           <li class="flex gap-3"><span class="text-[#0046b8] font-bold">✓</span>Connectiques complètes incluses</li>
           <li class="flex gap-3"><span class="text-[#0046b8] font-bold">✓</span>Licence à vie, sans abonnement</li>
           <li class="flex gap-3"><span class="text-[#0046b8] font-bold">✓</span>Mises à jour incluses à vie</li>
           <li class="flex gap-3"><span class="text-[#0046b8] font-bold">✓</span>Support 7j/7 — Made in France 🇫🇷</li>
         </ul>
-        <a href="/boutique.html" class="btn-red justify-center mt-8 w-full">🛍️ Ouvrir la boutique</a>
+        <a href="#contact" class="btn-red justify-center mt-8 w-full">📝 Demander un devis</a>
         <p class="text-[11px] text-[#9aa7b8] text-center mt-4">TVA non applicable (art. 293B CGI) · Livraison 15–30 jours</p>
       </div>
       <div class="bg-white rounded-2xl border border-[#dde3ec] p-9 flex flex-col sr sr-d1 shadow-sm">
         <div class="flex items-center justify-between mb-2">
-          <div class="text-[12px] font-extrabold uppercase tracking-[.12em] text-[#5b6b80]">Comparatif</div>
-          <span class="text-[11px] font-extrabold uppercase text-[#0046b8] bg-[#0046b8]/10 rounded-full px-3 py-1">Meilleur prix</span>
+          <div class="text-[12px] font-extrabold uppercase tracking-[.12em] text-[#5b6b80]">Pourquoi un devis</div>
+          <span class="text-[11px] font-extrabold uppercase text-[#0046b8] bg-[#0046b8]/10 rounded-full px-3 py-1">Sur mesure</span>
         </div>
-        <div class="relative flex-1 min-h-[300px] mt-4"><canvas id="priceChart"></canvas></div>
-        <p class="text-[11px] text-[#9aa7b8] text-center mt-5">VitalX 3 300 € — concurrents de 6 500 à 15 000 €. Estimations publiques.</p>
+        <ul class="mt-6 space-y-5 flex-1">
+          <li><div class="text-[15px] font-extrabold text-[#0a2240]">Configuration adaptée</div><p class="text-[14px] text-[#5b6b80] mt-1 leading-relaxed">Nombre de scopes, taille d'écran, modules Mode Ultra : on ajuste au besoin réel de votre centre.</p></li>
+          <li><div class="text-[15px] font-extrabold text-[#0a2240]">Bons de commande &amp; marchés publics</div><p class="text-[14px] text-[#5b6b80] mt-1 leading-relaxed">SDIS, associations agréées, centres de formation : devis conforme à vos procédures d'achat.</p></li>
+          <li><div class="text-[15px] font-extrabold text-[#0a2240]">Tarif dégressif multi-postes</div><p class="text-[14px] text-[#5b6b80] mt-1 leading-relaxed">Plusieurs casernes ou plusieurs salles ? Le devis en tient compte.</p></li>
+          <li><div class="text-[15px] font-extrabold text-[#0a2240]">Démo avant décision</div><p class="text-[14px] text-[#5b6b80] mt-1 leading-relaxed">Visio de 30 minutes avec un formateur, scope en main.</p></li>
+        </ul>
+        <a href="#contact" class="btn-blue justify-center mt-8 w-full">Parler à un formateur</a>
       </div>
     </div>
   </div>
@@ -447,10 +481,11 @@ html,body{background:#f4f6f9;color:#0c1828;overflow-x:clip;max-width:100vw;font-
         <input class="inp" id="prenom" name="prenom" type="text" required placeholder="Prénom"/>
       </div>
       <input class="inp mt-4" id="email" name="email" type="email" required placeholder="Email"/>
-      <textarea class="inp mt-4" id="message" name="message" rows="5" required placeholder="Votre demande…"></textarea>
+      <input class="inp mt-4" id="structure" name="structure" type="text" placeholder="Structure (SDIS, association, centre de formation…)"/>
+      <textarea class="inp mt-4" id="message" name="message" rows="5" required placeholder="Votre demande de devis…"></textarea>
       <div class="mt-6 flex items-center justify-between gap-4 flex-wrap">
         <p class="text-[11px] text-[#9aa7b8]">En envoyant, vous acceptez d'être recontacté par e-mail.</p>
-        <button type="submit" class="btn-blue">Envoyer</button>
+        <button type="submit" class="btn-blue">Envoyer ma demande</button>
       </div>
     </form>
   </div>
@@ -471,9 +506,10 @@ html,body{background:#f4f6f9;color:#0c1828;overflow-x:clip;max-width:100vw;font-
       <div>
         <div class="text-[12px] font-extrabold uppercase tracking-[.12em] text-white mb-3">Produits</div>
         <ul class="space-y-2 text-[13px] text-[#9fb3cc]">
+          <li><a href="#v2" class="hover:text-white transition">VitalX V2</a></li>
           <li><a href="#medx" class="hover:text-white transition">MED'X</a></li>
           <li><a href="#pods" class="hover:text-white transition">POD'S</a></li>
-          <li><a href="#pricing" class="hover:text-white transition">Tarifs</a></li>
+          <li><a href="#devis" class="hover:text-white transition">Demander un devis</a></li>
           <li><a href="/boutique.html" class="hover:text-white transition">Boutique</a></li>
         </ul>
       </div>
@@ -510,42 +546,33 @@ html,body{background:#f4f6f9;color:#0c1828;overflow-x:clip;max-width:100vw;font-
   <button id="lightboxClose" style="position:fixed;top:16px;right:16px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:8px 13px;color:#fff;cursor:pointer" aria-label="Fermer">✕</button>
 </div>
 
-<!-- POPUP NOUVEAUTÉS -->
+<!-- 🆕 POPUP NOUVEAUTÉS — VITALX V2 -->
 <div id="popupOverlay" class="fixed inset-0 z-[70] items-center justify-center p-4" style="display:none">
   <div class="absolute inset-0 bg-[#06203f]/85" style="backdrop-filter:blur(8px);animation:fadeIn .3s ease both"></div>
-  <div id="popupCard" class="relative max-w-xl w-full" style="animation:popIn .4s cubic-bezier(.22,.61,.36,1) both">
-    <div class="relative rounded-2xl bg-white overflow-hidden shadow-2xl">
+  <div id="popupCard" class="relative max-w-2xl w-full" style="animation:popIn .4s cubic-bezier(.22,.61,.36,1) both">
+    <div class="relative rounded-2xl bg-white overflow-hidden shadow-2xl max-h-[92vh] overflow-y-auto">
       <div class="tricolor-thin"></div>
+      <button id="popupClose" class="absolute top-4 right-4 rounded-full bg-white/90 hover:bg-white ring-1 ring-[#dde3ec] w-9 h-9 flex items-center justify-center text-[#5b6b80] text-[14px] transition z-10">✕</button>
+
+      <div class="bg-[#f4f6f9] px-6 pt-6 pb-4 border-b border-[#dde3ec]">
+        <img src="/assets/vitalxv2pro.png" alt="Pack VitalX V2 — moniteur iPad Air 13 pouces et tablette formateur" class="w-full object-contain mx-auto" style="max-height:38vh"/>
+      </div>
+
       <div class="p-7 md:p-8">
-        <button id="popupClose" class="absolute top-4 right-4 rounded-full bg-[#f4f6f9] hover:bg-[#e6ebf2] w-8 h-8 flex items-center justify-center text-[#5b6b80] text-[13px] transition z-10">✕</button>
-        <p class="eyebrow">Nouveautés 2026</p>
-        <h3 class="text-[26px] font-black tracking-tight leading-tight mb-1 text-[#0a2240] uppercase mt-1">Bientôt sur VitalX</h3>
-        <p class="text-[13px] text-[#5b6b80] mb-6">Trois nouveautés arrivent.</p>
+        <span class="inline-flex items-center gap-2 rounded-full bg-[#e1000f] text-white text-[11px] font-extrabold uppercase tracking-[.14em] px-3 py-1">Disponible</span>
+        <h3 class="text-[30px] font-black tracking-tight leading-tight mt-3 text-[#0a2240] uppercase">VitalX V2</h3>
+        <p class="text-[14px] text-[#5b6b80] mt-1.5">La nouvelle génération du scope de simulation VitalX.</p>
 
-        <div class="grid grid-cols-2 gap-3 mb-6">
-          <div class="col-span-2 rounded-xl bg-[#f4f6f9] border border-[#dde3ec] p-5 hover:border-[#0046b8] transition-colors group">
-            <div class="flex items-start gap-4">
-              <div class="shrink-0 h-11 w-11 rounded-lg bg-[#0046b8] grid place-items-center group-hover:scale-105 transition-transform"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
-              <div>
-                <div class="text-[16px] font-extrabold text-[#0a2240]">Capteur QCPR</div>
-                <p class="text-[12.5px] text-[#5b6b80] leading-relaxed mt-1">Feedback RCP complet sur iPad — profondeur, fréquence, relâchement. L'élève voit les compressions en direct sur le scope.</p>
-              </div>
-            </div>
-          </div>
-          <div class="rounded-xl bg-[#f4f6f9] border border-[#dde3ec] p-5 hover:border-[#e1000f] transition-colors group">
-            <div class="h-11 w-11 rounded-lg bg-[#e1000f] grid place-items-center mb-3 group-hover:scale-105 transition-transform"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg></div>
-            <div class="text-[15px] font-extrabold text-[#0a2240]">Balise 4 Gaz</div>
-            <p class="text-[12px] text-[#5b6b80] leading-relaxed mt-1">O₂, CO, H₂S, LIE. Les valeurs évoluent selon la proximité de l'iPhone.</p>
-          </div>
-          <div class="rounded-xl bg-[#f4f6f9] border border-[#dde3ec] p-5 hover:border-[#0046b8] transition-colors group">
-            <div class="h-11 w-11 rounded-lg bg-[#0a2240] grid place-items-center mb-3 group-hover:scale-105 transition-transform"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="3"/><circle cx="12" cy="18" r="1"/></svg></div>
-            <div class="text-[15px] font-extrabold text-[#0a2240]">POD'S LITE</div>
-            <p class="text-[12px] text-[#5b6b80] leading-relaxed mt-1">iPad + boîtier + connectiques. PNI, HR, SpO₂ pleth, SpCO simulé.</p>
-          </div>
-        </div>
+        <ul class="mt-6 grid sm:grid-cols-2 gap-2.5">
+          <li class="flex items-center gap-3 rounded-xl bg-[#f4f6f9] border border-[#dde3ec] px-4 py-3"><span class="text-[#0046b8] font-bold">✓</span><span class="text-[14px] font-semibold text-[#0c1828]">iPad Air 13" — Moniteur</span></li>
+          <li class="flex items-center gap-3 rounded-xl bg-[#f4f6f9] border border-[#dde3ec] px-4 py-3"><span class="text-[#0046b8] font-bold">✓</span><span class="text-[14px] font-semibold text-[#0c1828]">iPad 11" — Formateur</span></li>
+          <li class="flex items-center gap-3 rounded-xl bg-[#f4f6f9] border border-[#dde3ec] px-4 py-3"><span class="text-[#0046b8] font-bold">✓</span><span class="text-[14px] font-semibold text-[#0c1828]">Châssis VitalX V2</span></li>
+          <li class="flex items-center gap-3 rounded-xl bg-[#f4f6f9] border border-[#dde3ec] px-4 py-3"><span class="text-[#0046b8] font-bold">✓</span><span class="text-[14px] font-semibold text-[#0c1828]">Housse Bagheera V2 Premium</span></li>
+          <li class="sm:col-span-2 flex items-center gap-3 rounded-xl bg-[#f4f6f9] border border-[#dde3ec] px-4 py-3"><span class="text-[#0046b8] font-bold">✓</span><span class="text-[14px] font-semibold text-[#0c1828]">Connectique complète — PNI, SpO₂, ECG 12D, DSA, T°, EtCO₂</span></li>
+        </ul>
 
-        <div class="flex gap-3">
-          <a href="#contact" id="popupCTA" class="flex-1 btn-blue justify-center !text-[13px]">Me tenir informé</a>
+        <div class="mt-7 flex flex-col sm:flex-row gap-3">
+          <a href="#contact" id="popupCTA" class="flex-1 btn-red justify-center !text-[13px]">📝 Demander un devis</a>
           <button id="popupDismiss" class="flex-1 rounded-md border-2 border-[#dde3ec] text-[13px] font-bold uppercase tracking-wide text-[#5b6b80] hover:bg-[#f4f6f9] transition px-5 py-3">Plus tard</button>
         </div>
       </div>
@@ -602,19 +629,10 @@ document.getElementById('menuBtn')?.addEventListener('click',()=>document.getEle
   update();
 })();
 
-// Chart
-(function(){
-  const el=document.getElementById('priceChart');if(!el||!window.Chart)return;
-  const ctx=el.getContext('2d');
-  const fmt=v=>new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(v);
-  const dlp={id:'dl',afterDatasetsDraw(c){c.data.datasets.forEach((ds,di)=>{c.getDatasetMeta(di).data.forEach((bar,i)=>{const v=ds.data[i],vx=i===0;c.ctx.save();c.ctx.font=`${vx?'800':'600'} ${vx?13:11}px Inter,sans-serif`;c.ctx.fillStyle=vx?'#0046b8':'#9aa7b8';c.ctx.textAlign='center';c.ctx.textBaseline='bottom';c.ctx.fillText(fmt(v),bar.x,bar.y-6);c.ctx.restore()})})}};
-  new Chart(ctx,{type:'bar',data:{labels:['VitalX','Concurrent A','Concurrent B','Concurrent C'],datasets:[{data:[3300,6500,9000,15000],backgroundColor:['#0046b8','#cfd8e4','#cfd8e4','#cfd8e4'],borderRadius:6,borderSkipped:false,maxBarThickness:52}]},options:{responsive:true,maintainAspectRatio:false,layout:{padding:{top:24}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${fmt(c.parsed.y)}`},backgroundColor:'#0a2240',titleColor:'#fff',bodyColor:'#fff',padding:10,cornerRadius:8}},scales:{x:{ticks:{color:'#5b6b80',font:{size:11,weight:'700'}},grid:{display:false},border:{display:false}},y:{display:false,beginAtZero:true,suggestedMax:16500}}},plugins:[dlp]});
-})();
-
 // Lightbox
 (function(){
   const ov=document.getElementById('lightbox'),im=document.getElementById('lightboxImg'),cp=document.getElementById('lightboxCaption'),cb=document.getElementById('lightboxClose');
-  const imgs=Array.from(document.querySelectorAll('img')).filter(i=>!i.hasAttribute('data-no-lightbox')&&!i.closest('.hero-slides')&&!i.closest('header')&&!i.closest('.cat'));
+  const imgs=Array.from(document.querySelectorAll('img')).filter(i=>!i.hasAttribute('data-no-lightbox')&&!i.closest('.hero-slides')&&!i.closest('header')&&!i.closest('.cat')&&!i.closest('#popupOverlay'));
   function op(s,a){im.src=s;im.alt=a||'';cp.textContent=a||'';ov.style.display='flex';document.body.style.overflow='hidden'}
   function cl(){ov.style.display='none';document.body.style.overflow='';im.src='';cp.textContent=''}
   imgs.forEach(i=>{i.addEventListener('click',()=>{if(i.closest('a'))return;op(i.currentSrc||i.src,i.alt)})});
