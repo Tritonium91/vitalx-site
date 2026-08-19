@@ -89,9 +89,9 @@ select.finp{appearance:none;background-image:url("data:image/svg+xml;charset=utf
 .sr-d1{transition-delay:.08s}.sr-d2{transition-delay:.16s}.sr-d3{transition-delay:.24s}
 
 /* Hero slideshow */
-@keyframes heroSlideX{0%,45%{transform:translateX(0)}55%,100%{transform:translateX(-50%)}}
-.hero-slides{width:200%;display:flex;animation:heroSlideX 9s ease-in-out infinite}
-.hero-slides img{width:50%;flex:0 0 50%;max-height:min(460px,52vh);object-fit:contain;object-position:center;margin:0 auto}
+@keyframes heroSlideX{0%,22%{transform:translateX(0)}30%,52%{transform:translateX(-25%)}60%,82%{transform:translateX(-50%)}90%,100%{transform:translateX(-75%)}}
+.hero-slides{width:400%;display:flex;animation:heroSlideX 15s ease-in-out infinite}
+.hero-slides img{width:25%;flex:0 0 25%;max-height:min(460px,52vh);object-fit:contain;object-position:center;margin:0 auto}
 @media(max-width:640px){.hero-slides img{max-height:280px}}
 
 /* Carousel */
@@ -142,6 +142,9 @@ select.finp{appearance:none;background-image:url("data:image/svg+xml;charset=utf
         </button>
         <button type="button" data-lang="en" class="lang-btn" title="English" aria-label="English">
           <svg viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="36" fill="#012169"/><path d="M0 0 L60 36 M60 0 L0 36" stroke="#fff" stroke-width="7"/><path d="M0 0 L60 36 M60 0 L0 36" stroke="#C8102E" stroke-width="4"/><path d="M30 0 V36 M0 18 H60" stroke="#fff" stroke-width="12"/><path d="M30 0 V36 M0 18 H60" stroke="#C8102E" stroke-width="7"/></svg>
+        </button>
+        <button type="button" data-lang="de" class="lang-btn" title="Deutsch" aria-label="Deutsch">
+          <svg viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="12" fill="#000"/><rect y="12" width="60" height="12" fill="#DD0000"/><rect y="24" width="60" height="12" fill="#FFCE00"/></svg>
         </button>
       </span>
     </span>
@@ -198,7 +201,7 @@ select.finp{appearance:none;background-image:url("data:image/svg+xml;charset=utf
     </div>
     <div class="mt-12 mx-auto max-w-4xl sr show sr-d3">
       <div class="rounded-2xl overflow-hidden bg-white/[.04] ring-1 ring-white/10 p-3">
-        <div class="hero-slides items-center"><img src="/hero-monitor.png" alt="VitalX sur iPad"/><img src="/hero-monitor3.png" alt="VitalX variante"/></div>
+        <div class="hero-slides items-center"><img src="/assets/vitalxv2pro.png" alt="Pack VitalX V2"/><img src="/hero-monitor.png" alt="VitalX sur iPad"/><img src="/hero-monitor3.png" alt="VitalX variante"/><img src="/assets/vitalxv2pro.png" alt="Pack VitalX V2" aria-hidden="true"/></div>
       </div>
     </div>
   </div>
