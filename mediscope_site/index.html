@@ -46,6 +46,25 @@ html,body{background:#f4f6f9;color:#0c1828;overflow-x:clip;max-width:100vw;font-
 .tricolor{height:10px;background:linear-gradient(90deg,#0046b8 0 33.33%,#fff 33.33% 66.66%,#e1000f 66.66% 100%)}
 .tricolor-thin{height:6px;background:linear-gradient(90deg,#0046b8 0 33.33%,#fff 33.33% 66.66%,#e1000f 66.66% 100%)}
 
+/* 🌍 Sélecteur de langue */
+.lang-btn{width:26px;height:18px;border-radius:3px;overflow:hidden;display:block;line-height:0;padding:0;border:0;background:none;cursor:pointer;opacity:.4;transition:opacity .15s,box-shadow .15s}
+.lang-btn:hover{opacity:.85}
+.lang-btn.is-active{opacity:1;box-shadow:0 0 0 1.5px rgba(255,255,255,.9)}
+.lang-btn svg{display:block;width:100%;height:100%}
+
+/* 📝 Formulaire de contact */
+.field{margin-bottom:18px}
+.lbl{display:block;font-size:14px;font-weight:600;color:#0c1828;margin:0 0 7px}
+.req{color:var(--fr-red)}
+.finp{width:100%;background:#f1f5f9;border:1.5px solid #e6ecf4;border-radius:10px;padding:13px 15px;font-size:15px;color:var(--ink);outline:none;transition:border .15s,background .15s;font-family:inherit}
+.finp:focus{border-color:var(--fr-blue);background:#fff}
+.finp::placeholder{color:#9aa7b8}
+select.finp{appearance:none;background-image:url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%235b6b80' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.rgpd{font-size:13px;line-height:1.65;color:#5b6b80;margin-top:14px}
+.rgpd a{color:var(--fr-blue);text-decoration:underline}
+.consent{display:flex;align-items:flex-start;gap:10px;margin:12px 0;font-size:13px;color:#0c1828}
+.consent input{margin-top:2px;width:16px;height:16px;accent-color:var(--fr-blue);flex:0 0 auto}
+
 /* Buttons */
 .btn-red{background:var(--fr-red);color:#fff;border-radius:6px;padding:13px 28px;font-size:14px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px;transition:.15s;box-shadow:0 6px 18px -8px rgba(225,0,15,.6)}
 .btn-red:hover{background:var(--fr-red-dark);transform:translateY(-1px)}
@@ -111,9 +130,20 @@ html,body{background:#f4f6f9;color:#0c1828;overflow-x:clip;max-width:100vw;font-
 <div class="bg-[#06203f] text-white text-[12px]">
   <div class="mx-auto max-w-6xl px-4 h-9 flex items-center justify-between">
     <span class="flex items-center gap-2 font-semibold tracking-wide"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e1000f" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Conçu &amp; assemblé en France 🇫🇷</span>
-    <span class="hidden sm:flex items-center gap-4">
-      <a href="mailto:vitalxscope@gmail.com" class="hover:text-[#7eb0ff] transition">vitalxscope@gmail.com</a>
-      <a href="https://vitalxtrainer.app" target="_blank" class="text-[#ffb340] hover:text-[#ffc970] font-semibold transition">Mode Formateur (web) ›</a>
+    <span class="flex items-center gap-4">
+      <span class="hidden sm:flex items-center gap-4">
+        <a href="mailto:vitalxscope@gmail.com" class="hover:text-[#7eb0ff] transition">vitalxscope@gmail.com</a>
+        <a href="https://vitalxtrainer.app" target="_blank" class="text-[#ffb340] hover:text-[#ffc970] font-semibold transition">Mode Formateur (web) ›</a>
+      </span>
+      <!-- 🌍 Choix de la langue -->
+      <span id="langSwitch" class="flex items-center gap-1.5">
+        <button type="button" data-lang="fr" class="lang-btn is-active" title="Français" aria-label="Français">
+          <svg viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="36" fill="#0046b8"/><rect x="20" width="20" height="36" fill="#fff"/><rect x="40" width="20" height="36" fill="#e1000f"/></svg>
+        </button>
+        <button type="button" data-lang="en" class="lang-btn" title="English" aria-label="English">
+          <svg viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="36" fill="#012169"/><path d="M0 0 L60 36 M60 0 L0 36" stroke="#fff" stroke-width="7"/><path d="M0 0 L60 36 M60 0 L0 36" stroke="#C8102E" stroke-width="4"/><path d="M30 0 V36 M0 18 H60" stroke="#fff" stroke-width="12"/><path d="M30 0 V36 M0 18 H60" stroke="#C8102E" stroke-width="7"/></svg>
+        </button>
+      </span>
     </span>
   </div>
 </div>
@@ -470,23 +500,69 @@ html,body{background:#f4f6f9;color:#0c1828;overflow-x:clip;max-width:100vw;font-
 <section id="contact" class="sec" style="background:#eef2f7">
   <div class="mx-auto max-w-2xl px-6">
     <div class="text-center mb-10">
-      <p class="eyebrow sr">Contact</p>
-      <h2 class="h-section mt-2 text-[#0a2240] txt-zoom">Parlons-en.</h2>
-      <p class="text-[16px] text-[#5b6b80] mt-3 sr sr-d1">Devis, renseignement ou démonstration.</p>
+      <h2 class="h-section text-[#0a2240] txt-zoom">Contact</h2>
+      <p class="text-[16px] text-[#5b6b80] mt-4 sr">Vous avez des questions ou des suggestions concernant nos produits ? N’hésitez pas à nous écrire.</p>
     </div>
-    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/merci.html" class="sr sr-d2 bg-white rounded-2xl border border-[#dde3ec] p-7 shadow-sm">
-      <input type="hidden" name="form-name" value="contact"><p class="hidden"><label>Ne pas remplir : <input name="bot-field"/></label></p>
-      <div class="grid sm:grid-cols-2 gap-4">
-        <input class="inp" id="nom" name="nom" type="text" required placeholder="Nom"/>
-        <input class="inp" id="prenom" name="prenom" type="text" required placeholder="Prénom"/>
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/merci.html" class="sr sr-d1 bg-white rounded-2xl border border-[#dde3ec] p-7 md:p-9 shadow-sm">
+      <input type="hidden" name="form-name" value="contact">
+      <p class="hidden"><label>Ne pas remplir : <input name="bot-field"/></label></p>
+
+      <div class="field">
+        <label class="lbl" for="prenom">Prénom <span class="req">*</span></label>
+        <input class="finp" id="prenom" name="prenom" type="text" autocomplete="given-name" required/>
       </div>
-      <input class="inp mt-4" id="email" name="email" type="email" required placeholder="Email"/>
-      <input class="inp mt-4" id="structure" name="structure" type="text" placeholder="Structure (SDIS, association, centre de formation…)"/>
-      <textarea class="inp mt-4" id="message" name="message" rows="5" required placeholder="Votre demande de devis…"></textarea>
-      <div class="mt-6 flex items-center justify-between gap-4 flex-wrap">
-        <p class="text-[11px] text-[#9aa7b8]">En envoyant, vous acceptez d'être recontacté par e-mail.</p>
-        <button type="submit" class="btn-blue">Envoyer ma demande</button>
+      <div class="field">
+        <label class="lbl" for="nom">Nom de famille <span class="req">*</span></label>
+        <input class="finp" id="nom" name="nom" type="text" autocomplete="family-name" required/>
       </div>
+      <div class="field">
+        <label class="lbl" for="entreprise">Nom de l’entreprise <span class="req">*</span></label>
+        <input class="finp" id="entreprise" name="entreprise" type="text" autocomplete="organization" required/>
+      </div>
+      <div class="field">
+        <label class="lbl" for="email">E-mail <span class="req">*</span></label>
+        <input class="finp" id="email" name="email" type="email" autocomplete="email" required/>
+      </div>
+      <div class="field">
+        <label class="lbl" for="telephone">Numéro de téléphone</label>
+        <input class="finp" id="telephone" name="telephone" type="tel" autocomplete="tel"/>
+      </div>
+      <div class="field">
+        <label class="lbl" for="pays">Pays <span class="req">*</span></label>
+        <select class="finp" id="pays" name="pays" required>
+          <option value="" selected disabled>Veuillez sélectionner</option>
+          <option>France</option>
+          <option>Belgique</option>
+          <option>Suisse</option>
+          <option>Luxembourg</option>
+          <option>Monaco</option>
+          <option>Canada</option>
+          <option>Allemagne</option>
+          <option>Espagne</option>
+          <option>Italie</option>
+          <option>Pays-Bas</option>
+          <option>Portugal</option>
+          <option>Royaume-Uni</option>
+          <option>Autre pays</option>
+        </select>
+      </div>
+      <div class="field">
+        <label class="lbl" for="message">Message <span class="req">*</span></label>
+        <textarea class="finp" id="message" name="message" rows="5" required></textarea>
+      </div>
+
+      <p class="rgpd">VitalX s’engage à protéger et à respecter votre vie privée. Nous utiliserons vos informations personnelles uniquement pour gérer votre compte et vous fournir les produits et services que vous nous avez demandés. Nous aimerions vous contacter ponctuellement au sujet de nos produits et services, ainsi que d’autres contenus susceptibles de vous intéresser. Si vous acceptez d’être contacté(e) à cette fin, veuillez cocher la case ci-dessous et indiquer votre mode de communication préféré :</p>
+
+      <label class="consent">
+        <input type="checkbox" name="consentement-marketing" value="oui"/>
+        <span>J’accepte de recevoir d’autres communications de VitalX.</span>
+      </label>
+
+      <p class="rgpd">Vous pouvez vous désabonner de ces communications à tout moment. Pour plus d’informations sur la procédure de désabonnement, nos pratiques en matière de confidentialité et notre engagement à protéger et respecter votre vie privée, veuillez consulter notre <a href="/politique-confidentialite.html">Politique de confidentialité</a>.</p>
+
+      <p class="rgpd">En cliquant sur « Envoyer » ci-dessous, vous consentez à ce que VitalX stocke et traite les informations personnelles soumises ci-dessus afin de vous fournir le contenu demandé.</p>
+
+      <button type="submit" class="btn-blue mt-6">Envoyer</button>
     </form>
   </div>
 </section>
@@ -641,5 +717,6 @@ document.getElementById('menuBtn')?.addEventListener('click',()=>document.getEle
   document.addEventListener('keydown',e=>{if(e.key==='Escape')cl()});
 })();
 </script>
+<script src="/i18n.js" defer></script>
 </body>
 </html>
