@@ -1,1035 +1,408 @@
-<!DOCTYPE html>
+<!doctype html>
+<!--
+  garantie.html — VitalX
+  🆕 v2.0 — 19/08/2026 — Yann USSEGLIO
+     • Refonte au thème tricolore de l'index
+     • ⚠️ 1. Mention de la matière du châssis retirée (« composite technique haute résistance »)
+     • ⚠️ 2. Licence : abonnement annuel remplacé par licence à vie sans abonnement
+     • ⚠️ 3. « Boîtier » renommé « Châssis », FAQ inutilisée et lien Discord retirés
+-->
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Garantie & Conseils d'utilisation | VitalX Scope</title>
-  <meta name="description" content="Garantie, entretien et conseils d'utilisation du simulateur médical VitalX Scope – produit conçu et assemblé en France." />
-  
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <style>
-    :root {
-      --bg-primary: #0a0a0b;
-      --bg-secondary: #14141a;
-      --accent: #10b981;
-      --accent-light: #34d399;
-      --accent-red: #ef4444;
-      --accent-orange: #f59e0b;
-      --accent-blue: #3b82f6;
-      --text: #e5e7eb;
-      --text-muted: #9ca3af;
-      --card: rgba(30, 30, 40, 0.6);
-      --stroke: rgba(255, 255, 255, 0.08);
-      --shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-    }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    html {
-      scroll-behavior: smooth;
-    }
-    
-    body {
-      background: var(--bg-primary);
-      color: var(--text);
-      font-family: 'Inter', -apple-system, system-ui, sans-serif;
-      line-height: 1.7;
-      overflow-x: hidden;
-      position: relative;
-    }
-    
-    /* Animated Background */
-    .bg-gradient {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      background: radial-gradient(circle at 30% 20%, rgba(16, 185, 129, 0.06) 0%, transparent 50%),
-                  radial-gradient(circle at 70% 80%, rgba(239, 68, 68, 0.04) 0%, transparent 50%),
-                  radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.03) 0%, transparent 70%);
-      animation: gradientPulse 10s ease-in-out infinite;
-    }
-    
-    @keyframes gradientPulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.7; }
-    }
-    
-    /* Grid Pattern */
-    .grid-pattern {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      background-image:
-        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-      background-size: 50px 50px;
-      opacity: 0.3;
-    }
-    
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 80px 24px;
-      position: relative;
-      z-index: 2;
-    }
-    
-    /* Header */
-    .header {
-      text-align: center;
-      margin-bottom: 80px;
-      animation: fadeInDown 0.8s ease;
-    }
-    
-    @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 20px;
-      border-radius: 999px;
-      background: rgba(16, 185, 129, 0.15);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--accent-light);
-      margin-bottom: 20px;
-      animation: pulse 2s ease-in-out infinite;
-    }
-    
-    @keyframes pulse {
-      0%, 100% {
-        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
-      }
-      50% {
-        box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
-      }
-    }
-    
-    .badge-icon {
-      width: 8px;
-      height: 8px;
-      background: var(--accent-light);
-      border-radius: 50%;
-      animation: blink 1.5s ease-in-out infinite;
-    }
-    
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
-    }
-    
-    h1 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(32px, 5vw, 56px);
-      font-weight: 800;
-      line-height: 1.15;
-      margin-bottom: 20px;
-      background: linear-gradient(135deg, #fff 0%, var(--accent-light) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    
-    .intro {
-      font-size: clamp(16px, 2vw, 18px);
-      color: var(--text-muted);
-      max-width: 700px;
-      margin: 0 auto;
-      line-height: 1.8;
-    }
-    
-    h2 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(24px, 3vw, 32px);
-      font-weight: 700;
-      margin-bottom: 24px;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    
-    h2 .icon {
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-      border-radius: 10px;
-      font-size: 20px;
-      flex-shrink: 0;
-    }
-    
-    .section {
-      margin-bottom: 60px;
-      animation: fadeInUp 0.8s ease;
-      animation-fill-mode: both;
-    }
-    
-    .section:nth-child(2) { animation-delay: 0.1s; }
-    .section:nth-child(3) { animation-delay: 0.2s; }
-    .section:nth-child(4) { animation-delay: 0.3s; }
-    .section:nth-child(5) { animation-delay: 0.4s; }
-    .section:nth-child(6) { animation-delay: 0.5s; }
-    
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    .card {
-      background: var(--card);
-      backdrop-filter: blur(20px);
-      border-radius: 20px;
-      padding: 32px;
-      border: 1px solid var(--stroke);
-      box-shadow: var(--shadow);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.1), transparent);
-      transition: left 0.6s;
-    }
-    
-    .card:hover::before {
-      left: 100%;
-    }
-    
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5), 0 0 40px rgba(16, 185, 129, 0.15);
-      border-color: rgba(16, 185, 129, 0.3);
-    }
-    
-    /* Warranty Items */
-    .warranty-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      margin-top: 24px;
-    }
-    
-    .warranty-item {
-      background: rgba(40, 40, 55, 0.4);
-      border-radius: 16px;
-      padding: 24px;
-      border: 1px solid var(--stroke);
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .warranty-item::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-light));
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.5s ease;
-    }
-    
-    .warranty-item:hover::before {
-      transform: scaleX(1);
-    }
-    
-    .warranty-item:hover {
-      transform: translateY(-2px);
-      background: rgba(50, 50, 65, 0.5);
-      border-color: rgba(16, 185, 129, 0.4);
-    }
-    
-    .warranty-header {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-    
-    .warranty-icon {
-      width: 36px;
-      height: 36px;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(16, 185, 129, 0.1));
-      border-radius: 10px;
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      font-size: 18px;
-    }
-    
-    .warranty-title {
-      font-weight: 700;
-      color: var(--accent-light);
-      font-size: 16px;
-      margin-bottom: 4px;
-    }
-    
-    .warranty-duration {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 13px;
-      color: var(--text-muted);
-      background: rgba(16, 185, 129, 0.1);
-      padding: 4px 10px;
-      border-radius: 6px;
-      border: 1px solid rgba(16, 185, 129, 0.2);
-    }
-    
-    .warranty-description {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin-top: 12px;
-    }
-    
-    /* Lists */
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-    
-    ul li {
-      position: relative;
-      padding-left: 32px;
-      margin-bottom: 16px;
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
-    
-    ul li::before {
-      content: '✓';
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 24px;
-      height: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, var(--accent), var(--accent-light));
-      color: white;
-      border-radius: 6px;
-      font-weight: bold;
-      font-size: 14px;
-    }
-    
-    .warning-list li::before {
-      content: '⚠';
-      background: linear-gradient(135deg, var(--accent-orange), #fbbf24);
-    }
-    
-    .danger-list li::before {
-      content: '✕';
-      background: linear-gradient(135deg, var(--accent-red), #f87171);
-    }
-    
-    .highlight {
-      color: var(--accent-light);
-      font-weight: 600;
-      padding: 2px 6px;
-      background: rgba(16, 185, 129, 0.1);
-      border-radius: 4px;
-    }
-    
-    .highlight-red {
-      color: #fca5a5;
-      font-weight: 600;
-      padding: 2px 6px;
-      background: rgba(239, 68, 68, 0.1);
-      border-radius: 4px;
-    }
-    
-    /* Info Box */
-    .info-box {
-      background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.1));
-      border: 1px solid rgba(59, 130, 246, 0.3);
-      border-radius: 12px;
-      padding: 20px;
-      margin-top: 20px;
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
-    
-    .info-box-icon {
-      width: 32px;
-      height: 32px;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(59, 130, 246, 0.2);
-      border-radius: 8px;
-      color: #60a5fa;
-      font-size: 18px;
-    }
-    
-    .info-box p {
-      margin: 0;
-      color: var(--text);
-      font-size: 14px;
-      line-height: 1.7;
-    }
-    
-    .warning-box {
-      background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(251, 191, 36, 0.05));
-      border: 1px solid rgba(245, 158, 11, 0.3);
-    }
-    
-    .warning-box .info-box-icon {
-      background: rgba(245, 158, 11, 0.2);
-      color: #fbbf24;
-    }
-    
-    /* Tips Grid */
-    .tips-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      margin-top: 24px;
-    }
-    
-    .tip-card {
-      background: rgba(40, 40, 55, 0.4);
-      border-radius: 16px;
-      padding: 24px;
-      border: 1px solid var(--stroke);
-      transition: all 0.3s ease;
-    }
-    
-    .tip-card:hover {
-      transform: translateY(-2px);
-      border-color: rgba(16, 185, 129, 0.4);
-      box-shadow: 0 10px 30px rgba(16, 185, 129, 0.1);
-    }
-    
-    .tip-number {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 32px;
-      height: 32px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-light));
-      border-radius: 8px;
-      font-weight: 700;
-      font-size: 16px;
-      margin-bottom: 12px;
-    }
-    
-    .tip-title {
-      font-weight: 600;
-      color: #fff;
-      margin-bottom: 8px;
-      font-size: 16px;
-    }
-    
-    .tip-description {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-    
-    /* Contact Section */
-    .contact-card {
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(59, 130, 246, 0.1));
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      text-align: center;
-      padding: 48px 32px;
-    }
-    
-    .contact-icon {
-      width: 64px;
-      height: 64px;
-      margin: 0 auto 20px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-light));
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 32px;
-      animation: float 3s ease-in-out infinite;
-    }
-    
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0px);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
-    }
-    
-    .contact-title {
-      font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 12px;
-      color: #fff;
-    }
-    
-    .contact-description {
-      font-size: 16px;
-      color: var(--text-muted);
-      margin-bottom: 24px;
-    }
-    
-    .contact-links {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      align-items: center;
-    }
-    
-    .contact-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 24px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--stroke);
-      border-radius: 12px;
-      color: var(--accent-light);
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-    
-    .contact-link:hover {
-      background: rgba(16, 185, 129, 0.1);
-      border-color: var(--accent);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(16, 185, 129, 0.2);
-    }
-    
-    /* FAQ Section */
-    .faq-item {
-      background: rgba(40, 40, 55, 0.4);
-      border-radius: 12px;
-      padding: 24px;
-      border: 1px solid var(--stroke);
-      margin-bottom: 16px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    
-    .faq-item:hover {
-      border-color: rgba(16, 185, 129, 0.4);
-      background: rgba(50, 50, 65, 0.5);
-    }
-    
-    .faq-question {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-weight: 600;
-      color: #fff;
-      font-size: 16px;
-    }
-    
-    .faq-icon {
-      width: 24px;
-      height: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(16, 185, 129, 0.2);
-      border-radius: 6px;
-      color: var(--accent-light);
-      transition: transform 0.3s ease;
-    }
-    
-    .faq-item.active .faq-icon {
-      transform: rotate(45deg);
-    }
-    
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-      color: var(--text-muted);
-      font-size: 14px;
-      line-height: 1.7;
-    }
-    
-    .faq-item.active .faq-answer {
-      max-height: 500px;
-      margin-top: 16px;
-    }
-    
-    /* Footer */
-    footer {
-      margin-top: 80px;
-      padding-top: 40px;
-      border-top: 1px solid var(--stroke);
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 14px;
-    }
-    
-    /* Responsive */
-    @media (max-width: 768px) {
-      .container {
-        padding: 60px 20px;
-      }
-      
-      .warranty-grid,
-      .tips-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      h2 {
-        font-size: 24px;
-      }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Garantie & conseils d'utilisation — VitalX</title>
+<meta name="description" content="Garantie, entretien et conseils d'utilisation du simulateur médical VitalX — conçu et assemblé en France.">
+<meta name="theme-color" content="#0a2240">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+<style>
+*{-webkit-font-smoothing:antialiased;box-sizing:border-box}
+html,body{margin:0;padding:0;background:#f4f6f9;color:#0c1828;overflow-x:clip;max-width:100vw;line-height:1.7;
+  font-family:'Inter','Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,'Helvetica Neue',Arial,sans-serif}
+::selection{background:#0046b8;color:#fff}
+
+:root{
+  --fr-blue:#0046b8;--fr-blue-dark:#0a2240;--fr-blue-deep:#06203f;
+  --fr-red:#e1000f;--fr-red-dark:#b3000c;
+  --ink:#0c1828;--muted:#5b6b80;--line:#dde3ec;
+}
+
+/* 🇫🇷 Bandeaux tricolores */
+.tricolor{height:10px;background:linear-gradient(90deg,#0046b8 0 33.33%,#fff 33.33% 66.66%,#e1000f 66.66% 100%)}
+.tricolor-thin{height:6px;background:linear-gradient(90deg,#0046b8 0 33.33%,#fff 33.33% 66.66%,#e1000f 66.66% 100%)}
+
+/* Typo */
+.h-hero{font-size:clamp(30px,5vw,54px);font-weight:900;letter-spacing:-.02em;line-height:1.04;text-transform:uppercase;margin:0}
+.eyebrow{font-size:13px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--fr-red);margin:0 0 10px}
+.eyebrow-light{color:#ff6b6b}
+
+/* Structure */
+.wrap{max-width:920px;margin:0 auto;padding:0 24px}
+.sec-dark{background:var(--fr-blue-deep);color:#eef3fa}
+.hero{position:relative;overflow:hidden;padding:58px 0 46px;text-align:center}
+.hero .glow-a{position:absolute;top:-140px;left:-100px;width:400px;height:400px;border-radius:50%;background:rgba(0,70,184,.28);filter:blur(120px);pointer-events:none}
+.hero .glow-b{position:absolute;bottom:-140px;right:-100px;width:400px;height:400px;border-radius:50%;background:rgba(225,0,15,.16);filter:blur(120px);pointer-events:none}
+.hero .inner{position:relative}
+.hero p.sub{color:#b9c8dc;font-size:17px;max-width:640px;margin:16px auto 0}
+main{padding:56px 0 20px}
+
+/* Cartes */
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px 30px;margin-bottom:20px;
+  transition:border-color .25s,box-shadow .25s,transform .25s}
+.card:hover{border-color:var(--fr-blue);box-shadow:0 18px 40px -24px rgba(10,34,64,.35);transform:translateY(-2px)}
+.card h2{display:flex;align-items:center;gap:14px;margin:0 0 16px;font-size:clamp(18px,2.4vw,23px);
+  font-weight:800;letter-spacing:-.01em;line-height:1.2;text-transform:uppercase;color:var(--fr-blue-dark)}
+.num{flex:0 0 auto;width:34px;height:34px;border-radius:8px;background:var(--fr-blue);color:#fff;
+  display:grid;place-items:center;font-size:14px;font-weight:800}
+.num.red{background:var(--fr-red)}
+.num.navy{background:var(--fr-blue-dark)}
+.card h3{font-size:16px;font-weight:800;color:var(--fr-blue-dark);margin:26px 0 12px}
+.card h3:first-child{margin-top:0}
+p{color:var(--muted);font-size:15.5px;margin:0 0 14px}
+p:last-child{margin-bottom:0}
+strong{color:var(--ink);font-weight:700}
+em{color:var(--muted)}
+a{color:var(--fr-blue);text-decoration:none;font-weight:600;border-bottom:1px solid rgba(0,70,184,.3)}
+a:hover{color:var(--fr-red-dark);border-bottom-color:rgba(179,0,12,.4)}
+
+/* Listes */
+ul{list-style:none;padding:0;margin:16px 0}
+ul li{display:flex;gap:12px;align-items:flex-start;padding:11px 14px;background:#f4f6f9;border:1px solid var(--line);
+  border-radius:9px;margin-bottom:9px;color:var(--muted);font-size:15px;transition:border-color .2s,background .2s}
+ul li:hover{background:#eef2f7;border-color:rgba(0,70,184,.35)}
+ul li::before{content:'✓';color:var(--fr-blue);font-weight:800;flex:0 0 auto}
+ul.warn-list li::before{content:'!';color:#b37400}
+ul.no-list li::before{content:'✕';color:var(--fr-red)}
+ul.plain li::before{content:'›';color:var(--fr-blue)}
+
+/* Encadrés */
+.note{display:flex;gap:14px;align-items:flex-start;background:#eef2f7;border:1px solid var(--line);
+  border-left:4px solid var(--fr-blue);border-radius:10px;padding:18px 20px;margin:20px 0}
+.note.red{border-left-color:var(--fr-red);background:#fdf2f3}
+.note.amber{border-left-color:#ffb340;background:#fff8ec}
+.note .ico{font-size:22px;line-height:1;flex:0 0 auto}
+.note .t{font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--fr-blue-dark);margin:0 0 6px}
+.note p{font-size:14.5px;margin:0}
+
+/* Grilles */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px;margin-top:20px}
+.tile{background:#f4f6f9;border:1px solid var(--line);border-radius:11px;padding:20px;transition:.25s}
+.tile:hover{border-color:var(--fr-blue);background:#fff;box-shadow:0 14px 30px -22px rgba(10,34,64,.4)}
+.tile-head{display:flex;gap:12px;align-items:flex-start;margin-bottom:10px}
+.tile-ico{width:38px;height:38px;flex:0 0 auto;border-radius:9px;background:#fff;border:1px solid var(--line);
+  display:grid;place-items:center;font-size:18px}
+.tile-title{font-size:15px;font-weight:800;color:var(--fr-blue-dark);line-height:1.3}
+.chip{display:inline-block;margin-top:5px;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;
+  color:var(--fr-blue);background:rgba(0,70,184,.09);border:1px solid rgba(0,70,184,.22);border-radius:999px;padding:3px 10px}
+.chip.red{color:var(--fr-red);background:rgba(225,0,15,.08);border-color:rgba(225,0,15,.25)}
+.tile p{font-size:14px;margin:0}
+.tile-num{width:30px;height:30px;border-radius:8px;background:var(--fr-blue);color:#fff;display:grid;place-items:center;
+  font-size:13px;font-weight:800;margin-bottom:11px}
+.hl{color:var(--fr-blue);font-weight:700}
+.hl-red{color:var(--fr-red-dark);font-weight:700}
+
+/* Header / nav */
+.topstrip{background:var(--fr-blue-deep);color:#fff;font-size:12px}
+.topstrip .row{max-width:1152px;margin:0 auto;padding:0 16px;height:36px;display:flex;align-items:center;justify-content:space-between}
+.topstrip a{color:#ffb340;border:0;font-weight:700}
+.topstrip a.mail{color:#cfe0f7}
+.topstrip a:hover{color:#fff}
+header.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.nav .row{max-width:1152px;margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:900;letter-spacing:-.02em;color:var(--fr-blue-dark);border:0}
+.brand span{color:var(--fr-red)}
+.brand img{height:34px;width:34px;object-fit:contain}
+.navlinks{display:flex;gap:26px;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.03em}
+.navlinks a{color:var(--ink);border:0}
+.navlinks a:hover{color:var(--fr-blue)}
+@media(max-width:760px){.navlinks{display:none}.topstrip .row span.hide-sm{display:none}}
+.btn-red{display:inline-flex;align-items:center;gap:8px;background:var(--fr-red);color:#fff;border:0;border-radius:6px;
+  padding:11px 22px;font-size:13px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;
+  box-shadow:0 6px 18px -8px rgba(225,0,15,.6);transition:.15s}
+.btn-red:hover{background:var(--fr-red-dark);color:#fff;transform:translateY(-1px)}
+.btn-out{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--fr-blue-dark);
+  border:2px solid var(--fr-blue-dark);border-radius:6px;padding:10px 22px;font-size:13px;font-weight:800;
+  letter-spacing:.04em;text-transform:uppercase;transition:.15s}
+.btn-out:hover{background:var(--fr-blue-dark);color:#fff}
+
+/* Bas de page */
+.meta{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px;text-align:center;margin-top:8px}
+.meta p{font-size:13.5px;margin:6px 0}
+.updated{font-size:12.5px;color:#9aa7b8;font-style:italic}
+.backrow{padding:34px 0 60px}
+footer.site{background:var(--fr-blue-deep);color:#9fb3cc;padding:36px 0 26px;font-size:13px}
+footer.site .row{max-width:1152px;margin:0 auto;padding:0 24px;display:flex;flex-wrap:wrap;gap:14px;
+  align-items:center;justify-content:space-between}
+footer.site a{color:#9fb3cc;border:0;font-weight:600}
+footer.site a:hover{color:#fff}
+</style>
 </head>
-
 <body>
-  <!-- Animated Background -->
-  <div class="bg-gradient"></div>
-  <div class="grid-pattern"></div>
 
-  <div class="container">
-    <!-- Header -->
-    <div class="header">
-      <div class="badge">
-        <span class="badge-icon"></span>
-        Documentation Officielle VitalX
-      </div>
-      <h1>Garantie & Conseils d'utilisation</h1>
-      <p class="intro">
-        Découvrez toutes les informations essentielles sur la garantie, l'entretien et les bonnes pratiques d'utilisation de votre simulateur médical <span class="highlight">VitalX Scope</span>. Un produit conçu et assemblé en France avec passion.
-      </p>
-    </div>
-
-    <!-- Warranty Section -->
-    <div class="section">
-      <h2>
-        <span class="icon">🛡️</span>
-        Garantie du matériel
-      </h2>
-      <div class="card">
-        <p style="margin-bottom: 24px; color: var(--text);">
-          Chez VitalX, nous nous engageons à fournir des produits de qualité supérieure. Chaque composant de votre scope est couvert par une garantie adaptée à sa nature et son utilisation.
-        </p>
-        
-        <div class="warranty-grid">
-          <div class="warranty-item">
-            <div class="warranty-header">
-              <div class="warranty-icon">👜</div>
-              <div>
-                <div class="warranty-title">Housse Bagheera</div>
-                <span class="warranty-duration">
-                  <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                  </svg>
-                  Garantie 10 ans
-                </span>
-              </div>
-            </div>
-            <p class="warranty-description">
-              Fabrication 100% française par <strong>Bagheera</strong>, leader de la bagagerie professionnelle. Matériaux ultra-résistants, coutures renforcées et fermetures éclair YKK. Garantie couvrant les défauts de fabrication, déchirures et usure prématurée.
-            </p>
-          </div>
-
-          <div class="warranty-item">
-            <div class="warranty-header">
-              <div class="warranty-icon">📦</div>
-              <div>
-                <div class="warranty-title">Boîtier 3D</div>
-                <span class="warranty-duration">
-                  <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                  </svg>
-                  Garantie 2 ans
-                </span>
-              </div>
-            </div>
-            <p class="warranty-description">
-              Imprimé en <strong>PLA+ haute qualité</strong>, conçu pour résister aux manipulations intensives. La garantie couvre les fissures, cassures ou défauts structurels. <span class="highlight-red">Non couvert</span> : exposition prolongée à la chaleur (>50°C) ou déformations thermiques.
-            </p>
-          </div>
-
-          <div class="warranty-item">
-            <div class="warranty-header">
-              <div class="warranty-icon">📱</div>
-              <div>
-                <div class="warranty-title">iPads fournis</div>
-                <span class="warranty-duration">
-                  <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                  </svg>
-                  Garantie Apple 1 an
-                </span>
-              </div>
-            </div>
-            <p class="warranty-description">
-              Garantie constructeur <strong>Apple</strong> standard de 1 an. Extension possible via <strong>AppleCare+</strong> (à souscrire séparément). Couvre les défauts matériels et de fabrication. Les dommages accidentels (chutes, liquides) nécessitent AppleCare+.
-            </p>
-          </div>
-
-          <div class="warranty-item">
-            <div class="warranty-header">
-              <div class="warranty-icon">♻️</div>
-              <div>
-                <div class="warranty-title">iPads reconditionnés (Back Market)</div>
-                <span class="warranty-duration">
-                  <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                  </svg>
-                  Garantie Back Market 1 an
-                </span>
-              </div>
-            </div>
-            <p class="warranty-description">
-              Les iPads reconditionnés inclus dans certains packs VitalX sont couverts par une garantie <strong>Back Market de 12 mois</strong>. Elle couvre les défauts matériels et de fonctionnement hors casse accidentelle. En cas de souci, contactez-nous d’abord pour que nous coordonnions la prise en charge avec Back Market.
-            </p>
-          </div>
-
-          <div class="warranty-item">
-            <div class="warranty-header">
-              <div class="warranty-icon">💻</div>
-              <div>
-                <div class="warranty-title">Licence logicielle</div>
-                <span class="warranty-duration">
-                  <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
-                  </svg>
-                  Abonnement annuel
-                </span>
-              </div>
-            </div>
-            <p class="warranty-description">
-              Licence <strong>VitalX Scope</strong> valable pour la durée de votre abonnement. Mises à jour automatiques incluses. Accès complet aux nouvelles fonctionnalités et scénarios ajoutés régulièrement. Renouvellement annuel requis.
-            </p>
-          </div>
-
-          <div class="warranty-item">
-            <div class="warranty-header">
-              <div class="warranty-icon">🔌</div>
-              <div>
-                <div class="warranty-title">Accessoires & consommables</div>
-                <span class="warranty-duration">
-                  <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                  </svg>
-                  Garantie 1 an
-                </span>
-              </div>
-            </div>
-            <p class="warranty-description">
-              Les accessoires inclus dans le pack VitalX (<strong>tensiomètre PNI</strong>, <strong>câble SpO₂</strong>, <strong>câbles ECG 12 dérivations</strong>, <strong>capteur ETCO₂</strong>, <strong>capteur de température</strong>, <strong>patchs ECG/DSA</strong>) sont garantis <strong>1 an</strong> contre les défauts de fabrication.<br><br>
-              En raison de leur nature <span class="highlight-red">consommable</span>, l’usure normale (patchs, adhésifs, membranes, abrasions) n’est pas couverte. En cas de souci matériel hors usure normale, contactez-nous pour un échange ou remplacement.
-            </p>
-          </div>
-        </div>
-
-        <div class="info-box">
-          <div class="info-box-icon">ℹ️</div>
-          <p>
-            <strong>Procédure de garantie :</strong> En cas de problème matériel, contactez notre support à <a href="mailto:vitalxscope@gmail.com" style="color: var(--accent-light);">vitalxscope@gmail.com</a> en indiquant votre <span class="highlight">numéro de commande</span>, une <span class="highlight">description détaillée</span> du problème et des <span class="highlight">photos</span> du produit concerné. Délai de réponse : 24-48h ouvrées.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Maintenance Section -->
-    <div class="section">
-      <h2>
-        <span class="icon">🧼</span>
-        Entretien & nettoyage
-      </h2>
-      <div class="card">
-        <p style="margin-bottom: 24px; color: var(--text);">
-          Un entretien régulier garantit la longévité et les performances optimales de votre équipement. Suivez ces recommandations simples pour préserver votre investissement.
-        </p>
-
-        <h3 style="font-size: 18px; color: #fff; margin-bottom: 16px;">✅ Bonnes pratiques</h3>
-        <ul>
-          <li>Nettoyez le boîtier et la housse avec un <span class="highlight">chiffon microfibre</span> légèrement humide (eau tiède uniquement)</li>
-          <li>Utilisez un <span class="highlight">spray antibactérien</span> doux pour désinfecter les surfaces tactiles des iPads</li>
-          <li>Rangez les câbles dans leur compartiment dédié après chaque utilisation pour éviter les nœuds</li>
-          <li>Vérifiez régulièrement l'état des <span class="highlight">connecteurs Lightning/USB-C</span> et nettoyez-les délicatement</li>
-          <li>Stockez votre scope dans un endroit <span class="highlight">sec et tempéré</span> (15-25°C idéalement)</li>
-          <li>Inspectez visuellement le boîtier 3D avant chaque session pour détecter toute fissure</li>
-        </ul>
-
-        <h3 style="font-size: 18px; color: #fff; margin: 24px 0 16px;">⚠️ À éviter absolument</h3>
-        <ul class="warning-list">
-          <li>Ne <strong>jamais</strong> utiliser de <span class="highlight-red">solvants</span>, d'<span class="highlight-red">alcool pur</span>, d'<span class="highlight-red">acétone</span> ou de produits abrasifs</li>
-          <li>Éviter l'exposition directe au <span class="highlight-red">soleil</span> pendant de longues périodes (risque de décoloration)</li>
-          <li>Ne pas soumettre le matériel à des températures extrêmes (<-10°C ou >50°C)</li>
-          <li>Ne jamais <span class="highlight-red">ouvrir</span> ou <span class="highlight-red">démonter</span> le boîtier électronique (annulation immédiate de la garantie)</li>
-          <li>Éviter de plier ou tordre excessivement les câbles (risque de rupture interne)</li>
-        </ul>
-
-        <h3 style="font-size: 18px; color: #fff; margin: 24px 0 16px;">🚫 Exclusions de garantie</h3>
-        <ul class="danger-list">
-          <li>Dommages causés par une <span class="highlight-red">mauvaise utilisation</span> ou non-respect des consignes</li>
-          <li>Exposition à des <span class="highlight-red">liquides</span> (eau, café, désinfectant en excès, etc.)</li>
-          <li>Chutes, chocs violents ou <span class="highlight-red">contraintes mécaniques</span> anormales</li>
-          <li>Modifications, réparations ou interventions <span class="highlight-red">non autorisées</span></li>
-          <li>Usure normale liée à l'utilisation intensive (rayures superficielles, décoloration légère)</li>
-          <li>Dommages causés par des <span class="highlight-red">accessoires tiers</span> non compatibles</li>
-        </ul>
-
-        <div class="info-box warning-box" style="margin-top: 24px;">
-          <div class="info-box-icon">⚡</div>
-          <p>
-            <strong>Conseil pro :</strong> Après chaque formation, laissez les iPads <span class="highlight">refroidir 5 minutes</span> avant de les ranger. Cela prolonge la durée de vie des batteries et évite l'accumulation de chaleur dans le boîtier.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Usage Tips Section -->
-    <div class="section">
-      <h2>
-        <span class="icon">💡</span>
-        Conseils d'utilisation avancés
-      </h2>
-      <div class="card">
-        <p style="margin-bottom: 24px; color: var(--text);">
-          Maîtrisez votre VitalX Scope grâce à ces astuces professionnelles qui optimiseront vos sessions de formation et garantiront une expérience fluide.
-        </p>
-
-        <div class="tips-grid">
-          <div class="tip-card">
-            <div class="tip-number">1</div>
-            <div class="tip-title">🔋 Gestion de l'alimentation</div>
-            <p class="tip-description">
-              Chargez les iPads à <strong>100%</strong> avant chaque session. Pour les formations longues (>4h), laissez-les branchés sur secteur. Activez le <span class="highlight">mode économie d'énergie</span> dans les réglages iOS pour maximiser l'autonomie.
-            </p>
-          </div>
-
-          <div class="tip-card">
-            <div class="tip-number">2</div>
-            <div class="tip-title">📡 Connectivité optimale</div>
-            <p class="tip-description">
-              Utilisez un <strong>réseau Wi-Fi dédié</strong> ou créez un <span class="highlight">point d'accès mobile</span> pour éviter les interférences. Désactivez les autres appareils connectés inutiles. Distance maximale recommandée : <strong>10 mètres</strong>.
-            </p>
-          </div>
-
-          <div class="tip-card">
-            <div class="tip-number">3</div>
-            <div class="tip-title">🔢 Code de session</div>
-            <p class="tip-description">
-              Vérifiez <strong>toujours</strong> que les deux iPads (Moniteur et Contrôleur) affichent le <span class="highlight">même code à 4 chiffres</span> avant de démarrer. En cas de désynchronisation, relancez l'application sur les deux appareils.
-            </p>
-          </div>
-
-          <div class="tip-card">
-            <div class="tip-number">4</div>
-            <div class="tip-title">⏱️ Automatisation intelligente</div>
-            <p class="tip-description">
-              Programmez des <strong>prises de tension automatiques</strong> toutes les 5 minutes pour un rendu ultra-réaliste. Utilisez les <span class="highlight">alertes paramétrables</span> (SpO2, FC, PA) pour créer des scénarios dynamiques.
-            </p>
-          </div>
-
-          <div class="tip-card">
-            <div class="tip-number">5</div>
-            <div class="tip-title">📊 Mode PLUS complet</div>
-            <p class="tip-description">
-              Activez le <strong>mode PLUS</strong> pour afficher simultanément : <span class="highlight">courbe ECG 12 dérivations</span>, SpO2, ETCO2, capnographie et tous les paramètres vitaux. Idéal pour les formations avancées (PSE2, DEA).
-            </p>
-          </div>
-
-          <div class="tip-card">
-            <div class="tip-number">6</div>
-            <div class="tip-title">🚨 Surveillance des alertes</div>
-            <p class="tip-description">
-              Configurez les <strong>seuils d'alerte</strong> selon le niveau de formation. Surveillez les notifications : <span class="highlight">CO faible</span>, <span class="highlight">batterie <20%</span>, <span class="highlight">constantes anormales</span>, <span class="highlight">arythmies</span>.
-            </p>
-          </div>
-
-          <div class="tip-card">
-            <div class="tip-number">7</div>
-            <div class="tip-title">🎯 Scénarios pédagogiques</div>
-            <p class="tip-description">
-              Utilisez le <strong>Scenario Builder</strong> pour créer des cas progressifs : début stable → dégradation → intervention → amélioration. Enregistrez vos <span class="highlight">scénarios favoris</span> pour les réutiliser.
-            </p>
-          </div>
-
-          <div class="tip-card">
-            <div class="tip-number">8</div>
-            <div class="tip-title">🐛 Signalement de bugs</div>
-            <p class="tip-description">
-              En cas d'anomalie, utilisez le bouton <strong>"Signaler un bug"</strong> intégré à l'app. Décrivez précisément : <span class="highlight">étapes de reproduction</span>, <span class="highlight">comportement attendu</span>, <span class="highlight">captures d'écran</span>.
-            </p>
-          </div>
-
-          <div class="tip-card">
-            <div class="tip-number">9</div>
-            <div class="tip-title">🔄 Mises à jour régulières</div>
-            <p class="tip-description">
-              Vérifiez les <strong>mises à jour</strong> de l'application chaque mois. Elles incluent : nouveaux scénarios, corrections de bugs, améliorations d'interface et <span class="highlight">nouvelles fonctionnalités</span> basées sur vos retours.
-            </p>
-          </div>
-
-          <div class="tip-card">
-            <div class="tip-number">10</div>
-            <div class="tip-title">📚 Formation continue</div>
-            <p class="tip-description">
-              Consultez la <strong>documentation en ligne</strong> et les <span class="highlight">tutoriels vidéo</span> pour découvrir toutes les fonctionnalités avancées : DSA, ECG complexes, pathologies rares, modes experts.
-            </p>
-          </div>
-
-          <div class="tip-card">
-            <div class="tip-number">11</div>
-            <div class="tip-title">🎬 Retours de session</div>
-            <p class="tip-description">
-              Après chaque formation, notez les <strong>temps de réaction</strong> des apprenants, les <span class="highlight">points d'amélioration</span> et partagez vos retours avec notre équipe pour enrichir la base de scénarios.
-            </p>
-          </div>
-
-          <div class="tip-card">
-            <div class="tip-number">12</div>
-            <div class="tip-title">🌡️ Conditions optimales</div>
-            <p class="tip-description">
-              Utilisez le scope dans un environnement <strong>tempéré</strong> (15-30°C) et <span class="highlight">lumineux</span> pour une lisibilité maximale des écrans. Évitez les salles en plein soleil (reflets sur écrans).
-            </p>
-          </div>
-        </div>
-
-        <div class="info-box" style="margin-top: 24px;">
-          <div class="info-box-icon">🎓</div>
-          <p>
-            <strong>Formation initiale gratuite :</strong> Chaque pack VitalX inclut une <span class="highlight">session de prise en main de 30 minutes</span> en visioconférence. Réservez votre créneau après réception de votre commande via <a href="mailto:vitalxscope@gmail.com" style="color: var(--accent-light);">vitalxscope@gmail.com</a>.
-          </p>
-        </div>
-      </div>
-    </div>
-
-  
-
-    <!-- Support Section -->
-    <div class="section">
-      <h2>
-        <span class="icon">💬</span>
-        Support & assistance
-      </h2>
-      <div class="card contact-card">
-        <div class="contact-icon">📧</div>
-        <h3 class="contact-title">Notre équipe est là pour vous</h3>
-        <p class="contact-description">
-          Support technique, SAV, questions commerciales ou suggestions d'amélioration : nous répondons à toutes vos demandes <strong>7j/7</strong> sous 24-48h maximum.
-        </p>
-        
-        <div class="contact-links">
-          <a href="mailto:vitalxscope@gmail.com" class="contact-link">
-            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-            </svg>
-            vitalxscope@gmail.com
-          </a>
-          
-          <a href="#" class="contact-link" style="opacity: 0.6; cursor: not-allowed;">
-            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-            </svg>
-            Discord communauté (bientôt)
-          </a>
-        </div>
-
-        <div class="info-box" style="margin-top: 32px; text-align: left;">
-          <div class="info-box-icon">⏱️</div>
-          <p>
-            <strong>Délais de réponse :</strong> Support technique sous <span class="highlight">24h en semaine</span>, <span class="highlight">48h le week-end</span>. Demandes SAV prioritaires traitées sous <span class="highlight">12h</span> si urgence justifiée.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-      <p>&copy; <span id="year"></span> VitalX — Tous droits réservés.</p>
-      <p style="margin-top: 8px; font-size: 13px;">
-        Produit conçu et assemblé en France 🇫🇷 avec passion
-      </p>
-    </footer>
+<div class="topstrip">
+  <div class="row">
+    <span>Conçu &amp; assemblé en France 🇫🇷</span>
+    <span class="hide-sm"><a class="mail" href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a></span>
   </div>
+</div>
+<div class="tricolor-thin"></div>
 
-  <script>
-    // Set current year
-    document.getElementById('year').textContent = new Date().getFullYear();
+<header class="nav">
+  <div class="row">
+    <a class="brand" href="/"><img src="/logo.png" alt="" onerror="this.style.display='none'">Vital<span>X</span></a>
+    <nav class="navlinks">
+      <a href="/">Accueil</a>
+      <a href="/boutique.html">Boutique</a>
+      <a href="/garantie.html">Garantie</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+    <a href="/#contact" class="btn-red">Demander un devis</a>
+  </div>
+</header>
 
-    // FAQ Toggle
-    document.querySelectorAll('.faq-item').forEach(item => {
-      item.addEventListener('click', () => {
-        const isActive = item.classList.contains('active');
-        
-        // Close all other items
-        document.querySelectorAll('.faq-item').forEach(otherItem => {
-          otherItem.classList.remove('active');
-        });
-        
-        // Toggle current item
-        if (!isActive) {
-          item.classList.add('active');
-        }
-      });
-    });
+<section class="sec-dark hero">
+  <div class="glow-a"></div><div class="glow-b"></div>
+  <div class="wrap inner">
+    <p class="eyebrow eyebrow-light">Documentation officielle</p>
+    <h1 class="h-hero">Garantie &amp; entretien</h1>
+    <p class="sub">Tout ce qu'il faut savoir sur la garantie, l'entretien et les bonnes pratiques d'utilisation de votre scope VitalX.</p>
+  </div>
+  <div class="tricolor" style="position:absolute;left:0;right:0;bottom:0"></div>
+</section>
 
-    // Reveal animation on scroll
-    const revealElements = () => {
-      const sections = document.querySelectorAll('.section');
-      const windowHeight = window.innerHeight;
-      
-      sections.forEach(section => {
-        const elementTop = section.getBoundingClientRect().top;
-        const elementVisible = 150;
-        
-        if (elementTop < windowHeight - elementVisible) {
-          section.style.opacity = '1';
-          section.style.transform = 'translateY(0)';
-        }
-      });
-    };
+<main>
+  <div class="wrap">
 
-    window.addEventListener('scroll', revealElements);
-    revealElements(); // Initial check
-  </script>
+    <div class="card">
+      <h2><span class="num">1</span>Garantie du matériel</h2>
+      <p>Chaque composant de votre scope est couvert par une garantie adaptée à sa nature et à son usage. Voici le détail, élément par élément.</p>
+      <div class="grid">
+        <div class="tile">
+          <div class="tile-head">
+            <div class="tile-ico">👜</div>
+            <div>
+              <div class="tile-title">Housse Bagheera</div>
+              <span class="chip">Garantie 10 ans</span>
+            </div>
+          </div>
+          <p>Fabrication 100 % française par <strong>Bagheera</strong>, spécialiste de la bagagerie professionnelle. Matériaux ultra-résistants, coutures renforcées, fermetures YKK. La garantie couvre les défauts de fabrication, déchirures et usure prématurée.</p>
+        </div>
+        <div class="tile">
+          <div class="tile-head">
+            <div class="tile-ico">📦</div>
+            <div>
+              <div class="tile-title">Châssis VitalX</div>
+              <span class="chip">Garantie 2 ans</span>
+            </div>
+          </div>
+          <p>Imprimé en <strong>composite technique haute résistance</strong>, conçu pour résister aux manipulations intensives. La garantie couvre fissures, cassures et défauts structurels. <span class="hl-red">Non couvert</span> : exposition prolongée à la chaleur (> 50 °C) et déformations thermiques.</p>
+        </div>
+        <div class="tile">
+          <div class="tile-head">
+            <div class="tile-ico">📱</div>
+            <div>
+              <div class="tile-title">iPad neufs fournis</div>
+              <span class="chip">Garantie Apple 1 an</span>
+            </div>
+          </div>
+          <p>Garantie constructeur <strong>Apple</strong> standard d'un an, extensible via <strong>AppleCare+</strong> souscrit séparément. Elle couvre les défauts matériels et de fabrication ; les dommages accidentels (chutes, liquides) nécessitent AppleCare+.</p>
+        </div>
+        <div class="tile">
+          <div class="tile-head">
+            <div class="tile-ico">♻️</div>
+            <div>
+              <div class="tile-title">iPad reconditionnés</div>
+              <span class="chip">Garantie 1 an</span>
+            </div>
+          </div>
+          <p>Les iPad reconditionnés inclus dans certains packs sont couverts par une garantie de <strong>12 mois</strong> du reconditionneur, portant sur les défauts matériels et de fonctionnement hors casse accidentelle. Contactez-nous d'abord : nous coordonnons la prise en charge.</p>
+        </div>
+        <div class="tile">
+          <div class="tile-head">
+            <div class="tile-ico">💻</div>
+            <div>
+              <div class="tile-title">Licence logicielle</div>
+              <span class="chip">Licence à vie</span>
+            </div>
+          </div>
+          <p>Licence <strong>VitalX</strong> incluse à vie avec votre pack, <strong>sans abonnement ni renouvellement</strong>. Mises à jour automatiques incluses et accès aux nouvelles fonctionnalités et scénarios ajoutés régulièrement.</p>
+        </div>
+        <div class="tile">
+          <div class="tile-head">
+            <div class="tile-ico">🔌</div>
+            <div>
+              <div class="tile-title">Accessoires &amp; consommables</div>
+              <span class="chip">Garantie 1 an</span>
+            </div>
+          </div>
+          <p>Brassard PNI, capteur SpO₂, câble ECG 12 dérivations, capteur EtCO₂, sonde de température et patchs sont garantis <strong>1 an</strong> contre les défauts de fabrication. En raison de leur nature <span class="hl-red">consommable</span>, l'usure normale (patchs, adhésifs, membranes, abrasions) n'est pas couverte.</p>
+        </div>
+      </div>
+      <div class="note">
+        <div class="ico">ℹ️</div>
+        <div>
+          <p class="t">Procédure de garantie</p>
+          <p>En cas de problème matériel, écrivez à <a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a> en indiquant votre <span class="hl">numéro de commande</span>, une <span class="hl">description détaillée</span> du problème et des <span class="hl">photos</span> du produit concerné. Réponse sous 24 à 48 h ouvrées.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><span class="num">2</span>Entretien &amp; nettoyage</h2>
+      <p>Un entretien régulier garantit la longévité et les performances de votre équipement.</p>
+
+      <h3>Bonnes pratiques</h3>
+      <ul>
+        <li>Nettoyez le châssis et la housse avec un <span class="hl">chiffon microfibre</span> légèrement humide, à l'eau tiède uniquement</li>
+        <li>Utilisez un <span class="hl">spray antibactérien doux</span> pour désinfecter les surfaces tactiles des iPad</li>
+        <li>Rangez les câbles dans leur compartiment après chaque utilisation pour éviter les nœuds</li>
+        <li>Vérifiez régulièrement l'état des <span class="hl">connecteurs USB-C</span> et nettoyez-les délicatement</li>
+        <li>Stockez le scope dans un endroit <span class="hl">sec et tempéré</span>, idéalement entre 15 et 25 °C</li>
+        <li>Inspectez visuellement le châssis avant chaque session pour détecter une éventuelle fissure</li>
+      </ul>
+
+      <h3>À éviter absolument</h3>
+      <ul class="warn-list">
+        <li>Ne <strong>jamais</strong> utiliser de <span class="hl-red">solvants</span>, d'<span class="hl-red">alcool pur</span>, d'<span class="hl-red">acétone</span> ni de produits abrasifs</li>
+        <li>Éviter l'exposition directe et prolongée au <span class="hl-red">soleil</span> (risque de décoloration)</li>
+        <li>Ne pas soumettre le matériel à des températures extrêmes (sous −10 °C ou au-delà de 50 °C)</li>
+        <li>Ne jamais <span class="hl-red">ouvrir</span> ni <span class="hl-red">démonter</span> le châssis (annulation immédiate de la garantie)</li>
+        <li>Éviter de plier ou tordre excessivement les câbles (risque de rupture interne)</li>
+      </ul>
+
+      <h3>Exclusions de garantie</h3>
+      <ul class="no-list">
+        <li>Dommages causés par une <span class="hl-red">mauvaise utilisation</span> ou le non-respect des consignes</li>
+        <li>Exposition à des <span class="hl-red">liquides</span> (eau, café, désinfectant en excès…)</li>
+        <li>Chutes, chocs violents ou <span class="hl-red">contraintes mécaniques</span> anormales</li>
+        <li>Modifications, réparations ou interventions <span class="hl-red">non autorisées</span></li>
+        <li>Usure normale liée à l'utilisation intensive (rayures superficielles, légère décoloration)</li>
+        <li>Dommages causés par des <span class="hl-red">accessoires tiers</span> non compatibles</li>
+      </ul>
+
+      <div class="note amber">
+        <div class="ico">⚡</div>
+        <div>
+          <p class="t">Conseil de terrain</p>
+          <p>Après chaque formation, laissez les iPad <span class="hl">refroidir 5 minutes</span> avant de les ranger. Cela prolonge la durée de vie des batteries et évite l'accumulation de chaleur dans le châssis.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><span class="num red">3</span>Conseils d'utilisation</h2>
+      <p>Douze réflexes pour tirer le meilleur de votre scope en session.</p>
+      <div class="grid">
+        <div class="tile">
+          <div class="tile-num">1</div>
+          <div class="tile-title" style="margin-bottom:8px">🔋 Gestion de l'alimentation</div>
+          <p>Chargez les iPad à <strong>100 %</strong> avant chaque session. Pour les formations de plus de 4 h, laissez-les branchés sur secteur. Le <span class="hl">mode économie d'énergie</span> d'iOS maximise l'autonomie.</p>
+        </div>
+        <div class="tile">
+          <div class="tile-num">2</div>
+          <div class="tile-title" style="margin-bottom:8px">📡 Connectivité optimale</div>
+          <p>Utilisez un <strong>réseau Wi-Fi dédié</strong> ou créez un <span class="hl">point d'accès mobile</span> pour éviter les interférences. Distance recommandée : <strong>10 mètres</strong> maximum.</p>
+        </div>
+        <div class="tile">
+          <div class="tile-num">3</div>
+          <div class="tile-title" style="margin-bottom:8px">🔢 Code de session</div>
+          <p>Vérifiez <strong>toujours</strong> que le moniteur et le poste formateur affichent le <span class="hl">même code</span> avant de démarrer. En cas de désynchronisation, relancez l'application sur les deux appareils.</p>
+        </div>
+        <div class="tile">
+          <div class="tile-num">4</div>
+          <div class="tile-title" style="margin-bottom:8px">⏱️ Automatisation</div>
+          <p>Programmez des <strong>prises de tension automatiques</strong> toutes les 5 minutes pour un rendu réaliste. Les <span class="hl">alertes paramétrables</span> (SpO₂, FC, PA) créent des scénarios dynamiques.</p>
+        </div>
+        <div class="tile">
+          <div class="tile-num">5</div>
+          <div class="tile-title" style="margin-bottom:8px">📊 Affichage complet</div>
+          <p>Affichez simultanément <span class="hl">ECG 12 dérivations</span>, SpO₂, EtCO₂, capnographie et l'ensemble des paramètres vitaux. Idéal pour les formations avancées.</p>
+        </div>
+        <div class="tile">
+          <div class="tile-num">6</div>
+          <div class="tile-title" style="margin-bottom:8px">🚨 Surveillance des alertes</div>
+          <p>Configurez les <strong>seuils d'alerte</strong> selon le niveau des apprenants et surveillez les notifications : batterie faible, constantes anormales, arythmies.</p>
+        </div>
+        <div class="tile">
+          <div class="tile-num">7</div>
+          <div class="tile-title" style="margin-bottom:8px">🎯 Scénarios pédagogiques</div>
+          <p>Construisez des cas progressifs : état stable → dégradation → intervention → amélioration. Enregistrez vos <span class="hl">scénarios favoris</span> pour les réutiliser.</p>
+        </div>
+        <div class="tile">
+          <div class="tile-num">8</div>
+          <div class="tile-title" style="margin-bottom:8px">🐛 Signalement de bugs</div>
+          <p>Utilisez le bouton <strong>Signaler un bug</strong> intégré à l'app. Précisez les <span class="hl">étapes de reproduction</span>, le comportement attendu et joignez des captures d'écran.</p>
+        </div>
+        <div class="tile">
+          <div class="tile-num">9</div>
+          <div class="tile-title" style="margin-bottom:8px">🔄 Mises à jour</div>
+          <p>Vérifiez les mises à jour chaque mois : nouveaux scénarios, corrections, améliorations d'interface et <span class="hl">nouvelles fonctionnalités</span> issues de vos retours.</p>
+        </div>
+        <div class="tile">
+          <div class="tile-num">10</div>
+          <div class="tile-title" style="margin-bottom:8px">📚 Formation continue</div>
+          <p>Consultez la documentation et les <span class="hl">tutoriels vidéo</span> pour découvrir les fonctionnalités avancées : DSA, ECG complexes, pathologies rares, modes experts.</p>
+        </div>
+        <div class="tile">
+          <div class="tile-num">11</div>
+          <div class="tile-title" style="margin-bottom:8px">🎬 Retours de session</div>
+          <p>Notez les <strong>temps de réaction</strong> des apprenants et les points d'amélioration, puis partagez vos retours pour enrichir la base de scénarios.</p>
+        </div>
+        <div class="tile">
+          <div class="tile-num">12</div>
+          <div class="tile-title" style="margin-bottom:8px">🌡️ Conditions optimales</div>
+          <p>Utilisez le scope dans un environnement <strong>tempéré</strong> (15–30 °C). Évitez les salles en plein soleil, source de reflets sur les écrans.</p>
+        </div>
+      </div>
+      <div class="note">
+        <div class="ico">🎓</div>
+        <div>
+          <p class="t">Prise en main offerte</p>
+          <p>Chaque pack VitalX inclut une <span class="hl">session de prise en main de 30 minutes</span> en visioconférence. Réservez votre créneau après réception de votre commande à <a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a>.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><span class="num navy">4</span>Support &amp; assistance</h2>
+      <p>Support technique, SAV, questions commerciales ou suggestions : nous répondons <strong>7 j/7</strong>, sous 24 à 48 h.</p>
+      <ul class="plain">
+        <li><strong>Support technique</strong> — sous 24 h en semaine, 48 h le week-end</li>
+        <li><strong>Demandes SAV prioritaires</strong> — traitées sous 12 h en cas d'urgence justifiée</li>
+      </ul>
+      <p style="margin-top:18px">
+        <a href="mailto:vitalxscope@gmail.com" class="btn-red" style="border:0">📧 vitalxscope@gmail.com</a>
+      </p>
+    </div>
+
+    <div class="meta">
+      <p class="updated">📅 Dernière mise à jour : 19 août 2026</p>
+      <p>Produit conçu et assemblé en France 🇫🇷</p>
+    </div>
+
+  </div>
+</main>
+
+<div class="wrap backrow">
+  <a href="/" class="btn-out">← Retour au site</a>
+</div>
+
+<footer class="site">
+  <div class="tricolor-thin" style="margin-bottom:26px"></div>
+  <div class="row">
+    <div>© <span id="year"></span> VitalX — Tous droits réservés. Conçu &amp; assemblé en France 🇫🇷</div>
+    <div style="display:flex;gap:18px;flex-wrap:wrap">
+      <a href="/mentions-legales.html">Mentions légales</a>
+      <a href="/cgv.html">CGV</a>
+      <a href="/politique-confidentialite.html">Confidentialité</a>
+      <a href="/garantie.html">Garantie</a>
+    </div>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+
 </body>
 </html>
