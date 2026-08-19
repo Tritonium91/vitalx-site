@@ -1,4 +1,5 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <!--
   politique-confidentialite.html — VitalX
   🆕 v2.0 — 19/08/2026 — Yann USSEGLIO
@@ -7,14 +8,14 @@
 -->
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>Politique de confidentialité — VitalX</title>
-<meta name="description" content="Politique de confidentialité de VitalX : données collectées, usage, durée de conservation, droits RGPD.">
-<meta name="theme-color" content="#0a2240">
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+<meta content="Politique de confidentialité de VitalX : données collectées, usage, durée de conservation, droits RGPD." name="description"/>
+<meta content="#0a2240" name="theme-color"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
 <style>
 *{-webkit-font-smoothing:antialiased;box-sizing:border-box}
 html,body{margin:0;padding:0;background:#f4f6f9;color:#0c1828;overflow-x:clip;max-width:100vw;line-height:1.7;
@@ -135,161 +136,162 @@ footer.site .row{max-width:1152px;margin:0 auto;padding:0 24px;display:flex;flex
   align-items:center;justify-content:space-between}
 footer.site a{color:#9fb3cc;border:0;font-weight:600}
 footer.site a:hover{color:#fff}
+
+/* 🌍 Sélecteur de langue */
+.lang-btn{width:26px;height:18px;border-radius:3px;overflow:hidden;display:block;line-height:0;padding:0;border:0;background:none;cursor:pointer;opacity:.4;transition:opacity .15s,box-shadow .15s}
+.lang-btn:hover{opacity:.85}
+.lang-btn.is-active{opacity:1;box-shadow:0 0 0 1.5px rgba(255,255,255,.9)}
+.lang-btn svg{display:block;width:100%;height:100%}
+#langSwitch{display:flex;align-items:center;gap:6px}
+.topstrip .right{display:flex;align-items:center;gap:16px}
+.legal-notice{font-size:13.5px;color:#9fb3cc;max-width:640px;margin:14px auto 0;font-style:italic}
 </style>
 </head>
 <body>
-
 <div class="topstrip">
-  <div class="row">
-    <span>Conçu &amp; assemblé en France 🇫🇷</span>
-    <span class="hide-sm"><a class="mail" href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a></span>
-  </div>
+<div class="row">
+<span>Conçu &amp; assemblé en France 🇫🇷</span>
+<span class="right">
+      <span class="hide-sm"><a class="mail" href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a></span>
+      <span id="langSwitch">
+        <button type="button" data-lang="fr" class="lang-btn is-active" title="Français" aria-label="Français"><svg viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="36" fill="#0046b8"/><rect x="20" width="20" height="36" fill="#fff"/><rect x="40" width="20" height="36" fill="#e1000f"/></svg></button>
+        <button type="button" data-lang="en" class="lang-btn" title="English" aria-label="English"><svg viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="36" fill="#012169"/><path d="M0 0 L60 36 M60 0 L0 36" stroke="#fff" stroke-width="7"/><path d="M0 0 L60 36 M60 0 L0 36" stroke="#C8102E" stroke-width="4"/><path d="M30 0 V36 M0 18 H60" stroke="#fff" stroke-width="12"/><path d="M30 0 V36 M0 18 H60" stroke="#C8102E" stroke-width="7"/></svg></button>
+        <button type="button" data-lang="de" class="lang-btn" title="Deutsch" aria-label="Deutsch"><svg viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="12" fill="#000"/><rect y="12" width="60" height="12" fill="#DD0000"/><rect y="24" width="60" height="12" fill="#FFCE00"/></svg></button>
+      </span>
+    </span>
+</div>
 </div>
 <div class="tricolor-thin"></div>
-
 <header class="nav">
-  <div class="row">
-    <a class="brand" href="/"><img src="/logo.png" alt="" onerror="this.style.display='none'">Vital<span>X</span></a>
-    <nav class="navlinks">
-      <a href="/">Accueil</a>
-      <a href="/boutique.html">Boutique</a>
-      <a href="/garantie.html">Garantie</a>
-      <a href="/#contact">Contact</a>
-    </nav>
-    <a href="/#contact" class="btn-red">Demander un devis</a>
-  </div>
-</header>
-
-<section class="sec-dark hero">
-  <div class="glow-a"></div><div class="glow-b"></div>
-  <div class="wrap inner">
-    <p class="eyebrow eyebrow-light">RGPD</p>
-    <h1 class="h-hero">Politique de confidentialité</h1>
-    <p class="sub">Transparence complète sur la collecte, l'utilisation et la protection de vos données personnelles.</p>
-  </div>
-  <div class="tricolor" style="position:absolute;left:0;right:0;bottom:0"></div>
-</section>
-
-<main>
-  <div class="wrap">
-
-    <div class="card">
-      <h2><span class="num">1</span>Données collectées</h2>
-      <p>Nous collectons <strong>uniquement les données nécessaires</strong> au fonctionnement du site et au suivi des demandes et commandes :</p>
-      <ul>
-        <li>Nom, prénom, entreprise, e-mail et téléphone (formulaire de contact)</li>
-        <li>Contenu de votre message et de votre demande de devis</li>
-        <li>Informations de paiement traitées par Stripe, en qualité de sous-traitant</li>
-        <li>Données techniques (adresse IP, user-agent) à des fins de sécurité et d'audit</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h2><span class="num">2</span>Finalités d'utilisation</h2>
-      <p>Vos données sont utilisées exclusivement pour :</p>
-      <ul>
-        <li>Répondre à vos demandes et établir vos devis</li>
-        <li>Gérer les commandes et la facturation, via Stripe</li>
-        <li>Améliorer le produit et l'expérience utilisateur (statistiques anonymisées si activées)</li>
-      </ul>
-      <div class="note">
-        <div class="ico">⚖️</div>
-        <div>
-          <p class="t">Bases légales — RGPD, article 6</p>
-          <p><strong>Exécution d'un contrat</strong> : gestion des commandes et accès au service.<br>
-          <strong>Intérêt légitime</strong> : sécurité, prévention de la fraude, amélioration du site.<br>
-          <strong>Consentement</strong> : communications commerciales et mesure d'audience non essentielle.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2><span class="num red">3</span>Paiement &amp; sécurité</h2>
-      <p>Les paiements en ligne sont traités par <strong>Stripe</strong>. <strong>Nous n'avons jamais accès à vos numéros de carte bancaire</strong> : ils sont saisis directement sur l'infrastructure de Stripe.</p>
-      <p>Pour en savoir plus : <a href="https://stripe.com/fr/privacy" target="_blank" rel="noopener">politique de confidentialité de Stripe</a>.</p>
-    </div>
-
-    <div class="card">
-      <h2><span class="num">4</span>Cookies &amp; mesure d'audience</h2>
-      <p>Par défaut, le site <strong>ne dépose aucun cookie non essentiel</strong>. Si un outil d'analyse est activé (par exemple Netlify Analytics ou Plausible), seules des <strong>statistiques anonymisées</strong> sont exploitées.</p>
-      <p>Le choix de langue du site est conservé dans le stockage local de votre navigateur, uniquement pour votre confort de lecture. Vous pouvez configurer votre navigateur pour bloquer ces éléments et retirer votre consentement à tout moment.</p>
-    </div>
-
-    <div class="card">
-      <h2><span class="num navy">5</span>Durée de conservation</h2>
-      <ul class="plain">
-        <li><strong>Formulaire de contact</strong> — durée du traitement, puis 12 mois maximum</li>
-        <li><strong>Facturation et commandes</strong> — 10 ans (obligation légale comptable)</li>
-        <li><strong>Données techniques et journaux</strong> — 6 mois, à des fins de sécurité</li>
-      </ul>
-      <p>Passés ces délais, vos données sont supprimées de nos systèmes.</p>
-    </div>
-
-    <div class="card">
-      <h2><span class="num">6</span>Vos droits (RGPD)</h2>
-      <p>Conformément au règlement général sur la protection des données, vous disposez des droits suivants :</p>
-      <ul>
-        <li><strong>Droit d'accès</strong> — obtenir une copie de vos données</li>
-        <li><strong>Droit de rectification</strong> — corriger des données inexactes</li>
-        <li><strong>Droit à l'effacement</strong> — demander la suppression de vos données</li>
-        <li><strong>Droit à la limitation</strong> — restreindre le traitement</li>
-        <li><strong>Droit d'opposition</strong> — vous opposer au traitement</li>
-        <li><strong>Droit à la portabilité</strong> — récupérer vos données dans un format structuré</li>
-      </ul>
-      <div class="note">
-        <div class="ico">📧</div>
-        <div>
-          <p class="t">Exercer vos droits</p>
-          <p>Écrivez à <a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a>. Vous pouvez également introduire une réclamation auprès de la <a href="https://www.cnil.fr/" target="_blank" rel="noopener">CNIL</a>.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2><span class="num red">7</span>Sécurité &amp; protection</h2>
-      <ul>
-        <li><strong>Chiffrement HTTPS</strong> sur l'ensemble des échanges</li>
-        <li><strong>Aucune donnée patient réelle</strong> : l'application ne stocke pas de données médicales</li>
-        <li><strong>Sessions protégées par code</strong> unique</li>
-        <li><strong>Hébergement</strong> sur l'infrastructure Netlify</li>
-        <li><strong>Mises à jour régulières</strong> des composants et dépendances</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h2><span class="num navy">8</span>Responsable de traitement</h2>
-      <p><strong>Responsable de traitement :</strong> VitalX<br>
-      <strong>E-mail :</strong> <a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a></p>
-      <p>Pour toute question sur cette politique ou l'exercice de vos droits, n'hésitez pas à nous écrire.</p>
-    </div>
-
-    <div class="meta">
-      <p class="updated">📅 Dernière mise à jour : 19 août 2026</p>
-      <p>Cette politique est conforme au <strong>RGPD</strong> et aux exigences d'<strong>Apple</strong> en matière de confidentialité.</p>
-      <p style="font-size:12.5px">Elle pourra être mise à jour en cas d'évolution légale ou technique.</p>
-    </div>
-
-  </div>
-</main>
-
-<div class="wrap backrow">
-  <a href="/" class="btn-out">← Retour au site</a>
+<div class="row">
+<a class="brand" href="/"><img alt="" onerror="this.style.display='none'" src="/logo.png"/>Vital<span>X</span></a>
+<nav class="navlinks">
+<a href="/">Accueil</a>
+<a href="/boutique.html">Boutique</a>
+<a href="/garantie.html">Garantie</a>
+<a href="/#contact">Contact</a>
+</nav>
+<a class="btn-red" href="/#contact">Demander un devis</a>
 </div>
-
+</header>
+<section class="sec-dark hero">
+<div class="glow-a"></div><div class="glow-b"></div>
+<div class="wrap inner">
+<p class="eyebrow eyebrow-light">RGPD</p>
+<h1 class="h-hero">Politique de confidentialité</h1>
+<p class="sub">Transparence complète sur la collecte, l'utilisation et la protection de vos données personnelles.</p>
+    <p class="legal-notice">Seule la version française de ce document fait foi ; les traductions sont fournies à titre indicatif.</p>
+</div>
+<div class="tricolor" style="position:absolute;left:0;right:0;bottom:0"></div>
+</section>
+<main>
+<div class="wrap">
+<div class="card">
+<h2><span class="num">1</span>Données collectées</h2>
+<p data-i18n-html="">Nous collectons <strong>uniquement les données nécessaires</strong> au fonctionnement du site et au suivi des demandes et commandes :</p>
+<ul>
+<li>Nom, prénom, entreprise, e-mail et téléphone (formulaire de contact)</li>
+<li>Contenu de votre message et de votre demande de devis</li>
+<li>Informations de paiement traitées par Stripe, en qualité de sous-traitant</li>
+<li>Données techniques (adresse IP, user-agent) à des fins de sécurité et d'audit</li>
+</ul>
+</div>
+<div class="card">
+<h2><span class="num">2</span>Finalités d'utilisation</h2>
+<p>Vos données sont utilisées exclusivement pour :</p>
+<ul>
+<li>Répondre à vos demandes et établir vos devis</li>
+<li>Gérer les commandes et la facturation, via Stripe</li>
+<li>Améliorer le produit et l'expérience utilisateur (statistiques anonymisées si activées)</li>
+</ul>
+<div class="note">
+<div class="ico">⚖️</div>
+<div>
+<p class="t">Bases légales — RGPD, article 6</p>
+<p data-i18n-html=""><strong>Exécution d'un contrat</strong> : gestion des commandes et accès au service.<br/>
+<strong>Intérêt légitime</strong> : sécurité, prévention de la fraude, amélioration du site.<br/>
+<strong>Consentement</strong> : communications commerciales et mesure d'audience non essentielle.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<h2><span class="num red">3</span>Paiement &amp; sécurité</h2>
+<p data-i18n-html="">Les paiements en ligne sont traités par <strong>Stripe</strong>. <strong>Nous n'avons jamais accès à vos numéros de carte bancaire</strong> : ils sont saisis directement sur l'infrastructure de Stripe.</p>
+<p data-i18n-html="">Pour en savoir plus : <a href="https://stripe.com/fr/privacy" rel="noopener" target="_blank">politique de confidentialité de Stripe</a>.</p>
+</div>
+<div class="card">
+<h2><span class="num">4</span>Cookies &amp; mesure d'audience</h2>
+<p data-i18n-html="">Par défaut, le site <strong>ne dépose aucun cookie non essentiel</strong>. Si un outil d'analyse est activé (par exemple Netlify Analytics ou Plausible), seules des <strong>statistiques anonymisées</strong> sont exploitées.</p>
+<p>Le choix de langue du site est conservé dans le stockage local de votre navigateur, uniquement pour votre confort de lecture. Vous pouvez configurer votre navigateur pour bloquer ces éléments et retirer votre consentement à tout moment.</p>
+</div>
+<div class="card">
+<h2><span class="num navy">5</span>Durée de conservation</h2>
+<ul class="plain">
+<li data-i18n-html=""><strong>Formulaire de contact</strong> — durée du traitement, puis 12 mois maximum</li>
+<li data-i18n-html=""><strong>Facturation et commandes</strong> — 10 ans (obligation légale comptable)</li>
+<li data-i18n-html=""><strong>Données techniques et journaux</strong> — 6 mois, à des fins de sécurité</li>
+</ul>
+<p>Passés ces délais, vos données sont supprimées de nos systèmes.</p>
+</div>
+<div class="card">
+<h2><span class="num">6</span>Vos droits (RGPD)</h2>
+<p>Conformément au règlement général sur la protection des données, vous disposez des droits suivants :</p>
+<ul>
+<li data-i18n-html=""><strong>Droit d'accès</strong> — obtenir une copie de vos données</li>
+<li data-i18n-html=""><strong>Droit de rectification</strong> — corriger des données inexactes</li>
+<li data-i18n-html=""><strong>Droit à l'effacement</strong> — demander la suppression de vos données</li>
+<li data-i18n-html=""><strong>Droit à la limitation</strong> — restreindre le traitement</li>
+<li data-i18n-html=""><strong>Droit d'opposition</strong> — vous opposer au traitement</li>
+<li data-i18n-html=""><strong>Droit à la portabilité</strong> — récupérer vos données dans un format structuré</li>
+</ul>
+<div class="note">
+<div class="ico">📧</div>
+<div>
+<p class="t">Exercer vos droits</p>
+<p data-i18n-html="">Écrivez à <a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a>. Vous pouvez également introduire une réclamation auprès de la <a href="https://www.cnil.fr/" rel="noopener" target="_blank">CNIL</a>.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<h2><span class="num red">7</span>Sécurité &amp; protection</h2>
+<ul>
+<li data-i18n-html=""><strong>Chiffrement HTTPS</strong> sur l'ensemble des échanges</li>
+<li data-i18n-html=""><strong>Aucune donnée patient réelle</strong> : l'application ne stocke pas de données médicales</li>
+<li data-i18n-html=""><strong>Sessions protégées par code</strong> unique</li>
+<li data-i18n-html=""><strong>Hébergement</strong> sur l'infrastructure Netlify</li>
+<li data-i18n-html=""><strong>Mises à jour régulières</strong> des composants et dépendances</li>
+</ul>
+</div>
+<div class="card">
+<h2><span class="num navy">8</span>Responsable de traitement</h2>
+<p data-i18n-html=""><strong>Responsable de traitement :</strong> VitalX<br/>
+<strong>E-mail :</strong> <a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a></p>
+<p>Pour toute question sur cette politique ou l'exercice de vos droits, n'hésitez pas à nous écrire.</p>
+</div>
+<div class="meta">
+<p class="updated">📅 Dernière mise à jour : 19 août 2026</p>
+<p data-i18n-html="">Cette politique est conforme au <strong>RGPD</strong> et aux exigences d'<strong>Apple</strong> en matière de confidentialité.</p>
+<p style="font-size:12.5px">Elle pourra être mise à jour en cas d'évolution légale ou technique.</p>
+</div>
+</div>
+</main>
+<div class="wrap backrow">
+<a class="btn-out" href="/">← Retour au site</a>
+</div>
 <footer class="site">
-  <div class="tricolor-thin" style="margin-bottom:26px"></div>
-  <div class="row">
-    <div>© <span id="year"></span> VitalX — Tous droits réservés. Conçu &amp; assemblé en France 🇫🇷</div>
-    <div style="display:flex;gap:18px;flex-wrap:wrap">
-      <a href="/mentions-legales.html">Mentions légales</a>
-      <a href="/cgv.html">CGV</a>
-      <a href="/politique-confidentialite.html">Confidentialité</a>
-      <a href="/garantie.html">Garantie</a>
-    </div>
-  </div>
+<div class="tricolor-thin" style="margin-bottom:26px"></div>
+<div class="row">
+<div>© <span id="year"></span> VitalX — Tous droits réservés. Conçu &amp; assemblé en France 🇫🇷</div>
+<div style="display:flex;gap:18px;flex-wrap:wrap">
+<a href="/mentions-legales.html">Mentions légales</a>
+<a href="/cgv.html">CGV</a>
+<a href="/politique-confidentialite.html">Confidentialité</a>
+<a href="/garantie.html">Garantie</a>
+</div>
+</div>
 </footer>
-
 <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
-
+<script src="/i18n-legal.js" defer></script>
+<script src="/i18n.js" defer></script>
 </body>
 </html>
