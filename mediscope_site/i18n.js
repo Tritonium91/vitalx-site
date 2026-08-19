@@ -665,6 +665,14 @@
   };
 
 
+  // 🧩 Extension optionnelle : window.VitalXI18nExtra = { en:{}, de:{}, titles:{} }
+  //    ⚠️ Doit être chargée AVANT ce fichier (les pages légales utilisent i18n-legal.js).
+  var EXTRA = window.VitalXI18nExtra || {};
+  ['en', 'de'].forEach(function (l) {
+    if (!EXTRA[l]) return;
+    Object.keys(EXTRA[l]).forEach(function (k) { T[l][k] = EXTRA[l][k]; });
+  });
+
   var ATTRS = ['placeholder', 'title', 'aria-label', 'alt'];
   var SKIP = { SCRIPT: 1, STYLE: 1, NOSCRIPT: 1, CODE: 1 };
   var LANGS = ['fr', 'en', 'de'];
@@ -674,6 +682,7 @@
     'VitalX — Simulation médicale française': { en: 'VitalX — French medical simulation', de: 'VitalX — Medizinische Simulation aus Frankreich' },
     'VitalX — Boutique': { en: 'VitalX — Shop', de: 'VitalX — Shop' }
   };
+  if (EXTRA.titles) Object.keys(EXTRA.titles).forEach(function (k) { TITLES[k] = EXTRA.titles[k]; });
 
   var store = { text: [], attr: [] };
   var observer = null;
@@ -700,17 +709,27 @@
     if (!p || p.nodeType !== 1) return false;
     if (SKIP[p.nodeName]) return false;
     if (p.closest && p.closest('svg')) return false;
+    // ⚠️ Les blocs [data-i18n-html] sont traduits en entier : on ignore leurs nœuds internes.
+    if (p.closest && p.closest('[data-i18n-html]')) return false;
     return !!node.nodeValue.trim();
   }
 
   // 📥 Collecte les nœuds de texte et attributs d'une racine donnée
   function collect(root) {
-    var out = { text: [], attr: [] };
+    var out = { text: [], attr: [], html: [] };
     if (root.nodeType === 3) {
       if (usable(root)) out.text.push({ node: root, fr: root.nodeValue });
       return out;
     }
     if (root.nodeType !== 1) return out;
+
+    // Blocs traduits d'un seul tenant (phrases contenant <strong>, <a>, <br>…)
+    var blocks = Array.prototype.slice.call(root.querySelectorAll('[data-i18n-html]'));
+    if (root.hasAttribute && root.hasAttribute('data-i18n-html')) blocks.unshift(root);
+    blocks.forEach(function (el) {
+      if (el.parentNode && el.parentNode.closest && el.parentNode.closest('[data-i18n-html]')) return;
+      out.html.push({ el: el, fr: el.innerHTML });
+    });
 
     var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
     var n;
@@ -719,6 +738,7 @@
     var els = [root].concat(Array.prototype.slice.call(root.querySelectorAll('*')));
     els.forEach(function (el) {
       if (el.nodeName === 'svg' || (el.closest && el.closest('svg'))) return;
+      if (el.closest && el.closest('[data-i18n-html]')) return;
       ATTRS.forEach(function (a) {
         var v = el.getAttribute(a);
         if (v && v.trim()) out.attr.push({ el: el, attr: a, fr: v });
@@ -736,6 +756,10 @@
   }
 
   function applyTo(list, lang) {
+    (list.html || []).forEach(function (o) {
+      var v = tr(o.fr, lang);
+      o.el.innerHTML = v !== null ? v : o.fr;
+    });
     list.text.forEach(function (o) {
       var v = tr(o.fr, lang);
       o.node.nodeValue = v !== null ? v : o.fr;
