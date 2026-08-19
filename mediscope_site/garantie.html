@@ -1,4 +1,5 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <!--
   garantie.html — VitalX
   🆕 v2.0 — 19/08/2026 — Yann USSEGLIO
@@ -9,14 +10,14 @@
 -->
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Garantie & conseils d'utilisation — VitalX</title>
-<meta name="description" content="Garantie, entretien et conseils d'utilisation du simulateur médical VitalX — conçu et assemblé en France.">
-<meta name="theme-color" content="#0a2240">
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Garantie &amp; conseils d'utilisation — VitalX</title>
+<meta content="Garantie, entretien et conseils d'utilisation du simulateur médical VitalX — conçu et assemblé en France." name="description"/>
+<meta content="#0a2240" name="theme-color"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
 <style>
 *{-webkit-font-smoothing:antialiased;box-sizing:border-box}
 html,body{margin:0;padding:0;background:#f4f6f9;color:#0c1828;overflow-x:clip;max-width:100vw;line-height:1.7;
@@ -137,272 +138,273 @@ footer.site .row{max-width:1152px;margin:0 auto;padding:0 24px;display:flex;flex
   align-items:center;justify-content:space-between}
 footer.site a{color:#9fb3cc;border:0;font-weight:600}
 footer.site a:hover{color:#fff}
+
+/* 🌍 Sélecteur de langue */
+.lang-btn{width:26px;height:18px;border-radius:3px;overflow:hidden;display:block;line-height:0;padding:0;border:0;background:none;cursor:pointer;opacity:.4;transition:opacity .15s,box-shadow .15s}
+.lang-btn:hover{opacity:.85}
+.lang-btn.is-active{opacity:1;box-shadow:0 0 0 1.5px rgba(255,255,255,.9)}
+.lang-btn svg{display:block;width:100%;height:100%}
+#langSwitch{display:flex;align-items:center;gap:6px}
+.topstrip .right{display:flex;align-items:center;gap:16px}
+.legal-notice{font-size:13.5px;color:#9fb3cc;max-width:640px;margin:14px auto 0;font-style:italic}
 </style>
 </head>
 <body>
-
 <div class="topstrip">
-  <div class="row">
-    <span>Conçu &amp; assemblé en France 🇫🇷</span>
-    <span class="hide-sm"><a class="mail" href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a></span>
-  </div>
+<div class="row">
+<span>Conçu &amp; assemblé en France 🇫🇷</span>
+<span class="right">
+      <span class="hide-sm"><a class="mail" href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a></span>
+      <span id="langSwitch">
+        <button type="button" data-lang="fr" class="lang-btn is-active" title="Français" aria-label="Français"><svg viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="36" fill="#0046b8"/><rect x="20" width="20" height="36" fill="#fff"/><rect x="40" width="20" height="36" fill="#e1000f"/></svg></button>
+        <button type="button" data-lang="en" class="lang-btn" title="English" aria-label="English"><svg viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="36" fill="#012169"/><path d="M0 0 L60 36 M60 0 L0 36" stroke="#fff" stroke-width="7"/><path d="M0 0 L60 36 M60 0 L0 36" stroke="#C8102E" stroke-width="4"/><path d="M30 0 V36 M0 18 H60" stroke="#fff" stroke-width="12"/><path d="M30 0 V36 M0 18 H60" stroke="#C8102E" stroke-width="7"/></svg></button>
+        <button type="button" data-lang="de" class="lang-btn" title="Deutsch" aria-label="Deutsch"><svg viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="12" fill="#000"/><rect y="12" width="60" height="12" fill="#DD0000"/><rect y="24" width="60" height="12" fill="#FFCE00"/></svg></button>
+      </span>
+    </span>
+</div>
 </div>
 <div class="tricolor-thin"></div>
-
 <header class="nav">
-  <div class="row">
-    <a class="brand" href="/"><img src="/logo.png" alt="" onerror="this.style.display='none'">Vital<span>X</span></a>
-    <nav class="navlinks">
-      <a href="/">Accueil</a>
-      <a href="/boutique.html">Boutique</a>
-      <a href="/garantie.html">Garantie</a>
-      <a href="/#contact">Contact</a>
-    </nav>
-    <a href="/#contact" class="btn-red">Demander un devis</a>
-  </div>
-</header>
-
-<section class="sec-dark hero">
-  <div class="glow-a"></div><div class="glow-b"></div>
-  <div class="wrap inner">
-    <p class="eyebrow eyebrow-light">Documentation officielle</p>
-    <h1 class="h-hero">Garantie &amp; entretien</h1>
-    <p class="sub">Tout ce qu'il faut savoir sur la garantie, l'entretien et les bonnes pratiques d'utilisation de votre scope VitalX.</p>
-  </div>
-  <div class="tricolor" style="position:absolute;left:0;right:0;bottom:0"></div>
-</section>
-
-<main>
-  <div class="wrap">
-
-    <div class="card">
-      <h2><span class="num">1</span>Garantie du matériel</h2>
-      <p>Chaque composant de votre scope est couvert par une garantie adaptée à sa nature et à son usage. Voici le détail, élément par élément.</p>
-      <div class="grid">
-        <div class="tile">
-          <div class="tile-head">
-            <div class="tile-ico">👜</div>
-            <div>
-              <div class="tile-title">Housse Bagheera</div>
-              <span class="chip">Garantie 10 ans</span>
-            </div>
-          </div>
-          <p>Fabrication 100 % française par <strong>Bagheera</strong>, spécialiste de la bagagerie professionnelle. Matériaux ultra-résistants, coutures renforcées, fermetures YKK. La garantie couvre les défauts de fabrication, déchirures et usure prématurée.</p>
-        </div>
-        <div class="tile">
-          <div class="tile-head">
-            <div class="tile-ico">📦</div>
-            <div>
-              <div class="tile-title">Châssis VitalX</div>
-              <span class="chip">Garantie 2 ans</span>
-            </div>
-          </div>
-          <p>Imprimé en <strong>composite technique haute résistance</strong>, conçu pour résister aux manipulations intensives. La garantie couvre fissures, cassures et défauts structurels. <span class="hl-red">Non couvert</span> : exposition prolongée à la chaleur (> 50 °C) et déformations thermiques.</p>
-        </div>
-        <div class="tile">
-          <div class="tile-head">
-            <div class="tile-ico">📱</div>
-            <div>
-              <div class="tile-title">iPad neufs fournis</div>
-              <span class="chip">Garantie Apple 1 an</span>
-            </div>
-          </div>
-          <p>Garantie constructeur <strong>Apple</strong> standard d'un an, extensible via <strong>AppleCare+</strong> souscrit séparément. Elle couvre les défauts matériels et de fabrication ; les dommages accidentels (chutes, liquides) nécessitent AppleCare+.</p>
-        </div>
-        <div class="tile">
-          <div class="tile-head">
-            <div class="tile-ico">♻️</div>
-            <div>
-              <div class="tile-title">iPad reconditionnés</div>
-              <span class="chip">Garantie 1 an</span>
-            </div>
-          </div>
-          <p>Les iPad reconditionnés inclus dans certains packs sont couverts par une garantie de <strong>12 mois</strong> du reconditionneur, portant sur les défauts matériels et de fonctionnement hors casse accidentelle. Contactez-nous d'abord : nous coordonnons la prise en charge.</p>
-        </div>
-        <div class="tile">
-          <div class="tile-head">
-            <div class="tile-ico">💻</div>
-            <div>
-              <div class="tile-title">Licence logicielle</div>
-              <span class="chip">Licence à vie</span>
-            </div>
-          </div>
-          <p>Licence <strong>VitalX</strong> incluse à vie avec votre pack, <strong>sans abonnement ni renouvellement</strong>. Mises à jour automatiques incluses et accès aux nouvelles fonctionnalités et scénarios ajoutés régulièrement.</p>
-        </div>
-        <div class="tile">
-          <div class="tile-head">
-            <div class="tile-ico">🔌</div>
-            <div>
-              <div class="tile-title">Accessoires &amp; consommables</div>
-              <span class="chip">Garantie 1 an</span>
-            </div>
-          </div>
-          <p>Brassard PNI, capteur SpO₂, câble ECG 12 dérivations, capteur EtCO₂, sonde de température et patchs sont garantis <strong>1 an</strong> contre les défauts de fabrication. En raison de leur nature <span class="hl-red">consommable</span>, l'usure normale (patchs, adhésifs, membranes, abrasions) n'est pas couverte.</p>
-        </div>
-      </div>
-      <div class="note">
-        <div class="ico">ℹ️</div>
-        <div>
-          <p class="t">Procédure de garantie</p>
-          <p>En cas de problème matériel, écrivez à <a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a> en indiquant votre <span class="hl">numéro de commande</span>, une <span class="hl">description détaillée</span> du problème et des <span class="hl">photos</span> du produit concerné. Réponse sous 24 à 48 h ouvrées.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2><span class="num">2</span>Entretien &amp; nettoyage</h2>
-      <p>Un entretien régulier garantit la longévité et les performances de votre équipement.</p>
-
-      <h3>Bonnes pratiques</h3>
-      <ul>
-        <li>Nettoyez le châssis et la housse avec un <span class="hl">chiffon microfibre</span> légèrement humide, à l'eau tiède uniquement</li>
-        <li>Utilisez un <span class="hl">spray antibactérien doux</span> pour désinfecter les surfaces tactiles des iPad</li>
-        <li>Rangez les câbles dans leur compartiment après chaque utilisation pour éviter les nœuds</li>
-        <li>Vérifiez régulièrement l'état des <span class="hl">connecteurs USB-C</span> et nettoyez-les délicatement</li>
-        <li>Stockez le scope dans un endroit <span class="hl">sec et tempéré</span>, idéalement entre 15 et 25 °C</li>
-        <li>Inspectez visuellement le châssis avant chaque session pour détecter une éventuelle fissure</li>
-      </ul>
-
-      <h3>À éviter absolument</h3>
-      <ul class="warn-list">
-        <li>Ne <strong>jamais</strong> utiliser de <span class="hl-red">solvants</span>, d'<span class="hl-red">alcool pur</span>, d'<span class="hl-red">acétone</span> ni de produits abrasifs</li>
-        <li>Éviter l'exposition directe et prolongée au <span class="hl-red">soleil</span> (risque de décoloration)</li>
-        <li>Ne pas soumettre le matériel à des températures extrêmes (sous −10 °C ou au-delà de 50 °C)</li>
-        <li>Ne jamais <span class="hl-red">ouvrir</span> ni <span class="hl-red">démonter</span> le châssis (annulation immédiate de la garantie)</li>
-        <li>Éviter de plier ou tordre excessivement les câbles (risque de rupture interne)</li>
-      </ul>
-
-      <h3>Exclusions de garantie</h3>
-      <ul class="no-list">
-        <li>Dommages causés par une <span class="hl-red">mauvaise utilisation</span> ou le non-respect des consignes</li>
-        <li>Exposition à des <span class="hl-red">liquides</span> (eau, café, désinfectant en excès…)</li>
-        <li>Chutes, chocs violents ou <span class="hl-red">contraintes mécaniques</span> anormales</li>
-        <li>Modifications, réparations ou interventions <span class="hl-red">non autorisées</span></li>
-        <li>Usure normale liée à l'utilisation intensive (rayures superficielles, légère décoloration)</li>
-        <li>Dommages causés par des <span class="hl-red">accessoires tiers</span> non compatibles</li>
-      </ul>
-
-      <div class="note amber">
-        <div class="ico">⚡</div>
-        <div>
-          <p class="t">Conseil de terrain</p>
-          <p>Après chaque formation, laissez les iPad <span class="hl">refroidir 5 minutes</span> avant de les ranger. Cela prolonge la durée de vie des batteries et évite l'accumulation de chaleur dans le châssis.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2><span class="num red">3</span>Conseils d'utilisation</h2>
-      <p>Douze réflexes pour tirer le meilleur de votre scope en session.</p>
-      <div class="grid">
-        <div class="tile">
-          <div class="tile-num">1</div>
-          <div class="tile-title" style="margin-bottom:8px">🔋 Gestion de l'alimentation</div>
-          <p>Chargez les iPad à <strong>100 %</strong> avant chaque session. Pour les formations de plus de 4 h, laissez-les branchés sur secteur. Le <span class="hl">mode économie d'énergie</span> d'iOS maximise l'autonomie.</p>
-        </div>
-        <div class="tile">
-          <div class="tile-num">2</div>
-          <div class="tile-title" style="margin-bottom:8px">📡 Connectivité optimale</div>
-          <p>Utilisez un <strong>réseau Wi-Fi dédié</strong> ou créez un <span class="hl">point d'accès mobile</span> pour éviter les interférences. Distance recommandée : <strong>10 mètres</strong> maximum.</p>
-        </div>
-        <div class="tile">
-          <div class="tile-num">3</div>
-          <div class="tile-title" style="margin-bottom:8px">🔢 Code de session</div>
-          <p>Vérifiez <strong>toujours</strong> que le moniteur et le poste formateur affichent le <span class="hl">même code</span> avant de démarrer. En cas de désynchronisation, relancez l'application sur les deux appareils.</p>
-        </div>
-        <div class="tile">
-          <div class="tile-num">4</div>
-          <div class="tile-title" style="margin-bottom:8px">⏱️ Automatisation</div>
-          <p>Programmez des <strong>prises de tension automatiques</strong> toutes les 5 minutes pour un rendu réaliste. Les <span class="hl">alertes paramétrables</span> (SpO₂, FC, PA) créent des scénarios dynamiques.</p>
-        </div>
-        <div class="tile">
-          <div class="tile-num">5</div>
-          <div class="tile-title" style="margin-bottom:8px">📊 Affichage complet</div>
-          <p>Affichez simultanément <span class="hl">ECG 12 dérivations</span>, SpO₂, EtCO₂, capnographie et l'ensemble des paramètres vitaux. Idéal pour les formations avancées.</p>
-        </div>
-        <div class="tile">
-          <div class="tile-num">6</div>
-          <div class="tile-title" style="margin-bottom:8px">🚨 Surveillance des alertes</div>
-          <p>Configurez les <strong>seuils d'alerte</strong> selon le niveau des apprenants et surveillez les notifications : batterie faible, constantes anormales, arythmies.</p>
-        </div>
-        <div class="tile">
-          <div class="tile-num">7</div>
-          <div class="tile-title" style="margin-bottom:8px">🎯 Scénarios pédagogiques</div>
-          <p>Construisez des cas progressifs : état stable → dégradation → intervention → amélioration. Enregistrez vos <span class="hl">scénarios favoris</span> pour les réutiliser.</p>
-        </div>
-        <div class="tile">
-          <div class="tile-num">8</div>
-          <div class="tile-title" style="margin-bottom:8px">🐛 Signalement de bugs</div>
-          <p>Utilisez le bouton <strong>Signaler un bug</strong> intégré à l'app. Précisez les <span class="hl">étapes de reproduction</span>, le comportement attendu et joignez des captures d'écran.</p>
-        </div>
-        <div class="tile">
-          <div class="tile-num">9</div>
-          <div class="tile-title" style="margin-bottom:8px">🔄 Mises à jour</div>
-          <p>Vérifiez les mises à jour chaque mois : nouveaux scénarios, corrections, améliorations d'interface et <span class="hl">nouvelles fonctionnalités</span> issues de vos retours.</p>
-        </div>
-        <div class="tile">
-          <div class="tile-num">10</div>
-          <div class="tile-title" style="margin-bottom:8px">📚 Formation continue</div>
-          <p>Consultez la documentation et les <span class="hl">tutoriels vidéo</span> pour découvrir les fonctionnalités avancées : DSA, ECG complexes, pathologies rares, modes experts.</p>
-        </div>
-        <div class="tile">
-          <div class="tile-num">11</div>
-          <div class="tile-title" style="margin-bottom:8px">🎬 Retours de session</div>
-          <p>Notez les <strong>temps de réaction</strong> des apprenants et les points d'amélioration, puis partagez vos retours pour enrichir la base de scénarios.</p>
-        </div>
-        <div class="tile">
-          <div class="tile-num">12</div>
-          <div class="tile-title" style="margin-bottom:8px">🌡️ Conditions optimales</div>
-          <p>Utilisez le scope dans un environnement <strong>tempéré</strong> (15–30 °C). Évitez les salles en plein soleil, source de reflets sur les écrans.</p>
-        </div>
-      </div>
-      <div class="note">
-        <div class="ico">🎓</div>
-        <div>
-          <p class="t">Prise en main offerte</p>
-          <p>Chaque pack VitalX inclut une <span class="hl">session de prise en main de 30 minutes</span> en visioconférence. Réservez votre créneau après réception de votre commande à <a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a>.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2><span class="num navy">4</span>Support &amp; assistance</h2>
-      <p>Support technique, SAV, questions commerciales ou suggestions : nous répondons <strong>7 j/7</strong>, sous 24 à 48 h.</p>
-      <ul class="plain">
-        <li><strong>Support technique</strong> — sous 24 h en semaine, 48 h le week-end</li>
-        <li><strong>Demandes SAV prioritaires</strong> — traitées sous 12 h en cas d'urgence justifiée</li>
-      </ul>
-      <p style="margin-top:18px">
-        <a href="mailto:vitalxscope@gmail.com" class="btn-red" style="border:0">📧 vitalxscope@gmail.com</a>
-      </p>
-    </div>
-
-    <div class="meta">
-      <p class="updated">📅 Dernière mise à jour : 19 août 2026</p>
-      <p>Produit conçu et assemblé en France 🇫🇷</p>
-    </div>
-
-  </div>
-</main>
-
-<div class="wrap backrow">
-  <a href="/" class="btn-out">← Retour au site</a>
+<div class="row">
+<a class="brand" href="/"><img alt="" onerror="this.style.display='none'" src="/logo.png"/>Vital<span>X</span></a>
+<nav class="navlinks">
+<a href="/">Accueil</a>
+<a href="/boutique.html">Boutique</a>
+<a href="/garantie.html">Garantie</a>
+<a href="/#contact">Contact</a>
+</nav>
+<a class="btn-red" href="/#contact">Demander un devis</a>
 </div>
-
+</header>
+<section class="sec-dark hero">
+<div class="glow-a"></div><div class="glow-b"></div>
+<div class="wrap inner">
+<p class="eyebrow eyebrow-light">Documentation officielle</p>
+<h1 class="h-hero">Garantie &amp; entretien</h1>
+<p class="sub">Tout ce qu'il faut savoir sur la garantie, l'entretien et les bonnes pratiques d'utilisation de votre scope VitalX.</p>
+    <p class="legal-notice">Seule la version française de ce document fait foi ; les traductions sont fournies à titre indicatif.</p>
+</div>
+<div class="tricolor" style="position:absolute;left:0;right:0;bottom:0"></div>
+</section>
+<main>
+<div class="wrap">
+<div class="card">
+<h2><span class="num">1</span>Garantie du matériel</h2>
+<p>Chaque composant de votre scope est couvert par une garantie adaptée à sa nature et à son usage. Voici le détail, élément par élément.</p>
+<div class="grid">
+<div class="tile">
+<div class="tile-head">
+<div class="tile-ico">👜</div>
+<div>
+<div class="tile-title">Housse Bagheera</div>
+<span class="chip">Garantie 10 ans</span>
+</div>
+</div>
+<p data-i18n-html="">Fabrication 100 % française par <strong>Bagheera</strong>, spécialiste de la bagagerie professionnelle. Matériaux ultra-résistants, coutures renforcées, fermetures YKK. La garantie couvre les défauts de fabrication, déchirures et usure prématurée.</p>
+</div>
+<div class="tile">
+<div class="tile-head">
+<div class="tile-ico">📦</div>
+<div>
+<div class="tile-title">Châssis VitalX</div>
+<span class="chip">Garantie 2 ans</span>
+</div>
+</div>
+<p data-i18n-html="">Imprimé en <strong>composite technique haute résistance</strong>, conçu pour résister aux manipulations intensives. La garantie couvre fissures, cassures et défauts structurels. <span class="hl-red">Non couvert</span> : exposition prolongée à la chaleur (&gt; 50 °C) et déformations thermiques.</p>
+</div>
+<div class="tile">
+<div class="tile-head">
+<div class="tile-ico">📱</div>
+<div>
+<div class="tile-title">iPad neufs fournis</div>
+<span class="chip">Garantie Apple 1 an</span>
+</div>
+</div>
+<p data-i18n-html="">Garantie constructeur <strong>Apple</strong> standard d'un an, extensible via <strong>AppleCare+</strong> souscrit séparément. Elle couvre les défauts matériels et de fabrication ; les dommages accidentels (chutes, liquides) nécessitent AppleCare+.</p>
+</div>
+<div class="tile">
+<div class="tile-head">
+<div class="tile-ico">♻️</div>
+<div>
+<div class="tile-title">iPad reconditionnés</div>
+<span class="chip">Garantie 1 an</span>
+</div>
+</div>
+<p data-i18n-html="">Les iPad reconditionnés inclus dans certains packs sont couverts par une garantie de <strong>12 mois</strong> du reconditionneur, portant sur les défauts matériels et de fonctionnement hors casse accidentelle. Contactez-nous d'abord : nous coordonnons la prise en charge.</p>
+</div>
+<div class="tile">
+<div class="tile-head">
+<div class="tile-ico">💻</div>
+<div>
+<div class="tile-title">Licence logicielle</div>
+<span class="chip">Licence à vie</span>
+</div>
+</div>
+<p data-i18n-html="">Licence <strong>VitalX</strong> incluse à vie avec votre pack, <strong>sans abonnement ni renouvellement</strong>. Mises à jour automatiques incluses et accès aux nouvelles fonctionnalités et scénarios ajoutés régulièrement.</p>
+</div>
+<div class="tile">
+<div class="tile-head">
+<div class="tile-ico">🔌</div>
+<div>
+<div class="tile-title">Accessoires &amp; consommables</div>
+<span class="chip">Garantie 1 an</span>
+</div>
+</div>
+<p data-i18n-html="">Brassard PNI, capteur SpO₂, câble ECG 12 dérivations, capteur EtCO₂, sonde de température et patchs sont garantis <strong>1 an</strong> contre les défauts de fabrication. En raison de leur nature <span class="hl-red">consommable</span>, l'usure normale (patchs, adhésifs, membranes, abrasions) n'est pas couverte.</p>
+</div>
+</div>
+<div class="note">
+<div class="ico">ℹ️</div>
+<div>
+<p class="t">Procédure de garantie</p>
+<p data-i18n-html="">En cas de problème matériel, écrivez à <a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a> en indiquant votre <span class="hl">numéro de commande</span>, une <span class="hl">description détaillée</span> du problème et des <span class="hl">photos</span> du produit concerné. Réponse sous 24 à 48 h ouvrées.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<h2><span class="num">2</span>Entretien &amp; nettoyage</h2>
+<p>Un entretien régulier garantit la longévité et les performances de votre équipement.</p>
+<h3>Bonnes pratiques</h3>
+<ul>
+<li data-i18n-html="">Nettoyez le châssis et la housse avec un <span class="hl">chiffon microfibre</span> légèrement humide, à l'eau tiède uniquement</li>
+<li data-i18n-html="">Utilisez un <span class="hl">spray antibactérien doux</span> pour désinfecter les surfaces tactiles des iPad</li>
+<li>Rangez les câbles dans leur compartiment après chaque utilisation pour éviter les nœuds</li>
+<li data-i18n-html="">Vérifiez régulièrement l'état des <span class="hl">connecteurs USB-C</span> et nettoyez-les délicatement</li>
+<li data-i18n-html="">Stockez le scope dans un endroit <span class="hl">sec et tempéré</span>, idéalement entre 15 et 25 °C</li>
+<li>Inspectez visuellement le châssis avant chaque session pour détecter une éventuelle fissure</li>
+</ul>
+<h3>À éviter absolument</h3>
+<ul class="warn-list">
+<li data-i18n-html="">Ne <strong>jamais</strong> utiliser de <span class="hl-red">solvants</span>, d'<span class="hl-red">alcool pur</span>, d'<span class="hl-red">acétone</span> ni de produits abrasifs</li>
+<li data-i18n-html="">Éviter l'exposition directe et prolongée au <span class="hl-red">soleil</span> (risque de décoloration)</li>
+<li>Ne pas soumettre le matériel à des températures extrêmes (sous −10 °C ou au-delà de 50 °C)</li>
+<li data-i18n-html="">Ne jamais <span class="hl-red">ouvrir</span> ni <span class="hl-red">démonter</span> le châssis (annulation immédiate de la garantie)</li>
+<li>Éviter de plier ou tordre excessivement les câbles (risque de rupture interne)</li>
+</ul>
+<h3>Exclusions de garantie</h3>
+<ul class="no-list">
+<li data-i18n-html="">Dommages causés par une <span class="hl-red">mauvaise utilisation</span> ou le non-respect des consignes</li>
+<li data-i18n-html="">Exposition à des <span class="hl-red">liquides</span> (eau, café, désinfectant en excès…)</li>
+<li data-i18n-html="">Chutes, chocs violents ou <span class="hl-red">contraintes mécaniques</span> anormales</li>
+<li data-i18n-html="">Modifications, réparations ou interventions <span class="hl-red">non autorisées</span></li>
+<li>Usure normale liée à l'utilisation intensive (rayures superficielles, légère décoloration)</li>
+<li data-i18n-html="">Dommages causés par des <span class="hl-red">accessoires tiers</span> non compatibles</li>
+</ul>
+<div class="note amber">
+<div class="ico">⚡</div>
+<div>
+<p class="t">Conseil de terrain</p>
+<p data-i18n-html="">Après chaque formation, laissez les iPad <span class="hl">refroidir 5 minutes</span> avant de les ranger. Cela prolonge la durée de vie des batteries et évite l'accumulation de chaleur dans le châssis.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<h2><span class="num red">3</span>Conseils d'utilisation</h2>
+<p>Douze réflexes pour tirer le meilleur de votre scope en session.</p>
+<div class="grid">
+<div class="tile">
+<div class="tile-num">1</div>
+<div class="tile-title" style="margin-bottom:8px">🔋 Gestion de l'alimentation</div>
+<p data-i18n-html="">Chargez les iPad à <strong>100 %</strong> avant chaque session. Pour les formations de plus de 4 h, laissez-les branchés sur secteur. Le <span class="hl">mode économie d'énergie</span> d'iOS maximise l'autonomie.</p>
+</div>
+<div class="tile">
+<div class="tile-num">2</div>
+<div class="tile-title" style="margin-bottom:8px">📡 Connectivité optimale</div>
+<p data-i18n-html="">Utilisez un <strong>réseau Wi-Fi dédié</strong> ou créez un <span class="hl">point d'accès mobile</span> pour éviter les interférences. Distance recommandée : <strong>10 mètres</strong> maximum.</p>
+</div>
+<div class="tile">
+<div class="tile-num">3</div>
+<div class="tile-title" style="margin-bottom:8px">🔢 Code de session</div>
+<p data-i18n-html="">Vérifiez <strong>toujours</strong> que le moniteur et le poste formateur affichent le <span class="hl">même code</span> avant de démarrer. En cas de désynchronisation, relancez l'application sur les deux appareils.</p>
+</div>
+<div class="tile">
+<div class="tile-num">4</div>
+<div class="tile-title" style="margin-bottom:8px">⏱️ Automatisation</div>
+<p data-i18n-html="">Programmez des <strong>prises de tension automatiques</strong> toutes les 5 minutes pour un rendu réaliste. Les <span class="hl">alertes paramétrables</span> (SpO₂, FC, PA) créent des scénarios dynamiques.</p>
+</div>
+<div class="tile">
+<div class="tile-num">5</div>
+<div class="tile-title" style="margin-bottom:8px">📊 Affichage complet</div>
+<p data-i18n-html="">Affichez simultanément <span class="hl">ECG 12 dérivations</span>, SpO₂, EtCO₂, capnographie et l'ensemble des paramètres vitaux. Idéal pour les formations avancées.</p>
+</div>
+<div class="tile">
+<div class="tile-num">6</div>
+<div class="tile-title" style="margin-bottom:8px">🚨 Surveillance des alertes</div>
+<p data-i18n-html="">Configurez les <strong>seuils d'alerte</strong> selon le niveau des apprenants et surveillez les notifications : batterie faible, constantes anormales, arythmies.</p>
+</div>
+<div class="tile">
+<div class="tile-num">7</div>
+<div class="tile-title" style="margin-bottom:8px">🎯 Scénarios pédagogiques</div>
+<p data-i18n-html="">Construisez des cas progressifs : état stable → dégradation → intervention → amélioration. Enregistrez vos <span class="hl">scénarios favoris</span> pour les réutiliser.</p>
+</div>
+<div class="tile">
+<div class="tile-num">8</div>
+<div class="tile-title" style="margin-bottom:8px">🐛 Signalement de bugs</div>
+<p data-i18n-html="">Utilisez le bouton <strong>Signaler un bug</strong> intégré à l'app. Précisez les <span class="hl">étapes de reproduction</span>, le comportement attendu et joignez des captures d'écran.</p>
+</div>
+<div class="tile">
+<div class="tile-num">9</div>
+<div class="tile-title" style="margin-bottom:8px">🔄 Mises à jour</div>
+<p data-i18n-html="">Vérifiez les mises à jour chaque mois : nouveaux scénarios, corrections, améliorations d'interface et <span class="hl">nouvelles fonctionnalités</span> issues de vos retours.</p>
+</div>
+<div class="tile">
+<div class="tile-num">10</div>
+<div class="tile-title" style="margin-bottom:8px">📚 Formation continue</div>
+<p data-i18n-html="">Consultez la documentation et les <span class="hl">tutoriels vidéo</span> pour découvrir les fonctionnalités avancées : DSA, ECG complexes, pathologies rares, modes experts.</p>
+</div>
+<div class="tile">
+<div class="tile-num">11</div>
+<div class="tile-title" style="margin-bottom:8px">🎬 Retours de session</div>
+<p data-i18n-html="">Notez les <strong>temps de réaction</strong> des apprenants et les points d'amélioration, puis partagez vos retours pour enrichir la base de scénarios.</p>
+</div>
+<div class="tile">
+<div class="tile-num">12</div>
+<div class="tile-title" style="margin-bottom:8px">🌡️ Conditions optimales</div>
+<p data-i18n-html="">Utilisez le scope dans un environnement <strong>tempéré</strong> (15–30 °C). Évitez les salles en plein soleil, source de reflets sur les écrans.</p>
+</div>
+</div>
+<div class="note">
+<div class="ico">🎓</div>
+<div>
+<p class="t">Prise en main offerte</p>
+<p data-i18n-html="">Chaque pack VitalX inclut une <span class="hl">session de prise en main de 30 minutes</span> en visioconférence. Réservez votre créneau après réception de votre commande à <a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a>.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<h2><span class="num navy">4</span>Support &amp; assistance</h2>
+<p data-i18n-html="">Support technique, SAV, questions commerciales ou suggestions : nous répondons <strong>7 j/7</strong>, sous 24 à 48 h.</p>
+<ul class="plain">
+<li data-i18n-html=""><strong>Support technique</strong> — sous 24 h en semaine, 48 h le week-end</li>
+<li data-i18n-html=""><strong>Demandes SAV prioritaires</strong> — traitées sous 12 h en cas d'urgence justifiée</li>
+</ul>
+<p data-i18n-html="" style="margin-top:18px">
+<a class="btn-red" href="mailto:vitalxscope@gmail.com" style="border:0">📧 vitalxscope@gmail.com</a>
+</p>
+</div>
+<div class="meta">
+<p class="updated">📅 Dernière mise à jour : 19 août 2026</p>
+<p>Produit conçu et assemblé en France 🇫🇷</p>
+</div>
+</div>
+</main>
+<div class="wrap backrow">
+<a class="btn-out" href="/">← Retour au site</a>
+</div>
 <footer class="site">
-  <div class="tricolor-thin" style="margin-bottom:26px"></div>
-  <div class="row">
-    <div>© <span id="year"></span> VitalX — Tous droits réservés. Conçu &amp; assemblé en France 🇫🇷</div>
-    <div style="display:flex;gap:18px;flex-wrap:wrap">
-      <a href="/mentions-legales.html">Mentions légales</a>
-      <a href="/cgv.html">CGV</a>
-      <a href="/politique-confidentialite.html">Confidentialité</a>
-      <a href="/garantie.html">Garantie</a>
-    </div>
-  </div>
+<div class="tricolor-thin" style="margin-bottom:26px"></div>
+<div class="row">
+<div>© <span id="year"></span> VitalX — Tous droits réservés. Conçu &amp; assemblé en France 🇫🇷</div>
+<div style="display:flex;gap:18px;flex-wrap:wrap">
+<a href="/mentions-legales.html">Mentions légales</a>
+<a href="/cgv.html">CGV</a>
+<a href="/politique-confidentialite.html">Confidentialité</a>
+<a href="/garantie.html">Garantie</a>
+</div>
+</div>
 </footer>
-
 <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
-
+<script src="/i18n-legal.js" defer></script>
+<script src="/i18n.js" defer></script>
 </body>
 </html>
