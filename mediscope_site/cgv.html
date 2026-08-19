@@ -1,4 +1,5 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <!--
   cgv.html — VitalX
   🆕 v2.0 — 19/08/2026 — Yann USSEGLIO
@@ -8,14 +9,14 @@
 -->
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>Conditions générales de vente — VitalX</title>
-<meta name="description" content="Conditions générales de vente de VitalX : commande, devis, livraison, garanties, rétractation.">
-<meta name="theme-color" content="#0a2240">
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+<meta content="Conditions générales de vente de VitalX : commande, devis, livraison, garanties, rétractation." name="description"/>
+<meta content="#0a2240" name="theme-color"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
 <style>
 *{-webkit-font-smoothing:antialiased;box-sizing:border-box}
 html,body{margin:0;padding:0;background:#f4f6f9;color:#0c1828;overflow-x:clip;max-width:100vw;line-height:1.7;
@@ -136,186 +137,178 @@ footer.site .row{max-width:1152px;margin:0 auto;padding:0 24px;display:flex;flex
   align-items:center;justify-content:space-between}
 footer.site a{color:#9fb3cc;border:0;font-weight:600}
 footer.site a:hover{color:#fff}
+
+/* 🌍 Sélecteur de langue */
+.lang-btn{width:26px;height:18px;border-radius:3px;overflow:hidden;display:block;line-height:0;padding:0;border:0;background:none;cursor:pointer;opacity:.4;transition:opacity .15s,box-shadow .15s}
+.lang-btn:hover{opacity:.85}
+.lang-btn.is-active{opacity:1;box-shadow:0 0 0 1.5px rgba(255,255,255,.9)}
+.lang-btn svg{display:block;width:100%;height:100%}
+#langSwitch{display:flex;align-items:center;gap:6px}
+.topstrip .right{display:flex;align-items:center;gap:16px}
+.legal-notice{font-size:13.5px;color:#9fb3cc;max-width:640px;margin:14px auto 0;font-style:italic}
 </style>
 </head>
 <body>
-
 <div class="topstrip">
-  <div class="row">
-    <span>Conçu &amp; assemblé en France 🇫🇷</span>
-    <span class="hide-sm"><a class="mail" href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a></span>
-  </div>
+<div class="row">
+<span>Conçu &amp; assemblé en France 🇫🇷</span>
+<span class="right">
+      <span class="hide-sm"><a class="mail" href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a></span>
+      <span id="langSwitch">
+        <button type="button" data-lang="fr" class="lang-btn is-active" title="Français" aria-label="Français"><svg viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="36" fill="#0046b8"/><rect x="20" width="20" height="36" fill="#fff"/><rect x="40" width="20" height="36" fill="#e1000f"/></svg></button>
+        <button type="button" data-lang="en" class="lang-btn" title="English" aria-label="English"><svg viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="36" fill="#012169"/><path d="M0 0 L60 36 M60 0 L0 36" stroke="#fff" stroke-width="7"/><path d="M0 0 L60 36 M60 0 L0 36" stroke="#C8102E" stroke-width="4"/><path d="M30 0 V36 M0 18 H60" stroke="#fff" stroke-width="12"/><path d="M30 0 V36 M0 18 H60" stroke="#C8102E" stroke-width="7"/></svg></button>
+        <button type="button" data-lang="de" class="lang-btn" title="Deutsch" aria-label="Deutsch"><svg viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="12" fill="#000"/><rect y="12" width="60" height="12" fill="#DD0000"/><rect y="24" width="60" height="12" fill="#FFCE00"/></svg></button>
+      </span>
+    </span>
+</div>
 </div>
 <div class="tricolor-thin"></div>
-
 <header class="nav">
-  <div class="row">
-    <a class="brand" href="/"><img src="/logo.png" alt="" onerror="this.style.display='none'">Vital<span>X</span></a>
-    <nav class="navlinks">
-      <a href="/">Accueil</a>
-      <a href="/boutique.html">Boutique</a>
-      <a href="/garantie.html">Garantie</a>
-      <a href="/#contact">Contact</a>
-    </nav>
-    <a href="/#contact" class="btn-red">Demander un devis</a>
-  </div>
-</header>
-
-<section class="sec-dark hero">
-  <div class="glow-a"></div><div class="glow-b"></div>
-  <div class="wrap inner">
-    <p class="eyebrow eyebrow-light">Vente</p>
-    <h1 class="h-hero">Conditions générales de vente</h1>
-    <p class="sub">Commande, devis, livraison, garanties et droit de rétractation.</p>
-  </div>
-  <div class="tricolor" style="position:absolute;left:0;right:0;bottom:0"></div>
-</section>
-
-<main>
-  <div class="wrap">
-
-    <div class="card">
-      <h2><span class="num">1</span>Identité du vendeur</h2>
-      <p><strong>VitalX</strong> — Entreprise individuelle (micro-entreprise).<br>
-      Siège : <em>Paris</em><br>
-      SIREN / SIRET : <strong>894 175 744 00016</strong> — TVA non applicable, art. 293B du CGI.<br>
-      E-mail : <a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a></p>
-    </div>
-
-    <div class="card">
-      <h2><span class="num">2</span>Objet et champ d'application</h2>
-      <p>Les présentes conditions générales de vente (« CGV ») régissent les ventes de produits et services proposés par VitalX auprès de clients consommateurs et professionnels, en France et dans l'Union européenne. Elles prévalent sur tout autre document, sauf conditions particulières acceptées par écrit par VitalX.</p>
-    </div>
-
-    <div class="card">
-      <h2><span class="num">3</span>Produits et services</h2>
-      <p>VitalX commercialise :</p>
-      <ul class="plain">
-        <li>Des <strong>packs matériels</strong> comprenant un châssis VitalX, une housse de transport, les connectiques et, selon la configuration retenue, un ou plusieurs iPad</li>
-        <li>Une <strong>licence logicielle</strong> permettant d'utiliser l'application VitalX (iOS / iPadOS)</li>
-        <li>Des <strong>extensions optionnelles</strong>, notamment le Mode Ultra, et des accessoires</li>
-      </ul>
-      <p>Les caractéristiques essentielles de chaque produit sont détaillées sur sa fiche technique.</p>
-    </div>
-
-    <div class="card">
-      <h2><span class="num">4</span>Devis et commande</h2>
-      <p>Les packs matériels sont proposés <strong>sur devis</strong>. Le devis précise la configuration, le prix et les délais ; il est valable 30 jours sauf mention contraire. La commande est ferme après acceptation du devis et validation du paiement, ou après réception du bon de commande pour les clients publics.</p>
-      <p>Les articles disponibles directement en boutique (extensions logicielles, accessoires, écussons) sont commandés en ligne et la commande est ferme après validation du paiement. Le client reçoit un e-mail de confirmation récapitulant les produits, prix et délais estimatifs.</p>
-      <p>VitalX se réserve le droit de refuser une commande en cas de suspicion de fraude, de litige antérieur ou d'informations incomplètes.</p>
-    </div>
-
-    <div class="card">
-      <h2><span class="num">5</span>Prix et paiement</h2>
-      <p>Les prix sont indiqués en euros. <strong>TVA non applicable</strong> conformément à l'article 293B du CGI (statut micro-entreprise). Le paiement est effectué via <strong>Stripe</strong> (carte bancaire, Apple Pay, etc.) ou par virement sur facture pour les commandes sur devis.</p>
-      <p>Les transactions sont chiffrées ; VitalX n'a jamais accès aux données complètes de carte bancaire.</p>
-    </div>
-
-    <div class="card">
-      <h2><span class="num">6</span>Livraison</h2>
-      <p>Délai indicatif : <strong>15 à 30 jours ouvrés</strong> à compter de la confirmation de commande, sauf mention contraire. La livraison est effectuée à l'adresse indiquée par le client, et un numéro de suivi est communiqué lorsqu'il est disponible.</p>
-      <p>Les risques de perte ou d'endommagement sont transférés au client au moment où celui-ci, ou un tiers qu'il a désigné, prend physiquement possession des biens.</p>
-    </div>
-
-    <div class="card">
-      <h2><span class="num red">7</span>Conformité et garanties</h2>
-      <ul class="plain">
-        <li><strong>iPad inclus</strong> — garantie constructeur Apple ; le SAV matériel relatif aux iPad est à effectuer auprès d'Apple. Pour les modèles reconditionnés, la garantie du reconditionneur s'applique.</li>
-        <li><strong>Châssis VitalX, housse et accessoires</strong> — garantie légale de conformité (2 ans) et garantie contre les vices cachés, au titre du Code de la consommation et du Code civil. Retour atelier après diagnostic, réparation ou remplacement selon disponibilité. Les garanties commerciales complémentaires sont détaillées sur la page <a href="/garantie.html">Garantie</a>.</li>
-        <li><strong>Logiciel et licence</strong> — fournis pour un usage pédagogique. Mises à jour incluses. Assistance par e-mail : <a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a>.</li>
-      </ul>
-      <p style="font-size:13.5px">Sont exclus les dommages résultant d'une mauvaise utilisation, de chocs, de liquides, de modifications non autorisées ou d'un usage contraire à la documentation.</p>
-    </div>
-
-    <div class="card">
-      <h2><span class="num">8</span>Droit de rétractation (consommateurs)</h2>
-      <p>Conformément aux articles L.221-18 et suivants du Code de la consommation, le client consommateur dispose d'un <strong>délai de 14 jours</strong> à compter de la réception du produit pour exercer son droit de rétractation, <em>sans avoir à motiver sa décision</em> ni à supporter d'autres coûts que ceux du renvoi.</p>
-      <ul class="plain">
-        <li><strong>Retour</strong> — les produits doivent être renvoyés complets, en parfait état et, pour les iPad, <strong>non déballés</strong> et <strong>non activés</strong>, dans leur emballage d'origine scellé.</li>
-        <li><strong>Remboursement</strong> — à réception et vérification des produits, VitalX rembourse par le moyen de paiement d'origine, sous 14 jours maximum.</li>
-        <li><strong>Exceptions</strong> — le droit de rétractation ne s'applique pas aux contenus numériques dont l'exécution a commencé avec l'accord préalable exprès du consommateur et renonciation à son droit (licence logicielle activée), ni aux biens descellés ne pouvant être renvoyés pour des raisons d'hygiène ou de sécurité.</li>
-      </ul>
-      <p>Un <a href="/formulaire_retractation.pdf" download>formulaire de rétractation</a> est mis à votre disposition.</p>
-    </div>
-
-    <div class="card">
-      <h2><span class="num">9</span>SAV et retours (RMA)</h2>
-      <p>Avant tout retour, contactez le support pour obtenir un numéro de dossier (RMA) et les instructions d'expédition. Les retours non autorisés pourront être refusés. Emballez soigneusement le matériel et conservez la preuve de dépôt.</p>
-    </div>
-
-    <div class="card">
-      <h2><span class="num navy">10</span>Extensions logicielles</h2>
-      <p>Les modules avancés (Mode Ultra : GUARDIAN, NEXUS, CTG, VENT) sont proposés en <strong>achat unique</strong>, sans abonnement ni renouvellement. L'activation s'effectue au moyen du code de votre scope, communiqué lors de la commande.</p>
-      <p>Si des fonctionnalités venaient à être proposées via achat intégré sur l'App Store, la facturation, la gestion et l'annulation seraient assurées par Apple depuis l'identifiant Apple du client.</p>
-    </div>
-
-    <div class="card">
-      <h2><span class="num red">11</span>Responsabilité</h2>
-      <p>VitalX n'est pas responsable des dommages indirects, pertes de données, pertes d'exploitation ou préjudices immatériels.</p>
-      <div class="note amber">
-        <div class="ico">⚠️</div>
-        <div>
-          <p class="t">Outil de simulation pédagogique</p>
-          <p>L'application et les scopes VitalX ne doivent en aucun cas être utilisés pour le diagnostic, la surveillance ou la prise de décision médicale réelle. L'usage du produit doit se faire conformément à la documentation et aux consignes de sécurité.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2><span class="num">12</span>Propriété intellectuelle</h2>
-      <p>Les marques, logos, logiciels, textes, images et contenus restent la propriété exclusive de leurs titulaires. Toute reproduction, représentation, modification ou utilisation non autorisée est interdite.</p>
-    </div>
-
-    <div class="card">
-      <h2><span class="num">13</span>Données personnelles</h2>
-      <p>Les traitements de données effectués par VitalX sont décrits dans la <a href="/politique-confidentialite.html">politique de confidentialité</a>. Aucune donnée patient réelle n'est stockée par l'application ; l'accès aux sessions est sécurisé par code.</p>
-    </div>
-
-    <div class="card">
-      <h2><span class="num">14</span>Force majeure</h2>
-      <p>La responsabilité de VitalX ne saurait être engagée en cas de manquement dû à un événement de force majeure au sens du droit français (grève générale, catastrophe naturelle, panne réseau à grande échelle, etc.).</p>
-    </div>
-
-    <div class="card">
-      <h2><span class="num">15</span>Droit applicable et litiges</h2>
-      <p>Les présentes CGV sont régies par le droit français. En cas de litige, le client consommateur peut recourir gratuitement à un <strong>médiateur de la consommation</strong> ou saisir les juridictions compétentes. À défaut d'accord amiable, les tribunaux du ressort du siège de VitalX sont compétents.</p>
-    </div>
-
-    <div class="card">
-      <h2><span class="num">16</span>Preuve et archivage</h2>
-      <p>Les enregistrements informatisés conservés dans les systèmes de VitalX sont considérés comme preuves des communications, commandes et paiements intervenus entre les parties. Les bons de commande et factures sont archivés sur un support fiable et durable.</p>
-    </div>
-
-    <div class="card">
-      <h2><span class="num navy">17</span>Modification des CGV</h2>
-      <p>VitalX se réserve le droit de modifier les présentes CGV à tout moment. Les CGV applicables sont celles en vigueur à la date de la commande.</p>
-    </div>
-
-    <div class="meta">
-      <p class="updated">📅 Dernière mise à jour : 19 août 2026</p>
-    </div>
-
-  </div>
-</main>
-
-<div class="wrap backrow">
-  <a href="/" class="btn-out">← Retour au site</a>
+<div class="row">
+<a class="brand" href="/"><img alt="" onerror="this.style.display='none'" src="/logo.png"/>Vital<span>X</span></a>
+<nav class="navlinks">
+<a href="/">Accueil</a>
+<a href="/boutique.html">Boutique</a>
+<a href="/garantie.html">Garantie</a>
+<a href="/#contact">Contact</a>
+</nav>
+<a class="btn-red" href="/#contact">Demander un devis</a>
 </div>
-
+</header>
+<section class="sec-dark hero">
+<div class="glow-a"></div><div class="glow-b"></div>
+<div class="wrap inner">
+<p class="eyebrow eyebrow-light">Vente</p>
+<h1 class="h-hero">Conditions générales de vente</h1>
+<p class="sub">Commande, devis, livraison, garanties et droit de rétractation.</p>
+    <p class="legal-notice">Seule la version française de ce document fait foi ; les traductions sont fournies à titre indicatif.</p>
+</div>
+<div class="tricolor" style="position:absolute;left:0;right:0;bottom:0"></div>
+</section>
+<main>
+<div class="wrap">
+<div class="card">
+<h2><span class="num">1</span>Identité du vendeur</h2>
+<p data-i18n-html=""><strong>VitalX</strong> — Entreprise individuelle (micro-entreprise).<br/>
+      Siège : <em>Paris</em><br/>
+      SIREN / SIRET : <strong>894 175 744 00016</strong> — TVA non applicable, art. 293B du CGI.<br/>
+      E-mail : <a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a></p>
+</div>
+<div class="card">
+<h2><span class="num">2</span>Objet et champ d'application</h2>
+<p>Les présentes conditions générales de vente (« CGV ») régissent les ventes de produits et services proposés par VitalX auprès de clients consommateurs et professionnels, en France et dans l'Union européenne. Elles prévalent sur tout autre document, sauf conditions particulières acceptées par écrit par VitalX.</p>
+</div>
+<div class="card">
+<h2><span class="num">3</span>Produits et services</h2>
+<p>VitalX commercialise :</p>
+<ul class="plain">
+<li data-i18n-html="">Des <strong>packs matériels</strong> comprenant un châssis VitalX, une housse de transport, les connectiques et, selon la configuration retenue, un ou plusieurs iPad</li>
+<li data-i18n-html="">Une <strong>licence logicielle</strong> permettant d'utiliser l'application VitalX (iOS / iPadOS)</li>
+<li data-i18n-html="">Des <strong>extensions optionnelles</strong>, notamment le Mode Ultra, et des accessoires</li>
+</ul>
+<p>Les caractéristiques essentielles de chaque produit sont détaillées sur sa fiche technique.</p>
+</div>
+<div class="card">
+<h2><span class="num">4</span>Devis et commande</h2>
+<p data-i18n-html="">Les packs matériels sont proposés <strong>sur devis</strong>. Le devis précise la configuration, le prix et les délais ; il est valable 30 jours sauf mention contraire. La commande est ferme après acceptation du devis et validation du paiement, ou après réception du bon de commande pour les clients publics.</p>
+<p>Les articles disponibles directement en boutique (extensions logicielles, accessoires, écussons) sont commandés en ligne et la commande est ferme après validation du paiement. Le client reçoit un e-mail de confirmation récapitulant les produits, prix et délais estimatifs.</p>
+<p>VitalX se réserve le droit de refuser une commande en cas de suspicion de fraude, de litige antérieur ou d'informations incomplètes.</p>
+</div>
+<div class="card">
+<h2><span class="num">5</span>Prix et paiement</h2>
+<p data-i18n-html="">Les prix sont indiqués en euros. <strong>TVA non applicable</strong> conformément à l'article 293B du CGI (statut micro-entreprise). Le paiement est effectué via <strong>Stripe</strong> (carte bancaire, Apple Pay, etc.) ou par virement sur facture pour les commandes sur devis.</p>
+<p>Les transactions sont chiffrées ; VitalX n'a jamais accès aux données complètes de carte bancaire.</p>
+</div>
+<div class="card">
+<h2><span class="num">6</span>Livraison</h2>
+<p data-i18n-html="">Délai indicatif : <strong>15 à 30 jours ouvrés</strong> à compter de la confirmation de commande, sauf mention contraire. La livraison est effectuée à l'adresse indiquée par le client, et un numéro de suivi est communiqué lorsqu'il est disponible.</p>
+<p>Les risques de perte ou d'endommagement sont transférés au client au moment où celui-ci, ou un tiers qu'il a désigné, prend physiquement possession des biens.</p>
+</div>
+<div class="card">
+<h2><span class="num red">7</span>Conformité et garanties</h2>
+<ul class="plain">
+<li data-i18n-html=""><strong>iPad inclus</strong> — garantie constructeur Apple ; le SAV matériel relatif aux iPad est à effectuer auprès d'Apple. Pour les modèles reconditionnés, la garantie du reconditionneur s'applique.</li>
+<li data-i18n-html=""><strong>Châssis VitalX, housse et accessoires</strong> — garantie légale de conformité (2 ans) et garantie contre les vices cachés, au titre du Code de la consommation et du Code civil. Retour atelier après diagnostic, réparation ou remplacement selon disponibilité. Les garanties commerciales complémentaires sont détaillées sur la page <a href="/garantie.html">Garantie</a>.</li>
+<li data-i18n-html=""><strong>Logiciel et licence</strong> — fournis pour un usage pédagogique. Mises à jour incluses. Assistance par e-mail : <a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a>.</li>
+</ul>
+<p style="font-size:13.5px">Sont exclus les dommages résultant d'une mauvaise utilisation, de chocs, de liquides, de modifications non autorisées ou d'un usage contraire à la documentation.</p>
+</div>
+<div class="card">
+<h2><span class="num">8</span>Droit de rétractation (consommateurs)</h2>
+<p data-i18n-html="">Conformément aux articles L.221-18 et suivants du Code de la consommation, le client consommateur dispose d'un <strong>délai de 14 jours</strong> à compter de la réception du produit pour exercer son droit de rétractation, <em>sans avoir à motiver sa décision</em> ni à supporter d'autres coûts que ceux du renvoi.</p>
+<ul class="plain">
+<li data-i18n-html=""><strong>Retour</strong> — les produits doivent être renvoyés complets, en parfait état et, pour les iPad, <strong>non déballés</strong> et <strong>non activés</strong>, dans leur emballage d'origine scellé.</li>
+<li data-i18n-html=""><strong>Remboursement</strong> — à réception et vérification des produits, VitalX rembourse par le moyen de paiement d'origine, sous 14 jours maximum.</li>
+<li data-i18n-html=""><strong>Exceptions</strong> — le droit de rétractation ne s'applique pas aux contenus numériques dont l'exécution a commencé avec l'accord préalable exprès du consommateur et renonciation à son droit (licence logicielle activée), ni aux biens descellés ne pouvant être renvoyés pour des raisons d'hygiène ou de sécurité.</li>
+</ul>
+<p data-i18n-html="">Un <a download="" href="/formulaire_retractation.pdf">formulaire de rétractation</a> est mis à votre disposition.</p>
+</div>
+<div class="card">
+<h2><span class="num">9</span>SAV et retours (RMA)</h2>
+<p>Avant tout retour, contactez le support pour obtenir un numéro de dossier (RMA) et les instructions d'expédition. Les retours non autorisés pourront être refusés. Emballez soigneusement le matériel et conservez la preuve de dépôt.</p>
+</div>
+<div class="card">
+<h2><span class="num navy">10</span>Extensions logicielles</h2>
+<p data-i18n-html="">Les modules avancés (Mode Ultra : GUARDIAN, NEXUS, CTG, VENT) sont proposés en <strong>achat unique</strong>, sans abonnement ni renouvellement. L'activation s'effectue au moyen du code de votre scope, communiqué lors de la commande.</p>
+<p>Si des fonctionnalités venaient à être proposées via achat intégré sur l'App Store, la facturation, la gestion et l'annulation seraient assurées par Apple depuis l'identifiant Apple du client.</p>
+</div>
+<div class="card">
+<h2><span class="num red">11</span>Responsabilité</h2>
+<p>VitalX n'est pas responsable des dommages indirects, pertes de données, pertes d'exploitation ou préjudices immatériels.</p>
+<div class="note amber">
+<div class="ico">⚠️</div>
+<div>
+<p class="t">Outil de simulation pédagogique</p>
+<p>L'application et les scopes VitalX ne doivent en aucun cas être utilisés pour le diagnostic, la surveillance ou la prise de décision médicale réelle. L'usage du produit doit se faire conformément à la documentation et aux consignes de sécurité.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<h2><span class="num">12</span>Propriété intellectuelle</h2>
+<p>Les marques, logos, logiciels, textes, images et contenus restent la propriété exclusive de leurs titulaires. Toute reproduction, représentation, modification ou utilisation non autorisée est interdite.</p>
+</div>
+<div class="card">
+<h2><span class="num">13</span>Données personnelles</h2>
+<p data-i18n-html="">Les traitements de données effectués par VitalX sont décrits dans la <a href="/politique-confidentialite.html">politique de confidentialité</a>. Aucune donnée patient réelle n'est stockée par l'application ; l'accès aux sessions est sécurisé par code.</p>
+</div>
+<div class="card">
+<h2><span class="num">14</span>Force majeure</h2>
+<p>La responsabilité de VitalX ne saurait être engagée en cas de manquement dû à un événement de force majeure au sens du droit français (grève générale, catastrophe naturelle, panne réseau à grande échelle, etc.).</p>
+</div>
+<div class="card">
+<h2><span class="num">15</span>Droit applicable et litiges</h2>
+<p data-i18n-html="">Les présentes CGV sont régies par le droit français. En cas de litige, le client consommateur peut recourir gratuitement à un <strong>médiateur de la consommation</strong> ou saisir les juridictions compétentes. À défaut d'accord amiable, les tribunaux du ressort du siège de VitalX sont compétents.</p>
+</div>
+<div class="card">
+<h2><span class="num">16</span>Preuve et archivage</h2>
+<p>Les enregistrements informatisés conservés dans les systèmes de VitalX sont considérés comme preuves des communications, commandes et paiements intervenus entre les parties. Les bons de commande et factures sont archivés sur un support fiable et durable.</p>
+</div>
+<div class="card">
+<h2><span class="num navy">17</span>Modification des CGV</h2>
+<p>VitalX se réserve le droit de modifier les présentes CGV à tout moment. Les CGV applicables sont celles en vigueur à la date de la commande.</p>
+</div>
+<div class="meta">
+<p class="updated">📅 Dernière mise à jour : 19 août 2026</p>
+</div>
+</div>
+</main>
+<div class="wrap backrow">
+<a class="btn-out" href="/">← Retour au site</a>
+</div>
 <footer class="site">
-  <div class="tricolor-thin" style="margin-bottom:26px"></div>
-  <div class="row">
-    <div>© <span id="year"></span> VitalX — Tous droits réservés. Conçu &amp; assemblé en France 🇫🇷</div>
-    <div style="display:flex;gap:18px;flex-wrap:wrap">
-      <a href="/mentions-legales.html">Mentions légales</a>
-      <a href="/cgv.html">CGV</a>
-      <a href="/politique-confidentialite.html">Confidentialité</a>
-      <a href="/garantie.html">Garantie</a>
-    </div>
-  </div>
+<div class="tricolor-thin" style="margin-bottom:26px"></div>
+<div class="row">
+<div>© <span id="year"></span> VitalX — Tous droits réservés. Conçu &amp; assemblé en France 🇫🇷</div>
+<div style="display:flex;gap:18px;flex-wrap:wrap">
+<a href="/mentions-legales.html">Mentions légales</a>
+<a href="/cgv.html">CGV</a>
+<a href="/politique-confidentialite.html">Confidentialité</a>
+<a href="/garantie.html">Garantie</a>
+</div>
+</div>
 </footer>
-
 <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
-
+<script src="/i18n-legal.js" defer></script>
+<script src="/i18n.js" defer></script>
 </body>
 </html>
