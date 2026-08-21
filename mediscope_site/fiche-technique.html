@@ -9,8 +9,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>VitalX — Fiche technique</title>
-<meta content="Fiche technique complète du Pack VitalX — solution de simulation médicale pour la formation et l'urgence." name="description"/>
+<title>VitalX PLUS — Fiche technique</title>
+<meta content="Fiche technique du pack VitalX PLUS — solution de simulation médicale pour la formation et l'urgence." name="description"/>
 <link href="/favicon.ico" rel="icon"/>
 <script>
     tailwind = window.tailwind || {};
@@ -104,7 +104,7 @@
         Fiche technique officielle
       </span>
 <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight">
-<span class="title-bar">Pack Vital<span id="packName">X</span></span>
+<span class="title-bar">VitalX PLUS</span>
 </h1>
 <p class="mt-5 text-zinc-300 text-base md:text-lg max-w-2xl mx-auto">
         Solution complète de simulation paramédicale pour la formation et l'entraînement aux gestes qui sauvent.
@@ -125,7 +125,7 @@
 <h2 class="text-2xl md:text-3xl font-extrabold">Description générale</h2>
 </div>
 <div class="text-zinc-300 leading-relaxed space-y-4">
-<p data-i18n-html="">Le Pack VitalX est une <strong class="text-rose-300">solution complète de simulation paramédicale</strong> conçue pour la formation aux gestes d'urgence et à la prise en charge préhospitalière. Il regroupe tout le matériel nécessaire à un entraînement immersif et réaliste, <strong class="text-white">prêt à l'emploi dès la livraison</strong>.</p>
+<p data-i18n-html="">Le pack VitalX PLUS est une <strong class="text-rose-300">solution complète de simulation paramédicale</strong> conçue pour la formation aux gestes d'urgence et à la prise en charge préhospitalière. Il regroupe tout le matériel nécessaire à un entraînement immersif et réaliste, <strong class="text-white">prêt à l'emploi dès la livraison</strong>.</p>
 <p data-i18n-html="">Le système repose sur deux iPad (formateur + moniteur) et un boîtier 3D VitalX permettant un affichage fidèle des constantes vitales : <strong class="text-sky-300">ECG</strong>, <strong class="text-sky-300">SpO₂</strong>, <strong class="text-sky-300">PNI</strong>, <strong class="text-sky-300">ETCO₂</strong>, <strong class="text-sky-300">température</strong>, et bien plus encore.</p>
 </div>
 </section>
@@ -255,31 +255,6 @@
 </footer>
 <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    /* ⚠️ Variante Basique via ?pack=basique — aucune logique de prix */
-    (function(){
-      const params = new URLSearchParams(location.search);
-      const packParam = (params.get('pack') || '').toLowerCase();
-      const isBasique = packParam === 'basique' || packParam === 'basic' || packParam === 'b';
-
-      const elPackName = document.getElementById('packName');
-      const elIpadLine = document.getElementById('ipadLine');
-
-      let nameText = 'X';
-      let ipadInner = '<div><strong class="text-white">2 iPad A16 (11&quot;)</strong> — Formateur &amp; Moniteur<br><span class="text-sm text-zinc-400">Autonomie 8h • Recharge USB-C</span></div>';
-
-      if (isBasique) {
-        nameText = 'X Basique';
-        ipadInner = '<div><strong class="text-white">1 iPad A16 (11&quot;)</strong> — Moniteur prêt à l\'emploi<br><span class="text-sm text-zinc-400">Autonomie 8h • Recharge USB-C</span></div>';
-      }
-
-      if (elPackName) elPackName.textContent = nameText;
-      document.title = `VitalX — Fiche technique (${isBasique ? 'Basique' : 'Complet'})`;
-
-      if (elIpadLine) {
-        elIpadLine.innerHTML = '<span class="shrink-0 h-7 w-7 rounded-lg bg-gradient-to-br from-red-500 to-rose-500 text-white font-bold flex items-center justify-center text-sm">✓</span>' + ipadInner;
-      }
-    })();
   </script>
 <script defer="" src="/i18n-fiches.js"></script><script defer="" src="/i18n.js"></script></body>
 </html>
