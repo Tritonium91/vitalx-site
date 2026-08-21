@@ -22,7 +22,6 @@
 
   T.en = {
     'Châssis VitalX + housse de transport': 'VitalX chassis + carry case',
-    'Connectique complète + verres trempés': 'Full connector set + tempered glass',
     '— formateur, avec coque': '— trainer, with case',
     'Châssis VitalX V2 + housse Bagheera V2 Premium': 'VitalX V2 chassis + Bagheera V2 Premium case',
     /* ── Bandeau haut / navigation ─────────────────────────────── */
@@ -345,7 +344,6 @@
 
   T.de = {
     'Châssis VitalX + housse de transport': 'VitalX Gehäuse + Transporttasche',
-    'Connectique complète + verres trempés': 'Komplettes Zubehör + Panzerglas',
     '— formateur, avec coque': '— Trainer, mit Hülle',
     'Châssis VitalX V2 + housse Bagheera V2 Premium': 'VitalX V2 Gehäuse + Bagheera V2 Premium Tasche',
     /* ── Bandeau haut / navigation ─────────────────────────────── */
