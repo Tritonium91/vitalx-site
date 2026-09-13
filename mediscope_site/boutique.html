@@ -9,6 +9,7 @@
      • Gamme inchangée : VitalX · Plus · Pro · Ultra · POD'S Classic · POD'S Pro · Licence · Mise à niveau
      • Écussons : panier Stripe conservé à l'identique (mêmes identifiants et SKU), tiroir restylé
      • Aucun prix affiché sur les packs / licences (devis)
+     • v4.1 : encart « Dans chaque pack iPad » retiré, paiement Stripe ouvert dans un nouvel onglet, rappels bleu-blanc-rouge (Made in France)
      • Ancres conservées : #pack #pods #licence #ecussons (+ redirection #licenses → #licence)
 -->
 <html lang="fr">
@@ -111,7 +112,7 @@
   <!-- BARRE DE NAVIGATION GLOBALE -->
   <header class="gnav">
     <div class="wrap">
-      <a href="/" class="gnav-logo" aria-label="VitalX — accueil"><img src="/logo.png" alt="" onerror="this.style.display='none'"/>Vital<b>X</b></a>
+      <a href="/" class="gnav-logo" aria-label="VitalX — accueil"><img src="/assets/logo-vitalx-white.svg" alt="VitalX" data-no-lightbox="true"/></a>
       <ul class="gnav-links">
         <li><a href="/#v2">Scopes</a></li>
         <li><a href="/#interfaces">Interfaces</a></li>
@@ -131,6 +132,7 @@
       </div>
     </div>
   </header>
+  <div class="tricolor" aria-hidden="true"></div>
   <nav id="mobileMenu" class="gnav-mobile" aria-label="Menu mobile">
     <a href="/">Accueil</a>
     <a href="#pack">Packs iPad</a>
@@ -164,6 +166,7 @@
     <!-- HERO -->
     <section class="shop-hero">
       <div class="wrap">
+        <span class="fr-badge hero-in"><i class="fr-flag" aria-hidden="true"></i>Conçu &amp; assemblé en France 🇫🇷</span>
         <h1 class="t-hero hero-in" style="font-size:clamp(40px,6vw,64px)">Boutique.</h1>
         <p class="t-hero-sub hero-in hero-in-2" style="color:var(--ink-2);max-width:700px;margin:10px auto 0">Scopes de simulation sur iPad et iPhone, licence seule pour les centres déjà équipés, écussons. Tarif des packs et licences communiqué sur devis, sous 24 h.</p>
         <div class="chips hero-in hero-in-3">
@@ -181,19 +184,6 @@
       </div>
     </section>
 
-    <!-- INCLUS DANS CHAQUE PACK -->
-    <section class="shop-section" style="padding-top:8px">
-      <div class="wrap">
-        <div class="card card-pad center sr">
-          <p class="t-eyebrow">Dans chaque pack iPad</p>
-          <p class="t-body-lg" style="margin:0 auto;max-width:760px">Châssis VitalX, housse ou pochette Bagheera, connectiques médicales, tous les modules logiciels, les interfaces constructeurs et la licence à vie. Il n'y a rien à ajouter.</p>
-          <div class="pills" style="margin-top:22px">
-            <span>Châssis VitalX</span><span>Housse Bagheera</span><span>PNI</span><span>SpO₂</span><span>ECG 12D</span><span>DSA</span><span>Température</span><span>EtCO₂</span><span>Moniteur VitalX</span><span>Interfaces Schiller</span><span>Interfaces Weinmann</span><span>Media Center</span><span>Licence à vie · 3 appareils</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- PACKS IPAD -->
     <section id="pack" class="shop-section">
       <div class="wrap-wide">
@@ -205,7 +195,7 @@
 
           <!-- 1 · VitalX -->
           <article class="prod card-hover sr">
-            <span class="prod-badge blue">Idéal solo</span>
+            <span class="prod-badge blue">Idéal solo</span><span class="prod-fr"><i class="fr-flag" aria-hidden="true"></i>Assemblé en France</span>
             <div class="prod-art"><img src="/assets/pack-vitalx1.png" alt="VitalX" loading="lazy"/></div>
             <div class="prod-body">
               <h3>VitalX</h3>
@@ -225,7 +215,7 @@
 
           <!-- 2 · VitalX PLUS -->
           <article class="prod card-hover sr sr-d1">
-            <span class="prod-badge">Best-seller</span>
+            <span class="prod-badge">Best-seller</span><span class="prod-fr"><i class="fr-flag" aria-hidden="true"></i>Assemblé en France</span>
             <div class="prod-art"><img src="/assets/pack-vitalx.png" alt="VitalX Plus" loading="lazy"/></div>
             <div class="prod-body">
               <h3>VitalX Plus</h3>
@@ -245,7 +235,7 @@
 
           <!-- 3 · VitalX Pro -->
           <article class="prod card-hover sr sr-d2">
-            <span class="prod-badge dark">Génération V2</span>
+            <span class="prod-badge dark">Génération V2</span><span class="prod-fr"><i class="fr-flag" aria-hidden="true"></i>Assemblé en France</span>
             <div class="prod-art"><img src="/assets/vitalxPro.PNG" alt="VitalX Pro" loading="lazy"/></div>
             <div class="prod-body">
               <h3>VitalX Pro</h3>
@@ -265,7 +255,7 @@
 
           <!-- 4 · VitalX Ultra -->
           <article class="prod card-hover sr sr-d3">
-            <span class="prod-badge dark">Le plus complet</span>
+            <span class="prod-badge dark">Le plus complet</span><span class="prod-fr"><i class="fr-flag" aria-hidden="true"></i>Assemblé en France</span>
             <div class="prod-art"><img src="/assets/vitalxv2pro.PNG" alt="VitalX Ultra" loading="lazy"/></div>
             <div class="prod-body">
               <h3>VitalX Ultra</h3>
@@ -314,7 +304,7 @@
         </div>
         <div class="grid-2">
           <article class="prod card-hover sr sr-d1">
-            <span class="prod-badge blue">Compact</span>
+            <span class="prod-badge blue">Compact</span><span class="prod-fr"><i class="fr-flag" aria-hidden="true"></i>Assemblé en France</span>
             <div class="prod-art prod-art-tall"><img src="/assets/vitalxpodsclassic.PNG" alt="POD'S Classic" loading="lazy"/></div>
             <div class="prod-body">
               <h3>POD'S Classic</h3>
@@ -334,7 +324,7 @@
             </div>
           </article>
           <article class="prod card-hover sr sr-d2">
-            <span class="prod-badge">Formateur inclus</span>
+            <span class="prod-badge">Formateur inclus</span><span class="prod-fr"><i class="fr-flag" aria-hidden="true"></i>Assemblé en France</span>
             <div class="prod-art prod-art-tall"><img src="/assets/vitalxpodspremium.png" alt="POD'S Pro" loading="lazy"/></div>
             <div class="prod-body">
               <h3>POD'S Pro</h3>
@@ -368,7 +358,7 @@
         <div class="grid-2">
           <!-- Licence seule -->
           <article class="prod card-hover sr">
-            <span class="prod-badge blue">Logiciel seul</span>
+            <span class="prod-badge blue">Logiciel seul</span><span class="prod-fr"><i class="fr-flag" aria-hidden="true"></i>Assemblé en France</span>
             <div class="prod-art" style="background:#000;min-height:220px;padding:28px"><img src="/assets/licence-life.png" alt="Licence VitalX à vie" loading="lazy" style="max-height:170px"/></div>
             <div class="prod-body" style="padding-top:22px">
               <h3>Licence VitalX</h3>
@@ -388,7 +378,7 @@
 
           <!-- Passage POD'S → VitalX -->
           <article class="prod card-hover sr sr-d1">
-            <span class="prod-badge dark">Code existant</span>
+            <span class="prod-badge dark">Code existant</span><span class="prod-fr"><i class="fr-flag" aria-hidden="true"></i>Assemblé en France</span>
             <div class="prod-art" style="background:#000;min-height:220px;padding:28px"><img src="/assets/vitalxpods.png" alt="Passage POD'S vers VitalX" loading="lazy" style="max-height:170px"/></div>
             <div class="prod-body" style="padding-top:22px">
               <h3>Passage POD'S → VitalX</h3>
@@ -536,7 +526,9 @@
           </ul>
         </div>
       </div>
-      <p class="footer-contact">Besoin d'aide ? Écrivez-nous à <a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a>. Conçu &amp; assemblé en France.</p>
+      <p class="footer-contact">Besoin d'aide ? Écrivez-nous à <a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a>.</p>
+      <div class="tricolor footer-fr-line" aria-hidden="true"></div>
+    <div class="footer-fr"><i class="fr-flag" aria-hidden="true"></i><span>Conçu &amp; assemblé en France 🇫🇷</span><span class="t-fine">Entreprise française · Support 7j/7 · Châssis et housse garantis à vie</span></div>
       <div class="footer-bottom">
         <span>© <span id="y"></span> VitalX. Tous droits réservés.</span>
         <nav aria-label="Liens légaux">
@@ -579,9 +571,14 @@
     document.addEventListener('keydown',e=>{if(e.key==='Escape')closeCart()});
     elItems&&elItems.addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;const sku=t.getAttribute('data-sku'),act=t.getAttribute('data-act');if(!sku||!act)return;const cart=loadCart(),i=cart.findIndex(x=>x.sku===sku);if(i<0)return;if(act==='inc')cart[i].quantity=Math.min(99,cart[i].quantity+1);if(act==='dec')cart[i].quantity=Math.max(1,cart[i].quantity-1);if(act==='del')cart.splice(i,1);saveCart(cart);render()});
     document.querySelectorAll('.add-to-cart').forEach(btn=>{btn.addEventListener('click',()=>{const sku=btn.getAttribute('data-sku'),name=btn.getAttribute('data-name'),price=parseInt(btn.getAttribute('data-price'),10),image=btn.getAttribute('data-image');const cart=loadCart(),i=cart.findIndex(x=>x.sku===sku);if(i>=0)cart[i].quantity=Math.min(99,cart[i].quantity+1);else cart.push({sku,name,price,image,quantity:1});saveCart(cart);showToast(`${name} ajouté ✓`);openCart()})});
-    elCheckout&&elCheckout.addEventListener('click',async()=>{const cart=loadCart();if(!cart.length){alert('Votre panier est vide.');return}const items=cart.map(({sku,quantity})=>({sku,quantity}));try{const res=await fetch('/.netlify/functions/create-checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items,mode:'payment'})});const data=await res.json();if(data&&data.url){location.href=data.url}else{throw new Error(data&&data.error?data.error:'Erreur inconnue')}}catch(err){console.error(err);alert("Le paiement n'est pas encore configuré.")}});
+    elCheckout&&elCheckout.addEventListener('click',async()=>{const cart=loadCart();if(!cart.length){alert('Votre panier est vide.');return}const items=cart.map(({sku,quantity})=>({sku,quantity}));
+      /* 🪟 Page de paiement ouverte dans un nouvel onglet : la fenêtre est créée immédiatement au clic (sinon les navigateurs la bloquent), puis redirigée vers Stripe. */
+      const win=window.open('','_blank');if(win){win.document.write('<!doctype html><title>Paiement VitalX</title><body style="font-family:-apple-system,Helvetica,Arial,sans-serif;display:grid;place-items:center;height:100vh;margin:0;color:#1d1d1f">Redirection vers le paiement sécurisé…</body>')}
+      elCheckout.disabled=true;elCheckout.textContent='Ouverture du paiement…';
+      try{const res=await fetch('/.netlify/functions/create-checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items,mode:'payment'})});const data=await res.json();if(data&&data.url){if(win){win.location.href=data.url}else{window.open(data.url,'_blank')||(location.href=data.url)}}else{throw new Error(data&&data.error?data.error:'Erreur inconnue')}}catch(err){console.error(err);if(win)win.close();alert("Le paiement n'est pas encore configuré.")}finally{elCheckout.disabled=false;elCheckout.textContent='Payer maintenant'}});
     updateCount(loadCart());
   </script>
+  <script src="/i18n-site.js" defer></script>
   <script src="/i18n.js" defer></script>
 </body>
 </html>

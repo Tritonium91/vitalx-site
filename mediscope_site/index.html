@@ -10,6 +10,7 @@
      • Bandeaux tricolores, majuscules et emojis retirés des titres
      • Contenu conservé : interfaces constructeurs (galeries), fonctions, app, pack, devis,
        références, affiliation, formulaire de contact Netlify, mentions constructeurs
+     • v4.1 : galerie app en carrousel automatique (sans flèches), rappels bleu-blanc-rouge (Made in France)
      • Ancres conservées : #interfaces #v2 #packs (ex-#medx, MED'X retiré) #pods #mediacenter #features #app #in-the-box #devis #testimonials #contact
 -->
 <html lang="fr">
@@ -54,7 +55,7 @@
 <!-- BARRE DE NAVIGATION GLOBALE -->
 <header class="gnav">
   <div class="wrap">
-    <a href="/" class="gnav-logo" aria-label="VitalX — accueil"><img src="/logo.png" alt="" data-no-lightbox="true" onerror="this.style.display='none'"/>Vital<b>X</b></a>
+    <a href="/" class="gnav-logo" aria-label="VitalX — accueil"><img src="/assets/logo-vitalx-white.svg" alt="VitalX" data-no-lightbox="true"/></a>
     <ul class="gnav-links">
       <li><a href="#v2">Scopes</a></li>
       <li><a href="#interfaces">Interfaces</a></li>
@@ -74,6 +75,7 @@
     </div>
   </div>
 </header>
+<div class="tricolor" aria-hidden="true"></div>
 <nav id="mobileMenu" class="gnav-mobile" aria-label="Menu mobile">
   <a href="#v2">Scopes VitalX</a>
   <a href="#interfaces">Interfaces constructeurs</a>
@@ -94,7 +96,8 @@
 <!-- HERO -->
 <section class="tile tile-light tile-hero hero" id="v2">
   <div class="tile-copy">
-    <h1 class="t-hero hero-in">VitalX</h1>
+    <span class="fr-badge hero-in"><i class="fr-flag" aria-hidden="true"></i>Conçu &amp; assemblé en France 🇫🇷</span>
+    <h1 class="t-hero hero-in hero-logo"><img src="/assets/logo-vitalx.svg" alt="VitalX" data-no-lightbox="true" fetchpriority="high"/><span class="sr-only">VitalX</span></h1>
     <p class="t-hero-sub hero-in hero-in-2">Formez comme sur le terrain.</p>
     <p class="t-body-lg hero-in hero-in-2" style="margin:14px auto 0;max-width:640px;color:var(--ink-2)">Un scope de simulation sur iPad, piloté à distance par le formateur. Le moniteur VitalX et les interfaces des vrais appareils que vos équipes utilisent en intervention, reproduites à l'identique, incluses dans la licence.</p>
     <div class="links hero-in hero-in-3">
@@ -199,8 +202,9 @@
 <!-- CONFIANCE -->
 <section class="section-tight">
   <div class="wrap">
+    <div class="tricolor tricolor-round" aria-hidden="true"></div>
     <div class="trust">
-      <div class="sr"><strong>Entreprise française</strong><span>Conçu &amp; assemblé en France</span></div>
+      <div class="sr"><i class="fr-flag fr-flag-lg" aria-hidden="true"></i><strong>Entreprise française</strong><span>Conçu &amp; assemblé en France</span></div>
       <div class="sr sr-d1"><strong>Licence à vie</strong><span>Sans abonnement, mises à jour incluses</span></div>
       <div class="sr sr-d2"><strong>Garantie à vie</strong><span>Châssis et housse Bagheera</span></div>
       <div class="sr sr-d3"><strong>Devis sous 24 h</strong><span>Livraison 15 à 30 jours ouvrés</span></div>
@@ -349,7 +353,8 @@
       <p class="t-section-lead sr sr-d1">Le formateur pilote. Le moniteur affiche.</p>
     </div>
   </div>
-  <div class="hscroll" id="appScroll">
+  <div class="marquee" id="appScroll" aria-label="Captures d'écran de l'application">
+    <div class="marquee-track">
     <figure class="hcard"><img src="/app-scope.PNG" alt="Scope monitoring" loading="lazy"/><figcaption><strong>Scope Monitoring</strong><span>ECG, SpO₂, EtCO₂ en temps réel</span></figcaption></figure>
     <figure class="hcard"><img src="/app-monitoring.PNG" alt="Multiparamétrique" loading="lazy"/><figcaption><strong>Vue Multiparamétrique</strong><span>HR, SpO₂, Temp, FR, PNI</span></figcaption></figure>
     <figure class="hcard"><img src="/app-anatomie.PNG" alt="Anatomie" loading="lazy"/><figcaption><strong>Vue Anatomique</strong><span>Cœur et poumons animés</span></figcaption></figure>
@@ -359,10 +364,16 @@
     <figure class="hcard"><img src="/assets/scope-schiller-defigard-ecg.webp" alt="Interface Schiller dans le scope" loading="lazy"/><figcaption><strong>Interface Schiller</strong><span>DEFIGARD et PHYSIOGARD Touch 7</span></figcaption></figure>
     <figure class="hcard"><img src="/assets/scope-weinmann-medumat.webp" alt="Interface Weinmann dans le scope" loading="lazy"/><figcaption><strong>Interface Weinmann</strong><span>MEDUCORE et MEDUMAT Standard²</span></figcaption></figure>
     <figure class="hcard"><img src="/app-formateur.png" alt="Formateur" loading="lazy"/><figcaption><strong>Vue Formateur</strong><span>Pilotage complet de la session</span></figcaption></figure>
-  </div>
-  <div class="hnav">
-    <button type="button" data-scroll="-1" aria-label="Précédent">‹</button>
-    <button type="button" data-scroll="1" aria-label="Suivant">›</button>
+    <figure class="hcard" aria-hidden="true"><img src="/app-scope.PNG" alt="Scope monitoring" loading="lazy"/><figcaption><strong>Scope Monitoring</strong><span>ECG, SpO₂, EtCO₂ en temps réel</span></figcaption></figure>
+    <figure class="hcard" aria-hidden="true"><img src="/app-monitoring.PNG" alt="Multiparamétrique" loading="lazy"/><figcaption><strong>Vue Multiparamétrique</strong><span>HR, SpO₂, Temp, FR, PNI</span></figcaption></figure>
+    <figure class="hcard" aria-hidden="true"><img src="/app-anatomie.PNG" alt="Anatomie" loading="lazy"/><figcaption><strong>Vue Anatomique</strong><span>Cœur et poumons animés</span></figcaption></figure>
+    <figure class="hcard" aria-hidden="true"><img src="/app-ecg-electrodes.PNG" alt="Électrodes" loading="lazy"/><figcaption><strong>ECG 12D — Électrodes</strong><span>Positionnement guidé 3D</span></figcaption></figure>
+    <figure class="hcard" aria-hidden="true"><img src="/app-ecg12d.PNG" alt="ECG 12D" loading="lazy"/><figcaption><strong>ECG 12 Dérivations</strong><span>Tracé complet + interprétation</span></figcaption></figure>
+    <figure class="hcard" aria-hidden="true"><img src="/app-dsa.PNG" alt="DSA" loading="lazy"/><figcaption><strong>Mode DSA</strong><span>Chocs simulés + métronome RCP</span></figcaption></figure>
+    <figure class="hcard" aria-hidden="true"><img src="/assets/scope-schiller-defigard-ecg.webp" alt="Interface Schiller dans le scope" loading="lazy"/><figcaption><strong>Interface Schiller</strong><span>DEFIGARD et PHYSIOGARD Touch 7</span></figcaption></figure>
+    <figure class="hcard" aria-hidden="true"><img src="/assets/scope-weinmann-medumat.webp" alt="Interface Weinmann dans le scope" loading="lazy"/><figcaption><strong>Interface Weinmann</strong><span>MEDUCORE et MEDUMAT Standard²</span></figcaption></figure>
+    <figure class="hcard" aria-hidden="true"><img src="/app-formateur.png" alt="Formateur" loading="lazy"/><figcaption><strong>Vue Formateur</strong><span>Pilotage complet de la session</span></figcaption></figure>
+    </div>
   </div>
 </section>
 
@@ -608,7 +619,9 @@
         </ul>
       </div>
     </div>
-    <p class="footer-contact">Besoin d'aide ? Écrivez-nous à <a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a>. Conçu &amp; assemblé en France.</p>
+    <p class="footer-contact">Besoin d'aide ? Écrivez-nous à <a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a>.</p>
+    <div class="tricolor footer-fr-line" aria-hidden="true"></div>
+    <div class="footer-fr"><i class="fr-flag" aria-hidden="true"></i><span>Conçu &amp; assemblé en France 🇫🇷</span><span class="t-fine">Entreprise française · Support 7j/7 · Châssis et housse garantis à vie</span></div>
     <div class="footer-bottom">
       <span>© <span id="year"></span> VitalX. Tous droits réservés.</span>
       <nav aria-label="Liens légaux">
@@ -655,15 +668,6 @@ document.getElementById('year').textContent=new Date().getFullYear();
   });
 })();
 
-// Galerie défilante (flèches)
-(function(){
-  const s=document.getElementById('appScroll');if(!s) return;
-  document.querySelectorAll('[data-scroll]').forEach(b=>b.addEventListener('click',()=>{
-    const card=s.querySelector('.hcard');const w=card?card.getBoundingClientRect().width+20:400;
-    s.scrollBy({left:w*parseInt(b.dataset.scroll,10),behavior:'smooth'});
-  }));
-})();
-
 // Apparition au défilement
 (function(){
   const els=document.querySelectorAll('.sr');
@@ -684,6 +688,7 @@ document.getElementById('year').textContent=new Date().getFullYear();
   document.addEventListener('keydown',e=>{if(e.key==='Escape')cl()});
 })();
 </script>
+<script src="/i18n-site.js" defer></script>
 <script src="/i18n.js" defer></script>
 </body>
 </html>
