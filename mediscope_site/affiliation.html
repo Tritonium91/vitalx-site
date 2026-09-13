@@ -1,5 +1,15 @@
 <!doctype html>
-<html lang="fr" class="scroll-smooth">
+<!--
+  affiliation.html — VitalX
+  Description : Programme apporteurs d'affaires (principe, commission, conditions, formulaire Netlify « affiliation »)
+  🆕 v4.0 — 13/09/2026 — Yann USSEGLIO
+     • Refonte complète dans le style épuré façon Apple (voir /apple.css), alignée sur l'accueil, la boutique et la page Société
+     • Logo SVG dans la barre de navigation, badge bleu-blanc-rouge « Conçu & assemblé en France »
+     • Contenu conservé : trois étapes, barème confidentiel, six conditions, formulaire d'inscription / déclaration (mêmes champs Netlify)
+     • « Mode Ultra » retiré du texte (n'existe plus) → packs, POD'S et licences
+     • Traductions EN / DE via /i18n-site.js (chargé avant /i18n.js)
+-->
+<html lang="fr">
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -8,236 +18,289 @@
 <meta property="og:title" content="VitalX — Programme Apporteurs d'Affaires"/>
 <meta property="og:description" content="Recommandez VitalX. Touchez une commission sur chaque vente."/>
 <meta property="og:type" content="website"/>
-<meta name="theme-color" content="#0a2240"/>
+<meta property="og:image" content="/og-image.png"/>
+<meta name="theme-color" content="#000000"/>
 <link rel="icon" href="/favicon.ico" sizes="any">
-<script src="https://cdn.tailwindcss.com"></script>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+<link rel="stylesheet" href="/apple.css">
 <style>
-*{-webkit-font-smoothing:antialiased}
-html,body{background:#f4f6f9;color:#0c1828;overflow-x:clip;max-width:100vw;font-family:'Inter','Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,'Helvetica Neue',Arial,sans-serif}
-::selection{background:#0046b8;color:#fff}
-:root{--fr-blue:#0046b8;--fr-blue-dark:#0a2240;--fr-blue-deep:#06203f;--fr-red:#e1000f;--fr-red-dark:#b3000c;--ink:#0c1828;--muted:#5b6b80;--line:#dde3ec}
-.h-hero{font-size:clamp(32px,5.5vw,60px);font-weight:900;letter-spacing:-.02em;line-height:1.04;text-transform:uppercase}
-.h-section{font-size:clamp(26px,4vw,46px);font-weight:800;letter-spacing:-.015em;line-height:1.06;text-transform:uppercase}
-.eyebrow{font-size:13px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--fr-red)}
-.tricolor{height:4px;background:linear-gradient(90deg,#0046b8 0 33.33%,#fff 33.33% 66.66%,#e1000f 66.66% 100%)}
-.tricolor-thin{height:3px;background:linear-gradient(90deg,#0046b8 0 33.33%,#fff 33.33% 66.66%,#e1000f 66.66% 100%)}
-.btn-red{background:var(--fr-red);color:#fff;border-radius:6px;padding:13px 28px;font-size:14px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px;transition:.15s;box-shadow:0 6px 18px -8px rgba(225,0,15,.6)}
-.btn-red:hover{background:var(--fr-red-dark);transform:translateY(-1px)}
-.btn-blue{background:var(--fr-blue);color:#fff;border-radius:6px;padding:13px 28px;font-size:14px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px;transition:.15s;box-shadow:0 6px 18px -8px rgba(0,70,184,.6)}
-.btn-blue:hover{background:#0038a0;transform:translateY(-1px)}
-.sec{padding:90px 0}
-.sec-tight{padding:60px 0}
-.sec-dark{background:var(--fr-blue-deep);color:#eef3fa}
-.sec-light{background:#fff}
-.card{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;transition:.25s}
-.card:hover{border-color:var(--fr-blue);box-shadow:0 18px 40px -22px rgba(10,34,64,.35);transform:translateY(-3px)}
-.sr{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)}
-.sr.show{opacity:1;transform:translateY(0)}
-.sr-d1{transition-delay:.08s}.sr-d2{transition-delay:.16s}.sr-d3{transition-delay:.24s}
-.inp{background:#fff;border:1.5px solid var(--line);border-radius:8px;padding:13px 15px;font-size:15px;color:var(--ink);width:100%;outline:none;transition:border .15s}
-.inp:focus{border-color:var(--fr-blue)}
-.inp::placeholder{color:#9aa7b8}
-.step-num{width:52px;height:52px;border-radius:12px;display:grid;place-items:center;font-size:22px;font-weight:900;color:#fff}
-@media(prefers-reduced-motion:reduce){.sr{opacity:1!important;transform:none!important;transition:none!important}}
+/* Spécifique affiliation */
+.aff-hero{padding:64px 22px 56px;text-align:center;background:#fbfbfd}
+.aff-hero .t-hero{font-size:clamp(40px,6.5vw,72px)}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:760px;margin:40px auto 0}
+.kpi{background:#fff;border-radius:18px;padding:26px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.kpi b{display:block;font-size:clamp(28px,4vw,40px);line-height:1;font-weight:600;letter-spacing:-.02em}
+.kpi span{display:block;margin-top:8px;font-size:14px;color:var(--ink-2)}
+@media(max-width:600px){.kpis{grid-template-columns:1fr}}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:833px){.steps{grid-template-columns:1fr}}
+.step{background:#fff;border-radius:18px;padding:30px 28px 34px}
+.step .num{width:44px;height:44px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:19px;font-weight:600;margin-bottom:22px}
+.step h3{font-size:21px;font-weight:600;letter-spacing:.011em;margin:0 0 8px}
+.step p{margin:0;font-size:15px;line-height:1.47;color:var(--ink-2)}
+.step strong{color:var(--ink);font-weight:600}
+.lock{background:#000;color:#f5f5f7;border-radius:22px;padding:clamp(32px,5vw,56px);text-align:center;max-width:820px;margin:0 auto;position:relative;overflow:hidden}
+.lock::before{content:"";position:absolute;inset:0;background:radial-gradient(90% 70% at 100% 0%,rgba(170,0,13,.45),transparent 60%),radial-gradient(80% 60% at 0% 100%,rgba(0,85,164,.45),transparent 60%)}
+.lock>*{position:relative}
+.lock .ico{width:52px;height:52px;border-radius:14px;background:rgba(255,255,255,.1);display:grid;place-items:center;margin:0 auto 20px}
+.lock .ico svg{width:24px;height:24px}
+.lock h3{font-size:clamp(26px,3.4vw,36px);font-weight:600;letter-spacing:0;margin:0 0 12px;line-height:1.1}
+.lock p{margin:0 auto;max-width:620px;font-size:17px;line-height:1.5;color:#a1a1a6}
+.form-title{font-size:14px;font-weight:600;letter-spacing:-.016em;color:var(--ink-2);margin:26px 0 12px}
+.form-title:first-of-type{margin-top:0}
 </style>
 </head>
 <body>
 
-<!-- TOP STRIP -->
-<div class="bg-[#06203f] text-white text-[12px]">
-  <div class="mx-auto max-w-6xl px-4 h-9 flex items-center justify-between">
-    <span class="flex items-center gap-2 font-semibold tracking-wide"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e1000f" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Conçu &amp; assemblé en France 🇫🇷</span>
-    <span class="hidden sm:flex items-center gap-4">
-      <a href="mailto:vitalxscope@gmail.com" class="hover:text-[#7eb0ff] transition">vitalxscope@gmail.com</a>
-      <a href="https://vitalxtrainer.app" target="_blank" class="text-[#ffb340] hover:text-[#ffc970] font-semibold transition">Mode Formateur (web) ›</a>
-    </span>
-  </div>
-</div>
-<div class="tricolor-thin"></div>
-
-<!-- NAV -->
-<header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-[#dde3ec] shadow-sm">
-  <div class="mx-auto max-w-6xl px-4 h-16 flex items-center justify-between">
-    <a href="/" class="flex items-center gap-2.5 shrink-0"><img src="/logo.png" alt="" class="h-9 w-9 object-contain" onerror="this.style.display='none'"/><span class="text-[20px] font-black tracking-tight text-[#0a2240]">Vital<span class="text-[#e1000f]">X</span></span></a>
-    <nav class="hidden md:flex items-center gap-7 text-[13px] font-bold uppercase tracking-wide text-[#0c1828]">
-      <a href="/" class="hover:text-[#0046b8] transition">Accueil</a>
-      <a href="/boutique.html" class="hover:text-[#0046b8] transition">Boutique</a>
-      <a href="#conditions" class="hover:text-[#0046b8] transition">Conditions</a>
-      <a href="#inscription" class="hover:text-[#0046b8] transition">Devenir apporteur</a>
-    </nav>
-    <div class="flex items-center gap-2.5">
-      <a href="#inscription" class="hidden sm:inline-flex btn-red !py-2 !px-4 !text-[12px]">🤝 Je m'inscris</a>
-      <button id="menuBtn" class="md:hidden p-2 -mr-2 text-[#0a2240]" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
-    </div>
-  </div>
-  <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-[#dde3ec]">
-    <div class="px-6 py-4 grid gap-1 text-[15px] font-semibold">
-      <a href="/" class="py-2 border-b border-[#eef1f6]">Accueil</a>
-      <a href="/boutique.html" class="py-2 border-b border-[#eef1f6]">Boutique</a>
-      <a href="#conditions" class="py-2 border-b border-[#eef1f6]">Conditions</a>
-      <a href="#inscription" class="py-2 text-[#e1000f]">Devenir apporteur</a>
+<!-- BARRE DE NAVIGATION GLOBALE -->
+<header class="gnav">
+  <div class="wrap">
+    <a href="/" class="gnav-logo" aria-label="VitalX — accueil"><img src="/assets/logo-vitalx-white.svg" alt="VitalX"/></a>
+    <ul class="gnav-links">
+      <li><a href="/#v2">Scopes</a></li>
+      <li><a href="/#interfaces">Interfaces</a></li>
+      <li><a href="/#packs">Packs</a></li>
+      <li><a href="/#pods">POD'S</a></li>
+      <li><a href="/#features">Fonctions</a></li>
+      <li><a href="/#app">Application</a></li>
+      <li><a href="/#devis">Devis</a></li>
+      <li><a href="/qui-sommes-nous.html">Société</a></li>
+      <li><a href="/affiliation.html">Affiliation</a></li>
+      <li><a href="/boutique.html">Boutique</a></li>
+    </ul>
+    <div class="gnav-right">
+      <a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="gnav-icon gnav-hide-m" title="Mode Formateur (web)" aria-label="Mode Formateur (web)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></a>
+      <a href="/boutique.html" class="gnav-icon" title="Boutique" aria-label="Boutique"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l1 13H5L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></a>
+      <button class="gnav-burger" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
     </div>
   </div>
 </header>
+<div class="tricolor" aria-hidden="true"></div>
+<nav id="mobileMenu" class="gnav-mobile" aria-label="Menu mobile">
+  <a href="/">Accueil</a>
+  <a href="/boutique.html">Boutique</a>
+  <a href="#principe">Le principe</a>
+  <a href="#conditions">Conditions</a>
+  <a href="#inscription">Devenir apporteur</a>
+  <a href="/qui-sommes-nous.html">Société</a>
+  <a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="small">Mode Formateur (web) ›</a>
+  <a href="mailto:vitalxscope@gmail.com" class="small">vitalxscope@gmail.com</a>
+</nav>
+
+<!-- SOUS-NAVIGATION -->
+<div class="lnav">
+  <div class="wrap">
+    <a href="#top" class="lnav-title">Apporteurs d'affaires</a>
+    <ul class="lnav-links">
+      <li><a href="#principe">Le principe</a></li>
+      <li><a href="#remuneration">Rémunération</a></li>
+      <li><a href="#conditions">Conditions</a></li>
+    </ul>
+    <div class="lnav-right">
+      <a href="#inscription" class="btn btn-xs">Devenir apporteur</a>
+    </div>
+  </div>
+</div>
+
+<main id="top">
 
 <!-- HERO -->
-<section class="relative sec-dark overflow-hidden">
-  <div class="absolute -top-32 -left-24 w-[420px] h-[420px] rounded-full bg-[#0046b8]/25 blur-[120px] pointer-events-none"></div>
-  <div class="absolute -bottom-32 -right-24 w-[420px] h-[420px] rounded-full bg-[#e1000f]/15 blur-[120px] pointer-events-none"></div>
-  <div class="relative mx-auto max-w-6xl px-6 pt-16 pb-16 text-center">
-    <span class="inline-flex items-center gap-2 rounded-full bg-white/10 ring-1 ring-white/20 px-4 py-1.5 text-[12px] font-bold uppercase tracking-[.15em] mb-6 sr show">
-      <span class="text-[#ffb340]">●</span> Programme Apporteurs d'Affaires
-    </span>
-    <h1 class="h-hero sr show">Vous recommandez.<br><span class="text-[#e1000f]">Vous touchez.</span></h1>
-    <p class="mt-5 max-w-2xl mx-auto text-[17px] md:text-[19px] text-[#b9c8dc] leading-relaxed sr show sr-d1">Vous parlez de VitalX autour de vous — caserne, association, IFSI, centre de formation — et la vente se conclut grâce à vous ? <strong class="text-white">Vous touchez une commission sur la vente.</strong> Simple, direct, sans engagement.</p>
-    <div class="mt-8 flex flex-wrap items-center justify-center gap-4 sr show sr-d2">
-      <a href="#inscription" class="btn-red">🤝 Devenir apporteur</a>
-      <a href="#conditions" class="btn-blue !bg-transparent !shadow-none ring-2 ring-white/40 hover:!bg-white hover:!text-[#0a2240]">Voir les conditions</a>
+<section class="aff-hero">
+  <div class="wrap">
+    <span class="fr-badge hero-in"><i class="fr-flag" aria-hidden="true"></i>Conçu &amp; assemblé en France 🇫🇷</span>
+    <p class="t-eyebrow hero-in">Programme Apporteurs d'Affaires</p>
+    <h1 class="t-hero hero-in">Vous recommandez.<br>Vous touchez.</h1>
+    <p class="t-body-lg hero-in hero-in-2" style="margin:18px auto 0;max-width:680px;color:var(--ink-2)">Vous parlez de VitalX autour de vous, caserne, association, IFSI, centre de formation, et la vente se conclut grâce à vous ? Vous touchez une commission sur la vente. Simple, direct, sans engagement.</p>
+    <div class="links hero-in hero-in-3">
+      <a href="#inscription" class="more">Devenir apporteur</a>
+      <a href="#conditions" class="more">Voir les conditions</a>
     </div>
-    <div class="mt-10 grid grid-cols-3 gap-3 max-w-xl mx-auto sr show sr-d3">
-      <div class="bg-white/[.06] ring-1 ring-white/10 rounded-lg py-4 px-3"><div class="text-[26px] font-black text-[#ffb340]">💶</div><div class="text-[11px] text-[#9fb3cc] mt-0.5 uppercase font-bold">Commission par vente</div></div>
-      <div class="bg-white/[.06] ring-1 ring-white/10 rounded-lg py-4 px-3"><div class="text-[26px] font-black text-[#ffb340]">0&nbsp;€</div><div class="text-[11px] text-[#9fb3cc] mt-0.5 uppercase font-bold">Pour s'inscrire</div></div>
-      <div class="bg-white/[.06] ring-1 ring-white/10 rounded-lg py-4 px-3"><div class="text-[26px] font-black text-[#ffb340]">∞</div><div class="text-[11px] text-[#9fb3cc] mt-0.5 uppercase font-bold">Ventes cumulables</div></div>
-    </div>
-  </div>
-  <div class="tricolor"></div>
-</section>
-
-<!-- COMMENT ÇA MARCHE -->
-<section class="sec sec-light">
-  <div class="mx-auto max-w-6xl px-6">
-    <div class="text-center mb-14">
-      <p class="eyebrow sr">Le principe</p>
-      <h2 class="h-section mt-2 text-[#0a2240] sr sr-d1">Trois étapes. C'est tout.</h2>
-    </div>
-    <div class="grid sm:grid-cols-3 gap-6">
-      <div class="card p-7 sr">
-        <div class="step-num bg-[#0046b8] mb-5">1</div>
-        <h3 class="text-[18px] font-extrabold text-[#0a2240] uppercase mb-2">Vous recommandez</h3>
-        <p class="text-[14px] text-[#5b6b80] leading-relaxed">Vous connaissez une structure qui cherche un scope de simulation ? Parlez-lui de VitalX et déclarez le contact via le formulaire ci-dessous — <strong>avant</strong> notre premier échange avec le prospect.</p>
-      </div>
-      <div class="card p-7 sr sr-d1">
-        <div class="step-num bg-[#0a2240] mb-5">2</div>
-        <h3 class="text-[18px] font-extrabold text-[#0a2240] uppercase mb-2">On conclut la vente</h3>
-        <p class="text-[14px] text-[#5b6b80] leading-relaxed">VitalX prend le relais : démonstration en visio, devis, réponses techniques. Vous n'avez rien à vendre vous-même — votre mise en relation suffit.</p>
-      </div>
-      <div class="card p-7 sr sr-d2">
-        <div class="step-num bg-[#e1000f] mb-5">3</div>
-        <h3 class="text-[18px] font-extrabold text-[#0a2240] uppercase mb-2">Vous êtes payé</h3>
-        <p class="text-[14px] text-[#5b6b80] leading-relaxed">Une fois la vente encaissée et le délai de rétractation passé, vous recevez votre commission par virement bancaire. Chaque vente compte, sans plafond.</p>
-      </div>
+    <div class="kpis hero-in hero-in-3">
+      <div class="kpi"><b>%</b><span>Commission par vente</span></div>
+      <div class="kpi"><b>0 €</b><span>Pour s'inscrire</span></div>
+      <div class="kpi"><b>∞</b><span>Ventes cumulables</span></div>
     </div>
   </div>
 </section>
 
-<!-- COMMISSION CONFIDENTIELLE -->
-<section class="sec" style="background:#eef2f7">
-  <div class="mx-auto max-w-3xl px-6">
-    <div class="text-center mb-10">
-      <p class="eyebrow sr">R&eacute;mun&eacute;ration</p>
-      <h2 class="h-section mt-2 text-[#0a2240] sr sr-d1">Une commission sur chaque vente.</h2>
+<!-- LE PRINCIPE -->
+<section id="principe" class="section gray">
+  <div class="wrap">
+    <div class="section-head center">
+      <p class="t-eyebrow sr">Le principe</p>
+      <h2 class="t-section sr">Trois étapes. C'est tout.</h2>
     </div>
-    <div class="bg-white rounded-2xl border border-[#dde3ec] shadow-sm overflow-hidden sr sr-d2">
-      <div class="tricolor-thin"></div>
-      <div class="p-7 md:p-9 text-center">
-        <div class="text-4xl mb-4">🔒</div>
-        <h3 class="text-[18px] font-extrabold text-[#0a2240] uppercase mb-3">Bar&egrave;me communiqu&eacute; en priv&eacute;</h3>
-        <p class="text-[15px] text-[#5b6b80] leading-relaxed max-w-lg mx-auto">Chaque produit du catalogue — packs, POD'S, Mode Ultra — ouvre droit &agrave; une commission proportionnelle au montant de la vente. Le bar&egrave;me exact vous est transmis personnellement apr&egrave;s votre inscription au programme.</p>
-        <a href="#inscription" class="btn-blue mt-6">Recevoir le bar&egrave;me</a>
-      </div>
+    <div class="steps">
+      <div class="step sr"><div class="num">1</div><h3>Vous recommandez</h3><p>Vous connaissez une structure qui cherche un scope de simulation ? Parlez-lui de VitalX et déclarez le contact via le formulaire ci-dessous, <strong>avant</strong> notre premier échange avec le prospect.</p></div>
+      <div class="step sr sr-d1"><div class="num">2</div><h3>On conclut la vente</h3><p>VitalX prend le relais : démonstration en visio, devis, réponses techniques. Vous n'avez rien à vendre vous-même, votre mise en relation suffit.</p></div>
+      <div class="step sr sr-d2"><div class="num">3</div><h3>Vous êtes payé</h3><p>Une fois la vente encaissée et le délai de rétractation passé, vous recevez votre commission par virement bancaire. Chaque vente compte, sans plafond.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- RÉMUNÉRATION -->
+<section id="remuneration" class="section">
+  <div class="wrap">
+    <div class="section-head center">
+      <p class="t-eyebrow sr">Rémunération</p>
+      <h2 class="t-section sr">Une commission sur chaque vente.</h2>
+    </div>
+    <div class="lock sr">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+      <h3>Barème communiqué en privé</h3>
+      <p>Chaque produit du catalogue, packs, POD'S et licences, ouvre droit à une commission proportionnelle au montant de la vente. Le barème exact vous est transmis personnellement après votre inscription au programme.</p>
+      <div class="links"><a href="#inscription" class="more">Recevoir le barème</a></div>
     </div>
   </div>
 </section>
 
 <!-- CONDITIONS -->
-<section id="conditions" class="sec sec-light">
-  <div class="mx-auto max-w-6xl px-6">
-    <div class="text-center mb-12">
-      <p class="eyebrow sr">Règles du jeu</p>
-      <h2 class="h-section mt-2 text-[#0a2240] sr sr-d1">Conditions claires.</h2>
+<section id="conditions" class="section gray">
+  <div class="wrap">
+    <div class="section-head center">
+      <p class="t-eyebrow sr">Règles du jeu</p>
+      <h2 class="t-section sr">Conditions claires.</h2>
     </div>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      <div class="card p-6 sr"><div class="text-2xl mb-3">📋</div><h3 class="text-[16px] font-extrabold text-[#0a2240] mb-2">Contact déclaré en premier</h3><p class="text-[14px] text-[#5b6b80] leading-relaxed">La mise en relation doit être déclarée via le formulaire avant le premier échange entre VitalX et le prospect. Un contact déjà en discussion avec nous n'ouvre pas droit à commission.</p></div>
-      <div class="card p-6 sr sr-d1"><div class="text-2xl mb-3">💶</div><h3 class="text-[16px] font-extrabold text-[#0a2240] mb-2">Paiement après encaissement</h3><p class="text-[14px] text-[#5b6b80] leading-relaxed">La commission est versée par virement une fois la commande intégralement payée et le délai légal de rétractation de 14 jours écoulé sans retour.</p></div>
-      <div class="card p-6 sr sr-d2"><div class="text-2xl mb-3">🧾</div><h3 class="text-[16px] font-extrabold text-[#0a2240] mb-2">Facture ou note</h3><p class="text-[14px] text-[#5b6b80] leading-relaxed">Professionnel : vous nous adressez une facture d'apport d'affaires. Particulier : une note simple suffit — pensez à déclarer ce revenu selon votre situation fiscale.</p></div>
-      <div class="card p-6 sr"><div class="text-2xl mb-3">⏱️</div><h3 class="text-[16px] font-extrabold text-[#0a2240] mb-2">Validité 6 mois</h3><p class="text-[14px] text-[#5b6b80] leading-relaxed">Un contact déclaré reste rattaché à vous pendant 6 mois. Si la vente se conclut dans ce délai, la commission est due — même si le prospect met du temps à se décider.</p></div>
-      <div class="card p-6 sr sr-d1"><div class="text-2xl mb-3">🔁</div><h3 class="text-[16px] font-extrabold text-[#0a2240] mb-2">Cumulable sans limite</h3><p class="text-[14px] text-[#5b6b80] leading-relaxed">Aucun plafond de ventes ni de commissions. Chaque nouvelle structure que vous apportez génère sa propre commission.</p></div>
-      <div class="card p-6 sr sr-d2"><div class="text-2xl mb-3">🤝</div><h3 class="text-[16px] font-extrabold text-[#0a2240] mb-2">Sans engagement</h3><p class="text-[14px] text-[#5b6b80] leading-relaxed">Pas de quota, pas d'exclusivité, pas d'obligation de résultat. Vous recommandez quand l'occasion se présente, c'est tout.</p></div>
+    <div class="grid-3">
+      <div class="feat sr"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5h6M9 3h6a1 1 0 0 1 1 1v2H8V4a1 1 0 0 1 1-1z"/><rect x="5" y="5" width="14" height="16" rx="2"/><path d="m9 14 2 2 4-4"/></svg></div><h3>Contact déclaré en premier</h3><p>La mise en relation doit être déclarée via le formulaire avant le premier échange entre VitalX et le prospect. Un contact déjà en discussion avec nous n'ouvre pas droit à commission.</p></div>
+      <div class="feat sr sr-d1"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M6 12h.01M18 12h.01"/></svg></div><h3>Paiement après encaissement</h3><p>La commission est versée par virement une fois la commande intégralement payée et le délai légal de rétractation de 14 jours écoulé sans retour.</p></div>
+      <div class="feat sr sr-d2"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M8 13h8M8 17h5"/></svg></div><h3>Facture ou note</h3><p>Professionnel : vous nous adressez une facture d'apport d'affaires. Particulier : une note simple suffit, pensez à déclarer ce revenu selon votre situation fiscale.</p></div>
+      <div class="feat sr"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h3>Validité 6 mois</h3><p>Un contact déclaré reste rattaché à vous pendant 6 mois. Si la vente se conclut dans ce délai, la commission est due, même si le prospect met du temps à se décider.</p></div>
+      <div class="feat sr sr-d1"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div><h3>Cumulable sans limite</h3><p>Aucun plafond de ventes ni de commissions. Chaque nouvelle structure que vous apportez génère sa propre commission.</p></div>
+      <div class="feat sr sr-d2"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><h3>Sans engagement</h3><p>Pas de quota, pas d'exclusivité, pas d'obligation de résultat. Vous recommandez quand l'occasion se présente, c'est tout.</p></div>
     </div>
   </div>
 </section>
 
 <!-- INSCRIPTION / DÉCLARATION -->
-<section id="inscription" class="sec" style="background:#eef2f7">
-  <div class="mx-auto max-w-2xl px-6">
-    <div class="text-center mb-10">
-      <p class="eyebrow sr">On démarre ?</p>
-      <h2 class="h-section mt-2 text-[#0a2240] sr sr-d1">Déclarez votre contact.</h2>
-      <p class="text-[16px] text-[#5b6b80] mt-3 sr sr-d2">Inscrivez-vous comme apporteur ou déclarez directement une mise en relation. Réponse sous 48 h.</p>
+<section id="inscription" class="section">
+  <div class="wrap-narrow">
+    <div class="section-head center">
+      <p class="t-eyebrow sr">On démarre ?</p>
+      <h2 class="t-section sr">Déclarez votre contact.</h2>
+      <p class="t-section-lead sr sr-d1">Inscrivez-vous comme apporteur ou déclarez directement une mise en relation. Réponse sous 48 h.</p>
     </div>
-    <form name="affiliation" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/merci.html" class="sr sr-d2 bg-white rounded-2xl border border-[#dde3ec] p-7 shadow-sm">
+    <form name="affiliation" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/merci.html" class="form gray sr sr-d1">
       <input type="hidden" name="form-name" value="affiliation">
-      <p class="hidden"><label>Ne pas remplir : <input name="bot-field"/></label></p>
-      <div class="text-[12px] font-extrabold uppercase tracking-[.12em] text-[#5b6b80] mb-3">Vous</div>
-      <div class="grid sm:grid-cols-2 gap-4">
-        <input class="inp" name="nom" type="text" required placeholder="Nom"/>
-        <input class="inp" name="prenom" type="text" required placeholder="Prénom"/>
+      <p style="display:none"><label>Ne pas remplir : <input name="bot-field"/></label></p>
+
+      <p class="form-title">Vous</p>
+      <div class="form-row">
+        <div class="field"><label class="lbl" for="nom">Nom <span class="req">*</span></label><input class="finp" id="nom" name="nom" type="text" autocomplete="family-name" required/></div>
+        <div class="field"><label class="lbl" for="prenom">Prénom <span class="req">*</span></label><input class="finp" id="prenom" name="prenom" type="text" autocomplete="given-name" required/></div>
       </div>
-      <div class="grid sm:grid-cols-2 gap-4 mt-4">
-        <input class="inp" name="email" type="email" required placeholder="Email"/>
-        <input class="inp" name="telephone" type="tel" placeholder="Téléphone"/>
+      <div class="form-row">
+        <div class="field"><label class="lbl" for="email">E-mail <span class="req">*</span></label><input class="finp" id="email" name="email" type="email" autocomplete="email" required/></div>
+        <div class="field"><label class="lbl" for="telephone">Téléphone</label><input class="finp" id="telephone" name="telephone" type="tel" autocomplete="tel"/></div>
       </div>
-      <div class="text-[12px] font-extrabold uppercase tracking-[.12em] text-[#5b6b80] mb-3 mt-7">Le prospect (facultatif si simple inscription)</div>
-      <input class="inp" name="structure" type="text" placeholder="Structure recommandée (caserne, association, IFSI…)"/>
-      <div class="grid sm:grid-cols-2 gap-4 mt-4">
-        <input class="inp" name="contact_prospect" type="text" placeholder="Nom du contact"/>
-        <input class="inp" name="email_prospect" type="text" placeholder="Email ou téléphone du contact"/>
+
+      <p class="form-title">Le prospect (facultatif si simple inscription)</p>
+      <div class="field"><label class="lbl" for="structure">Structure recommandée</label><input class="finp" id="structure" name="structure" type="text" placeholder="Caserne, association, IFSI…"/></div>
+      <div class="form-row">
+        <div class="field"><label class="lbl" for="contact_prospect">Nom du contact</label><input class="finp" id="contact_prospect" name="contact_prospect" type="text"/></div>
+        <div class="field"><label class="lbl" for="email_prospect">Email ou téléphone du contact</label><input class="finp" id="email_prospect" name="email_prospect" type="text"/></div>
       </div>
-      <textarea class="inp mt-4" name="message" rows="4" placeholder="Contexte : besoin, produit envisagé, budget, échéance…"></textarea>
-      <div class="mt-6 flex items-center justify-between gap-4 flex-wrap">
-        <p class="text-[11px] text-[#9aa7b8]">En envoyant, vous acceptez d'être recontacté par e-mail et les conditions du programme ci-dessus.</p>
-        <button type="submit" class="btn-blue">Envoyer</button>
-      </div>
+      <div class="field"><label class="lbl" for="message">Contexte</label><textarea class="finp" id="message" name="message" rows="4" placeholder="Besoin, produit envisagé, budget, échéance…"></textarea></div>
+
+      <p class="rgpd">En envoyant, vous acceptez d'être recontacté par e-mail et les conditions du programme ci-dessus.</p>
+      <div style="margin-top:22px"><button type="submit" class="btn">Envoyer</button></div>
     </form>
-    <p class="text-center text-[13px] text-[#5b6b80] mt-6 sr sr-d3">Une question ? Écrivez-nous : <a href="mailto:vitalxscope@gmail.com" class="text-[#0046b8] font-bold hover:underline">vitalxscope@gmail.com</a></p>
+    <p class="t-caption center" style="margin-top:22px">Une question ? Écrivez-nous : <a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a></p>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="sec-dark pt-14 pb-8">
-  <div class="mx-auto max-w-6xl px-6">
-    <div class="grid md:grid-cols-3 gap-8 mb-10">
+<!-- APPEL À L'ACTION -->
+<section class="tile tile-dark tile-pad-b" style="padding-top:clamp(56px,8vw,100px);padding-bottom:clamp(56px,8vw,100px)">
+  <div class="tile-copy">
+    <h2 class="t-tile sr">Recommandez VitalX.<br>Soyez récompensé.</h2>
+    <p class="t-tile-sub sr sr-d1" style="color:#a1a1a6;max-width:620px;margin:14px auto 0">Une vente conclue grâce à votre mise en relation = une commission versée par virement. Sans engagement.</p>
+    <div class="links sr sr-d2">
+      <a href="#inscription" class="more">Devenir apporteur</a>
+      <a href="/boutique.html" class="more">Voir la boutique</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- PIED DE PAGE -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-legal">
+      <p>Les interfaces constructeurs (Schiller DEFIGARD Touch 7 et PHYSIOGARD Touch 7, Weinmann MEDUCORE Standard² et MEDUMAT Standard²) sont reproduites dans le scope VitalX avec l'autorisation de leurs fabricants respectifs, à des fins de formation uniquement. Le simulateur VitalX est conçu et développé par VitalX ; il n'est ni fabriqué, ni distribué, ni approuvé comme dispositif médical par ces constructeurs. Les noms de produits cités sont des marques de leurs propriétaires respectifs.</p>
+    </div>
+    <div class="footer-crumb">
+      <a href="/">VitalX</a>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg>
+      <span>Apporteurs d'affaires</span>
+    </div>
+    <div class="footer-cols">
       <div>
-        <div class="text-[22px] font-black tracking-tight mb-3">Vital<span class="text-[#e1000f]">X</span></div>
-        <p class="text-[13px] text-[#9fb3cc] leading-relaxed">Scopes de simulation médicale conçus et assemblés en France pour les professionnels du secours.</p>
-      </div>
-      <div>
-        <div class="text-[12px] font-extrabold uppercase tracking-[.12em] text-white mb-3">Navigation</div>
-        <ul class="space-y-2 text-[13px] text-[#9fb3cc]">
-          <li><a href="/" class="hover:text-white transition">Accueil</a></li>
-          <li><a href="/boutique.html" class="hover:text-white transition">Boutique</a></li>
-          <li><a href="#inscription" class="hover:text-white transition">Devenir apporteur</a></li>
+        <h4>Produits</h4>
+        <ul>
+          <li><a href="/#v2">VitalX</a></li>
+          <li><a href="/#packs">VitalX Plus, Pro, Ultra</a></li>
+          <li><a href="/#pods">POD'S</a></li>
+          <li><a href="/#interfaces">Interfaces constructeurs</a></li>
+          <li><a href="/boutique.html">Boutique</a></li>
         </ul>
       </div>
       <div>
-        <div class="text-[12px] font-extrabold uppercase tracking-[.12em] text-white mb-3">Informations</div>
-        <ul class="space-y-2 text-[13px] text-[#9fb3cc]">
-          <li><a href="/mentions-legales.html" class="hover:text-white transition">Mentions légales</a></li>
-          <li><a href="/cgv.html" class="hover:text-white transition">CGV</a></li>
-          <li><a href="/politique-confidentialite.html" class="hover:text-white transition">Confidentialité</a></li>
+        <h4>Acheter</h4>
+        <ul>
+          <li><a href="/#devis">Demander un devis</a></li>
+          <li><a href="/boutique.html#licence">Licence seule</a></li>
+          <li><a href="/boutique.html#ecussons">Écussons</a></li>
+          <li><a href="/garantie.html">Garantie</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Société</h4>
+        <ul>
+          <li><a href="/qui-sommes-nous.html">Qui sommes-nous</a></li>
+          <li><a href="/affiliation.html">Apporteurs d'affaires</a></li>
+          <li><a href="https://vitalxtrainer.app" target="_blank" rel="noopener">Mode Formateur</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Informations</h4>
+        <ul>
+          <li><a href="/mentions-legales.html">Mentions légales</a></li>
+          <li><a href="/cgv.html">CGV</a></li>
+          <li><a href="/politique-confidentialite.html">Confidentialité</a></li>
+          <li><a href="/formulaire_retractation.pdf" download>Rétractation</a></li>
         </ul>
       </div>
     </div>
-    <div class="tricolor-thin rounded-full mb-6"></div>
-    <p class="text-center text-[12px] text-[#7e93ad]">© <span id="year"></span> VitalX — Tous droits réservés. Conçu &amp; assemblé en France 🇫🇷</p>
+    <p class="footer-contact">Besoin d'aide ? Écrivez-nous à <a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a>.</p>
+    <div class="tricolor footer-fr-line" aria-hidden="true"></div>
+    <div class="footer-fr"><i class="fr-flag" aria-hidden="true"></i><span>Conçu &amp; assemblé en France 🇫🇷</span><span class="t-fine">Entreprise française · Support 7j/7 · Châssis et housse garantis à vie</span></div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> VitalX. Tous droits réservés.</span>
+      <nav aria-label="Liens légaux">
+        <a href="/mentions-legales.html">Mentions légales</a>
+        <a href="/cgv.html">CGV</a>
+        <a href="/politique-confidentialite.html">Confidentialité</a>
+      </nav>
+      <span id="langSwitch" class="lang" aria-label="Langue">
+        <button type="button" data-lang="fr" class="lang-btn is-active" title="Français" aria-label="Français">Français</button>
+        <button type="button" data-lang="en" class="lang-btn" title="English" aria-label="English">English</button>
+        <button type="button" data-lang="de" class="lang-btn" title="Deutsch" aria-label="Deutsch">Deutsch</button>
+      </span>
+    </div>
   </div>
 </footer>
 
 <script>
 document.getElementById('year').textContent=new Date().getFullYear();
-document.getElementById('menuBtn')?.addEventListener('click',()=>document.getElementById('mobileMenu').classList.toggle('hidden'));
-document.querySelectorAll('#mobileMenu a').forEach(a=>a.addEventListener('click',()=>document.getElementById('mobileMenu').classList.add('hidden')));
-(function(){const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.sr').forEach(el=>io.observe(el))})();
+// Menu mobile
+(function(){const b=document.getElementById('menuBtn'),m=document.getElementById('mobileMenu');if(!b||!m)return;b.addEventListener('click',()=>{const open=m.classList.toggle('open');b.setAttribute('aria-expanded',String(open));document.body.style.overflow=open?'hidden':''});m.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{m.classList.remove('open');b.setAttribute('aria-expanded','false');document.body.style.overflow=''}))})();
+// Apparition au défilement
+(function(){const els=document.querySelectorAll('.sr');if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('show'));return}const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});els.forEach(el=>io.observe(el))})();
 </script>
+<script src="/i18n-site.js" defer></script>
+<script src="/i18n.js" defer></script>
 </body>
 </html>
