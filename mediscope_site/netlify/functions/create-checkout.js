@@ -1,33 +1,26 @@
+// create-checkout.js — VitalX
+// v3.0 — 13/09/2026
+//   • Mode Ultra supprimé (sku_mode_ultra + champ "code d'activation" associé)
+//   • Licence VitalX seule / passage POD'S → VitalX : SKU prévus mais pas encore vendus en ligne
+//     (aujourd'hui sur devis). Pour les activer : créer les Price dans Stripe, remplacer
+//     les placeholders ci-dessous et ajouter un bouton .add-to-cart dans boutique.html.
+//   • Le champ "code existant" ne se déclenche que pour le passage POD'S → VitalX.
+
 const PRICE_BY_SKU = {
-  // === PRODUITS PRINCIPAUX ===
-  'sku_pack':           'price_1TJw0K2MFaCyLMvR1WHyPrUm', // Pack VitalX Premium 3600
-  'sku_pack_basic':     'price_1TJvzU2MFaCyLMvRzJozVeBB', // Pack VitalX Basique 3300
-
-  // Packs reconditionnés
-  'sku_pack_refurb_1':  'price_1SSqRK2MFaCyLMvRPnF7A5Ia', // Pack Reconditionné 1 iPad — 1 489 €
-  'sku_pack_refurb_2':  'price_1SSqQC2MFaCyLMvRTh5uoL8T', // Pack Reconditionné 2 iPad — 1 849 €
-
-  // === MODE ULTRA ===
-  'sku_mode_ultra':     'price_1TWHL02MFaCyLMvRIg7KAaJh', // Mode Ultra — 400 € (GUARDIAN, ANGEL, NEXUS, CTG, VENT)
-
-  // === POD'S ===
-  'sku_pods_classic':   'price_1TWHMV2MFaCyLMvRYYMmpv0d', // POD'S Classic — 1 700 €
-  'sku_pods_premium':   'price_1TWHLu2MFaCyLMvR9hB7ryqT', // POD'S Premium — 2 000 €
-
-  // === ECUSSONS ===
+  // === ECUSSONS (vendus en ligne) ===
   'sku_ecusson_chat_noir':   'price_1TGJiR2MFaCyLMvRNRTfejPp',
   'sku_ecusson_vitalx_2k26': 'price_1TGJmJ2MFaCyLMvRc54chMoQ',
   'sku_ecusson_stop_blood':  'price_1TGJlS2MFaCyLMvRaF0mNB5f',
 
-  // === ACCESSOIRES ===
-  'sku_acc_dsa_adult':  'price_ACC_DSA_ADULT_REPLACE',
-  'sku_acc_dsa_pedia':  'price_ACC_DSA_PEDIA_REPLACE',
-  'sku_acc_cable_ecg':  'price_ACC_CABLE_ECG_REPLACE',
-  'sku_acc_spo2':       'price_ACC_SPO2_REPLACE',
-  'sku_acc_etco2':      'price_ACC_ETCO2_REPLACE',
-  'sku_acc_bp_adult':   'price_ACC_BP_ADULT_REPLACE',
-  'sku_acc_bp_child':   'price_ACC_BP_CHILD_REPLACE',
-  'sku_acc_temp':       'price_ACC_TEMP_REPLACE',
+  // === LICENCES (sur devis pour l'instant — placeholders) ===
+  'sku_licence_vitalx':      'price_LICENCE_VITALX_REPLACE',      // Licence VitalX seule
+  'sku_licence_pods_upgrade':'price_LICENCE_PODS_UPGRADE_REPLACE',// Passage POD'S → VitalX
+
+  // === PACKS (sur devis — conservés pour compatibilité, non exposés dans la boutique) ===
+  'sku_pack':                'price_1TJw0K2MFaCyLMvR1WHyPrUm',
+  'sku_pack_basic':          'price_1TJvzU2MFaCyLMvRzJozVeBB',
+  'sku_pods_classic':        'price_1TWHMV2MFaCyLMvRYYMmpv0d',
+  'sku_pods_premium':        'price_1TWHLu2MFaCyLMvR9hB7ryqT',
 };
 
 const PATCH_SKUS = new Set([
@@ -35,6 +28,9 @@ const PATCH_SKUS = new Set([
   'sku_ecusson_vitalx_2k26',
   'sku_ecusson_stop_blood',
 ]);
+
+// SKU nécessitant un code de licence existant à la commande
+const NEEDS_EXISTING_CODE = new Set(['sku_licence_pods_upgrade']);
 
 exports.handler = async (event) => {
   try {
@@ -48,19 +44,15 @@ exports.handler = async (event) => {
       return json(400, { error: 'Panier vide' });
     }
 
-    // Détecte le Mode Ultra (champ code d'activation)
-    const hasUltra = items.some(({ sku }) => sku === 'sku_mode_ultra');
-
-    // Détecte les écussons
     const hasPatch = items.some(({ sku }) => PATCH_SKUS.has(String(sku || '')));
+    const needsCode = items.some(({ sku }) => NEEDS_EXISTING_CODE.has(String(sku || '')));
 
     const lineItems = [];
     for (const { sku, quantity } of items) {
       const price = PRICE_BY_SKU[sku];
-      if (!price) {
-        return json(400, { error: `Article invalide: ${sku}` });
+      if (!price || price.endsWith('_REPLACE')) {
+        return json(400, { error: `Article non disponible en ligne : ${sku}` });
       }
-
       lineItems.push({
         price,
         quantity: Math.max(1, Math.min(99, Number(quantity) || 1)),
@@ -81,19 +73,17 @@ exports.handler = async (event) => {
     body.append('billing_address_collection', 'auto');
     body.append('allow_promotion_codes', 'true');
 
-    // Champ personnalisé si Mode Ultra (code d'activation du scope)
-    if (hasUltra) {
-      body.append('custom_fields[0][key]', 'scope_activation_code');
+    // Code POD'S existant, requis pour la mise à niveau
+    if (needsCode) {
+      body.append('custom_fields[0][key]', 'existing_license_code');
       body.append('custom_fields[0][label][type]', 'custom');
-      body.append('custom_fields[0][label][custom]', "Code d'activation de votre scope (facultatif)");
+      body.append('custom_fields[0][label][custom]', "Code de licence POD'S à mettre à niveau");
       body.append('custom_fields[0][type]', 'text');
       body.append('custom_fields[0][text][minimum_length]', '4');
       body.append('custom_fields[0][text][maximum_length]', '40');
-      body.append('custom_fields[0][optional]', 'true');
-
       body.append(
         'custom_text[submit][message]',
-        "Indiquez le code de votre scope VitalX pour accélérer l'activation du Mode Ultra."
+        "Indiquez le code de votre licence POD'S : il sera converti en licence VitalX à distance."
       );
     }
 
@@ -102,7 +92,6 @@ exports.handler = async (event) => {
       ['FR', 'BE', 'CH', 'LU'].forEach((c) => {
         body.append('shipping_address_collection[allowed_countries][]', c);
       });
-
       body.append('shipping_options[0][shipping_rate_data][type]', 'fixed_amount');
       body.append('shipping_options[0][shipping_rate_data][fixed_amount][amount]', '380'); // 3,80 €
       body.append('shipping_options[0][shipping_rate_data][fixed_amount][currency]', 'eur');
@@ -113,7 +102,6 @@ exports.handler = async (event) => {
       body.append('shipping_options[0][shipping_rate_data][delivery_estimate][maximum][value]', '8');
     }
 
-    // Lignes articles
     lineItems.forEach((li, i) => {
       body.append(`line_items[${i}][price]`, li.price);
       body.append(`line_items[${i}][quantity]`, String(li.quantity));
