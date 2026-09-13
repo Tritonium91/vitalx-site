@@ -2,250 +2,565 @@
 <!--
   boutique.html — VitalX
   Description : Boutique officielle (packs + licences sur devis, écussons au panier)
-  🆕 v3.0 — 13/09/2026 — Yann USSEGLIO
-     • Mode Ultra supprimé (remplacé par les interfaces constructeurs, incluses dans la licence VitalX)
-     • Nouvelle section « Licence » : Licence VitalX seule + Passage POD'S → VitalX (sur devis)
-     • Gamme alignée sur la grille tarifaire du 06/09/2026 : VitalX · Plus · Pro · Ultra · POD'S Classic · POD'S Pro
-     • POD'S Premium renommé POD'S Pro (iPhone 12/13 + iPad 11" formateur)
-     • Bandeau « Interfaces constructeurs incluses » → /#interfaces
-     • Panier conservé uniquement pour les écussons
+  🆕 v4.0 — 13/09/2026 — Yann USSEGLIO
+     • Refonte complète dans un style épuré façon Apple (voir /apple.css)
+     • Barre de navigation globale + sous-navigation « Boutique » avec bouton Devis
+     • Cartes produits blanches sur fond gris, visuel en haut, liste de contenu, bouton pilule
+     • Gamme inchangée : VitalX · Plus · Pro · Ultra · POD'S Classic · POD'S Pro · Licence · Mise à niveau
+     • Écussons : panier Stripe conservé à l'identique (mêmes identifiants et SKU), tiroir restylé
      • Aucun prix affiché sur les packs / licences (devis)
+     • Ancres conservées : #pack #pods #licence #ecussons (+ redirection #licenses → #licence)
 -->
-<html lang="fr" class="h-full scroll-smooth">
+<html lang="fr">
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>VitalX — Boutique</title>
   <meta name="description" content="Boutique VitalX : scopes de simulation iPad et POD'S, licence VitalX seule, écussons. Tarifs sur devis."/>
-  <link rel="icon" href="/favicon.ico"/>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="theme-color" content="#000000"/>
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+  <link rel="stylesheet" href="/apple.css">
   <style>
-    *{-webkit-font-smoothing:antialiased}
-    html,body{background:#f4f6f9;color:#0c1828;font-family:'Inter','Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,'Helvetica Neue',Arial,sans-serif}
-    ::selection{background:#0046b8;color:#fff}
-    :root{--fr-blue:#0046b8;--fr-blue-dark:#0a2240;--fr-blue-deep:#06203f;--fr-red:#e1000f;--fr-red-dark:#b3000c;--ink:#0c1828;--muted:#5b6b80;--line:#dde3ec}
-    .tricolor{height:10px;background:linear-gradient(90deg,#0046b8 0 33.33%,#fff 33.33% 66.66%,#e1000f 66.66% 100%)}
-    .tricolor-thin{height:6px;background:linear-gradient(90deg,#0046b8 0 33.33%,#fff 33.33% 66.66%,#e1000f 66.66% 100%)}
-    .lang-btn{width:26px;height:18px;border-radius:3px;overflow:hidden;display:block;line-height:0;padding:0;border:0;background:none;cursor:pointer;opacity:.4;transition:opacity .15s,box-shadow .15s}
-    .lang-btn:hover{opacity:.85}
-    .lang-btn.is-active{opacity:1;box-shadow:0 0 0 1.5px rgba(255,255,255,.9)}
-    .lang-btn svg{display:block;width:100%;height:100%}
-    .title-bar{display:inline-block;color:#0a2240}
-    .divider-glow{height:2px;width:80px;background:linear-gradient(90deg,#0046b8,#e1000f);border-radius:2px}
-    .card{background:#fff;border:1px solid var(--line)}
-    .cta-anim{transition:transform .12s ease,box-shadow .15s ease,filter .15s ease;position:relative;overflow:hidden}
-    .cta-anim:hover{filter:brightness(1.05)}.cta-anim:active{transform:translateY(1px) scale(.99)}
-    .card-lift{transition:transform .25s ease,box-shadow .25s ease}
-    @media(hover:hover)and(pointer:fine){.card-lift:hover{transform:translateY(-5px);box-shadow:0 24px 50px -28px rgba(10,34,64,.4)}}
-    .sr{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.4,0,.2,1),transform .7s cubic-bezier(.4,0,.2,1)}
-    .sr.show{opacity:1;transform:translateY(0)}.sr-d1{transition-delay:.08s}.sr-d2{transition-delay:.16s}.sr-d3{transition-delay:.24s}
-    @keyframes badgeFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
-    .badge-float{animation:badgeFloat 3s ease-in-out infinite}
-    @keyframes counterPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
-    .pulse-badge{animation:counterPulse 2s ease-in-out infinite}
-    .cart-fab{position:fixed;right:18px;bottom:18px;z-index:45;box-shadow:0 18px 40px -10px rgba(0,70,184,.55),0 0 0 1px rgba(255,255,255,.08) inset}
-    #cartItems::-webkit-scrollbar{width:8px}#cartItems::-webkit-scrollbar-thumb{background:rgba(0,0,0,.12);border-radius:8px}
-    .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);background:#0046b8;color:#fff;padding:10px 20px;border-radius:10px;font-weight:700;font-size:14px;box-shadow:0 14px 40px -10px rgba(0,70,184,.6);opacity:0;pointer-events:none;transition:all .3s cubic-bezier(.4,0,.2,1);z-index:80}
-    .toast.show{opacity:1;transform:translate(-50%,0)}
-    /* Bandeau « inclus dans chaque pack » */
-    .incl{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
-    .incl span{font-size:12px;font-weight:700;color:#0a2240;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 12px}
+    /* Spécifique boutique */
+    body{background:var(--bg-alt)}
+    .shop-hero{padding:56px 22px 40px;text-align:center;background:var(--bg-alt)}
+    .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:26px}
+    .chips a{font-size:14px;letter-spacing:-.016em;color:var(--ink);background:#fff;border-radius:980px;padding:9px 18px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+    .chips a:hover{text-decoration:none;background:var(--ink);color:#fff}
+    .shop-section{padding:clamp(40px,6vw,72px) 0}
+    .shop-head{margin-bottom:clamp(24px,4vw,40px)}
+    .shop-head h2{font-size:clamp(28px,4vw,40px);line-height:1.1;font-weight:600;letter-spacing:0;margin:0}
+    .shop-head p{margin:8px 0 0;color:var(--ink-2);font-size:17px}
+
+    /* Carte produit */
+    .prod{background:#fff;border-radius:18px;display:flex;flex-direction:column;overflow:hidden;position:relative}
+    .prod-badge{position:absolute;top:16px;left:16px;font-size:12px;font-weight:600;letter-spacing:-.01em;color:#b64400;background:#fff3e6;border-radius:980px;padding:4px 10px;z-index:2}
+    .prod-badge.blue{color:#0066cc;background:#e8f1fc}
+    .prod-badge.dark{color:#fff;background:var(--ink)}
+    .prod-art{background:#fff;padding:36px 24px 10px;display:grid;place-items:center;min-height:250px}
+    .prod-art img{max-height:220px;width:100%;object-fit:contain}
+    .prod-art-tall img{max-height:260px}
+    .prod-body{padding:8px 26px 26px;display:flex;flex-direction:column;flex:1}
+    .prod h3{font-size:24px;line-height:1.17;font-weight:600;letter-spacing:.009em;margin:0}
+    .prod-sub{font-size:14px;color:var(--ink-2);margin:4px 0 18px;letter-spacing:-.016em}
+    .prod .checks{gap:9px;flex:1}
+    .prod .checks li{font-size:14px;line-height:1.43;gap:9px;color:#424245}
+    .prod .checks li::before{flex-basis:16px;width:16px;height:16px;background-size:8px;margin-top:3px}
+    .prod-actions{margin-top:22px;display:grid;gap:10px}
+    .prod-actions .more{font-size:14px;justify-content:center}
+    .price{display:flex;align-items:baseline;gap:6px;margin:8px 0 0}
+    .price b{font-size:24px;font-weight:600;letter-spacing:.009em}
+    .price span{font-size:14px;color:var(--ink-2)}
+
     /* Fiche licence */
-    .lic-row{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-top:1px solid var(--line);font-size:14px;color:#3a4757}
-    .lic-row:first-child{border-top:0}
-    .lic-row b{color:#0a2240;min-width:150px;flex:0 0 auto}
-    a:focus-visible,button:focus-visible{outline:3px solid #7eb0ff;outline-offset:3px}
-    @media(prefers-reduced-motion:reduce){.sr{opacity:1;transform:none;transition:none}.badge-float,.pulse-badge{animation:none}}
+    .lic-row{display:grid;grid-template-columns:120px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--line-2);font-size:14px;line-height:1.43;color:#424245}
+    .lic-row:first-child{border-top:0;padding-top:0}
+    .lic-row b{color:var(--ink);font-weight:600}
+
+    /* Bandeaux */
+    .banner{border-radius:22px;overflow:hidden;padding:clamp(28px,4vw,48px);display:grid;grid-template-columns:1fr 1.1fr;gap:32px;align-items:center}
+    .banner-dark{background:#000;color:#f5f5f7}
+    .banner-dark .more{color:var(--blue-dark)}
+    .banner h3{font-size:clamp(26px,3.4vw,40px);line-height:1.1;font-weight:600;letter-spacing:0;margin:0}
+    .banner p{margin:12px 0 0;font-size:17px;color:#a1a1a6;line-height:1.47}
+    .banner-light{background:#fff;color:var(--ink)}
+    .banner-light p{color:var(--ink-2)}
+    .banner-row{grid-template-columns:1fr auto}
+    @media(max-width:833px){.banner{grid-template-columns:1fr}}
+
+    /* Panier */
+    .cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);z-index:120}
+    .cart-overlay.hidden{display:none}
+    .cart{position:fixed;top:0;right:0;height:100%;width:100%;max-width:420px;background:#fff;color:var(--ink);z-index:130;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .35s cubic-bezier(.22,.61,.36,1);box-shadow:-10px 0 40px rgba(0,0,0,.12)}
+    .cart.open{transform:none}
+    .cart-head{height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;border-bottom:1px solid var(--line-2)}
+    .cart-head h2{font-size:21px;font-weight:600;letter-spacing:.011em;margin:0}
+    .cart-close{width:32px;height:32px;border-radius:50%;border:0;background:var(--bg-alt);color:var(--ink);font-size:14px;cursor:pointer;display:grid;place-items:center}
+    .cart-close:hover{background:#e8e8ed}
+    .cart-items{flex:1;overflow-y:auto;padding:16px 22px;display:grid;gap:12px;align-content:start}
+    .cart-row{display:flex;align-items:center;gap:14px;padding:12px;border-radius:14px;background:var(--bg-alt)}
+    .cart-row img{width:64px;height:64px;object-fit:contain;border-radius:10px;background:#fff;padding:6px}
+    .cart-row .nm{font-size:15px;font-weight:600;letter-spacing:-.022em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .cart-row .un{font-size:12px;color:var(--ink-2)}
+    .qty{display:inline-flex;align-items:center;gap:2px;margin-top:8px;background:#fff;border-radius:980px;padding:2px}
+    .qty button{width:26px;height:26px;border-radius:50%;border:0;background:transparent;color:var(--ink);font-size:15px;cursor:pointer}
+    .qty button:hover{background:var(--bg-alt)}
+    .qty span{min-width:26px;text-align:center;font-size:14px;font-weight:600}
+    .qty .del{width:auto;padding:0 10px;font-size:12px;color:#e30000;border-radius:980px}
+    .cart-total{font-weight:600;white-space:nowrap;font-size:15px}
+    .cart-foot{padding:18px 22px 22px;border-top:1px solid var(--line-2);background:#fff}
+    .cart-sub{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;color:var(--ink-2)}
+    .cart-sub b{font-size:24px;font-weight:600;color:var(--ink);letter-spacing:.009em}
+    .cart-empty{text-align:center;padding:48px 0;color:var(--ink-2);font-size:15px}
+    .cart-empty b{display:block;color:var(--ink);font-size:17px;font-weight:600;margin-bottom:4px}
+    .pay-logos{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:14px}
+    .pay-logos span{display:inline-flex;align-items:center;font-size:11px;font-weight:600;color:var(--ink-2);background:var(--bg-alt);border-radius:8px;padding:5px 9px;letter-spacing:-.01em}
+    .cart-fab{position:fixed;right:18px;bottom:18px;z-index:110;display:none;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+    .cart-fab em{font-style:normal;background:#fff;color:var(--ink);border-radius:980px;padding:1px 8px;font-size:12px;font-weight:600;margin-left:6px}
+    @media(max-width:833px){.cart-fab{display:inline-flex}}
+    .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,16px);background:var(--ink);color:#fff;padding:11px 20px;border-radius:980px;font-size:14px;font-weight:600;letter-spacing:-.016em;opacity:0;pointer-events:none;transition:all .3s cubic-bezier(.22,.61,.36,1);z-index:140}
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+    #ecussonLightbox.hidden{display:none}
+    #ecussonLightbox.flex{display:flex}
   </style>
 </head>
-<body class="min-h-full">
+<body>
 
-  <div class="bg-[#06203f] text-white text-[12px]">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-9 flex items-center justify-between">
-      <span class="flex items-center gap-2 font-semibold tracking-wide"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e1000f" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Conçu &amp; assemblé en France 🇫🇷</span>
-      <span class="flex items-center gap-4">
-        <span class="hidden sm:flex items-center gap-4">
-          <a href="mailto:vitalxscope@gmail.com" class="hover:text-[#7eb0ff] transition">vitalxscope@gmail.com</a>
-          <a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="text-[#ffb340] hover:text-[#ffc970] font-semibold transition">Mode Formateur (web) ›</a>
-        </span>
-        <span id="langSwitch" class="flex items-center gap-1.5">
-          <button type="button" data-lang="fr" class="lang-btn is-active" title="Français" aria-label="Français">
-            <svg viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="36" fill="#0046b8"/><rect x="20" width="20" height="36" fill="#fff"/><rect x="40" width="20" height="36" fill="#e1000f"/></svg>
-          </button>
-          <button type="button" data-lang="en" class="lang-btn" title="English" aria-label="English">
-            <svg viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="36" fill="#012169"/><path d="M0 0 L60 36 M60 0 L0 36" stroke="#fff" stroke-width="7"/><path d="M0 0 L60 36 M60 0 L0 36" stroke="#C8102E" stroke-width="4"/><path d="M30 0 V36 M0 18 H60" stroke="#fff" stroke-width="12"/><path d="M30 0 V36 M0 18 H60" stroke="#C8102E" stroke-width="7"/></svg>
-          </button>
-          <button type="button" data-lang="de" class="lang-btn" title="Deutsch" aria-label="Deutsch">
-            <svg viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="12" fill="#000"/><rect y="12" width="60" height="12" fill="#DD0000"/><rect y="24" width="60" height="12" fill="#FFCE00"/></svg>
-          </button>
-        </span>
-      </span>
-    </div>
-  </div>
-  <div class="tricolor-thin"></div>
-
-  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-[#dde3ec] shadow-sm">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-2.5 group"><img src="/assets/logo.png" alt="Logo VitalX" class="h-9 w-auto group-hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'"/><span class="font-black tracking-tight text-[20px] text-[#0a2240]">Vital<span class="text-[#e1000f]">X</span></span></a>
-      <nav class="hidden md:flex items-center gap-6 text-[13px] font-bold uppercase tracking-wide text-[#0c1828]"><a href="/" class="hover:text-[#0046b8] transition">Accueil</a><a href="#pack" class="hover:text-[#0046b8] transition">Packs iPad</a><a href="#pods" class="hover:text-[#0046b8] transition">POD'S</a><a href="#licence" class="hover:text-[#0046b8] transition">Licence</a><a href="#ecussons" class="hover:text-[#0046b8] transition">Écussons</a><a href="/affiliation.html" class="hover:text-[#0046b8] transition">Affiliation</a><a href="/#contact" class="hover:text-[#0046b8] transition">Contact</a></nav>
-      <div class="flex items-center gap-3">
-        <a href="/#contact" class="hidden sm:inline-flex items-center rounded-md bg-[#e1000f] text-white px-4 py-2 text-[12px] font-extrabold uppercase tracking-wide shadow-sm hover:bg-[#b3000c] cta-anim">Demander un devis</a>
-        <button id="openCart" type="button" class="relative inline-flex items-center gap-2 rounded-md bg-[#0a2240] text-white px-3.5 py-2 text-sm font-semibold hover:bg-[#0046b8] transition"><span>🛒</span><span class="hidden sm:inline">Panier</span><span id="cartCount" class="inline-flex items-center justify-center rounded-full bg-[#e1000f] text-white text-[11px] font-bold px-2 py-0.5 min-w-[20px] pulse-badge">0</span></button>
+  <!-- BARRE DE NAVIGATION GLOBALE -->
+  <header class="gnav">
+    <div class="wrap">
+      <a href="/" class="gnav-logo" aria-label="VitalX — accueil"><img src="/logo.png" alt="" onerror="this.style.display='none'"/>Vital<b>X</b></a>
+      <ul class="gnav-links">
+        <li><a href="/#v2">Scopes</a></li>
+        <li><a href="/#interfaces">Interfaces</a></li>
+        <li><a href="/#packs">Packs</a></li>
+        <li><a href="/#pods">POD'S</a></li>
+        <li><a href="/#features">Fonctions</a></li>
+        <li><a href="/#app">Application</a></li>
+        <li><a href="/#devis">Devis</a></li>
+        <li><a href="/qui-sommes-nous.html">Société</a></li>
+        <li><a href="/affiliation.html">Affiliation</a></li>
+        <li><a href="/boutique.html">Boutique</a></li>
+      </ul>
+      <div class="gnav-right">
+        <a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="gnav-icon gnav-hide-m" title="Mode Formateur (web)" aria-label="Mode Formateur (web)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></a>
+        <button id="openCart" type="button" class="gnav-icon" title="Panier" aria-label="Panier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l1 13H5L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span id="cartCount" class="gnav-badge">0</span></button>
+        <button class="gnav-burger" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
       </div>
     </div>
   </header>
+  <nav id="mobileMenu" class="gnav-mobile" aria-label="Menu mobile">
+    <a href="/">Accueil</a>
+    <a href="#pack">Packs iPad</a>
+    <a href="#pods">POD'S</a>
+    <a href="#licence">Licence</a>
+    <a href="#ecussons">Écussons</a>
+    <a href="/affiliation.html">Affiliation</a>
+    <a href="/#contact">Contact</a>
+    <a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="small">Mode Formateur (web) ›</a>
+    <a href="mailto:vitalxscope@gmail.com" class="small">vitalxscope@gmail.com</a>
+  </nav>
 
-  <!-- HERO -->
-  <section class="relative overflow-hidden bg-[#06203f] text-white">
-    <div class="absolute -top-32 -left-24 w-[420px] h-[420px] rounded-full bg-[#0046b8]/25 blur-[120px] pointer-events-none"></div>
-    <div class="absolute -bottom-32 -right-24 w-[420px] h-[420px] rounded-full bg-[#e1000f]/15 blur-[120px] pointer-events-none"></div>
-    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 md:py-20">
-      <div class="max-w-4xl mx-auto text-center sr">
-        <img src="/assets/medxbyvitalx.png" alt="MedX by VitalX" class="mx-auto w-full max-w-2xl object-contain" style="max-height:34vh"/>
-        <p class="mt-6 text-[#b9c8dc] text-base md:text-lg max-w-2xl mx-auto">Scopes de simulation sur iPad et iPhone, licence seule pour les centres déjà équipés, écussons. Tarif des packs et licences communiqué sur devis, sous 24 h.</p>
-        <div class="mt-7 flex flex-wrap items-center justify-center gap-3 text-[12px]">
-          <span class="inline-flex items-center gap-1.5 rounded-full bg-white/8 ring-1 ring-white/15 px-3 py-1.5 font-semibold">♾️ Licence à vie, sans abonnement</span>
-          <span class="inline-flex items-center gap-1.5 rounded-full bg-white/8 ring-1 ring-white/15 px-3 py-1.5 font-semibold">🖥️ Interfaces constructeurs incluses</span>
-          <span class="inline-flex items-center gap-1.5 rounded-full bg-white/8 ring-1 ring-white/15 px-3 py-1.5 font-semibold">🛡️ Châssis &amp; housse garantis à vie</span>
-          <span class="inline-flex items-center gap-1.5 rounded-full bg-white/8 ring-1 ring-white/15 px-3 py-1.5 font-semibold">🇫🇷 Support FR 7j/7</span>
-        </div>
+  <!-- SOUS-NAVIGATION BOUTIQUE -->
+  <div class="lnav">
+    <div class="wrap">
+      <a href="#top" class="lnav-title">Boutique</a>
+      <ul class="lnav-links">
+        <li><a href="#pack">Packs iPad</a></li>
+        <li><a href="#pods">POD'S</a></li>
+        <li><a href="#licence">Licence</a></li>
+        <li><a href="#ecussons">Écussons</a></li>
+      </ul>
+      <div class="lnav-right">
+        <a href="/#contact" class="btn btn-xs">Demander un devis</a>
       </div>
     </div>
-    <div class="tricolor"></div>
-  </section>
+  </div>
 
-  <main class="py-10 md:py-16 relative z-[1]">
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="shop-hero">
+      <div class="wrap">
+        <h1 class="t-hero hero-in" style="font-size:clamp(40px,6vw,64px)">Boutique.</h1>
+        <p class="t-hero-sub hero-in hero-in-2" style="color:var(--ink-2);max-width:700px;margin:10px auto 0">Scopes de simulation sur iPad et iPhone, licence seule pour les centres déjà équipés, écussons. Tarif des packs et licences communiqué sur devis, sous 24 h.</p>
+        <div class="chips hero-in hero-in-3">
+          <a href="#pack">Scopes iPad</a>
+          <a href="#pods">POD'S</a>
+          <a href="#licence">Licence VitalX</a>
+          <a href="#ecussons">Écussons</a>
+        </div>
+        <div class="pills hero-in hero-in-3" style="margin-top:22px">
+          <span>Licence à vie, sans abonnement</span>
+          <span>Interfaces constructeurs incluses</span>
+          <span>Châssis &amp; housse garantis à vie</span>
+          <span>Support FR 7j/7</span>
+        </div>
+      </div>
+    </section>
 
     <!-- INCLUS DANS CHAQUE PACK -->
-    <section class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mb-14 sr">
-      <div class="rounded-2xl bg-white ring-1 ring-[#dde3ec] p-6 md:p-8 text-center">
-        <div class="text-[13px] font-extrabold uppercase tracking-[.14em] text-[#e1000f]">Dans chaque pack iPad</div>
-        <p class="mt-2 text-[15px] text-[#0c1828] max-w-3xl mx-auto">Châssis VitalX, housse ou pochette Bagheera, connectiques médicales, tous les modules logiciels, les interfaces constructeurs et la licence à vie. Il n'y a rien à ajouter.</p>
-        <div class="incl mt-5">
-          <span>Châssis VitalX</span><span>Housse Bagheera</span><span>PNI</span><span>SpO₂</span><span>ECG 12D</span><span>DSA</span><span>Température</span><span>EtCO₂</span><span>Moniteur VitalX</span><span>Interfaces Schiller</span><span>Interfaces Weinmann</span><span>Media Center</span><span>Licence à vie · 3 appareils</span>
+    <section class="shop-section" style="padding-top:8px">
+      <div class="wrap">
+        <div class="card card-pad center sr">
+          <p class="t-eyebrow">Dans chaque pack iPad</p>
+          <p class="t-body-lg" style="margin:0 auto;max-width:760px">Châssis VitalX, housse ou pochette Bagheera, connectiques médicales, tous les modules logiciels, les interfaces constructeurs et la licence à vie. Il n'y a rien à ajouter.</p>
+          <div class="pills" style="margin-top:22px">
+            <span>Châssis VitalX</span><span>Housse Bagheera</span><span>PNI</span><span>SpO₂</span><span>ECG 12D</span><span>DSA</span><span>Température</span><span>EtCO₂</span><span>Moniteur VitalX</span><span>Interfaces Schiller</span><span>Interfaces Weinmann</span><span>Media Center</span><span>Licence à vie · 3 appareils</span>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- PACKS IPAD -->
-    <section id="pack" class="w-full px-4 sm:px-6 lg:px-10 xl:px-14 mb-24">
-      <div class="text-center mb-10 sr"><h2 class="text-3xl md:text-5xl font-black tracking-tight uppercase"><span class="title-bar">Scopes VitalX — iPad</span></h2><div class="mt-3 mx-auto divider-glow"></div><p class="mt-4 text-[#5b6b80] text-sm md:text-base">Quatre configurations, un seul châssis. La différence, c'est la taille de l'écran et le nombre de tablettes.</p></div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+    <section id="pack" class="shop-section">
+      <div class="wrap-wide">
+        <div class="shop-head sr">
+          <h2>Scopes VitalX. iPad.</h2>
+          <p>Quatre configurations, un seul châssis. La différence, c'est la taille de l'écran et le nombre de tablettes.</p>
+        </div>
+        <div class="grid-4">
 
-        <!-- 1 · VitalX -->
-        <article class="card-lift sr"><div class="relative rounded-2xl overflow-hidden ring-2 ring-[#0a2240]/35 bg-white card h-full flex flex-col"><div class="absolute top-0 inset-x-0 h-12 bg-[#0a2240] text-white flex items-center justify-center text-[13px] font-extrabold uppercase tracking-wider">VitalX — L'essentiel</div><div class="p-7 lg:p-8 pt-20 lg:pt-24 flex-1"><div class="flex items-start justify-between gap-3"><div><h3 class="text-2xl tracking-wide font-extrabold uppercase text-[#0a2240]">VitalX</h3><div class="mt-1 text-sm text-[#5b6b80]">1 iPad 11" — moniteur</div></div><span class="shrink-0 inline-flex items-center rounded-full bg-[#0a2240]/10 text-[#0a2240] ring-1 ring-[#0a2240]/25 text-[11px] font-bold uppercase px-2.5 py-1 badge-float">Idéal solo</span></div><ul class="mt-5 space-y-2.5 text-sm text-[#3a4757]"><li class="flex items-start gap-2"><span class="text-[#0a2240] mt-0.5 font-bold">✓</span><span><strong>1 iPad 11"</strong> — moniteur</span></li><li class="flex items-start gap-2"><span class="text-[#0a2240] mt-0.5 font-bold">✓</span><span>Châssis VitalX + adaptateur 11" + housse</span></li><li class="flex items-start gap-2"><span class="text-[#0a2240] mt-0.5 font-bold">✓</span><span>Connectique complète (PNI, SpO₂, ECG 12D, DSA, T°, EtCO₂)</span></li><li class="flex items-start gap-2"><span class="text-[#0a2240] mt-0.5 font-bold">✓</span><span>Formateur depuis le web ou votre propre iPad/iPhone (même code)</span></li></ul></div><div class="px-7 lg:px-8 pb-7"><div class="rounded-xl bg-[#f4f6f9] p-3 ring-1 ring-[#dde3ec]"><img src="/assets/pack-vitalx1.png" alt="VitalX" class="w-full max-h-60 lg:max-h-72 object-contain" loading="lazy"/></div><a href="fiche-technique-basique.html" class="mt-4 inline-flex justify-center items-center gap-2 w-full rounded-md bg-[#f4f6f9] text-[#0a2240] px-5 py-2.5 font-semibold hover:bg-[#e6ebf2] ring-1 ring-[#dde3ec] cta-anim text-sm">📄 Voir la fiche technique</a><a href="/#contact" class="mt-3 w-full inline-flex justify-center items-center gap-2 rounded-md bg-[#0a2240] text-white px-5 py-3.5 font-extrabold uppercase tracking-wide shadow-sm hover:bg-[#0046b8] cta-anim">📝 Demander un devis</a></div></div></article>
+          <!-- 1 · VitalX -->
+          <article class="prod card-hover sr">
+            <span class="prod-badge blue">Idéal solo</span>
+            <div class="prod-art"><img src="/assets/pack-vitalx1.png" alt="VitalX" loading="lazy"/></div>
+            <div class="prod-body">
+              <h3>VitalX</h3>
+              <p class="prod-sub">1 iPad 11" — moniteur</p>
+              <ul class="checks">
+                <li><strong>1 iPad 11"</strong>&nbsp;— moniteur</li>
+                <li>Châssis VitalX + adaptateur 11" + housse</li>
+                <li>Connectique complète (PNI, SpO₂, ECG 12D, DSA, T°, EtCO₂)</li>
+                <li>Formateur depuis le web ou votre propre iPad/iPhone (même code)</li>
+              </ul>
+              <div class="prod-actions">
+                <a href="/#contact" class="btn btn-block">Demander un devis</a>
+                <a href="fiche-technique-basique.html" class="more">Voir la fiche technique</a>
+              </div>
+            </div>
+          </article>
 
-        <!-- 2 · VitalX PLUS -->
-        <article class="card-lift sr sr-d1"><div class="relative rounded-2xl overflow-hidden ring-2 ring-[#0046b8]/40 bg-white card shadow-[0_30px_80px_-40px_rgba(0,70,184,.5)] h-full flex flex-col"><div class="absolute top-0 inset-x-0 h-12 bg-[#0046b8] text-white flex items-center justify-center text-[13px] font-extrabold uppercase tracking-wider">VitalX Plus — Formateur inclus</div><div class="p-7 lg:p-8 pt-20 lg:pt-24 flex-1"><div class="flex items-start justify-between gap-3"><div><h3 class="text-2xl tracking-wide font-extrabold uppercase text-[#0a2240]">VitalX Plus</h3><div class="mt-1 text-sm text-[#5b6b80]">2 iPad 11" — moniteur + formateur</div></div><span class="shrink-0 inline-flex items-center rounded-full bg-[#0046b8]/10 text-[#0046b8] ring-1 ring-[#0046b8]/30 text-[11px] font-bold uppercase px-2.5 py-1 badge-float">Best-seller</span></div><ul class="mt-5 space-y-2.5 text-sm text-[#3a4757]"><li class="flex items-start gap-2"><span class="text-[#0046b8] mt-0.5 font-bold">✓</span><span><strong>2 iPad 11"</strong> — moniteur + formateur</span></li><li class="flex items-start gap-2"><span class="text-[#0046b8] mt-0.5 font-bold">✓</span><span>Châssis VitalX + adaptateur 11" + housse</span></li><li class="flex items-start gap-2"><span class="text-[#0046b8] mt-0.5 font-bold">✓</span><span>Connectique complète (PNI, SpO₂, ECG 12D, DSA, T°, EtCO₂)</span></li><li class="flex items-start gap-2"><span class="text-[#0046b8] mt-0.5 font-bold">✓</span><span>Prêt à former dès l'ouverture du carton</span></li></ul></div><div class="px-7 lg:px-8 pb-7"><div class="rounded-xl bg-[#f4f6f9] p-3 ring-1 ring-[#dde3ec]"><img src="/assets/pack-vitalx.png" alt="VitalX Plus" class="w-full max-h-60 lg:max-h-72 object-contain" loading="lazy"/></div><a href="fiche-technique.html" class="mt-4 inline-flex justify-center items-center gap-2 w-full rounded-md bg-[#f4f6f9] text-[#0a2240] px-5 py-2.5 font-semibold hover:bg-[#e6ebf2] ring-1 ring-[#dde3ec] cta-anim text-sm">📄 Voir la fiche technique</a><a href="/#contact" class="mt-3 w-full inline-flex justify-center items-center gap-2 rounded-md bg-[#0046b8] text-white px-5 py-3.5 font-extrabold uppercase tracking-wide shadow-sm hover:bg-[#0038a0] cta-anim">📝 Demander un devis</a></div></div></article>
+          <!-- 2 · VitalX PLUS -->
+          <article class="prod card-hover sr sr-d1">
+            <span class="prod-badge">Best-seller</span>
+            <div class="prod-art"><img src="/assets/pack-vitalx.png" alt="VitalX Plus" loading="lazy"/></div>
+            <div class="prod-body">
+              <h3>VitalX Plus</h3>
+              <p class="prod-sub">2 iPad 11" — moniteur + formateur</p>
+              <ul class="checks">
+                <li><strong>2 iPad 11"</strong>&nbsp;— moniteur + formateur</li>
+                <li>Châssis VitalX + adaptateur 11" + housse</li>
+                <li>Connectique complète (PNI, SpO₂, ECG 12D, DSA, T°, EtCO₂)</li>
+                <li>Prêt à former dès l'ouverture du carton</li>
+              </ul>
+              <div class="prod-actions">
+                <a href="/#contact" class="btn btn-block">Demander un devis</a>
+                <a href="fiche-technique.html" class="more">Voir la fiche technique</a>
+              </div>
+            </div>
+          </article>
 
-        <!-- 3 · VitalX Pro -->
-        <article class="card-lift sr sr-d2"><div class="relative rounded-2xl overflow-hidden ring-2 ring-[#e1000f]/50 bg-white card shadow-[0_30px_80px_-40px_rgba(225,0,15,.5)] h-full flex flex-col"><div class="absolute top-0 inset-x-0 h-12 bg-[#e1000f] text-white flex items-center justify-center text-[13px] font-extrabold uppercase tracking-wider">VitalX Pro — Grand format</div><div class="p-7 lg:p-8 pt-20 lg:pt-24 flex-1"><div class="flex items-start justify-between gap-3"><div><h3 class="text-2xl tracking-wide font-extrabold uppercase text-[#0a2240]">VitalX Pro</h3><div class="mt-1 text-sm text-[#5b6b80]">1 iPad Air 13" — moniteur grand format</div></div><span class="shrink-0 inline-flex items-center rounded-full bg-[#e1000f]/10 text-[#e1000f] ring-1 ring-[#e1000f]/30 text-[11px] font-bold uppercase px-2.5 py-1 badge-float">Génération V2</span></div><ul class="mt-5 space-y-2.5 text-sm text-[#3a4757]"><li class="flex items-start gap-2"><span class="text-[#e1000f] mt-0.5 font-bold">✓</span><span><strong>1 iPad Air 13"</strong> — moniteur grand format</span></li><li class="flex items-start gap-2"><span class="text-[#e1000f] mt-0.5 font-bold">✓</span><span>Châssis <strong>VitalX V2</strong></span></li><li class="flex items-start gap-2"><span class="text-[#e1000f] mt-0.5 font-bold">✓</span><span>Housse <strong>Bagheera V2 Premium</strong></span></li><li class="flex items-start gap-2"><span class="text-[#e1000f] mt-0.5 font-bold">✓</span><span>Connectique complète (PNI, SpO₂, ECG 12D, DSA, T°, EtCO₂)</span></li></ul></div><div class="px-7 lg:px-8 pb-7"><div class="rounded-xl bg-[#f4f6f9] p-3 ring-1 ring-[#dde3ec]"><img src="/assets/vitalxpro.png" alt="VitalX Pro" class="w-full max-h-60 lg:max-h-72 object-contain" loading="lazy"/></div><a href="fiche-technique-pro.html" class="mt-4 inline-flex justify-center items-center gap-2 w-full rounded-md bg-[#f4f6f9] text-[#0a2240] px-5 py-2.5 font-semibold hover:bg-[#e6ebf2] ring-1 ring-[#dde3ec] cta-anim text-sm">📄 Voir la fiche technique</a><a href="/#contact" class="mt-3 w-full inline-flex justify-center items-center gap-2 rounded-md bg-[#e1000f] text-white px-5 py-3.5 font-extrabold uppercase tracking-wide shadow-sm hover:bg-[#b3000c] cta-anim">📝 Demander un devis</a></div></div></article>
+          <!-- 3 · VitalX Pro -->
+          <article class="prod card-hover sr sr-d2">
+            <span class="prod-badge dark">Génération V2</span>
+            <div class="prod-art"><img src="/assets/vitalxPro.PNG" alt="VitalX Pro" loading="lazy"/></div>
+            <div class="prod-body">
+              <h3>VitalX Pro</h3>
+              <p class="prod-sub">1 iPad Air 13" — moniteur grand format</p>
+              <ul class="checks">
+                <li><strong>1 iPad Air 13"</strong>&nbsp;— moniteur grand format</li>
+                <li>Châssis <strong>&nbsp;VitalX V2</strong></li>
+                <li>Housse <strong>&nbsp;Bagheera V2 Premium</strong></li>
+                <li>Connectique complète (PNI, SpO₂, ECG 12D, DSA, T°, EtCO₂)</li>
+              </ul>
+              <div class="prod-actions">
+                <a href="/#contact" class="btn btn-block">Demander un devis</a>
+                <a href="fiche-technique-pro.html" class="more">Voir la fiche technique</a>
+              </div>
+            </div>
+          </article>
 
-        <!-- 4 · VitalX Ultra -->
-        <article class="card-lift sr sr-d3"><div class="relative rounded-2xl overflow-hidden ring-2 ring-[#ffb340]/60 bg-white card shadow-[0_30px_80px_-40px_rgba(255,179,64,.5)] h-full flex flex-col"><div class="absolute top-0 inset-x-0 h-12 bg-[#0a2240] text-white flex items-center justify-center text-[13px] font-extrabold uppercase tracking-wider">👑 VitalX Ultra — Le plus complet</div><div class="p-7 lg:p-8 pt-20 lg:pt-24 flex-1"><div class="flex items-start justify-between gap-3"><div><h3 class="text-2xl tracking-wide font-extrabold uppercase text-[#0a2240]">VitalX Ultra</h3><div class="mt-1 text-sm text-[#5b6b80]">iPad Air 13" + iPad 11" formateur</div></div><span class="shrink-0 inline-flex items-center rounded-full bg-[#e1000f] text-white ring-1 ring-[#e1000f]/40 text-[11px] font-bold uppercase px-2.5 py-1 badge-float">Disponible</span></div><ul class="mt-5 space-y-2.5 text-sm text-[#3a4757]"><li class="flex items-start gap-2"><span class="text-[#b37400] mt-0.5 font-bold">✓</span><span><strong>1 iPad Air 13"</strong> — moniteur grand format</span></li><li class="flex items-start gap-2"><span class="text-[#b37400] mt-0.5 font-bold">✓</span><span><strong>1 iPad 11"</strong> — formateur, avec coque</span></li><li class="flex items-start gap-2"><span class="text-[#b37400] mt-0.5 font-bold">✓</span><span>Châssis <strong>VitalX V2</strong> + housse <strong>Bagheera V2 Premium</strong></span></li><li class="flex items-start gap-2"><span class="text-[#b37400] mt-0.5 font-bold">✓</span><span>Connectique complète (PNI, SpO₂, ECG 12D, DSA, T°, EtCO₂)</span></li></ul></div><div class="px-7 lg:px-8 pb-7"><div class="rounded-xl bg-[#f4f6f9] p-3 ring-1 ring-[#dde3ec]"><img src="/assets/vitalxv2pro.png" alt="VitalX Ultra" class="w-full max-h-60 lg:max-h-72 object-contain" loading="lazy"/></div><a href="fiche-technique-ultimate.html" class="mt-4 inline-flex justify-center items-center gap-2 w-full rounded-md bg-[#f4f6f9] text-[#0a2240] px-5 py-2.5 font-semibold hover:bg-[#e6ebf2] ring-1 ring-[#dde3ec] cta-anim text-sm">📄 Voir la fiche technique</a><a href="/#contact" class="mt-3 w-full inline-flex justify-center items-center gap-2 rounded-md bg-[#0a2240] text-white px-5 py-3.5 font-extrabold uppercase tracking-wide shadow-sm hover:bg-[#0046b8] cta-anim">📝 Demander un devis</a></div></div></article>
+          <!-- 4 · VitalX Ultra -->
+          <article class="prod card-hover sr sr-d3">
+            <span class="prod-badge dark">Le plus complet</span>
+            <div class="prod-art"><img src="/assets/vitalxv2pro.PNG" alt="VitalX Ultra" loading="lazy"/></div>
+            <div class="prod-body">
+              <h3>VitalX Ultra</h3>
+              <p class="prod-sub">iPad Air 13" + iPad 11" formateur</p>
+              <ul class="checks">
+                <li><strong>1 iPad Air 13"</strong>&nbsp;— moniteur grand format</li>
+                <li><strong>1 iPad 11"</strong>&nbsp;— formateur, avec coque</li>
+                <li>Châssis VitalX V2 + housse Bagheera V2 Premium</li>
+                <li>Connectique complète (PNI, SpO₂, ECG 12D, DSA, T°, EtCO₂)</li>
+              </ul>
+              <div class="prod-actions">
+                <a href="/#contact" class="btn btn-block">Demander un devis</a>
+                <a href="fiche-technique-ultimate.html" class="more">Voir la fiche technique</a>
+              </div>
+            </div>
+          </article>
+        </div>
+        <p class="t-fine center" style="margin-top:22px">Les iPad sont livrés non configurés : vous installez l'application VitalX Scope depuis l'App Store et saisissez votre code de licence. Un code active jusqu'à 3 appareils, moniteur ou formateur.</p>
       </div>
-      <p class="mt-6 text-center text-[12px] text-[#9aa7b8]">Les iPad sont livrés non configurés : vous installez l'application VitalX Scope depuis l'App Store et saisissez votre code de licence. Un code active jusqu'à 3 appareils, moniteur ou formateur.</p>
     </section>
 
     <!-- BANDEAU INTERFACES CONSTRUCTEURS -->
-    <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-24">
-      <div class="sr relative rounded-2xl overflow-hidden ring-2 ring-[#0046b8]/30 bg-[#06203f] text-white">
-        <div class="absolute -top-20 -right-20 h-56 w-56 rounded-full bg-[#0046b8]/30 blur-[100px] pointer-events-none"></div>
-        <div class="absolute top-0 inset-x-0 tricolor-thin"></div>
-        <div class="relative grid lg:grid-cols-[1fr_1.1fr] gap-6 items-center p-7 md:p-10">
+    <section class="shop-section" style="padding-top:0">
+      <div class="wrap-wide">
+        <div class="banner banner-dark sr">
           <div>
-            <span class="inline-flex items-center gap-2 rounded-full bg-[#e1000f] text-white text-[11px] font-extrabold uppercase tracking-wide px-3 py-1 mb-3">Inclus dans la licence VitalX</span>
-            <h3 class="text-2xl md:text-3xl font-extrabold uppercase text-white">Les interfaces Schiller et Weinmann. Sans option.</h3>
-            <p class="mt-3 text-sm text-[#b9c8dc] max-w-xl">DEFIGARD Touch 7, PHYSIOGARD Touch 7, MEDUCORE Standard² et MEDUMAT Standard², reproduits avec l'autorisation des fabricants. Chaque scope iPad les affiche dès l'activation, et les prochaines interfaces arriveront par simple mise à jour.</p>
-            <a href="/#interfaces" class="mt-6 inline-flex items-center gap-2 rounded-md bg-[#e1000f] text-white px-6 py-3.5 font-extrabold uppercase tracking-wide shadow-sm hover:bg-[#b3000c] cta-anim">Voir les interfaces ›</a>
+            <p class="t-eyebrow">Inclus dans la licence VitalX</p>
+            <h3>Les interfaces Schiller et Weinmann. Sans option.</h3>
+            <p>DEFIGARD Touch 7, PHYSIOGARD Touch 7, MEDUCORE Standard² et MEDUMAT Standard², reproduits avec l'autorisation des fabricants. Chaque scope iPad les affiche dès l'activation, et les prochaines interfaces arriveront par simple mise à jour.</p>
+            <div class="links links-left" style="margin-top:22px"><a href="/#interfaces" class="more">Voir les interfaces</a></div>
           </div>
-          <div class="grid grid-cols-2 gap-3">
-            <img src="/assets/scope-schiller-defigard.webp" alt="Interface Schiller DEFIGARD Touch 7 dans le scope VitalX" class="w-full rounded-xl ring-1 ring-white/15" loading="lazy"/>
-            <img src="/assets/scope-weinmann-meducore.webp" alt="Interface Weinmann MEDUCORE Standard² dans le scope VitalX" class="w-full rounded-xl ring-1 ring-white/15" loading="lazy"/>
+          <div class="tile-2up">
+            <img src="/assets/scope-schiller-defigard.webp" alt="Interface Schiller DEFIGARD Touch 7 dans le scope VitalX" loading="lazy"/>
+            <img src="/assets/scope-weinmann-meducore.webp" alt="Interface Weinmann MEDUCORE Standard² dans le scope VitalX" loading="lazy"/>
           </div>
         </div>
       </div>
     </section>
 
     <!-- POD'S -->
-    <section id="pods" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-24">
-      <div class="text-center mb-8 sr"><img src="/logovitalxpods1.png" alt="VitalX POD'S" class="mx-auto w-full max-w-xl object-contain" loading="lazy"/><p class="mt-3 text-[#5b6b80] text-sm md:text-base">La version compacte VitalX, propulsée par iPhone. Boîtier, tensiomètre, SpO₂, DSA adulte/enfant et pochette Bagheera.</p></div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <article class="card-lift sr sr-d1"><div class="relative rounded-2xl overflow-hidden ring-2 ring-[#0046b8]/40 bg-white card h-full flex flex-col"><div class="absolute top-0 inset-x-0 h-11 bg-[#0046b8] text-white flex items-center justify-center text-[12px] sm:text-[13px] font-extrabold uppercase tracking-wider">POD'S Classic</div><div class="p-6 md:p-7 pt-16 md:pt-20 flex-1"><h3 class="text-2xl tracking-wide font-extrabold uppercase text-[#0a2240]">POD'S Classic</h3><div class="mt-1 text-sm text-[#5b6b80]">1 iPhone 12/13 — moniteur</div><ul class="mt-4 space-y-2 text-sm text-[#3a4757]"><li class="flex items-start gap-2"><span class="text-[#0046b8] font-bold">✓</span><span>1 iPhone 12 ou 13</span></li><li class="flex items-start gap-2"><span class="text-[#0046b8] font-bold">✓</span><span>Boîtier VitalX POD'S + pochette Bagheera</span></li><li class="flex items-start gap-2"><span class="text-[#0046b8] font-bold">✓</span><span>Brassard tension adulte / enfant</span></li><li class="flex items-start gap-2"><span class="text-[#0046b8] font-bold">✓</span><span>Capteur SpO₂ / SpCO</span></li><li class="flex items-start gap-2"><span class="text-[#0046b8] font-bold">✓</span><span>Patch DSA adulte / pédia</span></li><li class="flex items-start gap-2"><span class="text-[#0046b8] font-bold">✓</span><span>Licence POD'S : scope iPhone + formateur</span></li></ul></div><div class="px-6 md:px-7 pb-6"><div class="rounded-xl bg-[#f4f6f9] p-3 ring-1 ring-[#dde3ec]"><img src="/assets/vitalxpodsclassic.png" alt="POD'S Classic" class="w-full max-h-52 object-contain" loading="lazy"/></div><a href="vitalx-pods.html" class="mt-3 inline-flex justify-center items-center gap-2 w-full rounded-md bg-[#f4f6f9] text-[#0a2240] px-5 py-2.5 font-semibold hover:bg-[#e6ebf2] ring-1 ring-[#dde3ec] cta-anim text-sm">📄 Fiche technique</a><a href="/#contact" class="mt-3 w-full inline-flex justify-center items-center gap-2 rounded-md bg-[#0046b8] text-white px-5 py-3.5 font-extrabold uppercase tracking-wide shadow-sm hover:bg-[#0038a0] cta-anim">📝 Demander un devis</a></div></div></article>
-        <article class="card-lift sr sr-d2"><div class="relative rounded-2xl overflow-hidden ring-2 ring-[#e1000f]/50 bg-white card h-full flex flex-col"><div class="absolute top-0 inset-x-0 h-11 bg-[#e1000f] text-white flex items-center justify-center text-[12px] sm:text-[13px] font-extrabold uppercase tracking-wider">POD'S Pro — Formateur inclus</div><div class="p-6 md:p-7 pt-16 md:pt-20 flex-1"><h3 class="text-2xl tracking-wide font-extrabold uppercase text-[#0a2240]">POD'S Pro</h3><div class="mt-1 text-sm text-[#5b6b80]">1 iPhone 12/13 + 1 iPad 11" formateur</div><ul class="mt-4 space-y-2 text-sm text-[#3a4757]"><li class="flex items-start gap-2"><span class="text-[#e1000f] font-bold">✓</span><span>1 iPhone 12 ou 13</span></li><li class="flex items-start gap-2"><span class="text-[#e1000f] font-bold">✓</span><span><strong>+ 1 iPad 11"</strong> — formateur</span></li><li class="flex items-start gap-2"><span class="text-[#e1000f] font-bold">✓</span><span>Boîtier VitalX POD'S + pochette Bagheera</span></li><li class="flex items-start gap-2"><span class="text-[#e1000f] font-bold">✓</span><span>Brassard tension adulte / enfant</span></li><li class="flex items-start gap-2"><span class="text-[#e1000f] font-bold">✓</span><span>Capteur SpO₂ / SpCO · patch DSA adulte / pédia</span></li><li class="flex items-start gap-2"><span class="text-[#e1000f] font-bold">✓</span><span>Licence POD'S : scope iPhone + formateur</span></li></ul></div><div class="px-6 md:px-7 pb-6"><div class="rounded-xl bg-[#f4f6f9] p-3 ring-1 ring-[#dde3ec]"><img src="/assets/vitalxpodspremium.png" alt="POD'S Pro" class="w-full max-h-52 object-contain" loading="lazy"/></div><a href="vitalx-pods.html" class="mt-3 inline-flex justify-center items-center gap-2 w-full rounded-md bg-[#f4f6f9] text-[#0a2240] px-5 py-2.5 font-semibold hover:bg-[#e6ebf2] ring-1 ring-[#dde3ec] cta-anim text-sm">📄 Fiche technique</a><a href="/#contact" class="mt-3 w-full inline-flex justify-center items-center gap-2 rounded-md bg-[#e1000f] text-white px-5 py-3.5 font-extrabold uppercase tracking-wide shadow-sm hover:bg-[#b3000c] cta-anim">📝 Demander un devis</a></div></div></article>
+    <section id="pods" class="shop-section">
+      <div class="wrap-wide">
+        <div class="shop-head sr">
+          <h2>POD'S. iPhone.</h2>
+          <p>La version compacte VitalX, propulsée par iPhone. Boîtier, tensiomètre, SpO₂, DSA adulte/enfant et pochette Bagheera.</p>
+        </div>
+        <div class="grid-2">
+          <article class="prod card-hover sr sr-d1">
+            <span class="prod-badge blue">Compact</span>
+            <div class="prod-art prod-art-tall"><img src="/assets/vitalxpodsclassic.PNG" alt="POD'S Classic" loading="lazy"/></div>
+            <div class="prod-body">
+              <h3>POD'S Classic</h3>
+              <p class="prod-sub">1 iPhone 12/13 — moniteur</p>
+              <ul class="checks">
+                <li>1 iPhone 12 ou 13</li>
+                <li>Boîtier VitalX POD'S + pochette Bagheera</li>
+                <li>Brassard tension adulte / enfant</li>
+                <li>Capteur SpO₂ / SpCO</li>
+                <li>Patch DSA adulte / pédia</li>
+                <li>Licence POD'S : scope iPhone + formateur</li>
+              </ul>
+              <div class="prod-actions">
+                <a href="/#contact" class="btn btn-block">Demander un devis</a>
+                <a href="vitalx-pods.html" class="more">Fiche technique</a>
+              </div>
+            </div>
+          </article>
+          <article class="prod card-hover sr sr-d2">
+            <span class="prod-badge">Formateur inclus</span>
+            <div class="prod-art prod-art-tall"><img src="/assets/vitalxpodspremium.png" alt="POD'S Pro" loading="lazy"/></div>
+            <div class="prod-body">
+              <h3>POD'S Pro</h3>
+              <p class="prod-sub">1 iPhone 12/13 + 1 iPad 11" formateur</p>
+              <ul class="checks">
+                <li>1 iPhone 12 ou 13</li>
+                <li><strong>+ 1 iPad 11"</strong>&nbsp;— formateur</li>
+                <li>Boîtier VitalX POD'S + pochette Bagheera</li>
+                <li>Brassard tension adulte / enfant</li>
+                <li>Capteur SpO₂ / SpCO · patch DSA adulte / pédia</li>
+                <li>Licence POD'S : scope iPhone + formateur</li>
+              </ul>
+              <div class="prod-actions">
+                <a href="/#contact" class="btn btn-block">Demander un devis</a>
+                <a href="vitalx-pods.html" class="more">Fiche technique</a>
+              </div>
+            </div>
+          </article>
+        </div>
+        <p class="t-fine center" style="margin-top:22px">La licence POD'S couvre le scope sur iPhone et le mode formateur. Les scopes iPad et les interfaces constructeurs nécessitent la licence VitalX — passage possible à tout moment, voir ci-dessous.</p>
       </div>
-      <p class="mt-6 text-center text-[12px] text-[#9aa7b8]">La licence POD'S couvre le scope sur iPhone et le mode formateur. Les scopes iPad et les interfaces constructeurs nécessitent la licence VitalX — passage possible à tout moment, voir ci-dessous.</p>
     </section>
 
     <!-- LICENCE -->
-    <section id="licence" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-24">
-      <div class="text-center mb-10 sr"><h2 class="text-3xl md:text-5xl font-black tracking-tight uppercase"><span class="title-bar">Licence VitalX</span></h2><div class="mt-3 mx-auto divider-glow"></div><p class="mt-4 text-[#5b6b80] text-sm md:text-base max-w-2xl mx-auto">Vous avez déjà vos tablettes ? Le logiciel seul, sans châssis ni connectique. Un code, 3 appareils, à vie.</p></div>
+    <section id="licence" class="shop-section">
+      <div class="wrap-wide">
+        <div class="shop-head sr">
+          <h2>Licence VitalX.</h2>
+          <p>Vous avez déjà vos tablettes ? Le logiciel seul, sans châssis ni connectique. Un code, 3 appareils, à vie.</p>
+        </div>
+        <div class="grid-2">
+          <!-- Licence seule -->
+          <article class="prod card-hover sr">
+            <span class="prod-badge blue">Logiciel seul</span>
+            <div class="prod-art" style="background:#000;min-height:220px;padding:28px"><img src="/assets/licence-life.png" alt="Licence VitalX à vie" loading="lazy" style="max-height:170px"/></div>
+            <div class="prod-body" style="padding-top:22px">
+              <h3>Licence VitalX</h3>
+              <p class="prod-sub">Pour les centres déjà équipés en iPad</p>
+              <div style="flex:1">
+                <div class="lic-row"><b>Appareils</b><span>Un code d'activation pour 3 appareils au total — chacun peut être moniteur ou formateur, iPad ou iPhone.</span></div>
+                <div class="lic-row"><b>Contenu</b><span>Moniteur VitalX, interfaces constructeurs, ECG 12D, DSA, Media Center, scénarios, mode formateur iPad et web.</span></div>
+                <div class="lic-row"><b>Durée</b><span>À vie. Sans abonnement. Mises à jour et nouvelles interfaces incluses.</span></div>
+                <div class="lic-row"><b>Activation</b><span>Installez VitalX Scope depuis l'App Store, saisissez le code : prêt en 30 secondes.</span></div>
+              </div>
+              <div class="prod-actions">
+                <a href="/#contact" class="btn btn-block">Demander un devis</a>
+                <p class="t-fine center" style="margin:0">Compatible iPad et iPhone récents sous iPadOS / iOS à jour.</p>
+              </div>
+            </div>
+          </article>
 
-      <div class="grid lg:grid-cols-2 gap-6">
-        <!-- Licence seule -->
-        <article class="card-lift sr"><div class="relative rounded-2xl overflow-hidden ring-2 ring-[#0046b8]/40 bg-white card h-full flex flex-col"><div class="absolute top-0 inset-x-0 h-12 bg-[#0046b8] text-white flex items-center justify-center text-[13px] font-extrabold uppercase tracking-wider">Licence VitalX seule</div><div class="p-7 lg:p-8 pt-20 lg:pt-24 flex-1"><div class="flex items-start justify-between gap-3"><div><h3 class="text-2xl tracking-wide font-extrabold uppercase text-[#0a2240]">Licence VitalX</h3><div class="mt-1 text-sm text-[#5b6b80]">Pour les centres déjà équipés en iPad</div></div><span class="shrink-0 inline-flex items-center rounded-full bg-[#0046b8]/10 text-[#0046b8] ring-1 ring-[#0046b8]/30 text-[11px] font-bold uppercase px-2.5 py-1 badge-float">Logiciel seul</span></div>
-          <div class="mt-5">
-            <div class="lic-row"><b>Appareils</b><span>Un code d'activation pour 3 appareils au total — chacun peut être moniteur ou formateur, iPad ou iPhone.</span></div>
-            <div class="lic-row"><b>Contenu</b><span>Moniteur VitalX, interfaces constructeurs, ECG 12D, DSA, Media Center, scénarios, mode formateur iPad et web.</span></div>
-            <div class="lic-row"><b>Durée</b><span>À vie. Sans abonnement. Mises à jour et nouvelles interfaces incluses.</span></div>
-            <div class="lic-row"><b>Activation</b><span>Installez VitalX Scope depuis l'App Store, saisissez le code : prêt en 30 secondes.</span></div>
-          </div>
-        </div><div class="px-7 lg:px-8 pb-7"><a href="/#contact" class="w-full inline-flex justify-center items-center gap-2 rounded-md bg-[#0046b8] text-white px-5 py-3.5 font-extrabold uppercase tracking-wide shadow-sm hover:bg-[#0038a0] cta-anim">📝 Demander un devis</a><p class="mt-3 text-[11px] text-[#9aa7b8] text-center">Compatible iPad et iPhone récents sous iPadOS / iOS à jour.</p></div></div></article>
-
-        <!-- Passage POD'S → VitalX -->
-        <article class="card-lift sr sr-d1"><div class="relative rounded-2xl overflow-hidden ring-2 ring-[#0a2240]/35 bg-white card h-full flex flex-col"><div class="absolute top-0 inset-x-0 h-12 bg-[#0a2240] text-white flex items-center justify-center text-[13px] font-extrabold uppercase tracking-wider">Passage POD'S → VitalX</div><div class="p-7 lg:p-8 pt-20 lg:pt-24 flex-1"><div class="flex items-start justify-between gap-3"><div><h3 class="text-2xl tracking-wide font-extrabold uppercase text-[#0a2240]">Mise à niveau</h3><div class="mt-1 text-sm text-[#5b6b80]">Pour les clients POD'S Classic et POD'S Pro</div></div><span class="shrink-0 inline-flex items-center rounded-full bg-[#0a2240]/10 text-[#0a2240] ring-1 ring-[#0a2240]/25 text-[11px] font-bold uppercase px-2.5 py-1 badge-float">Code existant</span></div>
-          <div class="mt-5">
-            <div class="lic-row"><b>Ce qui change</b><span>Votre code POD'S devient une licence VitalX complète : scope sur iPad, interfaces constructeurs, écrans premium.</span></div>
-            <div class="lic-row"><b>Ce qui reste</b><span>Le même code, les mêmes appareils déjà activés, le scope iPhone et le mode formateur.</span></div>
-            <div class="lic-row"><b>Matériel</b><span>Aucun. Vous ajoutez l'iPad de votre choix — ou demandez un châssis VitalX dans le même devis.</span></div>
-            <div class="lic-row"><b>Délai</b><span>Activation à distance, sans renvoi de matériel.</span></div>
-          </div>
-        </div><div class="px-7 lg:px-8 pb-7"><a href="/#contact" class="w-full inline-flex justify-center items-center gap-2 rounded-md bg-[#0a2240] text-white px-5 py-3.5 font-extrabold uppercase tracking-wide shadow-sm hover:bg-[#0046b8] cta-anim">📝 Demander la mise à niveau</a><p class="mt-3 text-[11px] text-[#9aa7b8] text-center">Indiquez votre code POD'S dans le message pour accélérer l'activation.</p></div></div></article>
-      </div>
-    </section>
-
-    <!-- ÉCUSSONS -->
-    <section id="ecussons" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-16">
-      <div class="text-center mb-10 sr"><h2 class="text-3xl md:text-5xl font-black tracking-tight uppercase"><span class="title-bar">Écussons</span></h2><div class="mt-3 mx-auto divider-glow"></div><p class="mt-4 text-[#5b6b80] text-sm md:text-base">Personnalisez votre tenue avec nos écussons PVC 3D. Paiement en ligne, livraison France, Belgique, Suisse, Luxembourg.</p></div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <article class="card-lift sr sr-d1 card rounded-2xl p-6 flex flex-col"><div class="rounded-xl bg-[#f4f6f9] p-3 ring-1 ring-[#dde3ec] mb-4"><img src="/assets/logo chat noir.png" alt="Écusson logo chat noir" class="ecusson-img cursor-zoom-in w-full max-h-44 object-contain" loading="lazy"/></div><h3 class="text-lg font-bold text-[#0a2240]">Écusson Chat Noir</h3><p class="mt-1 text-sm text-[#5b6b80]">PVC 3D souple · thermocollant</p><div class="mt-2 flex items-baseline gap-2"><span class="text-2xl font-black text-[#0a2240]">7,90 €</span><span class="text-xs text-[#5b6b80]">TTC</span></div><button data-sku="sku_ecusson_chat_noir" data-name="Écusson logo chat noir" data-price="790" data-image="/assets/logo chat noir.png" class="add-to-cart mt-5 inline-flex justify-center items-center gap-2 rounded-md bg-[#0046b8] text-white px-5 py-3 font-bold uppercase tracking-wide shadow-sm hover:bg-[#0038a0] cta-anim">🛒 Ajouter au panier</button></article>
-        <article class="card-lift sr sr-d2 card rounded-2xl p-6 flex flex-col"><div class="rounded-xl bg-[#f4f6f9] p-3 ring-1 ring-[#dde3ec] mb-4"><img src="/assets/logo vitalx 2K26.png" alt="Écusson logo VitalX 2K26" class="ecusson-img cursor-zoom-in w-full max-h-44 object-contain" loading="lazy"/></div><h3 class="text-lg font-bold text-[#0a2240]">Écusson VitalX 2K26</h3><p class="mt-1 text-sm text-[#5b6b80]">PVC 3D souple · thermocollant</p><div class="mt-2 flex items-baseline gap-2"><span class="text-2xl font-black text-[#0a2240]">7,90 €</span><span class="text-xs text-[#5b6b80]">TTC</span></div><button data-sku="sku_ecusson_vitalx_2k26" data-name="Écusson logo VitalX 2K26" data-price="790" data-image="/assets/logo vitalx 2K26.png" class="add-to-cart mt-5 inline-flex justify-center items-center gap-2 rounded-md bg-[#0046b8] text-white px-5 py-3 font-bold uppercase tracking-wide shadow-sm hover:bg-[#0038a0] cta-anim">🛒 Ajouter au panier</button></article>
-        <article class="card-lift sr sr-d3 card rounded-2xl p-6 flex flex-col"><div class="rounded-xl bg-[#f4f6f9] p-3 ring-1 ring-[#dde3ec] mb-4"><img src="/assets/logo stop blood.png" alt="Écusson logo stop blood" class="ecusson-img cursor-zoom-in w-full max-h-44 object-contain" loading="lazy"/></div><h3 class="text-lg font-bold text-[#0a2240]">Écusson Stop Blood</h3><p class="mt-1 text-sm text-[#5b6b80]">PVC 3D souple · thermocollant</p><div class="mt-2 flex items-baseline gap-2"><span class="text-2xl font-black text-[#0a2240]">7,90 €</span><span class="text-xs text-[#5b6b80]">TTC</span></div><button data-sku="sku_ecusson_stop_blood" data-name="Écusson logo stop blood" data-price="790" data-image="/assets/logo stop blood.png" class="add-to-cart mt-5 inline-flex justify-center items-center gap-2 rounded-md bg-[#0046b8] text-white px-5 py-3 font-bold uppercase tracking-wide shadow-sm hover:bg-[#0038a0] cta-anim">🛒 Ajouter au panier</button></article>
-      </div>
-    </section>
-
-    <!-- BANNIÈRE AFFILIATION -->
-    <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-16">
-      <div class="sr relative rounded-2xl overflow-hidden ring-2 ring-[#0046b8]/30 bg-[#06203f] text-white p-7 md:p-10">
-        <div class="absolute -top-20 -left-20 h-56 w-56 rounded-full bg-[#0046b8]/30 blur-[100px] pointer-events-none"></div>
-        <div class="absolute top-0 inset-x-0 tricolor-thin"></div>
-        <div class="relative flex flex-col md:flex-row md:items-center md:justify-between gap-5">
-          <div>
-            <span class="inline-flex items-center gap-2 rounded-full bg-[#ffb340]/15 ring-1 ring-[#ffb340]/40 text-[#ffb340] text-[11px] font-extrabold uppercase tracking-wide px-3 py-1 mb-3">🤝 Apporteurs d'affaires</span>
-            <h3 class="text-2xl md:text-3xl font-extrabold uppercase text-white">Recommandez VitalX. Soyez récompensé.</h3>
-            <p class="mt-2 text-sm text-[#b9c8dc] max-w-xl">Une vente conclue grâce à votre mise en relation = une commission versée par virement. Sans engagement.</p>
-          </div>
-          <a href="/affiliation.html" class="shrink-0 inline-flex items-center gap-2 rounded-md bg-[#e1000f] text-white px-6 py-3.5 font-extrabold uppercase tracking-wide shadow-sm hover:bg-[#b3000c] cta-anim">Découvrir le programme ›</a>
+          <!-- Passage POD'S → VitalX -->
+          <article class="prod card-hover sr sr-d1">
+            <span class="prod-badge dark">Code existant</span>
+            <div class="prod-art" style="background:#000;min-height:220px;padding:28px"><img src="/assets/vitalxpods.png" alt="Passage POD'S vers VitalX" loading="lazy" style="max-height:170px"/></div>
+            <div class="prod-body" style="padding-top:22px">
+              <h3>Passage POD'S → VitalX</h3>
+              <p class="prod-sub">Mise à niveau pour les clients POD'S Classic et POD'S Pro</p>
+              <div style="flex:1">
+                <div class="lic-row"><b>Ce qui change</b><span>Votre code POD'S devient une licence VitalX complète : scope sur iPad, interfaces constructeurs, écrans premium.</span></div>
+                <div class="lic-row"><b>Ce qui reste</b><span>Le même code, les mêmes appareils déjà activés, le scope iPhone et le mode formateur.</span></div>
+                <div class="lic-row"><b>Matériel</b><span>Aucun. Vous ajoutez l'iPad de votre choix — ou demandez un châssis VitalX dans le même devis.</span></div>
+                <div class="lic-row"><b>Délai</b><span>Activation à distance, sans renvoi de matériel.</span></div>
+              </div>
+              <div class="prod-actions">
+                <a href="/#contact" class="btn btn-block">Demander la mise à niveau</a>
+                <p class="t-fine center" style="margin:0">Indiquez votre code POD'S dans le message pour accélérer l'activation.</p>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
+    <!-- ÉCUSSONS -->
+    <section id="ecussons" class="shop-section">
+      <div class="wrap-wide">
+        <div class="shop-head sr">
+          <h2>Écussons.</h2>
+          <p>Personnalisez votre tenue avec nos écussons PVC 3D. Paiement en ligne, livraison France, Belgique, Suisse, Luxembourg.</p>
+        </div>
+        <div class="grid-3">
+          <article class="prod card-hover sr sr-d1">
+            <div class="prod-art"><img src="/assets/logo chat noir.png" alt="Écusson logo chat noir" class="ecusson-img" loading="lazy" style="cursor:zoom-in;max-height:190px"/></div>
+            <div class="prod-body">
+              <h3 style="font-size:21px">Écusson Chat Noir</h3>
+              <p class="prod-sub" style="margin-bottom:0">PVC 3D souple · thermocollant</p>
+              <div class="price"><b>7,90 €</b><span>TTC</span></div>
+              <div class="prod-actions"><button data-sku="sku_ecusson_chat_noir" data-name="Écusson logo chat noir" data-price="790" data-image="/assets/logo chat noir.png" class="add-to-cart btn btn-block">Ajouter au panier</button></div>
+            </div>
+          </article>
+          <article class="prod card-hover sr sr-d2">
+            <div class="prod-art"><img src="/assets/logo vitalX 2K26.png" alt="Écusson logo VitalX 2K26" class="ecusson-img" loading="lazy" style="cursor:zoom-in;max-height:190px"/></div>
+            <div class="prod-body">
+              <h3 style="font-size:21px">Écusson VitalX 2K26</h3>
+              <p class="prod-sub" style="margin-bottom:0">PVC 3D souple · thermocollant</p>
+              <div class="price"><b>7,90 €</b><span>TTC</span></div>
+              <div class="prod-actions"><button data-sku="sku_ecusson_vitalx_2k26" data-name="Écusson logo VitalX 2K26" data-price="790" data-image="/assets/logo vitalX 2K26.png" class="add-to-cart btn btn-block">Ajouter au panier</button></div>
+            </div>
+          </article>
+          <article class="prod card-hover sr sr-d3">
+            <div class="prod-art"><img src="/assets/logo stop blood.png" alt="Écusson logo stop blood" class="ecusson-img" loading="lazy" style="cursor:zoom-in;max-height:190px"/></div>
+            <div class="prod-body">
+              <h3 style="font-size:21px">Écusson Stop Blood</h3>
+              <p class="prod-sub" style="margin-bottom:0">PVC 3D souple · thermocollant</p>
+              <div class="price"><b>7,90 €</b><span>TTC</span></div>
+              <div class="prod-actions"><button data-sku="sku_ecusson_stop_blood" data-name="Écusson logo stop blood" data-price="790" data-image="/assets/logo stop blood.png" class="add-to-cart btn btn-block">Ajouter au panier</button></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- BANNIÈRE AFFILIATION -->
+    <section class="shop-section" style="padding-top:0">
+      <div class="wrap-wide">
+        <div class="banner banner-light banner-row sr">
+          <div>
+            <p class="t-eyebrow">Apporteurs d'affaires</p>
+            <h3>Recommandez VitalX. Soyez récompensé.</h3>
+            <p>Une vente conclue grâce à votre mise en relation = une commission versée par virement. Sans engagement.</p>
+          </div>
+          <a href="/affiliation.html" class="btn">Découvrir le programme</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- DÉMO -->
+    <section class="tile tile-dark tile-pad-b" style="padding-top:clamp(56px,8vw,90px);padding-bottom:clamp(56px,8vw,90px)">
+      <div class="tile-copy">
+        <h2 class="t-tile-sm sr">Vous souhaitez voir VitalX en action ?</h2>
+        <p class="t-tile-sm-sub sr sr-d1" style="color:#a1a1a6;max-width:620px;margin:12px auto 0">Visio de 30 minutes, scope en main, sur l'interface de votre choix.</p>
+        <div class="links sr sr-d2"><a href="/#contact" class="more">Demander une démo</a></div>
+      </div>
+    </section>
+
     <!-- PANIER (écussons uniquement) -->
-    <div id="cartOverlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden z-50"></div>
-    <aside id="cartDrawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-white text-[#0c1828] shadow-2xl transform translate-x-full transition-transform duration-300 z-50 ring-1 ring-[#dde3ec]"><div class="tricolor-thin"></div><div class="h-16 flex items-center justify-between px-5 border-b border-[#dde3ec]"><div class="flex items-center gap-2 font-bold text-lg text-[#0a2240]">🛒 Votre panier</div><button id="closeCart" class="rounded-md bg-[#f4f6f9] px-3 py-1.5 hover:bg-[#e6ebf2] text-sm font-semibold">Fermer ✕</button></div><div id="cartItems" class="p-4 space-y-3 overflow-y-auto" style="max-height:calc(100vh - 260px)"></div><div class="absolute bottom-0 left-0 right-0 border-t border-[#dde3ec] p-5 bg-white"><div class="flex items-center justify-between text-sm text-[#5b6b80] mb-1"><span>Sous-total</span><span id="cartSubtotal" class="font-black text-[#0a2240] text-xl">0 €</span></div><p class="text-[11px] text-[#9aa7b8] mb-3">Livraison écussons 3,80 € · Les packs et licences se commandent sur devis.</p><button id="checkoutBtn" class="w-full inline-flex justify-center items-center gap-2 rounded-md bg-[#e1000f] text-white px-5 py-3.5 font-extrabold uppercase tracking-wide shadow-sm hover:bg-[#b3000c] cta-anim">🔒 Payer maintenant</button><div class="mt-4 flex flex-wrap items-center justify-center gap-2 opacity-90"><span class="inline-flex items-center gap-1.5 rounded-md bg-[#f4f6f9] ring-1 ring-[#dde3ec] px-2.5 py-1.5 text-[11px] font-semibold text-[#0a2240]">🔒 Sécurisé</span><span class="inline-flex items-center rounded-md bg-[#f4f6f9] ring-1 ring-[#dde3ec] px-2.5 py-1.5"><svg width="56" height="16" viewBox="0 0 56 16" xmlns="http://www.w3.org/2000/svg"><text x="0" y="12" font-size="12" font-weight="700" fill="#635BFF" font-family="Arial,sans-serif">stripe</text></svg></span><span class="inline-flex items-center rounded-md bg-[#f4f6f9] ring-1 ring-[#dde3ec] px-2.5 py-1.5"><svg width="36" height="12" viewBox="0 0 36 12" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="9" width="36" height="2" fill="#F7A600"/><text x="0" y="9" font-size="9" font-weight="700" fill="#1A1F71" font-family="Arial,sans-serif">VISA</text></svg></span><span class="inline-flex items-center rounded-md bg-[#f4f6f9] ring-1 ring-[#dde3ec] px-2.5 py-1.5"><svg width="28" height="16" viewBox="0 0 28 16" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="8" r="6" fill="#EB001B"/><circle cx="18" cy="8" r="6" fill="#F79E1B" fill-opacity=".9"/></svg></span><span class="inline-flex items-center gap-1 rounded-md bg-[#0a2240] px-2.5 py-1.5 text-[11px] font-semibold text-white">Pay</span><span class="inline-flex items-center rounded-md bg-[#f4f6f9] ring-1 ring-[#dde3ec] px-2.5 py-1.5"><svg width="52" height="14" viewBox="0 0 52 14" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="1" width="52" height="12" rx="3" fill="#003087"/><text x="7" y="10" font-size="8" font-weight="700" fill="#fff" font-family="Arial,sans-serif">PayPal</text></svg></span></div></div></aside>
+    <div id="cartOverlay" class="cart-overlay hidden"></div>
+    <aside id="cartDrawer" class="cart" aria-label="Panier">
+      <div class="cart-head"><h2>Votre panier</h2><button id="closeCart" class="cart-close" aria-label="Fermer">✕</button></div>
+      <div id="cartItems" class="cart-items"></div>
+      <div class="cart-foot">
+        <div class="cart-sub"><span>Sous-total</span><b id="cartSubtotal">0 €</b></div>
+        <p class="t-fine" style="margin:6px 0 14px">Livraison écussons 3,80 € · Les packs et licences se commandent sur devis.</p>
+        <button id="checkoutBtn" class="btn btn-block">Payer maintenant</button>
+        <div class="pay-logos"><span>Paiement sécurisé</span><span>Stripe</span><span>Visa</span><span>Mastercard</span><span>Apple Pay</span><span>PayPal</span></div>
+      </div>
+    </aside>
   </main>
 
-  <button id="cartFab" type="button" class="cart-fab inline-flex items-center gap-2 rounded-full bg-[#e1000f] text-white px-4 py-3 font-bold cta-anim md:hidden">🛒 <span id="cartFabCount" class="rounded-full bg-white text-[#e1000f] text-xs font-extrabold px-2 py-0.5">0</span></button>
+  <button id="cartFab" type="button" class="btn btn-dark cart-fab">Panier <em id="cartFabCount">0</em></button>
   <div id="toast" class="toast">Ajouté au panier ✓</div>
 
-  <section class="border-t border-[#dde3ec] bg-[#06203f] text-white"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row items-center justify-between gap-4"><p class="text-sm md:text-base text-[#b9c8dc] text-center md:text-left">Vous souhaitez voir VitalX en action ? <span class="font-semibold text-white">Visio de 30 minutes, scope en main, sur l'interface de votre choix.</span></p><a href="/#contact" class="inline-flex items-center gap-2 rounded-md bg-[#e1000f] text-white px-5 py-3 text-sm font-extrabold uppercase tracking-wide shadow-sm hover:bg-[#b3000c] cta-anim">📞 Demander une démo</a></div></section>
+  <!-- PIED DE PAGE -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-legal">
+        <p>TVA non applicable, art. 293 B du CGI. Règlement à la commande, livraison des packs 15 à 30 jours ouvrés. Châssis et housse garantis à vie ; iPad et iPhone couverts par la garantie Apple. Les interfaces constructeurs sont reproduites avec l'autorisation de leurs fabricants respectifs, à des fins de formation ; le simulateur est conçu et développé par VitalX.</p>
+      </div>
+      <div class="footer-crumb">
+        <a href="/">VitalX</a>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg>
+        <span>Boutique</span>
+      </div>
+      <div class="footer-cols">
+        <div>
+          <h4>Boutique</h4>
+          <ul>
+            <li><a href="#pack">Packs iPad</a></li>
+            <li><a href="#pods">POD'S</a></li>
+            <li><a href="#licence">Licence VitalX</a></li>
+            <li><a href="#ecussons">Écussons</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Acheter</h4>
+          <ul>
+            <li><a href="/#contact">Demander un devis</a></li>
+            <li><a href="/#contact">Demander une démo</a></li>
+            <li><a href="/garantie.html">Garantie</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Société</h4>
+          <ul>
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/qui-sommes-nous.html">Qui sommes-nous</a></li>
+            <li><a href="/affiliation.html">Apporteurs d'affaires</a></li>
+            <li><a href="https://vitalxtrainer.app" target="_blank" rel="noopener">Mode Formateur</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Informations</h4>
+          <ul>
+            <li><a href="/mentions-legales.html">Mentions légales</a></li>
+            <li><a href="/cgv.html">CGV</a></li>
+            <li><a href="/politique-confidentialite.html">Confidentialité</a></li>
+            <li><a href="/formulaire_retractation.pdf" download>Rétractation</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer-contact">Besoin d'aide ? Écrivez-nous à <a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a>. Conçu &amp; assemblé en France.</p>
+      <div class="footer-bottom">
+        <span>© <span id="y"></span> VitalX. Tous droits réservés.</span>
+        <nav aria-label="Liens légaux">
+          <a href="/mentions-legales.html">Mentions légales</a>
+          <a href="/cgv.html">CGV</a>
+          <a href="/garantie.html">Garantie</a>
+        </nav>
+        <span id="langSwitch" class="lang" aria-label="Langue">
+          <button type="button" data-lang="fr" class="lang-btn is-active" title="Français" aria-label="Français">Français</button>
+          <button type="button" data-lang="en" class="lang-btn" title="English" aria-label="English">English</button>
+          <button type="button" data-lang="de" class="lang-btn" title="Deutsch" aria-label="Deutsch">Deutsch</button>
+        </span>
+      </div>
+    </div>
+  </footer>
 
-  <footer class="py-10 border-t border-[#dde3ec] text-sm text-[#5b6b80] bg-white"><div class="tricolor-thin"></div><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-6"><p class="text-[11px] text-[#9aa7b8] leading-relaxed mb-5">TVA non applicable, art. 293 B du CGI. Règlement à la commande, livraison des packs 15 à 30 jours ouvrés. Châssis et housse garantis à vie ; iPad et iPhone couverts par la garantie Apple. Les interfaces constructeurs sont reproduites avec l'autorisation de leurs fabricants respectifs, à des fins de formation ; le simulateur est conçu et développé par VitalX.</p><div class="flex flex-col md:flex-row items-center justify-between gap-4"><p>© <span id="y"></span> VitalX — Tous droits réservés.</p><nav class="flex items-center gap-4"><a href="/" class="hover:text-[#0046b8]">Accueil</a><a href="/cgv.html" class="hover:text-[#0046b8]">CGV</a><a href="/garantie.html" class="hover:text-[#0046b8]">Garantie</a><a href="/affiliation.html" class="hover:text-[#0046b8]">Affiliation</a></nav></div></div></footer>
-
-  <div id="ecussonLightbox" class="fixed inset-0 bg-[#06203f]/90 backdrop-blur-sm hidden items-center justify-center z-50"><button id="ecussonLightboxClose" class="absolute top-4 right-4 text-white text-2xl font-bold hover:scale-110 transition" aria-label="Fermer">✕</button><img id="ecussonLightboxImg" src="" alt="" class="max-w-[90vw] max-h-[85vh] object-contain rounded-xl shadow-2xl"/></div>
+  <div id="ecussonLightbox" class="lightbox hidden" aria-hidden="true"><button id="ecussonLightboxClose" class="lightbox-close" aria-label="Fermer">✕</button><img id="ecussonLightboxImg" src="" alt=""/></div>
 
   <script>
-    (function(){const io=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.sr').forEach(el=>io.observe(el))})();
+    // Menu mobile
+    (function(){const b=document.getElementById('menuBtn'),m=document.getElementById('mobileMenu');if(!b||!m)return;b.addEventListener('click',()=>{const open=m.classList.toggle('open');b.setAttribute('aria-expanded',String(open));document.body.style.overflow=open?'hidden':''});m.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{m.classList.remove('open');b.setAttribute('aria-expanded','false');document.body.style.overflow=''}))})();
+    // Apparition au défilement
+    (function(){const els=document.querySelectorAll('.sr');if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('show'));return}const io=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});els.forEach(el=>io.observe(el))})();
+    // Visionneuse écussons
     (function(){const lb=document.getElementById('ecussonLightbox'),img=document.getElementById('ecussonLightboxImg'),btn=document.getElementById('ecussonLightboxClose');if(!lb||!img)return;document.querySelectorAll('#ecussons .ecusson-img').forEach(i=>{i.addEventListener('click',()=>{img.src=i.src;img.alt=i.alt||'';lb.classList.remove('hidden');lb.classList.add('flex')})});function cl(){lb.classList.add('hidden');lb.classList.remove('flex');img.src=''}if(btn)btn.addEventListener('click',cl);lb.addEventListener('click',e=>{if(e.target===lb)cl()});document.addEventListener('keydown',e=>{if(e.key==='Escape')cl()})})();
     document.getElementById('y').textContent=new Date().getFullYear();
     // Anciens liens /boutique.html#licenses (Mode Ultra) → section Licence
@@ -257,10 +572,11 @@
     const CART_KEY='vitalx_cart_v1';const elCart=document.getElementById('cartDrawer'),elOverlay=document.getElementById('cartOverlay'),elOpen=document.getElementById('openCart'),elClose=document.getElementById('closeCart'),elItems=document.getElementById('cartItems'),elSubtotal=document.getElementById('cartSubtotal'),elCount=document.getElementById('cartCount'),elFabCount=document.getElementById('cartFabCount'),elFab=document.getElementById('cartFab'),elCheckout=document.getElementById('checkoutBtn'),elToast=document.getElementById('toast');
     const ALLOWED_SKUS=new Set(['sku_ecusson_chat_noir','sku_ecusson_vitalx_2k26','sku_ecusson_stop_blood']);
     function loadCart(){try{const c=JSON.parse(localStorage.getItem(CART_KEY)||'[]');const f=c.filter(i=>ALLOWED_SKUS.has(i.sku));if(f.length!==c.length)localStorage.setItem(CART_KEY,JSON.stringify(f));return f}catch{return[]}}
-    function saveCart(c){localStorage.setItem(CART_KEY,JSON.stringify(c));updateCount(c)}function euros(cents){return(cents/100).toLocaleString('fr-FR',{style:'currency',currency:'EUR'})}function updateCount(c){const n=c.reduce((s,i)=>s+i.quantity,0);if(elCount)elCount.textContent=n;if(elFabCount)elFabCount.textContent=n}function showToast(msg){if(!elToast)return;elToast.textContent=msg||'Ajouté au panier ✓';elToast.classList.add('show');clearTimeout(showToast._t);showToast._t=setTimeout(()=>elToast.classList.remove('show'),1600)}
-    function render(){const cart=loadCart();updateCount(cart);elItems.innerHTML='';if(!cart.length){elItems.innerHTML='<div class="text-center py-12"><div class="text-5xl mb-3">🛒</div><div class="text-[#0a2240] font-semibold">Votre panier est vide</div><div class="text-[#9aa7b8] text-sm mt-1">Ajoutez un écusson pour commencer.</div></div>'}else{cart.forEach(item=>{const row=document.createElement('div');row.className='flex items-center gap-3 p-3 rounded-xl bg-[#f4f6f9] ring-1 ring-[#dde3ec] hover:bg-[#eef2f7] transition';row.innerHTML=`<img src="${item.image||''}" alt="" class="h-16 w-16 object-contain rounded-lg bg-white p-1.5 ring-1 ring-[#dde3ec]"/><div class="flex-1 min-w-0"><div class="font-semibold truncate text-[#0a2240]">${item.name}</div><div class="text-xs text-[#5b6b80]">${euros(item.price)} l'unité</div><div class="mt-1.5 inline-flex items-center gap-1 rounded-lg bg-white ring-1 ring-[#dde3ec] p-0.5"><button data-act="dec" data-sku="${item.sku}" class="rounded-md bg-[#f4f6f9] hover:bg-[#e6ebf2] w-7 h-7 text-sm font-bold text-[#0a2240]">−</button><span class="text-sm font-semibold w-7 text-center text-[#0a2240]">${item.quantity}</span><button data-act="inc" data-sku="${item.sku}" class="rounded-md bg-[#f4f6f9] hover:bg-[#e6ebf2] w-7 h-7 text-sm font-bold text-[#0a2240]">+</button><button data-act="del" data-sku="${item.sku}" class="ml-2 text-[11px] text-[#e1000f] hover:text-[#b3000c] px-1.5 font-semibold">Supprimer</button></div></div><div class="font-extrabold whitespace-nowrap text-[#0a2240]">${euros(item.price*item.quantity)}</div>`;elItems.appendChild(row)})}elSubtotal.textContent=euros(cart.reduce((s,i)=>s+i.price*i.quantity,0))}
-    function openCart(){elOverlay.classList.remove('hidden');elCart.classList.remove('translate-x-full');render()}function closeCart(){elOverlay.classList.add('hidden');elCart.classList.add('translate-x-full')}
+    function saveCart(c){localStorage.setItem(CART_KEY,JSON.stringify(c));updateCount(c)}function euros(cents){return(cents/100).toLocaleString('fr-FR',{style:'currency',currency:'EUR'})}function updateCount(c){const n=c.reduce((s,i)=>s+i.quantity,0);if(elCount){elCount.textContent=n;elCount.style.display=n?'':'none'}if(elFabCount)elFabCount.textContent=n}function showToast(msg){if(!elToast)return;elToast.textContent=msg||'Ajouté au panier ✓';elToast.classList.add('show');clearTimeout(showToast._t);showToast._t=setTimeout(()=>elToast.classList.remove('show'),1600)}
+    function render(){const cart=loadCart();updateCount(cart);elItems.innerHTML='';if(!cart.length){elItems.innerHTML='<div class="cart-empty"><b>Votre panier est vide</b>Ajoutez un écusson pour commencer.</div>'}else{cart.forEach(item=>{const row=document.createElement('div');row.className='cart-row';row.innerHTML=`<img src="${item.image||''}" alt=""/><div style="flex:1;min-width:0"><div class="nm">${item.name}</div><div class="un">${euros(item.price)} l'unité</div><div class="qty"><button data-act="dec" data-sku="${item.sku}" aria-label="Moins">−</button><span>${item.quantity}</span><button data-act="inc" data-sku="${item.sku}" aria-label="Plus">+</button><button data-act="del" data-sku="${item.sku}" class="del">Supprimer</button></div></div><div class="cart-total">${euros(item.price*item.quantity)}</div>`;elItems.appendChild(row)})}elSubtotal.textContent=euros(cart.reduce((s,i)=>s+i.price*i.quantity,0))}
+    function openCart(){elOverlay.classList.remove('hidden');elCart.classList.add('open');render()}function closeCart(){elOverlay.classList.add('hidden');elCart.classList.remove('open')}
     elOpen&&elOpen.addEventListener('click',openCart);elFab&&elFab.addEventListener('click',openCart);elOverlay&&elOverlay.addEventListener('click',closeCart);elClose&&elClose.addEventListener('click',closeCart);
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeCart()});
     elItems&&elItems.addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;const sku=t.getAttribute('data-sku'),act=t.getAttribute('data-act');if(!sku||!act)return;const cart=loadCart(),i=cart.findIndex(x=>x.sku===sku);if(i<0)return;if(act==='inc')cart[i].quantity=Math.min(99,cart[i].quantity+1);if(act==='dec')cart[i].quantity=Math.max(1,cart[i].quantity-1);if(act==='del')cart.splice(i,1);saveCart(cart);render()});
     document.querySelectorAll('.add-to-cart').forEach(btn=>{btn.addEventListener('click',()=>{const sku=btn.getAttribute('data-sku'),name=btn.getAttribute('data-name'),price=parseInt(btn.getAttribute('data-price'),10),image=btn.getAttribute('data-image');const cart=loadCart(),i=cart.findIndex(x=>x.sku===sku);if(i>=0)cart[i].quantity=Math.min(99,cart[i].quantity+1);else cart.push({sku,name,price,image,quantity:1});saveCart(cart);showToast(`${name} ajouté ✓`);openCart()})});
     elCheckout&&elCheckout.addEventListener('click',async()=>{const cart=loadCart();if(!cart.length){alert('Votre panier est vide.');return}const items=cart.map(({sku,quantity})=>({sku,quantity}));try{const res=await fetch('/.netlify/functions/create-checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items,mode:'payment'})});const data=await res.json();if(data&&data.url){location.href=data.url}else{throw new Error(data&&data.error?data.error:'Erreur inconnue')}}catch(err){console.error(err);alert("Le paiement n'est pas encore configuré.")}});

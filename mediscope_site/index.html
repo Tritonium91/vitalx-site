@@ -2,18 +2,17 @@
 <!--
   index.html — VitalX
   Description : Page d'accueil VitalX (simulation médicale française)
-  🆕 v3.0 — 12/09/2026 — Yann USSEGLIO
-     • Page entièrement refaite
-     • Nouvelle section « Interfaces constructeurs » : Schiller (DEFIGARD Touch 7, PHYSIOGARD Touch 7)
-       et Weinmann (MEDUCORE Standard², MEDUMAT Standard²), avec galeries cliquables
-     • Emplacements réservés pour les prochaines marques (non citées)
-     • Section Mode Ultra retirée (remplacée par les interfaces constructeurs)
-     • Nouvelle section Media Center (ECG, Bio, Radio, Bandelette, DLU)
-     • Popup Nouveautés → interfaces constructeurs
-     • Nouvelles images dans /assets/ (scope-schiller-*.webp, scope-weinmann-*.webp, mediacenter-*.webp, news-*.webp)
-     • Pas de prix affichés → CTA « Demander un devis »
+  🆕 v4.0 — 13/09/2026 — Yann USSEGLIO
+     • Refonte complète dans un style épuré façon Apple (voir /apple.css)
+     • Barre de navigation noire translucide, titres centrés, tuiles produits pleine largeur
+       puis grille 2 colonnes (Gamme VitalX · Plus · Pro · Ultra, POD'S, Media Center, Mode Formateur, Châssis, Licence)
+     • Popup « Nouveautés » remplacée par un ruban discret sous le hero
+     • Bandeaux tricolores, majuscules et emojis retirés des titres
+     • Contenu conservé : interfaces constructeurs (galeries), fonctions, app, pack, devis,
+       références, affiliation, formulaire de contact Netlify, mentions constructeurs
+     • Ancres conservées : #interfaces #v2 #packs (ex-#medx, MED'X retiré) #pods #mediacenter #features #app #in-the-box #devis #testimonials #contact
 -->
-<html lang="fr" class="scroll-smooth">
+<html lang="fr">
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -23,705 +22,522 @@
 <meta property="og:description" content="Scopes de simulation médicale sur iPad. Interfaces constructeurs incluses, licence à vie."/>
 <meta property="og:type" content="website"/>
 <meta property="og:image" content="/og-image.png"/>
-<meta name="theme-color" content="#0a2240"/>
+<meta name="theme-color" content="#000000"/>
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
 <link rel="manifest" href="/site.webmanifest">
-<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="/apple.css">
 <style>
-*{-webkit-font-smoothing:antialiased}
-html,body{background:#f4f6f9;color:#0c1828;overflow-x:clip;max-width:100vw;font-family:'Inter','Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,'Helvetica Neue',Arial,sans-serif}
-::selection{background:#0046b8;color:#fff}
-
-/* FR palette */
-:root{
-  --fr-blue:#0046b8;--fr-blue-dark:#0a2240;--fr-blue-deep:#06203f;
-  --fr-red:#e1000f;--fr-red-dark:#b3000c;
-  --ink:#0c1828;--muted:#5b6b80;--line:#dde3ec;
-}
-
-/* Headings */
-.h-hero{font-size:clamp(34px,6vw,68px);font-weight:900;letter-spacing:-.02em;line-height:1.02;text-transform:uppercase}
-.h-section{font-size:clamp(26px,4vw,46px);font-weight:800;letter-spacing:-.015em;line-height:1.06;text-transform:uppercase}
-.h-card{font-size:clamp(22px,3vw,36px);font-weight:800;letter-spacing:-.01em;line-height:1.1;text-transform:uppercase}
-.eyebrow{font-size:13px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--fr-red)}
-
-/* 🇫🇷 Tricolor bars */
-.tricolor{height:10px;background:linear-gradient(90deg,#0046b8 0 33.33%,#fff 33.33% 66.66%,#e1000f 66.66% 100%)}
-.tricolor-thin{height:6px;background:linear-gradient(90deg,#0046b8 0 33.33%,#fff 33.33% 66.66%,#e1000f 66.66% 100%)}
-
-/* 🌍 Sélecteur de langue */
-.lang-btn{width:26px;height:18px;border-radius:3px;overflow:hidden;display:block;line-height:0;padding:0;border:0;background:none;cursor:pointer;opacity:.4;transition:opacity .15s,box-shadow .15s}
-.lang-btn:hover{opacity:.85}
-.lang-btn.is-active{opacity:1;box-shadow:0 0 0 1.5px rgba(255,255,255,.9)}
-.lang-btn svg{display:block;width:100%;height:100%}
-
-/* 📝 Formulaire de contact */
-.field{margin-bottom:18px}
-.lbl{display:block;font-size:14px;font-weight:600;color:#0c1828;margin:0 0 7px}
-.req{color:var(--fr-red)}
-.finp{width:100%;background:#f1f5f9;border:1.5px solid #e6ecf4;border-radius:10px;padding:13px 15px;font-size:15px;color:var(--ink);outline:none;transition:border .15s,background .15s;font-family:inherit}
-.finp:focus{border-color:var(--fr-blue);background:#fff}
-.finp::placeholder{color:#9aa7b8}
-select.finp{appearance:none;background-image:url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%235b6b80' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
-.rgpd{font-size:13px;line-height:1.65;color:#5b6b80;margin-top:14px}
-.rgpd a{color:var(--fr-blue);text-decoration:underline}
-.consent{display:flex;align-items:flex-start;gap:10px;margin:12px 0;font-size:13px;color:#0c1828}
-.consent input{margin-top:2px;width:16px;height:16px;accent-color:var(--fr-blue);flex:0 0 auto}
-
-/* Buttons */
-.btn-red{background:var(--fr-red);color:#fff;border-radius:6px;padding:13px 28px;font-size:14px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px;transition:.15s;box-shadow:0 6px 18px -8px rgba(225,0,15,.6)}
-.btn-red:hover{background:var(--fr-red-dark);transform:translateY(-1px)}
-.btn-blue{background:var(--fr-blue);color:#fff;border-radius:6px;padding:13px 28px;font-size:14px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px;transition:.15s;box-shadow:0 6px 18px -8px rgba(0,70,184,.6)}
-.btn-blue:hover{background:#0038a0;transform:translateY(-1px)}
-.btn-out{background:#fff;color:var(--fr-blue-dark);border:2px solid var(--fr-blue-dark);border-radius:6px;padding:11px 26px;font-size:14px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px;transition:.15s}
-.btn-out:hover{background:var(--fr-blue-dark);color:#fff}
-a:focus-visible,button:focus-visible{outline:3px solid #7eb0ff;outline-offset:3px}
-
-/* Sections */
-.sec{padding:90px 0}
-.sec-tight{padding:60px 0}
-.sec-dark{background:var(--fr-blue-deep);color:#eef3fa}
-.sec-light{background:#fff}
-
-/* Cards */
-.card{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;transition:.25s}
-.card:hover{border-color:var(--fr-blue);box-shadow:0 18px 40px -22px rgba(10,34,64,.35);transform:translateY(-3px)}
-
-/* Reveal */
-.sr{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)}
-.sr.show{opacity:1;transform:translateY(0)}
-.sr-d1{transition-delay:.08s}.sr-d2{transition-delay:.16s}.sr-d3{transition-delay:.24s}
-
-/* Hero slideshow */
-@keyframes heroSlideX{0%,22%{transform:translateX(0)}30%,52%{transform:translateX(-25%)}60%,82%{transform:translateX(-50%)}90%,100%{transform:translateX(-75%)}}
-.hero-slides{width:400%;display:flex;animation:heroSlideX 18s ease-in-out infinite}
-.hero-slides img{width:25%;flex:0 0 25%;max-height:min(460px,52vh);object-fit:contain;object-position:center;margin:0 auto}
-@media(max-width:640px){.hero-slides img{max-height:280px}}
-
-/* Carousel */
-@keyframes testiScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.testi-scroll{animation:testiScroll 45s linear infinite}
-.testi-scroll:hover{animation-play-state:paused}
-
-/* Category banner tiles */
-.cat{position:relative;border-radius:10px;overflow:hidden;min-height:200px;display:flex;align-items:flex-end;border:1px solid var(--line)}
-.cat-grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,32,63,0) 35%,rgba(6,32,63,.86) 100%)}
-.cat:hover .cat-img{transform:scale(1.05)}
-.cat-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
-
-/* Feature icon */
-.f-ico{width:48px;height:48px;border-radius:8px;display:grid;place-items:center}
-
-/* Trust row */
-.trust-ico{width:40px;height:40px;flex:0 0 auto}
-
-/* 🏷️ Interfaces constructeurs */
-.brand-block{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}
-.brand-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;padding:22px 28px;border-bottom:1px solid var(--line)}
-.brand-name{font-size:clamp(22px,2.6vw,30px);font-weight:900;letter-spacing:-.01em;color:var(--fr-blue-dark)}
-.brand-chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{font-size:12px;font-weight:800;color:#fff;background:var(--fr-blue-dark);border-radius:999px;padding:6px 12px;white-space:nowrap}
-.chip-red{background:var(--fr-red)}
-.gal-main{background:#0c1828;position:relative}
-.gal-main img{width:100%;aspect-ratio:16/11;object-fit:contain;display:block;cursor:zoom-in}
-.gal-cap{position:absolute;left:14px;bottom:14px;background:rgba(6,32,63,.86);color:#fff;font-size:12px;font-weight:700;padding:6px 10px;border-radius:6px;backdrop-filter:blur(4px)}
-.gal-thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:12px}
-.gal-thumbs button{border:2px solid transparent;border-radius:8px;overflow:hidden;background:#0c1828;padding:0;cursor:pointer;transition:border-color .15s}
-.gal-thumbs button img{width:100%;aspect-ratio:16/11;object-fit:cover;display:block;opacity:.75;transition:opacity .15s}
-.gal-thumbs button:hover img{opacity:1}
-.gal-thumbs button.is-active{border-color:var(--fr-red)}
-.gal-thumbs button.is-active img{opacity:1}
-.brand-note{padding:18px 28px 24px;font-size:14px;color:var(--muted);line-height:1.6}
-.brand-note strong{color:var(--ink)}
-
-/* Emplacements futurs (marques non citées) */
-.slot{border:2px dashed #c5cfdd;border-radius:16px;background:#fff;padding:28px 24px;text-align:center;color:var(--muted)}
-.slot-dev{width:120px;height:78px;margin:0 auto 18px;border-radius:10px;background:linear-gradient(180deg,#e9eef5,#dce3ee);position:relative;box-shadow:inset 0 0 0 2px #cfd8e4}
-.slot-dev::before{content:"";position:absolute;inset:12px 14px;border-radius:5px;background:#0c1828;opacity:.85}
-.slot-dev::after{content:"?";position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-weight:900;font-size:26px;opacity:.9}
-.slot-title{font-size:15px;font-weight:800;color:var(--fr-blue-dark)}
-.slot-sub{font-size:13px;margin-top:6px}
-
-/* Inputs */
-.inp{background:#fff;border:1.5px solid var(--line);border-radius:8px;padding:13px 15px;font-size:15px;color:var(--ink);width:100%;outline:none;transition:border .15s}
-.inp:focus{border-color:var(--fr-blue)}
-.inp::placeholder{color:#9aa7b8}
-
-@keyframes popIn{0%{opacity:0;transform:scale(.95) translateY(18px)}100%{opacity:1;transform:scale(1) translateY(0)}}
-@keyframes fadeIn{0%{opacity:0}100%{opacity:1}}
-
-/* Scroll text zoom */
-.txt-zoom{opacity:0;transform:scale(1.4);transform-origin:center 60%;will-change:transform,opacity}
-@media(prefers-reduced-motion:reduce){
-  .txt-zoom{opacity:1!important;transform:none!important}
-  .sr{opacity:1;transform:none;transition:none}
-  .hero-slides,.testi-scroll{animation:none}
-}
+/* Spécifique accueil */
+.hero{padding-top:64px}
+.hero .tile-art{margin-top:30px;max-width:900px}
+.trust{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:32px 0}
+.trust div{text-align:center}
+.trust strong{display:block;font-size:17px;font-weight:600;letter-spacing:-.022em}
+.trust span{display:block;font-size:14px;color:var(--ink-2);margin-top:2px}
+@media(max-width:833px){.trust{grid-template-columns:repeat(2,1fr)}}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+@media(max-width:833px){.split{grid-template-columns:1fr;gap:28px}}
+.split .art{background:var(--bg-alt);border-radius:22px;padding:24px;display:grid;place-items:center}
+.split .art img{max-height:420px;object-fit:contain}
+.brand-logo{height:34px;width:auto;margin-bottom:18px}
+.devis-card{display:flex;flex-direction:column;gap:22px;padding:36px}
+.devis-card h3{font-size:24px;font-weight:600;letter-spacing:.009em;margin:0}
+.devis-list{display:grid;gap:18px;margin:0;padding:0;list-style:none}
+.devis-list strong{display:block;font-size:17px;font-weight:600;letter-spacing:-.022em}
+.devis-list p{margin:3px 0 0;font-size:15px;color:var(--ink-2);line-height:1.47}
 </style>
 </head>
 <body>
 
-<!-- TOP STRIP -->
-<div class="bg-[#06203f] text-white text-[12px]">
-  <div class="mx-auto max-w-6xl px-4 h-9 flex items-center justify-between">
-    <span class="flex items-center gap-2 font-semibold tracking-wide"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e1000f" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Conçu &amp; assemblé en France 🇫🇷</span>
-    <span class="flex items-center gap-4">
-      <span class="hidden sm:flex items-center gap-4">
-        <a href="mailto:vitalxscope@gmail.com" class="hover:text-[#7eb0ff] transition">vitalxscope@gmail.com</a>
-        <a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="text-[#ffb340] hover:text-[#ffc970] font-semibold transition">Mode Formateur (web) ›</a>
-      </span>
-      <!-- 🌍 Choix de la langue -->
-      <span id="langSwitch" class="flex items-center gap-1.5">
-        <button type="button" data-lang="fr" class="lang-btn is-active" title="Français" aria-label="Français">
-          <svg viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="36" fill="#0046b8"/><rect x="20" width="20" height="36" fill="#fff"/><rect x="40" width="20" height="36" fill="#e1000f"/></svg>
-        </button>
-        <button type="button" data-lang="en" class="lang-btn" title="English" aria-label="English">
-          <svg viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="36" fill="#012169"/><path d="M0 0 L60 36 M60 0 L0 36" stroke="#fff" stroke-width="7"/><path d="M0 0 L60 36 M60 0 L0 36" stroke="#C8102E" stroke-width="4"/><path d="M30 0 V36 M0 18 H60" stroke="#fff" stroke-width="12"/><path d="M30 0 V36 M0 18 H60" stroke="#C8102E" stroke-width="7"/></svg>
-        </button>
-        <button type="button" data-lang="de" class="lang-btn" title="Deutsch" aria-label="Deutsch">
-          <svg viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="12" fill="#000"/><rect y="12" width="60" height="12" fill="#DD0000"/><rect y="24" width="60" height="12" fill="#FFCE00"/></svg>
-        </button>
-      </span>
-    </span>
-  </div>
-</div>
-<div class="tricolor-thin"></div>
-
-<!-- NAV -->
-<header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-[#dde3ec] shadow-sm">
-  <div class="mx-auto max-w-6xl px-4 h-16 flex items-center justify-between">
-    <a href="#top" class="flex items-center gap-2.5 shrink-0"><img src="/logo.png" alt="" class="h-9 w-9 object-contain" data-no-lightbox="true" onerror="this.style.display='none'"/><span class="text-[20px] font-black tracking-tight text-[#0a2240]">Vital<span class="text-[#e1000f]">X</span></span></a>
-    <nav class="hidden md:flex items-center gap-6 text-[13px] font-bold uppercase tracking-wide text-[#0c1828]">
-      <a href="#v2" class="hover:text-[#0046b8] transition">Scopes</a>
-      <a href="#interfaces" class="hover:text-[#0046b8] transition">Interfaces</a>
-      <a href="#features" class="hover:text-[#0046b8] transition">Fonctions</a>
-      <a href="#devis" class="hover:text-[#0046b8] transition">Devis</a>
-      <a href="#" id="navNews" class="hover:text-[#0046b8] transition">News</a>
-      <a href="/affiliation.html" class="hover:text-[#0046b8] transition">Affiliation</a>
-      <a href="/qui-sommes-nous.html" class="hover:text-[#0046b8] transition">Société</a>
-    </nav>
-    <div class="flex items-center gap-2.5">
-      <a href="/boutique.html" class="hidden sm:inline-flex btn-red !py-2 !px-4 !text-[12px]">🛍️ Boutique</a>
-      <button id="menuBtn" class="md:hidden p-2 -mr-2 text-[#0a2240]" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
-    </div>
-  </div>
-  <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-[#dde3ec]">
-    <div class="px-6 py-4 grid gap-1 text-[15px] font-semibold">
-      <a href="#v2" class="py-2 border-b border-[#eef1f6]">Scopes VitalX</a>
-      <a href="#medx" class="py-2 border-b border-[#eef1f6]">MED'X</a>
-      <a href="#pods" class="py-2 border-b border-[#eef1f6]">POD'S</a>
-      <a href="#interfaces" class="py-2 border-b border-[#eef1f6]">Interfaces constructeurs</a>
-      <a href="#features" class="py-2 border-b border-[#eef1f6]">Fonctions</a>
-      <a href="#devis" class="py-2 border-b border-[#eef1f6]">Devis</a>
-      <a href="#" id="navNewsMobile" class="py-2 border-b border-[#eef1f6]">News</a>
-      <a href="/affiliation.html" class="py-2 border-b border-[#eef1f6]">Affiliation</a>
-      <a href="/qui-sommes-nous.html" class="py-2 border-b border-[#eef1f6]">Société</a>
-      <a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="py-2 border-b border-[#eef1f6] text-[#b3000c]">Mode Formateur (web)</a>
-      <a href="/boutique.html" class="py-2 text-[#0046b8]">Boutique</a>
+<!-- BARRE DE NAVIGATION GLOBALE -->
+<header class="gnav">
+  <div class="wrap">
+    <a href="/" class="gnav-logo" aria-label="VitalX — accueil"><img src="/logo.png" alt="" data-no-lightbox="true" onerror="this.style.display='none'"/>Vital<b>X</b></a>
+    <ul class="gnav-links">
+      <li><a href="#v2">Scopes</a></li>
+      <li><a href="#interfaces">Interfaces</a></li>
+      <li><a href="#packs">Packs</a></li>
+      <li><a href="#pods">POD'S</a></li>
+      <li><a href="#features">Fonctions</a></li>
+      <li><a href="#app">Application</a></li>
+      <li><a href="#devis">Devis</a></li>
+      <li><a href="/qui-sommes-nous.html">Société</a></li>
+      <li><a href="/affiliation.html">Affiliation</a></li>
+      <li><a href="/boutique.html">Boutique</a></li>
+    </ul>
+    <div class="gnav-right">
+      <a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="gnav-icon gnav-hide-m" title="Mode Formateur (web)" aria-label="Mode Formateur (web)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></a>
+      <a href="/boutique.html" class="gnav-icon" title="Boutique" aria-label="Boutique"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l1 13H5L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></a>
+      <button class="gnav-burger" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
     </div>
   </div>
 </header>
+<nav id="mobileMenu" class="gnav-mobile" aria-label="Menu mobile">
+  <a href="#v2">Scopes VitalX</a>
+  <a href="#interfaces">Interfaces constructeurs</a>
+  <a href="#packs">Packs VitalX</a>
+  <a href="#pods">POD'S</a>
+  <a href="#features">Fonctions</a>
+  <a href="#app">Application</a>
+  <a href="#devis">Devis</a>
+  <a href="/qui-sommes-nous.html">Société</a>
+  <a href="/affiliation.html">Affiliation</a>
+  <a href="/boutique.html">Boutique</a>
+  <a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="small">Mode Formateur (web) ›</a>
+  <a href="mailto:vitalxscope@gmail.com" class="small">vitalxscope@gmail.com</a>
+</nav>
+
+<main id="top">
 
 <!-- HERO -->
-<section id="top" class="relative sec-dark overflow-hidden">
-  <div class="absolute -top-32 -left-24 w-[420px] h-[420px] rounded-full bg-[#0046b8]/25 blur-[120px] pointer-events-none"></div>
-  <div class="absolute -bottom-32 -right-24 w-[420px] h-[420px] rounded-full bg-[#e1000f]/15 blur-[120px] pointer-events-none"></div>
-  <div class="relative mx-auto max-w-6xl px-6 pt-16 pb-14 text-center">
-    <span class="inline-flex items-center gap-2 rounded-full bg-white/10 ring-1 ring-white/20 px-4 py-1.5 text-[12px] font-bold uppercase tracking-[.15em] mb-6 sr show">
-      <span class="text-[#7eb0ff]">●</span> Simulation médicale française
-    </span>
-    <h1 class="h-hero sr show">Formez comme<br><span class="text-[#e1000f]">sur le terrain.</span></h1>
-    <p class="mt-5 max-w-2xl mx-auto text-[17px] md:text-[19px] text-[#b9c8dc] leading-relaxed sr show sr-d1">Un scope de simulation sur iPad, piloté à distance par le formateur. Le moniteur VitalX, et les interfaces des vrais appareils que vos équipes utilisent en intervention — reproduites à l'identique, incluses dans la licence.</p>
-    <div class="mt-8 flex flex-wrap items-center justify-center gap-4 sr show sr-d2">
-      <a href="#contact" class="btn-red">📝 Demander un devis</a>
-      <a href="#interfaces" class="btn-out !bg-transparent !text-white !border-white/40 hover:!bg-white hover:!text-[#0a2240]">Voir les interfaces</a>
-    </div>
-    <div class="mt-12 mx-auto max-w-4xl sr show sr-d3">
-      <div class="rounded-2xl overflow-hidden bg-white/[.04] ring-1 ring-white/10 p-3">
-        <div class="hero-slides items-center">
-          <img src="/assets/vitalxv2pro.png" alt="Pack VitalX V2 — moniteur et tablette formateur"/>
-          <img src="/assets/scope-schiller-defigard.webp" alt="Interface DEFIGARD Touch 7 reproduite dans le scope VitalX"/>
-          <img src="/assets/scope-weinmann-meducore.webp" alt="Interface MEDUCORE Standard² reproduite dans le scope VitalX"/>
-          <img src="/assets/vitalxv2pro.png" alt="" aria-hidden="true"/>
-        </div>
-      </div>
+<section class="tile tile-light tile-hero hero" id="v2">
+  <div class="tile-copy">
+    <h1 class="t-hero hero-in">VitalX</h1>
+    <p class="t-hero-sub hero-in hero-in-2">Formez comme sur le terrain.</p>
+    <p class="t-body-lg hero-in hero-in-2" style="margin:14px auto 0;max-width:640px;color:var(--ink-2)">Un scope de simulation sur iPad, piloté à distance par le formateur. Le moniteur VitalX et les interfaces des vrais appareils que vos équipes utilisent en intervention, reproduites à l'identique, incluses dans la licence.</p>
+    <div class="links hero-in hero-in-3">
+      <a href="#in-the-box" class="more">En savoir plus</a>
+      <a href="#contact" class="more">Demander un devis</a>
     </div>
   </div>
-  <div class="tricolor"></div>
-</section>
-
-<!-- TRUST ROW -->
-<section class="sec-light border-b border-[#dde3ec]">
-  <div class="mx-auto max-w-6xl px-6 py-8">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-      <div class="flex items-center gap-3 sr">
-        <svg class="trust-ico" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" fill="#fff" stroke="#0046b8" stroke-width="2"/><circle cx="24" cy="24" r="14" fill="#0046b8"/><circle cx="24" cy="24" r="7" fill="#fff"/><circle cx="24" cy="24" r="3" fill="#e1000f"/></svg>
-        <div><div class="text-[14px] font-extrabold text-[#0a2240] uppercase">Entreprise française</div><div class="text-[12px] text-[#5b6b80]">Conçu &amp; assemblé en France</div></div>
-      </div>
-      <div class="flex items-center gap-3 sr sr-d1">
-        <svg class="trust-ico" viewBox="0 0 24 24" fill="none" stroke="#0046b8" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        <div><div class="text-[14px] font-extrabold text-[#0a2240] uppercase">Licence à vie</div><div class="text-[12px] text-[#5b6b80]">Sans abonnement, mises à jour incluses</div></div>
-      </div>
-      <div class="flex items-center gap-3 sr sr-d2">
-        <svg class="trust-ico" viewBox="0 0 24 24" fill="none" stroke="#0046b8" stroke-width="1.8"><path d="M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></svg>
-        <div><div class="text-[14px] font-extrabold text-[#0a2240] uppercase">Garantie à vie</div><div class="text-[12px] text-[#5b6b80]">Châssis et housse Bagheera</div></div>
-      </div>
-      <div class="flex items-center gap-3 sr sr-d3">
-        <svg class="trust-ico" viewBox="0 0 24 24" fill="none" stroke="#0046b8" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        <div><div class="text-[14px] font-extrabold text-[#0a2240] uppercase">Devis sous 24 h</div><div class="text-[12px] text-[#5b6b80]">Livraison 15 à 30 jours ouvrés</div></div>
-      </div>
-    </div>
+  <div class="tile-art hero-in hero-in-3">
+    <img src="/assets/vitalxv2pro.PNG" alt="Pack VitalX Ultra — moniteur iPad Air 13 pouces dans sa housse et tablette formateur" fetchpriority="high" data-no-lightbox="true"/>
   </div>
 </section>
 
-<!-- CATEGORIES (public visé) -->
-<section class="sec-tight sec-light">
-  <div class="mx-auto max-w-6xl px-6">
-    <div class="text-center mb-10">
-      <p class="eyebrow sr">Pour qui</p>
-      <h2 class="h-section mt-2 text-[#0a2240] txt-zoom">Pensé pour ceux qui sauvent.</h2>
+<!-- RUBAN NOUVEAUTÉ -->
+<div class="ribbon">Nouveau : les interfaces Schiller et Weinmann sont incluses dans la licence VitalX, sans supplément. <a href="#interfaces" class="more">Voir les interfaces</a></div>
+
+<!-- INTERFACES (tuile sombre) -->
+<section class="tile tile-dark tile-pad-b">
+  <div class="tile-copy">
+    <h2 class="t-tile">Interfaces constructeurs</h2>
+    <p class="t-tile-sub">Un seul scope. Les vrais moniteurs.</p>
+    <div class="links">
+      <a href="#interfaces" class="more">Découvrir</a>
+      <a href="/boutique.html" class="more">Voir la boutique</a>
     </div>
-    <div class="grid sm:grid-cols-3 gap-5">
-      <a href="/boutique.html" class="cat sr group">
-        <img src="/cat-pompier.png" alt="Pompiers" class="cat-img opacity-90"/>
-        <div class="cat-grad"></div>
-        <div class="relative p-6 w-full"><div class="text-[11px] font-bold uppercase tracking-[.15em] text-[#ff6b6b]">Secours</div><div class="text-[22px] font-black uppercase text-white mt-1">Pompiers</div></div>
-      </a>
-      <a href="/boutique.html" class="cat sr sr-d1 group">
-        <img src="/cat-paramed.png" alt="Paramédicaux" class="cat-img opacity-90"/>
-        <div class="cat-grad"></div>
-        <div class="relative p-6 w-full"><div class="text-[11px] font-bold uppercase tracking-[.15em] text-[#7eb0ff]">Préhospitalier</div><div class="text-[22px] font-black uppercase text-white mt-1">Paramédicaux</div></div>
-      </a>
-      <a href="/boutique.html" class="cat sr sr-d2 group">
-        <img src="/cat-secours.png" alt="Secouristes" class="cat-img opacity-90"/>
-        <div class="cat-grad"></div>
-        <div class="relative p-6 w-full"><div class="text-[11px] font-bold uppercase tracking-[.15em] text-[#ffd166]">Associatif</div><div class="text-[22px] font-black uppercase text-white mt-1">Secouristes</div></div>
-      </a>
+  </div>
+  <div class="tile-art tile-2up sr">
+    <img src="/assets/scope-schiller-defigard.webp" alt="Interface Schiller DEFIGARD Touch 7 reproduite dans le scope VitalX" loading="lazy"/>
+    <img src="/assets/scope-weinmann-meducore.webp" alt="Interface Weinmann MEDUCORE Standard² reproduite dans le scope VitalX" loading="lazy"/>
+  </div>
+</section>
+
+<div class="tile-gap"></div>
+
+<!-- GRILLE DE TUILES -->
+<div class="tile-half-grid">
+  <section class="tile tile-gray" id="packs">
+    <div class="tile-copy">
+      <h2 class="t-tile-sm">VitalX, Plus, Pro, Ultra</h2>
+      <p class="t-tile-sm-sub">Quatre configurations. Un seul châssis.</p>
+      <div class="links">
+        <a href="/boutique.html#pack" class="more">Comparer les scopes</a>
+        <a href="#contact" class="more">Demander un devis</a>
+      </div>
+    </div>
+    <div class="tile-art sr"><img src="/assets/pack-vitalx.png" alt="VitalX Plus — moniteur dans sa housse et tablette formateur" loading="lazy"/></div>
+  </section>
+  <section class="tile tile-gray" id="pods">
+    <div class="tile-copy">
+      <h2 class="t-tile-sm">POD'S</h2>
+      <p class="t-tile-sm-sub">Version compacte. Mobile et prêt.</p>
+      <div class="links">
+        <a href="/vitalx-pods.html" class="more">En savoir plus</a>
+        <a href="#contact" class="more">Demander une démo</a>
+      </div>
+    </div>
+    <div class="tile-art sr"><img src="/assets/vitalxpodsclassic.PNG" alt="VitalX POD'S — boîtier iPhone, brassard, capteur SpO₂ et patch DSA" loading="lazy"/></div>
+  </section>
+  <section class="tile tile-dark" id="mediacenter">
+    <div class="tile-copy">
+      <h2 class="t-tile-sm">Media Center</h2>
+      <p class="t-tile-sm-sub">Le dossier patient, dans le scope.</p>
+      <div class="links">
+        <a href="#features" class="more">En savoir plus</a>
+      </div>
+    </div>
+    <div class="tile-art sr"><img src="/assets/mediacenter-radio.webp" alt="Media Center — imagerie classée par région" loading="lazy" style="border-radius:14px 14px 0 0"/></div>
+  </section>
+  <section class="tile tile-dark">
+    <div class="tile-copy">
+      <h2 class="t-tile-sm">Mode Formateur</h2>
+      <p class="t-tile-sm-sub">Pilotez depuis l'iPad ou le web.</p>
+      <div class="links">
+        <a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="more">Ouvrir vitalxtrainer.app</a>
+      </div>
+    </div>
+    <div class="tile-art sr"><img src="/app-formateur.png" alt="Vue formateur — pilotage complet de la session" loading="lazy" style="border-radius:14px 14px 0 0"/></div>
+  </section>
+  <section class="tile tile-gray">
+    <div class="tile-copy">
+      <h2 class="t-tile-sm">Châssis et housse Bagheera</h2>
+      <p class="t-tile-sm-sub">Conçus et assemblés en France. Garantis à vie.</p>
+      <div class="links">
+        <a href="#in-the-box" class="more">Dans le pack</a>
+        <a href="/garantie.html" class="more">Garantie</a>
+      </div>
+    </div>
+    <div class="tile-art sr"><img src="/assets/housseV2.PNG" alt="Châssis VitalX V2 ouvert et housse Bagheera V2 Premium" loading="lazy"/></div>
+  </section>
+  <section class="tile tile-dark tile-pad-b">
+    <div class="tile-copy">
+      <h2 class="t-tile-sm">Licence à vie</h2>
+      <p class="t-tile-sm-sub">Un code. Trois appareils. Aucun abonnement.</p>
+      <div class="links">
+        <a href="/boutique.html#licence" class="more">Licence seule</a>
+        <a href="#devis" class="more">Demander un devis</a>
+      </div>
+    </div>
+    <div class="tile-art sr" style="max-width:520px"><img src="/assets/licence-life.png" alt="Licence VitalX à vie" loading="lazy" style="max-height:300px"/></div>
+  </section>
+</div>
+
+<!-- CONFIANCE -->
+<section class="section-tight">
+  <div class="wrap">
+    <div class="trust">
+      <div class="sr"><strong>Entreprise française</strong><span>Conçu &amp; assemblé en France</span></div>
+      <div class="sr sr-d1"><strong>Licence à vie</strong><span>Sans abonnement, mises à jour incluses</span></div>
+      <div class="sr sr-d2"><strong>Garantie à vie</strong><span>Châssis et housse Bagheera</span></div>
+      <div class="sr sr-d3"><strong>Devis sous 24 h</strong><span>Livraison 15 à 30 jours ouvrés</span></div>
     </div>
   </div>
 </section>
 
-<!-- INTERFACES CONSTRUCTEURS -->
-<section id="interfaces" class="sec" style="background:#eef2f7">
-  <div class="mx-auto max-w-6xl px-6">
-    <div class="text-center mb-12">
-      <p class="eyebrow sr">Interfaces constructeurs</p>
-      <h2 class="h-section mt-2 text-[#0a2240] txt-zoom">Un seul scope.<br>Les vrais moniteurs.</h2>
-      <p class="text-[16px] text-[#5b6b80] mt-4 max-w-2xl mx-auto sr sr-d1">Vos équipes s'entraînent sur l'écran exact de l'appareil qu'elles retrouveront dans le VSAV ou l'ambulance : mêmes menus, mêmes couleurs, mêmes boutons. Chaque interface est reproduite avec l'autorisation du fabricant et incluse dans la licence VitalX, sans supplément.</p>
+<!-- POUR QUI -->
+<section class="section-tight gray">
+  <div class="wrap">
+    <div class="section-head center">
+      <p class="t-eyebrow sr">Pour qui</p>
+      <h2 class="t-section sr">Pensé pour ceux qui sauvent.</h2>
+    </div>
+    <div class="grid-3">
+      <a href="/boutique.html" class="cat sr"><img src="/cat-pompier.png" alt="" loading="lazy"/><div><small>Secours</small><strong>Pompiers</strong></div></a>
+      <a href="/boutique.html" class="cat sr sr-d1"><img src="/cat-paramed.png" alt="" loading="lazy"/><div><small>Préhospitalier</small><strong>Paramédicaux</strong></div></a>
+      <a href="/boutique.html" class="cat sr sr-d2"><img src="/cat-secours.png" alt="" loading="lazy"/><div><small>Associatif</small><strong>Secouristes</strong></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- INTERFACES CONSTRUCTEURS (galeries) -->
+<section id="interfaces" class="section dark">
+  <div class="wrap">
+    <div class="section-head center">
+      <p class="t-eyebrow sr">Interfaces constructeurs</p>
+      <h2 class="t-section sr">Un seul scope.<br>Les vrais moniteurs.</h2>
+      <p class="t-section-lead sr sr-d1">Vos équipes s'entraînent sur l'écran exact de l'appareil qu'elles retrouveront dans le VSAV ou l'ambulance : mêmes menus, mêmes couleurs, mêmes boutons. Chaque interface est reproduite avec l'autorisation du fabricant et incluse dans la licence VitalX, sans supplément.</p>
     </div>
 
-    <!-- SCHILLER -->
-    <div class="brand-block sr mb-8">
-      <div class="brand-head">
-        <div>
-          <div class="text-[12px] font-extrabold uppercase tracking-[.12em] text-[#e1000f]">Nouveau dans le scope</div>
-          <div class="brand-name">Schiller</div>
+    <div class="grid-2" style="gap:16px">
+      <!-- Schiller DEFIGARD -->
+      <article class="device sr">
+        <div class="device-head">
+          <span class="device-tag">Schiller · Inclus</span>
+          <h3>DEFIGARD Touch 7</h3>
+          <p>Moniteur-défibrillateur. ECG, SpO₂, EtCO₂, PNI, PA invasive, température. Menus ECG, événements, défibrillation manuelle.</p>
         </div>
-        <div class="brand-chips">
-          <span class="chip">DEFIGARD Touch 7</span>
-          <span class="chip">PHYSIOGARD Touch 7</span>
-          <span class="chip chip-red">Inclus</span>
-        </div>
-      </div>
-      <div class="grid lg:grid-cols-2">
-        <div>
-          <div class="px-7 pt-6 pb-2"><div class="text-[16px] font-extrabold text-[#0a2240]">DEFIGARD Touch 7 — moniteur-défibrillateur</div><p class="text-[13px] text-[#5b6b80] mt-1">ECG, SpO₂, EtCO₂, PNI, PA invasive, température. Menus ECG, événements, défibrillation manuelle.</p></div>
-          <div class="gal" data-gal>
-            <div class="gal-main"><img src="/assets/scope-schiller-defigard.webp" alt="DEFIGARD Touch 7 — vue monitorage" data-gal-main/><span class="gal-cap" data-gal-cap>Vue monitorage</span></div>
-            <div class="gal-thumbs">
-              <button type="button" class="is-active" data-src="/assets/scope-schiller-defigard.webp" data-cap="Vue monitorage"><img src="/assets/scope-schiller-defigard.webp" alt="" loading="lazy"/></button>
-              <button type="button" data-src="/assets/scope-schiller-defigard-ibp.webp" data-cap="Pression artérielle invasive"><img src="/assets/scope-schiller-defigard-ibp.webp" alt="" loading="lazy"/></button>
-              <button type="button" data-src="/assets/scope-schiller-defigard-ecg.webp" data-cap="Menu ECG 12 dérivations"><img src="/assets/scope-schiller-defigard-ecg.webp" alt="" loading="lazy"/></button>
-              <button type="button" data-src="/assets/mediacenter-dlu.webp" data-cap="Media Center — DLU"><img src="/assets/mediacenter-dlu.webp" alt="" loading="lazy"/></button>
-            </div>
+        <div data-gal>
+          <div class="gal-main"><img src="/assets/scope-schiller-defigard.webp" alt="DEFIGARD Touch 7 — vue monitorage" data-gal-main loading="lazy"/><span class="gal-cap" data-gal-cap>Vue monitorage</span></div>
+          <div class="gal-thumbs">
+            <button type="button" class="is-active" data-src="/assets/scope-schiller-defigard.webp" data-cap="Vue monitorage"><img src="/assets/scope-schiller-defigard.webp" alt="" loading="lazy"/></button>
+            <button type="button" data-src="/assets/scope-schiller-defigard-ibp.webp" data-cap="Pression artérielle invasive"><img src="/assets/scope-schiller-defigard-ibp.webp" alt="" loading="lazy"/></button>
+            <button type="button" data-src="/assets/scope-schiller-defigard-ecg.webp" data-cap="Menu ECG 12 dérivations"><img src="/assets/scope-schiller-defigard-ecg.webp" alt="" loading="lazy"/></button>
+            <button type="button" data-src="/assets/mediacenter-dlu.webp" data-cap="Media Center — DLU"><img src="/assets/mediacenter-dlu.webp" alt="" loading="lazy"/></button>
           </div>
         </div>
-        <div class="border-t lg:border-t-0 lg:border-l border-[#dde3ec]">
-          <div class="px-7 pt-6 pb-2"><div class="text-[16px] font-extrabold text-[#0a2240]">PHYSIOGARD Touch 7 — moniteur multiparamétrique</div><p class="text-[13px] text-[#5b6b80] mt-1">Deux dérivations ECG, SpO₂, PNI automatique ou manuelle, température, EtCO₂ et fréquence respiratoire.</p></div>
-          <div class="gal" data-gal>
-            <div class="gal-main"><img src="/assets/scope-schiller-physiogard.webp" alt="PHYSIOGARD Touch 7 — vue monitorage" data-gal-main/><span class="gal-cap" data-gal-cap>Vue monitorage</span></div>
-            <div class="gal-thumbs">
-              <button type="button" class="is-active" data-src="/assets/scope-schiller-physiogard.webp" data-cap="Vue monitorage"><img src="/assets/scope-schiller-physiogard.webp" alt="" loading="lazy"/></button>
-              <button type="button" data-src="/assets/scope-schiller-physiogard-etco2.webp" data-cap="Capnographie et température"><img src="/assets/scope-schiller-physiogard-etco2.webp" alt="" loading="lazy"/></button>
-              <button type="button" data-src="/assets/scope-schiller-physiogard-pni.webp" data-cap="Menu PNI — cycles automatiques"><img src="/assets/scope-schiller-physiogard-pni.webp" alt="" loading="lazy"/></button>
-              <button type="button" data-src="/assets/mediacenter-radio.webp" data-cap="Media Center — Radio"><img src="/assets/mediacenter-radio.webp" alt="" loading="lazy"/></button>
-            </div>
+      </article>
+      <!-- Schiller PHYSIOGARD -->
+      <article class="device sr sr-d1">
+        <div class="device-head">
+          <span class="device-tag">Schiller · Inclus</span>
+          <h3>PHYSIOGARD Touch 7</h3>
+          <p>Moniteur multiparamétrique. Deux dérivations ECG, SpO₂, PNI automatique ou manuelle, température, EtCO₂ et fréquence respiratoire.</p>
+        </div>
+        <div data-gal>
+          <div class="gal-main"><img src="/assets/scope-schiller-physiogard.webp" alt="PHYSIOGARD Touch 7 — vue monitorage" data-gal-main loading="lazy"/><span class="gal-cap" data-gal-cap>Vue monitorage</span></div>
+          <div class="gal-thumbs">
+            <button type="button" class="is-active" data-src="/assets/scope-schiller-physiogard.webp" data-cap="Vue monitorage"><img src="/assets/scope-schiller-physiogard.webp" alt="" loading="lazy"/></button>
+            <button type="button" data-src="/assets/scope-schiller-physiogard-etco2.webp" data-cap="Capnographie et température"><img src="/assets/scope-schiller-physiogard-etco2.webp" alt="" loading="lazy"/></button>
+            <button type="button" data-src="/assets/scope-schiller-physiogard-pni.webp" data-cap="Menu PNI — cycles automatiques"><img src="/assets/scope-schiller-physiogard-pni.webp" alt="" loading="lazy"/></button>
+            <button type="button" data-src="/assets/mediacenter-radio.webp" data-cap="Media Center — Radio"><img src="/assets/mediacenter-radio.webp" alt="" loading="lazy"/></button>
           </div>
         </div>
-      </div>
-      <div class="brand-note border-t border-[#dde3ec]"><strong>Reproduites à l'identique, avec l'autorisation de Schiller.</strong> Simulateur conçu et développé par VitalX. Interfaces disponibles sur les scopes iPad (licence VitalX).</div>
-    </div>
-
-    <!-- WEINMANN -->
-    <div class="brand-block sr sr-d1 mb-8">
-      <div class="brand-head">
-        <div>
-          <div class="text-[12px] font-extrabold uppercase tracking-[.12em] text-[#e1000f]">Nouveau dans le scope</div>
-          <div class="brand-name">Weinmann</div>
+      </article>
+      <!-- Weinmann MEDUCORE -->
+      <article class="device sr">
+        <div class="device-head">
+          <span class="device-tag">Weinmann · Inclus</span>
+          <h3>MEDUCORE Standard²</h3>
+          <p>Moniteur-défibrillateur. Vue courbes ou grands chiffres, historique PNI, modes DSA et manuel, connectique ECG, SpO₂ et NIBP à l'écran.</p>
         </div>
-        <div class="brand-chips">
-          <span class="chip">MEDUCORE Standard²</span>
-          <span class="chip">MEDUMAT Standard²</span>
-          <span class="chip chip-red">Inclus</span>
-        </div>
-      </div>
-      <div class="grid lg:grid-cols-2">
-        <div>
-          <div class="px-7 pt-6 pb-2"><div class="text-[16px] font-extrabold text-[#0a2240]">MEDUCORE Standard² — moniteur-défibrillateur</div><p class="text-[13px] text-[#5b6b80] mt-1">Vue courbes ou grands chiffres, historique PNI, modes DSA et manuel, connectique ECG, SpO₂ et NIBP à l'écran.</p></div>
-          <div class="gal" data-gal>
-            <div class="gal-main"><img src="/assets/scope-weinmann-meducore.webp" alt="MEDUCORE Standard² — vue courbes" data-gal-main/><span class="gal-cap" data-gal-cap>Vue courbes</span></div>
-            <div class="gal-thumbs">
-              <button type="button" class="is-active" data-src="/assets/scope-weinmann-meducore.webp" data-cap="Vue courbes"><img src="/assets/scope-weinmann-meducore.webp" alt="" loading="lazy"/></button>
-              <button type="button" data-src="/assets/scope-weinmann-meducore-grands-chiffres.webp" data-cap="Grands chiffres et historique PNI"><img src="/assets/scope-weinmann-meducore-grands-chiffres.webp" alt="" loading="lazy"/></button>
-              <button type="button" data-src="/assets/scope-weinmann-meducore-courbes.webp" data-cap="ECG II + aVR et pléthysmographie"><img src="/assets/scope-weinmann-meducore-courbes.webp" alt="" loading="lazy"/></button>
-              <button type="button" data-src="/assets/mediacenter-bio.webp" data-cap="Media Center — Bio"><img src="/assets/mediacenter-bio.webp" alt="" loading="lazy"/></button>
-            </div>
+        <div data-gal>
+          <div class="gal-main"><img src="/assets/scope-weinmann-meducore.webp" alt="MEDUCORE Standard² — vue courbes" data-gal-main loading="lazy"/><span class="gal-cap" data-gal-cap>Vue courbes</span></div>
+          <div class="gal-thumbs">
+            <button type="button" class="is-active" data-src="/assets/scope-weinmann-meducore.webp" data-cap="Vue courbes"><img src="/assets/scope-weinmann-meducore.webp" alt="" loading="lazy"/></button>
+            <button type="button" data-src="/assets/scope-weinmann-meducore-grands-chiffres.webp" data-cap="Grands chiffres et historique PNI"><img src="/assets/scope-weinmann-meducore-grands-chiffres.webp" alt="" loading="lazy"/></button>
+            <button type="button" data-src="/assets/scope-weinmann-meducore-courbes.webp" data-cap="ECG II + aVR et pléthysmographie"><img src="/assets/scope-weinmann-meducore-courbes.webp" alt="" loading="lazy"/></button>
+            <button type="button" data-src="/assets/mediacenter-bio.webp" data-cap="Media Center — Bio"><img src="/assets/mediacenter-bio.webp" alt="" loading="lazy"/></button>
           </div>
         </div>
-        <div class="border-t lg:border-t-0 lg:border-l border-[#dde3ec]">
-          <div class="px-7 pt-6 pb-2"><div class="text-[16px] font-extrabold text-[#0a2240]">MEDUMAT Standard² — respirateur</div><p class="text-[13px] text-[#5b6b80] mt-1">Manomètre pAW, Vt, fréquence, PEEP, pressions de crête et de plateau, capnographie et alarmes. Modes IPPV, CPR, Air Mix.</p></div>
-          <div class="gal" data-gal>
-            <div class="gal-main"><img src="/assets/scope-weinmann-medumat.webp" alt="MEDUMAT Standard² — mode IPPV" data-gal-main/><span class="gal-cap" data-gal-cap>Mode IPPV — alarme EtCO₂</span></div>
-            <div class="gal-thumbs" style="grid-template-columns:repeat(4,1fr)">
-              <button type="button" class="is-active" data-src="/assets/scope-weinmann-medumat.webp" data-cap="Mode IPPV — alarme EtCO₂"><img src="/assets/scope-weinmann-medumat.webp" alt="" loading="lazy"/></button>
-              <button type="button" data-src="/assets/mediacenter-bandelette.webp" data-cap="Media Center — Bandelette urinaire"><img src="/assets/mediacenter-bandelette.webp" alt="" loading="lazy"/></button>
-              <button type="button" data-src="/assets/mediacenter-dlu.webp" data-cap="Media Center — DLU"><img src="/assets/mediacenter-dlu.webp" alt="" loading="lazy"/></button>
-              <button type="button" data-src="/assets/mediacenter-radio.webp" data-cap="Media Center — Radio"><img src="/assets/mediacenter-radio.webp" alt="" loading="lazy"/></button>
-            </div>
+      </article>
+      <!-- Weinmann MEDUMAT -->
+      <article class="device sr sr-d1">
+        <div class="device-head">
+          <span class="device-tag">Weinmann · Inclus</span>
+          <h3>MEDUMAT Standard²</h3>
+          <p>Respirateur. Manomètre pAW, Vt, fréquence, PEEP, pressions de crête et de plateau, capnographie et alarmes. Modes IPPV, CPR, Air Mix.</p>
+        </div>
+        <div data-gal>
+          <div class="gal-main"><img src="/assets/scope-weinmann-medumat.webp" alt="MEDUMAT Standard² — mode IPPV" data-gal-main loading="lazy"/><span class="gal-cap" data-gal-cap>Mode IPPV — alarme EtCO₂</span></div>
+          <div class="gal-thumbs">
+            <button type="button" class="is-active" data-src="/assets/scope-weinmann-medumat.webp" data-cap="Mode IPPV — alarme EtCO₂"><img src="/assets/scope-weinmann-medumat.webp" alt="" loading="lazy"/></button>
+            <button type="button" data-src="/assets/mediacenter-bandelette.webp" data-cap="Media Center — Bandelette urinaire"><img src="/assets/mediacenter-bandelette.webp" alt="" loading="lazy"/></button>
+            <button type="button" data-src="/assets/mediacenter-dlu.webp" data-cap="Media Center — DLU"><img src="/assets/mediacenter-dlu.webp" alt="" loading="lazy"/></button>
+            <button type="button" data-src="/assets/mediacenter-radio.webp" data-cap="Media Center — Radio"><img src="/assets/mediacenter-radio.webp" alt="" loading="lazy"/></button>
           </div>
         </div>
-      </div>
-      <div class="brand-note border-t border-[#dde3ec]"><strong>Interfaces reproduites avec l'autorisation du fabricant.</strong> Simulateur conçu et développé par VitalX. Disponibles sur les scopes iPad (licence VitalX).</div>
+      </article>
     </div>
 
-    <!-- PROCHAINES MARQUES (non citées) -->
-    <div class="sr sr-d2">
-      <div class="text-center mb-6">
-        <div class="text-[15px] font-extrabold text-[#0a2240]">D'autres appareils arrivent.</div>
-        <p class="text-[14px] text-[#5b6b80] mt-1 max-w-xl mx-auto">De nouvelles interfaces constructeurs sont en cours de reproduction et d'autorisation. Elles seront ajoutées par simple mise à jour, sans supplément, pour tous les scopes iPad VitalX.</p>
-      </div>
-      <div class="grid sm:grid-cols-3 gap-5">
-        <div class="slot"><div class="slot-dev" aria-hidden="true"></div><div class="slot-title">Prochaine interface</div><div class="slot-sub">Moniteur-défibrillateur · autorisation en cours</div></div>
-        <div class="slot"><div class="slot-dev" aria-hidden="true"></div><div class="slot-title">Prochaine interface</div><div class="slot-sub">Moniteur-défibrillateur · en cours de reproduction</div></div>
-        <div class="slot"><div class="slot-dev" aria-hidden="true"></div><div class="slot-title">Prochaine interface</div><div class="slot-sub">Respirateur · à venir</div></div>
-      </div>
-      <div class="text-center mt-8">
-        <a href="#contact" class="btn-blue">Vous utilisez un autre appareil ? Dites-le nous</a>
-      </div>
+    <p class="t-caption center sr" style="margin:28px auto 0;max-width:720px">Interfaces reproduites à l'identique, avec l'autorisation de Schiller et de Weinmann. Simulateur conçu et développé par VitalX. Disponibles sur les scopes iPad (licence VitalX).</p>
+
+    <!-- Prochaines marques -->
+    <div class="section-head center" style="margin:72px auto 28px">
+      <h3 class="t-tile-sm sr">D'autres appareils arrivent.</h3>
+      <p class="t-section-lead sr sr-d1" style="font-size:19px">De nouvelles interfaces constructeurs sont en cours de reproduction et d'autorisation. Elles seront ajoutées par simple mise à jour, sans supplément, pour tous les scopes iPad VitalX.</p>
+    </div>
+    <div class="grid-3">
+      <div class="slot sr"><div class="slot-dev" aria-hidden="true"></div><strong>Prochaine interface</strong><span>Moniteur-défibrillateur · autorisation en cours</span></div>
+      <div class="slot sr sr-d1"><div class="slot-dev" aria-hidden="true"></div><strong>Prochaine interface</strong><span>Moniteur-défibrillateur · en cours de reproduction</span></div>
+      <div class="slot sr sr-d2"><div class="slot-dev" aria-hidden="true"></div><strong>Prochaine interface</strong><span>Respirateur · à venir</span></div>
+    </div>
+    <div class="center sr" style="margin-top:36px"><a href="#contact" class="more">Vous utilisez un autre appareil ? Dites-le nous</a></div>
+  </div>
+</section>
+
+<!-- FONCTIONS -->
+<section id="features" class="section gray">
+  <div class="wrap">
+    <div class="section-head center">
+      <p class="t-eyebrow sr">Capacités</p>
+      <h2 class="t-section sr">Tout pour former.</h2>
+    </div>
+    <div class="grid-3">
+      <div class="feat sr"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div><h3>Interfaces constructeurs</h3><p>Schiller, Weinmann et bientôt d'autres : les vrais écrans, reproduits avec l'autorisation des fabricants, inclus dans la licence.</p></div>
+      <div class="feat sr sr-d1"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><h3>Scénarios dynamiques</h3><p>Cas concrets, AVC, douleur thoracique, polytrauma, avec étapes guidées et transitions automatiques.</p></div>
+      <div class="feat sr sr-d2"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 20h8"/></svg></div><h3>Moniteur réaliste</h3><p>Constantes temps réel, PNI auto/manuel, alertes, tendances, courbes ECG, SpO₂ et EtCO₂. Profils adulte et enfant.</p></div>
+      <div class="feat sr"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg></div><h3>Pilotage formateur</h3><p>Contrôle à distance des constantes, scénarios, ECG 12D et DSA, depuis l'iPad ou le web, quelle que soit l'interface affichée.</p></div>
+      <div class="feat sr sr-d1"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><h3>ECG 12 dérivations</h3><p>Plus de 20 tracés, sinus, STEMI, FA, TV, FV, torsades, WPW, avec interprétation et impression simulée.</p></div>
+      <div class="feat sr sr-d2"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><h3>Media Center</h3><p>ECG, biologie, radiologie, bandelette urinaire et DLU accessibles depuis le scope pour des scénarios contextualisés.</p></div>
+      <div class="feat sr"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg></div><h3>Historique complet</h3><p>Snapshots automatiques, PNI horodatées, sparklines et statistiques min / moyenne / max.</p></div>
+      <div class="feat sr sr-d1"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.2 2.2M16.2 16.2l2.2 2.2M5.6 18.4l2.2-2.2M16.2 7.8l2.2-2.2"/></svg></div><h3>Sync instantanée</h3><p>Un code de licence, jusqu'à 3 appareils. Synchronisation cloud immédiate, partout.</p></div>
+      <div class="feat sr sr-d2"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h3>Prêt en 30 secondes</h3><p>Aucune configuration complexe. Ouvrez l'app VitalX Scope, entrez le code, choisissez l'interface, formez.</p></div>
     </div>
   </div>
 </section>
 
-<!-- VITALX V2 -->
-<section id="v2" class="sec sec-light">
-  <div class="mx-auto max-w-6xl px-6">
-    <div class="grid lg:grid-cols-2 gap-12 items-center">
-      <div class="sr">
-        <p class="eyebrow">Nouvelle génération</p>
-        <h2 class="h-section mt-2 text-[#0a2240]">VitalX V2.<br>Disponible.</h2>
-        <p class="mt-4 text-[16px] text-[#5b6b80] leading-relaxed">Le pack le plus complet jamais assemblé par VitalX : grand écran moniteur, châssis redessiné et housse premium.</p>
-        <ul class="mt-6 space-y-3 text-[15px] text-[#0c1828]">
-          <li class="flex gap-3"><span class="text-[#0046b8] font-bold">✓</span>iPad Air 13" — Moniteur</li>
-          <li class="flex gap-3"><span class="text-[#0046b8] font-bold">✓</span>iPad 11" — Formateur</li>
-          <li class="flex gap-3"><span class="text-[#0046b8] font-bold">✓</span>Châssis VitalX V2</li>
-          <li class="flex gap-3"><span class="text-[#0046b8] font-bold">✓</span>Housse Bagheera V2 Premium</li>
-          <li class="flex gap-3"><span class="text-[#0046b8] font-bold">✓</span>Connectique complète (PNI, SpO₂, ECG 12D, DSA, T°, EtCO₂)</li>
-          <li class="flex gap-3"><span class="text-[#0046b8] font-bold">✓</span>Interfaces constructeurs incluses</li>
-        </ul>
-        <div class="mt-7 flex flex-wrap gap-3">
-          <a href="#contact" class="btn-red">📝 Demander un devis</a>
-          <a href="/boutique.html#pack" class="btn-out">Voir le pack</a>
-        </div>
-      </div>
-      <div class="sr sr-d1 bg-[#f4f6f9] rounded-2xl border border-[#dde3ec] p-6">
-        <img src="/assets/vitalxv2pro.png" alt="Pack VitalX V2 — moniteur et tablette formateur" class="w-full object-contain mx-auto" style="max-height:48vh"/>
-      </div>
+<!-- APPLICATION (galerie défilante) -->
+<section id="app" class="section dark" style="padding-bottom:clamp(48px,7vw,90px)">
+  <div class="wrap">
+    <div class="section-head section-head-left" style="margin-bottom:34px">
+      <p class="t-eyebrow sr">L'application</p>
+      <h2 class="t-section sr">L'app VitalX.</h2>
+      <p class="t-section-lead sr sr-d1">Le formateur pilote. Le moniteur affiche.</p>
     </div>
+  </div>
+  <div class="hscroll" id="appScroll">
+    <figure class="hcard"><img src="/app-scope.PNG" alt="Scope monitoring" loading="lazy"/><figcaption><strong>Scope Monitoring</strong><span>ECG, SpO₂, EtCO₂ en temps réel</span></figcaption></figure>
+    <figure class="hcard"><img src="/app-monitoring.PNG" alt="Multiparamétrique" loading="lazy"/><figcaption><strong>Vue Multiparamétrique</strong><span>HR, SpO₂, Temp, FR, PNI</span></figcaption></figure>
+    <figure class="hcard"><img src="/app-anatomie.PNG" alt="Anatomie" loading="lazy"/><figcaption><strong>Vue Anatomique</strong><span>Cœur et poumons animés</span></figcaption></figure>
+    <figure class="hcard"><img src="/app-ecg-electrodes.PNG" alt="Électrodes" loading="lazy"/><figcaption><strong>ECG 12D — Électrodes</strong><span>Positionnement guidé 3D</span></figcaption></figure>
+    <figure class="hcard"><img src="/app-ecg12d.PNG" alt="ECG 12D" loading="lazy"/><figcaption><strong>ECG 12 Dérivations</strong><span>Tracé complet + interprétation</span></figcaption></figure>
+    <figure class="hcard"><img src="/app-dsa.PNG" alt="DSA" loading="lazy"/><figcaption><strong>Mode DSA</strong><span>Chocs simulés + métronome RCP</span></figcaption></figure>
+    <figure class="hcard"><img src="/assets/scope-schiller-defigard-ecg.webp" alt="Interface Schiller dans le scope" loading="lazy"/><figcaption><strong>Interface Schiller</strong><span>DEFIGARD et PHYSIOGARD Touch 7</span></figcaption></figure>
+    <figure class="hcard"><img src="/assets/scope-weinmann-medumat.webp" alt="Interface Weinmann dans le scope" loading="lazy"/><figcaption><strong>Interface Weinmann</strong><span>MEDUCORE et MEDUMAT Standard²</span></figcaption></figure>
+    <figure class="hcard"><img src="/app-formateur.png" alt="Formateur" loading="lazy"/><figcaption><strong>Vue Formateur</strong><span>Pilotage complet de la session</span></figcaption></figure>
+  </div>
+  <div class="hnav">
+    <button type="button" data-scroll="-1" aria-label="Précédent">‹</button>
+    <button type="button" data-scroll="1" aria-label="Suivant">›</button>
   </div>
 </section>
 
-<!-- MED'X -->
-<section id="medx" class="sec" style="background:#eef2f7">
-  <div class="mx-auto max-w-6xl px-6">
-    <div class="grid lg:grid-cols-2 gap-12 items-center">
-      <div class="sr">
-        <img src="/logovitalx10.png" alt="MED'X by VitalX" class="h-9 mb-5 object-contain" data-no-lightbox="true"/>
-        <p class="eyebrow">Le pack référence</p>
-        <h2 class="h-section mt-2 text-[#0a2240]">MED'X.<br>Tout-en-un.</h2>
-        <p class="mt-4 text-[16px] text-[#5b6b80] leading-relaxed">2 iPad 11", châssis renforcé, connectiques complètes — PNI, SpO₂, ECG 12 dérivations, DSA, température, EtCO₂ — interfaces constructeurs et licence à vie incluses.</p>
-        <div class="mt-6 flex flex-wrap gap-3">
-          <a href="#contact" class="btn-blue">📝 Demander un devis</a>
-          <a href="#features" class="btn-out">Fonctionnalités</a>
-        </div>
-      </div>
-      <div class="sr sr-d1 bg-white rounded-2xl border border-[#dde3ec] p-6 shadow-sm">
-        <img src="/logovitalx4.png" alt="VitalX MED'X" class="w-full object-contain mx-auto" style="max-height:46vh"/>
-      </div>
+<!-- DANS LE PACK -->
+<section id="in-the-box" class="section">
+  <div class="wrap">
+    <div class="section-head center">
+      <p class="t-eyebrow sr">Contenu</p>
+      <h2 class="t-section sr">Dans le pack.</h2>
+      <p class="t-section-lead sr sr-d1">Tout ce qu'il faut pour former dès l'ouverture du carton.</p>
     </div>
-  </div>
-</section>
-
-<!-- POD'S -->
-<section id="pods" class="sec sec-light">
-  <div class="mx-auto max-w-6xl px-6">
-    <div class="grid lg:grid-cols-2 gap-12 items-center">
-      <div class="sr sr-d1 order-2 lg:order-1 bg-[#f4f6f9] rounded-2xl border border-[#dde3ec] p-6">
-        <img src="/assets/vitalxpodsclassic.png" alt="VitalX POD'S" class="w-full object-contain mx-auto" style="max-height:44vh"/>
-      </div>
-      <div class="sr order-1 lg:order-2">
-        <img src="/logovitalxpods1.png" alt="VitalX POD'S" class="h-11 mb-5 object-contain" data-no-lightbox="true"/>
-        <p class="eyebrow">Version compacte</p>
-        <h2 class="h-section mt-2 text-[#0a2240]">POD'S.<br>Mobile &amp; prêt.</h2>
-        <p class="mt-4 text-[16px] text-[#5b6b80] leading-relaxed">POD'S transforme un iPhone en moniteur patient. Idéal pour les formations mobiles, les démonstrations rapides et les interventions sur le terrain. Passage vers la licence VitalX possible à tout moment pour ouvrir les scopes iPad et les interfaces constructeurs.</p>
-        <div class="mt-6 flex flex-wrap gap-3">
-          <a href="#contact" class="btn-blue">📝 Demander un devis</a>
-          <a href="#contact" class="btn-out">Demander une démo</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- MEDIA CENTER -->
-<section id="mediacenter" class="sec-tight sec-dark">
-  <div class="mx-auto max-w-6xl px-6">
-    <div class="text-center mb-10">
-      <p class="text-[13px] font-bold uppercase tracking-[.18em] text-[#ffb340] mb-2 sr">Media Center</p>
-      <h2 class="h-card text-white txt-zoom">Le dossier patient, dans le scope.</h2>
-      <p class="text-[15px] text-[#b9c8dc] mt-3 max-w-xl mx-auto sr sr-d1">Depuis n'importe quelle interface, l'élève ouvre les examens complémentaires que le formateur a préparés : ECG 12 dérivations, biologie, imagerie, bandelette urinaire et dossier de liaison.</p>
-    </div>
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-      <figure class="rounded-xl overflow-hidden bg-white/[.05] ring-1 ring-white/10 sr"><img src="/assets/mediacenter-bio.webp" alt="Media Center — Bio : glycémie, cétones, lactates, HémoCue" class="w-full aspect-[16/11] object-cover" loading="lazy"/><figcaption class="px-4 py-3"><div class="text-[14px] font-extrabold text-white">Bio</div><div class="text-[12px] text-[#9fb3cc]">Glycémie, cétones, lactates, HémoCue</div></figcaption></figure>
-      <figure class="rounded-xl overflow-hidden bg-white/[.05] ring-1 ring-white/10 sr sr-d1"><img src="/assets/mediacenter-radio.webp" alt="Media Center — Radio" class="w-full aspect-[16/11] object-cover" loading="lazy"/><figcaption class="px-4 py-3"><div class="text-[14px] font-extrabold text-white">Radio</div><div class="text-[12px] text-[#9fb3cc]">Imagerie classée par région</div></figcaption></figure>
-      <figure class="rounded-xl overflow-hidden bg-white/[.05] ring-1 ring-white/10 sr sr-d2"><img src="/assets/mediacenter-bandelette.webp" alt="Media Center — Bandelette urinaire" class="w-full aspect-[16/11] object-cover" loading="lazy"/><figcaption class="px-4 py-3"><div class="text-[14px] font-extrabold text-white">Bandelette</div><div class="text-[12px] text-[#9fb3cc]">10 paramètres, lecture par comparaison</div></figcaption></figure>
-      <figure class="rounded-xl overflow-hidden bg-white/[.05] ring-1 ring-white/10 sr sr-d3"><img src="/assets/mediacenter-dlu.webp" alt="Media Center — DLU et biologie" class="w-full aspect-[16/11] object-cover" loading="lazy"/><figcaption class="px-4 py-3"><div class="text-[14px] font-extrabold text-white">DLU &amp; Biologie</div><div class="text-[12px] text-[#9fb3cc]">Compte rendu d'analyses, valeurs hors norme signalées</div></figcaption></figure>
-    </div>
-  </div>
-</section>
-
-<!-- FEATURES -->
-<section id="features" class="sec sec-light">
-  <div class="mx-auto max-w-6xl px-6">
-    <div class="text-center mb-14">
-      <p class="eyebrow sr">Capacités</p>
-      <h2 class="h-section mt-2 text-[#0a2240] txt-zoom">Tout pour former.</h2>
-    </div>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      <div class="card p-6 sr"><div class="f-ico bg-[#e1000f] mb-4"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/><circle cx="7" cy="14.5" r="1.2" fill="white"/><circle cx="12" cy="14.5" r="1.2" fill="white"/><circle cx="17" cy="14.5" r="1.2" fill="white"/></svg></div><h3 class="text-[17px] font-extrabold text-[#0a2240] mb-2">Interfaces constructeurs</h3><p class="text-[14px] text-[#5b6b80] leading-relaxed">Schiller, Weinmann et bientôt d'autres : les vrais écrans, reproduits avec l'autorisation des fabricants, inclus dans la licence.</p></div>
-      <div class="card p-6 sr sr-d1"><div class="f-ico bg-[#0046b8] mb-4"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><h3 class="text-[17px] font-extrabold text-[#0a2240] mb-2">Scénarios dynamiques</h3><p class="text-[14px] text-[#5b6b80] leading-relaxed">Cas concrets — AVC, douleur thoracique, polytrauma — avec étapes guidées et transitions automatiques.</p></div>
-      <div class="card p-6 sr sr-d2"><div class="f-ico bg-[#0046b8] mb-4"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div><h3 class="text-[17px] font-extrabold text-[#0a2240] mb-2">Moniteur réaliste</h3><p class="text-[14px] text-[#5b6b80] leading-relaxed">Constantes temps réel, PNI auto/manuel, alertes, tendances, courbes ECG, SpO₂ et EtCO₂. Profils adulte et enfant.</p></div>
-      <div class="card p-6 sr"><div class="f-ico bg-[#e1000f] mb-4"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg></div><h3 class="text-[17px] font-extrabold text-[#0a2240] mb-2">Pilotage formateur</h3><p class="text-[14px] text-[#5b6b80] leading-relaxed">Contrôle à distance des constantes, scénarios, ECG 12D et DSA — depuis l'iPad ou le web, quelle que soit l'interface affichée.</p></div>
-      <div class="card p-6 sr sr-d1"><div class="f-ico bg-[#e1000f] mb-4"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><h3 class="text-[17px] font-extrabold text-[#0a2240] mb-2">ECG 12 dérivations</h3><p class="text-[14px] text-[#5b6b80] leading-relaxed">Plus de 20 tracés — sinus, STEMI, FA, TV, FV, torsades, WPW — avec interprétation et impression simulée.</p></div>
-      <div class="card p-6 sr sr-d2"><div class="f-ico bg-[#0046b8] mb-4"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><h3 class="text-[17px] font-extrabold text-[#0a2240] mb-2">Media Center</h3><p class="text-[14px] text-[#5b6b80] leading-relaxed">ECG, biologie, radiologie, bandelette urinaire et DLU accessibles depuis le scope pour des scénarios contextualisés.</p></div>
-      <div class="card p-6 sr"><div class="f-ico bg-[#0046b8] mb-4"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg></div><h3 class="text-[17px] font-extrabold text-[#0a2240] mb-2">Historique complet</h3><p class="text-[14px] text-[#5b6b80] leading-relaxed">Snapshots automatiques, PNI horodatées, sparklines et statistiques min / moyenne / max.</p></div>
-      <div class="card p-6 sr sr-d1"><div class="f-ico bg-[#e1000f] mb-4"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M20.59 13.41A2 2 0 0 0 22 12V8a2 2 0 0 0-2-2h-4"/><path d="M3.41 10.59A2 2 0 0 0 2 12v4a2 2 0 0 0 2 2h4"/><line x1="7" y1="12" x2="17" y2="12"/></svg></div><h3 class="text-[17px] font-extrabold text-[#0a2240] mb-2">Sync instantanée</h3><p class="text-[14px] text-[#5b6b80] leading-relaxed">Un code de licence, jusqu'à 3 appareils. Synchronisation cloud immédiate, partout.</p></div>
-      <div class="card p-6 sr sr-d2"><div class="f-ico bg-[#0a2240] mb-4"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h3 class="text-[17px] font-extrabold text-[#0a2240] mb-2">Prêt en 30 secondes</h3><p class="text-[14px] text-[#5b6b80] leading-relaxed">Aucune configuration complexe. Ouvrez l'app VitalX Scope, entrez le code, choisissez l'interface, formez.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- APP GALLERY -->
-<section id="app" class="sec" style="background:#eef2f7">
-  <div class="mx-auto max-w-6xl px-6">
-    <div class="text-center mb-12">
-      <p class="eyebrow sr">L'application</p>
-      <h2 class="h-section mt-2 text-[#0a2240] txt-zoom">L'app VitalX.</h2>
-      <p class="text-[16px] text-[#5b6b80] mt-3 sr sr-d1">Le formateur pilote. Le moniteur affiche.</p>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-      <figure class="card sr"><img src="/app-scope.png" alt="Scope monitoring" class="w-full aspect-[4/3] object-cover object-top" loading="lazy"/><figcaption class="px-5 py-4"><div class="text-[15px] font-extrabold text-[#0a2240]">Scope Monitoring</div><div class="text-[13px] text-[#5b6b80] mt-0.5">ECG, SpO₂, EtCO₂ en temps réel</div></figcaption></figure>
-      <figure class="card sr sr-d1"><img src="/app-monitoring.png" alt="Multiparamétrique" class="w-full aspect-[4/3] object-cover object-top" loading="lazy"/><figcaption class="px-5 py-4"><div class="text-[15px] font-extrabold text-[#0a2240]">Vue Multiparamétrique</div><div class="text-[13px] text-[#5b6b80] mt-0.5">HR, SpO₂, Temp, FR, PNI</div></figcaption></figure>
-      <figure class="card sr sr-d2"><img src="/app-anatomie.png" alt="Anatomie" class="w-full aspect-[4/3] object-cover object-top" loading="lazy"/><figcaption class="px-5 py-4"><div class="text-[15px] font-extrabold text-[#0a2240]">Vue Anatomique</div><div class="text-[13px] text-[#5b6b80] mt-0.5">Cœur et poumons animés</div></figcaption></figure>
-      <figure class="card sr"><img src="/app-ecg-electrodes.png" alt="Électrodes" class="w-full aspect-[4/3] object-cover object-top" loading="lazy"/><figcaption class="px-5 py-4"><div class="text-[15px] font-extrabold text-[#0a2240]">ECG 12D — Électrodes</div><div class="text-[13px] text-[#5b6b80] mt-0.5">Positionnement guidé 3D</div></figcaption></figure>
-      <figure class="card sr sr-d1"><img src="/app-ecg12d.png" alt="ECG 12D" class="w-full aspect-[4/3] object-cover object-top" loading="lazy"/><figcaption class="px-5 py-4"><div class="text-[15px] font-extrabold text-[#0a2240]">ECG 12 Dérivations</div><div class="text-[13px] text-[#5b6b80] mt-0.5">Tracé complet + interprétation</div></figcaption></figure>
-      <figure class="card sr sr-d2"><img src="/app-dsa.png" alt="DSA" class="w-full aspect-[4/3] object-cover object-top" loading="lazy"/><figcaption class="px-5 py-4"><div class="text-[15px] font-extrabold text-[#0a2240]">Mode DSA</div><div class="text-[13px] text-[#5b6b80] mt-0.5">Chocs simulés + métronome RCP</div></figcaption></figure>
-      <figure class="card sr"><img src="/assets/scope-schiller-defigard-ecg.webp" alt="Interface Schiller dans le scope" class="w-full aspect-[4/3] object-cover object-top" loading="lazy"/><figcaption class="px-5 py-4"><div class="text-[15px] font-extrabold text-[#0a2240]">Interface Schiller</div><div class="text-[13px] text-[#5b6b80] mt-0.5">DEFIGARD et PHYSIOGARD Touch 7</div></figcaption></figure>
-      <figure class="card sr sr-d1"><img src="/assets/scope-weinmann-medumat.webp" alt="Interface Weinmann dans le scope" class="w-full aspect-[4/3] object-cover object-top" loading="lazy"/><figcaption class="px-5 py-4"><div class="text-[15px] font-extrabold text-[#0a2240]">Interface Weinmann</div><div class="text-[13px] text-[#5b6b80] mt-0.5">MEDUCORE et MEDUMAT Standard²</div></figcaption></figure>
-      <figure class="card sr sr-d2"><img src="/app-formateur.png" alt="Formateur" class="w-full aspect-[4/3] object-cover object-top" loading="lazy"/><figcaption class="px-5 py-4"><div class="text-[15px] font-extrabold text-[#0a2240]">Vue Formateur</div><div class="text-[13px] text-[#5b6b80] mt-0.5">Pilotage complet de la session</div></figcaption></figure>
-    </div>
-  </div>
-</section>
-
-<!-- TRAINER WEB BANNER -->
-<section class="sec-tight sec-dark relative overflow-hidden">
-  <div class="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-[#e1000f]/15 blur-[100px] pointer-events-none"></div>
-  <div class="relative mx-auto max-w-4xl px-6 text-center">
-    <p class="text-[13px] font-bold uppercase tracking-[.18em] text-[#ffb340] mb-2 sr">Mode Formateur</p>
-    <h2 class="h-card text-white txt-zoom">Pilotez depuis le web.</h2>
-    <p class="text-[15px] text-[#b9c8dc] mt-3 max-w-lg mx-auto sr sr-d1">Depuis n'importe quel ordinateur ou smartphone, sans installation. La même licence que le scope.</p>
-    <div class="mt-6 sr sr-d2"><a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="btn-red">Ouvrir vitalxtrainer.app</a></div>
-  </div>
-</section>
-
-<!-- PACK -->
-<section id="in-the-box" class="sec sec-light">
-  <div class="mx-auto max-w-6xl px-6">
-    <div class="text-center mb-12"><p class="eyebrow sr">Contenu</p><h2 class="h-section mt-2 text-[#0a2240] txt-zoom">Dans le pack.</h2></div>
-    <div class="grid lg:grid-cols-[1.1fr_1fr] gap-8 items-center">
-      <div class="grid sm:grid-cols-2 gap-5">
-        <div class="card p-7 text-center sr"><div class="text-3xl mb-3">📱</div><h3 class="text-[16px] font-extrabold text-[#0a2240] uppercase mb-1.5">iPad formateur + moniteur</h3><p class="text-[13px] text-[#5b6b80]">Jusqu'à un iPad Air 13" en V2</p></div>
-        <div class="card p-7 text-center sr sr-d1"><div class="text-3xl mb-3">🧰</div><h3 class="text-[16px] font-extrabold text-[#0a2240] uppercase mb-1.5">Châssis VitalX</h3><p class="text-[13px] text-[#5b6b80]">+ housse Bagheera, garantis à vie</p></div>
-        <div class="card p-7 text-center sr sr-d2"><div class="text-3xl mb-3">🔌</div><h3 class="text-[16px] font-extrabold text-[#0a2240] uppercase mb-1.5">Connectiques</h3><p class="text-[13px] text-[#5b6b80]">PNI, SpO₂, ECG 12D, DSA, T°, EtCO₂</p></div>
-        <div class="card p-7 text-center sr sr-d3"><div class="text-3xl mb-3">♾️</div><h3 class="text-[16px] font-extrabold text-[#0a2240] uppercase mb-1.5">Licence à vie</h3><p class="text-[13px] text-[#5b6b80]">Interfaces constructeurs et mises à jour incluses</p></div>
-      </div>
-      <figure class="sr sr-d1 bg-[#f4f6f9] rounded-2xl border border-[#dde3ec] p-6">
-        <img src="/assets/chassis-housse-bagheera.jpg" alt="Châssis VitalX ouvert et housse Bagheera fermée" class="w-full object-contain mx-auto" style="max-height:46vh" loading="lazy"/>
-        <figcaption class="text-[12px] text-[#5b6b80] text-center mt-3">Châssis VitalX et housse Bagheera — poignée, poches latérales, Cordura.</figcaption>
+    <div class="split">
+      <figure class="art sr" style="margin:0">
+        <img src="/assets/chassis-housse-bagheera.jpg" alt="Châssis VitalX ouvert et housse Bagheera fermée" loading="lazy" style="border-radius:12px"/>
       </figure>
+      <div class="sr sr-d1">
+        <ul class="checks" style="gap:22px">
+          <li><div><strong>iPad formateur + moniteur</strong><br><span class="t-caption">Jusqu'à un iPad Air 13" en V2</span></div></li>
+          <li><div><strong>Châssis VitalX</strong><br><span class="t-caption">+ housse Bagheera, garantis à vie</span></div></li>
+          <li><div><strong>Connectiques</strong><br><span class="t-caption">PNI, SpO₂, ECG 12D, DSA, T°, EtCO₂</span></div></li>
+          <li><div><strong>Licence à vie</strong><br><span class="t-caption">Interfaces constructeurs et mises à jour incluses</span></div></li>
+        </ul>
+        <div class="links links-left" style="margin-top:30px">
+          <a href="/boutique.html#pack" class="more">Voir les packs</a>
+          <a href="#contact" class="more">Demander un devis</a>
+        </div>
+      </div>
     </div>
+    <p class="t-caption center" style="margin-top:22px">Châssis VitalX et housse Bagheera — poignée, poches latérales, Cordura.</p>
   </div>
 </section>
 
 <!-- DEVIS -->
-<section id="devis" class="sec" style="background:#eef2f7">
-  <div class="mx-auto max-w-6xl px-6">
-    <div class="text-center mb-12">
-      <p class="eyebrow sr">Devis</p>
-      <h2 class="h-section mt-2 text-[#0a2240] txt-zoom">Un devis sous 24 h.</h2>
-      <p class="text-[16px] text-[#5b6b80] mt-3 sr sr-d1">Chaque structure a ses contraintes. On construit votre configuration avec vous.</p>
+<section id="devis" class="section gray">
+  <div class="wrap">
+    <div class="section-head center">
+      <p class="t-eyebrow sr">Devis</p>
+      <h2 class="t-section sr">Un devis sous 24 h.</h2>
+      <p class="t-section-lead sr sr-d1">Chaque structure a ses contraintes. On construit votre configuration avec vous.</p>
     </div>
-    <div class="grid lg:grid-cols-2 gap-6 items-stretch max-w-5xl mx-auto">
-      <div class="bg-white rounded-2xl border-2 border-[#0046b8] p-9 flex flex-col sr relative overflow-hidden shadow-lg">
-        <div class="absolute top-0 inset-x-0 tricolor-thin"></div>
-        <div class="text-[12px] font-extrabold uppercase tracking-[.12em] text-[#5b6b80] mt-2">Ce que comprend votre pack</div>
-        <div class="h-px bg-[#dde3ec] my-7"></div>
-        <ul class="space-y-3.5 text-[15px] flex-1 text-[#0c1828]">
-          <li class="flex gap-3"><span class="text-[#0046b8] font-bold">✓</span>iPad + châssis VitalX + housse de transport</li>
-          <li class="flex gap-3"><span class="text-[#0046b8] font-bold">✓</span>Connectiques complètes incluses</li>
-          <li class="flex gap-3"><span class="text-[#0046b8] font-bold">✓</span>Interfaces constructeurs incluses, sans option</li>
-          <li class="flex gap-3"><span class="text-[#0046b8] font-bold">✓</span>Licence à vie, sans abonnement — jusqu'à 3 appareils</li>
-          <li class="flex gap-3"><span class="text-[#0046b8] font-bold">✓</span>Mises à jour et nouvelles interfaces incluses à vie</li>
-          <li class="flex gap-3"><span class="text-[#0046b8] font-bold">✓</span>Support 7j/7 — Made in France 🇫🇷</li>
+    <div class="grid-2">
+      <div class="card devis-card sr">
+        <h3>Ce que comprend votre pack</h3>
+        <ul class="checks checks-sm">
+          <li>iPad + châssis VitalX + housse de transport</li>
+          <li>Connectiques complètes incluses</li>
+          <li>Interfaces constructeurs incluses, sans option</li>
+          <li>Licence à vie, sans abonnement, jusqu'à 3 appareils</li>
+          <li>Mises à jour et nouvelles interfaces incluses à vie</li>
+          <li>Support 7j/7, conçu et assemblé en France</li>
         </ul>
-        <a href="#contact" class="btn-red justify-center mt-8 w-full">📝 Demander un devis</a>
-        <p class="text-[11px] text-[#9aa7b8] text-center mt-4">TVA non applicable (art. 293 B CGI) · Livraison 15 à 30 jours ouvrés · Règlement à la commande</p>
-      </div>
-      <div class="bg-white rounded-2xl border border-[#dde3ec] p-9 flex flex-col sr sr-d1 shadow-sm">
-        <div class="flex items-center justify-between mb-2">
-          <div class="text-[12px] font-extrabold uppercase tracking-[.12em] text-[#5b6b80]">Pourquoi un devis</div>
-          <span class="text-[11px] font-extrabold uppercase text-[#0046b8] bg-[#0046b8]/10 rounded-full px-3 py-1">Sur mesure</span>
+        <div>
+          <a href="#contact" class="btn btn-block">Demander un devis</a>
+          <p class="t-fine center" style="margin:12px 0 0">TVA non applicable (art. 293 B CGI) · Livraison 15 à 30 jours ouvrés · Règlement à la commande</p>
         </div>
-        <ul class="mt-6 space-y-5 flex-1">
-          <li><div class="text-[15px] font-extrabold text-[#0a2240]">Configuration adaptée</div><p class="text-[14px] text-[#5b6b80] mt-1 leading-relaxed">Nombre de scopes, taille d'écran, licence seule si vous avez déjà vos iPad : on ajuste au besoin réel de votre centre.</p></li>
-          <li><div class="text-[15px] font-extrabold text-[#0a2240]">Bons de commande &amp; marchés publics</div><p class="text-[14px] text-[#5b6b80] mt-1 leading-relaxed">SDIS, associations agréées, centres de formation : devis conforme à vos procédures d'achat.</p></li>
-          <li><div class="text-[15px] font-extrabold text-[#0a2240]">Tarif dégressif multi-postes</div><p class="text-[14px] text-[#5b6b80] mt-1 leading-relaxed">Plusieurs casernes ou plusieurs salles ? Le devis en tient compte.</p></li>
-          <li><div class="text-[15px] font-extrabold text-[#0a2240]">Démo avant décision</div><p class="text-[14px] text-[#5b6b80] mt-1 leading-relaxed">Visio de 30 minutes avec un formateur, scope en main, sur l'interface de votre choix.</p></li>
+      </div>
+      <div class="card devis-card sr sr-d1">
+        <h3>Pourquoi un devis</h3>
+        <ul class="devis-list">
+          <li><strong>Configuration adaptée</strong><p>Nombre de scopes, taille d'écran, licence seule si vous avez déjà vos iPad : on ajuste au besoin réel de votre centre.</p></li>
+          <li><strong>Bons de commande et marchés publics</strong><p>SDIS, associations agréées, centres de formation : devis conforme à vos procédures d'achat.</p></li>
+          <li><strong>Tarif dégressif multi-postes</strong><p>Plusieurs casernes ou plusieurs salles ? Le devis en tient compte.</p></li>
+          <li><strong>Démo avant décision</strong><p>Visio de 30 minutes avec un formateur, scope en main, sur l'interface de votre choix.</p></li>
         </ul>
-        <a href="#contact" class="btn-blue justify-center mt-8 w-full">Parler à un formateur</a>
+        <div><a href="#contact" class="btn btn-ghost btn-block">Parler à un formateur</a></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section id="testimonials" class="sec sec-light">
-  <div class="mx-auto max-w-6xl px-6">
-    <div class="text-center mb-12"><p class="eyebrow sr">Références</p><h2 class="h-section mt-2 text-[#0a2240] txt-zoom">Ils forment avec VitalX.</h2></div>
-
-    <div class="grid md:grid-cols-3 gap-5 mb-8">
-      <figure class="card p-6 sr"><div class="text-[#e1000f] text-[13px] mb-3">★★★★★</div><blockquote class="text-[15px] leading-relaxed text-[#0c1828]">"Le réalisme est bluffant. On gagne un temps fou pour préparer des cas concrets."</blockquote><div class="mt-4 grid grid-cols-2 gap-2"><img src="/reviews/scope-1.jpg" alt="" class="h-24 w-full object-cover rounded-lg"/><img src="/reviews/scope-2.jpg" alt="" class="h-24 w-full object-cover rounded-lg"/></div><figcaption class="mt-4 text-[12px] font-bold text-[#5b6b80] uppercase tracking-wide">Claire M. — Instructrice PSE</figcaption></figure>
-      <figure class="card p-6 sr sr-d1"><div class="text-[#e1000f] text-[13px] mb-3">★★★★★</div><blockquote class="text-[15px] leading-relaxed text-[#0c1828]">"Pilotage à distance ultra simple, nos élèves sont à fond. Excellente lisibilité."</blockquote><div class="mt-4"><img src="/reviews/scope-3.jpg" alt="" class="h-32 w-full object-cover rounded-lg"/></div><figcaption class="mt-4 text-[12px] font-bold text-[#5b6b80] uppercase tracking-wide">Julien R. — Formateur SST</figcaption></figure>
-      <figure class="card p-6 sr sr-d2"><div class="text-[#e1000f] text-[13px] mb-3">★★★★★</div><blockquote class="text-[15px] leading-relaxed text-[#0c1828]">"Le meilleur rapport qualité/prix pour nos ateliers simulation. Je recommande."</blockquote><div class="mt-4 grid grid-cols-3 gap-2"><img src="/reviews/scope-4.jpg" alt="" class="h-20 w-full object-cover rounded-lg"/><img src="/reviews/scope-5.jpg" alt="" class="h-20 w-full object-cover rounded-lg"/><img src="/reviews/scope-6.jpg" alt="" class="h-20 w-full object-cover rounded-lg"/></div><figcaption class="mt-4 text-[12px] font-bold text-[#5b6b80] uppercase tracking-wide">Croix Blanche</figcaption></figure>
+<!-- RÉFÉRENCES -->
+<section id="testimonials" class="section">
+  <div class="wrap">
+    <div class="section-head center">
+      <p class="t-eyebrow sr">Références</p>
+      <h2 class="t-section sr">Ils forment avec VitalX.</h2>
     </div>
-
-    <div class="sr relative overflow-hidden rounded-2xl border border-[#dde3ec] bg-[#f8fafc]">
-      <div class="flex testi-scroll gap-4 py-4 px-2" style="width:max-content">
-        <figure class="shrink-0 w-[300px] bg-white border border-[#dde3ec] rounded-xl p-5"><div class="text-[#e1000f] text-[12px] mb-2">★★★★★</div><blockquote class="text-[14px] leading-relaxed text-[#0c1828]">"Outil indispensable pour nos formations PSE. Le mode DSA est d'un réalisme impressionnant."</blockquote><figcaption class="mt-3 text-[12px] font-bold text-[#5b6b80] uppercase">Croix-Rouge française</figcaption></figure>
-        <figure class="shrink-0 w-[300px] bg-white border border-[#dde3ec] rounded-xl p-5"><div class="text-[#e1000f] text-[12px] mb-2">★★★★★</div><blockquote class="text-[14px] leading-relaxed text-[#0c1828]">"Adopté par notre centre de formation. Fiable, rapide à déployer, nos stagiaires adorent."</blockquote><figcaption class="mt-3 text-[12px] font-bold text-[#5b6b80] uppercase">Marine Nationale</figcaption></figure>
-        <figure class="shrink-0 w-[300px] bg-white border border-[#dde3ec] rounded-xl p-5"><div class="text-[#e1000f] text-[12px] mb-2">★★★★★</div><blockquote class="text-[14px] leading-relaxed text-[#0c1828]">"Parfait pour nos exercices SST en site industriel. Le scope est lisible même en plein soleil."</blockquote><figcaption class="mt-3 text-[12px] font-bold text-[#5b6b80] uppercase">EDF</figcaption></figure>
-        <figure class="shrink-0 w-[300px] bg-white border border-[#dde3ec] rounded-xl p-5"><div class="text-[#e1000f] text-[12px] mb-2">★★★★★</div><blockquote class="text-[14px] leading-relaxed text-[#0c1828]">"L'ECG 12 dérivations et la radiologie intégrée ont transformé nos TP de simulation."</blockquote><figcaption class="mt-3 text-[12px] font-bold text-[#5b6b80] uppercase">BioTech Santé</figcaption></figure>
-        <figure class="shrink-0 w-[300px] bg-white border border-[#dde3ec] rounded-xl p-5"><div class="text-[#e1000f] text-[12px] mb-2">★★★★★</div><blockquote class="text-[14px] leading-relaxed text-[#0c1828]">"On équipe 6 casernes avec VitalX. Le rapport qualité/prix est imbattable."</blockquote><figcaption class="mt-3 text-[12px] font-bold text-[#5b6b80] uppercase">SDIS</figcaption></figure>
-        <figure class="shrink-0 w-[300px] bg-white border border-[#dde3ec] rounded-xl p-5"><div class="text-[#e1000f] text-[12px] mb-2">★★★★★</div><blockquote class="text-[14px] leading-relaxed text-[#0c1828]">"Simple à prendre en main, même pour les formateurs les moins techniques. Bravo."</blockquote><figcaption class="mt-3 text-[12px] font-bold text-[#5b6b80] uppercase">Protection Civile</figcaption></figure>
-        <figure class="shrink-0 w-[300px] bg-white border border-[#dde3ec] rounded-xl p-5"><div class="text-[#e1000f] text-[12px] mb-2">★★★★★</div><blockquote class="text-[14px] leading-relaxed text-[#0c1828]">"Le pilotage à distance permet au formateur de rester avec le groupe. Un vrai game changer."</blockquote><figcaption class="mt-3 text-[12px] font-bold text-[#5b6b80] uppercase">Croix Blanche</figcaption></figure>
-        <figure class="shrink-0 w-[300px] bg-white border border-[#dde3ec] rounded-xl p-5"><div class="text-[#e1000f] text-[12px] mb-2">★★★★★</div><blockquote class="text-[14px] leading-relaxed text-[#0c1828]">"Nos médecins urgentistes l'utilisent en formation continue. La PNI et le capno sont top."</blockquote><figcaption class="mt-3 text-[12px] font-bold text-[#5b6b80] uppercase">SAMU</figcaption></figure>
-        <!-- dup -->
-        <figure class="shrink-0 w-[300px] bg-white border border-[#dde3ec] rounded-xl p-5"><div class="text-[#e1000f] text-[12px] mb-2">★★★★★</div><blockquote class="text-[14px] leading-relaxed text-[#0c1828]">"Outil indispensable pour nos formations PSE. Le mode DSA est d'un réalisme impressionnant."</blockquote><figcaption class="mt-3 text-[12px] font-bold text-[#5b6b80] uppercase">Croix-Rouge française</figcaption></figure>
-        <figure class="shrink-0 w-[300px] bg-white border border-[#dde3ec] rounded-xl p-5"><div class="text-[#e1000f] text-[12px] mb-2">★★★★★</div><blockquote class="text-[14px] leading-relaxed text-[#0c1828]">"Adopté par notre centre de formation. Fiable, rapide à déployer, nos stagiaires adorent."</blockquote><figcaption class="mt-3 text-[12px] font-bold text-[#5b6b80] uppercase">Marine Nationale</figcaption></figure>
-        <figure class="shrink-0 w-[300px] bg-white border border-[#dde3ec] rounded-xl p-5"><div class="text-[#e1000f] text-[12px] mb-2">★★★★★</div><blockquote class="text-[14px] leading-relaxed text-[#0c1828]">"Parfait pour nos exercices SST en site industriel. Le scope est lisible même en plein soleil."</blockquote><figcaption class="mt-3 text-[12px] font-bold text-[#5b6b80] uppercase">EDF</figcaption></figure>
-        <figure class="shrink-0 w-[300px] bg-white border border-[#dde3ec] rounded-xl p-5"><div class="text-[#e1000f] text-[12px] mb-2">★★★★★</div><blockquote class="text-[14px] leading-relaxed text-[#0c1828]">"L'ECG 12 dérivations et la radiologie intégrée ont transformé nos TP de simulation."</blockquote><figcaption class="mt-3 text-[12px] font-bold text-[#5b6b80] uppercase">BioTech Santé</figcaption></figure>
-        <figure class="shrink-0 w-[300px] bg-white border border-[#dde3ec] rounded-xl p-5"><div class="text-[#e1000f] text-[12px] mb-2">★★★★★</div><blockquote class="text-[14px] leading-relaxed text-[#0c1828]">"On équipe 6 casernes avec VitalX. Le rapport qualité/prix est imbattable."</blockquote><figcaption class="mt-3 text-[12px] font-bold text-[#5b6b80] uppercase">SDIS</figcaption></figure>
-        <figure class="shrink-0 w-[300px] bg-white border border-[#dde3ec] rounded-xl p-5"><div class="text-[#e1000f] text-[12px] mb-2">★★★★★</div><blockquote class="text-[14px] leading-relaxed text-[#0c1828]">"Simple à prendre en main, même pour les formateurs les moins techniques. Bravo."</blockquote><figcaption class="mt-3 text-[12px] font-bold text-[#5b6b80] uppercase">Protection Civile</figcaption></figure>
-        <figure class="shrink-0 w-[300px] bg-white border border-[#dde3ec] rounded-xl p-5"><div class="text-[#e1000f] text-[12px] mb-2">★★★★★</div><blockquote class="text-[14px] leading-relaxed text-[#0c1828]">"Le pilotage à distance permet au formateur de rester avec le groupe. Un vrai game changer."</blockquote><figcaption class="mt-3 text-[12px] font-bold text-[#5b6b80] uppercase">Croix Blanche</figcaption></figure>
-        <figure class="shrink-0 w-[300px] bg-white border border-[#dde3ec] rounded-xl p-5"><div class="text-[#e1000f] text-[12px] mb-2">★★★★★</div><blockquote class="text-[14px] leading-relaxed text-[#0c1828]">"Nos médecins urgentistes l'utilisent en formation continue. La PNI et le capno sont top."</blockquote><figcaption class="mt-3 text-[12px] font-bold text-[#5b6b80] uppercase">SAMU</figcaption></figure>
-      </div>
+    <div class="grid-3">
+      <figure class="quote card-gray sr"><blockquote>Le réalisme est bluffant. On gagne un temps fou pour préparer des cas concrets.</blockquote><figcaption><b>Claire M.</b>Instructrice PSE</figcaption></figure>
+      <figure class="quote card-gray sr sr-d1"><blockquote>Pilotage à distance ultra simple, nos élèves sont à fond. Excellente lisibilité.</blockquote><figcaption><b>Julien R.</b>Formateur SST</figcaption></figure>
+      <figure class="quote card-gray sr sr-d2"><blockquote>Le meilleur rapport qualité/prix pour nos ateliers simulation. Je recommande.</blockquote><figcaption><b>Croix Blanche</b>Association de secourisme</figcaption></figure>
+    </div>
+    <div class="grid-3" style="margin-top:14px">
+      <figure class="quote card-gray sr"><blockquote>Outil indispensable pour nos formations PSE. Le mode DSA est d'un réalisme impressionnant.</blockquote><figcaption><b>Croix-Rouge française</b></figcaption></figure>
+      <figure class="quote card-gray sr sr-d1"><blockquote>On équipe 6 casernes avec VitalX. Le rapport qualité/prix est imbattable.</blockquote><figcaption><b>SDIS</b></figcaption></figure>
+      <figure class="quote card-gray sr sr-d2"><blockquote>Le pilotage à distance permet au formateur de rester avec le groupe. Un vrai game changer.</blockquote><figcaption><b>Croix Blanche</b></figcaption></figure>
+    </div>
+    <div class="grid-3" style="margin-top:14px">
+      <figure class="sr" style="margin:0"><img src="/reviews/scope-1.JPG" alt="Scope VitalX en formation" loading="lazy" style="border-radius:18px;aspect-ratio:4/3;object-fit:cover;width:100%"/></figure>
+      <figure class="sr sr-d1" style="margin:0"><img src="/reviews/scope-3.JPG" alt="Scope VitalX en formation" loading="lazy" style="border-radius:18px;aspect-ratio:4/3;object-fit:cover;width:100%"/></figure>
+      <figure class="sr sr-d2" style="margin:0"><img src="/reviews/scope-4.jpg" alt="Scope VitalX en formation" loading="lazy" style="border-radius:18px;aspect-ratio:4/3;object-fit:cover;width:100%"/></figure>
+    </div>
+    <div class="logos sr">
+      <span>Croix-Rouge française</span><span>Marine Nationale</span><span>EDF</span><span>SDIS</span><span>Protection Civile</span><span>SAMU</span><span>Croix Blanche</span>
     </div>
   </div>
 </section>
 
 <!-- AFFILIATION -->
-<section class="sec-tight sec-dark relative overflow-hidden">
-  <div class="absolute -top-20 -left-20 w-80 h-80 rounded-full bg-[#0046b8]/25 blur-[100px] pointer-events-none"></div>
-  <div class="relative mx-auto max-w-4xl px-6 text-center">
-    <p class="text-[13px] font-bold uppercase tracking-[.18em] text-[#ffb340] mb-2 sr">Apporteurs d'affaires</p>
-    <h2 class="h-card text-white txt-zoom">Recommandez VitalX. Soyez récompensé.</h2>
-    <p class="text-[15px] text-[#b9c8dc] mt-3 max-w-lg mx-auto sr sr-d1">Une vente conclue grâce à votre mise en relation = une commission versée par virement. Sans engagement.</p>
-    <div class="mt-6 sr sr-d2"><a href="/affiliation.html" class="btn-red">🤝 Découvrir le programme</a></div>
+<section class="tile tile-dark tile-pad-b" style="padding-top:clamp(56px,8vw,100px);padding-bottom:clamp(56px,8vw,100px)">
+  <div class="tile-copy">
+    <p class="t-eyebrow sr">Apporteurs d'affaires</p>
+    <h2 class="t-tile sr">Recommandez VitalX.<br>Soyez récompensé.</h2>
+    <p class="t-tile-sub sr sr-d1" style="color:#a1a1a6;max-width:620px;margin:14px auto 0">Une vente conclue grâce à votre mise en relation = une commission versée par virement. Sans engagement.</p>
+    <div class="links sr sr-d2"><a href="/affiliation.html" class="more">Découvrir le programme</a></div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="sec" style="background:#eef2f7">
-  <div class="mx-auto max-w-2xl px-6">
-    <div class="text-center mb-10">
-      <h2 class="h-section text-[#0a2240] txt-zoom">Contact</h2>
-      <p class="text-[16px] text-[#5b6b80] mt-4 sr">Devis, démo, ou un appareil que vous aimeriez voir reproduit dans le scope : écrivez-nous.</p>
+<section id="contact" class="section gray">
+  <div class="wrap-narrow">
+    <div class="section-head center">
+      <h2 class="t-section sr">Contact</h2>
+      <p class="t-section-lead sr sr-d1">Devis, démo, ou un appareil que vous aimeriez voir reproduit dans le scope : écrivez-nous.</p>
     </div>
-    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/merci.html" class="sr sr-d1 bg-white rounded-2xl border border-[#dde3ec] p-7 md:p-9 shadow-sm">
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/merci.html" class="form sr sr-d1">
       <input type="hidden" name="form-name" value="contact">
-      <p class="hidden"><label>Ne pas remplir : <input name="bot-field"/></label></p>
+      <p class="hidden" style="display:none"><label>Ne pas remplir : <input name="bot-field"/></label></p>
 
-      <div class="field">
-        <label class="lbl" for="prenom">Prénom <span class="req">*</span></label>
-        <input class="finp" id="prenom" name="prenom" type="text" autocomplete="given-name" required/>
-      </div>
-      <div class="field">
-        <label class="lbl" for="nom">Nom de famille <span class="req">*</span></label>
-        <input class="finp" id="nom" name="nom" type="text" autocomplete="family-name" required/>
+      <div class="form-row">
+        <div class="field">
+          <label class="lbl" for="prenom">Prénom <span class="req">*</span></label>
+          <input class="finp" id="prenom" name="prenom" type="text" autocomplete="given-name" required/>
+        </div>
+        <div class="field">
+          <label class="lbl" for="nom">Nom de famille <span class="req">*</span></label>
+          <input class="finp" id="nom" name="nom" type="text" autocomplete="family-name" required/>
+        </div>
       </div>
       <div class="field">
         <label class="lbl" for="entreprise">Nom de l'entreprise <span class="req">*</span></label>
         <input class="finp" id="entreprise" name="entreprise" type="text" autocomplete="organization" required/>
       </div>
-      <div class="field">
-        <label class="lbl" for="email">E-mail <span class="req">*</span></label>
-        <input class="finp" id="email" name="email" type="email" autocomplete="email" required/>
+      <div class="form-row">
+        <div class="field">
+          <label class="lbl" for="email">E-mail <span class="req">*</span></label>
+          <input class="finp" id="email" name="email" type="email" autocomplete="email" required/>
+        </div>
+        <div class="field">
+          <label class="lbl" for="telephone">Numéro de téléphone</label>
+          <input class="finp" id="telephone" name="telephone" type="tel" autocomplete="tel"/>
+        </div>
       </div>
-      <div class="field">
-        <label class="lbl" for="telephone">Numéro de téléphone</label>
-        <input class="finp" id="telephone" name="telephone" type="tel" autocomplete="tel"/>
-      </div>
-      <div class="field">
-        <label class="lbl" for="pays">Pays <span class="req">*</span></label>
-        <select class="finp" id="pays" name="pays" required>
-          <option value="" selected disabled>Veuillez sélectionner</option>
-          <option>France</option>
-          <option>Belgique</option>
-          <option>Suisse</option>
-          <option>Luxembourg</option>
-          <option>Monaco</option>
-          <option>Canada</option>
-          <option>Allemagne</option>
-          <option>Espagne</option>
-          <option>Italie</option>
-          <option>Pays-Bas</option>
-          <option>Portugal</option>
-          <option>Royaume-Uni</option>
-          <option>Autre pays</option>
-        </select>
-      </div>
-      <div class="field">
-        <label class="lbl" for="interface">Interface souhaitée</label>
-        <select class="finp" id="interface" name="interface">
-          <option value="" selected>Peu importe / je ne sais pas encore</option>
-          <option>Moniteur VitalX</option>
-          <option>Schiller — DEFIGARD Touch 7</option>
-          <option>Schiller — PHYSIOGARD Touch 7</option>
-          <option>Weinmann — MEDUCORE Standard²</option>
-          <option>Weinmann — MEDUMAT Standard²</option>
-          <option>Un autre appareil (précisez dans le message)</option>
-        </select>
+      <div class="form-row">
+        <div class="field">
+          <label class="lbl" for="pays">Pays <span class="req">*</span></label>
+          <select class="finp" id="pays" name="pays" required>
+            <option value="" selected disabled>Veuillez sélectionner</option>
+            <option>France</option>
+            <option>Belgique</option>
+            <option>Suisse</option>
+            <option>Luxembourg</option>
+            <option>Monaco</option>
+            <option>Canada</option>
+            <option>Allemagne</option>
+            <option>Espagne</option>
+            <option>Italie</option>
+            <option>Pays-Bas</option>
+            <option>Portugal</option>
+            <option>Royaume-Uni</option>
+            <option>Autre pays</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="lbl" for="interface">Interface souhaitée</label>
+          <select class="finp" id="interface" name="interface">
+            <option value="" selected>Peu importe / je ne sais pas encore</option>
+            <option>Moniteur VitalX</option>
+            <option>Schiller — DEFIGARD Touch 7</option>
+            <option>Schiller — PHYSIOGARD Touch 7</option>
+            <option>Weinmann — MEDUCORE Standard²</option>
+            <option>Weinmann — MEDUMAT Standard²</option>
+            <option>Un autre appareil (précisez dans le message)</option>
+          </select>
+        </div>
       </div>
       <div class="field">
         <label class="lbl" for="message">Message <span class="req">*</span></label>
@@ -739,121 +555,93 @@ a:focus-visible,button:focus-visible{outline:3px solid #7eb0ff;outline-offset:3p
 
       <p class="rgpd">En cliquant sur « Envoyer » ci-dessous, vous consentez à ce que VitalX stocke et traite les informations personnelles soumises ci-dessus afin de vous fournir le contenu demandé.</p>
 
-      <button type="submit" class="btn-blue mt-6">Envoyer</button>
+      <div style="margin-top:24px"><button type="submit" class="btn">Envoyer</button></div>
     </form>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="sec-dark pt-14 pb-8">
-  <div class="mx-auto max-w-6xl px-6">
-    <div class="grid md:grid-cols-4 gap-8 mb-10">
+</main>
+
+<!-- PIED DE PAGE -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-legal">
+      <p>Les interfaces constructeurs (Schiller DEFIGARD Touch 7 et PHYSIOGARD Touch 7, Weinmann MEDUCORE Standard² et MEDUMAT Standard²) sont reproduites dans le scope VitalX avec l'autorisation de leurs fabricants respectifs, à des fins de formation uniquement. Le simulateur VitalX est conçu et développé par VitalX ; il n'est ni fabriqué, ni distribué, ni approuvé comme dispositif médical par ces constructeurs. Les noms de produits cités sont des marques de leurs propriétaires respectifs.</p>
+      <p>TVA non applicable, art. 293 B du CGI. Règlement à la commande, livraison des packs 15 à 30 jours ouvrés. Châssis et housse garantis à vie ; iPad et iPhone couverts par la garantie Apple. Un code de licence active jusqu'à 3 appareils.</p>
+    </div>
+    <div class="footer-cols">
       <div>
-        <div class="text-[22px] font-black tracking-tight mb-3">Vital<span class="text-[#e1000f]">X</span></div>
-        <p class="text-[13px] text-[#9fb3cc] leading-relaxed">Scopes de simulation médicale conçus et assemblés en France pour les professionnels du secours.</p>
-        <div class="mt-4 inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-wide text-[#7eb0ff]">
-          <svg width="16" height="16" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" fill="none" stroke="#7eb0ff" stroke-width="3"/><circle cx="24" cy="24" r="13" fill="#7eb0ff"/><circle cx="24" cy="24" r="6" fill="#06203f"/><circle cx="24" cy="24" r="2.5" fill="#e1000f"/></svg>
-          Made in France
-        </div>
-      </div>
-      <div>
-        <div class="text-[12px] font-extrabold uppercase tracking-[.12em] text-white mb-3">Produits</div>
-        <ul class="space-y-2 text-[13px] text-[#9fb3cc]">
-          <li><a href="#v2" class="hover:text-white transition">VitalX V2</a></li>
-          <li><a href="#medx" class="hover:text-white transition">MED'X</a></li>
-          <li><a href="#pods" class="hover:text-white transition">POD'S</a></li>
-          <li><a href="#interfaces" class="hover:text-white transition">Interfaces constructeurs</a></li>
-          <li><a href="#devis" class="hover:text-white transition">Demander un devis</a></li>
-          <li><a href="/boutique.html" class="hover:text-white transition">Boutique</a></li>
+        <h4>Produits</h4>
+        <ul>
+          <li><a href="#v2">VitalX</a></li>
+          <li><a href="#packs">VitalX Plus, Pro, Ultra</a></li>
+          <li><a href="#pods">POD'S</a></li>
+          <li><a href="#interfaces">Interfaces constructeurs</a></li>
+          <li><a href="/boutique.html">Boutique</a></li>
         </ul>
       </div>
       <div>
-        <div class="text-[12px] font-extrabold uppercase tracking-[.12em] text-white mb-3">Société</div>
-        <ul class="space-y-2 text-[13px] text-[#9fb3cc]">
-          <li><a href="/qui-sommes-nous.html" class="hover:text-white transition">Qui sommes-nous</a></li>
-          <li><a href="/affiliation.html" class="hover:text-white transition">Apporteurs d'affaires</a></li>
-          <li><a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="hover:text-white transition">Mode Formateur</a></li>
-          <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
-          <li><a href="mailto:vitalxscope@gmail.com" class="hover:text-white transition">vitalxscope@gmail.com</a></li>
+        <h4>Acheter</h4>
+        <ul>
+          <li><a href="#devis">Demander un devis</a></li>
+          <li><a href="/boutique.html#licence">Licence seule</a></li>
+          <li><a href="/boutique.html#ecussons">Écussons</a></li>
+          <li><a href="/garantie.html">Garantie</a></li>
         </ul>
       </div>
       <div>
-        <div class="text-[12px] font-extrabold uppercase tracking-[.12em] text-white mb-3">Informations</div>
-        <ul class="space-y-2 text-[13px] text-[#9fb3cc]">
-          <li><a href="/mentions-legales.html" class="hover:text-white transition">Mentions légales</a></li>
-          <li><a href="/cgv.html" class="hover:text-white transition">CGV</a></li>
-          <li><a href="/politique-confidentialite.html" class="hover:text-white transition">Confidentialité</a></li>
-          <li><a href="/formulaire_retractation.pdf" class="hover:text-white transition" download>Rétractation</a></li>
-          <li><a href="/garantie.html" class="hover:text-white transition">Garantie</a></li>
+        <h4>Société</h4>
+        <ul>
+          <li><a href="/qui-sommes-nous.html">Qui sommes-nous</a></li>
+          <li><a href="/affiliation.html">Apporteurs d'affaires</a></li>
+          <li><a href="https://vitalxtrainer.app" target="_blank" rel="noopener">Mode Formateur</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Informations</h4>
+        <ul>
+          <li><a href="/mentions-legales.html">Mentions légales</a></li>
+          <li><a href="/cgv.html">CGV</a></li>
+          <li><a href="/politique-confidentialite.html">Confidentialité</a></li>
+          <li><a href="/formulaire_retractation.pdf" download>Rétractation</a></li>
         </ul>
       </div>
     </div>
-    <p class="text-[11px] text-[#7e93ad] leading-relaxed mb-6 max-w-4xl">Les interfaces constructeurs (Schiller DEFIGARD Touch 7 et PHYSIOGARD Touch 7, Weinmann MEDUCORE Standard² et MEDUMAT Standard²) sont reproduites dans le scope VitalX avec l'autorisation de leurs fabricants respectifs, à des fins de formation uniquement. Le simulateur VitalX est conçu et développé par VitalX ; il n'est ni fabriqué, ni distribué, ni approuvé comme dispositif médical par ces constructeurs. Les noms de produits cités sont des marques de leurs propriétaires respectifs.</p>
-    <div class="tricolor-thin rounded-full mb-6"></div>
-    <p class="text-center text-[12px] text-[#7e93ad]">© <span id="year"></span> VitalX — Tous droits réservés. Conçu &amp; assemblé en France 🇫🇷</p>
+    <p class="footer-contact">Besoin d'aide ? Écrivez-nous à <a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a>. Conçu &amp; assemblé en France.</p>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> VitalX. Tous droits réservés.</span>
+      <nav aria-label="Liens légaux">
+        <a href="/mentions-legales.html">Mentions légales</a>
+        <a href="/cgv.html">CGV</a>
+        <a href="/politique-confidentialite.html">Confidentialité</a>
+      </nav>
+      <span id="langSwitch" class="lang" aria-label="Langue">
+        <button type="button" data-lang="fr" class="lang-btn is-active" title="Français" aria-label="Français">Français</button>
+        <button type="button" data-lang="en" class="lang-btn" title="English" aria-label="English">English</button>
+        <button type="button" data-lang="de" class="lang-btn" title="Deutsch" aria-label="Deutsch">Deutsch</button>
+      </span>
+    </div>
   </div>
 </footer>
 
-<!-- Lightbox -->
-<div id="lightbox" style="position:fixed;inset:0;background:rgba(6,32,63,.94);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;z-index:9999;cursor:zoom-out;flex-direction:column" aria-hidden="true">
-  <img id="lightboxImg" style="max-width:92vw;max-height:88vh;border-radius:12px" alt=""/>
-  <div id="lightboxCaption" style="color:#b9c8dc;font-size:13px;margin-top:12px;text-align:center;max-width:90vw"></div>
-  <button id="lightboxClose" style="position:fixed;top:16px;right:16px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:8px 13px;color:#fff;cursor:pointer" aria-label="Fermer">✕</button>
-</div>
-
-<!-- 🆕 POPUP NOUVEAUTÉS — INTERFACES CONSTRUCTEURS -->
-<div id="popupOverlay" class="fixed inset-0 z-[70] items-center justify-center p-4" style="display:none">
-  <div class="absolute inset-0 bg-[#06203f]/85" style="backdrop-filter:blur(8px);animation:fadeIn .3s ease both"></div>
-  <div id="popupCard" class="relative max-w-3xl w-full" style="animation:popIn .4s cubic-bezier(.22,.61,.36,1) both">
-    <div class="relative rounded-2xl bg-white overflow-hidden shadow-2xl max-h-[92vh] overflow-y-auto">
-      <div class="tricolor-thin"></div>
-      <button id="popupClose" class="absolute top-4 right-4 rounded-full bg-white/90 hover:bg-white ring-1 ring-[#dde3ec] w-9 h-9 flex items-center justify-center text-[#5b6b80] text-[14px] transition z-10" aria-label="Fermer">✕</button>
-
-      <div class="grid sm:grid-cols-2 gap-px bg-[#dde3ec]">
-        <div class="bg-[#0c1828]"><img src="/assets/scope-schiller-defigard.webp" alt="Interface Schiller DEFIGARD Touch 7 dans le scope VitalX" class="w-full aspect-[16/11] object-contain"/></div>
-        <div class="bg-[#0c1828]"><img src="/assets/scope-weinmann-meducore.webp" alt="Interface Weinmann MEDUCORE Standard² dans le scope VitalX" class="w-full aspect-[16/11] object-contain"/></div>
-      </div>
-
-      <div class="p-7 md:p-8">
-        <span class="inline-flex items-center gap-2 rounded-full bg-[#e1000f] text-white text-[11px] font-extrabold uppercase tracking-[.14em] px-3 py-1">Nouveau</span>
-        <h3 class="text-[28px] md:text-[30px] font-black tracking-tight leading-tight mt-3 text-[#0a2240] uppercase">Les interfaces Schiller et Weinmann. Dans votre scope.</h3>
-        <p class="text-[14px] text-[#5b6b80] mt-2">DEFIGARD Touch 7, PHYSIOGARD Touch 7, MEDUCORE Standard² et MEDUMAT Standard², reproduits à l'identique avec l'autorisation des fabricants. Inclus dans la licence VitalX, sans supplément — et d'autres appareils arrivent.</p>
-
-        <div class="mt-7 flex flex-col sm:flex-row gap-3">
-          <a href="#interfaces" id="popupCTA" class="flex-1 btn-red justify-center !text-[13px]">Voir les interfaces</a>
-          <a href="#contact" id="popupCTA2" class="flex-1 btn-blue justify-center !text-[13px]">📝 Demander un devis</a>
-          <button id="popupDismiss" class="rounded-md border-2 border-[#dde3ec] text-[13px] font-bold uppercase tracking-wide text-[#5b6b80] hover:bg-[#f4f6f9] transition px-5 py-3">Plus tard</button>
-        </div>
-      </div>
-    </div>
-  </div>
+<!-- Visionneuse -->
+<div id="lightbox" class="lightbox" aria-hidden="true">
+  <img id="lightboxImg" alt=""/>
+  <div id="lightboxCaption" class="lightbox-cap"></div>
+  <button id="lightboxClose" class="lightbox-close" aria-label="Fermer">✕</button>
 </div>
 
 <!-- SCRIPTS -->
 <script>
 document.getElementById('year').textContent=new Date().getFullYear();
 
-// Popup
-(function(){
-  const ov=document.getElementById('popupOverlay'),cl=document.getElementById('popupClose'),di=document.getElementById('popupDismiss');
-  if(!ov) return;
-  function open(){ov.style.display='flex'}
-  function close(){ov.style.display='none'}
-  setTimeout(open,1500);
-  cl?.addEventListener('click',close);
-  di?.addEventListener('click',close);
-  document.getElementById('popupCTA')?.addEventListener('click',close);
-  document.getElementById('popupCTA2')?.addEventListener('click',close);
-  ov.addEventListener('click',e=>{if(e.target===ov||e.target.classList.contains('bg-[#06203f]/85')) close()});
-  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&ov.style.display==='flex') close()});
-  document.getElementById('navNews')?.addEventListener('click',e=>{e.preventDefault();open()});
-  document.getElementById('navNewsMobile')?.addEventListener('click',e=>{e.preventDefault();open();document.getElementById('mobileMenu')?.classList.add('hidden')});
-})();
-
 // Menu mobile
 (function(){
   const b=document.getElementById('menuBtn'),m=document.getElementById('mobileMenu');
-  b?.addEventListener('click',()=>{const o=m.classList.toggle('hidden');b.setAttribute('aria-expanded',String(!o))});
+  if(!b||!m) return;
+  b.addEventListener('click',()=>{const open=m.classList.toggle('open');b.setAttribute('aria-expanded',String(open));document.body.style.overflow=open?'hidden':''});
+  m.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{m.classList.remove('open');b.setAttribute('aria-expanded','false');document.body.style.overflow=''}));
 })();
 
 // Galeries interfaces (miniatures → image principale)
@@ -867,40 +655,30 @@ document.getElementById('year').textContent=new Date().getFullYear();
   });
 })();
 
-// Scroll reveal
-(function(){const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.sr').forEach(el=>io.observe(el))})();
-
-// Scroll text zoom
+// Galerie défilante (flèches)
 (function(){
-  const els=Array.from(document.querySelectorAll('.txt-zoom'));
-  if(!els.length) return;
-  if(matchMedia('(prefers-reduced-motion:reduce)').matches){els.forEach(el=>{el.style.opacity=1;el.style.transform='none'});return}
-  let ticking=false;
-  function update(){
-    ticking=false;const vh=innerHeight;
-    els.forEach(el=>{
-      const r=el.getBoundingClientRect();
-      if(r.bottom<-100||r.top>vh+100) return;
-      const start=vh*0.96,end=vh*0.45;
-      let p=(start-r.top)/(start-end);p=Math.min(1,Math.max(0,p));
-      const ease=1-Math.pow(1-p,3);
-      el.style.opacity=ease;
-      el.style.transform=`scale(${(1.4-0.4*ease).toFixed(4)})`;
-    });
-  }
-  function onScroll(){if(!ticking){ticking=true;requestAnimationFrame(update)}}
-  addEventListener('scroll',onScroll,{passive:true});
-  addEventListener('resize',onScroll,{passive:true});
-  update();
+  const s=document.getElementById('appScroll');if(!s) return;
+  document.querySelectorAll('[data-scroll]').forEach(b=>b.addEventListener('click',()=>{
+    const card=s.querySelector('.hcard');const w=card?card.getBoundingClientRect().width+20:400;
+    s.scrollBy({left:w*parseInt(b.dataset.scroll,10),behavior:'smooth'});
+  }));
 })();
 
-// Lightbox
+// Apparition au défilement
+(function(){
+  const els=document.querySelectorAll('.sr');
+  if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('show'));return}
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(el=>io.observe(el));
+})();
+
+// Visionneuse
 (function(){
   const ov=document.getElementById('lightbox'),im=document.getElementById('lightboxImg'),cp=document.getElementById('lightboxCaption'),cb=document.getElementById('lightboxClose');
-  const imgs=Array.from(document.querySelectorAll('img')).filter(i=>!i.hasAttribute('data-no-lightbox')&&!i.closest('.hero-slides')&&!i.closest('header')&&!i.closest('.cat')&&!i.closest('#popupOverlay')&&!i.closest('.gal-thumbs'));
+  const imgs=Array.from(document.querySelectorAll('main img')).filter(i=>!i.hasAttribute('data-no-lightbox')&&!i.closest('.cat')&&!i.closest('.gal-thumbs')&&!i.closest('.tile-half-grid'));
   function op(s,a){im.src=s;im.alt=a||'';cp.textContent=a||'';ov.style.display='flex';document.body.style.overflow='hidden'}
   function cl(){ov.style.display='none';document.body.style.overflow='';im.src='';cp.textContent=''}
-  imgs.forEach(i=>{i.addEventListener('click',()=>{if(i.closest('a'))return;op(i.currentSrc||i.src,i.alt)})});
+  imgs.forEach(i=>{i.style.cursor='zoom-in';i.addEventListener('click',()=>{if(i.closest('a'))return;op(i.currentSrc||i.src,i.alt)})});
   ov.addEventListener('click',e=>{if(e.target===ov)cl()});
   cb.addEventListener('click',cl);
   document.addEventListener('keydown',e=>{if(e.key==='Escape')cl()});
