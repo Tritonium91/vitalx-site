@@ -1,314 +1,263 @@
 <!DOCTYPE html>
-<html lang="fr" class="h-full scroll-smooth">
+<!--
+  vitalx-pods.html — VitalX
+  Description : Fiche technique VitalX POD'S (Classic + Pro)
+  🆕 v2.0 — 13/09/2026 — Yann USSEGLIO
+     • Page entièrement refaite dans la charte VitalX (palette bleu/blanc/rouge, fond clair)
+     • Plus aucun prix : CTA « Demander un devis »
+     • POD'S Premium → POD'S Pro (iPhone 12/13 + iPad 11" formateur)
+     • Nouvelle section « Licence POD'S vs licence VitalX » + passage vers la licence VitalX
+     • Liens /boutique.html#licenses (Mode Ultra) → #pods / #licence
+-->
+<html lang="fr" class="scroll-smooth">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>VitalX POD'S — Fiche technique</title>
-  <meta name="description" content="Fiche technique complète du module VitalX POD'S — solution mobile de simulation médicale avec iPhone et brassard PNI." />
-  <link rel="icon" href="/favicon.ico" />
-
-  <script>
-    tailwind = window.tailwind || {};
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['SF Pro Display','SF Pro Text','Inter','system-ui','-apple-system','Segoe UI','Roboto','Helvetica Neue','Arial','sans-serif']
-          },
-          boxShadow: {
-            soft: '0 10px 30px rgba(0,0,0,0.12)',
-            glow: '0 20px 60px -20px rgba(168,85,247,.55)'
-          },
-          animation: {
-            'fade-up': 'fadeUp .7s ease both'
-          },
-          keyframes: {
-            fadeUp: { '0%':{opacity:0, transform:'translateY(14px)'}, '100%':{opacity:1, transform:'translateY(0)'} }
-          }
-        }
-      }
-    }
-  </script>
+  <meta name="description" content="Fiche technique VitalX POD'S : le scope de simulation compact sur iPhone. PNI, SpO₂, SpCO, bio, DSA simplifié. Packs Classic et Pro, tarif sur devis."/>
+  <link rel="icon" href="/favicon.ico"/>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    :root { --bg-0:#070709; }
-    html, body { background: var(--bg-0); }
-    .ring-gradient{box-shadow:0 0 0 1px rgba(255,255,255,.06), inset 0 0 0 1px rgba(255,255,255,.05)}
-    .glass{background:rgba(18,18,24,.62);backdrop-filter:saturate(140%) blur(8px)}
-    .grad-bg{
-      background:
-        radial-gradient(900px 500px at 12% -10%, rgba(168,85,247,.20), transparent 60%),
-        radial-gradient(900px 500px at 88% 0%, rgba(236,72,153,.12), transparent 60%),
-        radial-gradient(900px 500px at 50% 110%, rgba(59,130,246,.12), transparent 60%),
-        linear-gradient(180deg, #07070a 0%, #0a0a10 100%);
-    }
-    .title-bar{
-      background: linear-gradient(90deg, #60a5fa, #ec4899, #f59e0b);
-      -webkit-background-clip:text; background-clip:text; color:transparent;
-    }
-    .divider-glow{ height:1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent); }
-    .price-text{
-      background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
-      -webkit-background-clip:text; background-clip:text; color:transparent;
-    }
-    .cta-anim{transition:transform .12s ease, box-shadow .15s ease, filter .15s ease}
-    .cta-anim:hover{filter:brightness(1.08)}
-    .cta-anim:active{transform:translateY(1px) scale(.99)}
-    .card-lift{transition:transform .25s ease, box-shadow .25s ease, filter .25s ease}
-    @media (hover:hover) and (pointer:fine){ .card-lift:hover{ transform: translateY(-4px); } }
-    .noise::before{
-      content:""; position:absolute; inset:0; pointer-events:none; opacity:.05;
-      background-image: radial-gradient(rgba(255,255,255,.6) 1px, transparent 1px);
-      background-size: 3px 3px;
-    }
-    .feat-item{transition:all .25s ease}
-    .feat-item:hover{background:rgba(255,255,255,.06);border-color:rgba(168,85,247,.35);transform:translateX(4px)}
+    *{-webkit-font-smoothing:antialiased}
+    html,body{background:#f4f6f9;color:#0c1828;font-family:'Inter','Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,'Helvetica Neue',Arial,sans-serif}
+    ::selection{background:#0046b8;color:#fff}
+    :root{--fr-blue:#0046b8;--fr-blue-dark:#0a2240;--fr-blue-deep:#06203f;--fr-red:#e1000f;--fr-red-dark:#b3000c;--ink:#0c1828;--muted:#5b6b80;--line:#dde3ec}
+    .tricolor{height:10px;background:linear-gradient(90deg,#0046b8 0 33.33%,#fff 33.33% 66.66%,#e1000f 66.66% 100%)}
+    .tricolor-thin{height:6px;background:linear-gradient(90deg,#0046b8 0 33.33%,#fff 33.33% 66.66%,#e1000f 66.66% 100%)}
+    .h-section{font-size:clamp(24px,3.4vw,38px);font-weight:800;letter-spacing:-.015em;line-height:1.08;text-transform:uppercase;color:#0a2240}
+    .eyebrow{font-size:13px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#e1000f}
+    .btn-red{background:#e1000f;color:#fff;border-radius:6px;padding:13px 28px;font-size:14px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.15s;box-shadow:0 6px 18px -8px rgba(225,0,15,.6)}
+    .btn-red:hover{background:#b3000c;transform:translateY(-1px)}
+    .btn-blue{background:#0046b8;color:#fff;border-radius:6px;padding:13px 28px;font-size:14px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.15s;box-shadow:0 6px 18px -8px rgba(0,70,184,.6)}
+    .btn-blue:hover{background:#0038a0;transform:translateY(-1px)}
+    .btn-out{background:#fff;color:#0a2240;border:2px solid #0a2240;border-radius:6px;padding:11px 26px;font-size:14px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.15s}
+    .btn-out:hover{background:#0a2240;color:#fff}
+    .panel{background:#fff;border:1px solid var(--line);border-radius:16px}
+    .spec{display:flex;gap:14px;padding:16px;border-radius:12px;background:#f8fafc;border:1px solid var(--line)}
+    .spec-ico{width:36px;height:36px;border-radius:8px;flex:0 0 auto;display:grid;place-items:center;background:#0046b8;color:#fff;font-weight:900}
+    .spec b{display:block;color:#0a2240;font-size:15px}
+    .spec span{font-size:13px;color:var(--muted);line-height:1.5}
+    .kpi{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;text-align:center}
+    .kpi b{display:block;font-size:22px;font-weight:900;color:#0a2240;letter-spacing:-.01em}
+    .kpi span{font-size:12px;color:var(--muted);font-weight:600}
+    table.cmp{width:100%;border-collapse:collapse;font-size:14px}
+    table.cmp th,table.cmp td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+    table.cmp th{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+    table.cmp td:first-child{font-weight:700;color:#0a2240}
+    .yes{color:#0046b8;font-weight:800}.no{color:#9aa7b8}
+    .sr{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)}
+    .sr.show{opacity:1;transform:translateY(0)}.sr-d1{transition-delay:.08s}.sr-d2{transition-delay:.16s}
+    a:focus-visible,button:focus-visible{outline:3px solid #7eb0ff;outline-offset:3px}
+    @media(prefers-reduced-motion:reduce){.sr{opacity:1;transform:none;transition:none}}
   </style>
 </head>
-<body class="min-h-full text-white grad-bg">
+<body>
 
-  <header class="sticky top-0 z-40 backdrop-blur-md bg-black/50 border-b border-white/10">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-2.5 group">
-        <img src="/assets/logo.png" alt="Logo VitalX" class="h-8 w-auto group-hover:scale-105 transition" onerror="this.style.display='none'" />
-        <span class="font-bold tracking-tight text-lg">VitalX</span>
-      </a>
-      <nav class="hidden md:flex items-center gap-7 text-sm text-zinc-300">
-        <a href="/" class="hover:text-white transition">Accueil</a>
-        <a href="/boutique.html" class="hover:text-white transition">Boutique</a>
-        <a href="/#contact" class="hover:text-white transition">Contact</a>
-      </nav>
-      <a href="/boutique.html#licenses" class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 via-fuchsia-500 to-pink-500 text-white px-4 py-2 text-sm font-bold shadow-soft hover:brightness-110 cta-anim">
-        🛒 Voir les packs POD'S
-      </a>
+  <div class="bg-[#06203f] text-white text-[12px]">
+    <div class="mx-auto max-w-6xl px-4 h-9 flex items-center justify-between">
+      <span class="flex items-center gap-2 font-semibold tracking-wide"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e1000f" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Conçu &amp; assemblé en France 🇫🇷</span>
+      <span class="hidden sm:flex items-center gap-4">
+        <a href="mailto:vitalxscope@gmail.com" class="hover:text-[#7eb0ff] transition">vitalxscope@gmail.com</a>
+        <a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="text-[#ffb340] hover:text-[#ffc970] font-semibold transition">Mode Formateur (web) ›</a>
+      </span>
+    </div>
+  </div>
+  <div class="tricolor-thin"></div>
+
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-[#dde3ec] shadow-sm">
+    <div class="mx-auto max-w-6xl px-4 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2.5"><img src="/assets/logo.png" alt="" class="h-9 w-auto" onerror="this.style.display='none'"/><span class="font-black tracking-tight text-[20px] text-[#0a2240]">Vital<span class="text-[#e1000f]">X</span></span></a>
+      <nav class="hidden md:flex items-center gap-6 text-[13px] font-bold uppercase tracking-wide text-[#0c1828]"><a href="/" class="hover:text-[#0046b8] transition">Accueil</a><a href="/boutique.html" class="hover:text-[#0046b8] transition">Boutique</a><a href="#packs" class="hover:text-[#0046b8] transition">Packs</a><a href="#licence" class="hover:text-[#0046b8] transition">Licence</a><a href="/#contact" class="hover:text-[#0046b8] transition">Contact</a></nav>
+      <a href="/#contact" class="btn-red !py-2 !px-4 !text-[12px]">📝 Demander un devis</a>
     </div>
   </header>
 
-  <section class="relative overflow-hidden noise">
-    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16 md:py-24 text-center animate-fade-up">
-      <span class="inline-flex items-center gap-2 rounded-full bg-purple-500/10 ring-1 ring-purple-500/30 px-3 py-1 text-xs font-semibold text-purple-300 mb-5">
-        <span class="h-2 w-2 rounded-full bg-purple-400 animate-pulse"></span>
-        Fiche technique officielle
-      </span>
-      <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight">
-        <span class="title-bar">VitalX POD'S</span>
-      </h1>
-      <p class="mt-5 text-zinc-300 text-base md:text-lg max-w-2xl mx-auto">
-        Module mobile de simulation multiparamétrique basé sur iPhone — contrôle à distance des constantes (PNI, SpO₂, SpCO, glycémie, cétonémie, lactatémie, hémoglobine) avec interface inspirée du moniteur VitalX.
-      </p>
-      <div class="mt-6 mx-auto max-w-lg divider-glow"></div>
-      <div class="mt-6 flex flex-wrap items-center justify-center gap-2 text-xs text-zinc-400">
-        <span class="inline-flex items-center gap-1.5 rounded-full bg-white/5 ring-1 ring-white/10 px-3 py-1.5">🔒 Paiement sécurisé</span>
-        <span class="inline-flex items-center gap-1.5 rounded-full bg-white/5 ring-1 ring-white/10 px-3 py-1.5">🚚 Livraison gratuite</span>
-        <span class="inline-flex items-center gap-1.5 rounded-full bg-white/5 ring-1 ring-white/10 px-3 py-1.5">🇫🇷 Made in France</span>
-        <span class="inline-flex items-center gap-1.5 rounded-full bg-white/5 ring-1 ring-white/10 px-3 py-1.5">♾️ Licence à vie</span>
+  <!-- HERO -->
+  <section class="relative overflow-hidden bg-[#06203f] text-white">
+    <div class="absolute -top-32 -left-24 w-[420px] h-[420px] rounded-full bg-[#0046b8]/25 blur-[120px] pointer-events-none"></div>
+    <div class="absolute -bottom-32 -right-24 w-[420px] h-[420px] rounded-full bg-[#e1000f]/15 blur-[120px] pointer-events-none"></div>
+    <div class="relative mx-auto max-w-6xl px-6 pt-14 pb-12">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div class="sr show">
+          <p class="text-[13px] font-bold uppercase tracking-[.18em] text-[#ffb340] mb-3">Fiche technique</p>
+          <img src="/logovitalxpods1.png" alt="VitalX POD'S" class="h-14 md:h-16 object-contain mb-5"/>
+          <h1 class="text-[clamp(30px,4.5vw,52px)] font-black uppercase leading-[1.04] tracking-tight">Le scope VitalX.<br><span class="text-[#e1000f]">Dans la poche.</span></h1>
+          <p class="mt-5 text-[16px] md:text-[18px] text-[#b9c8dc] leading-relaxed max-w-xl">POD'S transforme un iPhone en moniteur patient compact : PNI, SpO₂, SpCO, bio et DSA simplifié, pilotés à distance par le formateur. Idéal pour les formations mobiles, le secourisme et les démonstrations rapides.</p>
+          <div class="mt-7 flex flex-wrap gap-3">
+            <a href="/#contact" class="btn-red">📝 Demander un devis</a>
+            <a href="#packs" class="btn-out !bg-transparent !text-white !border-white/40 hover:!bg-white hover:!text-[#0a2240]">Voir les packs</a>
+          </div>
+        </div>
+        <div class="sr show rounded-2xl bg-white/[.04] ring-1 ring-white/10 p-4">
+          <img src="/assets/vitalx-pods.png" alt="Pack VitalX POD'S — boîtier, iPhone et accessoires" class="w-full object-contain mx-auto" style="max-height:48vh"/>
+        </div>
       </div>
+    </div>
+    <div class="tricolor"></div>
+  </section>
+
+  <!-- KPI -->
+  <section class="bg-white border-b border-[#dde3ec]">
+    <div class="mx-auto max-w-6xl px-6 py-8 grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="kpi sr"><b>iPhone 12 / 13</b><span>Moniteur patient</span></div>
+      <div class="kpi sr sr-d1"><b>iPad 11"</b><span>Formateur — pack Pro</span></div>
+      <div class="kpi sr sr-d2"><b>30 s</b><span>Prêt à former après saisie du code</span></div>
+      <div class="kpi sr sr-d2"><b>À vie</b><span>Licence et mises à jour</span></div>
     </div>
   </section>
 
-  <main class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-20 space-y-8">
+  <main class="mx-auto max-w-6xl px-6 py-16 space-y-16">
 
-    <!-- Description -->
-    <section class="card-lift glass ring-gradient rounded-3xl p-7 md:p-10 ring-2 ring-white/10">
-      <div class="flex items-center gap-4 mb-5">
-        <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-purple-500/20 to-fuchsia-500/10 ring-1 ring-purple-500/30 flex items-center justify-center text-2xl">📋</div>
-        <h2 class="text-2xl md:text-3xl font-extrabold">Description générale</h2>
+    <!-- DESCRIPTION -->
+    <section class="grid lg:grid-cols-[1fr_1.1fr] gap-10 items-start">
+      <div class="sr">
+        <p class="eyebrow">Ce que c'est</p>
+        <h2 class="h-section mt-2">Un moniteur compact,<br>piloté à distance.</h2>
       </div>
-      <div class="text-zinc-300 leading-relaxed space-y-4">
-        <p>VitalX POD'S est un <strong class="text-purple-300">module compact de simulation paramédicale</strong> pensé pour utiliser un iPhone comme <strong class="text-white">moniteur patient</strong> dans le boîtier POD'S, pendant que le formateur pilote les constantes et les scénarios depuis un iPad dédié.</p>
-        <p>Le boîtier VitalX POD'S accueille l'iPhone-moniteur et les accessoires (brassard tension, câble SpO₂/SpCO, patch DSA) pour reproduire un environnement de travail réaliste : <strong class="text-sky-300">PNI</strong>, <strong class="text-sky-300">SpO₂</strong>, <strong class="text-sky-300">SpCO</strong> et <strong class="text-sky-300">BIO (glycémie, cétones, lactates, hémoglobine)</strong> sont directement affichés côté iPhone, tandis que le formateur garde la main sur l'évolution du cas depuis l'iPad.</p>
-        <p>La logique d'affichage et de contrôle reprend celle de l'application : bascule <strong class="text-white">VITALS / BIO</strong>, bouton PNI dédié avec son de mesure, affichage conditionnel des constantes uniquement lorsque les capteurs sont connectés ou la mesure PNI terminée, et courbe SpO₂ (normale ou bad SpO₂). Le POD'S intègre aussi un <strong class="text-white">mode DSA simplifié sur l'iPhone</strong> avec métronome de RCP.</p>
+      <div class="sr sr-d1 text-[15px] text-[#3a4757] leading-relaxed space-y-4">
+        <p>Le boîtier VitalX POD'S accueille l'iPhone-moniteur et ses accessoires — brassard de tension, câble SpO₂/SpCO, patch DSA — pour reproduire un poste de travail réaliste dans un format qui tient dans une pochette. Le formateur pilote les constantes et l'évolution du cas depuis un iPad, un iPhone ou le mode formateur web.</p>
+        <p>L'affichage reprend la logique du moniteur VitalX : bascule <strong class="text-[#0a2240]">VITALS / BIO</strong>, bouton PNI avec son de mesure, constantes affichées uniquement quand les capteurs sont connectés ou la mesure terminée, courbe SpO₂ normale ou dégradée. Le POD'S intègre aussi un <strong class="text-[#0a2240]">mode DSA simplifié</strong> avec métronome de RCP.</p>
+        <p>Synchronisation en temps réel par Wi-Fi ou partage de connexion, avec un code de session : plusieurs POD'S peuvent suivre le même scénario.</p>
       </div>
     </section>
 
-    <!-- Contenu des packs -->
-    <section class="card-lift glass ring-gradient rounded-3xl p-7 md:p-10 ring-2 ring-white/10">
-      <div class="flex items-center gap-4 mb-6">
-        <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-purple-500/20 to-fuchsia-500/10 ring-1 ring-purple-500/30 flex items-center justify-center text-2xl">📦</div>
-        <h2 class="text-2xl md:text-3xl font-extrabold">Contenu des packs POD'S</h2>
+    <!-- CONSTANTES -->
+    <section class="panel p-7 md:p-10 sr">
+      <p class="eyebrow">À l'écran</p>
+      <h2 class="h-section mt-2 mb-8">Ce que voit l'élève.</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="spec"><div class="spec-ico">♥</div><div><b>Mode VITALS</b><span>Fréquence cardiaque, SpO₂, SpCO et PNI avec calcul de la pression artérielle moyenne.</span></div></div>
+        <div class="spec"><div class="spec-ico">🩸</div><div><b>Mode BIO</b><span>Glycémie, cétonémie, lactatémie et hémoglobine, affichées comme sur un lecteur de terrain.</span></div></div>
+        <div class="spec"><div class="spec-ico">〜</div><div><b>Courbe SpO₂</b><span>Pléthysmographie dynamique, tracé normal ou dégradé selon le scénario.</span></div></div>
+        <div class="spec"><div class="spec-ico">PNI</div><div><b>Bouton PNI</b><span>Son de gonflage, résultat affiché en fin de mesure, comme sur un vrai tensiomètre.</span></div></div>
+        <div class="spec"><div class="spec-ico">⚡</div><div><b>DSA simplifié</b><span>Analyse, choc simulé et métronome de RCP directement sur l'iPhone.</span></div></div>
+        <div class="spec"><div class="spec-ico">⇄</div><div><b>Synchronisation</b><span>Wi-Fi ou partage 4G/5G, code de session, plusieurs moniteurs sur le même cas.</span></div></div>
       </div>
+    </section>
 
-      <div class="grid gap-5">
-        <!-- Classic -->
-        <div class="rounded-2xl p-5 ring-1 ring-blue-500/30 bg-gradient-to-br from-blue-500/10 to-sky-500/5">
-          <div class="flex items-center gap-2 mb-3">
-            <span class="inline-flex items-center rounded-full bg-blue-500/20 ring-1 ring-blue-500/40 text-blue-300 text-[11px] font-bold uppercase tracking-wider px-2.5 py-1">Classic</span>
-            <strong class="text-white text-lg">Pack VitalX POD'S</strong>
+    <!-- PACKS -->
+    <section id="packs">
+      <div class="text-center mb-10 sr">
+        <p class="eyebrow">Contenu</p>
+        <h2 class="h-section mt-2">Deux packs, un seul boîtier.</h2>
+        <p class="text-[15px] text-[#5b6b80] mt-3 max-w-xl mx-auto">Le pack Pro ajoute un iPad 11" dédié au pilotage. Dans les deux cas, la licence POD'S à vie est incluse.</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <article class="panel overflow-hidden sr flex flex-col">
+          <div class="h-11 bg-[#0046b8] text-white flex items-center justify-center text-[13px] font-extrabold uppercase tracking-wider">POD'S Classic</div>
+          <div class="p-7 flex-1">
+            <h3 class="text-[22px] font-extrabold uppercase text-[#0a2240]">POD'S Classic</h3>
+            <p class="text-[13px] text-[#5b6b80] mt-1">Le moniteur seul — vous pilotez depuis votre propre appareil ou le web.</p>
+            <ul class="mt-5 space-y-2.5 text-[14px] text-[#3a4757]">
+              <li class="flex gap-2"><span class="text-[#0046b8] font-bold">✓</span><span><strong class="text-[#0a2240]">1 iPhone 12 ou 13</strong> — moniteur patient</span></li>
+              <li class="flex gap-2"><span class="text-[#0046b8] font-bold">✓</span>Boîtier VitalX POD'S</li>
+              <li class="flex gap-2"><span class="text-[#0046b8] font-bold">✓</span>Brassard PNI adulte et enfant</li>
+              <li class="flex gap-2"><span class="text-[#0046b8] font-bold">✓</span>Câble SpO₂ / SpCO</li>
+              <li class="flex gap-2"><span class="text-[#0046b8] font-bold">✓</span>Patch DSA adulte et pédiatrique</li>
+              <li class="flex gap-2"><span class="text-[#0046b8] font-bold">✓</span>Pochette Bagheera</li>
+              <li class="flex gap-2"><span class="text-[#0046b8] font-bold">✓</span><strong class="text-[#0a2240]">Licence POD'S à vie</strong> — mises à jour incluses</li>
+            </ul>
           </div>
-          <p class="text-sm text-zinc-400 mb-4">Solution POD'S complète, prête à l'emploi.</p>
-          <ul class="grid sm:grid-cols-2 gap-2 text-sm text-zinc-300">
-            <li class="flex items-start gap-2"><span class="text-blue-400 mt-0.5">→</span><strong class="text-white">1 iPhone 11 ou 12</strong></li>
-            <li class="flex items-start gap-2"><span class="text-blue-400 mt-0.5">→</span>Brassard PNI adulte & enfant</li>
-            <li class="flex items-start gap-2"><span class="text-blue-400 mt-0.5">→</span>Câble SpO₂ / SpCO</li>
-            <li class="flex items-start gap-2"><span class="text-blue-400 mt-0.5">→</span>Patch DSA adulte / enfant</li>
-            <li class="flex items-start gap-2"><span class="text-blue-400 mt-0.5">→</span>Boîtier VitalX POD'S (3D)</li>
-            <li class="flex items-start gap-2"><span class="text-blue-400 mt-0.5">→</span>Housse Bagherra</li>
-            <li class="flex items-start gap-2 sm:col-span-2"><span class="text-blue-400 mt-0.5">→</span><strong class="text-white">Licence VitalX POD'S à vie</strong> (mises à jour incluses)</li>
-          </ul>
-        </div>
-
-        <!-- Premium -->
-        <div class="rounded-2xl p-5 ring-1 ring-red-500/40 bg-gradient-to-br from-red-500/10 to-rose-500/5">
-          <div class="flex items-center gap-2 mb-3">
-            <span class="inline-flex items-center rounded-full bg-red-500/20 ring-1 ring-red-500/40 text-red-300 text-[11px] font-bold uppercase tracking-wider px-2.5 py-1">Premium</span>
-            <strong class="text-white text-lg">Pack VitalX POD'S + iPad</strong>
+          <div class="px-7 pb-7">
+            <div class="rounded-xl bg-[#f4f6f9] p-3 border border-[#dde3ec] mb-4"><img src="/assets/vitalxpodsclassic.png" alt="POD'S Classic" class="w-full max-h-52 object-contain" loading="lazy"/></div>
+            <a href="/#contact" class="btn-blue w-full">📝 Demander un devis</a>
           </div>
-          <p class="text-sm text-zinc-400 mb-4">Pour les centres qui veulent un setup complet prêt à brancher.</p>
-          <ul class="grid gap-2 text-sm text-zinc-300">
-            <li class="flex items-start gap-2"><span class="text-rose-400 mt-0.5">→</span>Tous les éléments du <strong class="text-white">Pack Classic</strong></li>
-            <li class="flex items-start gap-2"><span class="text-rose-400 mt-0.5">→</span><strong class="text-white">+ 1 iPad 11" (A16)</strong> dédié au contrôle formateur</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="mt-7 rounded-2xl overflow-hidden ring-1 ring-white/10 bg-zinc-900/40 p-3">
-        <img src="/assets/vitalx-pods.png" alt="Pack VitalX POD'S" class="w-full h-auto object-contain rounded-xl" loading="lazy" />
-      </div>
-    </section>
-
-    <!-- Licence -->
-    <section class="card-lift glass ring-gradient rounded-3xl p-7 md:p-10 ring-2 ring-white/10">
-      <div class="flex items-center gap-4 mb-5">
-        <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-purple-500/20 to-fuchsia-500/10 ring-1 ring-purple-500/30 flex items-center justify-center text-2xl">💻</div>
-        <h2 class="text-2xl md:text-3xl font-extrabold">Licence & logiciel</h2>
-      </div>
-      <div class="text-zinc-300 leading-relaxed space-y-4">
-        <p><strong class="text-purple-300">Licence VitalX POD'S à vie</strong> — activation par code session, accès permanent aux mises à jour, nouvelle interface <strong class="text-white">moniteur POD'S</strong> avec :</p>
-      </div>
-      <ul class="mt-4 grid gap-2.5 text-sm">
-        <li class="feat-item flex items-start gap-3 p-3 rounded-xl bg-white/5 ring-1 ring-white/10"><span class="text-fuchsia-400 font-bold">✓</span>Mode <strong class="text-white">VITALS</strong> : FC, SpO₂, SpCO, PNI avec calcul PAM</li>
-        <li class="feat-item flex items-start gap-3 p-3 rounded-xl bg-white/5 ring-1 ring-white/10"><span class="text-fuchsia-400 font-bold">✓</span>Mode <strong class="text-white">BIO</strong> : Glycémie, Cétonémie, Lactatémie, Hémoglobine</li>
-        <li class="feat-item flex items-start gap-3 p-3 rounded-xl bg-white/5 ring-1 ring-white/10"><span class="text-fuchsia-400 font-bold">✓</span>Courbe SpO₂ dynamique (normale ou bad SpO₂)</li>
-        <li class="feat-item flex items-start gap-3 p-3 rounded-xl bg-white/5 ring-1 ring-white/10"><span class="text-fuchsia-400 font-bold">✓</span>Bouton PNI avec son dédié et affichage en fin de mesure</li>
-        <li class="feat-item flex items-start gap-3 p-3 rounded-xl bg-white/5 ring-1 ring-white/10"><span class="text-fuchsia-400 font-bold">✓</span>Mode DSA simplifié sur iPhone avec métronome RCP</li>
-        <li class="feat-item flex items-start gap-3 p-3 rounded-xl bg-white/5 ring-1 ring-white/10"><span class="text-fuchsia-400 font-bold">✓</span>Synchronisation temps réel iPhone POD'S ↔ moniteur VitalX</li>
-      </ul>
-    </section>
-
-    <!-- Caractéristiques -->
-    <section class="card-lift glass ring-gradient rounded-3xl p-7 md:p-10 ring-2 ring-white/10">
-      <div class="flex items-center gap-4 mb-6">
-        <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-purple-500/20 to-fuchsia-500/10 ring-1 ring-purple-500/30 flex items-center justify-center text-2xl">⚙️</div>
-        <h2 class="text-2xl md:text-3xl font-extrabold">Caractéristiques techniques</h2>
-      </div>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-        <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-5 text-center card-lift">
-          <div class="text-xl md:text-2xl font-extrabold price-text">iPhone 11/12</div>
-          <div class="text-xs text-zinc-400 mt-1 font-medium">Moniteur patient</div>
-        </div>
-        <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-5 text-center card-lift">
-          <div class="text-xl md:text-2xl font-extrabold price-text">iPad 11"</div>
-          <div class="text-xs text-zinc-400 mt-1 font-medium">Tablette formateur (Premium)</div>
-        </div>
-        <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-5 text-center card-lift">
-          <div class="text-xl md:text-2xl font-extrabold price-text">iOS 18+</div>
-          <div class="text-xs text-zinc-400 mt-1 font-medium">Compatibilité</div>
-        </div>
-        <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-5 text-center card-lift">
-          <div class="text-2xl md:text-3xl font-extrabold">🇫🇷</div>
-          <div class="text-xs text-zinc-400 mt-1 font-medium">Made in France</div>
-        </div>
-      </div>
-      <ul class="grid gap-3">
-        <li class="feat-item flex items-start gap-4 p-4 rounded-2xl bg-white/5 ring-1 ring-white/10">
-          <span class="shrink-0 h-7 w-7 rounded-lg bg-gradient-to-br from-purple-500 to-fuchsia-500 text-white font-bold flex items-center justify-center text-sm">✓</span>
-          <div><strong class="text-white">Boîtier VitalX POD'S</strong><br><span class="text-sm text-zinc-400">Impression 3D haute résistance • Design optimisé iPhone & câbles</span></div>
-        </li>
-        <li class="feat-item flex items-start gap-4 p-4 rounded-2xl bg-white/5 ring-1 ring-white/10">
-          <span class="shrink-0 h-7 w-7 rounded-lg bg-gradient-to-br from-purple-500 to-fuchsia-500 text-white font-bold flex items-center justify-center text-sm">✓</span>
-          <div><strong class="text-white">Brassard PNI</strong><br><span class="text-sm text-zinc-400">Adulte & pédiatrique • Raccord rapide</span></div>
-        </li>
-        <li class="feat-item flex items-start gap-4 p-4 rounded-2xl bg-white/5 ring-1 ring-white/10">
-          <span class="shrink-0 h-7 w-7 rounded-lg bg-gradient-to-br from-purple-500 to-fuchsia-500 text-white font-bold flex items-center justify-center text-sm">✓</span>
-          <div><strong class="text-white">Câble SpO₂ / SpCO</strong><br><span class="text-sm text-zinc-400">Affichage SpO₂ + SpCO côté moniteur</span></div>
-        </li>
-        <li class="feat-item flex items-start gap-4 p-4 rounded-2xl bg-white/5 ring-1 ring-white/10">
-          <span class="shrink-0 h-7 w-7 rounded-lg bg-gradient-to-br from-purple-500 to-fuchsia-500 text-white font-bold flex items-center justify-center text-sm">✓</span>
-          <div><strong class="text-white">Patch DSA adulte / enfant</strong><br><span class="text-sm text-zinc-400">Simulation de défibrillation adulte et pédiatrique</span></div>
-        </li>
-        <li class="feat-item flex items-start gap-4 p-4 rounded-2xl bg-white/5 ring-1 ring-white/10">
-          <span class="shrink-0 h-7 w-7 rounded-lg bg-gradient-to-br from-purple-500 to-fuchsia-500 text-white font-bold flex items-center justify-center text-sm">✓</span>
-          <div><strong class="text-white">Housse Bagherra</strong><br><span class="text-sm text-zinc-400">Transport rigide • Protection complète</span></div>
-        </li>
-        <li class="feat-item flex items-start gap-4 p-4 rounded-2xl bg-white/5 ring-1 ring-white/10">
-          <span class="shrink-0 h-7 w-7 rounded-lg bg-gradient-to-br from-purple-500 to-fuchsia-500 text-white font-bold flex items-center justify-center text-sm">✓</span>
-          <div><strong class="text-white">Réseau & synchronisation</strong><br><span class="text-sm text-zinc-400">Wi-Fi ou partage 4G/5G • Sync temps réel (code 4 caractères)</span></div>
-        </li>
-      </ul>
-    </section>
-
-    <!-- Prix -->
-    <section class="card-lift glass ring-gradient rounded-3xl p-7 md:p-10 ring-2 ring-white/10">
-      <div class="flex items-center gap-4 mb-6">
-        <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-purple-500/20 to-fuchsia-500/10 ring-1 ring-purple-500/30 flex items-center justify-center text-2xl">💰</div>
-        <h2 class="text-2xl md:text-3xl font-extrabold">Prix publics TTC</h2>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Classic price -->
-        <div class="card-lift relative rounded-3xl p-8 text-center overflow-hidden ring-2 ring-blue-500/50 glass">
-          <div class="absolute -top-16 -right-16 h-48 w-48 rounded-full bg-gradient-to-br from-blue-500/30 to-sky-500/30 blur-3xl pointer-events-none"></div>
-          <div class="relative">
-            <div class="inline-flex items-center gap-2 rounded-full bg-blue-500/15 ring-1 ring-blue-500/40 px-3 py-1 text-[11px] font-bold text-blue-300 uppercase tracking-widest">Pack Classic</div>
-            <div class="mt-4 text-5xl md:text-6xl font-extrabold price-text leading-none">1 700 €</div>
-            <div class="mt-3 text-xs text-zinc-400 uppercase tracking-wide">Licence à vie incluse</div>
-            <a href="/boutique.html#licenses" class="mt-6 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 via-blue-500 to-sky-400 text-white px-6 py-3 font-bold shadow-soft hover:brightness-110 cta-anim">
-              🛒 Choisir Classic
-            </a>
+        </article>
+        <article class="panel overflow-hidden sr sr-d1 flex flex-col border-[#e1000f]/40">
+          <div class="h-11 bg-[#e1000f] text-white flex items-center justify-center text-[13px] font-extrabold uppercase tracking-wider">POD'S Pro — Formateur inclus</div>
+          <div class="p-7 flex-1">
+            <h3 class="text-[22px] font-extrabold uppercase text-[#0a2240]">POD'S Pro</h3>
+            <p class="text-[13px] text-[#5b6b80] mt-1">Le setup complet, prêt à sortir de la pochette.</p>
+            <ul class="mt-5 space-y-2.5 text-[14px] text-[#3a4757]">
+              <li class="flex gap-2"><span class="text-[#e1000f] font-bold">✓</span><span>Tout le contenu du <strong class="text-[#0a2240]">POD'S Classic</strong></span></li>
+              <li class="flex gap-2"><span class="text-[#e1000f] font-bold">✓</span><span><strong class="text-[#0a2240]">+ 1 iPad 11"</strong> dédié au pilotage formateur</span></li>
+              <li class="flex gap-2"><span class="text-[#e1000f] font-bold">✓</span>Mode formateur préinstallé sur l'iPad — même code de licence</li>
+            </ul>
           </div>
-        </div>
-
-        <!-- Premium price -->
-        <div class="card-lift relative rounded-3xl p-8 text-center overflow-hidden ring-2 ring-red-500/50 glass shadow-glow">
-          <div class="absolute -top-16 -right-16 h-48 w-48 rounded-full bg-gradient-to-br from-red-500/30 via-rose-500/30 to-pink-500/30 blur-3xl pointer-events-none"></div>
-          <div class="relative">
-            <div class="inline-flex items-center gap-2 rounded-full bg-red-500/15 ring-1 ring-red-500/40 px-3 py-1 text-[11px] font-bold text-red-300 uppercase tracking-widest">Pack Premium</div>
-            <div class="mt-4 text-5xl md:text-6xl font-extrabold price-text leading-none">2 000 €</div>
-            <div class="mt-3 text-xs text-zinc-400 uppercase tracking-wide">Avec iPad 11" A16 inclus</div>
-            <a href="/boutique.html#licenses" class="mt-6 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-red-600 via-rose-500 to-pink-500 text-white px-6 py-3 font-bold shadow-soft hover:brightness-110 cta-anim">
-              🛒 Choisir Premium
-            </a>
+          <div class="px-7 pb-7">
+            <div class="rounded-xl bg-[#f4f6f9] p-3 border border-[#dde3ec] mb-4"><img src="/assets/vitalxpodspremium.png" alt="POD'S Pro" class="w-full max-h-52 object-contain" loading="lazy"/></div>
+            <a href="/#contact" class="btn-red w-full">📝 Demander un devis</a>
           </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CARACTÉRISTIQUES -->
+    <section class="panel p-7 md:p-10 sr">
+      <p class="eyebrow">Matériel</p>
+      <h2 class="h-section mt-2 mb-8">Caractéristiques techniques.</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="spec"><div class="spec-ico">📦</div><div><b>Boîtier VitalX POD'S</b><span>Impression 3D haute résistance, conçu pour l'iPhone et le passage des câbles.</span></div></div>
+        <div class="spec"><div class="spec-ico">📱</div><div><b>iPhone 12 ou 13</b><span>Moniteur patient, iOS à jour. Livré non configuré : app VitalX Scope + code de licence.</span></div></div>
+        <div class="spec"><div class="spec-ico">🩺</div><div><b>Brassard PNI</b><span>Adulte et pédiatrique, raccord rapide au boîtier.</span></div></div>
+        <div class="spec"><div class="spec-ico">✋</div><div><b>Câble SpO₂ / SpCO</b><span>Capteur de doigt, affichage SpO₂ et SpCO côté moniteur.</span></div></div>
+        <div class="spec"><div class="spec-ico">⚡</div><div><b>Patch DSA</b><span>Adulte et pédiatrique, pour la défibrillation simulée.</span></div></div>
+        <div class="spec"><div class="spec-ico">👜</div><div><b>Pochette Bagheera</b><span>Transport et protection de l'ensemble du kit.</span></div></div>
+      </div>
+    </section>
+
+    <!-- LICENCE -->
+    <section id="licence">
+      <div class="text-center mb-10 sr">
+        <p class="eyebrow">Licence</p>
+        <h2 class="h-section mt-2">POD'S ou VitalX ?</h2>
+        <p class="text-[15px] text-[#5b6b80] mt-3 max-w-2xl mx-auto">La licence POD'S couvre le scope sur iPhone et le mode formateur. La licence VitalX ouvre en plus les scopes iPad et les interfaces constructeurs. Le passage de l'une à l'autre se fait sur le même code, à distance.</p>
+      </div>
+      <div class="panel overflow-hidden sr">
+        <table class="cmp">
+          <thead><tr><th>Fonction</th><th>Licence POD'S</th><th>Licence VitalX</th></tr></thead>
+          <tbody>
+            <tr><td>Scope sur iPhone (POD'S)</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+            <tr><td>Mode formateur iPad, iPhone et web</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+            <tr><td>Scope sur iPad (moniteur VitalX)</td><td class="no">—</td><td class="yes">✓</td></tr>
+            <tr><td>Interfaces constructeurs (Schiller, Weinmann…)</td><td class="no">—</td><td class="yes">✓</td></tr>
+            <tr><td>ECG 12 dérivations, Media Center</td><td class="no">—</td><td class="yes">✓</td></tr>
+            <tr><td>Appareils par code</td><td>3</td><td>3</td></tr>
+            <tr><td>Durée, mises à jour</td><td>À vie</td><td>À vie</td></tr>
+          </tbody>
+        </table>
+        <div class="p-6 md:p-7 bg-[#f8fafc] border-t border-[#dde3ec] flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <p class="text-[14px] text-[#3a4757]"><strong class="text-[#0a2240]">Déjà client POD'S ?</strong> Le passage vers la licence VitalX se demande sur devis, avec votre code actuel. Aucun matériel à renvoyer.</p>
+          <a href="/boutique.html#licence" class="btn-out shrink-0">Voir les licences</a>
         </div>
       </div>
     </section>
 
-    <!-- Livraison -->
-    <section class="card-lift glass ring-gradient rounded-3xl p-7 md:p-10 ring-2 ring-white/10">
-      <div class="flex items-center gap-4 mb-6">
-        <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-purple-500/20 to-fuchsia-500/10 ring-1 ring-purple-500/30 flex items-center justify-center text-2xl">🚚</div>
-        <h2 class="text-2xl md:text-3xl font-extrabold">Livraison & support</h2>
+    <!-- LIVRAISON & SUPPORT -->
+    <section class="grid md:grid-cols-3 gap-4">
+      <div class="spec sr"><div class="spec-ico">🚚</div><div><b>Livraison</b><span>15 à 30 jours ouvrés après règlement. France et Europe.</span></div></div>
+      <div class="spec sr sr-d1"><div class="spec-ico">🛠</div><div><b>Support 7j/7</b><span>E-mail et visio, aide à la prise en main incluse.</span></div></div>
+      <div class="spec sr sr-d2"><div class="spec-ico">🛡</div><div><b>Garantie</b><span>iPhone et iPad : garantie Apple. Boîtier et pochette : voir <a href="/garantie.html" class="underline text-[#0046b8]">garantie VitalX</a>.</span></div></div>
+    </section>
+
+    <!-- CTA -->
+    <section class="relative overflow-hidden rounded-2xl bg-[#06203f] text-white p-8 md:p-12 text-center sr">
+      <div class="absolute top-0 inset-x-0 tricolor-thin"></div>
+      <div class="absolute -top-20 -right-20 h-56 w-56 rounded-full bg-[#e1000f]/15 blur-[100px] pointer-events-none"></div>
+      <h2 class="relative text-[clamp(24px,3.4vw,36px)] font-extrabold uppercase">Un devis sous 24 h.</h2>
+      <p class="relative text-[15px] text-[#b9c8dc] mt-3 max-w-lg mx-auto">Précisez Classic ou Pro, le nombre de kits et votre structure. On construit la configuration avec vous.</p>
+      <div class="relative mt-6 flex flex-wrap justify-center gap-3">
+        <a href="/#contact" class="btn-red">📝 Demander un devis</a>
+        <a href="/#contact" class="btn-out !bg-transparent !text-white !border-white/40 hover:!bg-white hover:!text-[#0a2240]">Demander une démo</a>
       </div>
-      <ul class="grid gap-3">
-        <li class="feat-item flex items-start gap-4 p-4 rounded-2xl bg-white/5 ring-1 ring-white/10">
-          <span class="shrink-0 h-7 w-7 rounded-lg bg-gradient-to-br from-purple-500 to-fuchsia-500 text-white font-bold flex items-center justify-center text-sm">✓</span>
-          <div><strong class="text-white">Livraison France métropolitaine</strong><br><span class="text-sm text-zinc-400">Délais indicatifs : 15 à 30 jours ouvrés</span></div>
-        </li>
-        <li class="feat-item flex items-start gap-4 p-4 rounded-2xl bg-white/5 ring-1 ring-white/10">
-          <span class="shrink-0 h-7 w-7 rounded-lg bg-gradient-to-br from-purple-500 to-fuchsia-500 text-white font-bold flex items-center justify-center text-sm">✓</span>
-          <div><strong class="text-white">Support VitalX</strong><br><span class="text-sm text-zinc-400">Assistance par e-mail • Aide à la prise en main</span></div>
-        </li>
-        <li class="feat-item flex items-start gap-4 p-4 rounded-2xl bg-white/5 ring-1 ring-white/10">
-          <span class="shrink-0 h-7 w-7 rounded-lg bg-gradient-to-br from-purple-500 to-fuchsia-500 text-white font-bold flex items-center justify-center text-sm">✓</span>
-          <div><strong class="text-white">Mises à jour logicielles</strong><br><span class="text-sm text-zinc-400">Améliorations régulières incluses à vie</span></div>
-        </li>
-      </ul>
     </section>
   </main>
 
-  <footer class="py-10 border-t border-white/10 text-sm text-zinc-400">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
-      <p>© <span id="year"></span> VitalX — Tous droits réservés.</p>
-      <nav class="flex items-center gap-4">
-        <a href="/" class="hover:text-white">Accueil</a>
-        <a href="/boutique.html" class="hover:text-white">Boutique</a>
-        <a href="/qui-sommes-nous.html" class="hover:text-white">Qui sommes-nous</a>
-      </nav>
+  <footer class="py-10 border-t border-[#dde3ec] text-sm text-[#5b6b80] bg-white">
+    <div class="tricolor-thin"></div>
+    <div class="mx-auto max-w-6xl px-6 pt-6">
+      <p class="text-[11px] text-[#9aa7b8] leading-relaxed mb-5">TVA non applicable, art. 293 B du CGI. Règlement à la commande. VitalX POD'S est un simulateur de formation, il ne mesure aucune constante réelle et n'est pas un dispositif médical.</p>
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <p>© <span id="year"></span> VitalX — Tous droits réservés.</p>
+        <nav class="flex items-center gap-4"><a href="/" class="hover:text-[#0046b8]">Accueil</a><a href="/boutique.html" class="hover:text-[#0046b8]">Boutique</a><a href="/garantie.html" class="hover:text-[#0046b8]">Garantie</a><a href="/qui-sommes-nous.html" class="hover:text-[#0046b8]">Qui sommes-nous</a></nav>
+      </div>
     </div>
   </footer>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('year').textContent=new Date().getFullYear();
+    (function(){const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.sr').forEach(el=>io.observe(el))})();
   </script>
+  <script src="/i18n.js" defer></script>
 </body>
 </html>
