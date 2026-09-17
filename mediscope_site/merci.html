@@ -1,0 +1,65 @@
+<!doctype html>
+<!--
+  merci.html — VitalX
+  Description : Page de remerciement après envoi d'un formulaire Netlify (contact, affiliation)
+  🆕 v1.0 — 17/09/2026 — Yann USSEGLIO
+     • Cible des formulaires action="/merci.html" (la page n'existait pas : les envois aboutissaient sur une 404)
+     • Non indexée (noindex) et exclue du sitemap
+-->
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Merci — VitalX</title>
+<meta name="robots" content="noindex, nofollow"/>
+<meta name="theme-color" content="#000000"/>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/apple.css">
+<style>
+.thanks{min-height:calc(100vh - 48px);display:grid;place-items:center;text-align:center;padding:64px 22px;background:#fbfbfd}
+.thanks .ico{width:64px;height:64px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;margin:0 auto 22px}
+.thanks .ico svg{width:30px;height:30px}
+</style>
+</head>
+<body>
+<header class="gnav">
+  <div class="wrap">
+    <a href="/" class="gnav-logo" aria-label="VitalX — accueil"><img src="/assets/logo-vitalx-white.svg" alt="VitalX"/></a>
+    <ul class="gnav-links">
+      <li><a href="/">Accueil</a></li>
+      <li><a href="/#interfaces">Interfaces</a></li>
+      <li><a href="/#devis">Devis</a></li>
+      <li><a href="/qui-sommes-nous.html">Société</a></li>
+      <li><a href="/affiliation.html">Affiliation</a></li>
+      <li><a href="/boutique.html">Boutique</a></li>
+    </ul>
+    <div class="gnav-right"><a href="/boutique.html" class="gnav-icon" title="Boutique" aria-label="Boutique"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l1 13H5L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></a></div>
+  </div>
+</header>
+<div class="tricolor" aria-hidden="true"></div>
+<main class="thanks">
+  <div class="wrap-narrow">
+    <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+    <span class="fr-badge"><i class="fr-flag" aria-hidden="true"></i>Conçu &amp; assemblé en France 🇫🇷</span>
+    <h1 class="t-section" style="margin-top:14px">Merci, c'est bien reçu.</h1>
+    <p class="t-section-lead">Nous revenons vers vous sous 24 h ouvrées, par e-mail ou par téléphone. En attendant, vous pouvez découvrir les interfaces constructeurs ou parcourir la boutique.</p>
+    <div class="links" style="margin-top:26px">
+      <a href="/" class="btn">Retour à l'accueil</a>
+      <a href="/#interfaces" class="more">Voir les interfaces</a>
+      <a href="/boutique.html" class="more">Voir la boutique</a>
+    </div>
+    <p class="t-caption" style="margin-top:36px">Une question urgente ? Écrivez-nous à <a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a>.</p>
+  </div>
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-bottom" style="padding-top:22px">
+      <span>© <span id="year"></span> VitalX. Tous droits réservés.</span>
+      <nav aria-label="Liens légaux"><a href="/mentions-legales.html">Mentions légales</a><a href="/cgv.html">CGV</a><a href="/politique-confidentialite.html">Confidentialité</a></nav>
+    </div>
+  </div>
+</footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+</body>
+</html>

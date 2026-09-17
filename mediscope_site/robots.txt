@@ -1,0 +1,8 @@
+# VitalX — robots.txt
+User-agent: *
+Allow: /
+Disallow: /merci.html
+Disallow: /merci-commande.html
+Disallow: /_backup/
+
+Sitemap: https://vitalx.org/sitemap.xml
