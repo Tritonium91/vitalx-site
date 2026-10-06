@@ -331,6 +331,17 @@ textarea.finp{resize:vertical;min-height:130px}
 .lightbox-close{position:fixed;top:18px;right:18px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.14);border:0;color:#fff;font-size:16px;cursor:pointer;display:grid;place-items:center}
 .lightbox-close:hover{background:rgba(255,255,255,.24)}
 
+/* ── Section « Tout ce que le formateur peut faire » ─────────────── */
+.section-alt{background:var(--bg-alt)}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.tgrid .hcard{flex:none;margin:0;display:flex;flex-direction:column}
+.tgrid .hcard img{background:#000;object-fit:contain;object-position:center}
+.tgrid .hcard figcaption{padding:20px 22px 26px}
+.tgrid .hcard strong{font-size:19px;line-height:1.2;letter-spacing:-.01em}
+.tgrid .hcard span{font-size:15px;line-height:1.47;margin-top:8px}
+@media(max-width:1068px){.tgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.tgrid{grid-template-columns:1fr}}
+
 @media(prefers-reduced-motion:reduce){
   .sr{opacity:1;transform:none;transition:none}
   .hero-in{animation:none}
