@@ -11,7 +11,8 @@
      • Contenu conservé : interfaces constructeurs (galeries), fonctions, app, pack, devis,
        références, affiliation, formulaire de contact Netlify, mentions constructeurs
      • v4.1 : galerie app en carrousel automatique (sans flèches), rappels bleu-blanc-rouge (Made in France)
-     • Ancres conservées : #interfaces #v2 #packs (ex-#medx, MED'X retiré) #pods #mediacenter #features #app #in-the-box #devis #testimonials #contact
+     • Ancres : #v2 #packs #pods #schiller (alias #interfaces) #weinmann #mediacenter #formateur #academy #features #app #in-the-box #devis #testimonials #contact
+     • 06/10/2026 : refonte (SCHILLER, WEINMANN, Media Center, formateur, ACADEMY) ; anciennes sections interfaces/mediacenter remplacées
 -->
 <html lang="fr">
 <head>
@@ -71,13 +72,15 @@
 <header class="gnav">
   <div class="wrap">
     <a href="/" class="gnav-logo" aria-label="VitalX — accueil"><img src="/assets/logo-vitalx-white.svg" alt="VitalX" data-no-lightbox="true"/></a>
-    <ul class="gnav-links">
+    <ul class="gnav-links gnav-home">
       <li><a href="#v2">Scopes</a></li>
-      <li><a href="#interfaces">Interfaces</a></li>
       <li><a href="#packs">Packs</a></li>
       <li><a href="#pods">POD'S</a></li>
-      <li><a href="#features">Fonctions</a></li>
-      <li><a href="#app">Application</a></li>
+      <li><a href="#schiller">Schiller</a></li>
+      <li><a href="#weinmann">Weinmann</a></li>
+      <li><a href="#mediacenter">Media Center</a></li>
+      <li><a href="#formateur">Formateur</a></li>
+      <li><a href="#academy">ACADEMY</a></li>
       <li><a href="#devis">Devis</a></li>
       <li><a href="/qui-sommes-nous.html">Société</a></li>
       <li><a href="/affiliation.html">Affiliation</a></li>
@@ -93,11 +96,14 @@
 <div class="tricolor" aria-hidden="true"></div>
 <nav id="mobileMenu" class="gnav-mobile" aria-label="Menu mobile">
   <a href="#v2">Scopes VitalX</a>
-  <a href="#interfaces">Interfaces constructeurs</a>
   <a href="#packs">Packs VitalX</a>
   <a href="#pods">POD'S</a>
+  <a href="#schiller">Schiller</a>
+  <a href="#weinmann">Weinmann</a>
+  <a href="#mediacenter">Media Center</a>
+  <a href="#formateur">Formateur</a>
+  <a href="#academy">ACADEMY</a>
   <a href="#features">Fonctions</a>
-  <a href="#app">Application</a>
   <a href="#devis">Devis</a>
   <a href="/qui-sommes-nous.html">Société</a>
   <a href="/affiliation.html">Affiliation</a>
@@ -126,7 +132,7 @@
 </section>
 
 <!-- RUBAN NOUVEAUTÉ -->
-<div class="ribbon">Nouveau : les interfaces Schiller et Weinmann sont incluses dans la licence VitalX, sans supplément. <a href="#interfaces" class="more">Voir les interfaces</a></div>
+<div class="ribbon">Nouveau : les interfaces Schiller et Weinmann sont incluses dans la licence VitalX, sans supplément. <a href="#schiller" class="more">Voir les interfaces</a></div>
 
 <!-- INTERFACES (tuile sombre) -->
 <section class="tile tile-dark tile-pad-b">
@@ -134,7 +140,7 @@
     <h2 class="t-tile">Interfaces constructeurs</h2>
     <p class="t-tile-sub">Un seul scope. Les vrais moniteurs.</p>
     <div class="links">
-      <a href="#interfaces" class="more">Découvrir</a>
+      <a href="#schiller" class="more">Découvrir</a>
       <a href="/boutique.html" class="more">Voir la boutique</a>
     </div>
   </div>
@@ -170,15 +176,15 @@
     </div>
     <div class="tile-art sr"><img src="/assets/vitalxpodsclassic.PNG" alt="VitalX POD'S — boîtier iPhone, brassard, capteur SpO₂ et patch DSA" loading="lazy"/></div>
   </section>
-  <section class="tile tile-dark" id="mediacenter">
+  <section class="tile tile-dark">
     <div class="tile-copy">
       <h2 class="t-tile-sm">Media Center</h2>
       <p class="t-tile-sm-sub">Le dossier patient, dans le scope.</p>
       <div class="links">
-        <a href="#features" class="more">En savoir plus</a>
+        <a href="#mediacenter" class="more">En savoir plus</a>
       </div>
     </div>
-    <div class="tile-art sr"><img src="/assets/mediacenter-radio.webp" alt="Media Center — imagerie classée par région" loading="lazy" style="border-radius:14px 14px 0 0"/></div>
+    <div class="tile-art sr"><img src="/assets/mediacenter-gds-2026.webp" alt="Media Center — gaz du sang (GDS) sur le DEFIGARD HD-7" loading="lazy" style="border-radius:14px 14px 0 0"/></div>
   </section>
   <section class="tile tile-dark">
     <div class="tile-copy">
@@ -189,7 +195,7 @@
         <a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="more">Ouvrir vitalxtrainer.app</a>
       </div>
     </div>
-    <div class="tile-art sr"><img src="/assets/app-formateur.webp" alt="Vue formateur — pilotage complet de la session" loading="lazy" style="border-radius:14px 14px 0 0"/></div>
+    <div class="tile-art sr"><img src="/assets/formateur-constantes.webp" alt="Vue formateur — pilotage complet de la session" loading="lazy" style="border-radius:14px 14px 0 0"/></div>
   </section>
   <section class="tile tile-gray">
     <div class="tile-copy">
@@ -243,153 +249,267 @@
   </div>
 </section>
 
-<!-- INTERFACES CONSTRUCTEURS (galeries) -->
-<section id="interfaces" class="section dark">
-  <div class="wrap">
+<!-- SCHILLER : tous les appareils (hors FRED easy G2) -->
+<span id="interfaces" class="anchor-alias"></span>
+<section id="schiller" class="section dark brand-sec">
+  <div class="wrap-wide">
     <div class="section-head center">
       <p class="t-eyebrow sr">Interfaces constructeurs</p>
-      <h2 class="t-section sr">Un seul scope.<br>Les vrais moniteurs.</h2>
-      <p class="t-section-lead sr sr-d1">Vos équipes s'entraînent sur l'écran exact de l'appareil qu'elles retrouveront dans le VSAV ou l'ambulance : mêmes menus, mêmes couleurs, mêmes boutons. Chaque interface est reproduite avec l'autorisation du fabricant et incluse dans la licence VitalX, sans supplément.</p>
+      <h2 class="t-section sr">SCHILLER.<br>Six appareils, reproduits fidèlement.</h2>
+      <p class="t-section-lead sr sr-d1">Chaque appareil est un module de l'application VitalX pour iPad : le châssis, l'écran et les fonctions suivent la notice du fabricant.</p>
     </div>
-
-    <div class="grid-2" style="gap:16px">
-      <!-- Schiller DEFIGARD -->
-      <article class="device sr">
-        <div class="device-head">
-          <span class="device-tag">Schiller · Inclus</span>
-          <h3>DEFIGARD Touch 7</h3>
-          <p>Moniteur-défibrillateur. ECG, SpO₂, EtCO₂, PNI, PA invasive, température. Menus ECG, événements, défibrillation manuelle.</p>
-        </div>
-        <div data-gal>
-          <div class="gal-main"><img src="/assets/scope-schiller-defigard.webp" alt="DEFIGARD Touch 7 — vue monitorage" data-gal-main loading="lazy"/><span class="gal-cap" data-gal-cap>Vue monitorage</span></div>
-          <div class="gal-thumbs">
-            <button type="button" class="is-active" data-src="/assets/scope-schiller-defigard.webp" data-cap="Vue monitorage"><img src="/assets/scope-schiller-defigard.webp" alt="" loading="lazy"/></button>
-            <button type="button" data-src="/assets/scope-schiller-defigard-ibp.webp" data-cap="DSA — choc conseillé"><img src="/assets/scope-schiller-defigard-ibp.webp" alt="" loading="lazy"/></button>
-            <button type="button" data-src="/assets/scope-schiller-defigard-ecg.webp" data-cap="ECG 12 dérivations"><img src="/assets/scope-schiller-defigard-ecg.webp" alt="" loading="lazy"/></button>
-            <button type="button" data-src="/assets/mediacenter-dlu.webp" data-cap="Media Center — DLU"><img src="/assets/mediacenter-dlu.webp" alt="" loading="lazy"/></button>
-          </div>
-        </div>
-      </article>
-      <!-- Schiller PHYSIOGARD -->
-      <article class="device sr sr-d1">
-        <div class="device-head">
-          <span class="device-tag">Schiller · Inclus</span>
-          <h3>PHYSIOGARD Touch 7</h3>
-          <p>Moniteur multiparamétrique. Deux dérivations ECG, SpO₂, PNI automatique ou manuelle, température, EtCO₂ et fréquence respiratoire.</p>
-        </div>
-        <div data-gal>
-          <div class="gal-main"><img src="/assets/scope-schiller-physiogard.webp" alt="PHYSIOGARD Touch 7 — vue monitorage" data-gal-main loading="lazy"/><span class="gal-cap" data-gal-cap>Vue monitorage</span></div>
-          <div class="gal-thumbs">
-            <button type="button" class="is-active" data-src="/assets/scope-schiller-physiogard.webp" data-cap="Vue monitorage"><img src="/assets/scope-schiller-physiogard.webp" alt="" loading="lazy"/></button>
-            <button type="button" data-src="/assets/scope-schiller-physiogard-etco2.webp" data-cap="Alarme haute — voyant rouge"><img src="/assets/scope-schiller-physiogard-etco2.webp" alt="" loading="lazy"/></button>
-            <button type="button" data-src="/assets/scope-schiller-physiogard-pni.webp" data-cap="ECG 12 dérivations — interprétation simulée"><img src="/assets/scope-schiller-physiogard-pni.webp" alt="" loading="lazy"/></button>
-            <button type="button" data-src="/assets/mediacenter-radio.webp" data-cap="Media Center — Radio"><img src="/assets/mediacenter-radio.webp" alt="" loading="lazy"/></button>
-          </div>
-        </div>
-      </article>
-      <!-- Weinmann MEDUCORE -->
-      <article class="device sr">
-        <div class="device-head">
-          <span class="device-tag">Weinmann · Inclus</span>
-          <h3>MEDUCORE Standard²</h3>
-          <p>Moniteur-défibrillateur. Vue courbes ou grands chiffres, historique PNI, modes DSA et manuel, connectique ECG, SpO₂ et NIBP à l'écran.</p>
-        </div>
-        <div data-gal>
-          <div class="gal-main"><img src="/assets/scope-weinmann-meducore.webp" alt="MEDUCORE Standard² — vue courbes" data-gal-main loading="lazy"/><span class="gal-cap" data-gal-cap>Vue courbes</span></div>
-          <div class="gal-thumbs">
-            <button type="button" class="is-active" data-src="/assets/scope-weinmann-meducore.webp" data-cap="Vue courbes"><img src="/assets/scope-weinmann-meducore.webp" alt="" loading="lazy"/></button>
-            <button type="button" data-src="/assets/scope-weinmann-meducore-grands-chiffres.webp" data-cap="DSA — choc conseillé"><img src="/assets/scope-weinmann-meducore-grands-chiffres.webp" alt="" loading="lazy"/></button>
-            <button type="button" data-src="/assets/scope-weinmann-meducore-courbes.webp" data-cap="ECG 12 dérivations — résultats"><img src="/assets/scope-weinmann-meducore-courbes.webp" alt="" loading="lazy"/></button>
-            <button type="button" data-src="/assets/mediacenter-bio.webp" data-cap="Media Center — Bio"><img src="/assets/mediacenter-bio.webp" alt="" loading="lazy"/></button>
-          </div>
-        </div>
-      </article>
-      <!-- Weinmann MEDUMAT -->
-      <article class="device sr sr-d1">
-        <div class="device-head">
-          <span class="device-tag">Weinmann · Inclus</span>
-          <h3>MEDUMAT Standard²</h3>
-          <p>Respirateur. Manomètre pAW, Vt, fréquence, PEEP, pressions de crête et de plateau, capnographie et alarmes. Modes IPPV, CPR, Air Mix.</p>
-        </div>
-        <div data-gal>
-          <div class="gal-main"><img src="/assets/scope-weinmann-medumat.webp" alt="MEDUMAT Standard² — mode VC, alarme de pression" data-gal-main loading="lazy"/><span class="gal-cap" data-gal-cap>Mode VC — alarme de pression</span></div>
-          <div class="gal-thumbs">
-            <button type="button" class="is-active" data-src="/assets/scope-weinmann-medumat.webp" data-cap="Mode VC — alarme de pression"><img src="/assets/scope-weinmann-medumat.webp" alt="" loading="lazy"/></button>
-            <button type="button" data-src="/assets/mediacenter-bandelette.webp" data-cap="Media Center — Bandelette urinaire"><img src="/assets/mediacenter-bandelette.webp" alt="" loading="lazy"/></button>
-            <button type="button" data-src="/assets/mediacenter-dlu.webp" data-cap="Media Center — DLU"><img src="/assets/mediacenter-dlu.webp" alt="" loading="lazy"/></button>
-            <button type="button" data-src="/assets/mediacenter-radio.webp" data-cap="Media Center — Radio"><img src="/assets/mediacenter-radio.webp" alt="" loading="lazy"/></button>
-          </div>
-        </div>
-      </article>
+    <nav class="dv-nav sr" aria-label="Appareils SCHILLER"><a href="#sch-defigard">DEFIGARD Touch 7</a><a href="#sch-physiogard">PHYSIOGARD Touch 7</a><a href="#sch-argus">ARGUS PRO LifeCare 3</a><a href="#sch-hd7">DEFIGARD HD-7</a><a href="#sch-maglife">MAGLIFE RT-1</a><a href="#sch-magscreen">MAGSCREEN RT-1</a></nav>
+    <div class="dv-list">
+<article class="dv sr" id="sch-defigard">
+  <div class="dv-media">
+    <figure class="dv-main"><img src="/assets/schiller-defigard-chassis.webp" alt="DEFIGARD Touch 7 — Châssis complet" width="1200" height="900" loading="lazy" decoding="async"/><span class="dv-chip">Châssis complet</span></figure>
+    <div class="dv-shots">
+      <figure><img src="/assets/schiller-defigard-dsa.webp" alt="DEFIGARD Touch 7 — DSA : choc conseillé" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>DSA : choc conseillé</figcaption></figure>
+      <figure><img src="/assets/schiller-defigard-blocs.webp" alt="DEFIGARD Touch 7 — Profil Secouriste : vue Blocs" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Profil Secouriste : vue Blocs</figcaption></figure>
+      <figure><img src="/assets/schiller-defigard-ecg12.webp" alt="DEFIGARD Touch 7 — ECG 12 dérivations" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>ECG 12 dérivations</figcaption></figure>
     </div>
-
-    <p class="t-caption center sr" style="margin:28px auto 0;max-width:720px">Interfaces reproduites à l'identique, avec l'autorisation de Schiller et de Weinmann. Simulateur conçu et développé par VitalX. Disponibles sur les scopes iPad (licence VitalX).</p>
-
-    <!-- Prochaines marques -->
-    <div class="section-head center" style="margin:72px auto 28px">
-      <h3 class="t-tile-sm sr">D'autres appareils arrivent.</h3>
-      <p class="t-section-lead sr sr-d1" style="font-size:19px">De nouvelles interfaces constructeurs sont en cours de reproduction et d'autorisation. Elles seront ajoutées par simple mise à jour, sans supplément, pour tous les scopes iPad VitalX.</p>
+  </div>
+  <div class="dv-copy">
+    <span class="device-tag">Schiller · Inclus</span>
+    <h3>DEFIGARD Touch 7</h3>
+    <p class="dv-kind">Défibrillateur-moniteur</p>
+    <p class="dv-lead">Châssis et touches reproduits d'après la figure de la notice, avec les profils Paramédical et Secouriste.</p>
+    <ul class="checks checks-sm dv-pts">
+      <li>Profils Paramédical et Secouriste (vue Blocs)</li>
+      <li>DSA guidé, ECG 12 dérivations, stimulateur</li>
+      <li>Menu : vues, modes, R-ECG, ECG long</li>
+      <li>Piloté en direct par le formateur</li>
+    </ul>
+  </div>
+</article>
+<article class="dv sr rev" id="sch-physiogard">
+  <div class="dv-media">
+    <figure class="dv-main"><img src="/assets/schiller-physiogard-chassis.webp" alt="PHYSIOGARD Touch 7 — Châssis complet" width="1200" height="900" loading="lazy" decoding="async"/><span class="dv-chip">Châssis complet</span></figure>
+    <div class="dv-shots">
+      <figure><img src="/assets/schiller-physiogard-alarme.webp" alt="PHYSIOGARD Touch 7 — Alarme haute : voyant rouge, FC hors limite" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Alarme haute : voyant rouge, FC hors limite</figcaption></figure>
+      <figure><img src="/assets/schiller-physiogard-ecg12.webp" alt="PHYSIOGARD Touch 7 — ECG 12 dérivations" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>ECG 12 dérivations</figcaption></figure>
+      <figure><img src="/assets/schiller-physiogard-interpretation.webp" alt="PHYSIOGARD Touch 7 — Interprétation simulée du tracé" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Interprétation simulée du tracé</figcaption></figure>
     </div>
-    <div class="grid-3">
-      <div class="slot sr"><div class="slot-dev" aria-hidden="true"></div><strong>Prochaine interface</strong><span>Moniteur-défibrillateur · autorisation en cours</span></div>
-      <div class="slot sr sr-d1"><div class="slot-dev" aria-hidden="true"></div><strong>Prochaine interface</strong><span>Moniteur-défibrillateur · en cours de reproduction</span></div>
-      <div class="slot sr sr-d2"><div class="slot-dev" aria-hidden="true"></div><strong>Prochaine interface</strong><span>Respirateur · à venir</span></div>
+  </div>
+  <div class="dv-copy">
+    <span class="device-tag">Schiller · Inclus</span>
+    <h3>PHYSIOGARD Touch 7</h3>
+    <p class="dv-kind">Moniteur patient</p>
+    <p class="dv-lead">Châssis d'après le rendu CAO de la notice. Les alarmes allument le voyant de l'appareil : rouge pour une alarme haute, orange fixe pour une alarme technique.</p>
+    <ul class="checks checks-sm dv-pts">
+      <li>FC, SpO₂, PNI, EtCO₂, FR, température</li>
+      <li>ECG 12 dérivations et alarmes à trois niveaux</li>
+      <li>Interprétation simulée du tracé</li>
+      <li>Piloté en direct par le formateur</li>
+    </ul>
+  </div>
+</article>
+<article class="dv sr" id="sch-argus">
+  <div class="dv-media">
+    <figure class="dv-main"><img src="/assets/schiller-argus-chassis.webp" alt="ARGUS PRO LifeCare 3 — Châssis complet" width="1200" height="900" loading="lazy" decoding="async"/><span class="dv-chip">Châssis complet</span></figure>
+    <div class="dv-shots">
+      <figure><img src="/assets/schiller-argus-impression.webp" alt="ARGUS PRO LifeCare 3 — Impression papier : l&#x27;ECG 12 dérivations sort de la fente" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Impression papier : l'ECG 12 dérivations sort de la fente</figcaption></figure>
+      <figure><img src="/assets/schiller-argus-dae.webp" alt="ARGUS PRO LifeCare 3 — DAE : choc recommandé" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>DAE : choc recommandé</figcaption></figure>
+      <figure><img src="/assets/schiller-argus-trace.webp" alt="ARGUS PRO LifeCare 3 — Le tracé imprimé, lu à l&#x27;écran" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Le tracé imprimé, lu à l'écran</figcaption></figure>
     </div>
-    <div class="center sr" style="margin-top:36px"><a href="#contact" class="more">Vous utilisez un autre appareil ? Dites-le nous</a></div>
+  </div>
+  <div class="dv-copy">
+    <span class="device-tag">Schiller · Inclus</span>
+    <h3>ARGUS PRO LifeCare 3</h3>
+    <p class="dv-kind">Défibrillateur-moniteur portable</p>
+    <p class="dv-lead">Défibrillateur-moniteur portable avec imprimante intégrée, reconstruit à l'identique de la notice, en français.</p>
+    <ul class="checks checks-sm dv-pts">
+      <li>Défibrillation manuelle, DAE, stimulateur, RCP</li>
+      <li>Imprimante : bandes, ECG 12 dérivations, rapports</li>
+      <li>Le tracé imprimé se relit à l'écran</li>
+      <li>Piloté en direct par le formateur</li>
+    </ul>
+  </div>
+</article>
+<article class="dv sr rev" id="sch-hd7">
+  <div class="dv-media">
+    <figure class="dv-main"><img src="/assets/schiller-hd7-chassis.webp" alt="DEFIGARD HD-7 — Châssis complet" width="1200" height="900" loading="lazy" decoding="async"/><span class="dv-chip">Châssis complet</span></figure>
+    <div class="dv-shots">
+      <figure><img src="/assets/schiller-hd7-dae.webp" alt="DEFIGARD HD-7 — DAE : choc recommandé, touche Choc allumée" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>DAE : choc recommandé, touche Choc allumée</figcaption></figure>
+      <figure><img src="/assets/schiller-hd7-manuel.webp" alt="DEFIGARD HD-7 — Manuel : 150 J, prêt à délivrer" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Manuel : 150 J, prêt à délivrer</figcaption></figure>
+      <figure><img src="/assets/schiller-hd7-impression.webp" alt="DEFIGARD HD-7 — Impression : le papier sort sous l&#x27;écran" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Impression : le papier sort sous l'écran</figcaption></figure>
+    </div>
+  </div>
+  <div class="dv-copy">
+    <span class="device-tag">Schiller · Inclus</span>
+    <h3>DEFIGARD HD-7</h3>
+    <p class="dv-kind">Défibrillateur-moniteur à molette</p>
+    <p class="dv-lead">Défibrillateur-moniteur à molette, palettes et imprimante intégrée : le papier sort sous l'écran.</p>
+    <ul class="checks checks-sm dv-pts">
+      <li>Molette à six positions : Test, Pacer, DAE, Arrêt, Manuel, Moniteur</li>
+      <li>Palettes, électrodes, synchronisation, stimulateur</li>
+      <li>Imprimante intégrée, rapports de choc</li>
+      <li>Piloté en direct par le formateur</li>
+    </ul>
+  </div>
+</article>
+<article class="dv sr" id="sch-maglife">
+  <div class="dv-media">
+    <figure class="dv-main"><img src="/assets/schiller-maglife-chassis.webp" alt="MAGLIFE RT-1 — Châssis complet" width="1200" height="900" loading="lazy" decoding="async"/><span class="dv-chip">Châssis complet</span></figure>
+    <div class="dv-shots">
+      <figure><img src="/assets/schiller-maglife-alarme.webp" alt="MAGLIFE RT-1 — Alarme : limites magnétiques" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Alarme : limites magnétiques</figcaption></figure>
+      <figure><img src="/assets/schiller-maglife-gaz.webp" alt="MAGLIFE RT-1 — Monitorage et gaz" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Monitorage et gaz</figcaption></figure>
+      <figure><img src="/assets/schiller-maglife-tendances.webp" alt="MAGLIFE RT-1 — Tendances" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Tendances</figcaption></figure>
+    </div>
+  </div>
+  <div class="dv-copy">
+    <span class="device-tag">Schiller · Inclus</span>
+    <h3>MAGLIFE RT-1</h3>
+    <p class="dv-kind">Moniteur compatible IRM</p>
+    <p class="dv-lead">Moniteur de patient pour la salle d'IRM, avec ses courbes balayées, ses gaz anesthésiques et la surveillance du champ magnétique.</p>
+    <ul class="checks checks-sm dv-pts">
+      <li>Courbes balayées, gaz anesthésiques, CO₂, O₂ / N₂O</li>
+      <li>Surveillance du champ magnétique et alarmes</li>
+      <li>Tendances, impression, configuration technique</li>
+      <li>Piloté en direct par le formateur</li>
+    </ul>
+  </div>
+</article>
+<article class="dv sr rev" id="sch-magscreen">
+  <div class="dv-media">
+    <figure class="dv-main"><img src="/assets/schiller-magscreen-chassis.webp" alt="MAGSCREEN RT-1 — Châssis complet" width="1200" height="900" loading="lazy" decoding="async"/><span class="dv-chip">Châssis complet</span></figure>
+    <div class="dv-shots">
+      <figure><img src="/assets/schiller-magscreen-connexion.webp" alt="MAGSCREEN RT-1 — Écran de connexion aux moniteurs" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Écran de connexion aux moniteurs</figcaption></figure>
+      <figure><img src="/assets/schiller-magscreen-deporte.webp" alt="MAGSCREEN RT-1 — Monitorage déporté" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Monitorage déporté</figcaption></figure>
+      <figure><img src="/assets/schiller-magscreen-menu.webp" alt="MAGSCREEN RT-1 — Menu d&#x27;accueil : arrêt, tendances" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Menu d'accueil : arrêt, tendances</figcaption></figure>
+    </div>
+  </div>
+  <div class="dv-copy">
+    <span class="device-tag">Schiller · Inclus</span>
+    <h3>MAGSCREEN RT-1</h3>
+    <p class="dv-kind">Écran déporté IRM</p>
+    <p class="dv-lead">Écran déporté pour la salle de commande.</p>
+    <ul class="checks checks-sm dv-pts">
+      <li>Se connecte à un MAGLIFE (liaison MAGLINK simulée)</li>
+      <li>Mêmes courbes et paramètres que le moniteur</li>
+      <li>Tendances et impression à distance</li>
+      <li>Piloté en direct par le formateur</li>
+    </ul>
+  </div>
+</article>
+    </div>
+    <p class="t-caption dv-foot sr">Interfaces reproduites avec l'autorisation de Schiller. Simulateur conçu et développé par VitalX. SCHILLER, DEFIGARD, PHYSIOGARD, ARGUS, MAGLIFE et MAGSCREEN sont des marques de leurs propriétaires respectifs. Captures de l'application VitalX (simulateur iPad). Les interprétations affichées sont simulées et ne remplacent pas un avis médical.</p>
   </div>
 </section>
 
-<!-- FONCTIONS -->
-<section id="features" class="section gray">
-  <div class="wrap">
+<!-- WEINMANN : tous les appareils -->
+<section id="weinmann" class="section brand-sec">
+  <div class="wrap-wide">
     <div class="section-head center">
-      <p class="t-eyebrow sr">Capacités</p>
-      <h2 class="t-section sr">Tout pour former.</h2>
+      <p class="t-eyebrow sr">Interfaces constructeurs</p>
+      <h2 class="t-section sr">WEINMANN.<br>Trois appareils, reproduits en entier.</h2>
+      <p class="t-section-lead sr sr-d1">MEDUCORE Standard², MEDUMAT Standard² et MEDUVENT Standard : châssis, écrans, touches et menus reconstruits d'après les notices des appareils.</p>
     </div>
-    <div class="grid-3">
-      <div class="feat sr"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div><h3>Interfaces constructeurs</h3><p>Schiller, Weinmann et bientôt d'autres : les vrais écrans, reproduits avec l'autorisation des fabricants, inclus dans la licence.</p></div>
-      <div class="feat sr sr-d1"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><h3>Scénarios dynamiques</h3><p>Cas concrets, AVC, douleur thoracique, polytrauma, avec étapes guidées et transitions automatiques.</p></div>
-      <div class="feat sr sr-d2"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 20h8"/></svg></div><h3>Moniteur réaliste</h3><p>Constantes temps réel, PNI auto/manuel, alertes, tendances, courbes ECG, SpO₂ et EtCO₂. Profils adulte et enfant.</p></div>
-      <div class="feat sr"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg></div><h3>Pilotage formateur</h3><p>Contrôle à distance des constantes, scénarios, ECG 12D et DSA, depuis l'iPad ou le web, quelle que soit l'interface affichée.</p></div>
-      <div class="feat sr sr-d1"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><h3>ECG 12 dérivations</h3><p>Plus de 20 tracés, sinus, STEMI, FA, TV, FV, torsades, WPW, avec interprétation et impression simulée.</p></div>
-      <div class="feat sr sr-d2"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><h3>Media Center</h3><p>ECG, biologie, radiologie, bandelette urinaire et DLU accessibles depuis le scope pour des scénarios contextualisés.</p></div>
-      <div class="feat sr"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg></div><h3>Historique complet</h3><p>Snapshots automatiques, PNI horodatées, sparklines et statistiques min / moyenne / max.</p></div>
-      <div class="feat sr sr-d1"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.2 2.2M16.2 16.2l2.2 2.2M5.6 18.4l2.2-2.2M16.2 7.8l2.2-2.2"/></svg></div><h3>Sync instantanée</h3><p>Un code de licence, jusqu'à 3 appareils. Synchronisation cloud immédiate, partout.</p></div>
-      <div class="feat sr sr-d2"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h3>Prêt en 30 secondes</h3><p>Aucune configuration complexe. Ouvrez l'app VitalX Scope, entrez le code, choisissez l'interface, formez.</p></div>
+    <nav class="dv-nav sr" aria-label="Appareils WEINMANN"><a href="#wei-meducore">MEDUCORE Standard²</a><a href="#wei-medumat">MEDUMAT Standard²</a><a href="#wei-meduvent">MEDUVENT Standard</a></nav>
+    <div class="dv-list">
+<article class="dv sr" id="wei-meducore">
+  <div class="dv-media">
+    <figure class="dv-main"><img src="/assets/weinmann-meducore-chassis.webp" alt="MEDUCORE Standard² — Châssis complet" width="1200" height="900" loading="lazy" decoding="async"/><span class="dv-chip">Châssis complet</span></figure>
+    <div class="dv-shots">
+      <figure><img src="/assets/weinmann-meducore-dsa.webp" alt="MEDUCORE Standard² — DSA — choc conseillé" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>DSA — choc conseillé</figcaption></figure>
+      <figure><img src="/assets/weinmann-meducore-manuel.webp" alt="MEDUCORE Standard² — Défibrillation manuelle — choc prêt" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Défibrillation manuelle — choc prêt</figcaption></figure>
+      <figure><img src="/assets/weinmann-meducore-ecg12.webp" alt="MEDUCORE Standard² — ECG 12 dérivations — résultats" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>ECG 12 dérivations — résultats</figcaption></figure>
     </div>
+  </div>
+  <div class="dv-copy">
+    <span class="device-tag">Weinmann · Inclus</span>
+    <h3>MEDUCORE Standard²</h3>
+    <p class="dv-kind">Défibrillateur-moniteur</p>
+    <p class="dv-lead">Châssis reproduit d'après la notice : écran de 640 × 480, molette, cinq touches de fonction, touche de choc et section connecteurs (ECG, SpO₂, PNI, électrodes).</p>
+    <ul class="checks checks-sm dv-pts">
+      <li>DSA : analyse, choc conseillé, RCP guidée</li>
+      <li>Défibrillation manuelle, énergie, synchronisation</li>
+      <li>Monitorage, ECG 12 dérivations, archives</li>
+      <li>Piloté en direct par le formateur</li>
+    </ul>
+  </div>
+</article>
+<article class="dv sr rev" id="wei-medumat">
+  <div class="dv-media">
+    <figure class="dv-main"><img src="/assets/weinmann-medumat-chassis.webp" alt="MEDUMAT Standard² — Châssis complet" width="1200" height="900" loading="lazy" decoding="async"/><span class="dv-chip">Châssis complet</span></figure>
+    <div class="dv-shots">
+      <figure><img src="/assets/weinmann-medumat-rcp.webp" alt="MEDUMAT Standard² — Mode RCP CCSV" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Mode RCP CCSV</figcaption></figure>
+      <figure><img src="/assets/weinmann-medumat-alarme.webp" alt="MEDUMAT Standard² — Alarme de pression" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Alarme de pression</figcaption></figure>
+      <figure><img src="/assets/weinmann-medumat-menu.webp" alt="MEDUMAT Standard² — Menu utilisateur" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Menu utilisateur</figcaption></figure>
+    </div>
+  </div>
+  <div class="dv-copy">
+    <span class="device-tag">Weinmann · Inclus</span>
+    <h3>MEDUMAT Standard²</h3>
+    <p class="dv-kind">Ventilateur</p>
+    <p class="dv-lead">Appareil reproduit d'après sa notice : écran de 320 × 240, trois molettes, touches d'alarme, de menu, AIR MIX et RCP, marche/arrêt et MEDUtrigger.</p>
+    <ul class="checks checks-sm dv-pts">
+      <li>Modes en volume, en pression et spontanés</li>
+      <li>RCP (CCSV) et ISR, alarmes à trois priorités</li>
+      <li>Menu de démarrage, patient, menus utilisateur</li>
+      <li>Piloté en direct par le formateur</li>
+    </ul>
+  </div>
+</article>
+<article class="dv sr" id="wei-meduvent">
+  <div class="dv-media">
+    <figure class="dv-main"><img src="/assets/weinmann-meduvent-chassis.webp" alt="MEDUVENT Standard — Châssis complet" width="1200" height="900" loading="lazy" decoding="async"/><span class="dv-chip">Châssis complet</span></figure>
+    <div class="dv-shots">
+      <figure><img src="/assets/weinmann-meduvent-modes.webp" alt="MEDUVENT Standard — Choix du mode" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Choix du mode</figcaption></figure>
+      <figure><img src="/assets/weinmann-meduvent-limites.webp" alt="MEDUVENT Standard — Limites d&#x27;alarme" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Limites d'alarme</figcaption></figure>
+      <figure><img src="/assets/weinmann-meduvent-deconnexion.webp" alt="MEDUVENT Standard — Alarme de déconnexion" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Alarme de déconnexion</figcaption></figure>
+    </div>
+  </div>
+  <div class="dv-copy">
+    <span class="device-tag">Weinmann · Inclus</span>
+    <h3>MEDUVENT Standard</h3>
+    <p class="dv-kind">Ventilateur</p>
+    <p class="dv-lead">Appareil reproduit d'après sa notice : écran de 4,3 pouces, bouton de navigation, touches sourdine, menu et marche/arrêt, module latéral avec entrée d'oxygène, raccords de mesure et MEDUtrigger.</p>
+    <ul class="checks checks-sm dv-pts">
+      <li>Modes VC, VAC, VPC, VACI, VS-PEP, BiLevel…</li>
+      <li>Module oxygène externe, limites d'alarme</li>
+      <li>Réglages rapides, nouveau patient, menus</li>
+      <li>Piloté en direct par le formateur</li>
+    </ul>
+  </div>
+</article>
+    </div>
+    <p class="t-caption dv-foot sr">Interfaces reproduites avec l'autorisation de Weinmann. Simulateur conçu et développé par VitalX. WEINMANN, MEDUCORE, MEDUMAT et MEDUVENT sont des marques de leurs propriétaires. VitalX est un outil de formation, pas un dispositif médical. Captures de l'application VitalX pour iPad ; toutes les valeurs et mesures affichées sont simulées.</p>
+    <div class="center sr" style="margin-top:24px"><a href="#contact" class="more">Vous utilisez un autre appareil ? Dites-le nous</a></div>
   </div>
 </section>
 
-<!-- APPLICATION (galerie défilante) -->
-<section id="app" class="section dark" style="padding-bottom:clamp(48px,7vw,90px)">
-  <div class="wrap">
-    <div class="section-head section-head-left" style="margin-bottom:34px">
-      <p class="t-eyebrow sr">L'application</p>
-      <h2 class="t-section sr">L'app VitalX.</h2>
-      <p class="t-section-lead sr sr-d1">Le formateur pilote. Le moniteur affiche.</p>
+<!-- MEDIA CENTER : le panneau, à lui seul -->
+<section id="mediacenter" class="section dark">
+  <div class="wrap-wide">
+    <div class="section-head center">
+      <p class="t-eyebrow sr">Media Center</p>
+      <h2 class="t-section sr">Le dossier patient,<br>d'un balayage.</h2>
+      <p class="t-section-lead sr sr-d1">Sur l'iPad de l'apprenant, un panneau s'ouvre par-dessus l'appareil quand on balaie depuis le bord droit. Il affiche ce que le formateur envoie : biologie, gaz du sang, radios, dossier patient, bandelette urinaire, archive ECG.</p>
     </div>
-  </div>
-  <div class="marquee" id="appScroll" aria-label="Captures d'écran de l'application">
-    <div class="marquee-track">
-    <figure class="hcard"><img src="/app-scope.PNG" alt="Scope monitoring" loading="lazy"/><figcaption><strong>Scope Monitoring</strong><span>ECG, SpO₂, EtCO₂ en temps réel</span></figcaption></figure>
-    <figure class="hcard"><img src="/app-monitoring.PNG" alt="Multiparamétrique" loading="lazy"/><figcaption><strong>Vue Multiparamétrique</strong><span>HR, SpO₂, Temp, FR, PNI</span></figcaption></figure>
-    <figure class="hcard"><img src="/app-anatomie.PNG" alt="Anatomie" loading="lazy"/><figcaption><strong>Vue Anatomique</strong><span>Cœur et poumons animés</span></figcaption></figure>
-    <figure class="hcard"><img src="/app-ecg-electrodes.PNG" alt="Électrodes" loading="lazy"/><figcaption><strong>ECG 12D — Électrodes</strong><span>Positionnement guidé 3D</span></figcaption></figure>
-    <figure class="hcard"><img src="/app-ecg12d.PNG" alt="ECG 12D" loading="lazy"/><figcaption><strong>ECG 12 Dérivations</strong><span>Tracé complet + interprétation</span></figcaption></figure>
-    <figure class="hcard"><img src="/app-dsa.PNG" alt="DSA" loading="lazy"/><figcaption><strong>Mode DSA</strong><span>Chocs simulés + métronome RCP</span></figcaption></figure>
-    <figure class="hcard"><img src="/assets/scope-schiller-defigard-ecg.webp" alt="Interface Schiller dans le scope" loading="lazy"/><figcaption><strong>Interface Schiller</strong><span>DEFIGARD et PHYSIOGARD Touch 7</span></figcaption></figure>
-    <figure class="hcard"><img src="/assets/scope-weinmann-medumat.webp" alt="Interface Weinmann dans le scope" loading="lazy"/><figcaption><strong>Interface Weinmann</strong><span>MEDUCORE et MEDUMAT Standard²</span></figcaption></figure>
-    <figure class="hcard"><img src="/assets/app-formateur.webp" alt="Formateur" loading="lazy"/><figcaption><strong>Vue Formateur</strong><span>Pilotage complet de la session</span></figcaption></figure>
-    <figure class="hcard" aria-hidden="true"><img src="/app-scope.PNG" alt="Scope monitoring" loading="lazy"/><figcaption><strong>Scope Monitoring</strong><span>ECG, SpO₂, EtCO₂ en temps réel</span></figcaption></figure>
-    <figure class="hcard" aria-hidden="true"><img src="/app-monitoring.PNG" alt="Multiparamétrique" loading="lazy"/><figcaption><strong>Vue Multiparamétrique</strong><span>HR, SpO₂, Temp, FR, PNI</span></figcaption></figure>
-    <figure class="hcard" aria-hidden="true"><img src="/app-anatomie.PNG" alt="Anatomie" loading="lazy"/><figcaption><strong>Vue Anatomique</strong><span>Cœur et poumons animés</span></figcaption></figure>
-    <figure class="hcard" aria-hidden="true"><img src="/app-ecg-electrodes.PNG" alt="Électrodes" loading="lazy"/><figcaption><strong>ECG 12D — Électrodes</strong><span>Positionnement guidé 3D</span></figcaption></figure>
-    <figure class="hcard" aria-hidden="true"><img src="/app-ecg12d.PNG" alt="ECG 12D" loading="lazy"/><figcaption><strong>ECG 12 Dérivations</strong><span>Tracé complet + interprétation</span></figcaption></figure>
-    <figure class="hcard" aria-hidden="true"><img src="/app-dsa.PNG" alt="DSA" loading="lazy"/><figcaption><strong>Mode DSA</strong><span>Chocs simulés + métronome RCP</span></figcaption></figure>
-    <figure class="hcard" aria-hidden="true"><img src="/assets/scope-schiller-defigard-ecg.webp" alt="Interface Schiller dans le scope" loading="lazy"/><figcaption><strong>Interface Schiller</strong><span>DEFIGARD et PHYSIOGARD Touch 7</span></figcaption></figure>
-    <figure class="hcard" aria-hidden="true"><img src="/assets/scope-weinmann-medumat.webp" alt="Interface Weinmann dans le scope" loading="lazy"/><figcaption><strong>Interface Weinmann</strong><span>MEDUCORE et MEDUMAT Standard²</span></figcaption></figure>
-    <figure class="hcard" aria-hidden="true"><img src="/assets/app-formateur.webp" alt="Formateur" loading="lazy"/><figcaption><strong>Vue Formateur</strong><span>Pilotage complet de la session</span></figcaption></figure>
+    <div class="mc-hero">
+      <figure class="mc-shot sr"><img src="/assets/mediacenter-gds-2026.webp" alt="Media Center sur le DEFIGARD HD-7 — gaz du sang (GDS) : analyseur et ticket de résultat" width="1600" height="1200" loading="lazy" decoding="async"/><figcaption><strong>GDS : gaz du sang</strong>L'apprenant lance l'analyse et reçoit le ticket, ici une acidose métabolique avec hyperlactatémie. Résultat 60 s après la cartouche.</figcaption></figure>
+      <ol class="mc-steps sr sr-d1">
+        <li><b>Balayez depuis le bord droit</b>Le panneau s'ouvre par-dessus l'appareil, qui continue de tourner derrière.</li>
+        <li><b>Le formateur envoie</b>Biologie, radios, dossier, bandelette, gaz du sang : depuis son iPad, en un geste.</li>
+        <li><b>L'apprenant analyse</b>Il lit le dossier, mesure une glycémie, lance l'analyse de gaz du sang.</li>
+        <li><b>Fermez d'un geste</b>Touche ✕, voile à gauche ou balayage vers la droite.</li>
+      </ol>
     </div>
+    <div class="mc-grid">
+      <figure class="mc-card sr"><img src="/assets/mediacenter-glycemie-2026.webp" alt="Media Center sur le DEFIGARD HD-7 — Bio : lecteur de glycémie" width="1600" height="1200" loading="lazy" decoding="async"/><figcaption><strong>Bio : les lecteurs de mesure</strong><span>Glycémie, cétones, lactates, HémoCue, CO : l'apprenant fait la mesure, la valeur vient du patient simulé.</span></figcaption></figure>
+      <figure class="mc-card sr"><img src="/assets/mediacenter-dossier-2026.webp" alt="Media Center sur le DEFIGARD HD-7 — DLU : dossier de liaison d&#x27;urgence" width="1600" height="1200" loading="lazy" decoding="async"/><figcaption><strong>DLU : le dossier de liaison d'urgence</strong><span>Identité, antécédents, traitement en cours : la fiche se remplit depuis l'iPad du formateur.</span></figcaption></figure>
+      <figure class="mc-card sr"><img src="/assets/mediacenter-biologie-2026.webp" alt="Media Center sur le DEFIGARD HD-7 — DLU : compte rendu d&#x27;analyses" width="1600" height="1200" loading="lazy" decoding="async"/><figcaption><strong>DLU : le compte rendu d'analyses</strong><span>Le compte rendu d'analyses médicales se lit comme sur papier, valeurs hors référence signalées.</span></figcaption></figure>
+      <figure class="mc-card sr"><img src="/assets/mediacenter-radio-contenu-2026.webp" alt="Media Center — radiographies envoyées par le formateur" width="1600" height="1200" loading="lazy" decoding="async"/><figcaption><strong>Radio : les clichés envoyés</strong><span>Clichés classés par région (abdomen, bassin…) : 37 clichés en 9 catégories côté formateur.</span></figcaption></figure>
+      <figure class="mc-card sr"><img src="/assets/mediacenter-bandelette-contenu-2026.webp" alt="Media Center — bandelette urinaire et charte de couleurs" width="1600" height="1200" loading="lazy" decoding="async"/><figcaption><strong>Bandelette urinaire</strong><span>Les dix zones de la bandelette se comparent à la charte de couleurs, comme au chevet du patient.</span></figcaption></figure>
+      <figure class="mc-card sr"><img src="/assets/mediacenter-co-2026.webp" alt="Media Center sur le DEFIGARD HD-7 — Bio : détecteur de CO" width="1600" height="1200" loading="lazy" decoding="async"/><figcaption><strong>Détecteur de CO</strong><span>Détection en continu, alarme à 25 ppm.</span></figcaption></figure>
+    </div>
+    <div class="mc-more">
+      <div class="sr"><strong>ECG : l'archive</strong><span>Les 12 dérivations imprimées depuis l'appareil sont archivées et se rouvrent dans le panneau.</span></div>
+      <div class="sr"><strong>Historique : le journal de séance</strong><span>Chaque événement de l'appareil est consigné, pour le débriefing.</span></div>
+      <div class="sr"><strong>Liaison : l'état du lien</strong><span>L'état de la liaison avec l'iPad du formateur (liaison locale, sans Internet).</span></div>
+    </div>
+    <p class="t-caption center sr" style="margin:28px auto 0;max-width:780px">Captures du panneau Media Center sur le DEFIGARD HD-7 (SCHILLER), sans iPad formateur connecté : gaz du sang et lecteurs de démonstration, dossier vide. Radio et bandelette : extraits du contenu envoyé par le formateur.</p>
   </div>
 </section>
 
@@ -417,6 +537,93 @@
     </div>
     <p class="t-caption center sr" style="margin:28px auto 0;max-width:720px">Captures du poste formateur VitalX sur iPad. Touchez une image pour l'agrandir.</p>
     <div class="center sr" style="margin-top:20px"><a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="more">Ouvrir vitalxtrainer.app</a></div>
+  </div>
+</section>
+
+<!-- ACADEMY : le hub de jeux RCP -->
+<section id="academy" class="section dark">
+  <div class="wrap-wide">
+    <div class="section-head center">
+      <p class="t-eyebrow sr">ACADEMY</p>
+      <h2 class="t-section sr">Quatre jeux.<br>Un seul geste : masser.</h2>
+      <p class="t-section-lead sr sr-d1">ACADEMY est le hub de jeux d'entraînement à la RCP de l'application VitalX. Choisissez un mode, posez le capteur, massez.</p>
+    </div>
+    <figure class="ac-hub sr"><img src="/assets/academy-hub.webp" alt="ACADEMY : le choix des quatre modes, Course RCP, Mission Solo, Fusée RCP et Corps &amp; RCP" width="1600" height="1200" loading="lazy" decoding="async"/></figure>
+    <div class="ac-modes">
+      <article class="ac-mode sr"><span class="ac-badge">Multijoueur · jusqu'à 5</span><h3>COURSE RCP</h3><p>Plus votre massage est bon, plus votre soignant court vite. Défiez vos collègues.</p></article>
+      <article class="ac-mode sr"><span class="ac-badge">Solo · 20 missions</span><h3>MISSION SOLO</h3><p>Incarnez le médecin urgentiste : évaluez, alertez, massez, défibrillez, sauvez.</p></article>
+      <article class="ac-mode sr"><span class="ac-badge">Arcade · enfants et adultes</span><h3>FUSÉE RCP</h3><p>Votre massage est le carburant : décollez, passez la Lune, Mars, Jupiter… jusqu'aux étoiles.</p></article>
+      <article class="ac-mode sr"><span class="ac-badge">Anatomie</span><h3>CORPS &amp; RCP</h3><p>Voyez ce que fait votre massage : le sang monte au cerveau, les poumons se remplissent à chaque insufflation.</p></article>
+    </div>
+    <div class="ac-shots">
+      <figure class="sr"><img src="/assets/academy-corps-rcp.webp" alt="Corps &amp; RCP en jeu : mannequin, cœur, poumons et circulation animés" width="1600" height="1200" loading="lazy" decoding="async"/><figcaption><strong>Corps &amp; RCP, en jeu</strong>Le mannequin, le cœur, les poumons et la circulation s'animent au rythme du massage.</figcaption></figure>
+      <figure class="sr sr-d1"><img src="/assets/academy-tableau-rcp.webp" alt="Tableau de bord RCP : jauges de profondeur, fréquence et relâchement, score et série parfaite" width="1600" height="1102" loading="lazy" decoding="async"/><figcaption><strong>Tableau de bord RCP</strong>Profondeur, fréquence, relâchement, score et série parfaite : le retour du capteur, en direct.</figcaption></figure>
+    </div>
+    <p class="t-caption ac-note sr">Les quatre modes utilisent le capteur VitalX-RCP (Bluetooth). Mission Solo, Fusée et Corps &amp; RCP se jouent aussi au toucher.</p>
+  </div>
+</section>
+
+<!-- FONCTIONS -->
+<section id="features" class="section gray">
+  <div class="wrap">
+    <div class="section-head center">
+      <p class="t-eyebrow sr">Capacités</p>
+      <h2 class="t-section sr">Tout pour former.</h2>
+    </div>
+    <div class="grid-3">
+      <div class="feat sr"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div><h3>Interfaces constructeurs</h3><p>Schiller, Weinmann et bientôt d'autres : les vrais écrans, reproduits avec l'autorisation des fabricants, inclus dans la licence.</p></div>
+      <div class="feat sr sr-d1"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><h3>Scénarios dynamiques</h3><p>Cas concrets, AVC, douleur thoracique, polytrauma, avec étapes guidées et transitions automatiques.</p></div>
+      <div class="feat sr sr-d2"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 20h8"/></svg></div><h3>Moniteur réaliste</h3><p>Constantes temps réel, PNI auto/manuel, alertes, tendances, courbes ECG, SpO₂ et EtCO₂. Profils adulte et enfant.</p></div>
+      <div class="feat sr"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg></div><h3>Pilotage formateur</h3><p>Contrôle à distance des constantes, scénarios, ECG 12D et DSA, depuis l'iPad ou le web, quelle que soit l'interface affichée.</p></div>
+      <div class="feat sr sr-d1"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><h3>ECG 12 dérivations</h3><p>Plus de 20 tracés, sinus, STEMI, FA, TV, FV, torsades, WPW, avec interprétation et impression simulée.</p></div>
+      <div class="feat sr sr-d2"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><h3>Media Center</h3><p>ECG, biologie, radiologie, bandelette urinaire et DLU accessibles depuis le scope pour des scénarios contextualisés.</p></div>
+      <div class="feat sr"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg></div><h3>Historique complet</h3><p>Snapshots automatiques, PNI horodatées, sparklines et statistiques min / moyenne / max.</p></div>
+      <div class="feat sr sr-d1"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.2 2.2M16.2 16.2l2.2 2.2M5.6 18.4l2.2-2.2M16.2 7.8l2.2-2.2"/></svg></div><h3>Sync instantanée</h3><p>Un code de licence, jusqu'à 3 appareils. Synchronisation cloud immédiate, partout.</p></div>
+      <div class="feat sr sr-d2"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h3>Prêt en 30 secondes</h3><p>Aucune configuration complexe. Ouvrez l'app VitalX Scope, entrez le code, choisissez l'interface, formez.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- APPLICATION : fenêtres et menus des notices (carrousel) -->
+<section id="app" class="section dark" style="padding-bottom:clamp(48px,7vw,90px)">
+  <div class="wrap">
+    <div class="section-head section-head-left" style="margin-bottom:34px">
+      <p class="t-eyebrow sr">L'application</p>
+      <h2 class="t-section sr">Jusque dans les menus.</h2>
+      <p class="t-section-lead sr sr-d1">Menus utilisateur, seuils d'alarme, choix du mode : chaque fenêtre est reproduite d'après la notice de l'appareil.</p>
+    </div>
+  </div>
+  <div class="marquee" id="appScroll" aria-label="Fenêtres et menus des appareils">
+    <div class="marquee-track">
+    <figure class="hcard"><img src="/assets/ecran-meducore-menu.webp" alt="MEDUCORE Standard² — Menu utilisateur" width="1000" height="750" loading="lazy"/><figcaption><strong>MEDUCORE Standard²</strong><span>Menu utilisateur</span></figcaption></figure>
+    <figure class="hcard"><img src="/assets/ecran-meducore-seuils.webp" alt="MEDUCORE Standard² — Seuils d&#x27;alarmes" width="1000" height="750" loading="lazy"/><figcaption><strong>MEDUCORE Standard²</strong><span>Seuils d'alarmes</span></figcaption></figure>
+    <figure class="hcard"><img src="/assets/ecran-meducore-energie.webp" alt="MEDUCORE Standard² — Choix de l&#x27;énergie (mode manuel)" width="1000" height="750" loading="lazy"/><figcaption><strong>MEDUCORE Standard²</strong><span>Choix de l'énergie (mode manuel)</span></figcaption></figure>
+    <figure class="hcard"><img src="/assets/ecran-meducore-impression.webp" alt="MEDUCORE Standard² — Impression papier de l&#x27;ECG 12 dérivations" width="1000" height="567" loading="lazy"/><figcaption><strong>MEDUCORE Standard²</strong><span>Impression papier de l'ECG 12 dérivations</span></figcaption></figure>
+    <figure class="hcard"><img src="/assets/ecran-medumat-vc.webp" alt="MEDUMAT Standard² — Écran principal (VC)" width="1000" height="750" loading="lazy"/><figcaption><strong>MEDUMAT Standard²</strong><span>Écran principal (VC)</span></figcaption></figure>
+    <figure class="hcard"><img src="/assets/ecran-medumat-menu.webp" alt="MEDUMAT Standard² — Menu utilisateur" width="1000" height="750" loading="lazy"/><figcaption><strong>MEDUMAT Standard²</strong><span>Menu utilisateur</span></figcaption></figure>
+    <figure class="hcard"><img src="/assets/ecran-medumat-seuils.webp" alt="MEDUMAT Standard² — Seuils d&#x27;alarmes" width="1000" height="750" loading="lazy"/><figcaption><strong>MEDUMAT Standard²</strong><span>Seuils d'alarmes</span></figcaption></figure>
+    <figure class="hcard"><img src="/assets/ecran-medumat-parametres.webp" alt="MEDUMAT Standard² — Paramètres du mode avant démarrage" width="1000" height="750" loading="lazy"/><figcaption><strong>MEDUMAT Standard²</strong><span>Paramètres du mode avant démarrage</span></figcaption></figure>
+    <figure class="hcard"><img src="/assets/ecran-meduvent-menu.webp" alt="MEDUVENT Standard — Menu utilisateur" width="1000" height="567" loading="lazy"/><figcaption><strong>MEDUVENT Standard</strong><span>Menu utilisateur</span></figcaption></figure>
+    <figure class="hcard"><img src="/assets/ecran-meduvent-limites.webp" alt="MEDUVENT Standard — Limites d&#x27;alarme" width="1000" height="567" loading="lazy"/><figcaption><strong>MEDUVENT Standard</strong><span>Limites d'alarme</span></figcaption></figure>
+    <figure class="hcard"><img src="/assets/ecran-meduvent-modes.webp" alt="MEDUVENT Standard — Choix du mode" width="1000" height="567" loading="lazy"/><figcaption><strong>MEDUVENT Standard</strong><span>Choix du mode</span></figcaption></figure>
+    <figure class="hcard"><img src="/assets/ecran-meduvent-oxygene.webp" alt="MEDUVENT Standard — Alimentation en oxygène" width="1000" height="750" loading="lazy"/><figcaption><strong>MEDUVENT Standard</strong><span>Alimentation en oxygène</span></figcaption></figure>
+    <figure class="hcard"><img src="/assets/ecran-defigard-menu.webp" alt="DEFIGARD Touch 7 — Menu : vues, modes, R-ECG, ECG long" width="1000" height="750" loading="lazy"/><figcaption><strong>DEFIGARD Touch 7</strong><span>Menu : vues, modes, R-ECG, ECG long</span></figcaption></figure>
+    <figure class="hcard"><img src="/assets/ecran-physiogard-technique.webp" alt="PHYSIOGARD Touch 7 — Alarme technique : voyant orange fixe" width="1000" height="692" loading="lazy"/><figcaption><strong>PHYSIOGARD Touch 7</strong><span>Alarme technique : voyant orange fixe</span></figcaption></figure>
+    <figure class="hcard" aria-hidden="true"><img src="/assets/ecran-meducore-menu.webp" alt="MEDUCORE Standard² — Menu utilisateur" width="1000" height="750" loading="lazy"/><figcaption><strong>MEDUCORE Standard²</strong><span>Menu utilisateur</span></figcaption></figure>
+    <figure class="hcard" aria-hidden="true"><img src="/assets/ecran-meducore-seuils.webp" alt="MEDUCORE Standard² — Seuils d&#x27;alarmes" width="1000" height="750" loading="lazy"/><figcaption><strong>MEDUCORE Standard²</strong><span>Seuils d'alarmes</span></figcaption></figure>
+    <figure class="hcard" aria-hidden="true"><img src="/assets/ecran-meducore-energie.webp" alt="MEDUCORE Standard² — Choix de l&#x27;énergie (mode manuel)" width="1000" height="750" loading="lazy"/><figcaption><strong>MEDUCORE Standard²</strong><span>Choix de l'énergie (mode manuel)</span></figcaption></figure>
+    <figure class="hcard" aria-hidden="true"><img src="/assets/ecran-meducore-impression.webp" alt="MEDUCORE Standard² — Impression papier de l&#x27;ECG 12 dérivations" width="1000" height="567" loading="lazy"/><figcaption><strong>MEDUCORE Standard²</strong><span>Impression papier de l'ECG 12 dérivations</span></figcaption></figure>
+    <figure class="hcard" aria-hidden="true"><img src="/assets/ecran-medumat-vc.webp" alt="MEDUMAT Standard² — Écran principal (VC)" width="1000" height="750" loading="lazy"/><figcaption><strong>MEDUMAT Standard²</strong><span>Écran principal (VC)</span></figcaption></figure>
+    <figure class="hcard" aria-hidden="true"><img src="/assets/ecran-medumat-menu.webp" alt="MEDUMAT Standard² — Menu utilisateur" width="1000" height="750" loading="lazy"/><figcaption><strong>MEDUMAT Standard²</strong><span>Menu utilisateur</span></figcaption></figure>
+    <figure class="hcard" aria-hidden="true"><img src="/assets/ecran-medumat-seuils.webp" alt="MEDUMAT Standard² — Seuils d&#x27;alarmes" width="1000" height="750" loading="lazy"/><figcaption><strong>MEDUMAT Standard²</strong><span>Seuils d'alarmes</span></figcaption></figure>
+    <figure class="hcard" aria-hidden="true"><img src="/assets/ecran-medumat-parametres.webp" alt="MEDUMAT Standard² — Paramètres du mode avant démarrage" width="1000" height="750" loading="lazy"/><figcaption><strong>MEDUMAT Standard²</strong><span>Paramètres du mode avant démarrage</span></figcaption></figure>
+    <figure class="hcard" aria-hidden="true"><img src="/assets/ecran-meduvent-menu.webp" alt="MEDUVENT Standard — Menu utilisateur" width="1000" height="567" loading="lazy"/><figcaption><strong>MEDUVENT Standard</strong><span>Menu utilisateur</span></figcaption></figure>
+    <figure class="hcard" aria-hidden="true"><img src="/assets/ecran-meduvent-limites.webp" alt="MEDUVENT Standard — Limites d&#x27;alarme" width="1000" height="567" loading="lazy"/><figcaption><strong>MEDUVENT Standard</strong><span>Limites d'alarme</span></figcaption></figure>
+    <figure class="hcard" aria-hidden="true"><img src="/assets/ecran-meduvent-modes.webp" alt="MEDUVENT Standard — Choix du mode" width="1000" height="567" loading="lazy"/><figcaption><strong>MEDUVENT Standard</strong><span>Choix du mode</span></figcaption></figure>
+    <figure class="hcard" aria-hidden="true"><img src="/assets/ecran-meduvent-oxygene.webp" alt="MEDUVENT Standard — Alimentation en oxygène" width="1000" height="750" loading="lazy"/><figcaption><strong>MEDUVENT Standard</strong><span>Alimentation en oxygène</span></figcaption></figure>
+    <figure class="hcard" aria-hidden="true"><img src="/assets/ecran-defigard-menu.webp" alt="DEFIGARD Touch 7 — Menu : vues, modes, R-ECG, ECG long" width="1000" height="750" loading="lazy"/><figcaption><strong>DEFIGARD Touch 7</strong><span>Menu : vues, modes, R-ECG, ECG long</span></figcaption></figure>
+    <figure class="hcard" aria-hidden="true"><img src="/assets/ecran-physiogard-technique.webp" alt="PHYSIOGARD Touch 7 — Alarme technique : voyant orange fixe" width="1000" height="692" loading="lazy"/><figcaption><strong>PHYSIOGARD Touch 7</strong><span>Alarme technique : voyant orange fixe</span></figcaption></figure>
+    </div>
   </div>
 </section>
 
@@ -620,7 +827,7 @@
 <footer class="footer">
   <div class="wrap">
     <div class="footer-legal">
-      <p>Les interfaces constructeurs (Schiller DEFIGARD Touch 7 et PHYSIOGARD Touch 7, Weinmann MEDUCORE Standard² et MEDUMAT Standard²) sont reproduites dans le scope VitalX avec l'autorisation de leurs fabricants respectifs, à des fins de formation uniquement. Le simulateur VitalX est conçu et développé par VitalX ; il n'est ni fabriqué, ni distribué, ni approuvé comme dispositif médical par ces constructeurs. Les noms de produits cités sont des marques de leurs propriétaires respectifs.</p>
+      <p>Les interfaces constructeurs (Schiller DEFIGARD Touch 7, PHYSIOGARD Touch 7, ARGUS PRO LifeCare 3, DEFIGARD HD-7, MAGLIFE RT-1 et MAGSCREEN RT-1, Weinmann MEDUCORE Standard², MEDUMAT Standard² et MEDUVENT Standard) sont reproduites dans le scope VitalX avec l'autorisation de leurs fabricants respectifs, à des fins de formation uniquement. Le simulateur VitalX est conçu et développé par VitalX ; il n'est ni fabriqué, ni distribué, ni approuvé comme dispositif médical par ces constructeurs. Les noms de produits cités sont des marques de leurs propriétaires respectifs.</p>
       <p>TVA non applicable, art. 293 B du CGI. Règlement à la commande, livraison des packs 15 à 30 jours ouvrés. Châssis et housse garantis à vie ; iPad et iPhone couverts par la garantie Apple. Un code de licence active jusqu'à 3 appareils.</p>
     </div>
     <div class="footer-cols">
@@ -630,7 +837,9 @@
           <li><a href="#v2">VitalX</a></li>
           <li><a href="#packs">VitalX Plus et Ultra</a></li>
           <li><a href="#pods">POD'S</a></li>
-          <li><a href="#interfaces">Interfaces constructeurs</a></li>
+          <li><a href="#schiller">Interfaces constructeurs</a></li>
+          <li><a href="#mediacenter">Media Center</a></li>
+          <li><a href="#academy">ACADEMY</a></li>
           <li><a href="/boutique.html">Boutique</a></li>
         </ul>
       </div>

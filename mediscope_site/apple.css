@@ -348,3 +348,75 @@ textarea.finp{resize:vertical;min-height:130px}
   .cat img,.card-hover{transition:none}
   html{scroll-behavior:auto}
 }
+
+/* ══ Refonte de l'accueil (06/10/2026) : SCHILLER, WEINMANN, Media Center, ACADEMY ══ */
+.anchor-alias{display:block;height:0;overflow:hidden}
+/* Navigation : moins de liens sur écrans moyens */
+@media(max-width:960px){.gnav-home a[href="/affiliation.html"],.gnav-home a[href="/qui-sommes-nous.html"]{display:none}}
+
+/* ── Sections marques (SCHILLER sombre, WEINMANN clair) ─────────── */
+.brand-sec{--fg:var(--ink);--mut:var(--ink-2);--line:#e8e8ed;--cap:#f5f5f7;--chip:#f5f5f7}
+.brand-sec.dark{--fg:#f5f5f7;--mut:#a1a1a6;--line:#2c2c2e;--cap:#141416;--chip:#1d1d1f}
+.dv-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:0 auto clamp(20px,3vw,36px);max-width:940px}
+.dv-nav a,.dark .dv-nav a{font-size:14px;line-height:1.2;letter-spacing:-.016em;color:var(--fg);background:var(--chip);border:1px solid var(--line);border-radius:980px;padding:8px 16px;transition:border-color .2s}
+.dv-nav a:hover{border-color:var(--mut);text-decoration:none}
+.dv{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(22px,4.5vw,64px);align-items:center;padding:clamp(30px,4.5vw,58px) 0;border-top:1px solid var(--line);scroll-margin-top:calc(var(--nav-h,48px) + 8px)}
+.dv-list .dv:first-child{border-top:0}
+.dv.rev .dv-media{order:2}
+.dv-media{min-width:0}
+.dv-main{position:relative;margin:0;border-radius:22px;overflow:hidden;background:#000}
+.dv-main img{display:block;width:100%;aspect-ratio:4/3;object-fit:contain}
+.dv-chip{position:absolute;left:14px;bottom:14px;font-size:12px;letter-spacing:-.01em;color:#f5f5f7;background:rgba(0,0,0,.62);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-radius:980px;padding:5px 11px;pointer-events:none}
+.dv-shots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:10px}
+.dv-shots figure{margin:0;border-radius:14px;overflow:hidden;background:var(--cap);border:1px solid var(--line)}
+.dv-shots img{display:block;width:100%;aspect-ratio:4/3;object-fit:contain;background:#000}
+.dv-shots figcaption{padding:9px 11px 11px;font-size:12px;line-height:1.35;letter-spacing:-.01em;color:var(--mut)}
+.dv-copy h3{font-size:clamp(28px,3.6vw,42px);line-height:1.08;font-weight:600;letter-spacing:-.01em;margin:10px 0 0;color:var(--fg)}
+.dv-kind{margin:6px 0 0;font-size:17px;line-height:1.3;color:var(--mut)}
+.dv-lead{margin:14px 0 0;font-size:17px;line-height:1.47;color:var(--fg)}
+.dv-pts{margin-top:20px}
+.dv-pts li{font-size:15px}
+.dv-foot{max-width:760px;margin:clamp(24px,4vw,40px) auto 0;text-align:center}
+@media(max-width:900px){.dv{grid-template-columns:minmax(0,1fr)}.dv.rev .dv-media{order:0}}
+@media(max-width:560px){.dv-shots{gap:6px}.dv-shots figcaption{padding:7px 8px 9px;font-size:11px}.dv-chip{left:10px;bottom:10px}}
+
+/* ── Media Center ───────────────────────────────────────────────── */
+.mc-hero{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(22px,4vw,56px);align-items:center}
+.mc-shot{margin:0;border-radius:22px;overflow:hidden;background:#1d1d1f;border:1px solid #2c2c2e}
+.mc-shot img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;background:#000}
+.mc-shot figcaption{padding:16px 22px 22px;font-size:14px;line-height:1.45;color:#a1a1a6}
+.mc-shot strong,.mc-card strong,.mc-more strong{display:block;font-size:18px;font-weight:600;letter-spacing:-.01em;color:#f5f5f7}
+.mc-steps{list-style:none;counter-reset:mc;margin:0;padding:0;display:grid;gap:20px}
+.mc-steps li{counter-increment:mc;position:relative;padding-left:48px;color:#a1a1a6;font-size:16px;line-height:1.45}
+.mc-steps li::before{content:counter(mc);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;background:#1d1d1f;border:1px solid #3a3a3c;color:#f5f5f7;font-weight:600;font-size:15px;display:grid;place-items:center}
+.mc-steps b{display:block;color:#f5f5f7;font-size:19px;font-weight:600;letter-spacing:-.01em;margin-bottom:2px}
+.mc-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:clamp(28px,4vw,48px)}
+.mc-card{margin:0;background:#1d1d1f;border-radius:20px;overflow:hidden;display:flex;flex-direction:column}
+.mc-card img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;background:#000}
+.mc-card figcaption{padding:16px 20px 22px}
+.mc-card span,.mc-more span{display:block;font-size:14px;line-height:1.45;color:#a1a1a6;margin-top:6px}
+.mc-more{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:16px}
+.mc-more div{border:1px solid #2c2c2e;border-radius:18px;padding:20px 22px}
+.mc-more strong{font-size:17px}
+@media(max-width:900px){.mc-hero{grid-template-columns:minmax(0,1fr)}.mc-grid,.mc-more{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.mc-grid,.mc-more{grid-template-columns:minmax(0,1fr)}}
+
+/* ── ACADEMY ────────────────────────────────────────────────────── */
+.ac-hub{margin:0 auto clamp(28px,4vw,48px);max-width:1000px;border-radius:24px;overflow:hidden;background:#05060d}
+.ac-hub img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.ac-modes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.ac-mode{background:#1d1d1f;border-radius:20px;padding:24px 22px 28px}
+.ac-badge{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.02em;text-transform:uppercase;color:#0a84ff;background:rgba(10,132,255,.14);border-radius:980px;padding:4px 10px;margin-bottom:14px}
+.ac-mode h3{margin:0;font-size:22px;line-height:1.15;font-weight:600;letter-spacing:-.01em;color:#f5f5f7}
+.ac-mode p{margin:10px 0 0;font-size:15px;line-height:1.47;color:#a1a1a6}
+.ac-shots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:16px}
+.ac-shots figure{margin:0;border-radius:20px;overflow:hidden;background:#1d1d1f}
+.ac-shots img{display:block;width:100%;aspect-ratio:4/3;object-fit:contain;background:#0c1018}
+.ac-shots figcaption{padding:16px 20px 22px;font-size:14px;line-height:1.45;color:#a1a1a6}
+.ac-shots strong{display:block;font-size:18px;font-weight:600;letter-spacing:-.01em;color:#f5f5f7;margin-bottom:4px}
+.ac-note{max-width:720px;margin:clamp(24px,4vw,40px) auto 0;text-align:center}
+@media(max-width:1068px){.ac-modes{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.ac-modes,.ac-shots{grid-template-columns:minmax(0,1fr)}}
+
+/* ── Carrousel : fenêtres des notices (fond noir derrière les écrans clairs) ── */
+.marquee .hcard img{aspect-ratio:4/3;object-fit:contain;background:#000}
