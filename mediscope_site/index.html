@@ -11,7 +11,7 @@
      • Contenu conservé : interfaces constructeurs (galeries), fonctions, app, pack, devis,
        références, affiliation, formulaire de contact Netlify, mentions constructeurs
      • v4.1 : galerie app en carrousel automatique (sans flèches), rappels bleu-blanc-rouge (Made in France)
-     • Ancres : #v2 #packs #pods #schiller (alias #interfaces) #weinmann #mediacenter #formateur #academy #features #app #in-the-box #devis #testimonials #contact
+     • Ancres : #v2 #packs #pods #interfaces (alias #schiller #weinmann : ouvrent la marque) #mediacenter #formateur #academy #features #app #in-the-box #devis #testimonials #contact
      • 06/10/2026 : refonte (SCHILLER, WEINMANN, Media Center, formateur, ACADEMY) ; anciennes sections interfaces/mediacenter remplacées
 -->
 <html lang="fr">
@@ -65,6 +65,7 @@
 .devis-list strong{display:block;font-size:17px;font-weight:600;letter-spacing:-.022em}
 .devis-list p{margin:3px 0 0;font-size:15px;color:var(--ink-2);line-height:1.47}
 </style>
+<noscript><style>.ifc-brand{grid-template-rows:1fr;opacity:1;visibility:visible}.ifc-bar{display:none}</style></noscript>
 </head>
 <body>
 
@@ -76,8 +77,7 @@
       <li><a href="#v2">Scopes</a></li>
       <li><a href="#packs">Packs</a></li>
       <li><a href="#pods">POD'S</a></li>
-      <li><a href="#schiller">Schiller</a></li>
-      <li><a href="#weinmann">Weinmann</a></li>
+      <li><a href="#interfaces">Interfaces</a></li>
       <li><a href="#mediacenter">Media Center</a></li>
       <li><a href="#formateur">Formateur</a></li>
       <li><a href="#academy">ACADEMY</a></li>
@@ -98,8 +98,7 @@
   <a href="#v2">Scopes VitalX</a>
   <a href="#packs">Packs VitalX</a>
   <a href="#pods">POD'S</a>
-  <a href="#schiller">Schiller</a>
-  <a href="#weinmann">Weinmann</a>
+  <a href="#interfaces">Interfaces</a>
   <a href="#mediacenter">Media Center</a>
   <a href="#formateur">Formateur</a>
   <a href="#academy">ACADEMY</a>
@@ -249,18 +248,37 @@
   </div>
 </section>
 
-<!-- SCHILLER : tous les appareils (hors FRED easy G2) -->
-<span id="interfaces" class="anchor-alias"></span>
-<section id="schiller" class="section dark brand-sec">
+<!-- INTERFACES CONSTRUCTEURS : bandeau des marques → appareils → écrans (brands.js ; ancres #interfaces #schiller #weinmann #sch-… #wei-…) -->
+<span id="interfaces" class="anchor-alias ifc-alias"></span><span id="schiller" class="anchor-alias ifc-alias"></span><span id="weinmann" class="anchor-alias ifc-alias"></span>
+<section class="section brand-sec ifc" aria-labelledby="ifcTitle" data-ifc>
   <div class="wrap-wide">
-    <div class="section-head center">
+    <div class="section-head center ifc-head">
       <p class="t-eyebrow sr">Interfaces constructeurs</p>
-      <h2 class="t-section sr">SCHILLER.<br>Six appareils, reproduits fidèlement.</h2>
+      <h2 class="t-section sr" id="ifcTitle">Neuf appareils, reproduits fidèlement.</h2>
       <p class="t-section-lead sr sr-d1">Chaque appareil est un module de l'application VitalX pour iPad : le châssis, l'écran et les fonctions suivent la notice du fabricant.</p>
     </div>
-    <nav class="dv-nav sr" aria-label="Appareils SCHILLER"><a href="#sch-defigard">DEFIGARD Touch 7</a><a href="#sch-physiogard">PHYSIOGARD Touch 7</a><a href="#sch-argus">ARGUS PRO LifeCare 3</a><a href="#sch-hd7">DEFIGARD HD-7</a><a href="#sch-maglife">MAGLIFE RT-1</a><a href="#sch-magscreen">MAGSCREEN RT-1</a></nav>
-    <div class="dv-list">
-<article class="dv sr" id="sch-defigard">
+    <div class="ifc-box sr">
+      <div class="ifc-band" role="tablist" aria-label="Marques">
+<button type="button" class="ifc-tab" role="tab" id="ifc-t-schiller" data-brand="schiller" aria-selected="true" aria-controls="ifc-p-schiller"><img src="/assets/logo-schiller.webp" alt="SCHILLER" width="319" height="96" decoding="async" data-no-lightbox="true"/><span class="ifc-count">6 appareils</span></button>
+<button type="button" class="ifc-tab" role="tab" id="ifc-t-weinmann" data-brand="weinmann" aria-selected="false" aria-controls="ifc-p-weinmann" tabindex="-1"><img src="/assets/logo-weinmann.webp" alt="WEINMANN" width="327" height="96" decoding="async" data-no-lightbox="true"/><span class="ifc-count">3 appareils</span></button>
+      </div>
+      <div class="ifc-stage">
+<div class="ifc-brand ifc-x is-on" id="ifc-p-schiller" role="tabpanel" aria-labelledby="ifc-t-schiller" data-brand="schiller" data-view="list">
+<div class="ifc-xin"><div class="ifc-pad">
+<div class="ifc-bar">
+<p class="ifc-hint"><span class="ifc-h-mouse">Survolez une marque, puis cliquez sur un appareil pour voir ses écrans.</span><span class="ifc-h-touch">Touchez une marque, puis un appareil pour voir ses écrans.</span></p>
+<div class="ifc-nav"><button type="button" class="ifc-back">Tous les appareils</button><div class="ifc-chips"><button type="button" class="ifc-chip" data-dev="sch-defigard">DEFIGARD Touch 7</button><button type="button" class="ifc-chip" data-dev="sch-physiogard">PHYSIOGARD Touch 7</button><button type="button" class="ifc-chip" data-dev="sch-argus">ARGUS PRO LifeCare 3</button><button type="button" class="ifc-chip" data-dev="sch-hd7">DEFIGARD HD-7</button><button type="button" class="ifc-chip" data-dev="sch-maglife">MAGLIFE RT-1</button><button type="button" class="ifc-chip" data-dev="sch-magscreen">MAGSCREEN RT-1</button></div></div>
+</div>
+<div class="ifc-x ifc-lx is-on"><div class="ifc-xin"><div class="ifc-pad"><ul class="ifc-list" data-n="6">
+<li><button type="button" class="ifc-tile" data-dev="sch-defigard" style="--i:0"><span class="ifc-pic"><img src="/assets/ifc-sch-defigard.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">DEFIGARD Touch 7</span><span class="ifc-kind">Défibrillateur-moniteur</span></button></li>
+<li><button type="button" class="ifc-tile" data-dev="sch-physiogard" style="--i:1"><span class="ifc-pic"><img src="/assets/ifc-sch-physiogard.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">PHYSIOGARD Touch 7</span><span class="ifc-kind">Moniteur patient</span></button></li>
+<li><button type="button" class="ifc-tile" data-dev="sch-argus" style="--i:2"><span class="ifc-pic"><img src="/assets/ifc-sch-argus.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">ARGUS PRO LifeCare 3</span><span class="ifc-kind">Défibrillateur-moniteur portable</span></button></li>
+<li><button type="button" class="ifc-tile" data-dev="sch-hd7" style="--i:3"><span class="ifc-pic"><img src="/assets/ifc-sch-hd7.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">DEFIGARD HD-7</span><span class="ifc-kind">Défibrillateur-moniteur à molette</span></button></li>
+<li><button type="button" class="ifc-tile" data-dev="sch-maglife" style="--i:4"><span class="ifc-pic"><img src="/assets/ifc-sch-maglife.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">MAGLIFE RT-1</span><span class="ifc-kind">Moniteur compatible IRM</span></button></li>
+<li><button type="button" class="ifc-tile" data-dev="sch-magscreen" style="--i:5"><span class="ifc-pic"><img src="/assets/ifc-sch-magscreen.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">MAGSCREEN RT-1</span><span class="ifc-kind">Écran déporté IRM</span></button></li>
+</ul></div></div></div>
+<div class="ifc-x ifc-vx"><div class="ifc-xin"><div class="ifc-pad">
+<article class="dv" id="sch-defigard" hidden>
   <div class="dv-media">
     <figure class="dv-main"><img src="/assets/schiller-defigard-chassis.webp" alt="DEFIGARD Touch 7 — Châssis complet" width="1200" height="900" loading="lazy" decoding="async"/><span class="dv-chip">Châssis complet</span></figure>
     <div class="dv-shots">
@@ -282,7 +300,7 @@
     </ul>
   </div>
 </article>
-<article class="dv sr rev" id="sch-physiogard">
+<article class="dv" id="sch-physiogard" hidden>
   <div class="dv-media">
     <figure class="dv-main"><img src="/assets/schiller-physiogard-chassis.webp" alt="PHYSIOGARD Touch 7 — Châssis complet" width="1200" height="900" loading="lazy" decoding="async"/><span class="dv-chip">Châssis complet</span></figure>
     <div class="dv-shots">
@@ -304,7 +322,7 @@
     </ul>
   </div>
 </article>
-<article class="dv sr" id="sch-argus">
+<article class="dv" id="sch-argus" hidden>
   <div class="dv-media">
     <figure class="dv-main"><img src="/assets/schiller-argus-chassis.webp" alt="ARGUS PRO LifeCare 3 — Châssis complet" width="1200" height="900" loading="lazy" decoding="async"/><span class="dv-chip">Châssis complet</span></figure>
     <div class="dv-shots">
@@ -326,7 +344,7 @@
     </ul>
   </div>
 </article>
-<article class="dv sr rev" id="sch-hd7">
+<article class="dv" id="sch-hd7" hidden>
   <div class="dv-media">
     <figure class="dv-main"><img src="/assets/schiller-hd7-chassis.webp" alt="DEFIGARD HD-7 — Châssis complet" width="1200" height="900" loading="lazy" decoding="async"/><span class="dv-chip">Châssis complet</span></figure>
     <div class="dv-shots">
@@ -348,7 +366,7 @@
     </ul>
   </div>
 </article>
-<article class="dv sr" id="sch-maglife">
+<article class="dv" id="sch-maglife" hidden>
   <div class="dv-media">
     <figure class="dv-main"><img src="/assets/schiller-maglife-chassis.webp" alt="MAGLIFE RT-1 — Châssis complet" width="1200" height="900" loading="lazy" decoding="async"/><span class="dv-chip">Châssis complet</span></figure>
     <div class="dv-shots">
@@ -370,7 +388,7 @@
     </ul>
   </div>
 </article>
-<article class="dv sr rev" id="sch-magscreen">
+<article class="dv" id="sch-magscreen" hidden>
   <div class="dv-media">
     <figure class="dv-main"><img src="/assets/schiller-magscreen-chassis.webp" alt="MAGSCREEN RT-1 — Châssis complet" width="1200" height="900" loading="lazy" decoding="async"/><span class="dv-chip">Châssis complet</span></figure>
     <div class="dv-shots">
@@ -392,22 +410,23 @@
     </ul>
   </div>
 </article>
-    </div>
-    <p class="t-caption dv-foot sr">Interfaces reproduites avec l'autorisation de Schiller. Simulateur conçu et développé par VitalX. SCHILLER, DEFIGARD, PHYSIOGARD, ARGUS, MAGLIFE et MAGSCREEN sont des marques de leurs propriétaires respectifs. Captures de l'application VitalX (simulateur iPad). Les interprétations affichées sont simulées et ne remplacent pas un avis médical.</p>
-  </div>
-</section>
-
-<!-- WEINMANN : tous les appareils -->
-<section id="weinmann" class="section brand-sec">
-  <div class="wrap-wide">
-    <div class="section-head center">
-      <p class="t-eyebrow sr">Interfaces constructeurs</p>
-      <h2 class="t-section sr">WEINMANN.<br>Trois appareils, reproduits en entier.</h2>
-      <p class="t-section-lead sr sr-d1">MEDUCORE Standard², MEDUMAT Standard² et MEDUVENT Standard : châssis, écrans, touches et menus reconstruits d'après les notices des appareils.</p>
-    </div>
-    <nav class="dv-nav sr" aria-label="Appareils WEINMANN"><a href="#wei-meducore">MEDUCORE Standard²</a><a href="#wei-medumat">MEDUMAT Standard²</a><a href="#wei-meduvent">MEDUVENT Standard</a></nav>
-    <div class="dv-list">
-<article class="dv sr" id="wei-meducore">
+</div></div></div>
+<p class="t-caption ifc-foot">Interfaces reproduites avec l'autorisation de Schiller. Simulateur conçu et développé par VitalX. SCHILLER, DEFIGARD, PHYSIOGARD, ARGUS, MAGLIFE et MAGSCREEN sont des marques de leurs propriétaires respectifs. Captures de l'application VitalX (simulateur iPad). Les interprétations affichées sont simulées et ne remplacent pas un avis médical.</p>
+</div></div>
+</div>
+<div class="ifc-brand ifc-x" id="ifc-p-weinmann" role="tabpanel" aria-labelledby="ifc-t-weinmann" data-brand="weinmann" data-view="list">
+<div class="ifc-xin"><div class="ifc-pad">
+<div class="ifc-bar">
+<p class="ifc-hint"><span class="ifc-h-mouse">Survolez une marque, puis cliquez sur un appareil pour voir ses écrans.</span><span class="ifc-h-touch">Touchez une marque, puis un appareil pour voir ses écrans.</span></p>
+<div class="ifc-nav"><button type="button" class="ifc-back">Tous les appareils</button><div class="ifc-chips"><button type="button" class="ifc-chip" data-dev="wei-meducore">MEDUCORE Standard²</button><button type="button" class="ifc-chip" data-dev="wei-medumat">MEDUMAT Standard²</button><button type="button" class="ifc-chip" data-dev="wei-meduvent">MEDUVENT Standard</button></div></div>
+</div>
+<div class="ifc-x ifc-lx is-on"><div class="ifc-xin"><div class="ifc-pad"><ul class="ifc-list" data-n="3">
+<li><button type="button" class="ifc-tile" data-dev="wei-meducore" style="--i:0"><span class="ifc-pic"><img src="/assets/ifc-wei-meducore.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">MEDUCORE Standard²</span><span class="ifc-kind">Défibrillateur-moniteur</span></button></li>
+<li><button type="button" class="ifc-tile" data-dev="wei-medumat" style="--i:1"><span class="ifc-pic"><img src="/assets/ifc-wei-medumat.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">MEDUMAT Standard²</span><span class="ifc-kind">Ventilateur</span></button></li>
+<li><button type="button" class="ifc-tile" data-dev="wei-meduvent" style="--i:2"><span class="ifc-pic"><img src="/assets/ifc-wei-meduvent.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">MEDUVENT Standard</span><span class="ifc-kind">Ventilateur</span></button></li>
+</ul></div></div></div>
+<div class="ifc-x ifc-vx"><div class="ifc-xin"><div class="ifc-pad">
+<article class="dv" id="wei-meducore" hidden>
   <div class="dv-media">
     <figure class="dv-main"><img src="/assets/weinmann-meducore-chassis.webp" alt="MEDUCORE Standard² — Châssis complet" width="1200" height="900" loading="lazy" decoding="async"/><span class="dv-chip">Châssis complet</span></figure>
     <div class="dv-shots">
@@ -429,7 +448,7 @@
     </ul>
   </div>
 </article>
-<article class="dv sr rev" id="wei-medumat">
+<article class="dv" id="wei-medumat" hidden>
   <div class="dv-media">
     <figure class="dv-main"><img src="/assets/weinmann-medumat-chassis.webp" alt="MEDUMAT Standard² — Châssis complet" width="1200" height="900" loading="lazy" decoding="async"/><span class="dv-chip">Châssis complet</span></figure>
     <div class="dv-shots">
@@ -451,7 +470,7 @@
     </ul>
   </div>
 </article>
-<article class="dv sr" id="wei-meduvent">
+<article class="dv" id="wei-meduvent" hidden>
   <div class="dv-media">
     <figure class="dv-main"><img src="/assets/weinmann-meduvent-chassis.webp" alt="MEDUVENT Standard — Châssis complet" width="1200" height="900" loading="lazy" decoding="async"/><span class="dv-chip">Châssis complet</span></figure>
     <div class="dv-shots">
@@ -473,9 +492,13 @@
     </ul>
   </div>
 </article>
+</div></div></div>
+<p class="t-caption ifc-foot">Interfaces reproduites avec l'autorisation de Weinmann. Simulateur conçu et développé par VitalX. WEINMANN, MEDUCORE, MEDUMAT et MEDUVENT sont des marques de leurs propriétaires. VitalX est un outil de formation, pas un dispositif médical. Captures de l'application VitalX pour iPad ; toutes les valeurs et mesures affichées sont simulées.</p>
+</div></div>
+</div>
+      </div>
     </div>
-    <p class="t-caption dv-foot sr">Interfaces reproduites avec l'autorisation de Weinmann. Simulateur conçu et développé par VitalX. WEINMANN, MEDUCORE, MEDUMAT et MEDUVENT sont des marques de leurs propriétaires. VitalX est un outil de formation, pas un dispositif médical. Captures de l'application VitalX pour iPad ; toutes les valeurs et mesures affichées sont simulées.</p>
-    <div class="center sr" style="margin-top:24px"><a href="#contact" class="more">Vous utilisez un autre appareil ? Dites-le nous</a></div>
+    <div class="center ifc-more"><a href="#contact" class="more">Vous utilisez un autre appareil ? Dites-le nous</a></div>
   </div>
 </section>
 
@@ -940,6 +963,7 @@ document.getElementById('year').textContent=new Date().getFullYear();
   document.addEventListener('keydown',e=>{if(e.key==='Escape')cl()});
 })();
 </script>
+<script src="/brands.js" defer></script>
 <script src="/i18n-site.js" defer></script>
 <script src="/i18n.js" defer></script>
 </body>

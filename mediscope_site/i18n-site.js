@@ -713,6 +713,14 @@ window.VitalXI18nExtra = {
     "Interface Schiller DEFIGARD Touch 7 reproduite dans le scope VitalX": "Schiller DEFIGARD Touch 7 interface reproduced in the VitalX monitor",
     "Interface Weinmann MEDUCORE Standard² reproduite dans le scope VitalX": "Weinmann MEDUCORE Standard² interface reproduced in the VitalX monitor",
     "Vue formateur — pilotage complet de la session": "Trainer view — full control of the session",
+    /* ── Interfaces constructeurs : bandeau des marques (07/10/2026) ── */
+    "Neuf appareils, reproduits fidèlement.": "Nine devices, faithfully reproduced.",
+    "Marques": "Brands",
+    "6 appareils": "6 devices",
+    "3 appareils": "3 devices",
+    "Survolez une marque, puis cliquez sur un appareil pour voir ses écrans.": "Hover over a brand, then click a device to see its screens.",
+    "Touchez une marque, puis un appareil pour voir ses écrans.": "Tap a brand, then a device to see its screens.",
+    "Tous les appareils": "All devices",
   },
 
   de: {
@@ -1410,5 +1418,13 @@ window.VitalXI18nExtra = {
     "Interface Schiller DEFIGARD Touch 7 reproduite dans le scope VitalX": "Schiller-DEFIGARD-Touch-7-Oberfläche im VitalX-Monitor nachgebildet",
     "Interface Weinmann MEDUCORE Standard² reproduite dans le scope VitalX": "Weinmann-MEDUCORE-Standard²-Oberfläche im VitalX-Monitor nachgebildet",
     "Vue formateur — pilotage complet de la session": "Trainer-Ansicht — vollständige Steuerung der Sitzung",
+    /* ── Interfaces constructeurs : bandeau des marques (07/10/2026) ── */
+    "Neuf appareils, reproduits fidèlement.": "Neun Geräte, originalgetreu nachgebildet.",
+    "Marques": "Marken",
+    "6 appareils": "6 Geräte",
+    "3 appareils": "3 Geräte",
+    "Survolez une marque, puis cliquez sur un appareil pour voir ses écrans.": "Fahren Sie mit der Maus über eine Marke und klicken Sie dann auf ein Gerät, um seine Bildschirme zu sehen.",
+    "Touchez une marque, puis un appareil pour voir ses écrans.": "Tippen Sie auf eine Marke und dann auf ein Gerät, um seine Bildschirme zu sehen.",
+    "Tous les appareils": "Alle Geräte",
   }
 };
