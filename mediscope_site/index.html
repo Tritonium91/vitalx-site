@@ -11,8 +11,11 @@
      • Contenu conservé : interfaces constructeurs (galeries), fonctions, app, pack, devis,
        références, affiliation, formulaire de contact Netlify, mentions constructeurs
      • v4.1 : galerie app en carrousel automatique (sans flèches), rappels bleu-blanc-rouge (Made in France)
-     • Ancres : #v2 #packs #pods #interfaces (alias #schiller #weinmann : ouvrent la marque) #mediacenter #formateur #academy #features #app #in-the-box #devis #testimonials #contact
+     • Ancres : #v2 #packs #pods #interfaces (alias #schiller #weinmann : ouvrent la marque) #mediacenter #formateur #academy #features #devis #contact
      • 06/10/2026 : refonte (SCHILLER, WEINMANN, Media Center, formateur, ACADEMY) ; anciennes sections interfaces/mediacenter remplacées
+     • 07/10/2026 : accueil compacté — Interfaces, Media Center et Formateur partagent le composant brands.js (bandeau → tuiles → fiche) ;
+       sections retirées : « Jusque dans les menus » (#app), « Dans le pack » (#in-the-box), « Ils forment avec VitalX » (#testimonials), « Pour qui »
+       ancres des fiches : #sch-… #wei-… #mc-… #fo-…
 -->
 <html lang="fr">
 <head>
@@ -121,7 +124,7 @@
     <p class="t-hero-sub hero-in hero-in-2">Formez comme sur le terrain.</p>
     <p class="t-body-lg hero-in hero-in-2" style="margin:14px auto 0;max-width:640px;color:var(--ink-2)">Un scope de simulation sur iPad, piloté à distance par le formateur. Le moniteur VitalX et les interfaces des vrais appareils que vos équipes utilisent en intervention, reproduites à l'identique, incluses dans la licence.</p>
     <div class="links hero-in hero-in-3">
-      <a href="#in-the-box" class="more">En savoir plus</a>
+      <a href="#packs" class="more">En savoir plus</a>
       <a href="#contact" class="more">Demander un devis</a>
     </div>
   </div>
@@ -201,7 +204,7 @@
       <h2 class="t-tile-sm">Châssis et housse Bagheera</h2>
       <p class="t-tile-sm-sub">Conçus et assemblés en France. Garantis à vie.</p>
       <div class="links">
-        <a href="#in-the-box" class="more">Dans le pack</a>
+        <a href="/boutique.html#pack" class="more">Voir les packs</a>
         <a href="/garantie.html" class="more">Garantie</a>
       </div>
     </div>
@@ -229,21 +232,6 @@
       <div class="sr sr-d1"><strong>Licence à vie</strong><span>Sans abonnement, mises à jour incluses</span></div>
       <div class="sr sr-d2"><strong>Garantie à vie</strong><span>Châssis et housse Bagheera</span></div>
       <div class="sr sr-d3"><strong>Devis sous 24 h</strong><span>Livraison 15 à 30 jours ouvrés</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- POUR QUI -->
-<section class="section-tight gray">
-  <div class="wrap">
-    <div class="section-head center">
-      <p class="t-eyebrow sr">Pour qui</p>
-      <h2 class="t-section sr">Pensé pour ceux qui sauvent.</h2>
-    </div>
-    <div class="grid-3">
-      <a href="/boutique.html" class="cat sr"><img src="/cat-pompier.png" alt="" loading="lazy"/><div><small>Secours</small><strong>Pompiers</strong></div></a>
-      <a href="/boutique.html" class="cat sr sr-d1"><img src="/cat-paramed.png" alt="" loading="lazy"/><div><small>Préhospitalier</small><strong>Paramédicaux</strong></div></a>
-      <a href="/boutique.html" class="cat sr sr-d2"><img src="/cat-secours.png" alt="" loading="lazy"/><div><small>Associatif</small><strong>Secouristes</strong></div></a>
     </div>
   </div>
 </section>
@@ -502,64 +490,255 @@
   </div>
 </section>
 
-<!-- MEDIA CENTER : le panneau, à lui seul -->
-<section id="mediacenter" class="section dark">
+<!-- MEDIA CENTER : catégories → écrans du panneau (brands.js ; ancres #mediacenter, #mc-…) -->
+<section id="mediacenter" class="section brand-sec dark ifc" aria-labelledby="mcTitle" data-ifc>
   <div class="wrap-wide">
-    <div class="section-head center">
+    <div class="section-head center ifc-head">
       <p class="t-eyebrow sr">Media Center</p>
-      <h2 class="t-section sr">Le dossier patient,<br>d'un balayage.</h2>
+      <h2 class="t-section sr" id="mcTitle">Le dossier patient, <br>d'un balayage.</h2>
       <p class="t-section-lead sr sr-d1">Sur l'iPad de l'apprenant, un panneau s'ouvre par-dessus l'appareil quand on balaie depuis le bord droit. Il affiche ce que le formateur envoie : biologie, gaz du sang, radios, dossier patient, bandelette urinaire, archive ECG.</p>
     </div>
-    <div class="mc-hero">
-      <figure class="mc-shot sr"><img src="/assets/mediacenter-gds-2026.webp" alt="Media Center sur le DEFIGARD HD-7 — gaz du sang (GDS) : analyseur et ticket de résultat" width="1600" height="1200" loading="lazy" decoding="async"/><figcaption><strong>GDS : gaz du sang</strong>L'apprenant lance l'analyse et reçoit le ticket, ici une acidose métabolique avec hyperlactatémie. Résultat 60 s après la cartouche.</figcaption></figure>
-      <ol class="mc-steps sr sr-d1">
-        <li><b>Balayez depuis le bord droit</b>Le panneau s'ouvre par-dessus l'appareil, qui continue de tourner derrière.</li>
-        <li><b>Le formateur envoie</b>Biologie, radios, dossier, bandelette, gaz du sang : depuis son iPad, en un geste.</li>
-        <li><b>L'apprenant analyse</b>Il lit le dossier, mesure une glycémie, lance l'analyse de gaz du sang.</li>
-        <li><b>Fermez d'un geste</b>Touche ✕, voile à gauche ou balayage vers la droite.</li>
-      </ol>
+    <ol class="ifc-steps sr">
+      <li><b>Balayez depuis le bord droit</b><span>Le panneau s'ouvre par-dessus l'appareil, qui continue de tourner derrière.</span></li>
+      <li><b>Le formateur envoie</b><span>Biologie, radios, dossier, bandelette, gaz du sang : depuis son iPad, en un geste.</span></li>
+      <li><b>L'apprenant analyse</b><span>Il lit le dossier, mesure une glycémie, lance l'analyse de gaz du sang.</span></li>
+      <li><b>Fermez d'un geste</b><span>Touche ✕, voile à gauche ou balayage vers la droite.</span></li>
+    </ol>
+    <div class="ifc-box sr">
+<div class="ifc-band ifc-cats" role="tablist" aria-label="Catégories du Media Center" data-n="4">
+<button type="button" class="ifc-tab" role="tab" id="ifc-t-cat-mc-gds" data-brand="cat-mc-gds" aria-selected="true" aria-controls="ifc-p-cat-mc-gds"><span class="ifc-top"><svg class="ifc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg><span class="ifc-lbl">Gaz du sang &amp; mesures</span></span><span class="ifc-count">3 écrans</span></button>
+<button type="button" class="ifc-tab" role="tab" id="ifc-t-cat-mc-dossier" data-brand="cat-mc-dossier" aria-selected="false" aria-controls="ifc-p-cat-mc-dossier" tabindex="-1"><span class="ifc-top"><svg class="ifc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span class="ifc-lbl">Dossier patient</span></span><span class="ifc-count">2 écrans</span></button>
+<button type="button" class="ifc-tab" role="tab" id="ifc-t-cat-mc-radio" data-brand="cat-mc-radio" aria-selected="false" aria-controls="ifc-p-cat-mc-radio" tabindex="-1"><span class="ifc-top"><svg class="ifc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="ifc-lbl">Radio &amp; bandelette</span></span><span class="ifc-count">2 écrans</span></button>
+<button type="button" class="ifc-tab" role="tab" id="ifc-t-cat-mc-archive" data-brand="cat-mc-archive" aria-selected="false" aria-controls="ifc-p-cat-mc-archive" tabindex="-1"><span class="ifc-top"><svg class="ifc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg><span class="ifc-lbl">Archive &amp; historique</span></span><span class="ifc-count">3 écrans</span></button>
+</div>
+      <div class="ifc-stage">
+<div class="ifc-brand ifc-x is-on" id="ifc-p-cat-mc-gds" role="tabpanel" aria-labelledby="ifc-t-cat-mc-gds" data-brand="cat-mc-gds" data-view="list">
+<div class="ifc-xin"><div class="ifc-pad">
+<div class="ifc-bar">
+<p class="ifc-hint"><span class="ifc-h-mouse">Survolez une catégorie, puis cliquez sur un écran pour voir sa capture.</span><span class="ifc-h-touch">Touchez une catégorie, puis un écran pour voir sa capture.</span></p>
+<div class="ifc-nav"><button type="button" class="ifc-back">Tous les écrans</button><div class="ifc-chips"><button type="button" class="ifc-chip" data-dev="mc-gds">GDS : gaz du sang</button><button type="button" class="ifc-chip" data-dev="mc-glycemie">Bio : les lecteurs de mesure</button><button type="button" class="ifc-chip" data-dev="mc-co">Détecteur de CO</button></div></div>
+</div>
+<div class="ifc-x ifc-lx is-on"><div class="ifc-xin"><div class="ifc-pad"><ul class="ifc-list" data-n="3">
+<li><button type="button" class="ifc-tile" data-dev="mc-gds" style="--i:0"><span class="ifc-pic"><img src="/assets/ifc-mc-gds.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">GDS : gaz du sang</span></button></li>
+<li><button type="button" class="ifc-tile" data-dev="mc-glycemie" style="--i:1"><span class="ifc-pic"><img src="/assets/ifc-mc-glycemie.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">Bio : les lecteurs de mesure</span></button></li>
+<li><button type="button" class="ifc-tile" data-dev="mc-co" style="--i:2"><span class="ifc-pic"><img src="/assets/ifc-mc-co.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">Détecteur de CO</span></button></li>
+</ul></div></div></div>
+<div class="ifc-x ifc-vx"><div class="ifc-xin"><div class="ifc-pad">
+<article class="dv dv-solo" id="mc-gds" hidden>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/mediacenter-gds-2026.webp" alt="Media Center sur le DEFIGARD HD-7 — gaz du sang (GDS) : analyseur et ticket de résultat" width="1600" height="1200" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-copy"><h3>GDS : gaz du sang</h3><p class="dv-kind">Gaz du sang &amp; mesures</p><p class="dv-lead">L'apprenant lance l'analyse et reçoit le ticket, ici une acidose métabolique avec hyperlactatémie. Résultat 60 s après la cartouche.</p></div>
+</article>
+<article class="dv dv-solo" id="mc-glycemie" hidden>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/mediacenter-glycemie-2026.webp" alt="Media Center sur le DEFIGARD HD-7 — Bio : lecteur de glycémie" width="1600" height="1200" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-copy"><h3>Bio : les lecteurs de mesure</h3><p class="dv-kind">Gaz du sang &amp; mesures</p><p class="dv-lead">Glycémie, cétones, lactates, HémoCue, CO : l'apprenant fait la mesure, la valeur vient du patient simulé.</p></div>
+</article>
+<article class="dv dv-solo" id="mc-co" hidden>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/mediacenter-co-2026.webp" alt="Media Center sur le DEFIGARD HD-7 — Bio : détecteur de CO" width="1600" height="1200" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-copy"><h3>Détecteur de CO</h3><p class="dv-kind">Gaz du sang &amp; mesures</p><p class="dv-lead">Détection en continu, alarme à 25 ppm.</p></div>
+</article>
+</div></div></div>
+</div></div>
+</div>
+<div class="ifc-brand ifc-x" id="ifc-p-cat-mc-dossier" role="tabpanel" aria-labelledby="ifc-t-cat-mc-dossier" data-brand="cat-mc-dossier" data-view="list">
+<div class="ifc-xin"><div class="ifc-pad">
+<div class="ifc-bar">
+<p class="ifc-hint"><span class="ifc-h-mouse">Survolez une catégorie, puis cliquez sur un écran pour voir sa capture.</span><span class="ifc-h-touch">Touchez une catégorie, puis un écran pour voir sa capture.</span></p>
+<div class="ifc-nav"><button type="button" class="ifc-back">Tous les écrans</button><div class="ifc-chips"><button type="button" class="ifc-chip" data-dev="mc-dossier">DLU : le dossier de liaison d'urgence</button><button type="button" class="ifc-chip" data-dev="mc-biologie">DLU : le compte rendu d'analyses</button></div></div>
+</div>
+<div class="ifc-x ifc-lx is-on"><div class="ifc-xin"><div class="ifc-pad"><ul class="ifc-list" data-n="2">
+<li><button type="button" class="ifc-tile" data-dev="mc-dossier" style="--i:0"><span class="ifc-pic"><img src="/assets/ifc-mc-dossier.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">DLU : le dossier de liaison d'urgence</span></button></li>
+<li><button type="button" class="ifc-tile" data-dev="mc-biologie" style="--i:1"><span class="ifc-pic"><img src="/assets/ifc-mc-biologie.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">DLU : le compte rendu d'analyses</span></button></li>
+</ul></div></div></div>
+<div class="ifc-x ifc-vx"><div class="ifc-xin"><div class="ifc-pad">
+<article class="dv dv-solo" id="mc-dossier" hidden>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/mediacenter-dossier-2026.webp" alt="Media Center sur le DEFIGARD HD-7 — DLU : dossier de liaison d&#x27;urgence" width="1600" height="1200" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-copy"><h3>DLU : le dossier de liaison d'urgence</h3><p class="dv-kind">Dossier patient</p><p class="dv-lead">Identité, antécédents, traitement en cours : la fiche se remplit depuis l'iPad du formateur.</p></div>
+</article>
+<article class="dv dv-solo" id="mc-biologie" hidden>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/mediacenter-biologie-2026.webp" alt="Media Center sur le DEFIGARD HD-7 — DLU : compte rendu d&#x27;analyses" width="1600" height="1200" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-copy"><h3>DLU : le compte rendu d'analyses</h3><p class="dv-kind">Dossier patient</p><p class="dv-lead">Le compte rendu d'analyses médicales se lit comme sur papier, valeurs hors référence signalées.</p></div>
+</article>
+</div></div></div>
+</div></div>
+</div>
+<div class="ifc-brand ifc-x" id="ifc-p-cat-mc-radio" role="tabpanel" aria-labelledby="ifc-t-cat-mc-radio" data-brand="cat-mc-radio" data-view="list">
+<div class="ifc-xin"><div class="ifc-pad">
+<div class="ifc-bar">
+<p class="ifc-hint"><span class="ifc-h-mouse">Survolez une catégorie, puis cliquez sur un écran pour voir sa capture.</span><span class="ifc-h-touch">Touchez une catégorie, puis un écran pour voir sa capture.</span></p>
+<div class="ifc-nav"><button type="button" class="ifc-back">Tous les écrans</button><div class="ifc-chips"><button type="button" class="ifc-chip" data-dev="mc-radio">Radio : les clichés envoyés</button><button type="button" class="ifc-chip" data-dev="mc-bandelette">Bandelette urinaire</button></div></div>
+</div>
+<div class="ifc-x ifc-lx is-on"><div class="ifc-xin"><div class="ifc-pad"><ul class="ifc-list" data-n="2">
+<li><button type="button" class="ifc-tile" data-dev="mc-radio" style="--i:0"><span class="ifc-pic"><img src="/assets/ifc-mc-radio.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">Radio : les clichés envoyés</span></button></li>
+<li><button type="button" class="ifc-tile" data-dev="mc-bandelette" style="--i:1"><span class="ifc-pic"><img src="/assets/ifc-mc-bandelette.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">Bandelette urinaire</span></button></li>
+</ul></div></div></div>
+<div class="ifc-x ifc-vx"><div class="ifc-xin"><div class="ifc-pad">
+<article class="dv dv-solo" id="mc-radio" hidden>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/mediacenter-radio-contenu-2026.webp" alt="Media Center — radiographies envoyées par le formateur" width="1600" height="1200" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-copy"><h3>Radio : les clichés envoyés</h3><p class="dv-kind">Radio &amp; bandelette</p><p class="dv-lead">Clichés classés par région (abdomen, bassin…) : 37 clichés en 9 catégories côté formateur.</p></div>
+</article>
+<article class="dv dv-solo" id="mc-bandelette" hidden>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/mediacenter-bandelette-contenu-2026.webp" alt="Media Center — bandelette urinaire et charte de couleurs" width="1600" height="1200" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-copy"><h3>Bandelette urinaire</h3><p class="dv-kind">Radio &amp; bandelette</p><p class="dv-lead">Les dix zones de la bandelette se comparent à la charte de couleurs, comme au chevet du patient.</p></div>
+</article>
+</div></div></div>
+</div></div>
+</div>
+<div class="ifc-brand ifc-x" id="ifc-p-cat-mc-archive" role="tabpanel" aria-labelledby="ifc-t-cat-mc-archive" data-brand="cat-mc-archive" data-view="list">
+<div class="ifc-xin"><div class="ifc-pad">
+<div class="ifc-x ifc-lx is-on"><div class="ifc-xin"><div class="ifc-pad"><ul class="ifc-list" data-n="3" data-info>
+<li><div class="ifc-info" style="--i:0"><span class="ifc-pg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span><span class="ifc-name">ECG : l'archive</span><span class="ifc-desc">Les 12 dérivations imprimées depuis l'appareil sont archivées et se rouvrent dans le panneau.</span></div></li>
+<li><div class="ifc-info" style="--i:1"><span class="ifc-pg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span><span class="ifc-name">Historique : le journal de séance</span><span class="ifc-desc">Chaque événement de l'appareil est consigné, pour le débriefing.</span></div></li>
+<li><div class="ifc-info" style="--i:2"><span class="ifc-pg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"/><line x1="8" y1="12" x2="16" y2="12"/></svg></span><span class="ifc-name">Liaison : l'état du lien</span><span class="ifc-desc">L'état de la liaison avec l'iPad du formateur (liaison locale, sans Internet).</span></div></li>
+</ul></div></div></div>
+</div></div>
+</div>
+      </div>
+      <p class="t-caption ifc-foot">Captures du panneau Media Center sur le DEFIGARD HD-7 (SCHILLER), sans iPad formateur connecté : gaz du sang et lecteurs de démonstration, dossier vide. Radio et bandelette : extraits du contenu envoyé par le formateur.</p>
     </div>
-    <div class="mc-grid">
-      <figure class="mc-card sr"><img src="/assets/mediacenter-glycemie-2026.webp" alt="Media Center sur le DEFIGARD HD-7 — Bio : lecteur de glycémie" width="1600" height="1200" loading="lazy" decoding="async"/><figcaption><strong>Bio : les lecteurs de mesure</strong><span>Glycémie, cétones, lactates, HémoCue, CO : l'apprenant fait la mesure, la valeur vient du patient simulé.</span></figcaption></figure>
-      <figure class="mc-card sr"><img src="/assets/mediacenter-dossier-2026.webp" alt="Media Center sur le DEFIGARD HD-7 — DLU : dossier de liaison d&#x27;urgence" width="1600" height="1200" loading="lazy" decoding="async"/><figcaption><strong>DLU : le dossier de liaison d'urgence</strong><span>Identité, antécédents, traitement en cours : la fiche se remplit depuis l'iPad du formateur.</span></figcaption></figure>
-      <figure class="mc-card sr"><img src="/assets/mediacenter-biologie-2026.webp" alt="Media Center sur le DEFIGARD HD-7 — DLU : compte rendu d&#x27;analyses" width="1600" height="1200" loading="lazy" decoding="async"/><figcaption><strong>DLU : le compte rendu d'analyses</strong><span>Le compte rendu d'analyses médicales se lit comme sur papier, valeurs hors référence signalées.</span></figcaption></figure>
-      <figure class="mc-card sr"><img src="/assets/mediacenter-radio-contenu-2026.webp" alt="Media Center — radiographies envoyées par le formateur" width="1600" height="1200" loading="lazy" decoding="async"/><figcaption><strong>Radio : les clichés envoyés</strong><span>Clichés classés par région (abdomen, bassin…) : 37 clichés en 9 catégories côté formateur.</span></figcaption></figure>
-      <figure class="mc-card sr"><img src="/assets/mediacenter-bandelette-contenu-2026.webp" alt="Media Center — bandelette urinaire et charte de couleurs" width="1600" height="1200" loading="lazy" decoding="async"/><figcaption><strong>Bandelette urinaire</strong><span>Les dix zones de la bandelette se comparent à la charte de couleurs, comme au chevet du patient.</span></figcaption></figure>
-      <figure class="mc-card sr"><img src="/assets/mediacenter-co-2026.webp" alt="Media Center sur le DEFIGARD HD-7 — Bio : détecteur de CO" width="1600" height="1200" loading="lazy" decoding="async"/><figcaption><strong>Détecteur de CO</strong><span>Détection en continu, alarme à 25 ppm.</span></figcaption></figure>
-    </div>
-    <div class="mc-more">
-      <div class="sr"><strong>ECG : l'archive</strong><span>Les 12 dérivations imprimées depuis l'appareil sont archivées et se rouvrent dans le panneau.</span></div>
-      <div class="sr"><strong>Historique : le journal de séance</strong><span>Chaque événement de l'appareil est consigné, pour le débriefing.</span></div>
-      <div class="sr"><strong>Liaison : l'état du lien</strong><span>L'état de la liaison avec l'iPad du formateur (liaison locale, sans Internet).</span></div>
-    </div>
-    <p class="t-caption center sr" style="margin:28px auto 0;max-width:780px">Captures du panneau Media Center sur le DEFIGARD HD-7 (SCHILLER), sans iPad formateur connecté : gaz du sang et lecteurs de démonstration, dossier vide. Radio et bandelette : extraits du contenu envoyé par le formateur.</p>
   </div>
 </section>
 
-<!-- FORMATEUR : tout ce que le formateur peut faire -->
-<section id="formateur" class="section section-alt">
+<!-- FORMATEUR : catégories → fonctions du poste formateur (brands.js ; ancres #formateur, #fo-…) -->
+<section id="formateur" class="section brand-sec section-alt ifc" aria-labelledby="foTitle" data-ifc>
   <div class="wrap-wide">
-    <div class="section-head center">
+    <div class="section-head center ifc-head">
       <p class="t-eyebrow sr">Mode Formateur</p>
-      <h2 class="t-section sr">Tout ce que le formateur<br>peut faire.</h2>
+      <h2 class="t-section sr" id="foTitle">Tout ce que le formateur <br>peut faire.</h2>
       <p class="t-section-lead sr sr-d1">Un seul iPad pour piloter toute la séance : le patient, l'ECG, les capteurs, la RCP, les scénarios, les examens et l'évaluation.</p>
     </div>
-    <div class="tgrid">
-      <figure class="hcard sr"><img src="/assets/formateur-liaison.webp" alt="Feuille Liaison de session : séance 4B7A, mode Local sans Internet, un scope en liaison, qualité du lien excellente" width="1400" height="1050" loading="lazy" decoding="async"/><figcaption><strong>Liaison locale, sans Internet</strong><span>Le formateur crée la séance et donne un code à 4 caractères. Les iPad des stagiaires la rejoignent en direct, sans Internet ni serveur : la feuille Liaison de session affiche la qualité du lien.</span></figcaption></figure>
-      <figure class="hcard sr"><img src="/assets/formateur-constantes.webp" alt="Poste formateur : cartes FC, SpO₂, FR, EtCO₂ et température, tension PNI, colonne glycémie, lactates, hémoglobine, SpCO et CO" width="1400" height="1050" loading="lazy" decoding="async"/><figcaption><strong>Constantes en direct</strong><span>FC, SpO₂, FR, EtCO₂, température, PNI ou pression invasive : chaque valeur se règle au curseur ou par pas. La colonne de gauche porte glycémie, lactates, hémoglobine, SpCO et CO.</span></figcaption></figure>
-      <figure class="hcard sr"><img src="/assets/formateur-evolution.webp" alt="Page TEND : délai de départ, durée de l'évolution et six cibles (FC, SpO₂, FR, pression systolique, diastolique, EtCO₂)" width="1400" height="1050" loading="lazy" decoding="async"/><figcaption><strong>Faire évoluer le patient</strong><span>Le bouton TEND fait dériver FC, SpO₂, FR, EtCO₂ et PNI vers des cibles : délai de départ, durée, puis un seul geste pour lancer la tendance. Le patient se dégrade ou se rétablit tout seul.</span></figcaption></figure>
-      <figure class="hcard sr"><img src="/assets/formateur-ecg.webp" alt="Grille des 20 rythmes ECG et éditeur d'ondes : STEMI inférieur, 12 dérivations, curseur du niveau ST" width="1400" height="1050" loading="lazy" decoding="async"/><figcaption><strong>Rythmes ECG</strong><span>20 rythmes en un toucher (sinusal, STEMI, FA, FV, BAV, torsades, pacemaker…), avec leurs variantes : territoire du STEMI, type de BAV. L'éditeur retouche ondes, ST et intervalles sur les 12 dérivations.</span></figcaption></figure>
-      <figure class="hcard sr"><img src="/assets/formateur-capteurs.webp" alt="Section Électrodes ECG avec l'électrode RA débranchée, barre des capteurs, carte EtCO₂ branchée et carte température grisée (capteur débranché)" width="1400" height="1050" loading="lazy" decoding="async"/><figcaption><strong>Câbles et capteurs débranchés</strong><span>Câble ECG, saturomètre, capnographie, électrodes de défibrillation et chacune des 10 électrodes ECG : branchez-les au moment où le stagiaire les pose. Une électrode débranchée fait perdre les dérivations concernées.</span></figcaption></figure>
-      <figure class="hcard sr"><img src="/assets/formateur-acr-choc.webp" alt="Section ACR : ACR + Asystolie, ACR + FV + CHOC, Déclencher FV, Patchs, CHOC et Réinitialiser les états, avec la grille ECG" width="1400" height="1050" loading="lazy" decoding="async"/><figcaption><strong>Arrêt cardiaque, choc et DSA</strong><span>ACR + Asystolie ou ACR + FV + CHOC en un geste, électrodes posées ou non. En analyse automatique, le choc n'est conseillé que si CHOC est activé et si le rythme est choquable.</span></figcaption></figure>
-      <figure class="hcard sr"><img src="/assets/formateur-rcp.webp" alt="Tableau de bord RCP : jauges de profondeur, fréquence et relâchement, mannequin avec cœur, poumons et circulation, score et insufflations" width="1400" height="1050" loading="lazy" decoding="async"/><figcaption><strong>RCP avec retour du capteur</strong><span>Un capteur Bluetooth posé sur le mannequin mesure chaque compression : fréquence, profondeur, relâchement. Le tableau de bord RCP affiche la mesure en direct et un score sur 100, avec une épreuve chronométrée de 2 minutes.</span></figcaption></figure>
-      <figure class="hcard sr"><img src="/assets/formateur-ventilation.webp" alt="Onglet ventilation : liste des cartes (mise en marche, scénarios cliniques, mécanique pulmonaire) et réglage de la compliance et de la résistance" width="1400" height="1050" loading="lazy" decoding="async"/><figcaption><strong>Ventilation</strong><span>L'onglet VENT règle le patient ventilé : respiration spontanée, compliance et résistance, fuite, obstruction, oxygène, alimentation et pannes. 32 scénarios cliniques s'appliquent d'un geste.</span></figcaption></figure>
-      <figure class="hcard sr"><img src="/assets/formateur-scenarios.webp" alt="Scénario minuté en cours de lecture : événements de la timeline, consigne du formateur, capteurs et actions DSA" width="1400" height="1050" loading="lazy" decoding="async"/><figcaption><strong>Scénarios prêts à l'emploi</strong><span>Patients préparés en un toucher, ou scénarios minutés : une timeline d'événements qui change constantes, rythme, capteurs et documents à T+mm:ss. Bibliothèque par public (PSE 1, PSE 2, paramédical, médecin) et éditeur pour créer les vôtres.</span></figcaption></figure>
-      <figure class="hcard sr"><img src="/assets/formateur-media-dossier.webp" alt="Media Center : onglet DLU avec la fiche du patient et onglet Biologie avec les catégories d'analyses et les valeurs anormales" width="1400" height="1050" loading="lazy" decoding="async"/><figcaption><strong>Media Center : dossier et biologie</strong><span>Le dossier patient (identité, allergies, mode de vie, 175 pathologies, médicaments) et le compte rendu d'analyses se remplissent depuis l'iPad : choisissez un tableau (normal, STEMI / SCA, sepsis…), ajustez, envoyez.</span></figcaption></figure>
-      <figure class="hcard sr"><img src="/assets/formateur-media-examens.webp" alt="Media Center : carte Gaz du sang (acidose métabolique), fenêtre Radiographies avec deux clichés envoyés et bandelette urinaire" width="1400" height="1050" loading="lazy" decoding="async"/><figcaption><strong>Gaz du sang, radios, bandelette</strong><span>Prélèvement artériel ou veineux que l'élève analyse lui-même (résultat 60 s après la cartouche), 37 clichés de radiographie en 9 catégories, bandelette urinaire à 10 tests ou tableau clinique.</span></figcaption></figure>
-      <figure class="hcard sr"><img src="/assets/formateur-evaluation.webp" alt="Tiroir Évaluation : grille PSE 1, score 47 sur 100, objectifs validés ou manqués, et fiche d'évaluation exportée en PDF" width="1400" height="1050" loading="lazy" decoding="async"/><figcaption><strong>Évaluation et débriefing</strong><span>Le tiroir ÉVAL propose des grilles (PSE 1, PSE 2, Bilan Flash, ou la vôtre) : validé, partiel, manqué. Score, verdict et chronomètre se calculent seuls ; la fiche s'exporte en PDF pour le débriefing.</span></figcaption></figure>
+    <div class="ifc-box sr">
+<div class="ifc-band ifc-cats" role="tablist" aria-label="Catégories du poste formateur" data-n="5">
+<button type="button" class="ifc-tab" role="tab" id="ifc-t-cat-fo-seance" data-brand="cat-fo-seance" aria-selected="true" aria-controls="ifc-p-cat-fo-seance"><span class="ifc-top"><svg class="ifc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span class="ifc-lbl">Séance &amp; patient</span></span><span class="ifc-count">3 fonctions</span></button>
+<button type="button" class="ifc-tab" role="tab" id="ifc-t-cat-fo-ecg" data-brand="cat-fo-ecg" aria-selected="false" aria-controls="ifc-p-cat-fo-ecg" tabindex="-1"><span class="ifc-top"><svg class="ifc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span class="ifc-lbl">ECG &amp; arrêt cardiaque</span></span><span class="ifc-count">3 fonctions</span></button>
+<button type="button" class="ifc-tab" role="tab" id="ifc-t-cat-fo-rcp" data-brand="cat-fo-rcp" aria-selected="false" aria-controls="ifc-p-cat-fo-rcp" tabindex="-1"><span class="ifc-top"><svg class="ifc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg><span class="ifc-lbl">RCP &amp; ventilation</span></span><span class="ifc-count">2 fonctions</span></button>
+<button type="button" class="ifc-tab" role="tab" id="ifc-t-cat-fo-scen" data-brand="cat-fo-scen" aria-selected="false" aria-controls="ifc-p-cat-fo-scen" tabindex="-1"><span class="ifc-top"><svg class="ifc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><polyline points="9 14 11 16 15 12"/></svg><span class="ifc-lbl">Scénarios &amp; évaluation</span></span><span class="ifc-count">2 fonctions</span></button>
+<button type="button" class="ifc-tab" role="tab" id="ifc-t-cat-fo-media" data-brand="cat-fo-media" aria-selected="false" aria-controls="ifc-p-cat-fo-media" tabindex="-1"><span class="ifc-top"><svg class="ifc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span class="ifc-lbl">Media Center</span></span><span class="ifc-count">2 fonctions</span></button>
+</div>
+      <div class="ifc-stage">
+<div class="ifc-brand ifc-x is-on" id="ifc-p-cat-fo-seance" role="tabpanel" aria-labelledby="ifc-t-cat-fo-seance" data-brand="cat-fo-seance" data-view="list">
+<div class="ifc-xin"><div class="ifc-pad">
+<div class="ifc-bar">
+<p class="ifc-hint"><span class="ifc-h-mouse">Survolez une catégorie, puis cliquez sur une fonction pour voir sa capture.</span><span class="ifc-h-touch">Touchez une catégorie, puis une fonction pour voir sa capture.</span></p>
+<div class="ifc-nav"><button type="button" class="ifc-back">Toutes les fonctions</button><div class="ifc-chips"><button type="button" class="ifc-chip" data-dev="fo-liaison">Liaison locale, sans Internet</button><button type="button" class="ifc-chip" data-dev="fo-constantes">Constantes en direct</button><button type="button" class="ifc-chip" data-dev="fo-evolution">Faire évoluer le patient</button></div></div>
+</div>
+<div class="ifc-x ifc-lx is-on"><div class="ifc-xin"><div class="ifc-pad"><ul class="ifc-list" data-n="3">
+<li><button type="button" class="ifc-tile" data-dev="fo-liaison" style="--i:0"><span class="ifc-pic"><img src="/assets/ifc-fo-liaison.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">Liaison locale, sans Internet</span></button></li>
+<li><button type="button" class="ifc-tile" data-dev="fo-constantes" style="--i:1"><span class="ifc-pic"><img src="/assets/ifc-fo-constantes.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">Constantes en direct</span></button></li>
+<li><button type="button" class="ifc-tile" data-dev="fo-evolution" style="--i:2"><span class="ifc-pic"><img src="/assets/ifc-fo-evolution.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">Faire évoluer le patient</span></button></li>
+</ul></div></div></div>
+<div class="ifc-x ifc-vx"><div class="ifc-xin"><div class="ifc-pad">
+<article class="dv dv-solo" id="fo-liaison" hidden>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/formateur-liaison.webp" alt="Feuille Liaison de session : séance 4B7A, mode Local sans Internet, un scope en liaison, qualité du lien excellente" width="1400" height="1050" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-copy"><h3>Liaison locale, sans Internet</h3><p class="dv-kind">Séance &amp; patient</p><p class="dv-lead">Le formateur crée la séance et donne un code à 4 caractères. Les iPad des stagiaires la rejoignent en direct, sans Internet ni serveur : la feuille Liaison de session affiche la qualité du lien.</p></div>
+</article>
+<article class="dv dv-solo" id="fo-constantes" hidden>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/formateur-constantes.webp" alt="Poste formateur : cartes FC, SpO₂, FR, EtCO₂ et température, tension PNI, colonne glycémie, lactates, hémoglobine, SpCO et CO" width="1400" height="1050" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-copy"><h3>Constantes en direct</h3><p class="dv-kind">Séance &amp; patient</p><p class="dv-lead">FC, SpO₂, FR, EtCO₂, température, PNI ou pression invasive : chaque valeur se règle au curseur ou par pas. La colonne de gauche porte glycémie, lactates, hémoglobine, SpCO et CO.</p></div>
+</article>
+<article class="dv dv-solo" id="fo-evolution" hidden>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/formateur-evolution.webp" alt="Page TEND : délai de départ, durée de l'évolution et six cibles (FC, SpO₂, FR, pression systolique, diastolique, EtCO₂)" width="1400" height="1050" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-copy"><h3>Faire évoluer le patient</h3><p class="dv-kind">Séance &amp; patient</p><p class="dv-lead">Le bouton TEND fait dériver FC, SpO₂, FR, EtCO₂ et PNI vers des cibles : délai de départ, durée, puis un seul geste pour lancer la tendance. Le patient se dégrade ou se rétablit tout seul.</p></div>
+</article>
+</div></div></div>
+</div></div>
+</div>
+<div class="ifc-brand ifc-x" id="ifc-p-cat-fo-ecg" role="tabpanel" aria-labelledby="ifc-t-cat-fo-ecg" data-brand="cat-fo-ecg" data-view="list">
+<div class="ifc-xin"><div class="ifc-pad">
+<div class="ifc-bar">
+<p class="ifc-hint"><span class="ifc-h-mouse">Survolez une catégorie, puis cliquez sur une fonction pour voir sa capture.</span><span class="ifc-h-touch">Touchez une catégorie, puis une fonction pour voir sa capture.</span></p>
+<div class="ifc-nav"><button type="button" class="ifc-back">Toutes les fonctions</button><div class="ifc-chips"><button type="button" class="ifc-chip" data-dev="fo-ecg">Rythmes ECG</button><button type="button" class="ifc-chip" data-dev="fo-capteurs">Câbles et capteurs débranchés</button><button type="button" class="ifc-chip" data-dev="fo-acr-choc">Arrêt cardiaque, choc et DSA</button></div></div>
+</div>
+<div class="ifc-x ifc-lx is-on"><div class="ifc-xin"><div class="ifc-pad"><ul class="ifc-list" data-n="3">
+<li><button type="button" class="ifc-tile" data-dev="fo-ecg" style="--i:0"><span class="ifc-pic"><img src="/assets/ifc-fo-ecg.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">Rythmes ECG</span></button></li>
+<li><button type="button" class="ifc-tile" data-dev="fo-capteurs" style="--i:1"><span class="ifc-pic"><img src="/assets/ifc-fo-capteurs.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">Câbles et capteurs débranchés</span></button></li>
+<li><button type="button" class="ifc-tile" data-dev="fo-acr-choc" style="--i:2"><span class="ifc-pic"><img src="/assets/ifc-fo-acr-choc.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">Arrêt cardiaque, choc et DSA</span></button></li>
+</ul></div></div></div>
+<div class="ifc-x ifc-vx"><div class="ifc-xin"><div class="ifc-pad">
+<article class="dv dv-solo" id="fo-ecg" hidden>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/formateur-ecg.webp" alt="Grille des 20 rythmes ECG et éditeur d'ondes : STEMI inférieur, 12 dérivations, curseur du niveau ST" width="1400" height="1050" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-copy"><h3>Rythmes ECG</h3><p class="dv-kind">ECG &amp; arrêt cardiaque</p><p class="dv-lead">20 rythmes en un toucher (sinusal, STEMI, FA, FV, BAV, torsades, pacemaker…), avec leurs variantes : territoire du STEMI, type de BAV. L'éditeur retouche ondes, ST et intervalles sur les 12 dérivations.</p></div>
+</article>
+<article class="dv dv-solo" id="fo-capteurs" hidden>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/formateur-capteurs.webp" alt="Section Électrodes ECG avec l'électrode RA débranchée, barre des capteurs, carte EtCO₂ branchée et carte température grisée (capteur débranché)" width="1400" height="1050" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-copy"><h3>Câbles et capteurs débranchés</h3><p class="dv-kind">ECG &amp; arrêt cardiaque</p><p class="dv-lead">Câble ECG, saturomètre, capnographie, électrodes de défibrillation et chacune des 10 électrodes ECG : branchez-les au moment où le stagiaire les pose. Une électrode débranchée fait perdre les dérivations concernées.</p></div>
+</article>
+<article class="dv dv-solo" id="fo-acr-choc" hidden>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/formateur-acr-choc.webp" alt="Section ACR : ACR + Asystolie, ACR + FV + CHOC, Déclencher FV, Patchs, CHOC et Réinitialiser les états, avec la grille ECG" width="1400" height="1050" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-copy"><h3>Arrêt cardiaque, choc et DSA</h3><p class="dv-kind">ECG &amp; arrêt cardiaque</p><p class="dv-lead">ACR + Asystolie ou ACR + FV + CHOC en un geste, électrodes posées ou non. En analyse automatique, le choc n'est conseillé que si CHOC est activé et si le rythme est choquable.</p></div>
+</article>
+</div></div></div>
+</div></div>
+</div>
+<div class="ifc-brand ifc-x" id="ifc-p-cat-fo-rcp" role="tabpanel" aria-labelledby="ifc-t-cat-fo-rcp" data-brand="cat-fo-rcp" data-view="list">
+<div class="ifc-xin"><div class="ifc-pad">
+<div class="ifc-bar">
+<p class="ifc-hint"><span class="ifc-h-mouse">Survolez une catégorie, puis cliquez sur une fonction pour voir sa capture.</span><span class="ifc-h-touch">Touchez une catégorie, puis une fonction pour voir sa capture.</span></p>
+<div class="ifc-nav"><button type="button" class="ifc-back">Toutes les fonctions</button><div class="ifc-chips"><button type="button" class="ifc-chip" data-dev="fo-rcp">RCP avec retour du capteur</button><button type="button" class="ifc-chip" data-dev="fo-ventilation">Ventilation</button></div></div>
+</div>
+<div class="ifc-x ifc-lx is-on"><div class="ifc-xin"><div class="ifc-pad"><ul class="ifc-list" data-n="2">
+<li><button type="button" class="ifc-tile" data-dev="fo-rcp" style="--i:0"><span class="ifc-pic"><img src="/assets/ifc-fo-rcp.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">RCP avec retour du capteur</span></button></li>
+<li><button type="button" class="ifc-tile" data-dev="fo-ventilation" style="--i:1"><span class="ifc-pic"><img src="/assets/ifc-fo-ventilation.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">Ventilation</span></button></li>
+</ul></div></div></div>
+<div class="ifc-x ifc-vx"><div class="ifc-xin"><div class="ifc-pad">
+<article class="dv dv-solo" id="fo-rcp" hidden>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/formateur-rcp.webp" alt="Tableau de bord RCP : jauges de profondeur, fréquence et relâchement, mannequin avec cœur, poumons et circulation, score et insufflations" width="1400" height="1050" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-copy"><h3>RCP avec retour du capteur</h3><p class="dv-kind">RCP &amp; ventilation</p><p class="dv-lead">Un capteur Bluetooth posé sur le mannequin mesure chaque compression : fréquence, profondeur, relâchement. Le tableau de bord RCP affiche la mesure en direct et un score sur 100, avec une épreuve chronométrée de 2 minutes.</p></div>
+</article>
+<article class="dv dv-solo" id="fo-ventilation" hidden>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/formateur-ventilation.webp" alt="Onglet ventilation : liste des cartes (mise en marche, scénarios cliniques, mécanique pulmonaire) et réglage de la compliance et de la résistance" width="1400" height="1050" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-copy"><h3>Ventilation</h3><p class="dv-kind">RCP &amp; ventilation</p><p class="dv-lead">L'onglet VENT règle le patient ventilé : respiration spontanée, compliance et résistance, fuite, obstruction, oxygène, alimentation et pannes. 32 scénarios cliniques s'appliquent d'un geste.</p></div>
+</article>
+</div></div></div>
+</div></div>
+</div>
+<div class="ifc-brand ifc-x" id="ifc-p-cat-fo-scen" role="tabpanel" aria-labelledby="ifc-t-cat-fo-scen" data-brand="cat-fo-scen" data-view="list">
+<div class="ifc-xin"><div class="ifc-pad">
+<div class="ifc-bar">
+<p class="ifc-hint"><span class="ifc-h-mouse">Survolez une catégorie, puis cliquez sur une fonction pour voir sa capture.</span><span class="ifc-h-touch">Touchez une catégorie, puis une fonction pour voir sa capture.</span></p>
+<div class="ifc-nav"><button type="button" class="ifc-back">Toutes les fonctions</button><div class="ifc-chips"><button type="button" class="ifc-chip" data-dev="fo-scenarios">Scénarios prêts à l'emploi</button><button type="button" class="ifc-chip" data-dev="fo-evaluation">Évaluation et débriefing</button></div></div>
+</div>
+<div class="ifc-x ifc-lx is-on"><div class="ifc-xin"><div class="ifc-pad"><ul class="ifc-list" data-n="2">
+<li><button type="button" class="ifc-tile" data-dev="fo-scenarios" style="--i:0"><span class="ifc-pic"><img src="/assets/ifc-fo-scenarios.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">Scénarios prêts à l'emploi</span></button></li>
+<li><button type="button" class="ifc-tile" data-dev="fo-evaluation" style="--i:1"><span class="ifc-pic"><img src="/assets/ifc-fo-evaluation.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">Évaluation et débriefing</span></button></li>
+</ul></div></div></div>
+<div class="ifc-x ifc-vx"><div class="ifc-xin"><div class="ifc-pad">
+<article class="dv dv-solo" id="fo-scenarios" hidden>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/formateur-scenarios.webp" alt="Scénario minuté en cours de lecture : événements de la timeline, consigne du formateur, capteurs et actions DSA" width="1400" height="1050" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-copy"><h3>Scénarios prêts à l'emploi</h3><p class="dv-kind">Scénarios &amp; évaluation</p><p class="dv-lead">Patients préparés en un toucher, ou scénarios minutés : une timeline d'événements qui change constantes, rythme, capteurs et documents à T+mm:ss. Bibliothèque par public (PSE 1, PSE 2, paramédical, médecin) et éditeur pour créer les vôtres.</p></div>
+</article>
+<article class="dv dv-solo" id="fo-evaluation" hidden>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/formateur-evaluation.webp" alt="Tiroir Évaluation : grille PSE 1, score 47 sur 100, objectifs validés ou manqués, et fiche d'évaluation exportée en PDF" width="1400" height="1050" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-copy"><h3>Évaluation et débriefing</h3><p class="dv-kind">Scénarios &amp; évaluation</p><p class="dv-lead">Le tiroir ÉVAL propose des grilles (PSE 1, PSE 2, Bilan Flash, ou la vôtre) : validé, partiel, manqué. Score, verdict et chronomètre se calculent seuls ; la fiche s'exporte en PDF pour le débriefing.</p></div>
+</article>
+</div></div></div>
+</div></div>
+</div>
+<div class="ifc-brand ifc-x" id="ifc-p-cat-fo-media" role="tabpanel" aria-labelledby="ifc-t-cat-fo-media" data-brand="cat-fo-media" data-view="list">
+<div class="ifc-xin"><div class="ifc-pad">
+<div class="ifc-bar">
+<p class="ifc-hint"><span class="ifc-h-mouse">Survolez une catégorie, puis cliquez sur une fonction pour voir sa capture.</span><span class="ifc-h-touch">Touchez une catégorie, puis une fonction pour voir sa capture.</span></p>
+<div class="ifc-nav"><button type="button" class="ifc-back">Toutes les fonctions</button><div class="ifc-chips"><button type="button" class="ifc-chip" data-dev="fo-media-dossier">Media Center : dossier et biologie</button><button type="button" class="ifc-chip" data-dev="fo-media-examens">Gaz du sang, radios, bandelette</button></div></div>
+</div>
+<div class="ifc-x ifc-lx is-on"><div class="ifc-xin"><div class="ifc-pad"><ul class="ifc-list" data-n="2">
+<li><button type="button" class="ifc-tile" data-dev="fo-media-dossier" style="--i:0"><span class="ifc-pic"><img src="/assets/ifc-fo-media-dossier.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">Media Center : dossier et biologie</span></button></li>
+<li><button type="button" class="ifc-tile" data-dev="fo-media-examens" style="--i:1"><span class="ifc-pic"><img src="/assets/ifc-fo-media-examens.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">Gaz du sang, radios, bandelette</span></button></li>
+</ul></div></div></div>
+<div class="ifc-x ifc-vx"><div class="ifc-xin"><div class="ifc-pad">
+<article class="dv dv-solo" id="fo-media-dossier" hidden>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/formateur-media-dossier.webp" alt="Media Center : onglet DLU avec la fiche du patient et onglet Biologie avec les catégories d'analyses et les valeurs anormales" width="1400" height="1050" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-copy"><h3>Media Center : dossier et biologie</h3><p class="dv-kind">Media Center</p><p class="dv-lead">Le dossier patient (identité, allergies, mode de vie, 175 pathologies, médicaments) et le compte rendu d'analyses se remplissent depuis l'iPad : choisissez un tableau (normal, STEMI / SCA, sepsis…), ajustez, envoyez.</p></div>
+</article>
+<article class="dv dv-solo" id="fo-media-examens" hidden>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/formateur-media-examens.webp" alt="Media Center : carte Gaz du sang (acidose métabolique), fenêtre Radiographies avec deux clichés envoyés et bandelette urinaire" width="1400" height="1050" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-copy"><h3>Gaz du sang, radios, bandelette</h3><p class="dv-kind">Media Center</p><p class="dv-lead">Prélèvement artériel ou veineux que l'élève analyse lui-même (résultat 60 s après la cartouche), 37 clichés de radiographie en 9 catégories, bandelette urinaire à 10 tests ou tableau clinique.</p></div>
+</article>
+</div></div></div>
+</div></div>
+</div>
+      </div>
+      <p class="t-caption ifc-foot">Captures du poste formateur VitalX sur iPad. Touchez une image pour l'agrandir.</p>
     </div>
-    <p class="t-caption center sr" style="margin:28px auto 0;max-width:720px">Captures du poste formateur VitalX sur iPad. Touchez une image pour l'agrandir.</p>
-    <div class="center sr" style="margin-top:20px"><a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="more">Ouvrir vitalxtrainer.app</a></div>
+    <div class="center ifc-more"><a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="more">Ouvrir vitalxtrainer.app</a></div>
   </div>
 </section>
 
@@ -587,7 +766,7 @@
 </section>
 
 <!-- FONCTIONS -->
-<section id="features" class="section gray">
+<section id="features" class="section feat-sec">
   <div class="wrap">
     <div class="section-head center">
       <p class="t-eyebrow sr">Capacités</p>
@@ -604,78 +783,6 @@
       <div class="feat sr sr-d1"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.2 2.2M16.2 16.2l2.2 2.2M5.6 18.4l2.2-2.2M16.2 7.8l2.2-2.2"/></svg></div><h3>Sync instantanée</h3><p>Un code de licence, jusqu'à 3 appareils. Synchronisation cloud immédiate, partout.</p></div>
       <div class="feat sr sr-d2"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h3>Prêt en 30 secondes</h3><p>Aucune configuration complexe. Ouvrez l'app VitalX Scope, entrez le code, choisissez l'interface, formez.</p></div>
     </div>
-  </div>
-</section>
-
-<!-- APPLICATION : fenêtres et menus des notices (carrousel) -->
-<section id="app" class="section dark" style="padding-bottom:clamp(48px,7vw,90px)">
-  <div class="wrap">
-    <div class="section-head section-head-left" style="margin-bottom:34px">
-      <p class="t-eyebrow sr">L'application</p>
-      <h2 class="t-section sr">Jusque dans les menus.</h2>
-      <p class="t-section-lead sr sr-d1">Menus utilisateur, seuils d'alarme, choix du mode : chaque fenêtre est reproduite d'après la notice de l'appareil.</p>
-    </div>
-  </div>
-  <div class="marquee" id="appScroll" aria-label="Fenêtres et menus des appareils">
-    <div class="marquee-track">
-    <figure class="hcard"><img src="/assets/ecran-meducore-menu.webp" alt="MEDUCORE Standard² — Menu utilisateur" width="1000" height="750" loading="lazy"/><figcaption><strong>MEDUCORE Standard²</strong><span>Menu utilisateur</span></figcaption></figure>
-    <figure class="hcard"><img src="/assets/ecran-meducore-seuils.webp" alt="MEDUCORE Standard² — Seuils d&#x27;alarmes" width="1000" height="750" loading="lazy"/><figcaption><strong>MEDUCORE Standard²</strong><span>Seuils d'alarmes</span></figcaption></figure>
-    <figure class="hcard"><img src="/assets/ecran-meducore-energie.webp" alt="MEDUCORE Standard² — Choix de l&#x27;énergie (mode manuel)" width="1000" height="750" loading="lazy"/><figcaption><strong>MEDUCORE Standard²</strong><span>Choix de l'énergie (mode manuel)</span></figcaption></figure>
-    <figure class="hcard"><img src="/assets/ecran-meducore-impression.webp" alt="MEDUCORE Standard² — Impression papier de l&#x27;ECG 12 dérivations" width="1000" height="567" loading="lazy"/><figcaption><strong>MEDUCORE Standard²</strong><span>Impression papier de l'ECG 12 dérivations</span></figcaption></figure>
-    <figure class="hcard"><img src="/assets/ecran-medumat-vc.webp" alt="MEDUMAT Standard² — Écran principal (VC)" width="1000" height="750" loading="lazy"/><figcaption><strong>MEDUMAT Standard²</strong><span>Écran principal (VC)</span></figcaption></figure>
-    <figure class="hcard"><img src="/assets/ecran-medumat-menu.webp" alt="MEDUMAT Standard² — Menu utilisateur" width="1000" height="750" loading="lazy"/><figcaption><strong>MEDUMAT Standard²</strong><span>Menu utilisateur</span></figcaption></figure>
-    <figure class="hcard"><img src="/assets/ecran-medumat-seuils.webp" alt="MEDUMAT Standard² — Seuils d&#x27;alarmes" width="1000" height="750" loading="lazy"/><figcaption><strong>MEDUMAT Standard²</strong><span>Seuils d'alarmes</span></figcaption></figure>
-    <figure class="hcard"><img src="/assets/ecran-medumat-parametres.webp" alt="MEDUMAT Standard² — Paramètres du mode avant démarrage" width="1000" height="750" loading="lazy"/><figcaption><strong>MEDUMAT Standard²</strong><span>Paramètres du mode avant démarrage</span></figcaption></figure>
-    <figure class="hcard"><img src="/assets/ecran-meduvent-menu.webp" alt="MEDUVENT Standard — Menu utilisateur" width="1000" height="567" loading="lazy"/><figcaption><strong>MEDUVENT Standard</strong><span>Menu utilisateur</span></figcaption></figure>
-    <figure class="hcard"><img src="/assets/ecran-meduvent-limites.webp" alt="MEDUVENT Standard — Limites d&#x27;alarme" width="1000" height="567" loading="lazy"/><figcaption><strong>MEDUVENT Standard</strong><span>Limites d'alarme</span></figcaption></figure>
-    <figure class="hcard"><img src="/assets/ecran-meduvent-modes.webp" alt="MEDUVENT Standard — Choix du mode" width="1000" height="567" loading="lazy"/><figcaption><strong>MEDUVENT Standard</strong><span>Choix du mode</span></figcaption></figure>
-    <figure class="hcard"><img src="/assets/ecran-meduvent-oxygene.webp" alt="MEDUVENT Standard — Alimentation en oxygène" width="1000" height="750" loading="lazy"/><figcaption><strong>MEDUVENT Standard</strong><span>Alimentation en oxygène</span></figcaption></figure>
-    <figure class="hcard"><img src="/assets/ecran-defigard-menu.webp" alt="DEFIGARD Touch 7 — Menu : vues, modes, R-ECG, ECG long" width="1000" height="750" loading="lazy"/><figcaption><strong>DEFIGARD Touch 7</strong><span>Menu : vues, modes, R-ECG, ECG long</span></figcaption></figure>
-    <figure class="hcard"><img src="/assets/ecran-physiogard-technique.webp" alt="PHYSIOGARD Touch 7 — Alarme technique : voyant orange fixe" width="1000" height="692" loading="lazy"/><figcaption><strong>PHYSIOGARD Touch 7</strong><span>Alarme technique : voyant orange fixe</span></figcaption></figure>
-    <figure class="hcard" aria-hidden="true"><img src="/assets/ecran-meducore-menu.webp" alt="MEDUCORE Standard² — Menu utilisateur" width="1000" height="750" loading="lazy"/><figcaption><strong>MEDUCORE Standard²</strong><span>Menu utilisateur</span></figcaption></figure>
-    <figure class="hcard" aria-hidden="true"><img src="/assets/ecran-meducore-seuils.webp" alt="MEDUCORE Standard² — Seuils d&#x27;alarmes" width="1000" height="750" loading="lazy"/><figcaption><strong>MEDUCORE Standard²</strong><span>Seuils d'alarmes</span></figcaption></figure>
-    <figure class="hcard" aria-hidden="true"><img src="/assets/ecran-meducore-energie.webp" alt="MEDUCORE Standard² — Choix de l&#x27;énergie (mode manuel)" width="1000" height="750" loading="lazy"/><figcaption><strong>MEDUCORE Standard²</strong><span>Choix de l'énergie (mode manuel)</span></figcaption></figure>
-    <figure class="hcard" aria-hidden="true"><img src="/assets/ecran-meducore-impression.webp" alt="MEDUCORE Standard² — Impression papier de l&#x27;ECG 12 dérivations" width="1000" height="567" loading="lazy"/><figcaption><strong>MEDUCORE Standard²</strong><span>Impression papier de l'ECG 12 dérivations</span></figcaption></figure>
-    <figure class="hcard" aria-hidden="true"><img src="/assets/ecran-medumat-vc.webp" alt="MEDUMAT Standard² — Écran principal (VC)" width="1000" height="750" loading="lazy"/><figcaption><strong>MEDUMAT Standard²</strong><span>Écran principal (VC)</span></figcaption></figure>
-    <figure class="hcard" aria-hidden="true"><img src="/assets/ecran-medumat-menu.webp" alt="MEDUMAT Standard² — Menu utilisateur" width="1000" height="750" loading="lazy"/><figcaption><strong>MEDUMAT Standard²</strong><span>Menu utilisateur</span></figcaption></figure>
-    <figure class="hcard" aria-hidden="true"><img src="/assets/ecran-medumat-seuils.webp" alt="MEDUMAT Standard² — Seuils d&#x27;alarmes" width="1000" height="750" loading="lazy"/><figcaption><strong>MEDUMAT Standard²</strong><span>Seuils d'alarmes</span></figcaption></figure>
-    <figure class="hcard" aria-hidden="true"><img src="/assets/ecran-medumat-parametres.webp" alt="MEDUMAT Standard² — Paramètres du mode avant démarrage" width="1000" height="750" loading="lazy"/><figcaption><strong>MEDUMAT Standard²</strong><span>Paramètres du mode avant démarrage</span></figcaption></figure>
-    <figure class="hcard" aria-hidden="true"><img src="/assets/ecran-meduvent-menu.webp" alt="MEDUVENT Standard — Menu utilisateur" width="1000" height="567" loading="lazy"/><figcaption><strong>MEDUVENT Standard</strong><span>Menu utilisateur</span></figcaption></figure>
-    <figure class="hcard" aria-hidden="true"><img src="/assets/ecran-meduvent-limites.webp" alt="MEDUVENT Standard — Limites d&#x27;alarme" width="1000" height="567" loading="lazy"/><figcaption><strong>MEDUVENT Standard</strong><span>Limites d'alarme</span></figcaption></figure>
-    <figure class="hcard" aria-hidden="true"><img src="/assets/ecran-meduvent-modes.webp" alt="MEDUVENT Standard — Choix du mode" width="1000" height="567" loading="lazy"/><figcaption><strong>MEDUVENT Standard</strong><span>Choix du mode</span></figcaption></figure>
-    <figure class="hcard" aria-hidden="true"><img src="/assets/ecran-meduvent-oxygene.webp" alt="MEDUVENT Standard — Alimentation en oxygène" width="1000" height="750" loading="lazy"/><figcaption><strong>MEDUVENT Standard</strong><span>Alimentation en oxygène</span></figcaption></figure>
-    <figure class="hcard" aria-hidden="true"><img src="/assets/ecran-defigard-menu.webp" alt="DEFIGARD Touch 7 — Menu : vues, modes, R-ECG, ECG long" width="1000" height="750" loading="lazy"/><figcaption><strong>DEFIGARD Touch 7</strong><span>Menu : vues, modes, R-ECG, ECG long</span></figcaption></figure>
-    <figure class="hcard" aria-hidden="true"><img src="/assets/ecran-physiogard-technique.webp" alt="PHYSIOGARD Touch 7 — Alarme technique : voyant orange fixe" width="1000" height="692" loading="lazy"/><figcaption><strong>PHYSIOGARD Touch 7</strong><span>Alarme technique : voyant orange fixe</span></figcaption></figure>
-    </div>
-  </div>
-</section>
-
-<!-- DANS LE PACK -->
-<section id="in-the-box" class="section">
-  <div class="wrap">
-    <div class="section-head center">
-      <p class="t-eyebrow sr">Contenu</p>
-      <h2 class="t-section sr">Dans le pack.</h2>
-      <p class="t-section-lead sr sr-d1">Tout ce qu'il faut pour former dès l'ouverture du carton.</p>
-    </div>
-    <div class="split">
-      <figure class="art sr" style="margin:0">
-        <img src="/assets/chassis-housse-bagheera.jpg" alt="Châssis VitalX ouvert et housse Bagheera fermée" loading="lazy" style="border-radius:12px"/>
-      </figure>
-      <div class="sr sr-d1">
-        <ul class="checks" style="gap:22px">
-          <li><div><strong>iPad formateur + moniteur</strong><br><span class="t-caption">Jusqu'à un iPad Air 13" en V2</span></div></li>
-          <li><div><strong>Châssis VitalX</strong><br><span class="t-caption">+ housse Bagheera, garantis à vie</span></div></li>
-          <li><div><strong>Connectiques</strong><br><span class="t-caption">PNI, SpO₂, ECG 12D, DSA, T°, EtCO₂</span></div></li>
-          <li><div><strong>Licence à vie</strong><br><span class="t-caption">Interfaces constructeurs et mises à jour incluses</span></div></li>
-        </ul>
-        <div class="links links-left" style="margin-top:30px">
-          <a href="/boutique.html#pack" class="more">Voir les packs</a>
-          <a href="#contact" class="more">Demander un devis</a>
-        </div>
-      </div>
-    </div>
-    <p class="t-caption center" style="margin-top:22px">Châssis VitalX et housse Bagheera — poignée, poches latérales, Cordura.</p>
   </div>
 </section>
 
@@ -713,34 +820,6 @@
         </ul>
         <div><a href="#contact" class="btn btn-ghost btn-block">Parler à un formateur</a></div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- RÉFÉRENCES -->
-<section id="testimonials" class="section">
-  <div class="wrap">
-    <div class="section-head center">
-      <p class="t-eyebrow sr">Références</p>
-      <h2 class="t-section sr">Ils forment avec VitalX.</h2>
-    </div>
-    <div class="grid-3">
-      <figure class="quote card-gray sr"><blockquote>Le réalisme est bluffant. On gagne un temps fou pour préparer des cas concrets.</blockquote><figcaption><b>Claire M.</b>Instructrice PSE</figcaption></figure>
-      <figure class="quote card-gray sr sr-d1"><blockquote>Pilotage à distance ultra simple, nos élèves sont à fond. Excellente lisibilité.</blockquote><figcaption><b>Julien R.</b>Formateur SST</figcaption></figure>
-      <figure class="quote card-gray sr sr-d2"><blockquote>Le meilleur rapport qualité/prix pour nos ateliers simulation. Je recommande.</blockquote><figcaption><b>Croix Blanche</b>Association de secourisme</figcaption></figure>
-    </div>
-    <div class="grid-3" style="margin-top:14px">
-      <figure class="quote card-gray sr"><blockquote>Outil indispensable pour nos formations PSE. Le mode DSA est d'un réalisme impressionnant.</blockquote><figcaption><b>Croix-Rouge française</b></figcaption></figure>
-      <figure class="quote card-gray sr sr-d1"><blockquote>On équipe 6 casernes avec VitalX. Le rapport qualité/prix est imbattable.</blockquote><figcaption><b>SDIS</b></figcaption></figure>
-      <figure class="quote card-gray sr sr-d2"><blockquote>Le pilotage à distance permet au formateur de rester avec le groupe. Un vrai game changer.</blockquote><figcaption><b>Croix Blanche</b></figcaption></figure>
-    </div>
-    <div class="grid-3" style="margin-top:14px">
-      <figure class="sr" style="margin:0"><img src="/reviews/scope-1.JPG" alt="Scope VitalX en formation" loading="lazy" style="border-radius:18px;aspect-ratio:4/3;object-fit:cover;width:100%"/></figure>
-      <figure class="sr sr-d1" style="margin:0"><img src="/reviews/scope-3.JPG" alt="Scope VitalX en formation" loading="lazy" style="border-radius:18px;aspect-ratio:4/3;object-fit:cover;width:100%"/></figure>
-      <figure class="sr sr-d2" style="margin:0"><img src="/reviews/scope-4.jpg" alt="Scope VitalX en formation" loading="lazy" style="border-radius:18px;aspect-ratio:4/3;object-fit:cover;width:100%"/></figure>
-    </div>
-    <div class="logos sr">
-      <span>Croix-Rouge française</span><span>Marine Nationale</span><span>EDF</span><span>SDIS</span><span>Protection Civile</span><span>SAMU</span><span>Croix Blanche</span>
     </div>
   </div>
 </section>

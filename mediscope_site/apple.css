@@ -432,7 +432,7 @@ textarea.finp{resize:vertical;min-height:130px}
 .ifc-alias{scroll-margin-top:-40px}
 
 /* Bandeau des marques */
-.ifc-band{display:grid;grid-template-columns:1fr 1fr;background:#0b0b0d;border-radius:22px;margin:0 0 16px}
+.ifc-band{display:grid;grid-template-columns:1fr 1fr;background:var(--band,#0b0b0d);border-radius:22px;margin:0 0 16px}
 .ifc-tab{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:14px 10px 12px;border:0;background:transparent;color:#a1a1a6;font:inherit;cursor:pointer;transition:background .3s ease,color .3s ease}
 .ifc-tab:first-child{border-radius:22px 0 0 22px}
 .ifc-tab:last-child{border-radius:0 22px 22px 0}
@@ -442,7 +442,7 @@ textarea.finp{resize:vertical;min-height:130px}
 .ifc-tab:hover{background:rgba(255,255,255,.06)}
 .ifc-tab:hover img,.ifc-tab[aria-selected="true"] img{opacity:1}
 .ifc-tab[aria-selected="true"]{background:transparent;color:#f5f5f7}
-.ifc-tab[aria-selected="true"]::after{content:"";position:absolute;left:50%;bottom:-8px;width:16px;height:16px;margin-left:-8px;background:#0b0b0d;border-radius:3px;transform:rotate(45deg)}
+.ifc-tab[aria-selected="true"]::after{content:"";position:absolute;left:50%;bottom:-8px;width:16px;height:16px;margin-left:-8px;background:var(--band,#0b0b0d);border-radius:3px;transform:rotate(45deg)}
 .ifc-tab:focus-visible{outline-color:#2997ff;outline-offset:-5px;border-radius:22px}
 
 /* Panneaux dépliables */
@@ -544,3 +544,78 @@ textarea.finp{resize:vertical;min-height:130px}
 @media(prefers-reduced-motion:reduce){
   .ifc *,.ifc *::before,.ifc *::after{transition:none!important;animation:none!important}
 }
+
+/* ══ Même composant pour Media Center et Formateur (07/10/2026 ; brands.js) ══
+   Catégories = onglets du bandeau (icône, libellé, nombre) → fonctions = tuiles → capture + texte (fiche « solo »).
+   Jetons de couleur par section : .brand-sec (clair) · .brand-sec.dark (noir) · .brand-sec.section-alt (gris). */
+.brand-sec.section-alt{--chip:#fff;--line:#d2d2d7}
+.brand-sec.dark{--band:#1d1d1f}
+.brand-sec.dark .ifc-tab:hover{background:rgba(255,255,255,.08)}
+.brand-sec.dark .ifc-tile:hover{border-color:#48484a;box-shadow:0 10px 24px -8px rgba(0,0,0,.8)}
+.brand-sec.dark .ifc-chip[aria-current="true"]{color:#000}
+.ifc .t-section br{display:none}
+.ifc .dv{scroll-margin-top:200px}                   /* ancre #fo-… #mc-… #sch-… : la barre et la fiche restent visibles ensemble */
+@media(max-width:900px){.ifc .dv{scroll-margin-top:250px}}
+.ifc-noanim *,.ifc-noanim *::before,.ifc-noanim *::after{transition:none!important;animation:none!important}
+.ifc[id]{scroll-margin-top:-40px}
+
+/* Bandeau de catégories */
+.ifc-band.ifc-cats{display:flex}
+.ifc-cats .ifc-tab{flex:1 1 0;min-width:0;gap:4px;padding:13px 10px 11px}
+.ifc-top{display:flex;align-items:center;justify-content:center;gap:9px;max-width:100%}
+.ifc-ico{flex:0 0 auto;width:22px;height:22px;opacity:.55;transition:opacity .3s ease}
+.ifc-lbl{font-size:clamp(14px,1.25vw,16px);line-height:1.2;font-weight:600;letter-spacing:-.01em;text-wrap:balance}
+.ifc-tab:hover .ifc-ico,.ifc-tab[aria-selected="true"] .ifc-ico{opacity:1}
+
+/* Tuiles : 2 fonctions comme 3 (même taille), tuiles d'information sans capture */
+.ifc-list[data-n="2"]>li{flex-basis:calc((100% - 28px)/3);max-width:270px}
+.ifc-list[data-info]>li{flex-basis:calc((100% - 28px)/3);max-width:380px}
+.ifc-info{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:14px;align-items:start;width:100%;padding:16px 16px 18px;color:var(--fg);background:var(--chip);border:1px solid var(--line);border-radius:18px}
+.ifc-pg{grid-row:1/span 2;width:46px;height:46px;border-radius:13px;display:grid;place-items:center;background:#000;color:#f5f5f7}
+.ifc-pg svg{width:24px;height:24px}
+.ifc-info .ifc-name{padding:0;font-size:15px}
+.ifc-desc{display:block;margin-top:5px;font-size:13.5px;line-height:1.42;letter-spacing:-.01em;color:var(--mut)}
+.ifc-brand.is-on .ifc-lx.is-on .ifc-info{animation:ifcUp .6s var(--ifc-ease) backwards;animation-delay:calc(var(--i,0)*55ms + 140ms)}
+
+/* Fiche « solo » : une capture + un texte (pas de miniatures ni de points forts) */
+.ifc .dv-solo .dv-main{grid-row:1}
+.ifc .dv-solo .dv-copy{align-self:center}
+.ifc .dv-solo .dv-lead{margin-top:12px;font-size:16.5px;line-height:1.5}
+@media(min-width:901px){.ifc .dv-solo{grid-template-columns:minmax(0,.9fr) minmax(0,1fr)}}
+
+/* Media Center : mode d'emploi en 4 étapes, sur une ligne */
+.ifc-steps{list-style:none;counter-reset:ifcst;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px 22px;margin:0 auto 16px;padding:0;max-width:1100px}
+.ifc-steps li{counter-increment:ifcst;position:relative;padding-left:33px;font-size:13px;line-height:1.35;letter-spacing:-.01em;color:var(--mut)}
+.ifc-steps li::before{content:counter(ifcst);position:absolute;left:0;top:0;width:23px;height:23px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:600;color:var(--fg);background:var(--chip);border:1px solid var(--line)}
+.ifc-steps b{display:block;font-size:14px;font-weight:600;line-height:1.25;letter-spacing:-.01em;color:var(--fg)}
+
+@media(max-width:959px){
+  .ifc-list[data-info]>li{flex-basis:100%;max-width:560px}
+}
+@media(max-width:900px){
+  .ifc-ico{display:none}
+  .ifc-steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:760px){
+  .ifc-band.ifc-cats{flex-wrap:wrap;justify-content:center;padding:6px;border-radius:20px}
+  .ifc-band.ifc-cats .ifc-tab{flex:0 0 33.3333%;border-radius:14px;padding:11px 6px 9px}
+  .ifc-band.ifc-cats[data-n="4"] .ifc-tab{flex-basis:50%}
+  .ifc-band.ifc-cats .ifc-tab+.ifc-tab::before,.ifc-band.ifc-cats .ifc-tab[aria-selected="true"]::after{display:none}
+  .ifc-band.ifc-cats .ifc-tab[aria-selected="true"]{background:rgba(255,255,255,.13)}
+}
+@media(max-width:640px){
+  .ifc .dv-solo .dv-copy{grid-row:2}
+  .ifc-steps span{display:none}
+  .ifc-steps li{display:flex;align-items:center;min-height:23px;padding-left:31px}
+  .ifc-steps b{font-size:13px}
+}
+@media(max-width:560px){
+  .ifc-lbl{font-size:13px}
+  .ifc-cats .ifc-count{font-size:11.5px}
+  .ifc-list[data-n="2"]>li{flex-basis:calc((100% - 10px)/2)}
+}
+.ifc-tile .ifc-name:last-child{padding-bottom:13px}
+
+/* ── Capacités en fond blanc (cartes grises) : garde l'alternance de fonds depuis le retrait de « Jusque dans les menus » et « Dans le pack » ── */
+.feat-sec .feat{background:var(--bg-alt)}
+.feat-sec .feat-ico{background:#fff}
