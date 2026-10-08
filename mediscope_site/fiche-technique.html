@@ -4,6 +4,8 @@
   fiche-technique.html — VitalX
   🆕 v2.0 — 19/08/2026 — Yann USSEGLIO
      • ⚠️ Tous les prix supprimés → bloc "Demander un devis"
+  🆕 08/10/2026 — Yann USSEGLIO : en-tête blanc collant, menu mobile et pied de page sombre COMMUNS à toutes les pages
+     (même balisage que l'accueil ; styles /site-header.css, script unique /site-header.js). Contenu de la page inchangé ; anciens styles de sélecteur de langue retirés.
 -->
 <html class="h-full scroll-smooth" lang="fr">
 <head>
@@ -87,35 +89,52 @@
     }
     .feat-item{transition:all .25s ease}
     .feat-item:hover{background:rgba(255,255,255,.06);border-color:rgba(239,68,68,.35);transform:translateX(4px)}
-  
-    .lang-btn{width:26px;height:18px;border-radius:3px;overflow:hidden;display:block;line-height:0;padding:0;border:0;background:none;cursor:pointer;opacity:.45;transition:opacity .15s,box-shadow .15s}
-    .lang-btn:hover{opacity:.9}
-    .lang-btn.is-active{opacity:1;box-shadow:0 0 0 1.5px rgba(255,255,255,.85)}
-    .lang-btn svg{display:block;width:100%;height:100%}
-    #langSwitch{display:flex;align-items:center;gap:6px;margin-left:auto;margin-right:14px}
 </style>
+<link rel="stylesheet" href="/site-header.css">
 </head>
 <body class="min-h-full text-white grad-bg">
-<header class="sticky top-0 z-40 backdrop-blur-md bg-black/50 border-b border-white/10">
-<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-<a class="flex items-center gap-2.5 group" href="/">
-<img alt="Logo VitalX" class="h-8 w-auto group-hover:scale-105 transition" onerror="this.style.display='none'" src="/assets/logo.png"/>
-<span class="font-bold tracking-tight text-lg">VitalX</span>
-</a>
-<nav class="hidden md:flex items-center gap-7 text-sm text-zinc-300">
-<a class="hover:text-white transition" href="/">Accueil</a>
-<a class="hover:text-white transition" href="/boutique.html">Boutique</a>
-<a class="hover:text-white transition" href="/#contact">Contact</a>
-</nav><span id="langSwitch">
-<button aria-label="Français" class="lang-btn is-active" data-lang="fr" title="Français" type="button"><svg viewbox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect fill="#0046b8" height="36" width="20"></rect><rect fill="#fff" height="36" width="20" x="20"></rect><rect fill="#e1000f" height="36" width="20" x="40"></rect></svg></button>
-<button aria-label="English" class="lang-btn" data-lang="en" title="English" type="button"><svg viewbox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect fill="#012169" height="36" width="60"></rect><path d="M0 0 L60 36 M60 0 L0 36" stroke="#fff" stroke-width="7"></path><path d="M0 0 L60 36 M60 0 L0 36" stroke="#C8102E" stroke-width="4"></path><path d="M30 0 V36 M0 18 H60" stroke="#fff" stroke-width="12"></path><path d="M30 0 V36 M0 18 H60" stroke="#C8102E" stroke-width="7"></path></svg></button>
-<button aria-label="Deutsch" class="lang-btn" data-lang="de" title="Deutsch" type="button"><svg viewbox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect fill="#000" height="12" width="60"></rect><rect fill="#DD0000" height="12" width="60" y="12"></rect><rect fill="#FFCE00" height="12" width="60" y="24"></rect></svg></button>
-</span>
-<a class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-red-600 via-rose-500 to-pink-500 text-white px-4 py-2 text-sm font-bold shadow-soft hover:brightness-110 cta-anim" href="/#contact">
-        📝 Demander un devis
-      </a>
-</div>
+<a class="skip" href="#top">Aller au contenu</a>
+
+<!-- EN-TÊTE BLANC COLLANT -->
+<header class="gnav hx-head">
+  <div class="hx-head-in">
+    <a href="/" class="hx-logo" aria-label="VitalX — accueil"><img src="/assets/logo-vitalx.svg" alt="VitalX" width="90" height="30" data-no-lightbox="true"/></a>
+    <nav class="hx-nav" aria-label="Navigation principale">
+      <ul class="hx-links">
+        <li><a href="/#interfaces">Appareils</a></li>
+        <li><a href="/#formateur">Formateur</a></li>
+        <li><a href="/#mediacenter">Media Center</a></li>
+        <li><a href="/#academy">ACADEMY</a></li>
+        <li><a href="/boutique.html">Boutique</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="hx-tools">
+      <a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="hx-icon hx-hide-m" title="Mode Formateur (web)" aria-label="Mode Formateur (web)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></a>
+      <span class="hx-lang hx-hide-m" role="group" aria-label="Langue">
+        <button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">FR</button>
+        <button type="button" data-lang="en" title="English" aria-label="English">EN</button>
+        <button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">DE</button>
+      </span>
+      <button class="hx-burger" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
+    </div>
+  </div>
 </header>
+<nav id="mobileMenu" class="hx-menu" aria-label="Menu mobile">
+  <a class="big" href="/#interfaces">Appareils</a>
+  <a class="big" href="/#formateur">Formateur</a>
+  <a class="big" href="/#mediacenter">Media Center</a>
+  <a class="big" href="/#academy">ACADEMY</a>
+  <a class="big" href="/boutique.html">Boutique</a>
+  <a class="big" href="/#contact">Contact</a>
+  <a class="small" href="https://vitalxtrainer.app" target="_blank" rel="noopener">Mode Formateur (web) ›</a>
+  <span class="hx-lang" role="group" aria-label="Langue">
+    <button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">FR</button>
+    <button type="button" data-lang="en" title="English" aria-label="English">EN</button>
+    <button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">DE</button>
+  </span>
+  <a class="small" href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a>
+</nav>
 <section class="relative overflow-hidden noise">
 <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16 md:py-24 text-center animate-fade-up">
 <span class="inline-flex items-center gap-2 rounded-full bg-red-500/10 ring-1 ring-red-500/30 px-3 py-1 text-xs font-semibold text-red-300 mb-5">
@@ -137,7 +156,7 @@
 </div>
 </div>
 </section>
-<main class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-20 space-y-8">
+<main id="top" class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-20 space-y-8">
 <section class="card-lift glass ring-gradient rounded-3xl p-7 md:p-10 ring-2 ring-white/10">
 <div class="flex items-center gap-4 mb-5">
 <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-red-500/20 to-rose-500/10 ring-1 ring-red-500/30 flex items-center justify-center text-2xl">📋</div>
@@ -262,18 +281,50 @@
 </ul>
 </section>
 </main>
-<footer class="py-10 border-t border-white/10 text-sm text-zinc-400">
-<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
-<p data-i18n-html="">© <span id="year"></span> VitalX — Tous droits réservés.</p>
-<nav class="flex items-center gap-4">
-<a class="hover:text-white" href="/">Accueil</a>
-<a class="hover:text-white" href="/boutique.html">Boutique</a>
-<a class="hover:text-white" href="/qui-sommes-nous.html">Qui sommes-nous</a>
-</nav>
-</div>
+<!-- PIED DE PAGE -->
+<footer class="hx-foot">
+  <div class="tricolor" aria-hidden="true"></div>
+  <div class="hx-wrap">
+    <div class="hx-foot-top">
+      <a href="/" class="hx-foot-logo" aria-label="VitalX — accueil"><img src="/assets/logo-vitalx-white.svg" alt="VitalX" width="90" height="30" data-no-lightbox="true"/></a>
+      <nav class="hx-foot-cols" aria-label="Pied de page">
+        <div>
+          <h3>Société</h3>
+          <ul>
+            <li><a href="/qui-sommes-nous.html">Qui sommes-nous</a></li>
+            <li><a href="/affiliation.html">Affiliation</a></li>
+            <li><a href="/affiliation.html" class="hx-reco">Recommandez VitalX</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Informations</h3>
+          <ul>
+            <li><a href="/mentions-legales.html">Mentions légales</a></li>
+            <li><a href="/cgv.html">CGV</a></li>
+            <li><a href="/politique-confidentialite.html">Confidentialité</a></li>
+            <li><a href="/garantie.html">Garantie</a></li>
+            <li><a href="/formulaire_retractation.pdf" download>Rétractation</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Contact</h3>
+          <ul>
+            <li><a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="hx-legal"><p>Interfaces reproduites avec l'autorisation de leurs fabricants, à des fins de formation uniquement. Le simulateur VitalX est conçu et développé par VitalX ; il n'est ni fabriqué, ni distribué, ni approuvé comme dispositif médical par ces constructeurs. Marques citées : propriétés de leurs titulaires.</p></div>
+    <div class="hx-foot-bottom">
+      <span>© <span id="year"></span> VitalX. Tous droits réservés.</span>
+      <span id="langSwitch" class="hx-lang" role="group" aria-label="Langue">
+        <button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">Français</button>
+        <button type="button" data-lang="en" title="English" aria-label="English">English</button>
+        <button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">Deutsch</button>
+      </span>
+    </div>
+  </div>
 </footer>
-<script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+<script src="/site-header.js" defer></script>
 <script defer="" src="/i18n-fiches.js"></script><script defer="" src="/i18n.js"></script></body>
 </html>

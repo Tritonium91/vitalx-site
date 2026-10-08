@@ -339,7 +339,21 @@
     'Votre panier est vide.': 'Your cart is empty.',
     'Vous souhaitez voir VitalX en action ?': 'Want to see VitalX in action?',
     'Contactez-nous pour organiser une démonstration en visio.': 'Get in touch to arrange a video demo.',
-    '📞 Demander une démo': '📞 Book a demo'
+    '📞 Demander une démo': '📞 Book a demo',
+
+    /* ── En-tête et pied de page COMMUNS à toutes les pages (08/10/2026) : mêmes textes que l'accueil ── */
+    "Aller au contenu": "Skip to content",
+    "Navigation principale": "Main navigation",
+    "Pied de page": "Footer",
+    "VitalX — accueil": "VitalX — home",
+    "Menu mobile": "Mobile menu",
+    "Langue": "Language",
+    "Appareils": "Devices",
+    "Formateur": "Trainer",
+    "Recommandez VitalX": "Recommend VitalX",
+    "VitalX. Tous droits réservés.": "VitalX. All rights reserved.",
+    "Interfaces reproduites avec l'autorisation de leurs fabricants, à des fins de formation uniquement. Le simulateur VitalX est conçu et développé par VitalX ; il n'est ni fabriqué, ni distribué, ni approuvé comme dispositif médical par ces constructeurs. Marques citées : propriétés de leurs titulaires.": "Interfaces reproduced with the permission of their manufacturers, for training purposes only. The VitalX simulator is designed and developed by VitalX; it is neither manufactured, distributed nor approved as a medical device by these manufacturers. Brands mentioned are the property of their respective owners.",
+    "TVA non applicable, art. 293 B du CGI. Règlement à la commande. VitalX POD'S est un simulateur de formation, il ne mesure aucune constante réelle et n'est pas un dispositif médical.": "VAT not applicable, art. 293 B CGI. Payment on order. VitalX POD'S is a training simulator, it does not measure any real vital signs and is not a medical device.",
   };
 
   T.de = {
@@ -667,7 +681,21 @@
     'Votre panier est vide.': 'Ihr Warenkorb ist leer.',
     'Vous souhaitez voir VitalX en action ?': 'Möchten Sie VitalX in Aktion sehen?',
     'Contactez-nous pour organiser une démonstration en visio.': 'Kontaktieren Sie uns für eine Demo per Videocall.',
-    '📞 Demander une démo': '📞 Demo vereinbaren'
+    '📞 Demander une démo': '📞 Demo vereinbaren',
+
+    /* ── En-tête et pied de page COMMUNS à toutes les pages (08/10/2026) : mêmes textes que l'accueil ── */
+    "Aller au contenu": "Zum Inhalt springen",
+    "Navigation principale": "Hauptnavigation",
+    "Pied de page": "Fußbereich",
+    "VitalX — accueil": "VitalX — Startseite",
+    "Menu mobile": "Mobiles Menü",
+    "Langue": "Sprache",
+    "Appareils": "Geräte",
+    "Formateur": "Trainer",
+    "Recommandez VitalX": "VitalX weiterempfehlen",
+    "VitalX. Tous droits réservés.": "VitalX. Alle Rechte vorbehalten.",
+    "Interfaces reproduites avec l'autorisation de leurs fabricants, à des fins de formation uniquement. Le simulateur VitalX est conçu et développé par VitalX ; il n'est ni fabriqué, ni distribué, ni approuvé comme dispositif médical par ces constructeurs. Marques citées : propriétés de leurs titulaires.": "Oberflächen mit Genehmigung ihrer Hersteller nachgebildet, ausschließlich zu Ausbildungszwecken. Der VitalX-Simulator wird von VitalX entwickelt; er wird von diesen Herstellern weder hergestellt, vertrieben noch als Medizinprodukt zugelassen. Genannte Marken sind Eigentum ihrer jeweiligen Inhaber.",
+    "TVA non applicable, art. 293 B du CGI. Règlement à la commande. VitalX POD'S est un simulateur de formation, il ne mesure aucune constante réelle et n'est pas un dispositif médical.": "Keine MwSt., Art. 293 B CGI. Zahlung bei Bestellung. VitalX POD'S ist ein Trainingssimulator, er misst keine realen Vitalwerte und ist kein Medizinprodukt.",
   };
 
 

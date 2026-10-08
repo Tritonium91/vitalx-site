@@ -1,0 +1,121 @@
+/*
+  site-header.css — VitalX
+  Description : en-tête blanc collant, menu mobile et pied de page sombre COMMUNS à toutes les pages du site
+                (accueil, boutique, fiches techniques, POD'S, société, affiliation, pages légales, remerciements).
+                Chargé par chaque page ; le balisage de l'en-tête et du pied de page est identique partout.
+  🆕 v1.0 — 08/10/2026 — Yann USSEGLIO
+     • Styles sortis de home.css (v5.0) : l'accueil ne bouge pas d'un pixel
+     • Rendu identique quelle que soit la feuille de base de la page (apple.css, Tailwind, styles en ligne des pages légales) :
+       police, interlignage, lissage, liens, listes et boutons sont figés ici (voir « Base figée » et « Isolation »)
+     • Page en cours : le lien de l'en-tête et du menu passe en rouge avec aria-current="page"
+  À charger en dernier parmi les feuilles « globales » (après apple.css et les styles propres à la page).
+  Script associé : /site-header.js (menu mobile, année du pied de page, lien actif de l'accueil)
+*/
+
+:root{
+  --red:#E3121B;                 /* rouge VitalX : fonds, filets, texte sur fond sombre */
+  --red-d:#C8102E;               /* rouge profond : texte rouge sur fond clair */
+  --hx-gray:#f5f5f5;             /* bandeaux de titre */
+  --hx-line:#e4e4e8;
+  --hx-ink:#18181b;
+  --hx-mut:#55555c;
+  --hx-r:6px;                    /* coins presque carrés */
+  --nav-h:76px;
+  --hx-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+}
+@media(max-width:900px){:root{--nav-h:64px}}
+
+/* ── Base figée : même typographie quelle que soit la page ─────── */
+.skip,.hx-head,.hx-menu,.hx-foot{font-family:var(--hx-font);font-size:17px;font-weight:400;font-style:normal;line-height:1.47059;letter-spacing:-.187px;text-align:start;text-transform:none;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.hx-head *,.hx-head *::before,.hx-head *::after,.hx-menu *,.hx-menu *::before,.hx-menu *::after,.hx-foot *,.hx-foot *::before,.hx-foot *::after{box-sizing:border-box}
+
+/* ── Isolation : neutralise les styles génériques des pages (a, ul, li, p, img…) ── */
+.hx-head a,.hx-menu a,.hx-foot a{border:0;font-weight:inherit;font-style:inherit;text-transform:none;text-decoration:none;background:none}
+.hx-head li,.hx-menu li,.hx-foot li{display:list-item;margin:0;padding:0;gap:normal;align-items:normal;border:0;border-radius:0;background:none;color:inherit;font-size:inherit;transition:all 0s ease 0s}
+.hx-head li:hover,.hx-menu li:hover,.hx-foot li:hover{background:none;border-color:transparent}
+.hx-head li::before,.hx-menu li::before,.hx-foot li::before,.hx-head li::after,.hx-menu li::after,.hx-foot li::after{content:none}
+.hx-head img,.hx-foot img{display:block;max-width:100%;vertical-align:baseline;border-radius:0;box-shadow:none}
+.hx-head button,.hx-menu button,.hx-foot button{text-transform:none;text-shadow:none;box-shadow:none}
+
+.hx-wrap{max-width:1360px;margin:0 auto;padding:0 clamp(16px,3vw,40px)}
+
+/* Ancres : le contenu ne passe pas sous l'en-tête collant. Les pages avec une sous-navigation .lnav (boutique, société, affiliation)
+   gardent le décalage d'apple.css (en-tête + 52 px de sous-navigation) */
+html:not(:has(.lnav)){scroll-padding-top:var(--nav-h)}
+
+/* Lien d'évitement (visible au clavier seulement) */
+.skip{position:absolute;left:12px;top:-60px;z-index:300;background:var(--red);color:#fff;font-weight:600;padding:12px 18px;border:0;border-radius:0 0 var(--hx-r) var(--hx-r);text-decoration:none;transition:top .15s}
+.skip:hover{color:#fff;text-decoration:underline}
+.skip:focus-visible{outline:3px solid var(--red);outline-offset:3px;border-radius:4px}
+.skip:focus{top:0;color:#fff;outline-color:#fff}
+
+/* Anneau de focus clavier de l'en-tête, du menu et du pied de page (identique partout) */
+.hx-head a:focus-visible,.hx-head button:focus-visible,.hx-menu a:focus-visible,.hx-menu button:focus-visible{outline:3px solid var(--red);outline-offset:3px;border-radius:4px}
+
+/* ── En-tête blanc collant ─────────────────────────────────────── */
+.hx-head{position:sticky;top:0;z-index:100;height:var(--nav-h);background:#fff;color:var(--hx-ink);box-shadow:0 1px 0 var(--hx-line);-webkit-backdrop-filter:none;backdrop-filter:none}
+.hx-head-in{height:100%;max-width:1360px;margin:0 auto;padding:0 clamp(16px,3vw,40px);display:flex;align-items:center;gap:clamp(14px,2.4vw,36px)}
+.hx-logo{flex:0 0 auto;display:block;line-height:0;border-radius:4px;color:var(--red-d)}
+.hx-head .hx-logo:hover{color:var(--red-d)}
+.hx-logo img{height:30px;width:auto}
+.hx-nav{margin-left:auto}
+.hx-links{display:flex;align-items:center;gap:clamp(14px,2.3vw,34px);list-style:none;margin:0;padding:0}
+.hx-links a{position:relative;display:block;padding:10px 0;font-size:15px;line-height:1;font-weight:600;letter-spacing:-.005em;color:var(--hx-ink);text-decoration:none;white-space:nowrap;transition:color .2s}
+.hx-links a::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:2px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+.hx-links a:hover,.hx-links a[aria-current="true"],.hx-links a[aria-current="page"]{color:var(--red-d);text-decoration:none}
+.hx-links a:hover::after,.hx-links a[aria-current="true"]::after,.hx-links a[aria-current="page"]::after{transform:scaleX(1)}
+.hx-tools{display:flex;align-items:center;gap:clamp(8px,1.4vw,18px);flex:0 0 auto}
+.hx-icon{display:inline-grid;place-items:center;width:36px;height:36px;color:var(--hx-ink);border-radius:50%;transition:background .2s,color .2s}
+.hx-icon:hover{color:var(--red-d);background:var(--hx-gray);text-decoration:none}
+.hx-icon svg{width:22px;height:22px}
+.hx-lang{display:inline-flex;align-items:center}
+.hx-lang button{background:none;border:0;padding:8px 7px;font:inherit;font-size:13px;font-weight:600;letter-spacing:.03em;line-height:1;color:#6a6a72;cursor:pointer;transition:color .2s}
+.hx-lang button+button{border-left:1px solid var(--hx-line)}
+.hx-lang button:hover,.hx-lang button.is-active{color:var(--red-d)}
+.hx-burger{display:none;position:relative;width:44px;height:44px;margin-right:-8px;background:none;border:0;padding:0;cursor:pointer;border-radius:4px}
+.hx-burger span{position:absolute;left:11px;right:11px;height:2px;background:var(--hx-ink);transition:transform .25s,opacity .2s}
+.hx-burger span:nth-child(1){top:17px}.hx-burger span:nth-child(2){top:25px}
+.hx-burger[aria-expanded="true"] span:nth-child(1){transform:translateY(4px) rotate(45deg)}
+.hx-burger[aria-expanded="true"] span:nth-child(2){transform:translateY(-4px) rotate(-45deg)}
+@media(max-width:900px){
+  .hx-nav,.hx-hide-m{display:none}
+  .hx-burger{display:block}
+  .hx-tools{margin-left:auto}
+  .hx-logo img{height:28px}
+}
+
+/* Menu mobile (plein écran, fond blanc) */
+.hx-menu{display:none;position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;z-index:99;background:#fff;color:var(--hx-ink);padding:6px 24px 32px;overflow-y:auto;overscroll-behavior:contain}
+.hx-menu.open{display:block}
+.hx-menu a{display:block;text-decoration:none;color:var(--hx-ink)}
+.hx-menu a.big{padding:17px 0;font-size:24px;line-height:1.15;font-weight:700;letter-spacing:-.015em;border-bottom:1px solid var(--hx-line)}
+.hx-menu a.big:hover,.hx-menu a.big[aria-current="true"],.hx-menu a.big[aria-current="page"]{color:var(--red-d)}
+.hx-menu a.small{padding:14px 0 0;font-size:16px;font-weight:600;color:var(--hx-mut)}
+.hx-menu .hx-lang{margin-top:18px}
+.hx-menu .hx-lang button{font-size:15px;padding:10px 12px}
+.hx-menu .hx-lang button:first-child{padding-left:0}
+
+/* ── Pied de page sombre ───────────────────────────────────────── */
+.hx-foot{background:#0b0b0d;color:#b4b4ba;font-size:14px;line-height:1.5}
+.hx-foot .tricolor{height:4px;background:linear-gradient(90deg,#0055a4 0 33.34%,#fff 33.34% 66.67%,#ef4135 66.67% 100%);border-radius:0;box-shadow:none}
+.hx-foot a{color:#d9d9de;text-decoration:none}
+.hx-foot a:hover{color:#fff;text-decoration:underline}
+.hx-foot a:focus-visible,.hx-foot button:focus-visible{outline:3px solid #fff;outline-offset:3px;border-radius:4px}
+.hx-foot-top{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:28px 48px;padding:clamp(32px,4vw,52px) 0 clamp(22px,3vw,34px)}
+.hx-foot-logo{display:block;line-height:0}
+.hx-foot-logo img{height:30px;width:auto}
+.hx-foot-cols{display:flex;flex-wrap:wrap;gap:24px clamp(28px,5vw,72px)}
+.hx-foot-cols h3{margin:0 0 10px;font-size:13px;line-height:1.2;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff}
+.hx-foot-cols ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.hx-foot-cols .hx-reco{color:#ff8a90;font-weight:600}
+.hx-legal{padding:20px 0;font-size:12.5px;line-height:1.55;color:#8e8e95;border-top:1px solid #26262b}
+.hx-legal p{margin:0;max-width:980px;font:inherit;color:inherit}
+.hx-foot-bottom{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 24px;padding:0 0 26px;font-size:13px;color:#8e8e95}
+.hx-foot .hx-lang button{color:#a4a4ab;font-weight:500;letter-spacing:0;font-size:13px;padding:6px 10px}
+.hx-foot .hx-lang button+button{border-left-color:#33333a}
+.hx-foot .hx-lang button:hover,.hx-foot .hx-lang button.is-active{color:#fff}
+.hx-foot .hx-lang button.is-active{font-weight:700}
+
+@media(prefers-reduced-motion:reduce){
+  .hx-links a::after{transition:none}
+}

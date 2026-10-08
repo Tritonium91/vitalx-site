@@ -6,6 +6,8 @@
      • Refonte au thème tricolore de l'index
      • ⚠️ 1. Art. 4 : ajout du parcours devis (packs) à côté de la commande en ligne
      • ⚠️ 2. Art. 10 : abonnement auto-renouvelable remplacé par l'achat unique Mode Ultra
+  🆕 08/10/2026 — Yann USSEGLIO : en-tête blanc collant, menu mobile et pied de page sombre COMMUNS à toutes les pages
+     (même balisage que l'accueil ; styles /site-header.css, script unique /site-header.js). Contenu de la page inchangé ; petits écrans (320–520 px) : liens et mots longs des puces à la ligne, grille sans largeur minimale forcée (plus de texte coupé à droite) ; anciens styles d'en-tête / pied de page / langue retirés.
 -->
 <html lang="fr">
 <head>
@@ -31,7 +33,7 @@
 <meta name="twitter:description" content="Conditions générales de vente de VitalX : commande, devis, livraison, garanties, rétractation."/>
 <meta name="twitter:image" content="https://vitalx.org/og-image.png"/>
 <script type="application/ld+json" data-seo>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"VitalX","item":"https://vitalx.org/"},{"@type":"ListItem","position":2,"name":"Conditions générales de vente","item":"https://vitalx.org/cgv.html"}]}</script>
-<meta content="#0a2240" name="theme-color"/>
+<meta content="#ffffff" name="theme-color"/>
 <link href="/favicon.ico" rel="icon" sizes="any"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
@@ -105,7 +107,7 @@ ul.plain li::before{content:'›';color:var(--fr-blue)}
 .note p{font-size:14.5px;margin:0}
 
 /* Grilles */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px;margin-top:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(270px,100%),1fr));gap:16px;margin-top:20px}
 .tile{background:#f4f6f9;border:1px solid var(--line);border-radius:11px;padding:20px;transition:.25s}
 .tile:hover{border-color:var(--fr-blue);background:#fff;box-shadow:0 14px 30px -22px rgba(10,34,64,.4)}
 .tile-head{display:flex;gap:12px;align-items:flex-start;margin-bottom:10px}
@@ -121,21 +123,7 @@ ul.plain li::before{content:'›';color:var(--fr-blue)}
 .hl{color:var(--fr-blue);font-weight:700}
 .hl-red{color:var(--fr-red-dark);font-weight:700}
 
-/* Header / nav */
-.topstrip{background:var(--fr-blue-deep);color:#fff;font-size:12px}
-.topstrip .row{max-width:1152px;margin:0 auto;padding:0 16px;height:36px;display:flex;align-items:center;justify-content:space-between}
-.topstrip a{color:#ffb340;border:0;font-weight:700}
-.topstrip a.mail{color:#cfe0f7}
-.topstrip a:hover{color:#fff}
-header.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-header.nav .row{max-width:1152px;margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;justify-content:space-between}
-.brand{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:900;letter-spacing:-.02em;color:var(--fr-blue-dark);border:0}
-.brand span{color:var(--fr-red)}
-.brand img{height:34px;width:34px;object-fit:contain}
-.navlinks{display:flex;gap:26px;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.03em}
-.navlinks a{color:var(--ink);border:0}
-.navlinks a:hover{color:var(--fr-blue)}
-@media(max-width:760px){.navlinks{display:none}.topstrip .row span.hide-sm{display:none}}
+/* Boutons (l'en-tête et le pied de page sont communs : /site-header.css) */
 .btn-red{display:inline-flex;align-items:center;gap:8px;background:var(--fr-red);color:#fff;border:0;border-radius:6px;
   padding:11px 22px;font-size:13px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;
   box-shadow:0 6px 18px -8px rgba(225,0,15,.6);transition:.15s}
@@ -150,49 +138,55 @@ header.nav .row{max-width:1152px;margin:0 auto;padding:0 16px;height:62px;displa
 .meta p{font-size:13.5px;margin:6px 0}
 .updated{font-size:12.5px;color:#9aa7b8;font-style:italic}
 .backrow{padding:34px 0 60px}
-footer.site{background:var(--fr-blue-deep);color:#9fb3cc;padding:36px 0 26px;font-size:13px}
-footer.site .row{max-width:1152px;margin:0 auto;padding:0 24px;display:flex;flex-wrap:wrap;gap:14px;
-  align-items:center;justify-content:space-between}
-footer.site a{color:#9fb3cc;border:0;font-weight:600}
-footer.site a:hover{color:#fff}
 
-/* 🌍 Sélecteur de langue */
-.lang-btn{width:26px;height:18px;border-radius:3px;overflow:hidden;display:block;line-height:0;padding:0;border:0;background:none;cursor:pointer;opacity:.4;transition:opacity .15s,box-shadow .15s}
-.lang-btn:hover{opacity:.85}
-.lang-btn.is-active{opacity:1;box-shadow:0 0 0 1.5px rgba(255,255,255,.9)}
-.lang-btn svg{display:block;width:100%;height:100%}
-#langSwitch{display:flex;align-items:center;gap:6px}
-.topstrip .right{display:flex;align-items:center;gap:16px}
+@media(max-width:520px){main ul li{overflow-wrap:anywhere}}   /* petits écrans : les liens et mots longs des puces passent à la ligne (rien n'est coupé à droite) */
 .legal-notice{font-size:13.5px;color:#9fb3cc;max-width:640px;margin:14px auto 0;font-style:italic}
 </style>
+<link rel="stylesheet" href="/site-header.css">
 </head>
 <body>
-<div class="topstrip">
-<div class="row">
-<span>Conçu &amp; assemblé en France 🇫🇷</span>
-<span class="right">
-      <span class="hide-sm"><a class="mail" href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a></span>
-      <span id="langSwitch">
-        <button type="button" data-lang="fr" class="lang-btn is-active" title="Français" aria-label="Français"><svg viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="36" fill="#0046b8"/><rect x="20" width="20" height="36" fill="#fff"/><rect x="40" width="20" height="36" fill="#e1000f"/></svg></button>
-        <button type="button" data-lang="en" class="lang-btn" title="English" aria-label="English"><svg viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="36" fill="#012169"/><path d="M0 0 L60 36 M60 0 L0 36" stroke="#fff" stroke-width="7"/><path d="M0 0 L60 36 M60 0 L0 36" stroke="#C8102E" stroke-width="4"/><path d="M30 0 V36 M0 18 H60" stroke="#fff" stroke-width="12"/><path d="M30 0 V36 M0 18 H60" stroke="#C8102E" stroke-width="7"/></svg></button>
-        <button type="button" data-lang="de" class="lang-btn" title="Deutsch" aria-label="Deutsch"><svg viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="12" fill="#000"/><rect y="12" width="60" height="12" fill="#DD0000"/><rect y="24" width="60" height="12" fill="#FFCE00"/></svg></button>
+<a class="skip" href="#top">Aller au contenu</a>
+
+<!-- EN-TÊTE BLANC COLLANT -->
+<header class="gnav hx-head">
+  <div class="hx-head-in">
+    <a href="/" class="hx-logo" aria-label="VitalX — accueil"><img src="/assets/logo-vitalx.svg" alt="VitalX" width="90" height="30" data-no-lightbox="true"/></a>
+    <nav class="hx-nav" aria-label="Navigation principale">
+      <ul class="hx-links">
+        <li><a href="/#interfaces">Appareils</a></li>
+        <li><a href="/#formateur">Formateur</a></li>
+        <li><a href="/#mediacenter">Media Center</a></li>
+        <li><a href="/#academy">ACADEMY</a></li>
+        <li><a href="/boutique.html">Boutique</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="hx-tools">
+      <a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="hx-icon hx-hide-m" title="Mode Formateur (web)" aria-label="Mode Formateur (web)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></a>
+      <span class="hx-lang hx-hide-m" role="group" aria-label="Langue">
+        <button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">FR</button>
+        <button type="button" data-lang="en" title="English" aria-label="English">EN</button>
+        <button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">DE</button>
       </span>
-    </span>
-</div>
-</div>
-<div class="tricolor-thin"></div>
-<header class="nav">
-<div class="row">
-<a class="brand" href="/"><img alt="" onerror="this.style.display='none'" src="/logo.png"/>Vital<span>X</span></a>
-<nav class="navlinks">
-<a href="/">Accueil</a>
-<a href="/boutique.html">Boutique</a>
-<a href="/garantie.html">Garantie</a>
-<a href="/#contact">Contact</a>
-</nav>
-<a class="btn-red" href="/#contact">Demander un devis</a>
-</div>
+      <button class="hx-burger" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
+    </div>
+  </div>
 </header>
+<nav id="mobileMenu" class="hx-menu" aria-label="Menu mobile">
+  <a class="big" href="/#interfaces">Appareils</a>
+  <a class="big" href="/#formateur">Formateur</a>
+  <a class="big" href="/#mediacenter">Media Center</a>
+  <a class="big" href="/#academy">ACADEMY</a>
+  <a class="big" href="/boutique.html">Boutique</a>
+  <a class="big" href="/#contact">Contact</a>
+  <a class="small" href="https://vitalxtrainer.app" target="_blank" rel="noopener">Mode Formateur (web) ›</a>
+  <span class="hx-lang" role="group" aria-label="Langue">
+    <button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">FR</button>
+    <button type="button" data-lang="en" title="English" aria-label="English">EN</button>
+    <button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">DE</button>
+  </span>
+  <a class="small" href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a>
+</nav>
 <section class="sec-dark hero">
 <div class="glow-a"></div><div class="glow-b"></div>
 <div class="wrap inner">
@@ -203,7 +197,7 @@ footer.site a:hover{color:#fff}
 </div>
 <div class="tricolor" style="position:absolute;left:0;right:0;bottom:0"></div>
 </section>
-<main>
+<main id="top">
 <div class="wrap">
 <div class="card">
 <h2><span class="num">1</span>Identité du vendeur</h2>
@@ -313,19 +307,51 @@ footer.site a:hover{color:#fff}
 <div class="wrap backrow">
 <a class="btn-out" href="/">← Retour au site</a>
 </div>
-<footer class="site">
-<div class="tricolor-thin" style="margin-bottom:26px"></div>
-<div class="row">
-<div>© <span id="year"></span> VitalX — Tous droits réservés. Conçu &amp; assemblé en France 🇫🇷</div>
-<div style="display:flex;gap:18px;flex-wrap:wrap">
-<a href="/mentions-legales.html">Mentions légales</a>
-<a href="/cgv.html">CGV</a>
-<a href="/politique-confidentialite.html">Confidentialité</a>
-<a href="/garantie.html">Garantie</a>
-</div>
-</div>
+<!-- PIED DE PAGE -->
+<footer class="hx-foot">
+  <div class="tricolor" aria-hidden="true"></div>
+  <div class="hx-wrap">
+    <div class="hx-foot-top">
+      <a href="/" class="hx-foot-logo" aria-label="VitalX — accueil"><img src="/assets/logo-vitalx-white.svg" alt="VitalX" width="90" height="30" data-no-lightbox="true"/></a>
+      <nav class="hx-foot-cols" aria-label="Pied de page">
+        <div>
+          <h3>Société</h3>
+          <ul>
+            <li><a href="/qui-sommes-nous.html">Qui sommes-nous</a></li>
+            <li><a href="/affiliation.html">Affiliation</a></li>
+            <li><a href="/affiliation.html" class="hx-reco">Recommandez VitalX</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Informations</h3>
+          <ul>
+            <li><a href="/mentions-legales.html">Mentions légales</a></li>
+            <li><a href="/cgv.html">CGV</a></li>
+            <li><a href="/politique-confidentialite.html">Confidentialité</a></li>
+            <li><a href="/garantie.html">Garantie</a></li>
+            <li><a href="/formulaire_retractation.pdf" download>Rétractation</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Contact</h3>
+          <ul>
+            <li><a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="hx-legal"><p>Interfaces reproduites avec l'autorisation de leurs fabricants, à des fins de formation uniquement. Le simulateur VitalX est conçu et développé par VitalX ; il n'est ni fabriqué, ni distribué, ni approuvé comme dispositif médical par ces constructeurs. Marques citées : propriétés de leurs titulaires.</p></div>
+    <div class="hx-foot-bottom">
+      <span>© <span id="year"></span> VitalX. Tous droits réservés.</span>
+      <span id="langSwitch" class="hx-lang" role="group" aria-label="Langue">
+        <button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">Français</button>
+        <button type="button" data-lang="en" title="English" aria-label="English">English</button>
+        <button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">Deutsch</button>
+      </span>
+    </div>
+  </div>
 </footer>
-<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+<script src="/site-header.js" defer></script>
 <script src="/i18n-legal.js" defer></script>
 <script src="/i18n.js" defer></script>
 </body>

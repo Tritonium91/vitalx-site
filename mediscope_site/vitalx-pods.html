@@ -8,6 +8,8 @@
      • POD'S Premium → POD'S Pro (iPhone 12/13 + iPad 11" formateur)
      • Nouvelle section « Licence POD'S vs licence VitalX » + passage vers la licence VitalX
      • Liens /boutique.html#licenses (Mode Ultra) → #pods / #licence
+  🆕 08/10/2026 — Yann USSEGLIO : en-tête blanc collant, menu mobile et pied de page sombre COMMUNS à toutes les pages
+     (même balisage que l'accueil ; styles /site-header.css, script unique /site-header.js). Contenu de la page inchangé ; image du héros corrigée (/assets/pack-pods.webp, l'ancien fichier renvoyait 404) ; mention légale de l'ancien pied de page conservée au-dessus du pied de page.
 -->
 <html lang="fr" class="scroll-smooth">
 <head>
@@ -69,27 +71,52 @@
     a:focus-visible,button:focus-visible{outline:3px solid #7eb0ff;outline-offset:3px}
     @media(prefers-reduced-motion:reduce){.sr{opacity:1;transform:none;transition:none}}
   </style>
+<link rel="stylesheet" href="/site-header.css">
 </head>
 <body>
 
-  <div class="bg-[#06203f] text-white text-[12px]">
-    <div class="mx-auto max-w-6xl px-4 h-9 flex items-center justify-between">
-      <span class="flex items-center gap-2 font-semibold tracking-wide"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e1000f" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Conçu &amp; assemblé en France 🇫🇷</span>
-      <span class="hidden sm:flex items-center gap-4">
-        <a href="mailto:vitalxscope@gmail.com" class="hover:text-[#7eb0ff] transition">vitalxscope@gmail.com</a>
-        <a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="text-[#ffb340] hover:text-[#ffc970] font-semibold transition">Mode Formateur (web) ›</a>
+  <a class="skip" href="#top">Aller au contenu</a>
+
+<!-- EN-TÊTE BLANC COLLANT -->
+<header class="gnav hx-head">
+  <div class="hx-head-in">
+    <a href="/" class="hx-logo" aria-label="VitalX — accueil"><img src="/assets/logo-vitalx.svg" alt="VitalX" width="90" height="30" data-no-lightbox="true"/></a>
+    <nav class="hx-nav" aria-label="Navigation principale">
+      <ul class="hx-links">
+        <li><a href="/#interfaces">Appareils</a></li>
+        <li><a href="/#formateur">Formateur</a></li>
+        <li><a href="/#mediacenter">Media Center</a></li>
+        <li><a href="/#academy">ACADEMY</a></li>
+        <li><a href="/boutique.html">Boutique</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="hx-tools">
+      <a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="hx-icon hx-hide-m" title="Mode Formateur (web)" aria-label="Mode Formateur (web)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></a>
+      <span class="hx-lang hx-hide-m" role="group" aria-label="Langue">
+        <button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">FR</button>
+        <button type="button" data-lang="en" title="English" aria-label="English">EN</button>
+        <button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">DE</button>
       </span>
+      <button class="hx-burger" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
     </div>
   </div>
-  <div class="tricolor-thin"></div>
-
-  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-[#dde3ec] shadow-sm">
-    <div class="mx-auto max-w-6xl px-4 h-16 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-2.5"><img src="/assets/logo.png" alt="" class="h-9 w-auto" onerror="this.style.display='none'"/><span class="font-black tracking-tight text-[20px] text-[#0a2240]">Vital<span class="text-[#e1000f]">X</span></span></a>
-      <nav class="hidden md:flex items-center gap-6 text-[13px] font-bold uppercase tracking-wide text-[#0c1828]"><a href="/" class="hover:text-[#0046b8] transition">Accueil</a><a href="/boutique.html" class="hover:text-[#0046b8] transition">Boutique</a><a href="#packs" class="hover:text-[#0046b8] transition">Packs</a><a href="#licence" class="hover:text-[#0046b8] transition">Licence</a><a href="/#contact" class="hover:text-[#0046b8] transition">Contact</a></nav>
-      <a href="/#contact" class="btn-red !py-2 !px-4 !text-[12px]">📝 Demander un devis</a>
-    </div>
-  </header>
+</header>
+<nav id="mobileMenu" class="hx-menu" aria-label="Menu mobile">
+  <a class="big" href="/#interfaces">Appareils</a>
+  <a class="big" href="/#formateur">Formateur</a>
+  <a class="big" href="/#mediacenter">Media Center</a>
+  <a class="big" href="/#academy">ACADEMY</a>
+  <a class="big" href="/boutique.html">Boutique</a>
+  <a class="big" href="/#contact">Contact</a>
+  <a class="small" href="https://vitalxtrainer.app" target="_blank" rel="noopener">Mode Formateur (web) ›</a>
+  <span class="hx-lang" role="group" aria-label="Langue">
+    <button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">FR</button>
+    <button type="button" data-lang="en" title="English" aria-label="English">EN</button>
+    <button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">DE</button>
+  </span>
+  <a class="small" href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a>
+</nav>
 
   <!-- HERO -->
   <section class="relative overflow-hidden bg-[#06203f] text-white">
@@ -108,7 +135,7 @@
           </div>
         </div>
         <div class="sr show rounded-2xl bg-white/[.04] ring-1 ring-white/10 p-4">
-          <img src="/assets/vitalx-pods.png" alt="Pack VitalX POD'S — boîtier, iPhone et accessoires" class="w-full object-contain mx-auto" style="max-height:48vh"/>
+          <img src="/assets/pack-pods.webp" width="700" height="680" alt="Pack VitalX POD'S — boîtier, iPhone et accessoires" class="w-full object-contain mx-auto" style="max-height:48vh"/>
         </div>
       </div>
     </div>
@@ -125,7 +152,7 @@
     </div>
   </section>
 
-  <main class="mx-auto max-w-6xl px-6 py-16 space-y-16">
+  <main id="top" class="mx-auto max-w-6xl px-6 py-16 space-y-16">
 
     <!-- DESCRIPTION -->
     <section class="grid lg:grid-cols-[1fr_1.1fr] gap-10 items-start">
@@ -262,21 +289,60 @@
     </section>
   </main>
 
-  <footer class="py-10 border-t border-[#dde3ec] text-sm text-[#5b6b80] bg-white">
-    <div class="tricolor-thin"></div>
-    <div class="mx-auto max-w-6xl px-6 pt-6">
-      <p class="text-[11px] text-[#9aa7b8] leading-relaxed mb-5">TVA non applicable, art. 293 B du CGI. Règlement à la commande. VitalX POD'S est un simulateur de formation, il ne mesure aucune constante réelle et n'est pas un dispositif médical.</p>
-      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-        <p>© <span id="year"></span> VitalX — Tous droits réservés.</p>
-        <nav class="flex items-center gap-4"><a href="/" class="hover:text-[#0046b8]">Accueil</a><a href="/boutique.html" class="hover:text-[#0046b8]">Boutique</a><a href="/garantie.html" class="hover:text-[#0046b8]">Garantie</a><a href="/qui-sommes-nous.html" class="hover:text-[#0046b8]">Qui sommes-nous</a></nav>
-      </div>
+  <!-- Mention légale conservée de l'ancien pied de page -->
+  <div class="mx-auto max-w-6xl px-6 pb-10">
+    <p class="text-[11px] text-[#9aa7b8] leading-relaxed">TVA non applicable, art. 293 B du CGI. Règlement à la commande. VitalX POD'S est un simulateur de formation, il ne mesure aucune constante réelle et n'est pas un dispositif médical.</p>
+  </div>
+
+  <!-- PIED DE PAGE -->
+<footer class="hx-foot">
+  <div class="tricolor" aria-hidden="true"></div>
+  <div class="hx-wrap">
+    <div class="hx-foot-top">
+      <a href="/" class="hx-foot-logo" aria-label="VitalX — accueil"><img src="/assets/logo-vitalx-white.svg" alt="VitalX" width="90" height="30" data-no-lightbox="true"/></a>
+      <nav class="hx-foot-cols" aria-label="Pied de page">
+        <div>
+          <h3>Société</h3>
+          <ul>
+            <li><a href="/qui-sommes-nous.html">Qui sommes-nous</a></li>
+            <li><a href="/affiliation.html">Affiliation</a></li>
+            <li><a href="/affiliation.html" class="hx-reco">Recommandez VitalX</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Informations</h3>
+          <ul>
+            <li><a href="/mentions-legales.html">Mentions légales</a></li>
+            <li><a href="/cgv.html">CGV</a></li>
+            <li><a href="/politique-confidentialite.html">Confidentialité</a></li>
+            <li><a href="/garantie.html">Garantie</a></li>
+            <li><a href="/formulaire_retractation.pdf" download>Rétractation</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Contact</h3>
+          <ul>
+            <li><a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a></li>
+          </ul>
+        </div>
+      </nav>
     </div>
-  </footer>
+    <div class="hx-legal"><p>Interfaces reproduites avec l'autorisation de leurs fabricants, à des fins de formation uniquement. Le simulateur VitalX est conçu et développé par VitalX ; il n'est ni fabriqué, ni distribué, ni approuvé comme dispositif médical par ces constructeurs. Marques citées : propriétés de leurs titulaires.</p></div>
+    <div class="hx-foot-bottom">
+      <span>© <span id="year"></span> VitalX. Tous droits réservés.</span>
+      <span id="langSwitch" class="hx-lang" role="group" aria-label="Langue">
+        <button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">Français</button>
+        <button type="button" data-lang="en" title="English" aria-label="English">English</button>
+        <button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">Deutsch</button>
+      </span>
+    </div>
+  </div>
+</footer>
 
   <script>
-    document.getElementById('year').textContent=new Date().getFullYear();
     (function(){const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.sr').forEach(el=>io.observe(el))})();
   </script>
+  <script src="/site-header.js" defer></script>
   <script src="/i18n.js" defer></script>
 </body>
 </html>

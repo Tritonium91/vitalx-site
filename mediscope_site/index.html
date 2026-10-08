@@ -21,6 +21,9 @@
        bandeaux de titre gris clair, cartes « image + une ligne + lien », packs en 3 cartes, texte divisé par plus de 3.
        Retirés : ruban « Nouveau… », tuiles, confiance, « Capacités », « Devis », « Recommandez VitalX » (lien du pied de page).
        Les composants brands.js (interfaces, Media Center, formateur) et le formulaire Netlify sont repris tels quels.
+     • 08/10/2026 (soir) : l'en-tête, le menu mobile et le pied de page sont désormais COMMUNS à toutes les pages :
+       styles dans /site-header.css (sortis de home.css), script unique /site-header.js (menu, année, lien actif).
+       Le balisage ci-dessous est la référence recopiée sur les autres pages (avec des liens /#ancre).
 -->
 <html lang="fr">
 <head>
@@ -53,6 +56,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="stylesheet" href="/apple.css">
+<link rel="stylesheet" href="/site-header.css">
 <link rel="stylesheet" href="/home.css">
 <noscript><style>.ifc-brand{grid-template-rows:1fr;opacity:1;visibility:visible}.ifc-bar{display:none}.sr{opacity:1;transform:none}</style></noscript>
 </head>
@@ -835,32 +839,6 @@
 
 <!-- SCRIPTS -->
 <script>
-document.getElementById('year').textContent=new Date().getFullYear();
-
-// Menu mobile
-(function(){
-  const b=document.getElementById('menuBtn'),m=document.getElementById('mobileMenu');
-  if(!b||!m) return;
-  function set(open){m.classList.toggle('open',open);b.setAttribute('aria-expanded',String(open));document.body.style.overflow=open?'hidden':''}
-  b.addEventListener('click',()=>set(!m.classList.contains('open')));
-  m.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>set(false)));
-  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&m.classList.contains('open')){set(false);b.focus()}});
-  if(window.matchMedia){const mq=window.matchMedia('(min-width:901px)');const f=e=>{if(e.matches)set(false)};if(mq.addEventListener)mq.addEventListener('change',f)}
-})();
-
-// Lien actif de l'en-tête : la section qui croise le milieu de l'écran
-(function(){
-  const links=[].slice.call(document.querySelectorAll('.hx-links a[href^="#"], .hx-menu a.big[href^="#"]'));
-  const secs=[].slice.call(document.querySelectorAll('[data-spy]'));
-  if(!links.length||!secs.length||!('IntersectionObserver' in window)) return;
-  function mark(id){links.forEach(a=>{if(a.getAttribute('href')==='#'+id)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current')})}
-  const opt={rootMargin:'-40% 0px -55% 0px'};
-  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)mark(e.target.getAttribute('data-spy'))})},opt);
-  secs.forEach(s=>io.observe(s));
-  const hero=document.getElementById('v2');
-  if(hero)new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)mark('')})},opt).observe(hero);
-})();
-
 // Galeries interfaces (miniatures → image principale)
 (function(){
   document.querySelectorAll('[data-gal]').forEach(g=>{
@@ -892,6 +870,7 @@ document.getElementById('year').textContent=new Date().getFullYear();
   document.addEventListener('keydown',e=>{if(e.key==='Escape')cl()});
 })();
 </script>
+<script src="/site-header.js" defer></script>
 <script src="/brands.js" defer></script>
 <script src="/i18n-site.js" defer></script>
 <script src="/i18n.js" defer></script>

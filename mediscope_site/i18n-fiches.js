@@ -187,7 +187,7 @@ window.VitalXI18nExtra = {
     "VitalX": "VitalX",
     "Accueil": "Startseite",
     "Boutique": "Shop",
-    "Contact": "Contact",
+    "Contact": "Kontakt",
     "📝 Demander un devis": "📝 Angebot anfordern",
     "Fiche technique officielle": "Offizielles Datenblatt",
     "VitalX PLUS": "VitalX PLUS",
