@@ -14,7 +14,8 @@
 window.VitalXI18nExtra = {
   titles: {
     'Qui sommes-nous ? — VitalX': { en: 'About us — VitalX', de: 'Über uns — VitalX' },
-    "VitalX — Programme Apporteurs d'Affaires": { en: 'VitalX — Referral Partner Programme', de: 'VitalX — Empfehlungsprogramm' }
+    "VitalX — Programme Apporteurs d'Affaires": { en: 'VitalX — Referral Partner Programme', de: 'VitalX — Empfehlungsprogramm' },
+    'VitalX — Scope de simulation médicale sur iPad, conçu en France': { en: 'VitalX — Medical simulation monitor on iPad, designed in France', de: 'VitalX — Medizinischer Simulationsmonitor auf dem iPad, in Frankreich entwickelt' }
   },
 
   en: {
@@ -742,6 +743,29 @@ window.VitalXI18nExtra = {
     "Touchez une catégorie, puis un écran pour voir sa capture.": "Tap a category, then a screen to see its screenshot.",
     "Tous les écrans": "All screens",
     "Catégories du Media Center": "Media Center categories",
+    /* ── Accueil « bandeau + grandes images » (08/10/2026) ─────────── */
+    "Aller au contenu": "Skip to content",
+    "Navigation principale": "Main navigation",
+    "Pied de page": "Footer",
+    "Conçu et assemblé en France 🇫🇷": "Designed and assembled in France 🇫🇷",
+    "Le scope de simulation sur iPad, piloté en direct par le formateur.": "The simulation monitor on iPad, controlled live by the trainer.",
+    "Les appareils": "The devices",
+    "Pourquoi VitalX": "Why VitalX",
+    "Interfaces constructeurs à l'identique": "Manufacturer interfaces, identical to the originals",
+    "Plus d'informations": "More information",
+    "Pilotage en direct par le formateur": "Live control by the trainer",
+    "Media Center : radios, bilans, ECG": "Media Center: X-rays, lab results, ECG",
+    "Mode RCP": "CPR mode",
+    "Un seul iPad pour piloter toute la séance.": "One iPad to run the whole session.",
+    "Captures du panneau Media Center sur le DEFIGARD HD-7 (SCHILLER), sans iPad formateur connecté.": "Screenshots of the Media Center panel on the DEFIGARD HD-7 (SCHILLER), with no trainer iPad connected.",
+    "Les packs": "The packs",
+    "Compact, propulsé par iPhone.": "Compact, powered by iPhone.",
+    "Protection de vos données": "Data protection",
+    "Recommandez VitalX": "Recommend VitalX",
+    "Interfaces reproduites avec l'autorisation de leurs fabricants, à des fins de formation uniquement. Le simulateur VitalX est conçu et développé par VitalX ; il n'est ni fabriqué, ni distribué, ni approuvé comme dispositif médical par ces constructeurs. Marques citées : propriétés de leurs titulaires.": "Interfaces reproduced with the permission of their manufacturers, for training purposes only. The VitalX simulator is designed and developed by VitalX; it is neither manufactured, distributed nor approved as a medical device by these manufacturers. Brands mentioned are the property of their respective owners.",
+    "Pack VitalX Ultra — moniteur iPad Air 13 pouces dans sa housse et tablette formateur": "VitalX Ultra pack — 13-inch iPad Air monitor in its case and trainer tablet",
+    "VitalX Plus : moniteur iPad dans sa housse": "VitalX Plus: iPad monitor in its case",
+    "VitalX POD'S — boîtier iPhone, brassard, capteur SpO₂ et patch DSA": "VitalX POD'S — iPhone housing, cuff, SpO₂ sensor and AED pads",
   },
 
   de: {
@@ -1468,5 +1492,28 @@ window.VitalXI18nExtra = {
     "Touchez une catégorie, puis un écran pour voir sa capture.": "Tippen Sie auf eine Kategorie und dann auf einen Bildschirm, um seinen Screenshot zu sehen.",
     "Tous les écrans": "Alle Bildschirme",
     "Catégories du Media Center": "Media-Center-Kategorien",
+    /* ── Accueil « bandeau + grandes images » (08/10/2026) ─────────── */
+    "Aller au contenu": "Zum Inhalt springen",
+    "Navigation principale": "Hauptnavigation",
+    "Pied de page": "Fußbereich",
+    "Conçu et assemblé en France 🇫🇷": "Entwickelt und montiert in Frankreich 🇫🇷",
+    "Le scope de simulation sur iPad, piloté en direct par le formateur.": "Der Simulationsmonitor auf dem iPad, live vom Trainer gesteuert.",
+    "Les appareils": "Die Geräte",
+    "Pourquoi VitalX": "Warum VitalX",
+    "Interfaces constructeurs à l'identique": "Hersteller-Oberflächen, originalgetreu",
+    "Plus d'informations": "Weitere Informationen",
+    "Pilotage en direct par le formateur": "Live-Steuerung durch den Trainer",
+    "Media Center : radios, bilans, ECG": "Media Center: Röntgenbilder, Laborbefunde, EKG",
+    "Mode RCP": "HLW-Modus",
+    "Un seul iPad pour piloter toute la séance.": "Ein iPad steuert die gesamte Sitzung.",
+    "Captures du panneau Media Center sur le DEFIGARD HD-7 (SCHILLER), sans iPad formateur connecté.": "Screenshots des Media-Center-Panels auf dem DEFIGARD HD-7 (SCHILLER), ohne verbundenes Trainer-iPad.",
+    "Les packs": "Die Pakete",
+    "Compact, propulsé par iPhone.": "Kompakt, vom iPhone angetrieben.",
+    "Protection de vos données": "Datenschutz",
+    "Recommandez VitalX": "VitalX weiterempfehlen",
+    "Interfaces reproduites avec l'autorisation de leurs fabricants, à des fins de formation uniquement. Le simulateur VitalX est conçu et développé par VitalX ; il n'est ni fabriqué, ni distribué, ni approuvé comme dispositif médical par ces constructeurs. Marques citées : propriétés de leurs titulaires.": "Oberflächen mit Genehmigung ihrer Hersteller nachgebildet, ausschließlich zu Ausbildungszwecken. Der VitalX-Simulator wird von VitalX entwickelt; er wird von diesen Herstellern weder hergestellt, vertrieben noch als Medizinprodukt zugelassen. Genannte Marken sind Eigentum ihrer jeweiligen Inhaber.",
+    "Pack VitalX Ultra — moniteur iPad Air 13 pouces dans sa housse et tablette formateur": "VitalX Ultra Paket — iPad-Air-Monitor (13 Zoll) in der Tasche und Trainer-Tablet",
+    "VitalX Plus : moniteur iPad dans sa housse": "VitalX Plus: iPad-Monitor in der Tasche",
+    "VitalX POD'S — boîtier iPhone, brassard, capteur SpO₂ et patch DSA": "VitalX POD'S — iPhone-Gehäuse, Manschette, SpO₂-Sensor und AED-Pads",
   }
 };

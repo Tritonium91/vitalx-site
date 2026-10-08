@@ -16,6 +16,11 @@
      • 07/10/2026 : accueil compacté — Interfaces, Media Center et Formateur partagent le composant brands.js (bandeau → tuiles → fiche) ;
        sections retirées : « Jusque dans les menus » (#app), « Dans le pack » (#in-the-box), « Ils forment avec VitalX » (#testimonials), « Pour qui »
        ancres des fiches : #sch-… #wei-… #mc-… #fo-…
+     • 08/10/2026 : refonte « bandeau + grandes images » (voir /home.css, chargé seulement par l'accueil) :
+       en-tête blanc simplifié (Société et Affiliation passent dans le pied de page), grand héros sombre,
+       bandeaux de titre gris clair, cartes « image + une ligne + lien », packs en 3 cartes, texte divisé par plus de 3.
+       Retirés : ruban « Nouveau… », tuiles, confiance, « Capacités », « Devis », « Recommandez VitalX » (lien du pied de page).
+       Les composants brands.js (interfaces, Media Center, formateur) et le formulaire Netlify sont repris tels quels.
 -->
 <html lang="fr">
 <head>
@@ -42,209 +47,85 @@
 <meta name="twitter:image" content="https://vitalx.org/og-image.png"/>
 <script type="application/ld+json" data-seo>{"@context":"https://schema.org","@type":"Organization","@id":"https://vitalx.org/#organization","name":"VitalX","url":"https://vitalx.org/","logo":"https://vitalx.org/assets/logo-vitalx.svg","image":"https://vitalx.org/og-image.png","description":"Scopes de simulation médicale sur iPad et iPhone, conçus et assemblés en France pour les professionnels du secours.","email":"vitalxscope@gmail.com","foundingDate":"2025","founder":{"@type":"Person","name":"Yann Usseglio"},"address":{"@type":"PostalAddress","addressCountry":"FR"},"areaServed":["FR","BE","CH","LU"],"contactPoint":{"@type":"ContactPoint","contactType":"sales","email":"vitalxscope@gmail.com","availableLanguage":["fr","en","de"]}}</script>
 <script type="application/ld+json" data-seo>{"@context":"https://schema.org","@type":"WebSite","@id":"https://vitalx.org/#website","url":"https://vitalx.org/","name":"VitalX","inLanguage":"fr-FR","publisher":{"@id":"https://vitalx.org/#organization"}}</script>
-<meta name="theme-color" content="#000000"/>
+<meta name="theme-color" content="#ffffff"/>
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="stylesheet" href="/apple.css">
-<style>
-/* Spécifique accueil */
-.hero{padding-top:64px}
-.hero .tile-art{margin-top:30px;max-width:900px}
-.trust{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:32px 0}
-.trust div{text-align:center}
-.trust strong{display:block;font-size:17px;font-weight:600;letter-spacing:-.022em}
-.trust span{display:block;font-size:14px;color:var(--ink-2);margin-top:2px}
-@media(max-width:833px){.trust{grid-template-columns:repeat(2,1fr)}}
-.split{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-@media(max-width:833px){.split{grid-template-columns:1fr;gap:28px}}
-.split .art{background:var(--bg-alt);border-radius:22px;padding:24px;display:grid;place-items:center}
-.split .art img{max-height:420px;object-fit:contain}
-.brand-logo{height:34px;width:auto;margin-bottom:18px}
-.devis-card{display:flex;flex-direction:column;gap:22px;padding:36px}
-.devis-card h3{font-size:24px;font-weight:600;letter-spacing:.009em;margin:0}
-.devis-list{display:grid;gap:18px;margin:0;padding:0;list-style:none}
-.devis-list strong{display:block;font-size:17px;font-weight:600;letter-spacing:-.022em}
-.devis-list p{margin:3px 0 0;font-size:15px;color:var(--ink-2);line-height:1.47}
-</style>
-<noscript><style>.ifc-brand{grid-template-rows:1fr;opacity:1;visibility:visible}.ifc-bar{display:none}</style></noscript>
+<link rel="stylesheet" href="/home.css">
+<noscript><style>.ifc-brand{grid-template-rows:1fr;opacity:1;visibility:visible}.ifc-bar{display:none}.sr{opacity:1;transform:none}</style></noscript>
 </head>
 <body>
+<a class="skip" href="#top">Aller au contenu</a>
 
-<!-- BARRE DE NAVIGATION GLOBALE -->
-<header class="gnav">
-  <div class="wrap">
-    <a href="/" class="gnav-logo" aria-label="VitalX — accueil"><img src="/assets/logo-vitalx-white.svg" alt="VitalX" data-no-lightbox="true"/></a>
-    <ul class="gnav-links gnav-home">
-      <li><a href="#v2">Scopes</a></li>
-      <li><a href="#packs">Packs</a></li>
-      <li><a href="#pods">POD'S</a></li>
-      <li><a href="#interfaces">Interfaces</a></li>
-      <li><a href="#mediacenter">Media Center</a></li>
-      <li><a href="#formateur">Formateur</a></li>
-      <li><a href="#academy">ACADEMY</a></li>
-      <li><a href="#devis">Devis</a></li>
-      <li><a href="/qui-sommes-nous.html">Société</a></li>
-      <li><a href="/affiliation.html">Affiliation</a></li>
-      <li><a href="/boutique.html">Boutique</a></li>
-    </ul>
-    <div class="gnav-right">
-      <a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="gnav-icon gnav-hide-m" title="Mode Formateur (web)" aria-label="Mode Formateur (web)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></a>
-      <a href="/boutique.html" class="gnav-icon" title="Boutique" aria-label="Boutique"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l1 13H5L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></a>
-      <button class="gnav-burger" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
+<!-- EN-TÊTE BLANC COLLANT -->
+<header class="gnav hx-head">
+  <div class="hx-head-in">
+    <a href="/" class="hx-logo" aria-label="VitalX — accueil"><img src="/assets/logo-vitalx.svg" alt="VitalX" width="90" height="30" data-no-lightbox="true"/></a>
+    <nav class="hx-nav" aria-label="Navigation principale">
+      <ul class="hx-links">
+        <li><a href="#interfaces">Appareils</a></li>
+        <li><a href="#formateur">Formateur</a></li>
+        <li><a href="#mediacenter">Media Center</a></li>
+        <li><a href="#academy">ACADEMY</a></li>
+        <li><a href="/boutique.html">Boutique</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="hx-tools">
+      <a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="hx-icon hx-hide-m" title="Mode Formateur (web)" aria-label="Mode Formateur (web)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></a>
+      <span class="hx-lang hx-hide-m" role="group" aria-label="Langue">
+        <button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">FR</button>
+        <button type="button" data-lang="en" title="English" aria-label="English">EN</button>
+        <button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">DE</button>
+      </span>
+      <button class="hx-burger" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
     </div>
   </div>
 </header>
-<div class="tricolor" aria-hidden="true"></div>
-<nav id="mobileMenu" class="gnav-mobile" aria-label="Menu mobile">
-  <a href="#v2">Scopes VitalX</a>
-  <a href="#packs">Packs VitalX</a>
-  <a href="#pods">POD'S</a>
-  <a href="#interfaces">Interfaces</a>
-  <a href="#mediacenter">Media Center</a>
-  <a href="#formateur">Formateur</a>
-  <a href="#academy">ACADEMY</a>
-  <a href="#features">Fonctions</a>
-  <a href="#devis">Devis</a>
-  <a href="/qui-sommes-nous.html">Société</a>
-  <a href="/affiliation.html">Affiliation</a>
-  <a href="/boutique.html">Boutique</a>
-  <a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="small">Mode Formateur (web) ›</a>
-  <a href="mailto:vitalxscope@gmail.com" class="small">vitalxscope@gmail.com</a>
+<nav id="mobileMenu" class="hx-menu" aria-label="Menu mobile">
+  <a class="big" href="#interfaces">Appareils</a>
+  <a class="big" href="#formateur">Formateur</a>
+  <a class="big" href="#mediacenter">Media Center</a>
+  <a class="big" href="#academy">ACADEMY</a>
+  <a class="big" href="/boutique.html">Boutique</a>
+  <a class="big" href="#contact">Contact</a>
+  <a class="small" href="https://vitalxtrainer.app" target="_blank" rel="noopener">Mode Formateur (web) ›</a>
+  <span class="hx-lang" role="group" aria-label="Langue">
+    <button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">FR</button>
+    <button type="button" data-lang="en" title="English" aria-label="English">EN</button>
+    <button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">DE</button>
+  </span>
+  <a class="small" href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a>
 </nav>
 
 <main id="top">
 
-<!-- HERO -->
-<section class="tile tile-light tile-hero hero" id="v2">
-  <div class="tile-copy">
-    <span class="fr-badge hero-in"><i class="fr-flag" aria-hidden="true"></i>Conçu &amp; assemblé en France 🇫🇷</span>
-    <h1 class="t-hero hero-in hero-logo"><img src="/assets/logo-vitalx.svg" alt="VitalX" data-no-lightbox="true" fetchpriority="high"/><span class="sr-only">VitalX</span></h1>
-    <p class="t-hero-sub hero-in hero-in-2">Formez comme sur le terrain.</p>
-    <p class="t-body-lg hero-in hero-in-2" style="margin:14px auto 0;max-width:640px;color:var(--ink-2)">Un scope de simulation sur iPad, piloté à distance par le formateur. Le moniteur VitalX et les interfaces des vrais appareils que vos équipes utilisent en intervention, reproduites à l'identique, incluses dans la licence.</p>
-    <div class="links hero-in hero-in-3">
-      <a href="#packs" class="more">En savoir plus</a>
-      <a href="#contact" class="more">Demander un devis</a>
-    </div>
-  </div>
-  <div class="tile-art hero-in hero-in-3">
-    <img src="/assets/vitalxv2pro.PNG" alt="Pack VitalX Ultra — moniteur iPad Air 13 pouces dans sa housse et tablette formateur" fetchpriority="high" data-no-lightbox="true"/>
-  </div>
-</section>
-
-<!-- RUBAN NOUVEAUTÉ -->
-<div class="ribbon">Nouveau : les interfaces Schiller et Weinmann sont incluses dans la licence VitalX, sans supplément. <a href="#schiller" class="more">Voir les interfaces</a></div>
-
-<!-- INTERFACES (tuile sombre) -->
-<section class="tile tile-dark tile-pad-b">
-  <div class="tile-copy">
-    <h2 class="t-tile">Interfaces constructeurs</h2>
-    <p class="t-tile-sub">Un seul scope. Les vrais moniteurs.</p>
-    <div class="links">
-      <a href="#schiller" class="more">Découvrir</a>
-      <a href="/boutique.html" class="more">Voir la boutique</a>
-    </div>
-  </div>
-  <div class="tile-art tile-2up sr">
-    <img src="/assets/scope-schiller-defigard.webp" alt="Interface Schiller DEFIGARD Touch 7 reproduite dans le scope VitalX" loading="lazy"/>
-    <img src="/assets/scope-weinmann-meducore.webp" alt="Interface Weinmann MEDUCORE Standard² reproduite dans le scope VitalX" loading="lazy"/>
-  </div>
-</section>
-
-<div class="tile-gap"></div>
-
-<!-- GRILLE DE TUILES -->
-<div class="tile-half-grid">
-  <section class="tile tile-gray" id="packs">
-    <div class="tile-copy">
-      <h2 class="t-tile-sm">VitalX Plus et Ultra</h2>
-      <p class="t-tile-sm-sub">Deux configurations. Un seul châssis.</p>
-      <div class="links">
-        <a href="/boutique.html#pack" class="more">Comparer les scopes</a>
-        <a href="#contact" class="more">Demander un devis</a>
+<!-- HÉROS (ancre #v2) -->
+<section class="hx-hero" id="v2" aria-labelledby="heroTitle">
+  <div class="hx-hero-in">
+    <div class="hx-hero-copy">
+      <span class="hx-badge hero-in">Conçu et assemblé en France 🇫🇷</span>
+      <h1 class="hx-h1 hero-in hero-in-2" id="heroTitle">Formez comme sur le terrain.</h1>
+      <p class="hx-sub hero-in hero-in-2">Le scope de simulation sur iPad, piloté en direct par le formateur.</p>
+      <div class="hx-cta hero-in hero-in-3">
+        <a href="#interfaces" class="hx-btn hx-btn-red">Découvrir</a>
+        <a href="#contact" class="hx-btn hx-btn-line">Demander un devis</a>
       </div>
     </div>
-    <div class="tile-art sr"><img src="/assets/pack-vitalx1.png" alt="VitalX Plus — moniteur dans sa housse et tablette formateur" loading="lazy"/></div>
-  </section>
-  <section class="tile tile-gray" id="pods">
-    <div class="tile-copy">
-      <h2 class="t-tile-sm">POD'S</h2>
-      <p class="t-tile-sm-sub">Version compacte. Mobile et prêt.</p>
-      <div class="links">
-        <a href="/vitalx-pods.html" class="more">En savoir plus</a>
-        <a href="#contact" class="more">Demander une démo</a>
-      </div>
-    </div>
-    <div class="tile-art sr"><img src="/assets/vitalxpodsclassic.PNG" alt="VitalX POD'S — boîtier iPhone, brassard, capteur SpO₂ et patch DSA" loading="lazy"/></div>
-  </section>
-  <section class="tile tile-dark">
-    <div class="tile-copy">
-      <h2 class="t-tile-sm">Media Center</h2>
-      <p class="t-tile-sm-sub">Le dossier patient, dans le scope.</p>
-      <div class="links">
-        <a href="#mediacenter" class="more">En savoir plus</a>
-      </div>
-    </div>
-    <div class="tile-art sr"><img src="/assets/mediacenter-gds-2026.webp" alt="Media Center — gaz du sang (GDS) sur le DEFIGARD HD-7" loading="lazy" style="border-radius:14px 14px 0 0"/></div>
-  </section>
-  <section class="tile tile-dark">
-    <div class="tile-copy">
-      <h2 class="t-tile-sm">Mode Formateur</h2>
-      <p class="t-tile-sm-sub">Pilotez depuis l'iPad ou le web.</p>
-      <div class="links">
-        <a href="#formateur" class="more">Tout ce que le formateur peut faire</a>
-        <a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="more">Ouvrir vitalxtrainer.app</a>
-      </div>
-    </div>
-    <div class="tile-art sr"><img src="/assets/formateur-constantes.webp" alt="Vue formateur — pilotage complet de la session" loading="lazy" style="border-radius:14px 14px 0 0"/></div>
-  </section>
-  <section class="tile tile-gray">
-    <div class="tile-copy">
-      <h2 class="t-tile-sm">Châssis et housse Bagheera</h2>
-      <p class="t-tile-sm-sub">Conçus et assemblés en France. Garantis à vie.</p>
-      <div class="links">
-        <a href="/boutique.html#pack" class="more">Voir les packs</a>
-        <a href="/garantie.html" class="more">Garantie</a>
-      </div>
-    </div>
-    <div class="tile-art sr"><img src="/assets/housseV2.PNG" alt="Châssis VitalX V2 ouvert et housse Bagheera V2 Premium" loading="lazy"/></div>
-  </section>
-  <section class="tile tile-dark tile-pad-b">
-    <div class="tile-copy">
-      <h2 class="t-tile-sm">Licence à vie</h2>
-      <p class="t-tile-sm-sub">Un code. Trois appareils. Aucun abonnement.</p>
-      <div class="links">
-        <a href="/boutique.html#licence" class="more">Licence seule</a>
-        <a href="#devis" class="more">Demander un devis</a>
-      </div>
-    </div>
-    <div class="tile-art sr" style="max-width:520px;display:grid;place-items:center;min-height:220px"><img src="/assets/logo-vitalx-white.svg" alt="Licence VitalX à vie" loading="lazy" style="max-height:120px;width:auto;max-width:80%"/></div>
-  </section>
-</div>
-
-<!-- CONFIANCE -->
-<section class="section-tight">
-  <div class="wrap">
-    <div class="tricolor tricolor-round" aria-hidden="true"></div>
-    <div class="trust">
-      <div class="sr"><i class="fr-flag fr-flag-lg" aria-hidden="true"></i><strong>Entreprise française</strong><span>Conçu &amp; assemblé en France</span></div>
-      <div class="sr sr-d1"><strong>Licence à vie</strong><span>Sans abonnement, mises à jour incluses</span></div>
-      <div class="sr sr-d2"><strong>Garantie à vie</strong><span>Châssis et housse Bagheera</span></div>
-      <div class="sr sr-d3"><strong>Devis sous 24 h</strong><span>Livraison 15 à 30 jours ouvrés</span></div>
+    <div class="hx-hero-art hero-in hero-in-3">
+      <img src="/assets/vitalxv2pro.webp" width="1536" height="1024" alt="Pack VitalX Ultra — moniteur iPad Air 13 pouces dans sa housse et tablette formateur" fetchpriority="high" decoding="async" data-no-lightbox="true"/>
     </div>
   </div>
 </section>
 
-<!-- INTERFACES CONSTRUCTEURS : bandeau des marques → appareils → écrans (brands.js ; ancres #interfaces #schiller #weinmann #sch-… #wei-…) -->
+<!-- LES APPAREILS : bandeau des marques → appareils → écrans (brands.js ; ancres #interfaces #schiller #weinmann #sch-… #wei-…) -->
 <span id="interfaces" class="anchor-alias ifc-alias"></span><span id="schiller" class="anchor-alias ifc-alias"></span><span id="weinmann" class="anchor-alias ifc-alias"></span>
-<section class="section brand-sec ifc" aria-labelledby="ifcTitle" data-ifc>
-  <div class="wrap-wide">
-    <div class="section-head center ifc-head">
-      <p class="t-eyebrow sr">Interfaces constructeurs</p>
-      <h2 class="t-section sr" id="ifcTitle">Neuf appareils, reproduits fidèlement.</h2>
-      <p class="t-section-lead sr sr-d1">Chaque appareil est un module de l'application VitalX pour iPad : le châssis, l'écran et les fonctions suivent la notice du fabricant.</p>
-    </div>
+<section class="hx-sec brand-sec ifc" aria-labelledby="ifcTitle" data-ifc data-spy="interfaces">
+  <div class="hx-band"><h2 id="ifcTitle">Les appareils</h2></div>
+  <div class="wrap-wide hx-body">
+    <p class="hx-lead sr">Neuf appareils, reproduits fidèlement.</p>
     <div class="ifc-box sr">
       <div class="ifc-band" role="tablist" aria-label="Marques">
 <button type="button" class="ifc-tab" role="tab" id="ifc-t-schiller" data-brand="schiller" aria-selected="true" aria-controls="ifc-p-schiller"><img src="/assets/logo-schiller.webp" alt="SCHILLER" width="319" height="96" decoding="async" data-no-lightbox="true"/><span class="ifc-count">6 appareils</span></button>
@@ -486,126 +367,47 @@
 </div>
       </div>
     </div>
-    <div class="center ifc-more"><a href="#contact" class="more">Vous utilisez un autre appareil ? Dites-le nous</a></div>
   </div>
 </section>
 
-<!-- MEDIA CENTER : catégories → écrans du panneau (brands.js ; ancres #mediacenter, #mc-…) -->
-<section id="mediacenter" class="section brand-sec dark ifc" aria-labelledby="mcTitle" data-ifc>
-  <div class="wrap-wide">
-    <div class="section-head center ifc-head">
-      <p class="t-eyebrow sr">Media Center</p>
-      <h2 class="t-section sr" id="mcTitle">Le dossier patient, <br>d'un balayage.</h2>
-      <p class="t-section-lead sr sr-d1">Sur l'iPad de l'apprenant, un panneau s'ouvre par-dessus l'appareil quand on balaie depuis le bord droit. Il affiche ce que le formateur envoie : biologie, gaz du sang, radios, dossier patient, bandelette urinaire, archive ECG.</p>
-    </div>
-    <ol class="ifc-steps sr">
-      <li><b>Balayez depuis le bord droit</b><span>Le panneau s'ouvre par-dessus l'appareil, qui continue de tourner derrière.</span></li>
-      <li><b>Le formateur envoie</b><span>Biologie, radios, dossier, bandelette, gaz du sang : depuis son iPad, en un geste.</span></li>
-      <li><b>L'apprenant analyse</b><span>Il lit le dossier, mesure une glycémie, lance l'analyse de gaz du sang.</span></li>
-      <li><b>Fermez d'un geste</b><span>Touche ✕, voile à gauche ou balayage vers la droite.</span></li>
-    </ol>
-    <div class="ifc-box sr">
-<div class="ifc-band ifc-cats" role="tablist" aria-label="Catégories du Media Center" data-n="4">
-<button type="button" class="ifc-tab" role="tab" id="ifc-t-cat-mc-gds" data-brand="cat-mc-gds" aria-selected="true" aria-controls="ifc-p-cat-mc-gds"><span class="ifc-top"><svg class="ifc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg><span class="ifc-lbl">Gaz du sang &amp; mesures</span></span><span class="ifc-count">3 écrans</span></button>
-<button type="button" class="ifc-tab" role="tab" id="ifc-t-cat-mc-dossier" data-brand="cat-mc-dossier" aria-selected="false" aria-controls="ifc-p-cat-mc-dossier" tabindex="-1"><span class="ifc-top"><svg class="ifc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span class="ifc-lbl">Dossier patient</span></span><span class="ifc-count">2 écrans</span></button>
-<button type="button" class="ifc-tab" role="tab" id="ifc-t-cat-mc-radio" data-brand="cat-mc-radio" aria-selected="false" aria-controls="ifc-p-cat-mc-radio" tabindex="-1"><span class="ifc-top"><svg class="ifc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="ifc-lbl">Radio &amp; bandelette</span></span><span class="ifc-count">2 écrans</span></button>
-<button type="button" class="ifc-tab" role="tab" id="ifc-t-cat-mc-archive" data-brand="cat-mc-archive" aria-selected="false" aria-controls="ifc-p-cat-mc-archive" tabindex="-1"><span class="ifc-top"><svg class="ifc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg><span class="ifc-lbl">Archive &amp; historique</span></span><span class="ifc-count">3 écrans</span></button>
-</div>
-      <div class="ifc-stage">
-<div class="ifc-brand ifc-x is-on" id="ifc-p-cat-mc-gds" role="tabpanel" aria-labelledby="ifc-t-cat-mc-gds" data-brand="cat-mc-gds" data-view="list">
-<div class="ifc-xin"><div class="ifc-pad">
-<div class="ifc-bar">
-<p class="ifc-hint"><span class="ifc-h-mouse">Survolez une catégorie, puis cliquez sur un écran pour voir sa capture.</span><span class="ifc-h-touch">Touchez une catégorie, puis un écran pour voir sa capture.</span></p>
-<div class="ifc-nav"><button type="button" class="ifc-back">Tous les écrans</button><div class="ifc-chips"><button type="button" class="ifc-chip" data-dev="mc-gds">GDS : gaz du sang</button><button type="button" class="ifc-chip" data-dev="mc-glycemie">Bio : les lecteurs de mesure</button><button type="button" class="ifc-chip" data-dev="mc-co">Détecteur de CO</button></div></div>
-</div>
-<div class="ifc-x ifc-lx is-on"><div class="ifc-xin"><div class="ifc-pad"><ul class="ifc-list" data-n="3">
-<li><button type="button" class="ifc-tile" data-dev="mc-gds" style="--i:0"><span class="ifc-pic"><img src="/assets/ifc-mc-gds.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">GDS : gaz du sang</span></button></li>
-<li><button type="button" class="ifc-tile" data-dev="mc-glycemie" style="--i:1"><span class="ifc-pic"><img src="/assets/ifc-mc-glycemie.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">Bio : les lecteurs de mesure</span></button></li>
-<li><button type="button" class="ifc-tile" data-dev="mc-co" style="--i:2"><span class="ifc-pic"><img src="/assets/ifc-mc-co.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">Détecteur de CO</span></button></li>
-</ul></div></div></div>
-<div class="ifc-x ifc-vx"><div class="ifc-xin"><div class="ifc-pad">
-<article class="dv dv-solo" id="mc-gds" hidden>
-  <div class="dv-media"><figure class="dv-main"><img src="/assets/mediacenter-gds-2026.webp" alt="Media Center sur le DEFIGARD HD-7 — gaz du sang (GDS) : analyseur et ticket de résultat" width="1600" height="1200" loading="lazy" decoding="async"/></figure></div>
-  <div class="dv-copy"><h3>GDS : gaz du sang</h3><p class="dv-kind">Gaz du sang &amp; mesures</p><p class="dv-lead">L'apprenant lance l'analyse et reçoit le ticket, ici une acidose métabolique avec hyperlactatémie. Résultat 60 s après la cartouche.</p></div>
-</article>
-<article class="dv dv-solo" id="mc-glycemie" hidden>
-  <div class="dv-media"><figure class="dv-main"><img src="/assets/mediacenter-glycemie-2026.webp" alt="Media Center sur le DEFIGARD HD-7 — Bio : lecteur de glycémie" width="1600" height="1200" loading="lazy" decoding="async"/></figure></div>
-  <div class="dv-copy"><h3>Bio : les lecteurs de mesure</h3><p class="dv-kind">Gaz du sang &amp; mesures</p><p class="dv-lead">Glycémie, cétones, lactates, HémoCue, CO : l'apprenant fait la mesure, la valeur vient du patient simulé.</p></div>
-</article>
-<article class="dv dv-solo" id="mc-co" hidden>
-  <div class="dv-media"><figure class="dv-main"><img src="/assets/mediacenter-co-2026.webp" alt="Media Center sur le DEFIGARD HD-7 — Bio : détecteur de CO" width="1600" height="1200" loading="lazy" decoding="async"/></figure></div>
-  <div class="dv-copy"><h3>Détecteur de CO</h3><p class="dv-kind">Gaz du sang &amp; mesures</p><p class="dv-lead">Détection en continu, alarme à 25 ppm.</p></div>
-</article>
-</div></div></div>
-</div></div>
-</div>
-<div class="ifc-brand ifc-x" id="ifc-p-cat-mc-dossier" role="tabpanel" aria-labelledby="ifc-t-cat-mc-dossier" data-brand="cat-mc-dossier" data-view="list">
-<div class="ifc-xin"><div class="ifc-pad">
-<div class="ifc-bar">
-<p class="ifc-hint"><span class="ifc-h-mouse">Survolez une catégorie, puis cliquez sur un écran pour voir sa capture.</span><span class="ifc-h-touch">Touchez une catégorie, puis un écran pour voir sa capture.</span></p>
-<div class="ifc-nav"><button type="button" class="ifc-back">Tous les écrans</button><div class="ifc-chips"><button type="button" class="ifc-chip" data-dev="mc-dossier">DLU : le dossier de liaison d'urgence</button><button type="button" class="ifc-chip" data-dev="mc-biologie">DLU : le compte rendu d'analyses</button></div></div>
-</div>
-<div class="ifc-x ifc-lx is-on"><div class="ifc-xin"><div class="ifc-pad"><ul class="ifc-list" data-n="2">
-<li><button type="button" class="ifc-tile" data-dev="mc-dossier" style="--i:0"><span class="ifc-pic"><img src="/assets/ifc-mc-dossier.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">DLU : le dossier de liaison d'urgence</span></button></li>
-<li><button type="button" class="ifc-tile" data-dev="mc-biologie" style="--i:1"><span class="ifc-pic"><img src="/assets/ifc-mc-biologie.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">DLU : le compte rendu d'analyses</span></button></li>
-</ul></div></div></div>
-<div class="ifc-x ifc-vx"><div class="ifc-xin"><div class="ifc-pad">
-<article class="dv dv-solo" id="mc-dossier" hidden>
-  <div class="dv-media"><figure class="dv-main"><img src="/assets/mediacenter-dossier-2026.webp" alt="Media Center sur le DEFIGARD HD-7 — DLU : dossier de liaison d&#x27;urgence" width="1600" height="1200" loading="lazy" decoding="async"/></figure></div>
-  <div class="dv-copy"><h3>DLU : le dossier de liaison d'urgence</h3><p class="dv-kind">Dossier patient</p><p class="dv-lead">Identité, antécédents, traitement en cours : la fiche se remplit depuis l'iPad du formateur.</p></div>
-</article>
-<article class="dv dv-solo" id="mc-biologie" hidden>
-  <div class="dv-media"><figure class="dv-main"><img src="/assets/mediacenter-biologie-2026.webp" alt="Media Center sur le DEFIGARD HD-7 — DLU : compte rendu d&#x27;analyses" width="1600" height="1200" loading="lazy" decoding="async"/></figure></div>
-  <div class="dv-copy"><h3>DLU : le compte rendu d'analyses</h3><p class="dv-kind">Dossier patient</p><p class="dv-lead">Le compte rendu d'analyses médicales se lit comme sur papier, valeurs hors référence signalées.</p></div>
-</article>
-</div></div></div>
-</div></div>
-</div>
-<div class="ifc-brand ifc-x" id="ifc-p-cat-mc-radio" role="tabpanel" aria-labelledby="ifc-t-cat-mc-radio" data-brand="cat-mc-radio" data-view="list">
-<div class="ifc-xin"><div class="ifc-pad">
-<div class="ifc-bar">
-<p class="ifc-hint"><span class="ifc-h-mouse">Survolez une catégorie, puis cliquez sur un écran pour voir sa capture.</span><span class="ifc-h-touch">Touchez une catégorie, puis un écran pour voir sa capture.</span></p>
-<div class="ifc-nav"><button type="button" class="ifc-back">Tous les écrans</button><div class="ifc-chips"><button type="button" class="ifc-chip" data-dev="mc-radio">Radio : les clichés envoyés</button><button type="button" class="ifc-chip" data-dev="mc-bandelette">Bandelette urinaire</button></div></div>
-</div>
-<div class="ifc-x ifc-lx is-on"><div class="ifc-xin"><div class="ifc-pad"><ul class="ifc-list" data-n="2">
-<li><button type="button" class="ifc-tile" data-dev="mc-radio" style="--i:0"><span class="ifc-pic"><img src="/assets/ifc-mc-radio.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">Radio : les clichés envoyés</span></button></li>
-<li><button type="button" class="ifc-tile" data-dev="mc-bandelette" style="--i:1"><span class="ifc-pic"><img src="/assets/ifc-mc-bandelette.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">Bandelette urinaire</span></button></li>
-</ul></div></div></div>
-<div class="ifc-x ifc-vx"><div class="ifc-xin"><div class="ifc-pad">
-<article class="dv dv-solo" id="mc-radio" hidden>
-  <div class="dv-media"><figure class="dv-main"><img src="/assets/mediacenter-radio-contenu-2026.webp" alt="Media Center — radiographies envoyées par le formateur" width="1600" height="1200" loading="lazy" decoding="async"/></figure></div>
-  <div class="dv-copy"><h3>Radio : les clichés envoyés</h3><p class="dv-kind">Radio &amp; bandelette</p><p class="dv-lead">Clichés classés par région (abdomen, bassin…) : 37 clichés en 9 catégories côté formateur.</p></div>
-</article>
-<article class="dv dv-solo" id="mc-bandelette" hidden>
-  <div class="dv-media"><figure class="dv-main"><img src="/assets/mediacenter-bandelette-contenu-2026.webp" alt="Media Center — bandelette urinaire et charte de couleurs" width="1600" height="1200" loading="lazy" decoding="async"/></figure></div>
-  <div class="dv-copy"><h3>Bandelette urinaire</h3><p class="dv-kind">Radio &amp; bandelette</p><p class="dv-lead">Les dix zones de la bandelette se comparent à la charte de couleurs, comme au chevet du patient.</p></div>
-</article>
-</div></div></div>
-</div></div>
-</div>
-<div class="ifc-brand ifc-x" id="ifc-p-cat-mc-archive" role="tabpanel" aria-labelledby="ifc-t-cat-mc-archive" data-brand="cat-mc-archive" data-view="list">
-<div class="ifc-xin"><div class="ifc-pad">
-<div class="ifc-x ifc-lx is-on"><div class="ifc-xin"><div class="ifc-pad"><ul class="ifc-list" data-n="3" data-info>
-<li><div class="ifc-info" style="--i:0"><span class="ifc-pg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span><span class="ifc-name">ECG : l'archive</span><span class="ifc-desc">Les 12 dérivations imprimées depuis l'appareil sont archivées et se rouvrent dans le panneau.</span></div></li>
-<li><div class="ifc-info" style="--i:1"><span class="ifc-pg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span><span class="ifc-name">Historique : le journal de séance</span><span class="ifc-desc">Chaque événement de l'appareil est consigné, pour le débriefing.</span></div></li>
-<li><div class="ifc-info" style="--i:2"><span class="ifc-pg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"/><line x1="8" y1="12" x2="16" y2="12"/></svg></span><span class="ifc-name">Liaison : l'état du lien</span><span class="ifc-desc">L'état de la liaison avec l'iPad du formateur (liaison locale, sans Internet).</span></div></li>
-</ul></div></div></div>
-</div></div>
-</div>
-      </div>
-      <p class="t-caption ifc-foot">Captures du panneau Media Center sur le DEFIGARD HD-7 (SCHILLER), sans iPad formateur connecté : gaz du sang et lecteurs de démonstration, dossier vide. Radio et bandelette : extraits du contenu envoyé par le formateur.</p>
-    </div>
+<!-- POURQUOI VITALX : six cartes « image + une ligne + lien » (ancre #features) -->
+<section id="features" class="hx-sec" aria-labelledby="whyTitle" data-spy="features">
+  <div class="hx-band"><h2 id="whyTitle">Pourquoi VitalX</h2></div>
+  <div class="wrap-wide hx-body">
+    <ul class="hx-cards">
+      <li class="sr"><a class="hx-card" href="#interfaces">
+        <span class="hx-pic hx-duo"><img src="/assets/schiller-defigard-chassis.webp" alt="" width="1500" height="1028" loading="lazy" decoding="async" data-no-lightbox="true"/><img src="/assets/weinmann-meducore-chassis.webp" alt="" width="1500" height="868" loading="lazy" decoding="async" data-no-lightbox="true"/></span>
+        <span class="hx-card-b"><span class="hx-card-t">Interfaces constructeurs à l'identique</span><span class="hx-more">Plus d'informations</span></span>
+      </a></li>
+      <li class="sr sr-d1"><a class="hx-card" href="#formateur">
+        <span class="hx-pic"><img src="/assets/formateur-constantes.webp" alt="" width="1400" height="1050" loading="lazy" decoding="async" data-no-lightbox="true"/></span>
+        <span class="hx-card-b"><span class="hx-card-t">Pilotage en direct par le formateur</span><span class="hx-more">Plus d'informations</span></span>
+      </a></li>
+      <li class="sr sr-d2"><a class="hx-card" href="#mediacenter">
+        <span class="hx-pic"><img src="/assets/mediacenter-gds-2026.webp" alt="" width="1600" height="1200" loading="lazy" decoding="async" data-no-lightbox="true"/></span>
+        <span class="hx-card-b"><span class="hx-card-t">Media Center : radios, bilans, ECG</span><span class="hx-more">Plus d'informations</span></span>
+      </a></li>
+      <li class="sr"><a class="hx-card" href="#fo-rcp">
+        <span class="hx-pic"><img src="/assets/formateur-rcp.webp" alt="" width="1400" height="1050" loading="lazy" decoding="async" data-no-lightbox="true"/></span>
+        <span class="hx-card-b"><span class="hx-card-t">Mode RCP</span><span class="hx-more">Plus d'informations</span></span>
+      </a></li>
+      <li class="sr sr-d1"><a class="hx-card" href="#academy">
+        <span class="hx-pic"><img src="/assets/academy-hub.webp" alt="" width="1600" height="1200" loading="lazy" decoding="async" data-no-lightbox="true"/></span>
+        <span class="hx-card-b"><span class="hx-card-t">ACADEMY</span><span class="hx-more">Plus d'informations</span></span>
+      </a></li>
+      <li class="sr sr-d2"><a class="hx-card" href="/boutique.html#licence">
+        <span class="hx-pic"><img src="/assets/licence-life.webp" alt="" width="800" height="600" loading="lazy" decoding="async" data-no-lightbox="true"/></span>
+        <span class="hx-card-b"><span class="hx-card-t">Licence à vie</span><span class="hx-more">Plus d'informations</span></span>
+      </a></li>
+    </ul>
   </div>
 </section>
 
-<!-- FORMATEUR : catégories → fonctions du poste formateur (brands.js ; ancres #formateur, #fo-…) -->
-<section id="formateur" class="section brand-sec section-alt ifc" aria-labelledby="foTitle" data-ifc>
-  <div class="wrap-wide">
-    <div class="section-head center ifc-head">
-      <p class="t-eyebrow sr">Mode Formateur</p>
-      <h2 class="t-section sr" id="foTitle">Tout ce que le formateur <br>peut faire.</h2>
-      <p class="t-section-lead sr sr-d1">Un seul iPad pour piloter toute la séance : le patient, l'ECG, les capteurs, la RCP, les scénarios, les examens et l'évaluation.</p>
-    </div>
+<!-- MODE FORMATEUR : catégories → fonctions du poste formateur (brands.js ; ancres #formateur, #fo-…) -->
+<section id="formateur" class="hx-sec brand-sec ifc" aria-labelledby="foTitle" data-ifc data-spy="formateur">
+  <div class="hx-band"><h2 id="foTitle">Mode Formateur</h2></div>
+  <div class="wrap-wide hx-body">
+    <p class="hx-lead sr">Un seul iPad pour piloter toute la séance.</p>
     <div class="ifc-box sr">
 <div class="ifc-band ifc-cats" role="tablist" aria-label="Catégories du poste formateur" data-n="5">
 <button type="button" class="ifc-tab" role="tab" id="ifc-t-cat-fo-seance" data-brand="cat-fo-seance" aria-selected="true" aria-controls="ifc-p-cat-fo-seance"><span class="ifc-top"><svg class="ifc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span class="ifc-lbl">Séance &amp; patient</span></span><span class="ifc-count">3 fonctions</span></button>
@@ -742,105 +544,157 @@
   </div>
 </section>
 
-<!-- ACADEMY : le hub de jeux RCP -->
-<section id="academy" class="section dark">
-  <div class="wrap-wide">
-    <div class="section-head center">
-      <p class="t-eyebrow sr">ACADEMY</p>
-      <h2 class="t-section sr">Quatre jeux.<br>Un seul geste : masser.</h2>
-      <p class="t-section-lead sr sr-d1">ACADEMY est le hub de jeux d'entraînement à la RCP de l'application VitalX. Choisissez un mode, posez le capteur, massez.</p>
+<!-- MEDIA CENTER : catégories → écrans du panneau (brands.js ; ancres #mediacenter, #mc-…) -->
+<section id="mediacenter" class="hx-sec brand-sec ifc" aria-labelledby="mcTitle" data-ifc data-spy="mediacenter">
+  <div class="hx-band"><h2 id="mcTitle">Media Center</h2></div>
+  <div class="wrap-wide hx-body">
+    <p class="hx-lead sr">Le dossier patient, <br>d'un balayage.</p>
+    <div class="ifc-box sr">
+<div class="ifc-band ifc-cats" role="tablist" aria-label="Catégories du Media Center" data-n="4">
+<button type="button" class="ifc-tab" role="tab" id="ifc-t-cat-mc-gds" data-brand="cat-mc-gds" aria-selected="true" aria-controls="ifc-p-cat-mc-gds"><span class="ifc-top"><svg class="ifc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg><span class="ifc-lbl">Gaz du sang &amp; mesures</span></span><span class="ifc-count">3 écrans</span></button>
+<button type="button" class="ifc-tab" role="tab" id="ifc-t-cat-mc-dossier" data-brand="cat-mc-dossier" aria-selected="false" aria-controls="ifc-p-cat-mc-dossier" tabindex="-1"><span class="ifc-top"><svg class="ifc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span class="ifc-lbl">Dossier patient</span></span><span class="ifc-count">2 écrans</span></button>
+<button type="button" class="ifc-tab" role="tab" id="ifc-t-cat-mc-radio" data-brand="cat-mc-radio" aria-selected="false" aria-controls="ifc-p-cat-mc-radio" tabindex="-1"><span class="ifc-top"><svg class="ifc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="ifc-lbl">Radio &amp; bandelette</span></span><span class="ifc-count">2 écrans</span></button>
+<button type="button" class="ifc-tab" role="tab" id="ifc-t-cat-mc-archive" data-brand="cat-mc-archive" aria-selected="false" aria-controls="ifc-p-cat-mc-archive" tabindex="-1"><span class="ifc-top"><svg class="ifc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg><span class="ifc-lbl">Archive &amp; historique</span></span><span class="ifc-count">3 écrans</span></button>
+</div>
+      <div class="ifc-stage">
+<div class="ifc-brand ifc-x is-on" id="ifc-p-cat-mc-gds" role="tabpanel" aria-labelledby="ifc-t-cat-mc-gds" data-brand="cat-mc-gds" data-view="list">
+<div class="ifc-xin"><div class="ifc-pad">
+<div class="ifc-bar">
+<p class="ifc-hint"><span class="ifc-h-mouse">Survolez une catégorie, puis cliquez sur un écran pour voir sa capture.</span><span class="ifc-h-touch">Touchez une catégorie, puis un écran pour voir sa capture.</span></p>
+<div class="ifc-nav"><button type="button" class="ifc-back">Tous les écrans</button><div class="ifc-chips"><button type="button" class="ifc-chip" data-dev="mc-gds">GDS : gaz du sang</button><button type="button" class="ifc-chip" data-dev="mc-glycemie">Bio : les lecteurs de mesure</button><button type="button" class="ifc-chip" data-dev="mc-co">Détecteur de CO</button></div></div>
+</div>
+<div class="ifc-x ifc-lx is-on"><div class="ifc-xin"><div class="ifc-pad"><ul class="ifc-list" data-n="3">
+<li><button type="button" class="ifc-tile" data-dev="mc-gds" style="--i:0"><span class="ifc-pic"><img src="/assets/ifc-mc-gds.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">GDS : gaz du sang</span></button></li>
+<li><button type="button" class="ifc-tile" data-dev="mc-glycemie" style="--i:1"><span class="ifc-pic"><img src="/assets/ifc-mc-glycemie.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">Bio : les lecteurs de mesure</span></button></li>
+<li><button type="button" class="ifc-tile" data-dev="mc-co" style="--i:2"><span class="ifc-pic"><img src="/assets/ifc-mc-co.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">Détecteur de CO</span></button></li>
+</ul></div></div></div>
+<div class="ifc-x ifc-vx"><div class="ifc-xin"><div class="ifc-pad">
+<article class="dv dv-solo" id="mc-gds" hidden>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/mediacenter-gds-2026.webp" alt="Media Center sur le DEFIGARD HD-7 — gaz du sang (GDS) : analyseur et ticket de résultat" width="1600" height="1200" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-copy"><h3>GDS : gaz du sang</h3><p class="dv-kind">Gaz du sang &amp; mesures</p><p class="dv-lead">L'apprenant lance l'analyse et reçoit le ticket, ici une acidose métabolique avec hyperlactatémie. Résultat 60 s après la cartouche.</p></div>
+</article>
+<article class="dv dv-solo" id="mc-glycemie" hidden>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/mediacenter-glycemie-2026.webp" alt="Media Center sur le DEFIGARD HD-7 — Bio : lecteur de glycémie" width="1600" height="1200" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-copy"><h3>Bio : les lecteurs de mesure</h3><p class="dv-kind">Gaz du sang &amp; mesures</p><p class="dv-lead">Glycémie, cétones, lactates, HémoCue, CO : l'apprenant fait la mesure, la valeur vient du patient simulé.</p></div>
+</article>
+<article class="dv dv-solo" id="mc-co" hidden>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/mediacenter-co-2026.webp" alt="Media Center sur le DEFIGARD HD-7 — Bio : détecteur de CO" width="1600" height="1200" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-copy"><h3>Détecteur de CO</h3><p class="dv-kind">Gaz du sang &amp; mesures</p><p class="dv-lead">Détection en continu, alarme à 25 ppm.</p></div>
+</article>
+</div></div></div>
+</div></div>
+</div>
+<div class="ifc-brand ifc-x" id="ifc-p-cat-mc-dossier" role="tabpanel" aria-labelledby="ifc-t-cat-mc-dossier" data-brand="cat-mc-dossier" data-view="list">
+<div class="ifc-xin"><div class="ifc-pad">
+<div class="ifc-bar">
+<p class="ifc-hint"><span class="ifc-h-mouse">Survolez une catégorie, puis cliquez sur un écran pour voir sa capture.</span><span class="ifc-h-touch">Touchez une catégorie, puis un écran pour voir sa capture.</span></p>
+<div class="ifc-nav"><button type="button" class="ifc-back">Tous les écrans</button><div class="ifc-chips"><button type="button" class="ifc-chip" data-dev="mc-dossier">DLU : le dossier de liaison d'urgence</button><button type="button" class="ifc-chip" data-dev="mc-biologie">DLU : le compte rendu d'analyses</button></div></div>
+</div>
+<div class="ifc-x ifc-lx is-on"><div class="ifc-xin"><div class="ifc-pad"><ul class="ifc-list" data-n="2">
+<li><button type="button" class="ifc-tile" data-dev="mc-dossier" style="--i:0"><span class="ifc-pic"><img src="/assets/ifc-mc-dossier.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">DLU : le dossier de liaison d'urgence</span></button></li>
+<li><button type="button" class="ifc-tile" data-dev="mc-biologie" style="--i:1"><span class="ifc-pic"><img src="/assets/ifc-mc-biologie.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">DLU : le compte rendu d'analyses</span></button></li>
+</ul></div></div></div>
+<div class="ifc-x ifc-vx"><div class="ifc-xin"><div class="ifc-pad">
+<article class="dv dv-solo" id="mc-dossier" hidden>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/mediacenter-dossier-2026.webp" alt="Media Center sur le DEFIGARD HD-7 — DLU : dossier de liaison d&#x27;urgence" width="1600" height="1200" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-copy"><h3>DLU : le dossier de liaison d'urgence</h3><p class="dv-kind">Dossier patient</p><p class="dv-lead">Identité, antécédents, traitement en cours : la fiche se remplit depuis l'iPad du formateur.</p></div>
+</article>
+<article class="dv dv-solo" id="mc-biologie" hidden>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/mediacenter-biologie-2026.webp" alt="Media Center sur le DEFIGARD HD-7 — DLU : compte rendu d&#x27;analyses" width="1600" height="1200" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-copy"><h3>DLU : le compte rendu d'analyses</h3><p class="dv-kind">Dossier patient</p><p class="dv-lead">Le compte rendu d'analyses médicales se lit comme sur papier, valeurs hors référence signalées.</p></div>
+</article>
+</div></div></div>
+</div></div>
+</div>
+<div class="ifc-brand ifc-x" id="ifc-p-cat-mc-radio" role="tabpanel" aria-labelledby="ifc-t-cat-mc-radio" data-brand="cat-mc-radio" data-view="list">
+<div class="ifc-xin"><div class="ifc-pad">
+<div class="ifc-bar">
+<p class="ifc-hint"><span class="ifc-h-mouse">Survolez une catégorie, puis cliquez sur un écran pour voir sa capture.</span><span class="ifc-h-touch">Touchez une catégorie, puis un écran pour voir sa capture.</span></p>
+<div class="ifc-nav"><button type="button" class="ifc-back">Tous les écrans</button><div class="ifc-chips"><button type="button" class="ifc-chip" data-dev="mc-radio">Radio : les clichés envoyés</button><button type="button" class="ifc-chip" data-dev="mc-bandelette">Bandelette urinaire</button></div></div>
+</div>
+<div class="ifc-x ifc-lx is-on"><div class="ifc-xin"><div class="ifc-pad"><ul class="ifc-list" data-n="2">
+<li><button type="button" class="ifc-tile" data-dev="mc-radio" style="--i:0"><span class="ifc-pic"><img src="/assets/ifc-mc-radio.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">Radio : les clichés envoyés</span></button></li>
+<li><button type="button" class="ifc-tile" data-dev="mc-bandelette" style="--i:1"><span class="ifc-pic"><img src="/assets/ifc-mc-bandelette.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">Bandelette urinaire</span></button></li>
+</ul></div></div></div>
+<div class="ifc-x ifc-vx"><div class="ifc-xin"><div class="ifc-pad">
+<article class="dv dv-solo" id="mc-radio" hidden>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/mediacenter-radio-contenu-2026.webp" alt="Media Center — radiographies envoyées par le formateur" width="1600" height="1200" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-copy"><h3>Radio : les clichés envoyés</h3><p class="dv-kind">Radio &amp; bandelette</p><p class="dv-lead">Clichés classés par région (abdomen, bassin…) : 37 clichés en 9 catégories côté formateur.</p></div>
+</article>
+<article class="dv dv-solo" id="mc-bandelette" hidden>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/mediacenter-bandelette-contenu-2026.webp" alt="Media Center — bandelette urinaire et charte de couleurs" width="1600" height="1200" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-copy"><h3>Bandelette urinaire</h3><p class="dv-kind">Radio &amp; bandelette</p><p class="dv-lead">Les dix zones de la bandelette se comparent à la charte de couleurs, comme au chevet du patient.</p></div>
+</article>
+</div></div></div>
+</div></div>
+</div>
+<div class="ifc-brand ifc-x" id="ifc-p-cat-mc-archive" role="tabpanel" aria-labelledby="ifc-t-cat-mc-archive" data-brand="cat-mc-archive" data-view="list">
+<div class="ifc-xin"><div class="ifc-pad">
+<div class="ifc-x ifc-lx is-on"><div class="ifc-xin"><div class="ifc-pad"><ul class="ifc-list" data-n="3" data-info>
+<li><div class="ifc-info" style="--i:0"><span class="ifc-pg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span><span class="ifc-name">ECG : l'archive</span><span class="ifc-desc">Les 12 dérivations imprimées depuis l'appareil sont archivées et se rouvrent dans le panneau.</span></div></li>
+<li><div class="ifc-info" style="--i:1"><span class="ifc-pg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span><span class="ifc-name">Historique : le journal de séance</span><span class="ifc-desc">Chaque événement de l'appareil est consigné, pour le débriefing.</span></div></li>
+<li><div class="ifc-info" style="--i:2"><span class="ifc-pg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"/><line x1="8" y1="12" x2="16" y2="12"/></svg></span><span class="ifc-name">Liaison : l'état du lien</span><span class="ifc-desc">L'état de la liaison avec l'iPad du formateur (liaison locale, sans Internet).</span></div></li>
+</ul></div></div></div>
+</div></div>
+</div>
+      </div>
+      <p class="t-caption ifc-foot">Captures du panneau Media Center sur le DEFIGARD HD-7 (SCHILLER), sans iPad formateur connecté.</p>
     </div>
-    <figure class="ac-hub sr"><img src="/assets/academy-hub.webp" alt="ACADEMY : le choix des quatre modes, Course RCP, Mission Solo, Fusée RCP et Corps &amp; RCP" width="1600" height="1200" loading="lazy" decoding="async"/></figure>
-    <div class="ac-modes">
-      <article class="ac-mode sr"><span class="ac-badge">Multijoueur · jusqu'à 5</span><h3>COURSE RCP</h3><p>Plus votre massage est bon, plus votre soignant court vite. Défiez vos collègues.</p></article>
-      <article class="ac-mode sr"><span class="ac-badge">Solo · 20 missions</span><h3>MISSION SOLO</h3><p>Incarnez le médecin urgentiste : évaluez, alertez, massez, défibrillez, sauvez.</p></article>
-      <article class="ac-mode sr"><span class="ac-badge">Arcade · enfants et adultes</span><h3>FUSÉE RCP</h3><p>Votre massage est le carburant : décollez, passez la Lune, Mars, Jupiter… jusqu'aux étoiles.</p></article>
-      <article class="ac-mode sr"><span class="ac-badge">Anatomie</span><h3>CORPS &amp; RCP</h3><p>Voyez ce que fait votre massage : le sang monte au cerveau, les poumons se remplissent à chaque insufflation.</p></article>
-    </div>
-    <div class="ac-shots">
-      <figure class="sr"><img src="/assets/academy-corps-rcp.webp" alt="Corps &amp; RCP en jeu : mannequin, cœur, poumons et circulation animés" width="1600" height="1200" loading="lazy" decoding="async"/><figcaption><strong>Corps &amp; RCP, en jeu</strong>Le mannequin, le cœur, les poumons et la circulation s'animent au rythme du massage.</figcaption></figure>
-      <figure class="sr sr-d1"><img src="/assets/academy-tableau-rcp.webp" alt="Tableau de bord RCP : jauges de profondeur, fréquence et relâchement, score et série parfaite" width="1600" height="1102" loading="lazy" decoding="async"/><figcaption><strong>Tableau de bord RCP</strong>Profondeur, fréquence, relâchement, score et série parfaite : le retour du capteur, en direct.</figcaption></figure>
-    </div>
-    <p class="t-caption ac-note sr">Les quatre modes utilisent le capteur VitalX-RCP (Bluetooth). Mission Solo, Fusée et Corps &amp; RCP se jouent aussi au toucher.</p>
   </div>
 </section>
 
-<!-- FONCTIONS -->
-<section id="features" class="section feat-sec">
-  <div class="wrap">
-    <div class="section-head center">
-      <p class="t-eyebrow sr">Capacités</p>
-      <h2 class="t-section sr">Tout pour former.</h2>
-    </div>
-    <div class="grid-3">
-      <div class="feat sr"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div><h3>Interfaces constructeurs</h3><p>Schiller, Weinmann et bientôt d'autres : les vrais écrans, reproduits avec l'autorisation des fabricants, inclus dans la licence.</p></div>
-      <div class="feat sr sr-d1"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><h3>Scénarios dynamiques</h3><p>Cas concrets, AVC, douleur thoracique, polytrauma, avec étapes guidées et transitions automatiques.</p></div>
-      <div class="feat sr sr-d2"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 20h8"/></svg></div><h3>Moniteur réaliste</h3><p>Constantes temps réel, PNI auto/manuel, alertes, tendances, courbes ECG, SpO₂ et EtCO₂. Profils adulte et enfant.</p></div>
-      <div class="feat sr"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg></div><h3>Pilotage formateur</h3><p>Contrôle à distance des constantes, scénarios, ECG 12D et DSA, depuis l'iPad ou le web, quelle que soit l'interface affichée.</p></div>
-      <div class="feat sr sr-d1"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><h3>ECG 12 dérivations</h3><p>Plus de 20 tracés, sinus, STEMI, FA, TV, FV, torsades, WPW, avec interprétation et impression simulée.</p></div>
-      <div class="feat sr sr-d2"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><h3>Media Center</h3><p>ECG, biologie, radiologie, bandelette urinaire et DLU accessibles depuis le scope pour des scénarios contextualisés.</p></div>
-      <div class="feat sr"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg></div><h3>Historique complet</h3><p>Snapshots automatiques, PNI horodatées, sparklines et statistiques min / moyenne / max.</p></div>
-      <div class="feat sr sr-d1"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.2 2.2M16.2 16.2l2.2 2.2M5.6 18.4l2.2-2.2M16.2 7.8l2.2-2.2"/></svg></div><h3>Sync instantanée</h3><p>Un code de licence, jusqu'à 3 appareils. Synchronisation cloud immédiate, partout.</p></div>
-      <div class="feat sr sr-d2"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h3>Prêt en 30 secondes</h3><p>Aucune configuration complexe. Ouvrez l'app VitalX Scope, entrez le code, choisissez l'interface, formez.</p></div>
+<!-- ACADEMY -->
+<section id="academy" class="hx-sec" aria-labelledby="acTitle" data-spy="academy">
+  <div class="hx-band"><h2 id="acTitle">ACADEMY</h2></div>
+  <div class="wrap-wide hx-body">
+    <p class="hx-lead sr">Quatre jeux. <br>Un seul geste : masser.</p>
+    <div class="hx-mosaic">
+      <figure class="hx-m-main sr"><img src="/assets/academy-hub.webp" alt="ACADEMY : le choix des quatre modes, Course RCP, Mission Solo, Fusée RCP et Corps &amp; RCP" width="1600" height="1200" loading="lazy" decoding="async"/></figure>
+      <figure class="sr sr-d1"><img src="/assets/academy-corps-rcp.webp" alt="Corps &amp; RCP en jeu : mannequin, cœur, poumons et circulation animés" width="1600" height="1200" loading="lazy" decoding="async"/></figure>
+      <figure class="sr sr-d2"><img src="/assets/academy-tableau-rcp.webp" alt="Tableau de bord RCP : jauges de profondeur, fréquence et relâchement, score et série parfaite" width="1600" height="1102" loading="lazy" decoding="async"/></figure>
     </div>
   </div>
 </section>
 
-<!-- DEVIS -->
-<section id="devis" class="section gray">
-  <div class="wrap">
-    <div class="section-head center">
-      <p class="t-eyebrow sr">Devis</p>
-      <h2 class="t-section sr">Un devis sous 24 h.</h2>
-      <p class="t-section-lead sr sr-d1">Chaque structure a ses contraintes. On construit votre configuration avec vous.</p>
-    </div>
-    <div class="grid-2">
-      <div class="card devis-card sr">
-        <h3>Ce que comprend votre pack</h3>
-        <ul class="checks checks-sm">
-          <li>iPad + châssis VitalX + housse de transport</li>
-          <li>Connectiques complètes incluses</li>
-          <li>Interfaces constructeurs incluses, sans option</li>
-          <li>Licence à vie, sans abonnement, jusqu'à 3 appareils</li>
-          <li>Mises à jour et nouvelles interfaces incluses à vie</li>
-          <li>Support 7j/7, conçu et assemblé en France</li>
-        </ul>
-        <div>
-          <a href="#contact" class="btn btn-block">Demander un devis</a>
-          <p class="t-fine center" style="margin:12px 0 0">TVA non applicable (art. 293 B CGI) · Livraison 15 à 30 jours ouvrés · Règlement à la commande</p>
+<!-- LES PACKS : VitalX Plus, VitalX Ultra, POD'S (ancres #packs, #pods) -->
+<section id="packs" class="hx-sec" aria-labelledby="packsTitle" data-spy="packs">
+  <div class="hx-band"><h2 id="packsTitle">Les packs</h2></div>
+  <div class="wrap-wide hx-body">
+    <ul class="hx-packs">
+      <li class="hx-pack sr">
+        <div class="hx-pic hx-pack-pic"><img src="/assets/pack-plus.webp" alt="VitalX Plus : moniteur iPad dans sa housse" width="960" height="646" loading="lazy" decoding="async" data-no-lightbox="true"/></div>
+        <div class="hx-pack-b">
+          <h3>VitalX Plus</h3>
+          <p>2 iPad 11" — moniteur + formateur</p>
+          <div class="hx-pack-links"><a href="/boutique.html#pack" class="hx-btn hx-btn-red hx-btn-sm">Boutique</a><a href="/fiche-technique.html" class="hx-link">Fiche technique</a></div>
         </div>
-      </div>
-      <div class="card devis-card sr sr-d1">
-        <h3>Pourquoi un devis</h3>
-        <ul class="devis-list">
-          <li><strong>Configuration adaptée</strong><p>Nombre de scopes, taille d'écran, licence seule si vous avez déjà vos iPad : on ajuste au besoin réel de votre centre.</p></li>
-          <li><strong>Bons de commande et marchés publics</strong><p>SDIS, associations agréées, centres de formation : devis conforme à vos procédures d'achat.</p></li>
-          <li><strong>Tarif dégressif multi-postes</strong><p>Plusieurs casernes ou plusieurs salles ? Le devis en tient compte.</p></li>
-          <li><strong>Démo avant décision</strong><p>Visio de 30 minutes avec un formateur, scope en main, sur l'interface de votre choix.</p></li>
-        </ul>
-        <div><a href="#contact" class="btn btn-ghost btn-block">Parler à un formateur</a></div>
-      </div>
-    </div>
+      </li>
+      <li class="hx-pack sr sr-d1">
+        <div class="hx-pic hx-pack-pic"><img src="/assets/vitalxv2pro.webp" alt="Pack VitalX Ultra — moniteur iPad Air 13 pouces dans sa housse et tablette formateur" width="1536" height="1024" loading="lazy" decoding="async" data-no-lightbox="true"/></div>
+        <div class="hx-pack-b">
+          <h3>VitalX Ultra</h3>
+          <p>iPad Air 13" + iPad 11" formateur</p>
+          <div class="hx-pack-links"><a href="/boutique.html#pack" class="hx-btn hx-btn-red hx-btn-sm">Boutique</a><a href="/fiche-technique-ultimate.html" class="hx-link">Fiche technique</a></div>
+        </div>
+      </li>
+      <li class="hx-pack sr sr-d2" id="pods">
+        <div class="hx-pic hx-pack-pic"><img src="/assets/pack-pods.webp" alt="VitalX POD'S — boîtier iPhone, brassard, capteur SpO₂ et patch DSA" width="700" height="680" loading="lazy" decoding="async" data-no-lightbox="true"/></div>
+        <div class="hx-pack-b">
+          <h3>POD'S</h3>
+          <p>Compact, propulsé par iPhone.</p>
+          <div class="hx-pack-links"><a href="/boutique.html#pods" class="hx-btn hx-btn-red hx-btn-sm">Boutique</a><a href="/vitalx-pods.html" class="hx-link">Fiche technique</a></div>
+        </div>
+      </li>
+    </ul>
   </div>
 </section>
 
-<!-- AFFILIATION -->
-<section class="tile tile-dark tile-pad-b" style="padding-top:clamp(56px,8vw,100px);padding-bottom:clamp(56px,8vw,100px)">
-  <div class="tile-copy">
-    <p class="t-eyebrow sr">Apporteurs d'affaires</p>
-    <h2 class="t-tile sr">Recommandez VitalX.<br>Soyez récompensé.</h2>
-    <p class="t-tile-sub sr sr-d1" style="color:#a1a1a6;max-width:620px;margin:14px auto 0">Une vente conclue grâce à votre mise en relation = une commission versée par virement. Sans engagement.</p>
-    <div class="links sr sr-d2"><a href="/affiliation.html" class="more">Découvrir le programme</a></div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="section gray">
-  <div class="wrap-narrow">
-    <div class="section-head center">
-      <h2 class="t-section sr">Contact</h2>
-      <p class="t-section-lead sr sr-d1">Devis, démo, ou un appareil que vous aimeriez voir reproduit dans le scope : écrivez-nous.</p>
-    </div>
+<!-- NOUS CONTACTER : formulaire Netlify (ancres #contact, #devis) -->
+<span id="devis" class="anchor-alias"></span>
+<section id="contact" class="hx-sec" aria-labelledby="contactTitle" data-spy="contact">
+  <div class="hx-band"><h2 id="contactTitle">Nous contacter</h2></div>
+  <div class="wrap-narrow hx-body">
+    <p class="hx-lead sr">Un devis sous 24 h.</p>
     <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/merci.html" class="form sr sr-d1">
       <input type="hidden" name="form-name" value="contact">
       <p class="hidden" style="display:none"><label>Ne pas remplir : <input name="bot-field"/></label></p>
@@ -907,14 +761,16 @@
         <textarea class="finp" id="message" name="message" rows="5" required></textarea>
       </div>
 
-      <p class="rgpd">VitalX s'engage à protéger et à respecter votre vie privée. Nous utiliserons vos informations personnelles uniquement pour gérer votre compte et vous fournir les produits et services que vous nous avez demandés. Nous aimerions vous contacter ponctuellement au sujet de nos produits et services, ainsi que d'autres contenus susceptibles de vous intéresser. Si vous acceptez d'être contacté(e) à cette fin, veuillez cocher la case ci-dessous :</p>
+      <details class="hx-rgpd">
+        <summary>Protection de vos données</summary>
+        <p class="rgpd">VitalX s'engage à protéger et à respecter votre vie privée. Nous utiliserons vos informations personnelles uniquement pour gérer votre compte et vous fournir les produits et services que vous nous avez demandés. Nous aimerions vous contacter ponctuellement au sujet de nos produits et services, ainsi que d'autres contenus susceptibles de vous intéresser. Si vous acceptez d'être contacté(e) à cette fin, veuillez cocher la case ci-dessous :</p>
+        <p class="rgpd">Vous pouvez vous désabonner de ces communications à tout moment. Pour plus d'informations sur la procédure de désabonnement, nos pratiques en matière de confidentialité et notre engagement à protéger et respecter votre vie privée, veuillez consulter notre <a href="/politique-confidentialite.html">Politique de confidentialité</a>.</p>
+      </details>
 
       <label class="consent">
         <input type="checkbox" name="consentement-marketing" value="oui"/>
         <span>J'accepte de recevoir d'autres communications de VitalX.</span>
       </label>
-
-      <p class="rgpd">Vous pouvez vous désabonner de ces communications à tout moment. Pour plus d'informations sur la procédure de désabonnement, nos pratiques en matière de confidentialité et notre engagement à protéger et respecter votre vie privée, veuillez consulter notre <a href="/politique-confidentialite.html">Politique de confidentialité</a>.</p>
 
       <p class="rgpd">En cliquant sur « Envoyer » ci-dessous, vous consentez à ce que VitalX stocke et traite les informations personnelles soumises ci-dessus afin de vous fournir le contenu demandé.</p>
 
@@ -926,67 +782,45 @@
 </main>
 
 <!-- PIED DE PAGE -->
-<footer class="footer">
-  <div class="wrap">
-    <div class="footer-legal">
-      <p>Les interfaces constructeurs (Schiller DEFIGARD Touch 7, PHYSIOGARD Touch 7, ARGUS PRO LifeCare 3, DEFIGARD HD-7, MAGLIFE RT-1 et MAGSCREEN RT-1, Weinmann MEDUCORE Standard², MEDUMAT Standard² et MEDUVENT Standard) sont reproduites dans le scope VitalX avec l'autorisation de leurs fabricants respectifs, à des fins de formation uniquement. Le simulateur VitalX est conçu et développé par VitalX ; il n'est ni fabriqué, ni distribué, ni approuvé comme dispositif médical par ces constructeurs. Les noms de produits cités sont des marques de leurs propriétaires respectifs.</p>
-      <p>TVA non applicable, art. 293 B du CGI. Règlement à la commande, livraison des packs 15 à 30 jours ouvrés. Châssis et housse garantis à vie ; iPad et iPhone couverts par la garantie Apple. Un code de licence active jusqu'à 3 appareils.</p>
-    </div>
-    <div class="footer-cols">
-      <div>
-        <h4>Produits</h4>
-        <ul>
-          <li><a href="#v2">VitalX</a></li>
-          <li><a href="#packs">VitalX Plus et Ultra</a></li>
-          <li><a href="#pods">POD'S</a></li>
-          <li><a href="#schiller">Interfaces constructeurs</a></li>
-          <li><a href="#mediacenter">Media Center</a></li>
-          <li><a href="#academy">ACADEMY</a></li>
-          <li><a href="/boutique.html">Boutique</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Acheter</h4>
-        <ul>
-          <li><a href="#devis">Demander un devis</a></li>
-          <li><a href="/boutique.html#licence">Licence seule</a></li>
-          <li><a href="/boutique.html#ecussons">Écussons</a></li>
-          <li><a href="/garantie.html">Garantie</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Société</h4>
-        <ul>
-          <li><a href="/qui-sommes-nous.html">Qui sommes-nous</a></li>
-          <li><a href="/affiliation.html">Apporteurs d'affaires</a></li>
-          <li><a href="https://vitalxtrainer.app" target="_blank" rel="noopener">Mode Formateur</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Informations</h4>
-        <ul>
-          <li><a href="/mentions-legales.html">Mentions légales</a></li>
-          <li><a href="/cgv.html">CGV</a></li>
-          <li><a href="/politique-confidentialite.html">Confidentialité</a></li>
-          <li><a href="/formulaire_retractation.pdf" download>Rétractation</a></li>
-        </ul>
-      </div>
-    </div>
-    <p class="footer-contact">Besoin d'aide ? Écrivez-nous à <a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a>.</p>
-    <div class="tricolor footer-fr-line" aria-hidden="true"></div>
-    <div class="footer-fr"><i class="fr-flag" aria-hidden="true"></i><span>Conçu &amp; assemblé en France 🇫🇷</span><span class="t-fine">Entreprise française · Support 7j/7 · Châssis et housse garantis à vie</span></div>
-    <div class="footer-bottom">
-      <span>© <span id="year"></span> VitalX. Tous droits réservés.</span>
-      <nav aria-label="Liens légaux">
-        <a href="/mentions-legales.html">Mentions légales</a>
-        <a href="/cgv.html">CGV</a>
-        <a href="/politique-confidentialite.html">Confidentialité</a>
+<footer class="hx-foot">
+  <div class="tricolor" aria-hidden="true"></div>
+  <div class="hx-wrap">
+    <div class="hx-foot-top">
+      <a href="/" class="hx-foot-logo" aria-label="VitalX — accueil"><img src="/assets/logo-vitalx-white.svg" alt="VitalX" width="90" height="30" data-no-lightbox="true"/></a>
+      <nav class="hx-foot-cols" aria-label="Pied de page">
+        <div>
+          <h3>Société</h3>
+          <ul>
+            <li><a href="/qui-sommes-nous.html">Qui sommes-nous</a></li>
+            <li><a href="/affiliation.html">Affiliation</a></li>
+            <li><a href="/affiliation.html" class="hx-reco">Recommandez VitalX</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Informations</h3>
+          <ul>
+            <li><a href="/mentions-legales.html">Mentions légales</a></li>
+            <li><a href="/cgv.html">CGV</a></li>
+            <li><a href="/politique-confidentialite.html">Confidentialité</a></li>
+            <li><a href="/garantie.html">Garantie</a></li>
+            <li><a href="/formulaire_retractation.pdf" download>Rétractation</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Contact</h3>
+          <ul>
+            <li><a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a></li>
+          </ul>
+        </div>
       </nav>
-      <span id="langSwitch" class="lang" aria-label="Langue">
-        <button type="button" data-lang="fr" class="lang-btn is-active" title="Français" aria-label="Français">Français</button>
-        <button type="button" data-lang="en" class="lang-btn" title="English" aria-label="English">English</button>
-        <button type="button" data-lang="de" class="lang-btn" title="Deutsch" aria-label="Deutsch">Deutsch</button>
+    </div>
+    <div class="hx-legal"><p>Interfaces reproduites avec l'autorisation de leurs fabricants, à des fins de formation uniquement. Le simulateur VitalX est conçu et développé par VitalX ; il n'est ni fabriqué, ni distribué, ni approuvé comme dispositif médical par ces constructeurs. Marques citées : propriétés de leurs titulaires.</p></div>
+    <div class="hx-foot-bottom">
+      <span>© <span id="year"></span> VitalX. Tous droits réservés.</span>
+      <span id="langSwitch" class="hx-lang" role="group" aria-label="Langue">
+        <button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">Français</button>
+        <button type="button" data-lang="en" title="English" aria-label="English">English</button>
+        <button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">Deutsch</button>
       </span>
     </div>
   </div>
@@ -1007,8 +841,24 @@ document.getElementById('year').textContent=new Date().getFullYear();
 (function(){
   const b=document.getElementById('menuBtn'),m=document.getElementById('mobileMenu');
   if(!b||!m) return;
-  b.addEventListener('click',()=>{const open=m.classList.toggle('open');b.setAttribute('aria-expanded',String(open));document.body.style.overflow=open?'hidden':''});
-  m.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{m.classList.remove('open');b.setAttribute('aria-expanded','false');document.body.style.overflow=''}));
+  function set(open){m.classList.toggle('open',open);b.setAttribute('aria-expanded',String(open));document.body.style.overflow=open?'hidden':''}
+  b.addEventListener('click',()=>set(!m.classList.contains('open')));
+  m.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>set(false)));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&m.classList.contains('open')){set(false);b.focus()}});
+  if(window.matchMedia){const mq=window.matchMedia('(min-width:901px)');const f=e=>{if(e.matches)set(false)};if(mq.addEventListener)mq.addEventListener('change',f)}
+})();
+
+// Lien actif de l'en-tête : la section qui croise le milieu de l'écran
+(function(){
+  const links=[].slice.call(document.querySelectorAll('.hx-links a[href^="#"], .hx-menu a.big[href^="#"]'));
+  const secs=[].slice.call(document.querySelectorAll('[data-spy]'));
+  if(!links.length||!secs.length||!('IntersectionObserver' in window)) return;
+  function mark(id){links.forEach(a=>{if(a.getAttribute('href')==='#'+id)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current')})}
+  const opt={rootMargin:'-40% 0px -55% 0px'};
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)mark(e.target.getAttribute('data-spy'))})},opt);
+  secs.forEach(s=>io.observe(s));
+  const hero=document.getElementById('v2');
+  if(hero)new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)mark('')})},opt).observe(hero);
 })();
 
 // Galeries interfaces (miniatures → image principale)
