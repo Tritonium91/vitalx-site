@@ -7,6 +7,8 @@
      • Année du pied de page (#year)
      • Lien actif de l'en-tête sur l'accueil : la section [data-spy] qui croise le milieu de l'écran
        (sur les autres pages, le lien de la page en cours est marqué dans le HTML avec aria-current="page")
+  🆕 v1.1 — 13/10/2026 — Yann USSEGLIO
+     • Charge l'assistant VitalX (bulle de tchat, /vx-chat.js) une fois la page affichée, sur toutes les pages
   À charger avec « defer » ; aucun autre script de menu n'est nécessaire sur les pages.
 */
 (function(){
@@ -36,5 +38,11 @@
     secs.forEach(function(s){io.observe(s)});
     var hero=document.getElementById('v2');
     if(hero)new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)mark('')})},opt).observe(hero);
+  })();
+
+  // Assistant VitalX (vx-chat.js) : chargé après l'affichage de la page, pour ne pas la ralentir
+  (function(){
+    function load(){if(document.getElementById('vxchat-js'))return;var s=document.createElement('script');s.id='vxchat-js';s.src='/vx-chat.js';s.async=true;document.body.appendChild(s)}
+    if(document.readyState==='complete')setTimeout(load,400);else window.addEventListener('load',function(){setTimeout(load,400)});
   })();
 })();
