@@ -1,0 +1,12 @@
+# VitalX — site vitrine
+
+Site statique de VitalX (simulateur de scopes médicaux sur iPad et iPhone, conçu et assemblé en France), publié par Netlify sur https://vitalx.org.
+
+- `site/` : le site, en quatre langues (FR à la racine, `/en/`, `/de/`, `/es/`). Pages HTML statiques, une feuille de style, un script, des images WebP, une vidéo d'ouverture.
+- `netlify.toml` : `publish = "site"`. Pas de commande de build, pas de fonction.
+- `site/_redirects` : redirections 301 des anciennes adresses ; `/politique-confidentialite` répond directement (lien de la fiche App Store).
+- `site/_headers` : en-têtes de sécurité (CSP : aucune ressource extérieure) et cache.
+- `site/revendeurs.json` : liste des revendeurs affichés sur la carte (vide pour l'instant ; le schéma est dans le fichier).
+- Le formulaire de contact est un formulaire Netlify (`name="contact"`).
+
+Aucune boutique, aucun prix, aucun paiement en ligne : demande de démo, de devis ou de partenariat revendeur uniquement.

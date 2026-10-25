@@ -1,0 +1,5 @@
+# VitalX — site vitrine statique (4 langues).
+# Le dossier site/ est déjà généré : rien à construire, aucune fonction.
+# Redirections (_redirects), en-têtes (_headers) et pages 404 sont dans site/.
+[build]
+  publish = "site"
