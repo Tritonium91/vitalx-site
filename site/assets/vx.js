@@ -1,7 +1,8 @@
 /*
   vx.js — VitalX, site vitrine v4. Aucune dépendance, aucune requête extérieure.
   Le contenu reste complet sans JavaScript ; ce script ajoute : menu mobile, en-tête qui se teinte, apparitions au défilement,
-  parallaxe / mise à l'échelle des tablettes, compteurs, vidéo d'ouverture (jamais sur téléphone), galeries à boutons, sous-navigation.
+  bandeau défilant à l'arrêt hors de l'écran, compteurs, galeries à boutons, sous-navigation.
+  Fluidité (25/10) : plus de vidéo ni de parallaxe ; pendant le défilement, seul l'en-tête change de teinte (l'échelle des tablettes est en CSS).
   Sous « réduire les animations » : aucune animation (contenu affiché tel quel).
 */
 (function () {
@@ -41,35 +42,17 @@
   } else {
     var io = new IntersectionObserver(function (es) {
       es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    }, { rootMargin: '0px 0px 6% 0px', threshold: 0 });   // départ juste avant l'entrée à l'écran
     rv.forEach(function (e) { io.observe(e); });
   }
 
-  /* 4. Parallaxe et mise à l'échelle (data-par="0.12" ; data-scale = progression --p de 0 à 1) */
-  var pars = $$('[data-par]'), scs = $$('[data-scale]');
-  if (!still && (pars.length || scs.length)) {
-    var ticking = false;
-    var clamp = function (v, a, b) { return Math.max(a, Math.min(b, v)); };
-    var frame = function () {
-      ticking = false;
-      var vh = w.innerHeight;
-      scs.forEach(function (el) {
-        var r = el.getBoundingClientRect();
-        if (r.bottom < -200 || r.top > vh + 200) return;
-        el.style.setProperty('--p', clamp(1 - (r.top - vh * 0.12) / (vh * 0.62), 0, 1).toFixed(3));
-      });
-      pars.forEach(function (el) {
-        var r = el.getBoundingClientRect();
-        if (r.bottom < -300 || r.top > vh + 300) return;
-        var k = parseFloat(el.getAttribute('data-par')) || 0.1;
-        el.style.transform = 'translate3d(0,' + ((r.top + r.height / 2 - vh / 2) * -k).toFixed(1) + 'px,0)';
-      });
-    };
-    var req = function () { if (!ticking) { ticking = true; w.requestAnimationFrame(frame); } };
-    w.addEventListener('scroll', req, { passive: true });
-    w.addEventListener('resize', req);
-    scs.forEach(function (el) { el.style.setProperty('--p', 0); });   // départ réduit seulement si le script tourne
-    req();
+  /* 4. Bandeau défilant : à l'arrêt quand il est hors de l'écran (le navigateur n'a plus rien à recalculer) */
+  var mq = $$('.mq');
+  if (mq.length && !still && 'IntersectionObserver' in w) {
+    var io4 = new IntersectionObserver(function (es) {
+      es.forEach(function (en) { en.target.classList.toggle('off', !en.isIntersecting); });
+    });
+    mq.forEach(function (e) { io4.observe(e); });
   }
 
   /* 5. Compteurs */
@@ -92,24 +75,7 @@
     cnt.forEach(function (el) { io2.observe(el); });
   }
 
-  /* 6. Vidéo d'ouverture : seulement sur grand écran, sans « réduire les animations », hors économie de données */
-  var vid = $('.hero-vid');
-  if (vid) {
-    var conn = navigator.connection || {};
-    var ok = !still && w.matchMedia && w.matchMedia('(min-width: 1024px)').matches && !conn.saveData;
-    if (ok) {
-      var s = d.createElement('source');
-      s.src = vid.getAttribute('data-src'); s.type = 'video/mp4';
-      vid.appendChild(s);
-      vid.muted = true;
-      vid.addEventListener('playing', function () { vid.classList.add('on'); }, { once: true });
-      var p = vid.play && vid.play();
-      if (p && p.catch) p.catch(function () { /* lecture refusée : l'image fixe reste */ });
-      d.addEventListener('visibilitychange', function () { if (d.hidden) vid.pause(); else if (vid.classList.contains('on')) vid.play().catch(function () {}); });
-    }
-  }
-
-  /* 7. Galeries à boutons précédent / suivant */
+  /* 6. Galeries à boutons précédent / suivant */
   $$('[data-rail]').forEach(function (box) {
     var list = $('.rail-in', box), prev = $('[data-prev]', box), next = $('[data-next]', box);
     if (!list) return;
@@ -126,7 +92,7 @@
     upd();
   });
 
-  /* 8. Sous-navigation : l'ancre de la section visible s'allume */
+  /* 7. Sous-navigation : l'ancre de la section visible s'allume */
   var sub = $('.subnav');
   if (sub && 'IntersectionObserver' in w) {
     var links = $$('a[href^="#"]', sub), map = {};
@@ -142,7 +108,7 @@
     Object.keys(map).forEach(function (id) { var t = d.getElementById(id); if (t) io3.observe(t); });
   }
 
-  /* 9. Formulaire : langue de la page + effacement du pot de miel */
+  /* 8. Formulaire : langue de la page + effacement du pot de miel */
   var f = $('form[name="contact"]');
   if (f) {
     var lg = f.querySelector('input[name="langue"]');
