@@ -1,0 +1,6 @@
+# VitalX — 25/10/2026 : le site publié est le dossier site/ à la racine du dépôt (site vitrine v4).
+# Ce fichier ne sert que tant que le réglage Netlify « Base directory » vaut « mediscope_site ».
+# Quand ce réglage est vidé, Netlify lit le netlify.toml de la racine (publish = "site") et ce dossier peut être supprimé.
+[build]
+  base = "mediscope_site"
+  publish = "../site"
