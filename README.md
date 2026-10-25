@@ -8,5 +8,6 @@ Site statique de VitalX (simulateur de scopes médicaux sur iPad et iPhone, con�
 - `site/_headers` : en-têtes de sécurité (CSP : aucune ressource extérieure) et cache.
 - `site/revendeurs.json` : liste des revendeurs affichés sur la carte, tenue par VitalX (vide pour l'instant ; le schéma est dans le fichier).
 - Le formulaire de contact est un formulaire Netlify (`name="contact"`).
+- `site/assets/signature-*.png` : les 4 images de la signature mail de VitalX (adresses `https://vitalx.org/assets/signature-…png` utilisées dans les e-mails) : à garder, ne pas supprimer.
 
 Aucune boutique, aucun prix, aucun paiement en ligne : demande de démo ou de devis uniquement.
