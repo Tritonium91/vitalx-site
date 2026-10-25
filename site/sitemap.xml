@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://vitalx.org/</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/en/</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/de/</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/es/</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/simulateurs</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/simulateurs"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/simulators"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/simulatoren"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/simuladores"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/simulateurs"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/en/simulators</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/simulateurs"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/simulators"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/simulatoren"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/simuladores"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/simulateurs"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/de/simulatoren</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/simulateurs"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/simulators"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/simulatoren"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/simuladores"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/simulateurs"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/es/simuladores</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/simulateurs"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/simulators"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/simulatoren"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/simuladores"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/simulateurs"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/formateur</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/formateur"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/trainer"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/trainer"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/instructor"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/formateur"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/en/trainer</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/formateur"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/trainer"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/trainer"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/instructor"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/formateur"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/de/trainer</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/formateur"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/trainer"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/trainer"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/instructor"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/formateur"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/es/instructor</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/formateur"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/trainer"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/trainer"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/instructor"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/formateur"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/academy</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/academy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/academy"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/academy"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/academy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/academy"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/en/academy</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/academy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/academy"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/academy"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/academy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/academy"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/de/academy</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/academy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/academy"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/academy"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/academy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/academy"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/es/academy</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/academy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/academy"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/academy"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/academy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/academy"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/pods</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/pods"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/pods"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/pods"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/pods"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/pods"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/en/pods</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/pods"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/pods"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/pods"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/pods"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/pods"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/de/pods</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/pods"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/pods"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/pods"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/pods"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/pods"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/es/pods</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/pods"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/pods"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/pods"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/pods"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/pods"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/revendeurs</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/revendeurs"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/resellers"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/haendler"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/distribuidores"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/revendeurs"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/en/resellers</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/revendeurs"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/resellers"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/haendler"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/distribuidores"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/revendeurs"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/de/haendler</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/revendeurs"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/resellers"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/haendler"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/distribuidores"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/revendeurs"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/es/distribuidores</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/revendeurs"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/resellers"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/haendler"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/distribuidores"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/revendeurs"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/a-propos</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/a-propos"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/about"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/ueber-uns"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/quienes-somos"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/a-propos"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/en/about</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/a-propos"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/about"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/ueber-uns"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/quienes-somos"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/a-propos"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/de/ueber-uns</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/a-propos"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/about"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/ueber-uns"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/quienes-somos"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/a-propos"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/es/quienes-somos</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/a-propos"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/about"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/ueber-uns"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/quienes-somos"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/a-propos"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/contact</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/kontakt"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/contacto"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/contact"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/en/contact</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/kontakt"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/contacto"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/contact"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/de/kontakt</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/kontakt"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/contacto"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/contact"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/es/contacto</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/kontakt"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/contacto"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/contact"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/mentions-legales</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/mentions-legales"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/legal-notice"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/impressum"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/aviso-legal"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/mentions-legales"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/en/legal-notice</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/mentions-legales"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/legal-notice"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/impressum"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/aviso-legal"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/mentions-legales"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/de/impressum</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/mentions-legales"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/legal-notice"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/impressum"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/aviso-legal"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/mentions-legales"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/es/aviso-legal</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/mentions-legales"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/legal-notice"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/impressum"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/aviso-legal"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/mentions-legales"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/politique-confidentialite</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/politique-confidentialite"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/datenschutz"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/politica-de-privacidad"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/politique-confidentialite"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/en/privacy-policy</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/politique-confidentialite"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/datenschutz"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/politica-de-privacidad"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/politique-confidentialite"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/de/datenschutz</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/politique-confidentialite"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/datenschutz"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/politica-de-privacidad"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/politique-confidentialite"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/es/politica-de-privacidad</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/politique-confidentialite"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/datenschutz"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/politica-de-privacidad"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/politique-confidentialite"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/garantie</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/garantie"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/warranty"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/garantie"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/garantia"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/garantie"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/en/warranty</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/garantie"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/warranty"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/garantie"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/garantia"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/garantie"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/de/garantie</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/garantie"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/warranty"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/garantie"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/garantia"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/garantie"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/es/garantia</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/garantie"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/warranty"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/garantie"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/garantia"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/garantie"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/cgv</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/cgv"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/terms-of-sale"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/agb"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/condiciones-de-venta"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/cgv"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/en/terms-of-sale</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/cgv"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/terms-of-sale"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/agb"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/condiciones-de-venta"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/cgv"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/de/agb</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/cgv"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/terms-of-sale"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/agb"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/condiciones-de-venta"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/cgv"/>
+  </url>
+  <url>
+    <loc>https://vitalx.org/es/condiciones-de-venta</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vitalx.org/cgv"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vitalx.org/en/terms-of-sale"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vitalx.org/de/agb"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vitalx.org/es/condiciones-de-venta"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vitalx.org/cgv"/>
+  </url>
+</urlset>

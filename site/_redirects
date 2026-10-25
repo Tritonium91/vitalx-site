@@ -1,0 +1,34 @@
+# Anciennes adresses du site (301) -> nouvelles pages. Les règles de langue (404) sont en bas.
+/index.html                                 /                                       301!
+/boutique                                   /simulateurs                            301
+/boutique.html                              /simulateurs                            301
+/fiche-technique                            /simulateurs                            301
+/fiche-technique.html                       /simulateurs                            301
+/fiche-technique-basique                    /simulateurs                            301
+/fiche-technique-basique.html               /simulateurs                            301
+/fiche-technique-pro                        /simulateurs                            301
+/fiche-technique-pro.html                   /simulateurs                            301
+/fiche-technique-ultimate                   /simulateurs                            301
+/fiche-technique-ultimate.html              /simulateurs                            301
+/vitalx-pods                                /pods                                   301
+/vitalx-pods.html                           /pods                                   301
+/qui-sommes-nous                            /a-propos                               301
+/qui-sommes-nous.html                       /a-propos                               301
+/affiliation                                /revendeurs                             301
+/affiliation.html                           /revendeurs                             301
+/merci                                      /contact-merci                          301
+/merci.html                                 /contact-merci                          301
+/merci-commande                             /contact-merci                          301
+/merci-commande.html                        /contact-merci                          301
+/garantie.html                              /garantie                               301
+/cgv.html                                   /cgv                                    301
+/mentions-legales.html                      /mentions-legales                       301
+/politique-confidentialite.html             /politique-confidentialite              301
+
+# Lien de la fiche App Store : /politique-confidentialite doit répondre 200 (réécriture, pas de redirection)
+/politique-confidentialite                  /politique-confidentialite.html         200
+
+# 404 dans la langue du dossier
+/en/*                                       /en/404.html                            404
+/de/*                                       /de/404.html                            404
+/es/*                                       /es/404.html                            404

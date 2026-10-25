@@ -1,0 +1,9 @@
+# VitalX — robots.txt
+User-agent: *
+Allow: /
+Disallow: /contact-merci
+Disallow: /en/contact-thanks
+Disallow: /de/kontakt-danke
+Disallow: /es/contacto-gracias
+
+Sitemap: https://vitalx.org/sitemap.xml

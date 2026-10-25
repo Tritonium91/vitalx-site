@@ -1,0 +1,29 @@
+{
+  "_lisez_moi": "Liste des revendeurs affichés sur la carte de la page « Revendeurs ». Pour ajouter un revendeur : copiez le modèle de « _modele » dans la liste « revendeurs » (entre les crochets), remplacez les valeurs, séparez les revendeurs par une virgule. Les champs inutiles peuvent être supprimés ou laissés vides. Ne modifiez pas les noms des champs. La carte se met à jour dès que le fichier est publié ; tant que la liste est vide, la carte affiche un message d'attente.",
+  "_champs": {
+    "nom": "OBLIGATOIRE. Nom du revendeur, tel qu'il doit apparaître.",
+    "ville": "Ville (texte libre).",
+    "pays": "Pays : nom en toutes lettres, ou code ISO à 2 lettres (FR, BE, CH, DE, ES, CA…) que le site traduit dans la langue du visiteur.",
+    "lat": "Latitude en degrés décimaux, avec un point : positive au nord de l'équateur, négative au sud (entre -90 et 90). Sans latitude et longitude, le revendeur apparaît dans la liste mais pas sur la carte.",
+    "lon": "Longitude en degrés décimaux, avec un point : positive à l'est du méridien de Greenwich, négative à l'ouest (entre -180 et 180).",
+    "site": "Adresse du site Internet, complète, commençant par https:// (ou http://).",
+    "email": "Adresse e-mail de contact.",
+    "telephone": "Numéro de téléphone, avec l'indicatif international (+33…).",
+    "langues": "Langues parlées : liste de codes à 2 lettres, par exemple [\"fr\", \"en\"] (traduits dans la langue du visiteur)."
+  },
+  "_modele": {
+    "nom": "Nom du revendeur",
+    "ville": "Ville",
+    "pays": "FR",
+    "lat": 0.0,
+    "lon": 0.0,
+    "site": "https://www.exemple.fr",
+    "email": "contact@exemple.fr",
+    "telephone": "+33 0 00 00 00 00",
+    "langues": [
+      "fr",
+      "en"
+    ]
+  },
+  "revendeurs": []
+}
