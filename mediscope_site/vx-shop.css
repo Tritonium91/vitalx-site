@@ -1,0 +1,219 @@
+/*
+  vx-shop.css — VitalX — styles propres à la boutique et aux pages de remerciement
+  (chargé après /vx.css par boutique.html, merci.html et merci-commande.html).
+  Refonte « vitrine façon Apple » du 25/10/2026.
+  Sections : filet de sécurité de l'apparition · sous-navigation (bouton Panier, variante sombre) · héros · cartes produit ·
+             détails de licence · écussons (grille, galerie sur téléphone) · informations de vente · bandeau démo ·
+             panier (tiroir, bouton flottant, message, visionneuse) · remerciements (coche, cartes, étapes).
+  Ancres conservées (boutique) : #pack #pods #licence #ecussons #infos-vente (+ #licenses → #licence par le script de la page).
+  Le panier et le paiement Stripe sont pilotés par le script de boutique.html (inchangé) : les identifiants
+  (#openCart #closeCart #cartDrawer #cartOverlay #cartItems #cartSubtotal #cartCount #cartFab #cartFabCount #checkoutBtn
+  #toast #ecussonLightbox…) et les classes lues par ce script (.add-to-cart .cart-row .nm .un .qty .del .cart-total
+  .cart-empty .hidden .open .show .flex) ne doivent pas être renommés ici.
+*/
+
+
+/* ── Sous-navigation : bouton Panier (#openCart) et pastille du nombre d'articles (#cartCount) ───
+   La variante sombre (.subnav--dark) et son changement de ton viennent de vx.css et de site-header.js. */
+.subnav-links a{padding:14px 0}                                                                /* zone de toucher plus haute (la barre fait 52 px) */
+.shop-cart{position:relative;display:inline-grid;place-items:center;width:44px;height:44px;margin:0 -6px 0 0;padding:0;border:0;border-radius:50%;background:none;color:#1d1d1f;cursor:pointer;transition:background .2s,color .2s}
+.shop-cart:hover{background:rgba(0,0,0,.07);color:var(--red-d)}
+.subnav--dark .shop-cart{color:#f5f5f7}
+.subnav--dark .shop-cart:hover{background:rgba(255,255,255,.14);color:#fff}
+.shop-cart svg{width:23px;height:23px}
+.cart-badge{position:absolute;top:3px;right:0;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--red);color:#fff;font-size:11px;font-weight:700;line-height:18px;text-align:center}   /* masquée par le script quand le panier est vide */
+@media(max-width:833px){.shop-cart{display:none}}                  /* sur téléphone et petite tablette : le bouton flottant Panier prend le relais */
+
+/* ── Héros : titre centré, puis le pack VitalX Ultra sur un halo rouge ─── */
+.shop-hero{padding-bottom:clamp(40px,5vw,76px)}
+.shop-hero-art{position:relative;max-width:900px;margin:clamp(26px,3.6vw,52px) auto 0}
+.shop-hero-art::before{content:"";position:absolute;left:50%;top:52%;width:132%;height:100%;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(227,18,27,.36),rgba(227,18,27,.1) 58%,rgba(227,18,27,0) 78%);pointer-events:none}
+.shop-hero-art img{position:relative;display:block;width:100%;height:auto;filter:drop-shadow(0 30px 40px rgba(0,0,0,.55))}
+
+/* ── Sections de la boutique ─── */
+.shop-sec{padding-block:clamp(64px,8.5vw,124px)}
+.shop-sec .head{margin-bottom:clamp(32px,4.4vw,56px)}
+.shop-sec .head .cta{margin:7px 0 -11px}                                                        /* le lien « Voir les appareils › » a 11 px de zone de toucher en haut et en bas : on les reprend ici */
+
+/* ── Cartes produit : image sur fond sombre dégradé rouge, titre, une ligne, boutons ─── */
+.shop-card{display:flex;flex-direction:column}
+.shop-pic{position:relative;aspect-ratio:4/3;overflow:hidden;background:radial-gradient(78% 78% at 50% 46%,#3b0c11 0%,#0b0b0d 76%)}
+.shop-pic img{position:absolute;inset:6%;width:88%;height:88%;object-fit:contain;filter:drop-shadow(0 14px 20px rgba(0,0,0,.5));transition:transform .8s var(--ease)}
+@media(hover:hover){.shop-card:hover .shop-pic img{transform:scale(1.04)}}
+.shop-pic--cover img{inset:0;width:100%;height:100%;object-fit:cover;filter:none}                 /* visuel plein cadre (Licence à vie) */
+.shop-pic--logo img{inset:0;width:100%;height:100%;padding:0 14%;filter:none}                      /* logo large centré (Passage POD'S → VitalX) */
+.shop-tag{position:absolute;z-index:2;top:16px;left:16px;display:inline-flex;align-items:center;padding:6px 13px;border:1px solid rgba(255,255,255,.28);border-radius:999px;background:rgba(255,255,255,.12);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-size:13px;font-weight:600;line-height:1.2;letter-spacing:-.005em;color:#fff}
+.shop-b{display:flex;flex-direction:column;gap:6px;flex:1;padding:clamp(22px,2.4vw,32px)}
+.shop-b .h3{font-size:clamp(24px,2.5vw,32px)}
+.shop-line{margin:0;font-size:17px;line-height:1.4;color:var(--mut)}
+.shop-links{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;margin-top:auto;padding-top:20px}
+.shop-b .shop-more{margin-top:20px}
+.shop-hero .link,.shop-sec .link,.tk .link{padding-block:11px}                                  /* liens « › » : zone de toucher de 44 px sans changer l'aspect */
+.shop-card--lic .shop-links{margin-top:0}                                                        /* boutons alignés d'une carte à l'autre, même quand l'une des deux déplie ses détails */
+
+/* ── Détails repliés (cartes Licence) ─── */
+.shop-more{border-top:1px solid var(--line)}
+.shop-more summary{display:flex;align-items:center;gap:6px;padding:16px 0 4px;list-style:none;font-size:15px;font-weight:600;line-height:1.3;color:var(--mut);cursor:pointer}
+.shop-more summary::-webkit-details-marker{display:none}
+.shop-more summary::before{content:"›";display:inline-block;font-size:1.35em;line-height:1;transition:transform .2s}
+.shop-more[open] summary::before{transform:rotate(90deg)}
+.shop-more summary:hover{color:var(--fg)}
+.lic-row{display:grid;grid-template-columns:112px minmax(0,1fr);gap:4px 16px;padding:13px 0;border-top:1px solid var(--line);font-size:15px;line-height:1.45;color:var(--mut)}
+.lic-row:first-of-type{border-top:0}
+.lic-row b{font-weight:600;color:var(--fg)}
+@media(max-width:560px){.lic-row{grid-template-columns:minmax(0,1fr)}}
+
+/* ── Écussons : trois cartes ; galerie à balayage horizontal sur téléphone ─── */
+.shop-ecus{align-items:stretch}
+.shop-ecus .shop-pic{aspect-ratio:1/1;background:radial-gradient(72% 72% at 50% 46%,#64141b 0%,#190b0e 70%,#0b0b0d 100%)}
+.shop-ecus .shop-pic img{inset:8%;width:84%;height:84%}
+.shop-ecus .shop-b .h3{font-size:clamp(20px,1.9vw,24px)}
+.ecusson-img{cursor:zoom-in}
+.price{display:flex;align-items:baseline;gap:6px;margin:6px 0 14px}
+.price b{font-size:26px;line-height:1.1;font-weight:700;letter-spacing:-.025em;color:var(--fg)}
+.price span{font-size:14px;color:var(--mut)}
+.shop-b .btn--block{margin-top:auto}
+@media(max-width:960px){.grid.shop-ecus{grid-template-columns:repeat(3,minmax(0,1fr))}}           /* trois colonnes jusqu'au téléphone (la base passerait à deux) */
+@media(max-width:700px){
+  .grid.shop-ecus{display:flex;margin-inline:calc(var(--gut) * -1);padding:4px var(--gut) 22px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding-inline:var(--gut);scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .shop-ecus::-webkit-scrollbar{display:none}
+  .shop-ecus>li{flex:0 0 min(76vw,320px);scroll-snap-align:start}
+  .shop-ecus .shop-b .h3{font-size:22px}
+}
+
+/* ── Informations de vente (repliées) ─── */
+.shop-sale{padding-block:clamp(26px,3.2vw,40px)}
+.shop-info{max-width:760px;margin:0 auto}
+.shop-info summary{display:flex;align-items:center;justify-content:center;gap:6px;padding:10px 0;list-style:none;font-size:15px;font-weight:600;line-height:1.3;color:var(--mut);cursor:pointer}
+.shop-info summary::-webkit-details-marker{display:none}
+.shop-info summary::before{content:"›";display:inline-block;font-size:1.35em;line-height:1;transition:transform .2s}
+.shop-info[open] summary::before{transform:rotate(90deg)}
+.shop-info summary:hover{color:var(--fg)}
+.shop-info-b{margin:12px auto 0;font-size:14px;line-height:1.6;color:var(--mut)}
+.shop-info-b p{margin:0 0 12px}
+.shop-info-b a{font-weight:600;color:var(--fg);text-decoration:underline;text-underline-offset:3px}
+.shop-info-b a:hover{color:var(--red-d)}
+
+/* ── Bandeau final : démo ─── */
+.shop-demo{text-align:center;padding-block:clamp(64px,8vw,112px)}
+.shop-demo .h2{max-width:20em;margin:0 auto;font-size:clamp(28px,4.2vw,46px)}
+
+/* ── Panier : fond, tiroir blanc à angles généreux, lignes, pied de tiroir ─── */
+.cart-overlay{position:fixed;inset:0;z-index:120;background:rgba(0,0,0,.42);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.cart-overlay:not(.hidden){animation:vxFade .25s ease}
+.cart{position:fixed;top:12px;right:12px;bottom:12px;z-index:130;display:flex;flex-direction:column;width:calc(100% - 24px);max-width:420px;border-radius:28px;background:#fff;color:#1d1d1f;overflow:hidden;transform:translateX(calc(100% + 24px));visibility:hidden;transition:transform .38s var(--ease),visibility 0s linear .38s}
+.cart.open{transform:none;visibility:visible;box-shadow:0 30px 80px -10px rgba(0,0,0,.5);transition:transform .38s var(--ease),visibility 0s}
+html:has(.cart.open){overflow:hidden}                                                /* la page ne défile pas derrière le tiroir */
+.cart-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:22px 22px 18px;border-bottom:1px solid #e8e8ed}
+.cart-head h2{margin:0;font-size:24px;line-height:1.15;font-weight:700;letter-spacing:-.03em}
+.cart-close{display:grid;place-items:center;width:40px;height:40px;padding:0;border:0;border-radius:50%;background:#f5f5f7;color:#1d1d1f;font-size:15px;line-height:1;cursor:pointer;transition:background .2s}
+.cart-close:hover{background:#e8e8ed}
+.cart-items{flex:1;display:grid;align-content:start;gap:12px;padding:16px 22px;overflow-y:auto;overscroll-behavior:contain}
+.cart-row{display:flex;align-items:center;gap:14px;padding:12px 14px 12px 12px;border-radius:20px;background:#f5f5f7}
+.cart-row img{flex:0 0 auto;width:68px;height:68px;padding:6px;border-radius:14px;background:#fff;object-fit:contain}
+.cart-row .nm{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;font-size:15px;line-height:1.25;font-weight:600;letter-spacing:-.015em;overflow-wrap:anywhere}
+.cart-row .un{margin-top:2px;font-size:12.5px;color:#6e6e73}
+.qty{display:inline-flex;align-items:center;gap:2px;margin-top:8px;padding:2px;border-radius:999px;background:#fff}
+.qty button{width:36px;height:36px;padding:0;border:0;border-radius:50%;background:transparent;color:#1d1d1f;font-size:17px;line-height:1;cursor:pointer;transition:background .2s}
+.qty button:hover{background:#f5f5f7}
+.qty span{min-width:26px;text-align:center;font-size:14px;font-weight:600}
+.qty .del{width:auto;padding:0 12px;border-radius:999px;font-size:12.5px;font-weight:600;color:var(--red-d)}
+.cart-total{flex:0 0 auto;font-size:15px;font-weight:600;white-space:nowrap}
+.cart-empty{padding:56px 12px;text-align:center;font-size:15px;line-height:1.45;color:#6e6e73}
+.cart-empty b{display:block;margin-bottom:6px;font-size:19px;font-weight:600;letter-spacing:-.02em;color:#1d1d1f}
+.cart-foot{padding:18px 22px 22px;border-top:1px solid #e8e8ed;background:#fff}
+.cart-sub{display:flex;align-items:baseline;justify-content:space-between;gap:12px;font-size:15px;color:#6e6e73}
+.cart-sub b{font-size:28px;line-height:1.1;font-weight:700;letter-spacing:-.03em;color:#1d1d1f}
+.cart-note{margin:8px 0 16px;color:#6e6e73}
+.pay-logos{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:16px}
+.pay-logos span{display:inline-flex;align-items:center;padding:5px 10px;border-radius:999px;background:#f5f5f7;font-size:11.5px;font-weight:600;letter-spacing:-.005em;color:#6e6e73}
+.cart :focus-visible{outline-color:var(--red-d)}
+@media(max-width:560px){                                                                   /* téléphone : feuille qui monte du bas */
+  .cart{top:auto;left:0;right:0;bottom:0;width:100%;max-width:none;height:min(86vh,680px);height:min(86dvh,680px);border-radius:28px 28px 0 0;transform:translateY(102%)}
+  .cart-head{padding:20px 18px 16px}
+  .cart-items{padding:14px 18px}
+  .cart-foot{padding:16px 18px max(20px,env(safe-area-inset-bottom))}
+}
+
+/* Bouton flottant Panier (téléphone) : sous le menu mobile (99), au-dessus du contenu ; le tiroir (120 / 130) reste au-dessus.
+   L'assistant de tchat (vx-chat.js) lit #cartFab pour se placer au-dessus de lui. */
+.cart-fab{position:fixed;right:18px;bottom:18px;z-index:98;display:none;box-shadow:0 0 0 1px rgba(255,255,255,.16),0 10px 30px rgba(0,0,0,.3)}
+.cart-fab em{min-width:24px;margin-left:2px;padding:3px 8px;border-radius:999px;background:#fff;color:#1d1d1f;font-size:13px;font-style:normal;font-weight:700;line-height:1.2;text-align:center}
+@media(max-width:833px){.cart-fab{display:inline-flex}}
+
+/* Message « ajouté » : pastille sobre en bas de l'écran ; en haut sur téléphone (le tiroir occupe le bas) */
+.toast{position:fixed;left:50%;bottom:26px;z-index:140;max-width:calc(100vw - 32px);padding:12px 22px;border-radius:999px;background:#1d1d1f;box-shadow:0 0 0 1px rgba(255,255,255,.14),0 14px 34px rgba(0,0,0,.34);color:#fff;font-size:15px;font-weight:600;line-height:1.3;letter-spacing:-.01em;text-align:center;opacity:0;transform:translate(-50%,16px);pointer-events:none;transition:opacity .3s var(--ease),transform .3s var(--ease)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:833px){
+  .toast{bottom:auto;top:max(12px,env(safe-area-inset-top));transform:translate(-50%,-16px)}
+  .toast.show{transform:translate(-50%,0)}
+}
+
+/* Visionneuse des écussons : le script bascule .hidden / .flex */
+#ecussonLightbox.flex{display:flex}
+
+@media(prefers-reduced-motion:reduce){                                                    /* mouvement réduit : pas de glissement ni de zoom */
+  .cart,.cart.open,.toast,.shop-pic img,.shop-more summary::before,.shop-info summary::before{transition:none}
+  .cart-overlay:not(.hidden){animation:none}
+  .shop-card:hover .shop-pic img{transform:none}
+}
+
+/* ══ Remerciements : merci.html et merci-commande.html ═══════════════════════
+   Page sombre centrée : grande coche, titre, texte, boutons ; (commande) cartes « ID de session » / « Besoin d'aide ? » et étapes. */
+.tk{position:relative;overflow:hidden;display:grid;align-content:center;padding:clamp(60px,8.5vw,124px) 0 clamp(60px,8vw,112px);background:var(--bg);color:var(--fg);text-align:center}
+.tk::before{content:"";position:absolute;left:50%;top:14%;width:min(1100px,150vw);height:74%;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(227,18,27,.26),rgba(227,18,27,.07) 58%,rgba(227,18,27,0) 76%);pointer-events:none}
+.tk .wrap{position:relative;z-index:1}
+.tk .h1{font-size:clamp(36px,6.2vw,68px)}
+.tk .pill{margin:0 auto clamp(18px,2.4vw,26px);padding:7px 16px;background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.26)}
+.tk .lead{max-width:34em}
+.tk-note{margin-top:clamp(28px,3.6vw,44px)}
+.tk-note a{color:var(--fg);text-decoration:underline;text-underline-offset:3px}
+.tk-note a:hover{color:var(--acc)}
+.pill--dot::before{content:"";width:8px;height:8px;border-radius:50%;background:#f5f5f7;box-shadow:0 0 0 3px rgba(255,255,255,.16)}
+
+.tk-page{display:flex;flex-direction:column}
+.tk-page>.tk{flex:1 0 auto}
+
+/* Grande coche */
+.tk-tick{position:relative;display:grid;place-items:center;width:clamp(76px,10vw,104px);height:clamp(76px,10vw,104px);margin:0 auto clamp(22px,3vw,34px);border-radius:50%;background:#f5f5f7;color:#1d1d1f;box-shadow:0 0 0 10px rgba(255,255,255,.06),0 0 70px 6px rgba(227,18,27,.42)}
+.tk-tick svg{width:46%;height:46%}
+.tk-tick path{stroke-dasharray:24;stroke-dashoffset:24;animation:tkDraw .7s .25s var(--ease) forwards}
+@keyframes tkDraw{to{stroke-dashoffset:0}}
+@media(prefers-reduced-motion:reduce){.tk-tick path{animation:none;stroke-dashoffset:0}}
+
+/* Cartes « ID de session » et « Besoin d'aide ? » */
+.tk-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,1.8vw,22px);max-width:900px;margin:clamp(34px,4.6vw,56px) auto 0;text-align:left}
+@media(max-width:760px){.tk-cards{grid-template-columns:minmax(0,1fr)}}
+.tk-card{display:flex;flex-direction:column;gap:16px}
+.tk-card-h{display:flex;align-items:center;gap:14px}
+.tk-card .icon-sq{flex:0 0 auto;background:rgba(255,255,255,.07)}
+.tk-card-h h2{margin:0}
+.tk-card-h p{margin:2px 0 0}
+.tk-card>p{margin:0;font-size:15px;line-height:1.5;color:var(--mut)}
+.tk-sid{display:flex;align-items:center;gap:10px;margin-top:2px}
+.tk-sid code{display:block;flex:1 1 auto;min-width:0;padding:12px 14px;border:1px solid var(--line);border-radius:14px;background:#000;color:#f5f5f7;font:500 13.5px/1.3 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;-webkit-user-select:all;user-select:all}
+.tk-copy{flex:0 0 auto;min-width:118px;gap:7px}
+.tk-copy svg{width:16px;height:16px;flex:0 0 auto}
+.tk-copy .ic-ok,.tk-copy .t-ok{display:none}
+.tk-copy.is-done .ic-copy,.tk-copy.is-done .t-copy{display:none}
+.tk-copy.is-done .ic-ok{display:block}
+.tk-copy.is-done .t-ok{display:inline}
+.tk-mail{display:inline-flex;align-items:center;gap:9px;align-self:flex-start;min-height:44px;margin-top:auto;font-size:16px;font-weight:600;color:var(--acc)}
+.tk-mail svg{width:18px;height:18px;flex:0 0 auto}
+.tk-mail:hover{text-decoration:underline;text-underline-offset:3px}
+
+/* « Et maintenant ? » : trois étapes numérotées */
+.tk-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,3.4vw,52px);max-width:1040px;margin:0 auto;counter-reset:tk;text-align:left}
+.tk-step{position:relative;padding-top:72px}
+.tk-step::before{counter-increment:tk;content:counter(tk);position:absolute;left:0;top:0;display:grid;place-items:center;width:48px;height:48px;border:1.5px solid var(--acc);border-radius:50%;font-size:20px;font-weight:600;line-height:1;color:var(--acc)}
+.tk-step::after{content:"";position:absolute;left:62px;right:-24px;top:24px;height:1px;background:linear-gradient(90deg,var(--line),rgba(58,58,60,0))}
+.tk-step:last-child::after{display:none}
+.tk-step h3{margin:0 0 8px}
+.tk-step p{margin:0;font-size:16px;line-height:1.5;color:var(--mut)}
+.tk-step strong{font-weight:600;color:var(--fg)}
+@media(max-width:760px){
+  .tk-steps{grid-template-columns:minmax(0,1fr);gap:0}
+  .tk-step{padding:0 0 30px 68px;min-height:48px}
+  .tk-step:last-child{padding-bottom:0}
+  .tk-step::after{left:23.25px;right:auto;top:56px;bottom:8px;width:1px;height:auto;background:var(--line)}
+}

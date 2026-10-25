@@ -1,38 +1,16 @@
 <!doctype html>
 <!--
-  index.html — VitalX
-  Description : Page d'accueil VitalX (simulation médicale française)
-  🆕 v4.0 — 13/09/2026 — Yann USSEGLIO
-     • Refonte complète dans un style épuré façon Apple (voir /apple.css)
-     • Barre de navigation noire translucide, titres centrés, tuiles produits pleine largeur
-       puis grille 2 colonnes (VitalX Plus et Ultra, POD'S, Media Center, Mode Formateur, Châssis, Licence)
-     • Popup « Nouveautés » remplacée par un ruban discret sous le hero
-     • Bandeaux tricolores, majuscules et emojis retirés des titres
-     • Contenu conservé : interfaces constructeurs (galeries), fonctions, app, pack, devis,
-       références, affiliation, formulaire de contact Netlify, mentions constructeurs
-     • v4.1 : galerie app en carrousel automatique (sans flèches), rappels bleu-blanc-rouge (Made in France)
-     • Ancres : #v2 #packs #pods #interfaces (alias #schiller #weinmann : ouvrent la marque) #mediacenter #formateur #academy #features #devis #contact
-     • 06/10/2026 : refonte (SCHILLER, WEINMANN, Media Center, formateur, ACADEMY) ; anciennes sections interfaces/mediacenter remplacées
-     • 07/10/2026 : accueil compacté — Interfaces, Media Center et Formateur partagent le composant brands.js (bandeau → tuiles → fiche) ;
-       sections retirées : « Jusque dans les menus » (#app), « Dans le pack » (#in-the-box), « Ils forment avec VitalX » (#testimonials), « Pour qui »
-       ancres des fiches : #sch-… #wei-… #mc-… #fo-…
-     • 08/10/2026 : refonte « bandeau + grandes images » (voir /home.css, chargé seulement par l'accueil) :
-       en-tête blanc simplifié (Société et Affiliation passent dans le pied de page), grand héros sombre,
-       bandeaux de titre gris clair, cartes « image + une ligne + lien », packs en 3 cartes, texte divisé par plus de 3.
-       Retirés : ruban « Nouveau… », tuiles, confiance, « Capacités », « Devis », « Recommandez VitalX » (lien du pied de page).
-       Les composants brands.js (interfaces, Media Center, formateur) et le formulaire Netlify sont repris tels quels.
-     • 08/10/2026 (soir) : l'en-tête, le menu mobile et le pied de page sont désormais COMMUNS à toutes les pages :
-       styles dans /site-header.css (sortis de home.css), script unique /site-header.js (menu, année, lien actif).
-       Le balisage ci-dessous est la référence recopiée sur les autres pages (avec des liens /#ancre).
+  index.html — VitalX — refonte « vitrine façon Apple » du 25/10/2026.
+  Fichier GÉNÉRÉ (gabarit commun : build/layout.py ; corps : build/pages/). Styles : /vx.css + /vx-home.css.
+  Textes en français : la traduction (EN / DE / ES) se fait à l'affichage (i18n.js, clé = texte français ; tables : i18n-site.js, i18n-v3.js).
 -->
 <html lang="fr">
 <head>
 <meta charset="utf-8"/>
-<meta name="google-site-verification" content="ZLZ7OeVEVIpBnfLClCu3hTd3QEuCPHqIFuCaUgMzIJI"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>VitalX — Scope de simulation médicale sur iPad, conçu en France</title>
+<meta name="google-site-verification" content="ZLZ7OeVEVIpBnfLClCu3hTd3QEuCPHqIFuCaUgMzIJI"/>
 <meta name="description" content="Scope de simulation médicale sur iPad pour pompiers, ambulanciers et secouristes. Interfaces Schiller et Weinmann reproduites à l'identique, licence à vie, conçu et assemblé en France. Devis sous 24 h."/>
-<link rel="canonical" href="https://vitalx.org/"/>
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1"/>
 <meta property="og:site_name" content="VitalX"/>
 <meta property="og:locale" content="fr_FR"/>
@@ -48,94 +26,138 @@
 <meta name="twitter:title" content="VitalX — Scope de simulation médicale sur iPad, conçu en France"/>
 <meta name="twitter:description" content="Scope de simulation médicale sur iPad pour pompiers, ambulanciers et secouristes. Interfaces Schiller et Weinmann reproduites à l'identique, licence à vie, conçu et assemblé en France. Devis sous 24 h."/>
 <meta name="twitter:image" content="https://vitalx.org/og-image.png"/>
+<link rel="canonical" href="https://vitalx.org/"/>
 <script type="application/ld+json" data-seo>{"@context":"https://schema.org","@type":"Organization","@id":"https://vitalx.org/#organization","name":"VitalX","url":"https://vitalx.org/","logo":"https://vitalx.org/assets/logo-vitalx.svg","image":"https://vitalx.org/og-image.png","description":"Scopes de simulation médicale sur iPad et iPhone, conçus et assemblés en France pour les professionnels du secours.","email":"vitalxscope@gmail.com","foundingDate":"2025","founder":{"@type":"Person","name":"Yann Usseglio"},"address":{"@type":"PostalAddress","addressCountry":"FR"},"areaServed":["FR","BE","CH","LU"],"contactPoint":{"@type":"ContactPoint","contactType":"sales","email":"vitalxscope@gmail.com","availableLanguage":["fr","en","de"]}}</script>
 <script type="application/ld+json" data-seo>{"@context":"https://schema.org","@type":"WebSite","@id":"https://vitalx.org/#website","url":"https://vitalx.org/","name":"VitalX","inLanguage":"fr-FR","publisher":{"@id":"https://vitalx.org/#organization"}}</script>
-<meta name="theme-color" content="#ffffff"/>
+<meta name="theme-color" content="#000000"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="stylesheet" href="/apple.css">
-<link rel="stylesheet" href="/site-header.css">
-<link rel="stylesheet" href="/home.css">
-<noscript><style>.ifc-brand{grid-template-rows:1fr;opacity:1;visibility:visible}.ifc-bar{display:none}.sr{opacity:1;transform:none}</style></noscript>
+<script>document.documentElement.className+=' js'</script>
+<link rel="stylesheet" href="/vx.css">
+<link rel="stylesheet" href="/vx-home.css">
+<noscript><style>.vxmap-empty[hidden]{display:block!important}.snap-ctl{display:none!important}.ifc-brand{grid-template-rows:1fr;opacity:1;visibility:visible}.ifc-bar{display:none}</style></noscript>
 </head>
 <body>
 <a class="skip" href="#top">Aller au contenu</a>
 
-<!-- EN-TÊTE BLANC COLLANT -->
-<header class="gnav hx-head">
-  <div class="hx-head-in">
-    <a href="/" class="hx-logo" aria-label="VitalX — accueil"><img src="/assets/logo-vitalx.svg" alt="VitalX" width="90" height="30" data-no-lightbox="true"/></a>
-    <nav class="hx-nav" aria-label="Navigation principale">
-      <ul class="hx-links">
+<!-- BARRE DE NAVIGATION (commune à toutes les pages) -->
+<header class="gnav" id="gnav">
+  <div class="vx-nav-in">
+    <a href="/" class="vx-logo" aria-label="VitalX — accueil"><img src="/assets/logo-vitalx-white.svg" alt="VitalX" width="66" height="22" data-no-lightbox="true"/></a>
+    <nav class="vx-nav" aria-label="Navigation principale">
+      <ul class="vx-links">
         <li><a href="#interfaces">Appareils</a></li>
         <li><a href="#formateur">Formateur</a></li>
         <li><a href="#mediacenter">Media Center</a></li>
         <li><a href="#academy">ACADEMY</a></li>
         <li><a href="/boutique.html">Boutique</a></li>
+        <li><a href="#revendeurs">Revendeurs</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
-    <div class="hx-tools">
-      <a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="hx-icon hx-hide-m" title="Mode Formateur (web)" aria-label="Mode Formateur (web)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></a>
-      <span class="hx-lang hx-hide-m" role="group" aria-label="Langue">
-        <button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">FR</button>
-        <button type="button" data-lang="en" title="English" aria-label="English">EN</button>
-        <button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">DE</button>
-        <button type="button" data-lang="es" title="Español" aria-label="Español">ES</button>
-      </span>
-      <button class="hx-burger" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
+    <div class="vx-tools">
+      <a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="vx-icon vx-hide-m" title="Mode Formateur (web)" aria-label="Mode Formateur (web)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></a>
+      <span class="vx-lang vx-hide-m" role="group" aria-label="Langue"><button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">FR</button><button type="button" data-lang="en" title="English" aria-label="English">EN</button><button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">DE</button><button type="button" data-lang="es" title="Español" aria-label="Español">ES</button></span>
+      <button class="vx-burger" id="menuBtn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
     </div>
   </div>
 </header>
-<nav id="mobileMenu" class="hx-menu" aria-label="Menu mobile">
+<nav id="mobileMenu" class="vx-menu" aria-label="Menu mobile">
   <a class="big" href="#interfaces">Appareils</a>
   <a class="big" href="#formateur">Formateur</a>
   <a class="big" href="#mediacenter">Media Center</a>
   <a class="big" href="#academy">ACADEMY</a>
   <a class="big" href="/boutique.html">Boutique</a>
+  <a class="big" href="#revendeurs">Revendeurs</a>
   <a class="big" href="#contact">Contact</a>
   <a class="small" href="https://vitalxtrainer.app" target="_blank" rel="noopener">Mode Formateur (web) ›</a>
-  <span class="hx-lang" role="group" aria-label="Langue">
-    <button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">FR</button>
-    <button type="button" data-lang="en" title="English" aria-label="English">EN</button>
-    <button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">DE</button>
-    <button type="button" data-lang="es" title="Español" aria-label="Español">ES</button>
-  </span>
+  <span class="vx-lang" role="group" aria-label="Langue"><button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">FR</button><button type="button" data-lang="en" title="English" aria-label="English">EN</button><button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">DE</button><button type="button" data-lang="es" title="Español" aria-label="Español">ES</button></span>
   <a class="small" href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a>
 </nav>
 
 <main id="top">
 
-<!-- HÉROS (ancre #v2) -->
-<section class="hx-hero" id="v2" aria-labelledby="heroTitle">
-  <div class="hx-hero-in">
-    <div class="hx-hero-copy">
-      <span class="hx-badge hero-in">Conçu et assemblé en France 🇫🇷</span>
-      <h1 class="hx-h1 hero-in hero-in-2" id="heroTitle">Formez comme sur le terrain.</h1>
-      <p class="hx-sub hero-in hero-in-2">Le scope de simulation sur iPad, piloté en direct par le formateur.</p>
-      <div class="hx-cta hero-in hero-in-3">
-        <a href="#interfaces" class="hx-btn hx-btn-red">Découvrir</a>
-        <a href="#contact" class="hx-btn hx-btn-line">Demander un devis</a>
-      </div>
+<!-- HÉROS (ancre #v2) : grand titre, deux tablettes (moniteur + formateur) avec de vraies captures, chiffres clés -->
+<section class="hero t-dark" id="v2" aria-labelledby="heroTitle">
+  <div class="wrap">
+    <div class="hero-copy">
+      <p class="pill hero-pill rv"><i class="flag" aria-hidden="true"></i>Conçu &amp; assemblé en France</p>
+      <h1 class="h1 hero-h1 rv rv-1" id="heroTitle">Formez comme sur le terrain.</h1>
+      <p class="lead hero-lead rv rv-2">Le scope de simulation sur iPad, piloté en direct par le formateur.</p>
+      <p class="cta rv rv-3"><a href="#interfaces" class="btn">Découvrir</a><a href="#contact" class="link">Demander un devis</a></p>
     </div>
-    <div class="hx-hero-art hero-in hero-in-3">
-      <img src="/assets/vitalxv2pro.webp" width="1536" height="1024" alt="Pack VitalX Ultra — moniteur iPad Air 13 pouces dans sa housse et tablette formateur" fetchpriority="high" decoding="async" data-no-lightbox="true"/>
+  </div>
+  <div class="hero-stage">
+    <div class="hero-devices rv rv-2">
+      <figure class="tablet tablet--main"><img src="/assets/scope-schiller-defigard-ecg.webp" width="1600" height="1200" alt="Le moniteur DEFIGARD Touch 7 de SCHILLER reproduit sur iPad : tracé ECG, constantes et touches de l'appareil" fetchpriority="high" decoding="async" data-no-lightbox="true" srcset="/assets/v3/r/scope-schiller-defigard-ecg-480.webp 480w, /assets/v3/r/scope-schiller-defigard-ecg-800.webp 800w, /assets/v3/r/scope-schiller-defigard-ecg-1200.webp 1200w, /assets/scope-schiller-defigard-ecg.webp 1600w" sizes="(max-width: 700px) 92vw, 840px"/></figure>
+      <figure class="tablet tablet--side"><img src="/assets/app-formateur.webp" width="1600" height="1124" alt="Le poste formateur sur iPad : constantes, arrêt cardiaque, choc, rythmes ECG et capteurs" decoding="async" data-no-lightbox="true" loading="lazy" srcset="/assets/v3/r/app-formateur-480.webp 480w, /assets/v3/r/app-formateur-800.webp 800w, /assets/v3/r/app-formateur-1200.webp 1200w, /assets/app-formateur.webp 1600w" sizes="(max-width: 700px) 50vw, 440px"/></figure>
     </div>
+  </div>
+  <div class="wrap">
+    <ul class="stats hero-stats rv">
+      <li class="stat"><b>9</b><span>appareils reproduits à l'identique</span></li>
+      <li class="stat"><b>20</b><span>rythmes ECG en un toucher</span></li>
+      <li class="stat"><b>37</b><span>clichés de radiographie</span></li>
+      <li class="stat stat--word"><b>À vie</b><span>licence, sans abonnement</span></li>
+    </ul>
   </div>
 </section>
 
-<!-- LES APPAREILS : bandeau des marques → appareils → écrans (brands.js ; ancres #interfaces #schiller #weinmann #sch-… #wei-…) -->
+<!-- POURQUOI VITALX : galerie de six cartes (ancre #features) -->
+<section id="features" class="sec t-gray" aria-labelledby="whyTitle" data-spy="features">
+  <div class="wrap head rv">
+    <h2 class="h2" id="whyTitle">Pourquoi VitalX</h2>
+    <p class="lead">Des scopes de simulation pensés par et pour les secouristes.</p>
+  </div>
+  <ul class="snap fcards" id="fcards" tabindex="0" aria-label="Les points forts de VitalX">
+    <li><a class="fcard" href="#interfaces">
+      <span class="fcard-t">Interfaces constructeurs à l'identique</span>
+      <span class="fcard-pic fcard-duo"><img src="/assets/schiller-defigard-chassis.webp" alt="" width="1500" height="1028" data-no-lightbox="true" loading="lazy" decoding="async" srcset="/assets/v3/r/schiller-defigard-chassis-480.webp 480w, /assets/v3/r/schiller-defigard-chassis-800.webp 800w, /assets/schiller-defigard-chassis.webp 1500w" sizes="(max-width: 560px) 70vw, 300px"/><img src="/assets/weinmann-meducore-chassis.webp" alt="" width="1500" height="868" data-no-lightbox="true" loading="lazy" decoding="async" srcset="/assets/v3/r/weinmann-meducore-chassis-480.webp 480w, /assets/v3/r/weinmann-meducore-chassis-800.webp 800w, /assets/weinmann-meducore-chassis.webp 1500w" sizes="(max-width: 560px) 70vw, 300px"/></span>
+      <span class="fcard-more">Plus d'informations</span>
+    </a></li>
+    <li><a class="fcard" href="#formateur">
+      <span class="fcard-t">Pilotage en direct par le formateur</span>
+      <span class="fcard-pic"><img src="/assets/formateur-constantes.webp" alt="" width="1400" height="1050" data-no-lightbox="true" loading="lazy" decoding="async" srcset="/assets/v3/r/formateur-constantes-480.webp 480w, /assets/v3/r/formateur-constantes-800.webp 800w, /assets/formateur-constantes.webp 1400w" sizes="(max-width: 560px) 80vw, 370px"/></span>
+      <span class="fcard-more">Plus d'informations</span>
+    </a></li>
+    <li><a class="fcard" href="#mediacenter">
+      <span class="fcard-t">Media Center : radios, bilans, ECG</span>
+      <span class="fcard-pic"><img src="/assets/mediacenter-gds-2026.webp" alt="" width="1600" height="1200" data-no-lightbox="true" loading="lazy" decoding="async" srcset="/assets/v3/r/mediacenter-gds-2026-480.webp 480w, /assets/v3/r/mediacenter-gds-2026-800.webp 800w, /assets/v3/r/mediacenter-gds-2026-1200.webp 1200w, /assets/mediacenter-gds-2026.webp 1600w" sizes="(max-width: 560px) 80vw, 370px"/></span>
+      <span class="fcard-more">Plus d'informations</span>
+    </a></li>
+    <li><a class="fcard" href="#fo-rcp">
+      <span class="fcard-t">Mode RCP</span>
+      <span class="fcard-pic"><img src="/assets/formateur-rcp.webp" alt="" width="1400" height="1050" data-no-lightbox="true" loading="lazy" decoding="async" srcset="/assets/v3/r/formateur-rcp-480.webp 480w, /assets/v3/r/formateur-rcp-800.webp 800w, /assets/formateur-rcp.webp 1400w" sizes="(max-width: 560px) 80vw, 370px"/></span>
+      <span class="fcard-more">Plus d'informations</span>
+    </a></li>
+    <li><a class="fcard" href="#academy">
+      <span class="fcard-t">ACADEMY</span>
+      <span class="fcard-pic"><img src="/assets/academy-hub.webp" alt="" width="1600" height="1200" data-no-lightbox="true" loading="lazy" decoding="async" srcset="/assets/v3/r/academy-hub-480.webp 480w, /assets/v3/r/academy-hub-800.webp 800w, /assets/v3/r/academy-hub-1200.webp 1200w, /assets/academy-hub.webp 1600w" sizes="(max-width: 560px) 80vw, 370px"/></span>
+      <span class="fcard-more">Plus d'informations</span>
+    </a></li>
+    <li><a class="fcard" href="/boutique.html#licence">
+      <span class="fcard-t">Licence à vie</span>
+      <span class="fcard-pic"><img src="/assets/licence-life.webp" alt="" width="800" height="600" data-no-lightbox="true" loading="lazy" decoding="async"/></span>
+      <span class="fcard-more">Plus d'informations</span>
+    </a></li>
+  </ul>
+  <div class="snap-ctl" data-snap-for="fcards" hidden><button type="button" class="snap-b" data-dir="-1" aria-label="Précédent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="snap-b" data-dir="1" aria-label="Suivant"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div>
+</section>
+
+<!-- LES APPAREILS : marques → appareils → écrans (brands.js ; ancres #interfaces #schiller #weinmann #sch-… #wei-…) -->
 <span id="interfaces" class="anchor-alias ifc-alias"></span><span id="schiller" class="anchor-alias ifc-alias"></span><span id="weinmann" class="anchor-alias ifc-alias"></span>
-<section class="hx-sec brand-sec ifc" aria-labelledby="ifcTitle" data-ifc data-spy="interfaces">
-  <div class="hx-band"><h2 id="ifcTitle">Les appareils</h2></div>
-  <div class="wrap-wide hx-body">
-    <p class="hx-lead sr">Neuf appareils, reproduits fidèlement.</p>
-    <div class="ifc-box sr">
-      <div class="ifc-band" role="tablist" aria-label="Marques">
-<button type="button" class="ifc-tab" role="tab" id="ifc-t-schiller" data-brand="schiller" aria-selected="true" aria-controls="ifc-p-schiller"><img src="/assets/logo-schiller.webp" alt="SCHILLER" width="319" height="96" decoding="async" data-no-lightbox="true"/><span class="ifc-count">6 appareils</span></button>
-<button type="button" class="ifc-tab" role="tab" id="ifc-t-weinmann" data-brand="weinmann" aria-selected="false" aria-controls="ifc-p-weinmann" tabindex="-1"><img src="/assets/logo-weinmann.webp" alt="WEINMANN" width="327" height="96" decoding="async" data-no-lightbox="true"/><span class="ifc-count">3 appareils</span></button>
+<section class="sec t-dark ifc" aria-labelledby="ifcTitle" data-ifc data-spy="interfaces">
+  <div class="wrap head rv">
+    <p class="eyebrow">Les appareils</p>
+    <h2 class="h2" id="ifcTitle">Neuf appareils, reproduits fidèlement.</h2>
+  </div>
+  <div class="ifc-box rv rv-1">
+<div class="ifc-band" role="tablist" aria-label="Marques">
+<button type="button" class="ifc-tab" role="tab" id="ifc-t-schiller" data-brand="schiller" aria-selected="true" aria-controls="ifc-p-schiller"><img src="/assets/logo-schiller.webp" alt="SCHILLER" width="319" height="96" decoding="async" data-no-lightbox="true" loading="lazy"/><span class="ifc-count">6 appareils</span></button>
+<button type="button" class="ifc-tab" role="tab" id="ifc-t-weinmann" data-brand="weinmann" aria-selected="false" aria-controls="ifc-p-weinmann" tabindex="-1"><img src="/assets/logo-weinmann.webp" alt="WEINMANN" width="327" height="96" decoding="async" data-no-lightbox="true" loading="lazy"/><span class="ifc-count">3 appareils</span></button>
       </div>
       <div class="ifc-stage">
 <div class="ifc-brand ifc-x is-on" id="ifc-p-schiller" role="tabpanel" aria-labelledby="ifc-t-schiller" data-brand="schiller" data-view="list">
@@ -151,15 +173,15 @@
 <li><button type="button" class="ifc-tile" data-dev="sch-hd7" style="--i:3"><span class="ifc-pic"><img src="/assets/ifc-sch-hd7.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">DEFIGARD HD-7</span><span class="ifc-kind">Défibrillateur-moniteur à molette</span></button></li>
 <li><button type="button" class="ifc-tile" data-dev="sch-maglife" style="--i:4"><span class="ifc-pic"><img src="/assets/ifc-sch-maglife.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">MAGLIFE RT-1</span><span class="ifc-kind">Moniteur compatible IRM</span></button></li>
 <li><button type="button" class="ifc-tile" data-dev="sch-magscreen" style="--i:5"><span class="ifc-pic"><img src="/assets/ifc-sch-magscreen.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">MAGSCREEN RT-1</span><span class="ifc-kind">Écran déporté IRM</span></button></li>
-</ul></div></div></div>
+</ul><div class="snap-ctl" hidden><button type="button" class="snap-b" data-dir="-1" aria-label="Précédent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="snap-b" data-dir="1" aria-label="Suivant"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div></div></div>
 <div class="ifc-x ifc-vx"><div class="ifc-xin"><div class="ifc-pad">
 <article class="dv" id="sch-defigard" hidden>
   <div class="dv-media">
-    <figure class="dv-main"><img src="/assets/schiller-defigard-chassis.webp" alt="DEFIGARD Touch 7 — Châssis complet" width="1200" height="900" loading="lazy" decoding="async"/><span class="dv-chip">Châssis complet</span></figure>
+    <figure class="dv-main"><img src="/assets/schiller-defigard-chassis.webp" alt="DEFIGARD Touch 7 — Châssis complet" width="1200" height="900" loading="lazy" decoding="async" srcset="/assets/v3/r/schiller-defigard-chassis-480.webp 480w, /assets/v3/r/schiller-defigard-chassis-800.webp 800w, /assets/schiller-defigard-chassis.webp 1500w" sizes="(max-width: 900px) 92vw, 640px"/><span class="dv-chip">Châssis complet</span></figure>
     <div class="dv-shots">
-      <figure><img src="/assets/schiller-defigard-dsa.webp" alt="DEFIGARD Touch 7 — DSA : choc conseillé" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>DSA : choc conseillé</figcaption></figure>
-      <figure><img src="/assets/schiller-defigard-blocs.webp" alt="DEFIGARD Touch 7 — Profil Secouriste : vue Blocs" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Profil Secouriste : vue Blocs</figcaption></figure>
-      <figure><img src="/assets/schiller-defigard-ecg12.webp" alt="DEFIGARD Touch 7 — ECG 12 dérivations" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>ECG 12 dérivations</figcaption></figure>
+      <figure><img src="/assets/schiller-defigard-dsa.webp" alt="DEFIGARD Touch 7 — DSA : choc conseillé" width="1200" height="900" loading="lazy" decoding="async" srcset="/assets/v3/r/schiller-defigard-dsa-480.webp 480w, /assets/v3/r/schiller-defigard-dsa-800.webp 800w, /assets/schiller-defigard-dsa.webp 1500w" sizes="(max-width: 900px) 30vw, 220px"/><figcaption>DSA : choc conseillé</figcaption></figure>
+      <figure><img src="/assets/schiller-defigard-blocs.webp" alt="DEFIGARD Touch 7 — Profil Secouriste : vue Blocs" width="1200" height="900" loading="lazy" decoding="async" srcset="/assets/v3/r/schiller-defigard-blocs-480.webp 480w, /assets/v3/r/schiller-defigard-blocs-800.webp 800w, /assets/schiller-defigard-blocs.webp 1500w" sizes="(max-width: 900px) 30vw, 220px"/><figcaption>Profil Secouriste : vue Blocs</figcaption></figure>
+      <figure><img src="/assets/schiller-defigard-ecg12.webp" alt="DEFIGARD Touch 7 — ECG 12 dérivations" width="1200" height="900" loading="lazy" decoding="async" srcset="/assets/v3/r/schiller-defigard-ecg12-480.webp 480w, /assets/v3/r/schiller-defigard-ecg12-800.webp 800w, /assets/schiller-defigard-ecg12.webp 1500w" sizes="(max-width: 900px) 30vw, 220px"/><figcaption>ECG 12 dérivations</figcaption></figure>
     </div>
   </div>
   <div class="dv-copy">
@@ -177,11 +199,11 @@
 </article>
 <article class="dv" id="sch-physiogard" hidden>
   <div class="dv-media">
-    <figure class="dv-main"><img src="/assets/schiller-physiogard-chassis.webp" alt="PHYSIOGARD Touch 7 — Châssis complet" width="1200" height="900" loading="lazy" decoding="async"/><span class="dv-chip">Châssis complet</span></figure>
+    <figure class="dv-main"><img src="/assets/schiller-physiogard-chassis.webp" alt="PHYSIOGARD Touch 7 — Châssis complet" width="1200" height="900" loading="lazy" decoding="async" srcset="/assets/v3/r/schiller-physiogard-chassis-480.webp 480w, /assets/v3/r/schiller-physiogard-chassis-800.webp 800w, /assets/schiller-physiogard-chassis.webp 1500w" sizes="(max-width: 900px) 92vw, 640px"/><span class="dv-chip">Châssis complet</span></figure>
     <div class="dv-shots">
-      <figure><img src="/assets/schiller-physiogard-alarme.webp" alt="PHYSIOGARD Touch 7 — Alarme haute : voyant rouge, FC hors limite" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Alarme haute : voyant rouge, FC hors limite</figcaption></figure>
-      <figure><img src="/assets/schiller-physiogard-ecg12.webp" alt="PHYSIOGARD Touch 7 — ECG 12 dérivations" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>ECG 12 dérivations</figcaption></figure>
-      <figure><img src="/assets/schiller-physiogard-interpretation.webp" alt="PHYSIOGARD Touch 7 — Interprétation simulée du tracé" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Interprétation simulée du tracé</figcaption></figure>
+      <figure><img src="/assets/schiller-physiogard-alarme.webp" alt="PHYSIOGARD Touch 7 — Alarme haute : voyant rouge, FC hors limite" width="1200" height="900" loading="lazy" decoding="async" srcset="/assets/v3/r/schiller-physiogard-alarme-480.webp 480w, /assets/v3/r/schiller-physiogard-alarme-800.webp 800w, /assets/schiller-physiogard-alarme.webp 1500w" sizes="(max-width: 900px) 30vw, 220px"/><figcaption>Alarme haute : voyant rouge, FC hors limite</figcaption></figure>
+      <figure><img src="/assets/schiller-physiogard-ecg12.webp" alt="PHYSIOGARD Touch 7 — ECG 12 dérivations" width="1200" height="900" loading="lazy" decoding="async" srcset="/assets/v3/r/schiller-physiogard-ecg12-480.webp 480w, /assets/v3/r/schiller-physiogard-ecg12-800.webp 800w, /assets/schiller-physiogard-ecg12.webp 1500w" sizes="(max-width: 900px) 30vw, 220px"/><figcaption>ECG 12 dérivations</figcaption></figure>
+      <figure><img src="/assets/schiller-physiogard-interpretation.webp" alt="PHYSIOGARD Touch 7 — Interprétation simulée du tracé" width="1200" height="900" loading="lazy" decoding="async" srcset="/assets/v3/r/schiller-physiogard-interpretation-480.webp 480w, /assets/v3/r/schiller-physiogard-interpretation-800.webp 800w, /assets/schiller-physiogard-interpretation.webp 1500w" sizes="(max-width: 900px) 30vw, 220px"/><figcaption>Interprétation simulée du tracé</figcaption></figure>
     </div>
   </div>
   <div class="dv-copy">
@@ -199,11 +221,11 @@
 </article>
 <article class="dv" id="sch-argus" hidden>
   <div class="dv-media">
-    <figure class="dv-main"><img src="/assets/schiller-argus-chassis.webp" alt="ARGUS PRO LifeCare 3 — Châssis complet" width="1200" height="900" loading="lazy" decoding="async"/><span class="dv-chip">Châssis complet</span></figure>
+    <figure class="dv-main"><img src="/assets/schiller-argus-chassis.webp" alt="ARGUS PRO LifeCare 3 — Châssis complet" width="1200" height="900" loading="lazy" decoding="async" srcset="/assets/v3/r/schiller-argus-chassis-480.webp 480w, /assets/v3/r/schiller-argus-chassis-800.webp 800w, /assets/schiller-argus-chassis.webp 1477w" sizes="(max-width: 900px) 92vw, 640px"/><span class="dv-chip">Châssis complet</span></figure>
     <div class="dv-shots">
-      <figure><img src="/assets/schiller-argus-impression.webp" alt="ARGUS PRO LifeCare 3 — Impression papier : l&#x27;ECG 12 dérivations sort de la fente" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Impression papier : l'ECG 12 dérivations sort de la fente</figcaption></figure>
-      <figure><img src="/assets/schiller-argus-dae.webp" alt="ARGUS PRO LifeCare 3 — DAE : choc recommandé" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>DAE : choc recommandé</figcaption></figure>
-      <figure><img src="/assets/schiller-argus-trace.webp" alt="ARGUS PRO LifeCare 3 — Le tracé imprimé, lu à l&#x27;écran" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Le tracé imprimé, lu à l'écran</figcaption></figure>
+      <figure><img src="/assets/schiller-argus-impression.webp" alt="ARGUS PRO LifeCare 3 — Impression papier : l&#x27;ECG 12 dérivations sort de la fente" width="1200" height="900" loading="lazy" decoding="async" srcset="/assets/v3/r/schiller-argus-impression-480.webp 480w, /assets/v3/r/schiller-argus-impression-800.webp 800w, /assets/schiller-argus-impression.webp 1477w" sizes="(max-width: 900px) 30vw, 220px"/><figcaption>Impression papier : l'ECG 12 dérivations sort de la fente</figcaption></figure>
+      <figure><img src="/assets/schiller-argus-dae.webp" alt="ARGUS PRO LifeCare 3 — DAE : choc recommandé" width="1200" height="900" loading="lazy" decoding="async" srcset="/assets/v3/r/schiller-argus-dae-480.webp 480w, /assets/v3/r/schiller-argus-dae-800.webp 800w, /assets/schiller-argus-dae.webp 1500w" sizes="(max-width: 900px) 30vw, 220px"/><figcaption>DAE : choc recommandé</figcaption></figure>
+      <figure><img src="/assets/schiller-argus-trace.webp" alt="ARGUS PRO LifeCare 3 — Le tracé imprimé, lu à l&#x27;écran" width="1200" height="900" loading="lazy" decoding="async" srcset="/assets/v3/r/schiller-argus-trace-480.webp 480w, /assets/v3/r/schiller-argus-trace-800.webp 800w, /assets/schiller-argus-trace.webp 1500w" sizes="(max-width: 900px) 30vw, 220px"/><figcaption>Le tracé imprimé, lu à l'écran</figcaption></figure>
     </div>
   </div>
   <div class="dv-copy">
@@ -221,11 +243,11 @@
 </article>
 <article class="dv" id="sch-hd7" hidden>
   <div class="dv-media">
-    <figure class="dv-main"><img src="/assets/schiller-hd7-chassis.webp" alt="DEFIGARD HD-7 — Châssis complet" width="1200" height="900" loading="lazy" decoding="async"/><span class="dv-chip">Châssis complet</span></figure>
+    <figure class="dv-main"><img src="/assets/schiller-hd7-chassis.webp" alt="DEFIGARD HD-7 — Châssis complet" width="1200" height="900" loading="lazy" decoding="async" srcset="/assets/v3/r/schiller-hd7-chassis-480.webp 480w, /assets/v3/r/schiller-hd7-chassis-800.webp 800w, /assets/schiller-hd7-chassis.webp 1500w" sizes="(max-width: 900px) 92vw, 640px"/><span class="dv-chip">Châssis complet</span></figure>
     <div class="dv-shots">
-      <figure><img src="/assets/schiller-hd7-dae.webp" alt="DEFIGARD HD-7 — DAE : choc recommandé, touche Choc allumée" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>DAE : choc recommandé, touche Choc allumée</figcaption></figure>
-      <figure><img src="/assets/schiller-hd7-manuel.webp" alt="DEFIGARD HD-7 — Manuel : 150 J, prêt à délivrer" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Manuel : 150 J, prêt à délivrer</figcaption></figure>
-      <figure><img src="/assets/schiller-hd7-impression.webp" alt="DEFIGARD HD-7 — Impression : le papier sort sous l&#x27;écran" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Impression : le papier sort sous l'écran</figcaption></figure>
+      <figure><img src="/assets/schiller-hd7-dae.webp" alt="DEFIGARD HD-7 — DAE : choc recommandé, touche Choc allumée" width="1200" height="900" loading="lazy" decoding="async" srcset="/assets/v3/r/schiller-hd7-dae-480.webp 480w, /assets/v3/r/schiller-hd7-dae-800.webp 800w, /assets/schiller-hd7-dae.webp 1500w" sizes="(max-width: 900px) 30vw, 220px"/><figcaption>DAE : choc recommandé, touche Choc allumée</figcaption></figure>
+      <figure><img src="/assets/schiller-hd7-manuel.webp" alt="DEFIGARD HD-7 — Manuel : 150 J, prêt à délivrer" width="1200" height="900" loading="lazy" decoding="async" srcset="/assets/v3/r/schiller-hd7-manuel-480.webp 480w, /assets/v3/r/schiller-hd7-manuel-800.webp 800w, /assets/schiller-hd7-manuel.webp 1500w" sizes="(max-width: 900px) 30vw, 220px"/><figcaption>Manuel : 150 J, prêt à délivrer</figcaption></figure>
+      <figure><img src="/assets/schiller-hd7-impression.webp" alt="DEFIGARD HD-7 — Impression : le papier sort sous l&#x27;écran" width="1200" height="900" loading="lazy" decoding="async" srcset="/assets/v3/r/schiller-hd7-impression-480.webp 480w, /assets/v3/r/schiller-hd7-impression-800.webp 800w, /assets/schiller-hd7-impression.webp 1500w" sizes="(max-width: 900px) 30vw, 220px"/><figcaption>Impression : le papier sort sous l'écran</figcaption></figure>
     </div>
   </div>
   <div class="dv-copy">
@@ -243,11 +265,11 @@
 </article>
 <article class="dv" id="sch-maglife" hidden>
   <div class="dv-media">
-    <figure class="dv-main"><img src="/assets/schiller-maglife-chassis.webp" alt="MAGLIFE RT-1 — Châssis complet" width="1200" height="900" loading="lazy" decoding="async"/><span class="dv-chip">Châssis complet</span></figure>
+    <figure class="dv-main"><img src="/assets/schiller-maglife-chassis.webp" alt="MAGLIFE RT-1 — Châssis complet" width="1200" height="900" loading="lazy" decoding="async" srcset="/assets/v3/r/schiller-maglife-chassis-480.webp 480w, /assets/v3/r/schiller-maglife-chassis-800.webp 800w, /assets/schiller-maglife-chassis.webp 1291w" sizes="(max-width: 900px) 92vw, 640px"/><span class="dv-chip">Châssis complet</span></figure>
     <div class="dv-shots">
-      <figure><img src="/assets/schiller-maglife-alarme.webp" alt="MAGLIFE RT-1 — Alarme : limites magnétiques" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Alarme : limites magnétiques</figcaption></figure>
-      <figure><img src="/assets/schiller-maglife-gaz.webp" alt="MAGLIFE RT-1 — Monitorage et gaz" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Monitorage et gaz</figcaption></figure>
-      <figure><img src="/assets/schiller-maglife-tendances.webp" alt="MAGLIFE RT-1 — Tendances" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Tendances</figcaption></figure>
+      <figure><img src="/assets/schiller-maglife-alarme.webp" alt="MAGLIFE RT-1 — Alarme : limites magnétiques" width="1200" height="900" loading="lazy" decoding="async" srcset="/assets/v3/r/schiller-maglife-alarme-480.webp 480w, /assets/v3/r/schiller-maglife-alarme-800.webp 800w, /assets/schiller-maglife-alarme.webp 1291w" sizes="(max-width: 900px) 30vw, 220px"/><figcaption>Alarme : limites magnétiques</figcaption></figure>
+      <figure><img src="/assets/schiller-maglife-gaz.webp" alt="MAGLIFE RT-1 — Monitorage et gaz" width="1200" height="900" loading="lazy" decoding="async" srcset="/assets/v3/r/schiller-maglife-gaz-480.webp 480w, /assets/v3/r/schiller-maglife-gaz-800.webp 800w, /assets/schiller-maglife-gaz.webp 1500w" sizes="(max-width: 900px) 30vw, 220px"/><figcaption>Monitorage et gaz</figcaption></figure>
+      <figure><img src="/assets/schiller-maglife-tendances.webp" alt="MAGLIFE RT-1 — Tendances" width="1200" height="900" loading="lazy" decoding="async" srcset="/assets/v3/r/schiller-maglife-tendances-480.webp 480w, /assets/v3/r/schiller-maglife-tendances-800.webp 800w, /assets/schiller-maglife-tendances.webp 1500w" sizes="(max-width: 900px) 30vw, 220px"/><figcaption>Tendances</figcaption></figure>
     </div>
   </div>
   <div class="dv-copy">
@@ -265,11 +287,11 @@
 </article>
 <article class="dv" id="sch-magscreen" hidden>
   <div class="dv-media">
-    <figure class="dv-main"><img src="/assets/schiller-magscreen-chassis.webp" alt="MAGSCREEN RT-1 — Châssis complet" width="1200" height="900" loading="lazy" decoding="async"/><span class="dv-chip">Châssis complet</span></figure>
+    <figure class="dv-main"><img src="/assets/schiller-magscreen-chassis.webp" alt="MAGSCREEN RT-1 — Châssis complet" width="1200" height="900" loading="lazy" decoding="async" srcset="/assets/v3/r/schiller-magscreen-chassis-480.webp 480w, /assets/v3/r/schiller-magscreen-chassis-800.webp 800w, /assets/schiller-magscreen-chassis.webp 1500w" sizes="(max-width: 900px) 92vw, 640px"/><span class="dv-chip">Châssis complet</span></figure>
     <div class="dv-shots">
-      <figure><img src="/assets/schiller-magscreen-connexion.webp" alt="MAGSCREEN RT-1 — Écran de connexion aux moniteurs" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Écran de connexion aux moniteurs</figcaption></figure>
-      <figure><img src="/assets/schiller-magscreen-deporte.webp" alt="MAGSCREEN RT-1 — Monitorage déporté" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Monitorage déporté</figcaption></figure>
-      <figure><img src="/assets/schiller-magscreen-menu.webp" alt="MAGSCREEN RT-1 — Menu d&#x27;accueil : arrêt, tendances" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Menu d'accueil : arrêt, tendances</figcaption></figure>
+      <figure><img src="/assets/schiller-magscreen-connexion.webp" alt="MAGSCREEN RT-1 — Écran de connexion aux moniteurs" width="1200" height="900" loading="lazy" decoding="async" srcset="/assets/v3/r/schiller-magscreen-connexion-480.webp 480w, /assets/v3/r/schiller-magscreen-connexion-800.webp 800w, /assets/schiller-magscreen-connexion.webp 1500w" sizes="(max-width: 900px) 30vw, 220px"/><figcaption>Écran de connexion aux moniteurs</figcaption></figure>
+      <figure><img src="/assets/schiller-magscreen-deporte.webp" alt="MAGSCREEN RT-1 — Monitorage déporté" width="1200" height="900" loading="lazy" decoding="async" srcset="/assets/v3/r/schiller-magscreen-deporte-480.webp 480w, /assets/v3/r/schiller-magscreen-deporte-800.webp 800w, /assets/schiller-magscreen-deporte.webp 1500w" sizes="(max-width: 900px) 30vw, 220px"/><figcaption>Monitorage déporté</figcaption></figure>
+      <figure><img src="/assets/schiller-magscreen-menu.webp" alt="MAGSCREEN RT-1 — Menu d&#x27;accueil : arrêt, tendances" width="1200" height="900" loading="lazy" decoding="async" srcset="/assets/v3/r/schiller-magscreen-menu-480.webp 480w, /assets/v3/r/schiller-magscreen-menu-800.webp 800w, /assets/schiller-magscreen-menu.webp 1500w" sizes="(max-width: 900px) 30vw, 220px"/><figcaption>Menu d'accueil : arrêt, tendances</figcaption></figure>
     </div>
   </div>
   <div class="dv-copy">
@@ -299,15 +321,15 @@
 <li><button type="button" class="ifc-tile" data-dev="wei-meducore" style="--i:0"><span class="ifc-pic"><img src="/assets/ifc-wei-meducore.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">MEDUCORE Standard²</span><span class="ifc-kind">Défibrillateur-moniteur</span></button></li>
 <li><button type="button" class="ifc-tile" data-dev="wei-medumat" style="--i:1"><span class="ifc-pic"><img src="/assets/ifc-wei-medumat.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">MEDUMAT Standard²</span><span class="ifc-kind">Ventilateur</span></button></li>
 <li><button type="button" class="ifc-tile" data-dev="wei-meduvent" style="--i:2"><span class="ifc-pic"><img src="/assets/ifc-wei-meduvent.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">MEDUVENT Standard</span><span class="ifc-kind">Ventilateur</span></button></li>
-</ul></div></div></div>
+</ul><div class="snap-ctl" hidden><button type="button" class="snap-b" data-dir="-1" aria-label="Précédent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="snap-b" data-dir="1" aria-label="Suivant"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div></div></div>
 <div class="ifc-x ifc-vx"><div class="ifc-xin"><div class="ifc-pad">
 <article class="dv" id="wei-meducore" hidden>
   <div class="dv-media">
-    <figure class="dv-main"><img src="/assets/weinmann-meducore-chassis.webp" alt="MEDUCORE Standard² — Châssis complet" width="1200" height="900" loading="lazy" decoding="async"/><span class="dv-chip">Châssis complet</span></figure>
+    <figure class="dv-main"><img src="/assets/weinmann-meducore-chassis.webp" alt="MEDUCORE Standard² — Châssis complet" width="1200" height="900" loading="lazy" decoding="async" srcset="/assets/v3/r/weinmann-meducore-chassis-480.webp 480w, /assets/v3/r/weinmann-meducore-chassis-800.webp 800w, /assets/weinmann-meducore-chassis.webp 1500w" sizes="(max-width: 900px) 92vw, 640px"/><span class="dv-chip">Châssis complet</span></figure>
     <div class="dv-shots">
-      <figure><img src="/assets/weinmann-meducore-dsa.webp" alt="MEDUCORE Standard² — DSA — choc conseillé" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>DSA — choc conseillé</figcaption></figure>
-      <figure><img src="/assets/weinmann-meducore-manuel.webp" alt="MEDUCORE Standard² — Défibrillation manuelle — choc prêt" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Défibrillation manuelle — choc prêt</figcaption></figure>
-      <figure><img src="/assets/weinmann-meducore-ecg12.webp" alt="MEDUCORE Standard² — ECG 12 dérivations — résultats" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>ECG 12 dérivations — résultats</figcaption></figure>
+      <figure><img src="/assets/weinmann-meducore-dsa.webp" alt="MEDUCORE Standard² — DSA — choc conseillé" width="1200" height="900" loading="lazy" decoding="async" srcset="/assets/v3/r/weinmann-meducore-dsa-480.webp 480w, /assets/v3/r/weinmann-meducore-dsa-800.webp 800w, /assets/weinmann-meducore-dsa.webp 1500w" sizes="(max-width: 900px) 30vw, 220px"/><figcaption>DSA — choc conseillé</figcaption></figure>
+      <figure><img src="/assets/weinmann-meducore-manuel.webp" alt="MEDUCORE Standard² — Défibrillation manuelle — choc prêt" width="1200" height="900" loading="lazy" decoding="async" srcset="/assets/v3/r/weinmann-meducore-manuel-480.webp 480w, /assets/v3/r/weinmann-meducore-manuel-800.webp 800w, /assets/weinmann-meducore-manuel.webp 1500w" sizes="(max-width: 900px) 30vw, 220px"/><figcaption>Défibrillation manuelle — choc prêt</figcaption></figure>
+      <figure><img src="/assets/weinmann-meducore-ecg12.webp" alt="MEDUCORE Standard² — ECG 12 dérivations — résultats" width="1200" height="900" loading="lazy" decoding="async" srcset="/assets/v3/r/weinmann-meducore-ecg12-480.webp 480w, /assets/v3/r/weinmann-meducore-ecg12-800.webp 800w, /assets/weinmann-meducore-ecg12.webp 1500w" sizes="(max-width: 900px) 30vw, 220px"/><figcaption>ECG 12 dérivations — résultats</figcaption></figure>
     </div>
   </div>
   <div class="dv-copy">
@@ -325,11 +347,11 @@
 </article>
 <article class="dv" id="wei-medumat" hidden>
   <div class="dv-media">
-    <figure class="dv-main"><img src="/assets/weinmann-medumat-chassis.webp" alt="MEDUMAT Standard² — Châssis complet" width="1200" height="900" loading="lazy" decoding="async"/><span class="dv-chip">Châssis complet</span></figure>
+    <figure class="dv-main"><img src="/assets/weinmann-medumat-chassis.webp" alt="MEDUMAT Standard² — Châssis complet" width="1200" height="900" loading="lazy" decoding="async" srcset="/assets/v3/r/weinmann-medumat-chassis-480.webp 480w, /assets/v3/r/weinmann-medumat-chassis-800.webp 800w, /assets/weinmann-medumat-chassis.webp 1500w" sizes="(max-width: 900px) 92vw, 640px"/><span class="dv-chip">Châssis complet</span></figure>
     <div class="dv-shots">
-      <figure><img src="/assets/weinmann-medumat-rcp.webp" alt="MEDUMAT Standard² — Mode RCP CCSV" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Mode RCP CCSV</figcaption></figure>
-      <figure><img src="/assets/weinmann-medumat-alarme.webp" alt="MEDUMAT Standard² — Alarme de pression" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Alarme de pression</figcaption></figure>
-      <figure><img src="/assets/weinmann-medumat-menu.webp" alt="MEDUMAT Standard² — Menu utilisateur" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Menu utilisateur</figcaption></figure>
+      <figure><img src="/assets/weinmann-medumat-rcp.webp" alt="MEDUMAT Standard² — Mode RCP CCSV" width="1200" height="900" loading="lazy" decoding="async" srcset="/assets/v3/r/weinmann-medumat-rcp-480.webp 480w, /assets/v3/r/weinmann-medumat-rcp-800.webp 800w, /assets/weinmann-medumat-rcp.webp 1500w" sizes="(max-width: 900px) 30vw, 220px"/><figcaption>Mode RCP CCSV</figcaption></figure>
+      <figure><img src="/assets/weinmann-medumat-alarme.webp" alt="MEDUMAT Standard² — Alarme de pression" width="1200" height="900" loading="lazy" decoding="async" srcset="/assets/v3/r/weinmann-medumat-alarme-480.webp 480w, /assets/v3/r/weinmann-medumat-alarme-800.webp 800w, /assets/weinmann-medumat-alarme.webp 1500w" sizes="(max-width: 900px) 30vw, 220px"/><figcaption>Alarme de pression</figcaption></figure>
+      <figure><img src="/assets/weinmann-medumat-menu.webp" alt="MEDUMAT Standard² — Menu utilisateur" width="1200" height="900" loading="lazy" decoding="async" srcset="/assets/v3/r/weinmann-medumat-menu-480.webp 480w, /assets/v3/r/weinmann-medumat-menu-800.webp 800w, /assets/weinmann-medumat-menu.webp 1500w" sizes="(max-width: 900px) 30vw, 220px"/><figcaption>Menu utilisateur</figcaption></figure>
     </div>
   </div>
   <div class="dv-copy">
@@ -347,11 +369,11 @@
 </article>
 <article class="dv" id="wei-meduvent" hidden>
   <div class="dv-media">
-    <figure class="dv-main"><img src="/assets/weinmann-meduvent-chassis.webp" alt="MEDUVENT Standard — Châssis complet" width="1200" height="900" loading="lazy" decoding="async"/><span class="dv-chip">Châssis complet</span></figure>
+    <figure class="dv-main"><img src="/assets/weinmann-meduvent-chassis.webp" alt="MEDUVENT Standard — Châssis complet" width="1200" height="900" loading="lazy" decoding="async" srcset="/assets/v3/r/weinmann-meduvent-chassis-480.webp 480w, /assets/v3/r/weinmann-meduvent-chassis-800.webp 800w, /assets/weinmann-meduvent-chassis.webp 1500w" sizes="(max-width: 900px) 92vw, 640px"/><span class="dv-chip">Châssis complet</span></figure>
     <div class="dv-shots">
-      <figure><img src="/assets/weinmann-meduvent-modes.webp" alt="MEDUVENT Standard — Choix du mode" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Choix du mode</figcaption></figure>
-      <figure><img src="/assets/weinmann-meduvent-limites.webp" alt="MEDUVENT Standard — Limites d&#x27;alarme" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Limites d'alarme</figcaption></figure>
-      <figure><img src="/assets/weinmann-meduvent-deconnexion.webp" alt="MEDUVENT Standard — Alarme de déconnexion" width="1200" height="900" loading="lazy" decoding="async"/><figcaption>Alarme de déconnexion</figcaption></figure>
+      <figure><img src="/assets/weinmann-meduvent-modes.webp" alt="MEDUVENT Standard — Choix du mode" width="1200" height="900" loading="lazy" decoding="async" srcset="/assets/v3/r/weinmann-meduvent-modes-480.webp 480w, /assets/v3/r/weinmann-meduvent-modes-800.webp 800w, /assets/weinmann-meduvent-modes.webp 1500w" sizes="(max-width: 900px) 30vw, 220px"/><figcaption>Choix du mode</figcaption></figure>
+      <figure><img src="/assets/weinmann-meduvent-limites.webp" alt="MEDUVENT Standard — Limites d&#x27;alarme" width="1200" height="900" loading="lazy" decoding="async" srcset="/assets/v3/r/weinmann-meduvent-limites-480.webp 480w, /assets/v3/r/weinmann-meduvent-limites-800.webp 800w, /assets/weinmann-meduvent-limites.webp 1500w" sizes="(max-width: 900px) 30vw, 220px"/><figcaption>Limites d'alarme</figcaption></figure>
+      <figure><img src="/assets/weinmann-meduvent-deconnexion.webp" alt="MEDUVENT Standard — Alarme de déconnexion" width="1200" height="900" loading="lazy" decoding="async" srcset="/assets/v3/r/weinmann-meduvent-deconnexion-480.webp 480w, /assets/v3/r/weinmann-meduvent-deconnexion-800.webp 800w, /assets/weinmann-meduvent-deconnexion.webp 1500w" sizes="(max-width: 900px) 30vw, 220px"/><figcaption>Alarme de déconnexion</figcaption></figure>
     </div>
   </div>
   <div class="dv-copy">
@@ -372,49 +394,18 @@
 </div></div>
 </div>
       </div>
-    </div>
-  </div>
-</section>
 
-<!-- POURQUOI VITALX : six cartes « image + une ligne + lien » (ancre #features) -->
-<section id="features" class="hx-sec" aria-labelledby="whyTitle" data-spy="features">
-  <div class="hx-band"><h2 id="whyTitle">Pourquoi VitalX</h2></div>
-  <div class="wrap-wide hx-body">
-    <ul class="hx-cards">
-      <li class="sr"><a class="hx-card" href="#interfaces">
-        <span class="hx-pic hx-duo"><img src="/assets/schiller-defigard-chassis.webp" alt="" width="1500" height="1028" loading="lazy" decoding="async" data-no-lightbox="true"/><img src="/assets/weinmann-meducore-chassis.webp" alt="" width="1500" height="868" loading="lazy" decoding="async" data-no-lightbox="true"/></span>
-        <span class="hx-card-b"><span class="hx-card-t">Interfaces constructeurs à l'identique</span><span class="hx-more">Plus d'informations</span></span>
-      </a></li>
-      <li class="sr sr-d1"><a class="hx-card" href="#formateur">
-        <span class="hx-pic"><img src="/assets/formateur-constantes.webp" alt="" width="1400" height="1050" loading="lazy" decoding="async" data-no-lightbox="true"/></span>
-        <span class="hx-card-b"><span class="hx-card-t">Pilotage en direct par le formateur</span><span class="hx-more">Plus d'informations</span></span>
-      </a></li>
-      <li class="sr sr-d2"><a class="hx-card" href="#mediacenter">
-        <span class="hx-pic"><img src="/assets/mediacenter-gds-2026.webp" alt="" width="1600" height="1200" loading="lazy" decoding="async" data-no-lightbox="true"/></span>
-        <span class="hx-card-b"><span class="hx-card-t">Media Center : radios, bilans, ECG</span><span class="hx-more">Plus d'informations</span></span>
-      </a></li>
-      <li class="sr"><a class="hx-card" href="#fo-rcp">
-        <span class="hx-pic"><img src="/assets/formateur-rcp.webp" alt="" width="1400" height="1050" loading="lazy" decoding="async" data-no-lightbox="true"/></span>
-        <span class="hx-card-b"><span class="hx-card-t">Mode RCP</span><span class="hx-more">Plus d'informations</span></span>
-      </a></li>
-      <li class="sr sr-d1"><a class="hx-card" href="#academy">
-        <span class="hx-pic"><img src="/assets/academy-hub.webp" alt="" width="1600" height="1200" loading="lazy" decoding="async" data-no-lightbox="true"/></span>
-        <span class="hx-card-b"><span class="hx-card-t">ACADEMY</span><span class="hx-more">Plus d'informations</span></span>
-      </a></li>
-      <li class="sr sr-d2"><a class="hx-card" href="/boutique.html#licence">
-        <span class="hx-pic"><img src="/assets/licence-life.webp" alt="" width="800" height="600" loading="lazy" decoding="async" data-no-lightbox="true"/></span>
-        <span class="hx-card-b"><span class="hx-card-t">Licence à vie</span><span class="hx-more">Plus d'informations</span></span>
-      </a></li>
-    </ul>
   </div>
 </section>
 
 <!-- MODE FORMATEUR : catégories → fonctions du poste formateur (brands.js ; ancres #formateur, #fo-…) -->
-<section id="formateur" class="hx-sec brand-sec ifc" aria-labelledby="foTitle" data-ifc data-spy="formateur">
-  <div class="hx-band"><h2 id="foTitle">Mode Formateur</h2></div>
-  <div class="wrap-wide hx-body">
-    <p class="hx-lead sr">Un seul iPad pour piloter toute la séance.</p>
-    <div class="ifc-box sr">
+<section id="formateur" class="sec t-light ifc" aria-labelledby="foTitle" data-ifc data-spy="formateur">
+  <div class="wrap head rv">
+    <p class="eyebrow">Mode Formateur</p>
+    <h2 class="h2" id="foTitle">Un seul iPad pour piloter toute la séance.</h2>
+    <p class="lead">Sur iPad, ou dans le navigateur avec le panneau web.</p>
+  </div>
+  <div class="ifc-box rv rv-1">
 <div class="ifc-band ifc-cats" role="tablist" aria-label="Catégories du poste formateur" data-n="5">
 <button type="button" class="ifc-tab" role="tab" id="ifc-t-cat-fo-seance" data-brand="cat-fo-seance" aria-selected="true" aria-controls="ifc-p-cat-fo-seance"><span class="ifc-top"><svg class="ifc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span class="ifc-lbl">Séance &amp; patient</span></span><span class="ifc-count">3 fonctions</span></button>
 <button type="button" class="ifc-tab" role="tab" id="ifc-t-cat-fo-ecg" data-brand="cat-fo-ecg" aria-selected="false" aria-controls="ifc-p-cat-fo-ecg" tabindex="-1"><span class="ifc-top"><svg class="ifc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span class="ifc-lbl">ECG &amp; arrêt cardiaque</span></span><span class="ifc-count">3 fonctions</span></button>
@@ -433,18 +424,18 @@
 <li><button type="button" class="ifc-tile" data-dev="fo-liaison" style="--i:0"><span class="ifc-pic"><img src="/assets/ifc-fo-liaison.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">Liaison locale, sans Internet</span></button></li>
 <li><button type="button" class="ifc-tile" data-dev="fo-constantes" style="--i:1"><span class="ifc-pic"><img src="/assets/ifc-fo-constantes.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">Constantes en direct</span></button></li>
 <li><button type="button" class="ifc-tile" data-dev="fo-evolution" style="--i:2"><span class="ifc-pic"><img src="/assets/ifc-fo-evolution.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">Faire évoluer le patient</span></button></li>
-</ul></div></div></div>
+</ul><div class="snap-ctl" hidden><button type="button" class="snap-b" data-dir="-1" aria-label="Précédent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="snap-b" data-dir="1" aria-label="Suivant"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div></div></div>
 <div class="ifc-x ifc-vx"><div class="ifc-xin"><div class="ifc-pad">
 <article class="dv dv-solo" id="fo-liaison" hidden>
-  <div class="dv-media"><figure class="dv-main"><img src="/assets/formateur-liaison.webp" alt="Feuille Liaison de session : séance 4B7A, mode Local sans Internet, un scope en liaison, qualité du lien excellente" width="1400" height="1050" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/formateur-liaison.webp" alt="Feuille Liaison de session : séance 4B7A, mode Local sans Internet, un scope en liaison, qualité du lien excellente" width="1400" height="1050" loading="lazy" decoding="async" srcset="/assets/v3/r/formateur-liaison-480.webp 480w, /assets/v3/r/formateur-liaison-800.webp 800w, /assets/formateur-liaison.webp 1400w" sizes="(max-width: 900px) 92vw, 640px"/></figure></div>
   <div class="dv-copy"><h3>Liaison locale, sans Internet</h3><p class="dv-kind">Séance &amp; patient</p><p class="dv-lead">Le formateur crée la séance et donne un code à 4 caractères. Les iPad des stagiaires la rejoignent en direct, sans Internet ni serveur : la feuille Liaison de session affiche la qualité du lien.</p></div>
 </article>
 <article class="dv dv-solo" id="fo-constantes" hidden>
-  <div class="dv-media"><figure class="dv-main"><img src="/assets/formateur-constantes.webp" alt="Poste formateur : cartes FC, SpO₂, FR, EtCO₂ et température, tension PNI, colonne glycémie, lactates, hémoglobine, SpCO et CO" width="1400" height="1050" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/formateur-constantes.webp" alt="Poste formateur : cartes FC, SpO₂, FR, EtCO₂ et température, tension PNI, colonne glycémie, lactates, hémoglobine, SpCO et CO" width="1400" height="1050" loading="lazy" decoding="async" srcset="/assets/v3/r/formateur-constantes-480.webp 480w, /assets/v3/r/formateur-constantes-800.webp 800w, /assets/formateur-constantes.webp 1400w" sizes="(max-width: 900px) 92vw, 640px"/></figure></div>
   <div class="dv-copy"><h3>Constantes en direct</h3><p class="dv-kind">Séance &amp; patient</p><p class="dv-lead">FC, SpO₂, FR, EtCO₂, température, PNI ou pression invasive : chaque valeur se règle au curseur ou par pas. La colonne de gauche porte glycémie, lactates, hémoglobine, SpCO et CO.</p></div>
 </article>
 <article class="dv dv-solo" id="fo-evolution" hidden>
-  <div class="dv-media"><figure class="dv-main"><img src="/assets/formateur-evolution.webp" alt="Page TEND : délai de départ, durée de l'évolution et six cibles (FC, SpO₂, FR, pression systolique, diastolique, EtCO₂)" width="1400" height="1050" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/formateur-evolution.webp" alt="Page TEND : délai de départ, durée de l'évolution et six cibles (FC, SpO₂, FR, pression systolique, diastolique, EtCO₂)" width="1400" height="1050" loading="lazy" decoding="async" srcset="/assets/v3/r/formateur-evolution-480.webp 480w, /assets/v3/r/formateur-evolution-800.webp 800w, /assets/formateur-evolution.webp 1400w" sizes="(max-width: 900px) 92vw, 640px"/></figure></div>
   <div class="dv-copy"><h3>Faire évoluer le patient</h3><p class="dv-kind">Séance &amp; patient</p><p class="dv-lead">Le bouton TEND fait dériver FC, SpO₂, FR, EtCO₂ et PNI vers des cibles : délai de départ, durée, puis un seul geste pour lancer la tendance. Le patient se dégrade ou se rétablit tout seul.</p></div>
 </article>
 </div></div></div>
@@ -460,18 +451,18 @@
 <li><button type="button" class="ifc-tile" data-dev="fo-ecg" style="--i:0"><span class="ifc-pic"><img src="/assets/ifc-fo-ecg.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">Rythmes ECG</span></button></li>
 <li><button type="button" class="ifc-tile" data-dev="fo-capteurs" style="--i:1"><span class="ifc-pic"><img src="/assets/ifc-fo-capteurs.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">Câbles et capteurs débranchés</span></button></li>
 <li><button type="button" class="ifc-tile" data-dev="fo-acr-choc" style="--i:2"><span class="ifc-pic"><img src="/assets/ifc-fo-acr-choc.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">Arrêt cardiaque, choc et DSA</span></button></li>
-</ul></div></div></div>
+</ul><div class="snap-ctl" hidden><button type="button" class="snap-b" data-dir="-1" aria-label="Précédent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="snap-b" data-dir="1" aria-label="Suivant"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div></div></div>
 <div class="ifc-x ifc-vx"><div class="ifc-xin"><div class="ifc-pad">
 <article class="dv dv-solo" id="fo-ecg" hidden>
-  <div class="dv-media"><figure class="dv-main"><img src="/assets/formateur-ecg.webp" alt="Grille des 20 rythmes ECG et éditeur d'ondes : STEMI inférieur, 12 dérivations, curseur du niveau ST" width="1400" height="1050" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/formateur-ecg.webp" alt="Grille des 20 rythmes ECG et éditeur d'ondes : STEMI inférieur, 12 dérivations, curseur du niveau ST" width="1400" height="1050" loading="lazy" decoding="async" srcset="/assets/v3/r/formateur-ecg-480.webp 480w, /assets/v3/r/formateur-ecg-800.webp 800w, /assets/formateur-ecg.webp 1400w" sizes="(max-width: 900px) 92vw, 640px"/></figure></div>
   <div class="dv-copy"><h3>Rythmes ECG</h3><p class="dv-kind">ECG &amp; arrêt cardiaque</p><p class="dv-lead">20 rythmes en un toucher (sinusal, STEMI, FA, FV, BAV, torsades, pacemaker…), avec leurs variantes : territoire du STEMI, type de BAV. L'éditeur retouche ondes, ST et intervalles sur les 12 dérivations.</p></div>
 </article>
 <article class="dv dv-solo" id="fo-capteurs" hidden>
-  <div class="dv-media"><figure class="dv-main"><img src="/assets/formateur-capteurs.webp" alt="Section Électrodes ECG avec l'électrode RA débranchée, barre des capteurs, carte EtCO₂ branchée et carte température grisée (capteur débranché)" width="1400" height="1050" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/formateur-capteurs.webp" alt="Section Électrodes ECG avec l'électrode RA débranchée, barre des capteurs, carte EtCO₂ branchée et carte température grisée (capteur débranché)" width="1400" height="1050" loading="lazy" decoding="async" srcset="/assets/v3/r/formateur-capteurs-480.webp 480w, /assets/v3/r/formateur-capteurs-800.webp 800w, /assets/formateur-capteurs.webp 1400w" sizes="(max-width: 900px) 92vw, 640px"/></figure></div>
   <div class="dv-copy"><h3>Câbles et capteurs débranchés</h3><p class="dv-kind">ECG &amp; arrêt cardiaque</p><p class="dv-lead">Câble ECG, saturomètre, capnographie, électrodes de défibrillation et chacune des 10 électrodes ECG : branchez-les au moment où le stagiaire les pose. Une électrode débranchée fait perdre les dérivations concernées.</p></div>
 </article>
 <article class="dv dv-solo" id="fo-acr-choc" hidden>
-  <div class="dv-media"><figure class="dv-main"><img src="/assets/formateur-acr-choc.webp" alt="Section ACR : ACR + Asystolie, ACR + FV + CHOC, Déclencher FV, Patchs, CHOC et Réinitialiser les états, avec la grille ECG" width="1400" height="1050" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/formateur-acr-choc.webp" alt="Section ACR : ACR + Asystolie, ACR + FV + CHOC, Déclencher FV, Patchs, CHOC et Réinitialiser les états, avec la grille ECG" width="1400" height="1050" loading="lazy" decoding="async" srcset="/assets/v3/r/formateur-acr-choc-480.webp 480w, /assets/v3/r/formateur-acr-choc-800.webp 800w, /assets/formateur-acr-choc.webp 1400w" sizes="(max-width: 900px) 92vw, 640px"/></figure></div>
   <div class="dv-copy"><h3>Arrêt cardiaque, choc et DSA</h3><p class="dv-kind">ECG &amp; arrêt cardiaque</p><p class="dv-lead">ACR + Asystolie ou ACR + FV + CHOC en un geste, électrodes posées ou non. En analyse automatique, le choc n'est conseillé que si CHOC est activé et si le rythme est choquable.</p></div>
 </article>
 </div></div></div>
@@ -486,14 +477,14 @@
 <div class="ifc-x ifc-lx is-on"><div class="ifc-xin"><div class="ifc-pad"><ul class="ifc-list" data-n="2">
 <li><button type="button" class="ifc-tile" data-dev="fo-rcp" style="--i:0"><span class="ifc-pic"><img src="/assets/ifc-fo-rcp.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">RCP avec retour du capteur</span></button></li>
 <li><button type="button" class="ifc-tile" data-dev="fo-ventilation" style="--i:1"><span class="ifc-pic"><img src="/assets/ifc-fo-ventilation.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">Ventilation</span></button></li>
-</ul></div></div></div>
+</ul><div class="snap-ctl" hidden><button type="button" class="snap-b" data-dir="-1" aria-label="Précédent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="snap-b" data-dir="1" aria-label="Suivant"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div></div></div>
 <div class="ifc-x ifc-vx"><div class="ifc-xin"><div class="ifc-pad">
 <article class="dv dv-solo" id="fo-rcp" hidden>
-  <div class="dv-media"><figure class="dv-main"><img src="/assets/formateur-rcp.webp" alt="Tableau de bord RCP : jauges de profondeur, fréquence et relâchement, mannequin avec cœur, poumons et circulation, score et insufflations" width="1400" height="1050" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/formateur-rcp.webp" alt="Tableau de bord RCP : jauges de profondeur, fréquence et relâchement, mannequin avec cœur, poumons et circulation, score et insufflations" width="1400" height="1050" loading="lazy" decoding="async" srcset="/assets/v3/r/formateur-rcp-480.webp 480w, /assets/v3/r/formateur-rcp-800.webp 800w, /assets/formateur-rcp.webp 1400w" sizes="(max-width: 900px) 92vw, 640px"/></figure></div>
   <div class="dv-copy"><h3>RCP avec retour du capteur</h3><p class="dv-kind">RCP &amp; ventilation</p><p class="dv-lead">Un capteur Bluetooth posé sur le mannequin mesure chaque compression : fréquence, profondeur, relâchement. Le tableau de bord RCP affiche la mesure en direct et un score sur 100, avec une épreuve chronométrée de 2 minutes.</p></div>
 </article>
 <article class="dv dv-solo" id="fo-ventilation" hidden>
-  <div class="dv-media"><figure class="dv-main"><img src="/assets/formateur-ventilation.webp" alt="Onglet ventilation : liste des cartes (mise en marche, scénarios cliniques, mécanique pulmonaire) et réglage de la compliance et de la résistance" width="1400" height="1050" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/formateur-ventilation.webp" alt="Onglet ventilation : liste des cartes (mise en marche, scénarios cliniques, mécanique pulmonaire) et réglage de la compliance et de la résistance" width="1400" height="1050" loading="lazy" decoding="async" srcset="/assets/v3/r/formateur-ventilation-480.webp 480w, /assets/v3/r/formateur-ventilation-800.webp 800w, /assets/formateur-ventilation.webp 1400w" sizes="(max-width: 900px) 92vw, 640px"/></figure></div>
   <div class="dv-copy"><h3>Ventilation</h3><p class="dv-kind">RCP &amp; ventilation</p><p class="dv-lead">L'onglet VENT règle le patient ventilé : respiration spontanée, compliance et résistance, fuite, obstruction, oxygène, alimentation et pannes. 32 scénarios cliniques s'appliquent d'un geste.</p></div>
 </article>
 </div></div></div>
@@ -508,14 +499,14 @@
 <div class="ifc-x ifc-lx is-on"><div class="ifc-xin"><div class="ifc-pad"><ul class="ifc-list" data-n="2">
 <li><button type="button" class="ifc-tile" data-dev="fo-scenarios" style="--i:0"><span class="ifc-pic"><img src="/assets/ifc-fo-scenarios.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">Scénarios prêts à l'emploi</span></button></li>
 <li><button type="button" class="ifc-tile" data-dev="fo-evaluation" style="--i:1"><span class="ifc-pic"><img src="/assets/ifc-fo-evaluation.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">Évaluation et débriefing</span></button></li>
-</ul></div></div></div>
+</ul><div class="snap-ctl" hidden><button type="button" class="snap-b" data-dir="-1" aria-label="Précédent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="snap-b" data-dir="1" aria-label="Suivant"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div></div></div>
 <div class="ifc-x ifc-vx"><div class="ifc-xin"><div class="ifc-pad">
 <article class="dv dv-solo" id="fo-scenarios" hidden>
-  <div class="dv-media"><figure class="dv-main"><img src="/assets/formateur-scenarios.webp" alt="Scénario minuté en cours de lecture : événements de la timeline, consigne du formateur, capteurs et actions DSA" width="1400" height="1050" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/formateur-scenarios.webp" alt="Scénario minuté en cours de lecture : événements de la timeline, consigne du formateur, capteurs et actions DSA" width="1400" height="1050" loading="lazy" decoding="async" srcset="/assets/v3/r/formateur-scenarios-480.webp 480w, /assets/v3/r/formateur-scenarios-800.webp 800w, /assets/formateur-scenarios.webp 1400w" sizes="(max-width: 900px) 92vw, 640px"/></figure></div>
   <div class="dv-copy"><h3>Scénarios prêts à l'emploi</h3><p class="dv-kind">Scénarios &amp; évaluation</p><p class="dv-lead">Patients préparés en un toucher, ou scénarios minutés : une timeline d'événements qui change constantes, rythme, capteurs et documents à T+mm:ss. Bibliothèque par public (PSE 1, PSE 2, paramédical, médecin) et éditeur pour créer les vôtres.</p></div>
 </article>
 <article class="dv dv-solo" id="fo-evaluation" hidden>
-  <div class="dv-media"><figure class="dv-main"><img src="/assets/formateur-evaluation.webp" alt="Tiroir Évaluation : grille PSE 1, score 47 sur 100, objectifs validés ou manqués, et fiche d'évaluation exportée en PDF" width="1400" height="1050" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/formateur-evaluation.webp" alt="Tiroir Évaluation : grille PSE 1, score 47 sur 100, objectifs validés ou manqués, et fiche d'évaluation exportée en PDF" width="1400" height="1050" loading="lazy" decoding="async" srcset="/assets/v3/r/formateur-evaluation-480.webp 480w, /assets/v3/r/formateur-evaluation-800.webp 800w, /assets/formateur-evaluation.webp 1400w" sizes="(max-width: 900px) 92vw, 640px"/></figure></div>
   <div class="dv-copy"><h3>Évaluation et débriefing</h3><p class="dv-kind">Scénarios &amp; évaluation</p><p class="dv-lead">Le tiroir ÉVAL propose des grilles (PSE 1, PSE 2, Bilan Flash, ou la vôtre) : validé, partiel, manqué. Score, verdict et chronomètre se calculent seuls ; la fiche s'exporte en PDF pour le débriefing.</p></div>
 </article>
 </div></div></div>
@@ -530,14 +521,14 @@
 <div class="ifc-x ifc-lx is-on"><div class="ifc-xin"><div class="ifc-pad"><ul class="ifc-list" data-n="2">
 <li><button type="button" class="ifc-tile" data-dev="fo-media-dossier" style="--i:0"><span class="ifc-pic"><img src="/assets/ifc-fo-media-dossier.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">Media Center : dossier et biologie</span></button></li>
 <li><button type="button" class="ifc-tile" data-dev="fo-media-examens" style="--i:1"><span class="ifc-pic"><img src="/assets/ifc-fo-media-examens.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">Gaz du sang, radios, bandelette</span></button></li>
-</ul></div></div></div>
+</ul><div class="snap-ctl" hidden><button type="button" class="snap-b" data-dir="-1" aria-label="Précédent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="snap-b" data-dir="1" aria-label="Suivant"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div></div></div>
 <div class="ifc-x ifc-vx"><div class="ifc-xin"><div class="ifc-pad">
 <article class="dv dv-solo" id="fo-media-dossier" hidden>
-  <div class="dv-media"><figure class="dv-main"><img src="/assets/formateur-media-dossier.webp" alt="Media Center : onglet DLU avec la fiche du patient et onglet Biologie avec les catégories d'analyses et les valeurs anormales" width="1400" height="1050" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/formateur-media-dossier.webp" alt="Media Center : onglet DLU avec la fiche du patient et onglet Biologie avec les catégories d'analyses et les valeurs anormales" width="1400" height="1050" loading="lazy" decoding="async" srcset="/assets/v3/r/formateur-media-dossier-480.webp 480w, /assets/v3/r/formateur-media-dossier-800.webp 800w, /assets/formateur-media-dossier.webp 1400w" sizes="(max-width: 900px) 92vw, 640px"/></figure></div>
   <div class="dv-copy"><h3>Media Center : dossier et biologie</h3><p class="dv-kind">Media Center</p><p class="dv-lead">Le dossier patient (identité, allergies, mode de vie, 175 pathologies, médicaments) et le compte rendu d'analyses se remplissent depuis l'iPad : choisissez un tableau (normal, STEMI / SCA, sepsis…), ajustez, envoyez.</p></div>
 </article>
 <article class="dv dv-solo" id="fo-media-examens" hidden>
-  <div class="dv-media"><figure class="dv-main"><img src="/assets/formateur-media-examens.webp" alt="Media Center : carte Gaz du sang (acidose métabolique), fenêtre Radiographies avec deux clichés envoyés et bandelette urinaire" width="1400" height="1050" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/formateur-media-examens.webp" alt="Media Center : carte Gaz du sang (acidose métabolique), fenêtre Radiographies avec deux clichés envoyés et bandelette urinaire" width="1400" height="1050" loading="lazy" decoding="async" srcset="/assets/v3/r/formateur-media-examens-480.webp 480w, /assets/v3/r/formateur-media-examens-800.webp 800w, /assets/formateur-media-examens.webp 1400w" sizes="(max-width: 900px) 92vw, 640px"/></figure></div>
   <div class="dv-copy"><h3>Gaz du sang, radios, bandelette</h3><p class="dv-kind">Media Center</p><p class="dv-lead">Prélèvement artériel ou veineux que l'élève analyse lui-même (résultat 60 s après la cartouche), 37 clichés de radiographie en 9 catégories, bandelette urinaire à 10 tests ou tableau clinique.</p></div>
 </article>
 </div></div></div>
@@ -545,17 +536,18 @@
 </div>
       </div>
       <p class="t-caption ifc-foot">Captures du poste formateur VitalX sur iPad. Touchez une image pour l'agrandir.</p>
-    </div>
-    <div class="center ifc-more"><a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="more">Ouvrir vitalxtrainer.app</a></div>
+
   </div>
+  <p class="ifc-more"><a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="link">Ouvrir vitalxtrainer.app</a></p>
 </section>
 
 <!-- MEDIA CENTER : catégories → écrans du panneau (brands.js ; ancres #mediacenter, #mc-…) -->
-<section id="mediacenter" class="hx-sec brand-sec ifc" aria-labelledby="mcTitle" data-ifc data-spy="mediacenter">
-  <div class="hx-band"><h2 id="mcTitle">Media Center</h2></div>
-  <div class="wrap-wide hx-body">
-    <p class="hx-lead sr">Le dossier patient, <br>d'un balayage.</p>
-    <div class="ifc-box sr">
+<section id="mediacenter" class="sec t-dark2 ifc" aria-labelledby="mcTitle" data-ifc data-spy="mediacenter">
+  <div class="wrap head rv">
+    <p class="eyebrow">Media Center</p>
+    <h2 class="h2" id="mcTitle">Le dossier patient, <br>d'un balayage.</h2>
+  </div>
+  <div class="ifc-box rv rv-1">
 <div class="ifc-band ifc-cats" role="tablist" aria-label="Catégories du Media Center" data-n="4">
 <button type="button" class="ifc-tab" role="tab" id="ifc-t-cat-mc-gds" data-brand="cat-mc-gds" aria-selected="true" aria-controls="ifc-p-cat-mc-gds"><span class="ifc-top"><svg class="ifc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg><span class="ifc-lbl">Gaz du sang &amp; mesures</span></span><span class="ifc-count">3 écrans</span></button>
 <button type="button" class="ifc-tab" role="tab" id="ifc-t-cat-mc-dossier" data-brand="cat-mc-dossier" aria-selected="false" aria-controls="ifc-p-cat-mc-dossier" tabindex="-1"><span class="ifc-top"><svg class="ifc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span class="ifc-lbl">Dossier patient</span></span><span class="ifc-count">2 écrans</span></button>
@@ -573,18 +565,18 @@
 <li><button type="button" class="ifc-tile" data-dev="mc-gds" style="--i:0"><span class="ifc-pic"><img src="/assets/ifc-mc-gds.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">GDS : gaz du sang</span></button></li>
 <li><button type="button" class="ifc-tile" data-dev="mc-glycemie" style="--i:1"><span class="ifc-pic"><img src="/assets/ifc-mc-glycemie.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">Bio : les lecteurs de mesure</span></button></li>
 <li><button type="button" class="ifc-tile" data-dev="mc-co" style="--i:2"><span class="ifc-pic"><img src="/assets/ifc-mc-co.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">Détecteur de CO</span></button></li>
-</ul></div></div></div>
+</ul><div class="snap-ctl" hidden><button type="button" class="snap-b" data-dir="-1" aria-label="Précédent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="snap-b" data-dir="1" aria-label="Suivant"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div></div></div>
 <div class="ifc-x ifc-vx"><div class="ifc-xin"><div class="ifc-pad">
 <article class="dv dv-solo" id="mc-gds" hidden>
-  <div class="dv-media"><figure class="dv-main"><img src="/assets/mediacenter-gds-2026.webp" alt="Media Center sur le DEFIGARD HD-7 — gaz du sang (GDS) : analyseur et ticket de résultat" width="1600" height="1200" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/mediacenter-gds-2026.webp" alt="Media Center sur le DEFIGARD HD-7 — gaz du sang (GDS) : analyseur et ticket de résultat" width="1600" height="1200" loading="lazy" decoding="async" srcset="/assets/v3/r/mediacenter-gds-2026-480.webp 480w, /assets/v3/r/mediacenter-gds-2026-800.webp 800w, /assets/v3/r/mediacenter-gds-2026-1200.webp 1200w, /assets/mediacenter-gds-2026.webp 1600w" sizes="(max-width: 900px) 92vw, 640px"/></figure></div>
   <div class="dv-copy"><h3>GDS : gaz du sang</h3><p class="dv-kind">Gaz du sang &amp; mesures</p><p class="dv-lead">L'apprenant lance l'analyse et reçoit le ticket, ici une acidose métabolique avec hyperlactatémie. Résultat 60 s après la cartouche.</p></div>
 </article>
 <article class="dv dv-solo" id="mc-glycemie" hidden>
-  <div class="dv-media"><figure class="dv-main"><img src="/assets/mediacenter-glycemie-2026.webp" alt="Media Center sur le DEFIGARD HD-7 — Bio : lecteur de glycémie" width="1600" height="1200" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/mediacenter-glycemie-2026.webp" alt="Media Center sur le DEFIGARD HD-7 — Bio : lecteur de glycémie" width="1600" height="1200" loading="lazy" decoding="async" srcset="/assets/v3/r/mediacenter-glycemie-2026-480.webp 480w, /assets/v3/r/mediacenter-glycemie-2026-800.webp 800w, /assets/v3/r/mediacenter-glycemie-2026-1200.webp 1200w, /assets/mediacenter-glycemie-2026.webp 1600w" sizes="(max-width: 900px) 92vw, 640px"/></figure></div>
   <div class="dv-copy"><h3>Bio : les lecteurs de mesure</h3><p class="dv-kind">Gaz du sang &amp; mesures</p><p class="dv-lead">Glycémie, cétones, lactates, HémoCue, CO : l'apprenant fait la mesure, la valeur vient du patient simulé.</p></div>
 </article>
 <article class="dv dv-solo" id="mc-co" hidden>
-  <div class="dv-media"><figure class="dv-main"><img src="/assets/mediacenter-co-2026.webp" alt="Media Center sur le DEFIGARD HD-7 — Bio : détecteur de CO" width="1600" height="1200" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/mediacenter-co-2026.webp" alt="Media Center sur le DEFIGARD HD-7 — Bio : détecteur de CO" width="1600" height="1200" loading="lazy" decoding="async" srcset="/assets/v3/r/mediacenter-co-2026-480.webp 480w, /assets/v3/r/mediacenter-co-2026-800.webp 800w, /assets/v3/r/mediacenter-co-2026-1200.webp 1200w, /assets/mediacenter-co-2026.webp 1600w" sizes="(max-width: 900px) 92vw, 640px"/></figure></div>
   <div class="dv-copy"><h3>Détecteur de CO</h3><p class="dv-kind">Gaz du sang &amp; mesures</p><p class="dv-lead">Détection en continu, alarme à 25 ppm.</p></div>
 </article>
 </div></div></div>
@@ -599,14 +591,14 @@
 <div class="ifc-x ifc-lx is-on"><div class="ifc-xin"><div class="ifc-pad"><ul class="ifc-list" data-n="2">
 <li><button type="button" class="ifc-tile" data-dev="mc-dossier" style="--i:0"><span class="ifc-pic"><img src="/assets/ifc-mc-dossier.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">DLU : le dossier de liaison d'urgence</span></button></li>
 <li><button type="button" class="ifc-tile" data-dev="mc-biologie" style="--i:1"><span class="ifc-pic"><img src="/assets/ifc-mc-biologie.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">DLU : le compte rendu d'analyses</span></button></li>
-</ul></div></div></div>
+</ul><div class="snap-ctl" hidden><button type="button" class="snap-b" data-dir="-1" aria-label="Précédent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="snap-b" data-dir="1" aria-label="Suivant"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div></div></div>
 <div class="ifc-x ifc-vx"><div class="ifc-xin"><div class="ifc-pad">
 <article class="dv dv-solo" id="mc-dossier" hidden>
-  <div class="dv-media"><figure class="dv-main"><img src="/assets/mediacenter-dossier-2026.webp" alt="Media Center sur le DEFIGARD HD-7 — DLU : dossier de liaison d&#x27;urgence" width="1600" height="1200" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/mediacenter-dossier-2026.webp" alt="Media Center sur le DEFIGARD HD-7 — DLU : dossier de liaison d&#x27;urgence" width="1600" height="1200" loading="lazy" decoding="async" srcset="/assets/v3/r/mediacenter-dossier-2026-480.webp 480w, /assets/v3/r/mediacenter-dossier-2026-800.webp 800w, /assets/v3/r/mediacenter-dossier-2026-1200.webp 1200w, /assets/mediacenter-dossier-2026.webp 1600w" sizes="(max-width: 900px) 92vw, 640px"/></figure></div>
   <div class="dv-copy"><h3>DLU : le dossier de liaison d'urgence</h3><p class="dv-kind">Dossier patient</p><p class="dv-lead">Identité, antécédents, traitement en cours : la fiche se remplit depuis l'iPad du formateur.</p></div>
 </article>
 <article class="dv dv-solo" id="mc-biologie" hidden>
-  <div class="dv-media"><figure class="dv-main"><img src="/assets/mediacenter-biologie-2026.webp" alt="Media Center sur le DEFIGARD HD-7 — DLU : compte rendu d&#x27;analyses" width="1600" height="1200" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/mediacenter-biologie-2026.webp" alt="Media Center sur le DEFIGARD HD-7 — DLU : compte rendu d&#x27;analyses" width="1600" height="1200" loading="lazy" decoding="async" srcset="/assets/v3/r/mediacenter-biologie-2026-480.webp 480w, /assets/v3/r/mediacenter-biologie-2026-800.webp 800w, /assets/v3/r/mediacenter-biologie-2026-1200.webp 1200w, /assets/mediacenter-biologie-2026.webp 1600w" sizes="(max-width: 900px) 92vw, 640px"/></figure></div>
   <div class="dv-copy"><h3>DLU : le compte rendu d'analyses</h3><p class="dv-kind">Dossier patient</p><p class="dv-lead">Le compte rendu d'analyses médicales se lit comme sur papier, valeurs hors référence signalées.</p></div>
 </article>
 </div></div></div>
@@ -621,14 +613,14 @@
 <div class="ifc-x ifc-lx is-on"><div class="ifc-xin"><div class="ifc-pad"><ul class="ifc-list" data-n="2">
 <li><button type="button" class="ifc-tile" data-dev="mc-radio" style="--i:0"><span class="ifc-pic"><img src="/assets/ifc-mc-radio.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">Radio : les clichés envoyés</span></button></li>
 <li><button type="button" class="ifc-tile" data-dev="mc-bandelette" style="--i:1"><span class="ifc-pic"><img src="/assets/ifc-mc-bandelette.webp" alt="" width="480" height="360" loading="lazy" decoding="async" data-no-lightbox="true"/></span><span class="ifc-name">Bandelette urinaire</span></button></li>
-</ul></div></div></div>
+</ul><div class="snap-ctl" hidden><button type="button" class="snap-b" data-dir="-1" aria-label="Précédent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="snap-b" data-dir="1" aria-label="Suivant"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div></div></div>
 <div class="ifc-x ifc-vx"><div class="ifc-xin"><div class="ifc-pad">
 <article class="dv dv-solo" id="mc-radio" hidden>
-  <div class="dv-media"><figure class="dv-main"><img src="/assets/mediacenter-radio-contenu-2026.webp" alt="Media Center — radiographies envoyées par le formateur" width="1600" height="1200" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/mediacenter-radio-contenu-2026.webp" alt="Media Center — radiographies envoyées par le formateur" width="1600" height="1200" loading="lazy" decoding="async" srcset="/assets/v3/r/mediacenter-radio-contenu-2026-480.webp 480w, /assets/v3/r/mediacenter-radio-contenu-2026-800.webp 800w, /assets/mediacenter-radio-contenu-2026.webp 1056w" sizes="(max-width: 900px) 92vw, 640px"/></figure></div>
   <div class="dv-copy"><h3>Radio : les clichés envoyés</h3><p class="dv-kind">Radio &amp; bandelette</p><p class="dv-lead">Clichés classés par région (abdomen, bassin…) : 37 clichés en 9 catégories côté formateur.</p></div>
 </article>
 <article class="dv dv-solo" id="mc-bandelette" hidden>
-  <div class="dv-media"><figure class="dv-main"><img src="/assets/mediacenter-bandelette-contenu-2026.webp" alt="Media Center — bandelette urinaire et charte de couleurs" width="1600" height="1200" loading="lazy" decoding="async"/></figure></div>
+  <div class="dv-media"><figure class="dv-main"><img src="/assets/mediacenter-bandelette-contenu-2026.webp" alt="Media Center — bandelette urinaire et charte de couleurs" width="1600" height="1200" loading="lazy" decoding="async" srcset="/assets/v3/r/mediacenter-bandelette-contenu-2026-480.webp 480w, /assets/v3/r/mediacenter-bandelette-contenu-2026-800.webp 800w, /assets/mediacenter-bandelette-contenu-2026.webp 1056w" sizes="(max-width: 900px) 92vw, 640px"/></figure></div>
   <div class="dv-copy"><h3>Bandelette urinaire</h3><p class="dv-kind">Radio &amp; bandelette</p><p class="dv-lead">Les dix zones de la bandelette se comparent à la charte de couleurs, comme au chevet du patient.</p></div>
 </article>
 </div></div></div>
@@ -640,68 +632,146 @@
 <li><div class="ifc-info" style="--i:0"><span class="ifc-pg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span><span class="ifc-name">ECG : l'archive</span><span class="ifc-desc">Les 12 dérivations imprimées depuis l'appareil sont archivées et se rouvrent dans le panneau.</span></div></li>
 <li><div class="ifc-info" style="--i:1"><span class="ifc-pg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span><span class="ifc-name">Historique : le journal de séance</span><span class="ifc-desc">Chaque événement de l'appareil est consigné, pour le débriefing.</span></div></li>
 <li><div class="ifc-info" style="--i:2"><span class="ifc-pg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"/><line x1="8" y1="12" x2="16" y2="12"/></svg></span><span class="ifc-name">Liaison : l'état du lien</span><span class="ifc-desc">L'état de la liaison avec l'iPad du formateur (liaison locale, sans Internet).</span></div></li>
-</ul></div></div></div>
+</ul><div class="snap-ctl" hidden><button type="button" class="snap-b" data-dir="-1" aria-label="Précédent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="snap-b" data-dir="1" aria-label="Suivant"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div></div></div>
 </div></div>
 </div>
       </div>
       <p class="t-caption ifc-foot">Captures du panneau Media Center sur le DEFIGARD HD-7 (SCHILLER), sans iPad formateur connecté.</p>
-    </div>
+
   </div>
 </section>
 
-<!-- ACADEMY -->
-<section id="academy" class="hx-sec" aria-labelledby="acTitle" data-spy="academy">
-  <div class="hx-band"><h2 id="acTitle">ACADEMY</h2></div>
-  <div class="wrap-wide hx-body">
-    <p class="hx-lead sr">Quatre jeux. <br>Un seul geste : masser.</p>
-    <div class="hx-mosaic">
-      <figure class="hx-m-main sr"><img src="/assets/academy-hub.webp" alt="ACADEMY : le choix des quatre modes, Course RCP, Mission Solo, Fusée RCP et Corps &amp; RCP" width="1600" height="1200" loading="lazy" decoding="async"/></figure>
-      <figure class="sr sr-d1"><img src="/assets/academy-corps-rcp.webp" alt="Corps &amp; RCP en jeu : mannequin, cœur, poumons et circulation animés" width="1600" height="1200" loading="lazy" decoding="async"/></figure>
-      <figure class="sr sr-d2"><img src="/assets/academy-tableau-rcp.webp" alt="Tableau de bord RCP : jauges de profondeur, fréquence et relâchement, score et série parfaite" width="1600" height="1102" loading="lazy" decoding="async"/></figure>
+<!-- ACADEMY (ancre #academy) -->
+<section id="academy" class="sec t-gray" aria-labelledby="acTitle" data-spy="academy">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="eyebrow">ACADEMY</p>
+      <h2 class="h2" id="acTitle">Quatre jeux. <br>Un seul geste : masser.</h2>
     </div>
+    <div class="mosaic">
+      <figure class="m-main rv"><img src="/assets/academy-hub.webp" alt="ACADEMY : le choix des quatre modes, Course RCP, Mission Solo, Fusée RCP et Corps &amp; RCP" width="1600" height="1200" loading="lazy" decoding="async" srcset="/assets/v3/r/academy-hub-480.webp 480w, /assets/v3/r/academy-hub-800.webp 800w, /assets/v3/r/academy-hub-1200.webp 1200w, /assets/academy-hub.webp 1600w" sizes="(max-width: 760px) 92vw, 760px"/></figure>
+      <figure class="rv rv-1"><img src="/assets/academy-corps-rcp.webp" alt="Corps &amp; RCP en jeu : mannequin, cœur, poumons et circulation animés" width="1600" height="1200" loading="lazy" decoding="async" srcset="/assets/v3/r/academy-corps-rcp-480.webp 480w, /assets/v3/r/academy-corps-rcp-800.webp 800w, /assets/v3/r/academy-corps-rcp-1200.webp 1200w, /assets/academy-corps-rcp.webp 1600w" sizes="(max-width: 760px) 46vw, 380px"/></figure>
+      <figure class="rv rv-2"><img src="/assets/academy-tableau-rcp.webp" alt="Tableau de bord RCP : jauges de profondeur, fréquence et relâchement, score et série parfaite" width="1600" height="1102" loading="lazy" decoding="async" srcset="/assets/v3/r/academy-tableau-rcp-480.webp 480w, /assets/v3/r/academy-tableau-rcp-800.webp 800w, /assets/v3/r/academy-tableau-rcp-1200.webp 1200w, /assets/academy-tableau-rcp.webp 1600w" sizes="(max-width: 760px) 46vw, 380px"/></figure>
+    </div>
+    <ul class="games rv" aria-label="Les quatre jeux d'ACADEMY">
+      <li>Course RCP</li><li>Mission Solo</li><li>Fusée RCP</li><li>Corps &amp; RCP</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SUR LE TERRAIN : photos d'ambiance (images générées, voir la mention sous la galerie) -->
+<section id="terrain" class="sec t-dark" aria-labelledby="terrainTitle" data-spy="terrain">
+  <div class="wrap head rv">
+    <p class="eyebrow">Sur le terrain</p>
+    <h2 class="h2" id="terrainTitle">De la salle de cours à l'ambulance.</h2>
+  </div>
+  <ul class="snap photos" id="photos" tabindex="0" aria-label="Photos d'ambiance : formations et simulations">
+    <li><figure class="photo">
+      <img src="/assets/v3/formation-rcp-960.webp" srcset="/assets/v3/formation-rcp-960.webp 960w, /assets/v3/formation-rcp-1920.webp 1920w" sizes="(max-width: 700px) 82vw, 600px" width="1920" height="1086" alt="Trois stagiaires en tenue bleu marine s'entraînent au massage cardiaque sur un mannequin ; la formatrice suit la séance sur sa tablette" data-no-lightbox="true" loading="lazy" decoding="async"/>
+      <figcaption>Massage cardiaque, en équipe.</figcaption></figure></li>
+    <li><figure class="photo">
+      <img src="/assets/v3/ambulance-960.webp" srcset="/assets/v3/ambulance-960.webp 960w, /assets/v3/ambulance-1920.webp 1920w" sizes="(max-width: 700px) 82vw, 600px" width="1920" height="1086" alt="Une ambulancière consulte une tablette devant un mannequin installé sur un brancard, l'ambulance ouverte en arrière-plan" data-no-lightbox="true" loading="lazy" decoding="async"/>
+      <figcaption>À bord de l'ambulance.</figcaption></figure></li>
+    <li><figure class="photo">
+      <img src="/assets/v3/simlab-960.webp" srcset="/assets/v3/simlab-960.webp 960w, /assets/v3/simlab-1920.webp 1920w" sizes="(max-width: 700px) 82vw, 600px" width="1920" height="1086" alt="Une équipe soignante autour d'un mannequin patient en salle de simulation ; une formatrice tient une tablette" data-no-lightbox="true" loading="lazy" decoding="async"/>
+      <figcaption>En salle de simulation.</figcaption></figure></li>
+    <li><figure class="photo">
+      <img src="/assets/v3/formateur-classe-960.webp" srcset="/assets/v3/formateur-classe-960.webp 960w, /assets/v3/formateur-classe-1920.webp 1920w" sizes="(max-width: 700px) 82vw, 600px" width="1920" height="1086" alt="Une formatrice, tablette en main, face à un groupe de stagiaires attentifs dans une salle lumineuse" data-no-lightbox="true" loading="lazy" decoding="async"/>
+      <figcaption>Un formateur, toute la classe.</figcaption></figure></li>
+    <li><figure class="photo">
+      <img src="/assets/v3/tablette-mains-960.webp" srcset="/assets/v3/tablette-mains-960.webp 960w, /assets/v3/tablette-mains-1920.webp 1920w" sizes="(max-width: 700px) 82vw, 600px" width="1920" height="1086" alt="Des mains tiennent un iPad dans la pénombre ; un mannequin de secourisme est visible à l'arrière-plan" data-no-lightbox="true" loading="lazy" decoding="async"/>
+      <figcaption>Le scope entre les mains de l'élève.</figcaption></figure></li>
+    <li><figure class="photo">
+      <img src="/assets/v3/ambiance-tablette-960.webp" srcset="/assets/v3/ambiance-tablette-960.webp 960w, /assets/v3/ambiance-tablette-1920.webp 1920w" sizes="(max-width: 700px) 82vw, 600px" width="1920" height="1086" alt="Un iPad affichant un tracé ECG vert, posé sur une table dans une salle plongée dans la pénombre et éclairée de rouge" data-no-lightbox="true" loading="lazy" decoding="async"/>
+      <figcaption>Le scope, prêt à servir.</figcaption></figure></li>
+  </ul>
+  <div class="snap-ctl" data-snap-for="photos" hidden><button type="button" class="snap-b" data-dir="-1" aria-label="Précédent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="snap-b" data-dir="1" aria-label="Suivant"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div>
+  <div class="wrap">
+    <ul class="forwho rv">
+      <li>Sapeurs-pompiers et services de secours.</li>
+      <li>Paramédicaux et services préhospitaliers.</li>
+      <li>Secouristes, associations et centres de formation.</li>
+    </ul>
+    <p class="fine center photos-note">Images d'ambiance générées par IA, à titre d'illustration.</p>
   </div>
 </section>
 
 <!-- LES PACKS : VitalX Plus, VitalX Ultra, POD'S (ancres #packs, #pods) -->
-<section id="packs" class="hx-sec" aria-labelledby="packsTitle" data-spy="packs">
-  <div class="hx-band"><h2 id="packsTitle">Les packs</h2></div>
-  <div class="wrap-wide hx-body">
-    <ul class="hx-packs">
-      <li class="hx-pack sr">
-        <div class="hx-pic hx-pack-pic"><img src="/assets/pack-plus.webp" alt="VitalX Plus : moniteur iPad dans sa housse" width="960" height="646" loading="lazy" decoding="async" data-no-lightbox="true"/></div>
-        <div class="hx-pack-b">
-          <h3>VitalX Plus</h3>
+<section id="packs" class="sec t-light" aria-labelledby="packsTitle" data-spy="packs">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="eyebrow">Les packs</p>
+      <h2 class="h2" id="packsTitle">Choisissez votre scope.</h2>
+      <p class="lead">Les interfaces SCHILLER et WEINMANN sont incluses.</p>
+    </div>
+    <ul class="packs">
+      <li class="pack rv">
+        <div class="pack-pic"><img src="/assets/pack-plus.webp" width="960" height="646" alt="VitalX Plus : moniteur iPad dans sa housse" data-no-lightbox="true" loading="lazy" decoding="async"/></div>
+        <div class="pack-b">
+          <h3 class="h3">VitalX Plus</h3>
           <p>2 iPad 11" — moniteur + formateur</p>
-          <div class="hx-pack-links"><a href="/boutique.html#pack" class="hx-btn hx-btn-red hx-btn-sm">Boutique</a><a href="/fiche-technique.html" class="hx-link">Fiche technique</a></div>
+          <div class="pack-links"><a href="/boutique.html#pack" class="btn btn--sm">Boutique</a><a href="/fiche-technique.html" class="link">Fiche technique</a></div>
         </div>
       </li>
-      <li class="hx-pack sr sr-d1">
-        <div class="hx-pic hx-pack-pic"><img src="/assets/vitalxv2pro.webp" alt="Pack VitalX Ultra — moniteur iPad Air 13 pouces dans sa housse et tablette formateur" width="1536" height="1024" loading="lazy" decoding="async" data-no-lightbox="true"/></div>
-        <div class="hx-pack-b">
-          <h3>VitalX Ultra</h3>
+      <li class="pack rv rv-1">
+        <div class="pack-pic"><img src="/assets/vitalxv2pro.webp" width="1536" height="1024" alt="Pack VitalX Ultra — moniteur iPad Air 13 pouces dans sa housse et tablette formateur" data-no-lightbox="true" loading="lazy" decoding="async" srcset="/assets/v3/r/vitalxv2pro-480.webp 480w, /assets/v3/r/vitalxv2pro-800.webp 800w, /assets/v3/r/vitalxv2pro-1200.webp 1200w, /assets/vitalxv2pro.webp 1536w" sizes="(max-width: 900px) 80vw, 400px"/></div>
+        <div class="pack-b">
+          <h3 class="h3">VitalX Ultra</h3>
           <p>iPad Air 13" + iPad 11" formateur</p>
-          <div class="hx-pack-links"><a href="/boutique.html#pack" class="hx-btn hx-btn-red hx-btn-sm">Boutique</a><a href="/fiche-technique-ultimate.html" class="hx-link">Fiche technique</a></div>
+          <div class="pack-links"><a href="/boutique.html#pack" class="btn btn--sm">Boutique</a><a href="/fiche-technique-ultimate.html" class="link">Fiche technique</a></div>
         </div>
       </li>
-      <li class="hx-pack sr sr-d2" id="pods">
-        <div class="hx-pic hx-pack-pic"><img src="/assets/pack-pods.webp" alt="VitalX POD'S — boîtier iPhone, brassard, capteur SpO₂ et patch DSA" width="700" height="680" loading="lazy" decoding="async" data-no-lightbox="true"/></div>
-        <div class="hx-pack-b">
-          <h3>POD'S</h3>
+      <li class="pack rv rv-2" id="pods">
+        <div class="pack-pic"><img src="/assets/pack-pods.webp" width="700" height="680" alt="VitalX POD'S — boîtier iPhone, brassard, capteur SpO₂ et patch DSA" data-no-lightbox="true" loading="lazy" decoding="async"/></div>
+        <div class="pack-b">
+          <h3 class="h3">POD'S</h3>
           <p>Compact, propulsé par iPhone.</p>
-          <div class="hx-pack-links"><a href="/boutique.html#pods" class="hx-btn hx-btn-red hx-btn-sm">Boutique</a><a href="/vitalx-pods.html" class="hx-link">Fiche technique</a></div>
+          <div class="pack-links"><a href="/boutique.html#pods" class="btn btn--sm">Boutique</a><a href="/vitalx-pods.html" class="link">Fiche technique</a></div>
         </div>
       </li>
     </ul>
   </div>
 </section>
 
+<!-- LA CARTE DES REVENDEURS (ancre #revendeurs) : les points viennent de /revendeurs.json (liste vide pour l'instant) -->
+<section id="revendeurs" class="sec t-dark vxmap" aria-labelledby="mapTitle" data-spy="revendeurs">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="eyebrow">Revendeurs</p>
+      <h2 class="h2" id="mapTitle">Trouvez un revendeur.</h2>
+      <p class="lead">Une carte du monde, un point par revendeur VitalX.</p>
+    </div>
+    <div class="vxmap-stage rv rv-1" data-vxmap data-src="/revendeurs.json">
+      <svg class="vxmap-svg" viewBox="148 0 841 437.4" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false"></svg>
+      <div class="vxmap-fr" style="left:42.53%;top:17.737%"><i aria-hidden="true"></i><span class="vxmap-fr-label">Conçu &amp; assemblé en France</span></div>
+      <div class="vxmap-pins"></div>
+      <div class="vxmap-card" role="dialog" aria-modal="false" hidden></div>
+    </div>
+    <ul class="vxmap-legend rv" aria-hidden="false">
+      <li><i class="lg lg-fr" aria-hidden="true"></i>Conçu &amp; assemblé en France</li>
+      <li><i class="lg lg-dealer" aria-hidden="true"></i>Revendeur VitalX</li>
+    </ul>
+    <div class="vxmap-empty rv" hidden>
+      <p class="vxmap-empty-t">Le réseau de revendeurs se met en place.</p>
+      <p class="vxmap-empty-s">Les premiers points apparaîtront ici, avec leurs coordonnées.</p>
+    </div>
+    <ul class="vxmap-list" aria-label="Liste des revendeurs" hidden></ul>
+    <div class="vxmap-cta rv">
+      <p>Vous distribuez du matériel de formation aux métiers du secours ?</p>
+      <p class="cta"><a href="/affiliation.html" class="btn btn--light">Devenir revendeur</a></p>
+    </div>
+  </div>
+</section>
+
 <!-- NOUS CONTACTER : formulaire Netlify (ancres #contact, #devis) -->
 <span id="devis" class="anchor-alias"></span>
-<section id="contact" class="hx-sec" aria-labelledby="contactTitle" data-spy="contact">
-  <div class="hx-band"><h2 id="contactTitle">Nous contacter</h2></div>
-  <div class="wrap-narrow hx-body">
-    <p class="hx-lead sr">Un devis sous 24 h.</p>
-    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/merci.html" class="form sr sr-d1">
+<section id="contact" class="sec t-light" aria-labelledby="contactTitle" data-spy="contact">
+  <div class="wrap wrap--narrow">
+    <div class="head rv">
+      <p class="eyebrow">Nous contacter</p>
+      <h2 class="h2" id="contactTitle">Un devis sous 24 h.</h2>
+    </div>
+<form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/merci.html" class="form rv rv-1">
       <input type="hidden" name="form-name" value="contact">
       <p class="hidden" style="display:none"><label>Ne pas remplir : <input name="bot-field"/></label></p>
 
@@ -767,7 +837,7 @@
         <textarea class="finp" id="message" name="message" rows="5" required></textarea>
       </div>
 
-      <details class="hx-rgpd">
+      <details class="vx-rgpd">
         <summary>Protection de vos données</summary>
         <p class="rgpd">VitalX s'engage à protéger et à respecter votre vie privée. Nous utiliserons vos informations personnelles uniquement pour gérer votre compte et vous fournir les produits et services que vous nous avez demandés. Nous aimerions vous contacter ponctuellement au sujet de nos produits et services, ainsi que d'autres contenus susceptibles de vous intéresser. Si vous acceptez d'être contacté(e) à cette fin, veuillez cocher la case ci-dessous :</p>
         <p class="rgpd">Vous pouvez vous désabonner de ces communications à tout moment. Pour plus d'informations sur la procédure de désabonnement, nos pratiques en matière de confidentialité et notre engagement à protéger et respecter votre vie privée, veuillez consulter notre <a href="/politique-confidentialite.html">Politique de confidentialité</a>.</p>
@@ -782,100 +852,74 @@
 
       <div style="margin-top:24px"><button type="submit" class="btn">Envoyer</button></div>
     </form>
+
   </div>
 </section>
 
 </main>
 
-<!-- PIED DE PAGE -->
-<footer class="hx-foot">
-  <div class="tricolor" aria-hidden="true"></div>
-  <div class="hx-wrap">
-    <div class="hx-foot-top">
-      <a href="/" class="hx-foot-logo" aria-label="VitalX — accueil"><img src="/assets/logo-vitalx-white.svg" alt="VitalX" width="90" height="30" data-no-lightbox="true"/></a>
-      <nav class="hx-foot-cols" aria-label="Pied de page">
-        <div>
-          <h3>Société</h3>
-          <ul>
-            <li><a href="/qui-sommes-nous.html">Qui sommes-nous</a></li>
-            <li><a href="/affiliation.html">Affiliation</a></li>
-            <li><a href="/affiliation.html" class="hx-reco">Recommandez VitalX</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3>Informations</h3>
-          <ul>
-            <li><a href="/mentions-legales.html">Mentions légales</a></li>
-            <li><a href="/cgv.html">CGV</a></li>
-            <li><a href="/politique-confidentialite.html">Confidentialité</a></li>
-            <li><a href="/garantie.html">Garantie</a></li>
-            <li><a href="/formulaire_retractation.pdf" download>Rétractation</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3>Contact</h3>
-          <ul>
-            <li><a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a></li>
-          </ul>
-        </div>
-      </nav>
-    </div>
-    <div class="hx-legal"><p>Interfaces reproduites avec l'autorisation de leurs fabricants, à des fins de formation uniquement. Le simulateur VitalX est conçu et développé par VitalX ; il n'est ni fabriqué, ni distribué, ni approuvé comme dispositif médical par ces constructeurs. Marques citées : propriétés de leurs titulaires.</p></div>
-    <div class="hx-foot-bottom">
+<!-- PIED DE PAGE (commun à toutes les pages) -->
+<footer class="vx-foot">
+  <div class="vx-foot-in">
+    <p class="vx-foot-legal">Interfaces reproduites avec l'autorisation de leurs fabricants, à des fins de formation uniquement. Le simulateur VitalX est conçu et développé par VitalX ; il n'est ni fabriqué, ni distribué, ni approuvé comme dispositif médical par ces constructeurs. Marques citées : propriétés de leurs titulaires.</p>
+    <nav class="vx-foot-cols" aria-label="Pied de page">
+      <div>
+        <h2>Produits</h2>
+        <ul>
+          <li><a href="/#interfaces">Appareils</a></li>
+          <li><a href="/#formateur">Formateur</a></li>
+          <li><a href="/#mediacenter">Media Center</a></li>
+          <li><a href="/#academy">ACADEMY</a></li>
+          <li><a href="/boutique.html">Boutique</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Société</h2>
+        <ul>
+          <li><a href="/qui-sommes-nous.html">Qui sommes-nous</a></li>
+          <li><a href="/#revendeurs">Revendeurs</a></li>
+          <li><a href="/affiliation.html">Affiliation</a></li>
+          <li><a href="/affiliation.html" class="vx-reco">Recommandez VitalX</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Informations</h2>
+        <ul>
+          <li><a href="/mentions-legales.html">Mentions légales</a></li>
+          <li><a href="/cgv.html">CGV</a></li>
+          <li><a href="/politique-confidentialite.html">Confidentialité</a></li>
+          <li><a href="/garantie.html">Garantie</a></li>
+          <li><a href="/formulaire_retractation.pdf" download>Rétractation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a></li>
+          <li><a href="https://vitalxtrainer.app" target="_blank" rel="noopener">Mode Formateur (web)</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="vx-foot-bottom">
       <span>© <span id="year"></span> VitalX. Tous droits réservés.</span>
-      <span id="langSwitch" class="hx-lang" role="group" aria-label="Langue">
-        <button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">Français</button>
-        <button type="button" data-lang="en" title="English" aria-label="English">English</button>
-        <button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">Deutsch</button>
-        <button type="button" data-lang="es" title="Español" aria-label="Español">Español</button>
-      </span>
+      <span class="vx-fr"><i aria-hidden="true"></i>Conçu &amp; assemblé en France</span>
+      <span id="langSwitch" class="vx-lang" role="group" aria-label="Langue"><button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">Français</button><button type="button" data-lang="en" title="English" aria-label="English">English</button><button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">Deutsch</button><button type="button" data-lang="es" title="Español" aria-label="Español">Español</button></span>
     </div>
   </div>
 </footer>
 
-<!-- Visionneuse -->
-<div id="lightbox" class="lightbox" aria-hidden="true">
+<!-- Visionneuse d'images -->
+<div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Image agrandie">
   <img id="lightboxImg" alt=""/>
   <div id="lightboxCaption" class="lightbox-cap"></div>
-  <button id="lightboxClose" class="lightbox-close" aria-label="Fermer">✕</button>
+  <button id="lightboxClose" class="lightbox-close" type="button" aria-label="Fermer">✕</button>
 </div>
-
-<!-- SCRIPTS -->
-<script>
-// Galeries interfaces (miniatures → image principale)
-(function(){
-  document.querySelectorAll('[data-gal]').forEach(g=>{
-    const main=g.querySelector('[data-gal-main]'),cap=g.querySelector('[data-gal-cap]'),btns=g.querySelectorAll('.gal-thumbs button');
-    btns.forEach(b=>b.addEventListener('click',()=>{
-      btns.forEach(x=>x.classList.remove('is-active'));b.classList.add('is-active');
-      main.src=b.dataset.src;main.alt=b.dataset.cap||'';cap.textContent=b.dataset.cap||'';
-    }));
-  });
-})();
-
-// Apparition au défilement
-(function(){
-  const els=document.querySelectorAll('.sr');
-  if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('show'));return}
-  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
-  els.forEach(el=>io.observe(el));
-})();
-
-// Visionneuse
-(function(){
-  const ov=document.getElementById('lightbox'),im=document.getElementById('lightboxImg'),cp=document.getElementById('lightboxCaption'),cb=document.getElementById('lightboxClose');
-  const imgs=Array.from(document.querySelectorAll('main img')).filter(i=>!i.hasAttribute('data-no-lightbox')&&!i.closest('.cat')&&!i.closest('.gal-thumbs')&&!i.closest('.tile-half-grid'));
-  function op(s,a){im.src=s;im.alt=a||'';cp.textContent=a||'';ov.style.display='flex';document.body.style.overflow='hidden'}
-  function cl(){ov.style.display='none';document.body.style.overflow='';im.src='';cp.textContent=''}
-  imgs.forEach(i=>{i.style.cursor='zoom-in';i.addEventListener('click',()=>{if(i.closest('a'))return;op(i.currentSrc||i.src,i.alt)})});
-  ov.addEventListener('click',e=>{if(e.target===ov)cl()});
-  cb.addEventListener('click',cl);
-  document.addEventListener('keydown',e=>{if(e.key==='Escape')cl()});
-})();
-</script>
 <script src="/site-header.js" defer></script>
 <script src="/brands.js" defer></script>
+<script src="/vx-worldmap-data.js" defer></script>
+<script src="/vx-map.js" defer></script>
 <script src="/i18n-site.js" defer></script>
+<script src="/i18n-v3-index.js" defer></script>
 <script src="/i18n.js" defer></script>
 </body>
 </html>

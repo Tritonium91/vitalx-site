@@ -1,20 +1,16 @@
-<!DOCTYPE html>
-
+<!doctype html>
 <!--
-  fiche-technique-basique.html — VitalX
-  🆕 v2.0 — 19/08/2026 — Yann USSEGLIO
-     • ⚠️ Tous les prix supprimés (dont l'encart "Économisez 300 €") → bloc "Demander un devis"
-  🆕 08/10/2026 — Yann USSEGLIO : en-tête blanc collant, menu mobile et pied de page sombre COMMUNS à toutes les pages
-     (même balisage que l'accueil ; styles /site-header.css, script unique /site-header.js). Contenu de la page inchangé ; anciens styles de sélecteur de langue retirés.
+  fiche-technique-basique.html — VitalX — refonte « vitrine façon Apple » du 25/10/2026.
+  Fichier GÉNÉRÉ (gabarit commun : build/layout.py ; corps : build/pages/). Styles : /vx.css + /vx-fiche.css.
+  Textes en français : la traduction (EN / DE / ES) se fait à l'affichage (i18n.js, clé = texte français ; tables : i18n-fiches.js, i18n-v3.js).
 -->
-<html class="h-full scroll-smooth" lang="fr">
+<html lang="fr">
 <head>
 <meta charset="utf-8"/>
-<meta name="google-site-verification" content="ZLZ7OeVEVIpBnfLClCu3hTd3QEuCPHqIFuCaUgMzIJI"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>VitalX — Fiche technique</title>
+<meta name="google-site-verification" content="ZLZ7OeVEVIpBnfLClCu3hTd3QEuCPHqIFuCaUgMzIJI"/>
 <meta content="Fiche technique du pack VitalX — solution de simulation médicale pour la formation et l'urgence." name="description"/>
-<link rel="canonical" href="https://vitalx.org/fiche-technique-basique.html"/>
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1"/>
 <meta property="og:site_name" content="VitalX"/>
 <meta property="og:locale" content="fr_FR"/>
@@ -30,308 +26,292 @@
 <meta name="twitter:title" content="VitalX — Fiche technique"/>
 <meta name="twitter:description" content="Fiche technique du pack VitalX — solution de simulation médicale pour la formation et l'urgence."/>
 <meta name="twitter:image" content="https://vitalx.org/og-image.png"/>
+<link rel="canonical" href="https://vitalx.org/fiche-technique-basique.html"/>
 <script type="application/ld+json" data-seo>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"VitalX","item":"https://vitalx.org/"},{"@type":"ListItem","position":2,"name":"VitalX — Fiche technique","item":"https://vitalx.org/fiche-technique-basique.html"}]}</script>
-<link href="/favicon.ico" rel="icon"/>
-<script>
-    tailwind = window.tailwind || {};
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['SF Pro Display','SF Pro Text','Inter','system-ui','-apple-system','Segoe UI','Roboto','Helvetica Neue','Arial','sans-serif']
-          },
-          boxShadow: {
-            soft: '0 10px 30px rgba(0,0,0,0.12)',
-            glow: '0 20px 60px -20px rgba(59,130,246,.55)'
-          },
-          animation: {
-            'fade-up': 'fadeUp .7s ease both'
-          },
-          keyframes: {
-            fadeUp: { '0%':{opacity:0, transform:'translateY(14px)'}, '100%':{opacity:1, transform:'translateY(0)'} }
-          }
-        }
-      }
-    }
-  </script>
-<script src="https://cdn.tailwindcss.com"></script>
-<style>
-    :root { --bg-0:#070709; }
-    html, body { background: var(--bg-0); }
-    .ring-gradient{box-shadow:0 0 0 1px rgba(255,255,255,.06), inset 0 0 0 1px rgba(255,255,255,.05)}
-    .glass{background:rgba(18,18,24,.62);backdrop-filter:saturate(140%) blur(8px)}
-    .grad-bg{
-      background:
-        radial-gradient(900px 500px at 12% -10%, rgba(59,130,246,.22), transparent 60%),
-        radial-gradient(900px 500px at 88% 0%, rgba(236,72,153,.12), transparent 60%),
-        radial-gradient(900px 500px at 50% 110%, rgba(16,185,129,.10), transparent 60%),
-        linear-gradient(180deg, #07070a 0%, #0a0a10 100%);
-    }
-    .title-bar{
-      background: linear-gradient(90deg, #60a5fa, #ec4899, #f59e0b);
-      -webkit-background-clip:text; background-clip:text; color:transparent;
-    }
-    .divider-glow{ height:1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent); }
-    .price-text{
-      background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
-      -webkit-background-clip:text; background-clip:text; color:transparent;
-    }
-    .cta-anim{transition:transform .12s ease, box-shadow .15s ease, filter .15s ease}
-    .cta-anim:hover{filter:brightness(1.08)}
-    .cta-anim:active{transform:translateY(1px) scale(.99)}
-    .card-lift{transition:transform .25s ease, box-shadow .25s ease, filter .25s ease}
-    @media (hover:hover) and (pointer:fine){ .card-lift:hover{ transform: translateY(-4px); } }
-    .noise::before{
-      content:""; position:absolute; inset:0; pointer-events:none; opacity:.05;
-      background-image: radial-gradient(rgba(255,255,255,.6) 1px, transparent 1px);
-      background-size: 3px 3px;
-    }
-    .feat-item{transition:all .25s ease}
-    .feat-item:hover{background:rgba(255,255,255,.06);border-color:rgba(59,130,246,.35);transform:translateX(4px)}
-</style>
-<link rel="stylesheet" href="/site-header.css">
+<meta name="theme-color" content="#000000"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+<link rel="manifest" href="/site.webmanifest">
+<script>document.documentElement.className+=' js'</script>
+<link rel="stylesheet" href="/vx.css">
+<link rel="stylesheet" href="/vx-fiche.css">
 </head>
-<body class="min-h-full text-white grad-bg">
+<body>
 <a class="skip" href="#top">Aller au contenu</a>
 
-<!-- EN-TÊTE BLANC COLLANT -->
-<header class="gnav hx-head">
-  <div class="hx-head-in">
-    <a href="/" class="hx-logo" aria-label="VitalX — accueil"><img src="/assets/logo-vitalx.svg" alt="VitalX" width="90" height="30" data-no-lightbox="true"/></a>
-    <nav class="hx-nav" aria-label="Navigation principale">
-      <ul class="hx-links">
+<!-- BARRE DE NAVIGATION (commune à toutes les pages) -->
+<header class="gnav" id="gnav">
+  <div class="vx-nav-in">
+    <a href="/" class="vx-logo" aria-label="VitalX — accueil"><img src="/assets/logo-vitalx-white.svg" alt="VitalX" width="66" height="22" data-no-lightbox="true"/></a>
+    <nav class="vx-nav" aria-label="Navigation principale">
+      <ul class="vx-links">
         <li><a href="/#interfaces">Appareils</a></li>
         <li><a href="/#formateur">Formateur</a></li>
         <li><a href="/#mediacenter">Media Center</a></li>
         <li><a href="/#academy">ACADEMY</a></li>
         <li><a href="/boutique.html">Boutique</a></li>
+        <li><a href="/#revendeurs">Revendeurs</a></li>
         <li><a href="/#contact">Contact</a></li>
       </ul>
     </nav>
-    <div class="hx-tools">
-      <a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="hx-icon hx-hide-m" title="Mode Formateur (web)" aria-label="Mode Formateur (web)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></a>
-      <span class="hx-lang hx-hide-m" role="group" aria-label="Langue">
-        <button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">FR</button>
-        <button type="button" data-lang="en" title="English" aria-label="English">EN</button>
-        <button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">DE</button>
-        <button type="button" data-lang="es" title="Español" aria-label="Español">ES</button>
-      </span>
-      <button class="hx-burger" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
+    <div class="vx-tools">
+      <a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="vx-icon vx-hide-m" title="Mode Formateur (web)" aria-label="Mode Formateur (web)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></a>
+      <span class="vx-lang vx-hide-m" role="group" aria-label="Langue"><button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">FR</button><button type="button" data-lang="en" title="English" aria-label="English">EN</button><button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">DE</button><button type="button" data-lang="es" title="Español" aria-label="Español">ES</button></span>
+      <button class="vx-burger" id="menuBtn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
     </div>
   </div>
 </header>
-<nav id="mobileMenu" class="hx-menu" aria-label="Menu mobile">
+<nav id="mobileMenu" class="vx-menu" aria-label="Menu mobile">
   <a class="big" href="/#interfaces">Appareils</a>
   <a class="big" href="/#formateur">Formateur</a>
   <a class="big" href="/#mediacenter">Media Center</a>
   <a class="big" href="/#academy">ACADEMY</a>
   <a class="big" href="/boutique.html">Boutique</a>
+  <a class="big" href="/#revendeurs">Revendeurs</a>
   <a class="big" href="/#contact">Contact</a>
   <a class="small" href="https://vitalxtrainer.app" target="_blank" rel="noopener">Mode Formateur (web) ›</a>
-  <span class="hx-lang" role="group" aria-label="Langue">
-    <button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">FR</button>
-    <button type="button" data-lang="en" title="English" aria-label="English">EN</button>
-    <button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">DE</button>
-    <button type="button" data-lang="es" title="Español" aria-label="Español">ES</button>
-  </span>
+  <span class="vx-lang" role="group" aria-label="Langue"><button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">FR</button><button type="button" data-lang="en" title="English" aria-label="English">EN</button><button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">DE</button><button type="button" data-lang="es" title="Español" aria-label="Español">ES</button></span>
   <a class="small" href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a>
 </nav>
-<section class="relative overflow-hidden noise">
-<div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16 md:py-24 text-center animate-fade-up">
-<span class="inline-flex items-center gap-2 rounded-full bg-blue-500/10 ring-1 ring-blue-500/30 px-3 py-1 text-xs font-semibold text-blue-300 mb-5">
-<span class="h-2 w-2 rounded-full bg-blue-400 animate-pulse"></span>
-        Configuration essentielle
-      </span>
-<h1 class="text-4xl md:text-6xl font-extrabold tracking-tight">
-<span class="title-bar">VitalX</span>
-</h1>
-<p class="mt-5 text-zinc-300 text-base md:text-lg max-w-2xl mx-auto">
-        Solution de simulation paramédicale — configuration essentielle avec 1 iPad.
-      </p>
-<div class="mt-6 mx-auto max-w-lg divider-glow"></div>
-<div class="mt-6 flex flex-wrap items-center justify-center gap-2 text-xs text-zinc-400" data-i18n-html="">
-<span class="inline-flex items-center gap-1.5 rounded-full bg-white/5 ring-1 ring-white/10 px-3 py-1.5">🔒 Paiement sécurisé</span>
-<span class="inline-flex items-center gap-1.5 rounded-full bg-white/5 ring-1 ring-white/10 px-3 py-1.5">🚚 Livraison gratuite</span>
-<span class="inline-flex items-center gap-1.5 rounded-full bg-white/5 ring-1 ring-white/10 px-3 py-1.5">🇫🇷 Made in France</span>
-<span class="inline-flex items-center gap-1.5 rounded-full bg-white/5 ring-1 ring-white/10 px-3 py-1.5">♾️ Licence à vie</span>
+
+<!-- Fiche technique « VitalX » : sous-navigation collante · héros sombre · sections qui alternent sombre / clair.
+     Mêmes textes que la page d'origine ; styles dans /vx.css + /vx-fiche.css (aucun framework CSS externe). -->
+<div class="subnav">
+  <div class="subnav-in">
+    <a class="subnav-title" href="#top">VitalX</a>
+    <nav class="subnav-links" aria-label="Sections de la fiche">
+      <a href="#description">Description</a>
+      <a href="#contenu">Contenu</a>
+      <a href="#licence">Licence</a>
+      <a href="#caracteristiques">Caractéristiques</a>
+      <a href="#livraison">Livraison</a>
+    </nav>
+    <div class="subnav-right"><a href="/#contact" class="btn btn--sm">Demander un devis</a></div>
+  </div>
 </div>
-</div>
-</section>
-<main id="top" class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-20 space-y-8">
-<section class="card-lift glass ring-gradient rounded-3xl p-7 md:p-10 ring-2 ring-white/10">
-<div class="flex items-center gap-4 mb-5">
-<div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-blue-500/20 to-sky-500/10 ring-1 ring-blue-500/30 flex items-center justify-center text-2xl">📋</div>
-<h2 class="text-2xl md:text-3xl font-extrabold">Description générale</h2>
-</div>
-<div class="text-zinc-300 leading-relaxed space-y-4">
-<p data-i18n-html="">Le pack <strong class="text-blue-300">VitalX</strong> est la configuration essentielle du système de simulation paramédicale VitalX, <strong class="text-white">idéale si vous disposez déjà d'un iPad ou d'un iPhone</strong> pour servir de contrôleur formateur.</p>
-<p data-i18n-html="">Prêt à l'emploi, il regroupe le matériel essentiel pour un entraînement immersif et réaliste : <strong class="text-sky-300">ECG</strong>, <strong class="text-sky-300">SpO₂</strong>, <strong class="text-sky-300">PNI</strong>, <strong class="text-sky-300">ETCO₂</strong>, <strong class="text-sky-300">température</strong>...</p>
-</div>
-<div class="mt-6 relative rounded-2xl overflow-hidden p-5 ring-1 ring-blue-500/30 bg-gradient-to-br from-blue-500/10 to-sky-500/5">
-<div class="absolute top-3 right-3 text-3xl opacity-30">🎯</div>
-<div class="text-blue-300 font-bold text-sm uppercase tracking-wide mb-1">Parfait pour</div>
-<div class="text-zinc-300 text-sm leading-relaxed">Les formateurs qui possèdent déjà un iPad/iPhone et souhaitent une solution économique sans compromis sur la qualité.</div>
-</div>
-</section>
-<section class="card-lift glass ring-gradient rounded-3xl p-7 md:p-10 ring-2 ring-white/10">
-<div class="flex items-center gap-4 mb-6">
-<div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-blue-500/20 to-sky-500/10 ring-1 ring-blue-500/30 flex items-center justify-center text-2xl">📦</div>
-<h2 class="text-2xl md:text-3xl font-extrabold">Contenu du pack</h2>
-</div>
-<ul class="grid gap-3">
-<li class="feat-item flex items-start gap-4 p-4 rounded-2xl bg-white/5 ring-1 ring-white/10">
-<span class="shrink-0 h-7 w-7 rounded-lg bg-gradient-to-br from-blue-500 to-sky-400 text-white font-bold flex items-center justify-center text-sm">✓</span>
-<div><strong class="text-white">1 iPad A16 (11")</strong> — Moniteur prêt à l'emploi<br/><span class="text-sm text-zinc-400">Autonomie 8h • Recharge USB-C</span></div>
-</li>
-<li class="feat-item flex items-start gap-4 p-4 rounded-2xl bg-white/5 ring-1 ring-white/10">
-<span class="shrink-0 h-7 w-7 rounded-lg bg-gradient-to-br from-blue-500 to-sky-400 text-white font-bold flex items-center justify-center text-sm">✓</span>
-<div><strong class="text-white">Boîtier VitalX 3D</strong><br/><span class="text-sm text-zinc-400">Impression haute résistance • Support ergonomique</span></div>
-</li>
-<li class="feat-item flex items-start gap-4 p-4 rounded-2xl bg-white/5 ring-1 ring-white/10">
-<span class="shrink-0 h-7 w-7 rounded-lg bg-gradient-to-br from-blue-500 to-sky-400 text-white font-bold flex items-center justify-center text-sm">✓</span>
-<div><strong class="text-white">Housse Bagheera</strong><br/><span class="text-sm text-zinc-400">Transport rigide • Protection optimisée</span></div>
-</li>
-<li class="feat-item flex items-start gap-4 p-4 rounded-2xl bg-white/5 ring-1 ring-white/10">
-<span class="shrink-0 h-7 w-7 rounded-lg bg-gradient-to-br from-blue-500 to-sky-400 text-white font-bold flex items-center justify-center text-sm">✓</span>
-<div class="flex-1">
-<strong class="text-white">Accessoires complets</strong>
-<ul class="mt-3 grid sm:grid-cols-2 gap-2 text-sm text-zinc-300">
-<li class="flex items-center gap-2" data-i18n-html=""><span class="text-blue-400">→</span>Brassard PNI adulte &amp; pédiatrique</li>
-<li class="flex items-center gap-2" data-i18n-html=""><span class="text-blue-400">→</span>Capteur SpO₂</li>
-<li class="flex items-center gap-2" data-i18n-html=""><span class="text-blue-400">→</span>Câble ECG 12 dérivations</li>
-<li class="flex items-center gap-2" data-i18n-html=""><span class="text-blue-400">→</span>Capteur ETCO₂</li>
-<li class="flex items-center gap-2" data-i18n-html=""><span class="text-blue-400">→</span>Sonde température</li>
-<li class="flex items-center gap-2" data-i18n-html=""><span class="text-blue-400">→</span>30 patchs ECG</li>
-<li class="flex items-center gap-2" data-i18n-html=""><span class="text-blue-400">→</span>Patchs DSA adulte &amp; enfant</li>
-<li class="flex items-center gap-2" data-i18n-html=""><span class="text-blue-400">→</span>2 verres trempés iPad</li>
-</ul>
-</div>
-</li>
-</ul>
-<div class="mt-7 rounded-2xl overflow-hidden ring-1 ring-white/10 bg-zinc-900/40 p-3">
-<img alt="Pack VitalX présentation" class="w-full h-auto object-contain rounded-xl" loading="lazy" src="/assets/vitalxshow13.png"/>
-</div>
-</section>
-<section class="card-lift glass ring-gradient rounded-3xl p-7 md:p-10 ring-2 ring-white/10">
-<div class="flex items-center gap-4 mb-5">
-<div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-blue-500/20 to-sky-500/10 ring-1 ring-blue-500/30 flex items-center justify-center text-2xl">💻</div>
-<h2 class="text-2xl md:text-3xl font-extrabold">Licence &amp; logiciel</h2>
-</div>
-<div class="text-zinc-300 leading-relaxed space-y-4">
-<p data-i18n-html=""><strong class="text-blue-300">Licence VitalX incluse à vie</strong> — Activation sous 48h • Accès complet à tous les modules • Mises à jour et support technique inclus.</p>
-<p data-i18n-html="">Fonctionne en <strong class="text-white">Wi-Fi ou 5G</strong> (modem via smartphone) • Synchronisation des sons, alarmes et affichages en temps réel.</p>
-</div>
-</section>
-<section class="card-lift glass ring-gradient rounded-3xl p-7 md:p-10 ring-2 ring-white/10">
-<div class="flex items-center gap-4 mb-6">
-<div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-blue-500/20 to-sky-500/10 ring-1 ring-blue-500/30 flex items-center justify-center text-2xl">⚙️</div>
-<h2 class="text-2xl md:text-3xl font-extrabold">Caractéristiques techniques</h2>
-</div>
-<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-<div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-5 text-center card-lift">
-<div class="text-2xl md:text-3xl font-extrabold price-text">⚡ 8h</div>
-<div class="text-xs text-zinc-400 mt-1 font-medium">Autonomie</div>
-</div>
-<div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-5 text-center card-lift">
-<div class="text-2xl md:text-3xl font-extrabold price-text">3.5 kg</div>
-<div class="text-xs text-zinc-400 mt-1 font-medium">Poids total</div>
-</div>
-<div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-5 text-center card-lift">
-<div class="text-2xl md:text-3xl font-extrabold price-text">iOS 18+</div>
-<div class="text-xs text-zinc-400 mt-1 font-medium">Compatibilité</div>
-</div>
-<div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-5 text-center card-lift">
-<div class="text-2xl md:text-3xl font-extrabold">🇫🇷</div>
-<div class="text-xs text-zinc-400 mt-1 font-medium">Made in France</div>
-</div>
-</div>
-<ul class="grid gap-2.5 text-sm">
-<li class="feat-item flex items-start gap-3 p-3 rounded-xl bg-white/5 ring-1 ring-white/10" data-i18n-html=""><span class="text-blue-400 font-bold">✓</span>Alimentation : <strong class="text-white">USB-C 20 W</strong></li>
-<li class="feat-item flex items-start gap-3 p-3 rounded-xl bg-white/5 ring-1 ring-white/10" data-i18n-html=""><span class="text-blue-400 font-bold">✓</span>Dimensions housse : <strong class="text-white">47.5 × 23.5 × 18 cm</strong></li>
-<li class="feat-item flex items-start gap-3 p-3 rounded-xl bg-white/5 ring-1 ring-white/10" data-i18n-html=""><span class="text-blue-400 font-bold">✓</span>Matériaux : <strong class="text-white">composite technique haute résistance</strong></li>
-<li class="feat-item flex items-start gap-3 p-3 rounded-xl bg-white/5 ring-1 ring-white/10" data-i18n-html=""><span class="text-blue-400 font-bold">✓</span>Langues : <strong class="text-white">Français</strong></li>
-<li class="feat-item flex items-start gap-3 p-3 rounded-xl bg-white/5 ring-1 ring-white/10" data-i18n-html=""><span class="text-blue-400 font-bold">✓</span>Garantie : <strong class="text-white">10 ans boîtier &amp; housse</strong> — iPad couverts par Apple</li>
-</ul>
-</section>
-<!-- 🆕 Bloc devis (remplace le bloc prix + encart économie) -->
-<section class="card-lift relative rounded-3xl p-8 md:p-12 text-center overflow-hidden ring-2 ring-blue-500/50 glass shadow-glow">
-<div class="absolute -top-20 -right-20 h-56 w-56 rounded-full bg-gradient-to-br from-blue-500/30 via-sky-500/30 to-indigo-500/30 blur-3xl pointer-events-none"></div>
-<div class="absolute -bottom-20 -left-20 h-56 w-56 rounded-full bg-gradient-to-br from-pink-500/20 via-fuchsia-500/20 to-amber-400/20 blur-3xl pointer-events-none"></div>
-<div class="relative">
-<div class="inline-flex items-center gap-2 rounded-full bg-blue-500/15 ring-1 ring-blue-500/40 px-3 py-1 text-[11px] font-bold text-blue-300 uppercase tracking-widest">📝 Tarif sur devis</div>
-<div class="mt-4 text-4xl md:text-5xl font-extrabold price-text leading-tight">Un devis sous 24 h</div>
-<p class="mt-4 text-sm text-zinc-400 max-w-lg mx-auto">Le pack VitalX est la configuration la plus accessible : parfaite si vous avez déjà un iPad pour le contrôle formateur. Dites-nous votre besoin, on chiffre.</p>
-<a class="mt-8 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 via-blue-500 to-sky-400 text-white px-7 py-4 font-extrabold shadow-glow hover:brightness-110 cta-anim" href="/#contact">
-          📝 Demander un devis
-        </a>
-</div>
-</section>
-<section class="card-lift glass ring-gradient rounded-3xl p-7 md:p-10 ring-2 ring-white/10">
-<div class="flex items-center gap-4 mb-6">
-<div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-blue-500/20 to-sky-500/10 ring-1 ring-blue-500/30 flex items-center justify-center text-2xl">🚚</div>
-<h2 class="text-2xl md:text-3xl font-extrabold">Livraison &amp; support</h2>
-</div>
-<ul class="grid gap-3">
-<li class="feat-item flex items-start gap-4 p-4 rounded-2xl bg-white/5 ring-1 ring-white/10">
-<span class="shrink-0 h-7 w-7 rounded-lg bg-gradient-to-br from-blue-500 to-sky-400 text-white font-bold flex items-center justify-center text-sm">✓</span>
-<div><strong class="text-white">Livraison gratuite</strong><br/><span class="text-sm text-zinc-400">Sous 15 à 30 jours ouvrés</span></div>
-</li>
-<li class="feat-item flex items-start gap-4 p-4 rounded-2xl bg-white/5 ring-1 ring-white/10">
-<span class="shrink-0 h-7 w-7 rounded-lg bg-gradient-to-br from-blue-500 to-sky-400 text-white font-bold flex items-center justify-center text-sm">✓</span>
-<div><strong class="text-white">Assistance e-mail</strong><br/><span class="text-sm text-zinc-400">Réponse sous 24h</span></div>
-</li>
-<li class="feat-item flex items-start gap-4 p-4 rounded-2xl bg-white/5 ring-1 ring-white/10">
-<span class="shrink-0 h-7 w-7 rounded-lg bg-gradient-to-br from-blue-500 to-sky-400 text-white font-bold flex items-center justify-center text-sm">✓</span>
-<div><strong class="text-white">Support technique</strong><br/><span class="text-sm text-zinc-400">Inclus pendant toute la durée de la licence</span></div>
-</li>
-</ul>
-</section>
-</main>
-<!-- PIED DE PAGE -->
-<footer class="hx-foot">
-  <div class="tricolor" aria-hidden="true"></div>
-  <div class="hx-wrap">
-    <div class="hx-foot-top">
-      <a href="/" class="hx-foot-logo" aria-label="VitalX — accueil"><img src="/assets/logo-vitalx-white.svg" alt="VitalX" width="90" height="30" data-no-lightbox="true"/></a>
-      <nav class="hx-foot-cols" aria-label="Pied de page">
-        <div>
-          <h3>Société</h3>
-          <ul>
-            <li><a href="/qui-sommes-nous.html">Qui sommes-nous</a></li>
-            <li><a href="/affiliation.html">Affiliation</a></li>
-            <li><a href="/affiliation.html" class="hx-reco">Recommandez VitalX</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3>Informations</h3>
-          <ul>
-            <li><a href="/mentions-legales.html">Mentions légales</a></li>
-            <li><a href="/cgv.html">CGV</a></li>
-            <li><a href="/politique-confidentialite.html">Confidentialité</a></li>
-            <li><a href="/garantie.html">Garantie</a></li>
-            <li><a href="/formulaire_retractation.pdf" download>Rétractation</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3>Contact</h3>
-          <ul>
-            <li><a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a></li>
-          </ul>
-        </div>
-      </nav>
+
+<main id="top">
+
+<!-- HÉROS : pastille, titre, chapeau, pastilles de confiance, grand visuel produit -->
+<section class="pagehero fx-hero t-dark pagehero--glow" aria-labelledby="ficheTitle">
+  <div class="wrap">
+    <p class="pill fx-badge rv"><i aria-hidden="true"></i>Configuration essentielle</p>
+    <h1 class="h1 rv rv-1" id="ficheTitle">VitalX</h1>
+    <p class="lead rv rv-2">Solution de simulation paramédicale — configuration essentielle avec 1 iPad.</p>
+    <ul class="fx-trust rv rv-3">
+      <li class="pill">🔒 Paiement sécurisé</li>
+      <li class="pill">🚚 Livraison gratuite</li>
+      <li class="pill">🇫🇷 Made in France</li>
+      <li class="pill">♾️ Licence à vie</li>
+    </ul>
+    <div class="fx-stage">
+      <img src="/assets/v3/fiche-pack-hero.webp" width="1600" height="900" alt="VitalX : moniteur iPad dans sa housse" fetchpriority="high" decoding="async" srcset="/assets/v3/r/fiche-pack-hero-480.webp 480w, /assets/v3/r/fiche-pack-hero-800.webp 800w, /assets/v3/r/fiche-pack-hero-1200.webp 1200w, /assets/v3/fiche-pack-hero.webp 1600w" sizes="(max-width: 700px) 92vw, 940px"/>
     </div>
-    <div class="hx-legal"><p>Interfaces reproduites avec l'autorisation de leurs fabricants, à des fins de formation uniquement. Le simulateur VitalX est conçu et développé par VitalX ; il n'est ni fabriqué, ni distribué, ni approuvé comme dispositif médical par ces constructeurs. Marques citées : propriétés de leurs titulaires.</p></div>
-    <div class="hx-foot-bottom">
+  </div>
+</section>
+
+<!-- DESCRIPTION GÉNÉRALE -->
+<section id="description" class="sec fx-sec t-light" aria-labelledby="descTitle">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="icon-sq" aria-hidden="true"><svg class="fx-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/><path d="M10 13h6M10 17h6"/></svg></span>
+      <h2 class="h2" id="descTitle">Description générale</h2>
+    </div>
+    <div class="fx-prose rv">
+      <p data-i18n-html>Le pack <strong>VitalX</strong> est la configuration essentielle du système de simulation paramédicale VitalX, <strong>idéale si vous disposez déjà d'un iPad ou d'un iPhone</strong> pour servir de contrôleur formateur.</p>
+      <p data-i18n-html>Prêt à l'emploi, il regroupe le matériel essentiel pour un entraînement immersif et réaliste : <strong>ECG</strong>, <strong>SpO₂</strong>, <strong>PNI</strong>, <strong>ETCO₂</strong>, <strong>température</strong>...</p>
+    </div>
+    <div class="fx-note rv">
+      <span class="icon-sq" aria-hidden="true"><svg class="fx-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></span>
+      <div><p class="fx-note-l">Parfait pour</p>
+      <p class="fx-note-t">Les formateurs qui possèdent déjà un iPad/iPhone et souhaitent une solution économique sans compromis sur la qualité.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENU DU PACK -->
+<section id="contenu" class="sec fx-sec t-gray" aria-labelledby="packTitle">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="icon-sq" aria-hidden="true"><svg class="fx-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5l8 4.5 8-4.5"/><path d="M12 12v9"/></svg></span>
+      <h2 class="h2" id="packTitle">Contenu du pack</h2>
+    </div>
+    <ul class="fx-pack">
+      <li class="fx-item rv" id="ipadLine"><span class="fx-tick" aria-hidden="true"></span>
+        <div><h3 class="fx-t">1 iPad A16 (11") <span>— Moniteur prêt à l'emploi</span></h3><p class="fx-s">Autonomie 8h • Recharge USB-C</p></div></li>
+      <li class="fx-item rv rv-1"><span class="fx-tick" aria-hidden="true"></span>
+        <div><h3 class="fx-t">Boîtier VitalX 3D</h3><p class="fx-s">Impression haute résistance • Support ergonomique</p></div></li>
+      <li class="fx-item rv rv-2"><span class="fx-tick" aria-hidden="true"></span>
+        <div><h3 class="fx-t">Housse Bagheera</h3><p class="fx-s">Transport rigide • Protection optimisée</p></div></li>
+      <li class="fx-item fx-item--wide rv"><span class="fx-tick" aria-hidden="true"></span>
+        <div class="fx-body"><h3 class="fx-t">Accessoires complets</h3>
+          <ul class="fx-acc">
+            <li>Brassard PNI adulte &amp; pédiatrique</li>
+            <li>Capteur SpO₂</li>
+            <li>Câble ECG 12 dérivations</li>
+            <li>Capteur ETCO₂</li>
+            <li>Sonde température</li>
+            <li>30 patchs ECG</li>
+            <li>Patchs DSA adulte &amp; enfant</li>
+            <li>2 verres trempés iPad</li>
+          </ul></div></li>
+    </ul>
+    <figure class="fx-fig rv"><img src="/assets/v3/fiche-basique-contenu.webp" width="2400" height="1386" alt="Infographie du pack VitalX : l'iPad moniteur dans sa housse Bagheera, le chargeur USB-C, la connexion Wi-Fi et les accessoires (SpO₂, PNI, ETCO₂, ECG 12D, patchs DSA, température)" loading="lazy" decoding="async" srcset="/assets/v3/r/fiche-basique-contenu-480.webp 480w, /assets/v3/r/fiche-basique-contenu-800.webp 800w, /assets/v3/r/fiche-basique-contenu-1200.webp 1200w, /assets/v3/fiche-basique-contenu.webp 2400w" sizes="(max-width: 700px) 92vw, 1100px"/></figure>
+  </div>
+</section>
+
+<!-- LICENCE & LOGICIEL -->
+<section id="licence" class="sec fx-sec t-dark" aria-labelledby="licTitle">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="icon-sq" aria-hidden="true"><svg class="fx-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="5" width="16" height="11" rx="1.6"/><path d="M2.5 19.5h19"/></svg></span>
+      <h2 class="h2" id="licTitle">Licence &amp; logiciel</h2>
+    </div>
+    <div class="grid g2 fx-lic">
+      <article class="card card--pad rv">
+        <h3 class="fx-lic-t">Licence VitalX incluse à vie</h3>
+        <ul class="checks">
+          <li>Activation sous 48h</li>
+          <li>Accès complet à tous les modules</li>
+          <li>Mises à jour et support technique inclus</li>
+        </ul>
+      </article>
+      <article class="card card--pad rv rv-1">
+        <h3 class="fx-lic-t" data-i18n-html>Fonctionne en <strong>Wi-Fi ou 5G</strong> (modem via smartphone)</h3>
+        <ul class="checks">
+          <li>Synchronisation des sons, alarmes et affichages en temps réel</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CARACTÉRISTIQUES TECHNIQUES : quatre tuiles chiffrées + liste -->
+<section id="caracteristiques" class="sec fx-sec t-light" aria-labelledby="techTitle">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="icon-sq" aria-hidden="true"><svg class="fx-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg></span>
+      <h2 class="h2" id="techTitle">Caractéristiques techniques</h2>
+    </div>
+    <ul class="stats stats--cards rv">
+      <li class="stat"><b><svg class="fx-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13 2.5L5.5 13H11l-1 8.5L18.5 11H13z"/></svg>8h</b><span>Autonomie</span></li>
+      <li class="stat"><b>3.5 kg</b><span>Poids total</span></li>
+      <li class="stat"><b>iOS 18+</b><span>Compatibilité</span></li>
+      <li class="stat"><b><i class="fx-flag" aria-hidden="true"></i></b><span>Made in France</span></li>
+    </ul>
+    <ul class="fx-rows rv">
+      <li data-i18n-html>Alimentation : <strong>USB-C 20 W</strong></li>
+      <li data-i18n-html>Dimensions housse : <strong>47.5 × 23.5 × 18 cm</strong></li>
+      <li data-i18n-html>Matériaux : <strong>composite technique haute résistance</strong></li>
+      <li data-i18n-html>Langues : <strong>Français</strong></li>
+      <li data-i18n-html>Garantie : <strong>10 ans boîtier &amp; housse</strong> — iPad couverts par Apple</li>
+    </ul>
+  </div>
+</section>
+
+<!-- TARIF SUR DEVIS : grand encart sombre -->
+<section id="devis" class="sec fx-sec t-gray" aria-labelledby="devisTitle">
+  <div class="wrap">
+    <div class="fx-devis t-dark rv">
+      <p class="fx-devis-tag">📝 Tarif sur devis</p>
+      <h2 class="h2" id="devisTitle">Un devis sous 24 h</h2>
+      <p class="fx-devis-p">Le pack VitalX est la configuration la plus accessible : parfaite si vous avez déjà un iPad pour le contrôle formateur. Dites-nous votre besoin, on chiffre.</p>
+      <p class="cta"><a class="btn" href="/#contact">📝 Demander un devis</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- LIVRAISON & SUPPORT -->
+<section id="livraison" class="sec fx-sec t-light" aria-labelledby="shipTitle">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="icon-sq" aria-hidden="true"><svg class="fx-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2.5 6.5h11v10h-11zM13.5 10h4l3 3v3.5h-7z"/><circle cx="7" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></svg></span>
+      <h2 class="h2" id="shipTitle">Livraison &amp; support</h2>
+    </div>
+    <ul class="grid g3 fx-ship">
+      <li class="card card--pad fx-card rv"><span class="icon-sq" aria-hidden="true"><svg class="fx-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2.5 6.5h11v10h-11zM13.5 10h4l3 3v3.5h-7z"/><circle cx="7" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></svg></span><h3>Livraison gratuite</h3><p>Sous 15 à 30 jours ouvrés</p></li>
+      <li class="card card--pad fx-card rv rv-1"><span class="icon-sq" aria-hidden="true"><svg class="fx-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></svg></span><h3>Assistance e-mail</h3><p>Réponse sous 24h</p></li>
+      <li class="card card--pad fx-card rv rv-2"><span class="icon-sq" aria-hidden="true"><svg class="fx-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.6"/><path d="M5.6 5.6l3.9 3.9M14.5 14.5l3.9 3.9M18.4 5.6l-3.9 3.9M9.5 14.5l-3.9 3.9"/></svg></span><h3>Support technique</h3><p>Inclus pendant toute la durée de la licence</p></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<script>
+/* Sous-navigation : met en évidence le lien de la section affichée au milieu de l'écran (aucun lien sur le héros ni sur une section sans lien) ; sans effet si IntersectionObserver est absent */
+(function () {
+  var links = [].slice.call(document.querySelectorAll('.subnav-links a[href^="#"]'));
+  if (!links.length || !('IntersectionObserver' in window)) return;
+  var byId = {};
+  links.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      links.forEach(function (a) { a.removeAttribute('aria-current'); });
+      var a = byId[e.target.id];
+      if (a) a.setAttribute('aria-current', 'true');
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  [].slice.call(document.querySelectorAll('main > section')).forEach(function (s) { io.observe(s); });
+})();
+</script>
+
+<!-- PIED DE PAGE (commun à toutes les pages) -->
+<footer class="vx-foot">
+  <div class="vx-foot-in">
+    <p class="vx-foot-legal">Interfaces reproduites avec l'autorisation de leurs fabricants, à des fins de formation uniquement. Le simulateur VitalX est conçu et développé par VitalX ; il n'est ni fabriqué, ni distribué, ni approuvé comme dispositif médical par ces constructeurs. Marques citées : propriétés de leurs titulaires.</p>
+    <nav class="vx-foot-cols" aria-label="Pied de page">
+      <div>
+        <h2>Produits</h2>
+        <ul>
+          <li><a href="/#interfaces">Appareils</a></li>
+          <li><a href="/#formateur">Formateur</a></li>
+          <li><a href="/#mediacenter">Media Center</a></li>
+          <li><a href="/#academy">ACADEMY</a></li>
+          <li><a href="/boutique.html">Boutique</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Société</h2>
+        <ul>
+          <li><a href="/qui-sommes-nous.html">Qui sommes-nous</a></li>
+          <li><a href="/#revendeurs">Revendeurs</a></li>
+          <li><a href="/affiliation.html">Affiliation</a></li>
+          <li><a href="/affiliation.html" class="vx-reco">Recommandez VitalX</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Informations</h2>
+        <ul>
+          <li><a href="/mentions-legales.html">Mentions légales</a></li>
+          <li><a href="/cgv.html">CGV</a></li>
+          <li><a href="/politique-confidentialite.html">Confidentialité</a></li>
+          <li><a href="/garantie.html">Garantie</a></li>
+          <li><a href="/formulaire_retractation.pdf" download>Rétractation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a></li>
+          <li><a href="https://vitalxtrainer.app" target="_blank" rel="noopener">Mode Formateur (web)</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="vx-foot-bottom">
       <span>© <span id="year"></span> VitalX. Tous droits réservés.</span>
-      <span id="langSwitch" class="hx-lang" role="group" aria-label="Langue">
-        <button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">Français</button>
-        <button type="button" data-lang="en" title="English" aria-label="English">English</button>
-        <button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">Deutsch</button>
-        <button type="button" data-lang="es" title="Español" aria-label="Español">Español</button>
-      </span>
+      <span class="vx-fr"><i aria-hidden="true"></i>Conçu &amp; assemblé en France</span>
+      <span id="langSwitch" class="vx-lang" role="group" aria-label="Langue"><button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">Français</button><button type="button" data-lang="en" title="English" aria-label="English">English</button><button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">Deutsch</button><button type="button" data-lang="es" title="Español" aria-label="Español">Español</button></span>
     </div>
   </div>
 </footer>
+
 <script src="/site-header.js" defer></script>
-<script defer="" src="/i18n-fiches.js"></script><script defer="" src="/i18n.js"></script></body>
+<script src="/i18n-fiches.js" defer></script>
+<script src="/i18n-v3-fiche-technique-basique.js" defer></script>
+<script src="/i18n.js" defer></script>
+</body>
 </html>

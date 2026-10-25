@@ -1,21 +1,16 @@
-<!DOCTYPE html>
-
+<!doctype html>
 <!--
-  politique-confidentialite.html — VitalX
-  🆕 v2.0 — 19/08/2026 — Yann USSEGLIO
-     • Refonte au thème tricolore de l'index
-     • ⚠️ Formulaire de contact enrichi (entreprise, téléphone, pays) → section 1 mise à jour
-  🆕 08/10/2026 — Yann USSEGLIO : en-tête blanc collant, menu mobile et pied de page sombre COMMUNS à toutes les pages
-     (même balisage que l'accueil ; styles /site-header.css, script unique /site-header.js). Contenu de la page inchangé ; petits écrans (320–520 px) : liens et mots longs des puces à la ligne, grille sans largeur minimale forcée (plus de texte coupé à droite) ; anciens styles d'en-tête / pied de page / langue retirés.
+  politique-confidentialite.html — VitalX — refonte « vitrine façon Apple » du 25/10/2026.
+  Fichier GÉNÉRÉ (gabarit commun : build/layout.py ; corps : build/pages/). Styles : /vx.css + /vx-legal.css.
+  Textes en français : la traduction (EN / DE / ES) se fait à l'affichage (i18n.js, clé = texte français ; tables : i18n-legal.js, i18n-v3.js).
 -->
 <html lang="fr">
 <head>
 <meta charset="utf-8"/>
-<meta name="google-site-verification" content="ZLZ7OeVEVIpBnfLClCu3hTd3QEuCPHqIFuCaUgMzIJI"/>
-<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Politique de confidentialité — VitalX</title>
+<meta name="google-site-verification" content="ZLZ7OeVEVIpBnfLClCu3hTd3QEuCPHqIFuCaUgMzIJI"/>
 <meta content="Politique de confidentialité de VitalX : données collectées, usage, durée de conservation, droits RGPD." name="description"/>
-<link rel="canonical" href="https://vitalx.org/politique-confidentialite.html"/>
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1"/>
 <meta property="og:site_name" content="VitalX"/>
 <meta property="og:locale" content="fr_FR"/>
@@ -31,174 +26,66 @@
 <meta name="twitter:title" content="Politique de confidentialité — VitalX"/>
 <meta name="twitter:description" content="Politique de confidentialité de VitalX : données collectées, usage, durée de conservation, droits RGPD."/>
 <meta name="twitter:image" content="https://vitalx.org/og-image.png"/>
+<link rel="canonical" href="https://vitalx.org/politique-confidentialite.html"/>
 <script type="application/ld+json" data-seo>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"VitalX","item":"https://vitalx.org/"},{"@type":"ListItem","position":2,"name":"Politique de confidentialité","item":"https://vitalx.org/politique-confidentialite.html"}]}</script>
-<meta content="#ffffff" name="theme-color"/>
-<link href="/favicon.ico" rel="icon" sizes="any"/>
-<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
-<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
-<style>
-*{-webkit-font-smoothing:antialiased;box-sizing:border-box}
-html,body{margin:0;padding:0;background:#f4f6f9;color:#0c1828;overflow-x:clip;max-width:100vw;line-height:1.7;
-  font-family:'Inter','Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,'Helvetica Neue',Arial,sans-serif}
-::selection{background:#0046b8;color:#fff}
-
-:root{
-  --fr-blue:#0046b8;--fr-blue-dark:#0a2240;--fr-blue-deep:#06203f;
-  --fr-red:#e1000f;--fr-red-dark:#b3000c;
-  --ink:#0c1828;--muted:#5b6b80;--line:#dde3ec;
-}
-
-/* 🇫🇷 Bandeaux tricolores */
-.tricolor{height:10px;background:linear-gradient(90deg,#0046b8 0 33.33%,#fff 33.33% 66.66%,#e1000f 66.66% 100%)}
-.tricolor-thin{height:6px;background:linear-gradient(90deg,#0046b8 0 33.33%,#fff 33.33% 66.66%,#e1000f 66.66% 100%)}
-
-/* Typo */
-.h-hero{font-size:clamp(30px,5vw,54px);font-weight:900;letter-spacing:-.02em;line-height:1.04;text-transform:uppercase;margin:0}
-.eyebrow{font-size:13px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--fr-red);margin:0 0 10px}
-.eyebrow-light{color:#ff6b6b}
-
-/* Structure */
-.wrap{max-width:920px;margin:0 auto;padding:0 24px}
-.sec-dark{background:var(--fr-blue-deep);color:#eef3fa}
-.hero{position:relative;overflow:hidden;padding:58px 0 46px;text-align:center}
-.hero .glow-a{position:absolute;top:-140px;left:-100px;width:400px;height:400px;border-radius:50%;background:rgba(0,70,184,.28);filter:blur(120px);pointer-events:none}
-.hero .glow-b{position:absolute;bottom:-140px;right:-100px;width:400px;height:400px;border-radius:50%;background:rgba(225,0,15,.16);filter:blur(120px);pointer-events:none}
-.hero .inner{position:relative}
-.hero p.sub{color:#b9c8dc;font-size:17px;max-width:640px;margin:16px auto 0}
-main{padding:56px 0 20px}
-
-/* Cartes */
-.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px 30px;margin-bottom:20px;
-  transition:border-color .25s,box-shadow .25s,transform .25s}
-.card:hover{border-color:var(--fr-blue);box-shadow:0 18px 40px -24px rgba(10,34,64,.35);transform:translateY(-2px)}
-.card h2{display:flex;align-items:center;gap:14px;margin:0 0 16px;font-size:clamp(18px,2.4vw,23px);
-  font-weight:800;letter-spacing:-.01em;line-height:1.2;text-transform:uppercase;color:var(--fr-blue-dark)}
-.num{flex:0 0 auto;width:34px;height:34px;border-radius:8px;background:var(--fr-blue);color:#fff;
-  display:grid;place-items:center;font-size:14px;font-weight:800}
-.num.red{background:var(--fr-red)}
-.num.navy{background:var(--fr-blue-dark)}
-.card h3{font-size:16px;font-weight:800;color:var(--fr-blue-dark);margin:26px 0 12px}
-.card h3:first-child{margin-top:0}
-p{color:var(--muted);font-size:15.5px;margin:0 0 14px}
-p:last-child{margin-bottom:0}
-strong{color:var(--ink);font-weight:700}
-em{color:var(--muted)}
-a{color:var(--fr-blue);text-decoration:none;font-weight:600;border-bottom:1px solid rgba(0,70,184,.3)}
-a:hover{color:var(--fr-red-dark);border-bottom-color:rgba(179,0,12,.4)}
-
-/* Listes */
-ul{list-style:none;padding:0;margin:16px 0}
-ul li{display:flex;gap:12px;align-items:flex-start;padding:11px 14px;background:#f4f6f9;border:1px solid var(--line);
-  border-radius:9px;margin-bottom:9px;color:var(--muted);font-size:15px;transition:border-color .2s,background .2s}
-ul li:hover{background:#eef2f7;border-color:rgba(0,70,184,.35)}
-ul li::before{content:'✓';color:var(--fr-blue);font-weight:800;flex:0 0 auto}
-ul.warn-list li::before{content:'!';color:#b37400}
-ul.no-list li::before{content:'✕';color:var(--fr-red)}
-ul.plain li::before{content:'›';color:var(--fr-blue)}
-
-/* Encadrés */
-.note{display:flex;gap:14px;align-items:flex-start;background:#eef2f7;border:1px solid var(--line);
-  border-left:4px solid var(--fr-blue);border-radius:10px;padding:18px 20px;margin:20px 0}
-.note.red{border-left-color:var(--fr-red);background:#fdf2f3}
-.note.amber{border-left-color:#ffb340;background:#fff8ec}
-.note .ico{font-size:22px;line-height:1;flex:0 0 auto}
-.note .t{font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--fr-blue-dark);margin:0 0 6px}
-.note p{font-size:14.5px;margin:0}
-
-/* Grilles */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(270px,100%),1fr));gap:16px;margin-top:20px}
-.tile{background:#f4f6f9;border:1px solid var(--line);border-radius:11px;padding:20px;transition:.25s}
-.tile:hover{border-color:var(--fr-blue);background:#fff;box-shadow:0 14px 30px -22px rgba(10,34,64,.4)}
-.tile-head{display:flex;gap:12px;align-items:flex-start;margin-bottom:10px}
-.tile-ico{width:38px;height:38px;flex:0 0 auto;border-radius:9px;background:#fff;border:1px solid var(--line);
-  display:grid;place-items:center;font-size:18px}
-.tile-title{font-size:15px;font-weight:800;color:var(--fr-blue-dark);line-height:1.3}
-.chip{display:inline-block;margin-top:5px;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;
-  color:var(--fr-blue);background:rgba(0,70,184,.09);border:1px solid rgba(0,70,184,.22);border-radius:999px;padding:3px 10px}
-.chip.red{color:var(--fr-red);background:rgba(225,0,15,.08);border-color:rgba(225,0,15,.25)}
-.tile p{font-size:14px;margin:0}
-.tile-num{width:30px;height:30px;border-radius:8px;background:var(--fr-blue);color:#fff;display:grid;place-items:center;
-  font-size:13px;font-weight:800;margin-bottom:11px}
-.hl{color:var(--fr-blue);font-weight:700}
-.hl-red{color:var(--fr-red-dark);font-weight:700}
-
-/* Boutons (l'en-tête et le pied de page sont communs : /site-header.css) */
-.btn-red{display:inline-flex;align-items:center;gap:8px;background:var(--fr-red);color:#fff;border:0;border-radius:6px;
-  padding:11px 22px;font-size:13px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;
-  box-shadow:0 6px 18px -8px rgba(225,0,15,.6);transition:.15s}
-.btn-red:hover{background:var(--fr-red-dark);color:#fff;transform:translateY(-1px)}
-.btn-out{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--fr-blue-dark);
-  border:2px solid var(--fr-blue-dark);border-radius:6px;padding:10px 22px;font-size:13px;font-weight:800;
-  letter-spacing:.04em;text-transform:uppercase;transition:.15s}
-.btn-out:hover{background:var(--fr-blue-dark);color:#fff}
-
-/* Bas de page */
-.meta{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px;text-align:center;margin-top:8px}
-.meta p{font-size:13.5px;margin:6px 0}
-.updated{font-size:12.5px;color:#9aa7b8;font-style:italic}
-.backrow{padding:34px 0 60px}
-
-@media(max-width:520px){main ul li{overflow-wrap:anywhere}}   /* petits écrans : les liens et mots longs des puces passent à la ligne (rien n'est coupé à droite) */
-.legal-notice{font-size:13.5px;color:#9fb3cc;max-width:640px;margin:14px auto 0;font-style:italic}
-</style>
-<link rel="stylesheet" href="/site-header.css">
+<meta name="theme-color" content="#000000"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+<link rel="manifest" href="/site.webmanifest">
+<script>document.documentElement.className+=' js'</script>
+<link rel="stylesheet" href="/vx.css">
+<link rel="stylesheet" href="/vx-legal.css">
 </head>
 <body>
 <a class="skip" href="#top">Aller au contenu</a>
 
-<!-- EN-TÊTE BLANC COLLANT -->
-<header class="gnav hx-head">
-  <div class="hx-head-in">
-    <a href="/" class="hx-logo" aria-label="VitalX — accueil"><img src="/assets/logo-vitalx.svg" alt="VitalX" width="90" height="30" data-no-lightbox="true"/></a>
-    <nav class="hx-nav" aria-label="Navigation principale">
-      <ul class="hx-links">
+<!-- BARRE DE NAVIGATION (commune à toutes les pages) -->
+<header class="gnav" id="gnav">
+  <div class="vx-nav-in">
+    <a href="/" class="vx-logo" aria-label="VitalX — accueil"><img src="/assets/logo-vitalx-white.svg" alt="VitalX" width="66" height="22" data-no-lightbox="true"/></a>
+    <nav class="vx-nav" aria-label="Navigation principale">
+      <ul class="vx-links">
         <li><a href="/#interfaces">Appareils</a></li>
         <li><a href="/#formateur">Formateur</a></li>
         <li><a href="/#mediacenter">Media Center</a></li>
         <li><a href="/#academy">ACADEMY</a></li>
         <li><a href="/boutique.html">Boutique</a></li>
+        <li><a href="/#revendeurs">Revendeurs</a></li>
         <li><a href="/#contact">Contact</a></li>
       </ul>
     </nav>
-    <div class="hx-tools">
-      <a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="hx-icon hx-hide-m" title="Mode Formateur (web)" aria-label="Mode Formateur (web)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></a>
-      <span class="hx-lang hx-hide-m" role="group" aria-label="Langue">
-        <button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">FR</button>
-        <button type="button" data-lang="en" title="English" aria-label="English">EN</button>
-        <button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">DE</button>
-        <button type="button" data-lang="es" title="Español" aria-label="Español">ES</button>
-      </span>
-      <button class="hx-burger" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
+    <div class="vx-tools">
+      <a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="vx-icon vx-hide-m" title="Mode Formateur (web)" aria-label="Mode Formateur (web)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></a>
+      <span class="vx-lang vx-hide-m" role="group" aria-label="Langue"><button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">FR</button><button type="button" data-lang="en" title="English" aria-label="English">EN</button><button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">DE</button><button type="button" data-lang="es" title="Español" aria-label="Español">ES</button></span>
+      <button class="vx-burger" id="menuBtn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
     </div>
   </div>
 </header>
-<nav id="mobileMenu" class="hx-menu" aria-label="Menu mobile">
+<nav id="mobileMenu" class="vx-menu" aria-label="Menu mobile">
   <a class="big" href="/#interfaces">Appareils</a>
   <a class="big" href="/#formateur">Formateur</a>
   <a class="big" href="/#mediacenter">Media Center</a>
   <a class="big" href="/#academy">ACADEMY</a>
   <a class="big" href="/boutique.html">Boutique</a>
+  <a class="big" href="/#revendeurs">Revendeurs</a>
   <a class="big" href="/#contact">Contact</a>
   <a class="small" href="https://vitalxtrainer.app" target="_blank" rel="noopener">Mode Formateur (web) ›</a>
-  <span class="hx-lang" role="group" aria-label="Langue">
-    <button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">FR</button>
-    <button type="button" data-lang="en" title="English" aria-label="English">EN</button>
-    <button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">DE</button>
-    <button type="button" data-lang="es" title="Español" aria-label="Español">ES</button>
-  </span>
+  <span class="vx-lang" role="group" aria-label="Langue"><button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">FR</button><button type="button" data-lang="en" title="English" aria-label="English">EN</button><button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">DE</button><button type="button" data-lang="es" title="Español" aria-label="Español">ES</button></span>
   <a class="small" href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a>
 </nav>
-<section class="sec-dark hero">
-<div class="glow-a"></div><div class="glow-b"></div>
-<div class="wrap inner">
-<p class="eyebrow eyebrow-light">RGPD</p>
-<h1 class="h-hero">Politique de confidentialité</h1>
-<p class="sub">Transparence complète sur la collecte, l'utilisation et la protection de vos données personnelles.</p>
-    <p class="legal-notice">Seule la version française de ce document fait foi ; les traductions sont fournies à titre indicatif.</p>
-</div>
-<div class="tricolor" style="position:absolute;left:0;right:0;bottom:0"></div>
+
+<main id="top" class="legal-page">
+<section class="pagehero t-dark">
+  <div class="wrap wrap--narrow">
+    <p class="eyebrow">RGPD</p>
+    <h1 class="h1">Politique de confidentialité</h1>
+    <p class="lead">Transparence complète sur la collecte, l'utilisation et la protection de vos données personnelles.</p>
+    <p class="fine legal-notice">Seule la version française de ce document fait foi ; les traductions sont fournies à titre indicatif.</p>
+  </div>
 </section>
-<main id="top">
+<div class="legal t-gray">
 <div class="wrap">
 <div class="card">
 <h2><span class="num">1</span>Données collectées</h2>
@@ -288,57 +175,67 @@ ul.plain li::before{content:'›';color:var(--fr-blue)}
 <p style="font-size:12.5px">Elle pourra être mise à jour en cas d'évolution légale ou technique.</p>
 </div>
 </div>
+</div>
 </main>
+<div class="legal-after t-gray">
 <div class="wrap backrow">
 <a class="btn-out" href="/">← Retour au site</a>
 </div>
-<!-- PIED DE PAGE -->
-<footer class="hx-foot">
-  <div class="tricolor" aria-hidden="true"></div>
-  <div class="hx-wrap">
-    <div class="hx-foot-top">
-      <a href="/" class="hx-foot-logo" aria-label="VitalX — accueil"><img src="/assets/logo-vitalx-white.svg" alt="VitalX" width="90" height="30" data-no-lightbox="true"/></a>
-      <nav class="hx-foot-cols" aria-label="Pied de page">
-        <div>
-          <h3>Société</h3>
-          <ul>
-            <li><a href="/qui-sommes-nous.html">Qui sommes-nous</a></li>
-            <li><a href="/affiliation.html">Affiliation</a></li>
-            <li><a href="/affiliation.html" class="hx-reco">Recommandez VitalX</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3>Informations</h3>
-          <ul>
-            <li><a href="/mentions-legales.html">Mentions légales</a></li>
-            <li><a href="/cgv.html">CGV</a></li>
-            <li><a href="/politique-confidentialite.html">Confidentialité</a></li>
-            <li><a href="/garantie.html">Garantie</a></li>
-            <li><a href="/formulaire_retractation.pdf" download>Rétractation</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3>Contact</h3>
-          <ul>
-            <li><a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a></li>
-          </ul>
-        </div>
-      </nav>
-    </div>
-    <div class="hx-legal"><p>Interfaces reproduites avec l'autorisation de leurs fabricants, à des fins de formation uniquement. Le simulateur VitalX est conçu et développé par VitalX ; il n'est ni fabriqué, ni distribué, ni approuvé comme dispositif médical par ces constructeurs. Marques citées : propriétés de leurs titulaires.</p></div>
-    <div class="hx-foot-bottom">
+</div>
+
+<!-- PIED DE PAGE (commun à toutes les pages) -->
+<footer class="vx-foot">
+  <div class="vx-foot-in">
+    <p class="vx-foot-legal">Interfaces reproduites avec l'autorisation de leurs fabricants, à des fins de formation uniquement. Le simulateur VitalX est conçu et développé par VitalX ; il n'est ni fabriqué, ni distribué, ni approuvé comme dispositif médical par ces constructeurs. Marques citées : propriétés de leurs titulaires.</p>
+    <nav class="vx-foot-cols" aria-label="Pied de page">
+      <div>
+        <h2>Produits</h2>
+        <ul>
+          <li><a href="/#interfaces">Appareils</a></li>
+          <li><a href="/#formateur">Formateur</a></li>
+          <li><a href="/#mediacenter">Media Center</a></li>
+          <li><a href="/#academy">ACADEMY</a></li>
+          <li><a href="/boutique.html">Boutique</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Société</h2>
+        <ul>
+          <li><a href="/qui-sommes-nous.html">Qui sommes-nous</a></li>
+          <li><a href="/#revendeurs">Revendeurs</a></li>
+          <li><a href="/affiliation.html">Affiliation</a></li>
+          <li><a href="/affiliation.html" class="vx-reco">Recommandez VitalX</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Informations</h2>
+        <ul>
+          <li><a href="/mentions-legales.html">Mentions légales</a></li>
+          <li><a href="/cgv.html">CGV</a></li>
+          <li><a href="/politique-confidentialite.html">Confidentialité</a></li>
+          <li><a href="/garantie.html">Garantie</a></li>
+          <li><a href="/formulaire_retractation.pdf" download>Rétractation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a></li>
+          <li><a href="https://vitalxtrainer.app" target="_blank" rel="noopener">Mode Formateur (web)</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="vx-foot-bottom">
       <span>© <span id="year"></span> VitalX. Tous droits réservés.</span>
-      <span id="langSwitch" class="hx-lang" role="group" aria-label="Langue">
-        <button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">Français</button>
-        <button type="button" data-lang="en" title="English" aria-label="English">English</button>
-        <button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">Deutsch</button>
-        <button type="button" data-lang="es" title="Español" aria-label="Español">Español</button>
-      </span>
+      <span class="vx-fr"><i aria-hidden="true"></i>Conçu &amp; assemblé en France</span>
+      <span id="langSwitch" class="vx-lang" role="group" aria-label="Langue"><button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">Français</button><button type="button" data-lang="en" title="English" aria-label="English">English</button><button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">Deutsch</button><button type="button" data-lang="es" title="Español" aria-label="Español">Español</button></span>
     </div>
   </div>
 </footer>
+
 <script src="/site-header.js" defer></script>
 <script src="/i18n-legal.js" defer></script>
+<script src="/i18n-v3-politique-confidentialite.js" defer></script>
 <script src="/i18n.js" defer></script>
 </body>
 </html>

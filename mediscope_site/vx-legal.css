@@ -1,0 +1,119 @@
+/*
+  vx-legal.css — VitalX — pages légales : cgv.html, garantie.html, mentions-legales.html, politique-confidentialite.html
+  (chargée après /vx.css ; refonte « vitrine façon Apple », 25/10/2026).
+
+  Le CONTENU de ces pages est celui de l'ancien site, strictement inchangé (build.py › legal_body) : seule la mise en page change.
+  Structure produite par le gabarit :
+    main.legal-page
+      section.pagehero.t-dark ........ .eyebrow · h1.h1 · p.lead · p.legal-notice
+      div.legal.t-gray > div.wrap .... (div.card | div.meta)*   → colonne de lecture de 820 px, fond gris clair
+    div.legal-after.t-gray > div.wrap.backrow > a.btn-out   (après </main>) → bouton « ← Retour au site »
+  Composants d'origine restylés ici (balisage inchangé) :
+    .card > h2 > span.num (.red .navy) · h3 · p · ul (coche) / ul.plain (›) / ul.warn-list (!) / ul.no-list (✕)
+    .note (.red .amber ; .ico + .t) · .grid > .tile (.tile-head .tile-ico .tile-title .chip · .tile-num) · .hl .hl-red
+    .meta > .updated · .btn-red · .btn-out
+  Tout est limité à .legal / .legal-page / .legal-after : aucun effet sur la barre de navigation ni sur le pied de page.
+*/
+
+/* ── Héros : titre de la page, chapeau, mention « seule la version française fait foi » ─── */
+.legal-page .pagehero{padding:clamp(52px,7vw,100px) 0 clamp(44px,5.6vw,80px)}
+.legal-page .pagehero::before{content:"";position:absolute;left:50%;bottom:-55%;width:min(1100px,140vw);height:100%;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(227,18,27,.26),rgba(227,18,27,.07) 58%,rgba(227,18,27,0) 76%);pointer-events:none}
+.legal-page .pagehero .h1{font-size:clamp(32px,5.8vw,60px);overflow-wrap:anywhere}
+.legal-page .pagehero .lead{max-width:32em;font-size:clamp(18px,2vw,22px);color:#d2d2d7;overflow-wrap:break-word}
+.legal-notice{max-width:40em;margin:clamp(22px,3vw,30px) auto 0;padding:11px 18px;border:1px solid #3a3a3c;border-radius:16px;font-size:13.5px;line-height:1.5;color:#a1a1a6;text-wrap:balance}
+
+/* ── Colonne de lecture ────────────────────────────────────────── */
+.legal{background:var(--bg);color:var(--fg);padding:clamp(28px,4vw,56px) 0 clamp(16px,3vw,40px)}
+.legal>.wrap{max-width:calc(820px + 2 * var(--gut))}
+
+/* ── Sections (cartes blanches arrondies) ──────────────────────── */
+.legal .card{margin:0 0 clamp(14px,1.8vw,20px);padding:clamp(24px,4.4vw,48px);border-radius:var(--r3);background:var(--card);color:var(--fg);overflow:visible}
+.legal .card h2{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:start;gap:clamp(10px,1.4vw,14px);margin:0 0 clamp(16px,2vw,22px);font-size:clamp(22px,2.5vw,27px);line-height:1.2;font-weight:700;letter-spacing:-.024em;color:var(--fg);overflow-wrap:anywhere}
+.legal .card h3{margin:30px 0 12px;font-size:19px;line-height:1.25;font-weight:600;letter-spacing:-.018em;color:var(--fg)}
+.legal .card h3:first-child{margin-top:0}
+
+/* Numéro de section : pastille ronde de la hauteur de la première ligne du titre */
+.num{display:grid;place-items:center;width:2.1em;height:2.1em;border-radius:50%;background:#f5f5f7;color:var(--fg);font-size:.58em;font-weight:600;letter-spacing:0;line-height:1;font-variant-numeric:tabular-nums}
+.num.red{background:rgba(200,16,46,.1);color:var(--red-d)}
+.num.navy{background:#1d1d1f;color:#fff}
+
+/* ── Texte courant ─────────────────────────────────────────────── */
+.legal .card p{margin:0 0 14px;font-size:clamp(16px,1.6vw,17px);line-height:1.6;color:#424245;overflow-wrap:break-word}
+.legal .card p:last-child{margin-bottom:0}
+.legal .card strong{font-weight:600;color:var(--fg)}
+.legal .card em{color:#6e6e73}
+.legal .card a:not(.btn-red){color:var(--acc);font-weight:500;text-decoration:underline;text-decoration-color:rgba(200,16,46,.35);text-underline-offset:3px;overflow-wrap:anywhere;transition:text-decoration-color .2s}
+.legal .card a:not(.btn-red):hover{text-decoration-color:currentColor}
+/* Mots mis en avant : .hl (graisse) et .hl-red (graisse + rouge, avertissement) — l'accent est aussi porté par la graisse, pas seulement par la couleur */
+.hl,.hl-red{font-weight:600}
+.hl{color:var(--fg)}
+.hl-red{color:var(--red-d)}
+
+/* ── Listes : groupe arrondi gris, lignes séparées, pastille à gauche ─ */
+.legal .card ul{margin:18px 0;padding:0;list-style:none;border-radius:var(--r2);background:#f5f5f7;overflow:hidden}
+.legal .card p+ul{margin-top:16px}
+.legal .card li{position:relative;padding:15px 18px 15px 58px;font-size:clamp(15.5px,1.55vw,16.5px);line-height:1.5;color:#424245;overflow-wrap:break-word}
+.legal .card li+li{border-top:1px solid #e4e4e9}
+.legal .card li::before{content:"";position:absolute;left:18px;top:15px;width:24px;height:24px;border-radius:50%;background:#e8e8ed center/14px 14px no-repeat;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231d1d1f' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E")}
+.legal .card ul.plain li::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236e6e73' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9.5 6l6 6-6 6'/%3E%3C/svg%3E")}
+.legal .card ul.warn-list li::before{background-color:#fde8c0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239a5b00' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 5.5v8M12 18.3v.2'/%3E%3C/svg%3E")}
+.legal .card ul.no-list li::before{background-color:rgba(200,16,46,.12);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C8102E' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 7l10 10M17 7L7 17'/%3E%3C/svg%3E")}
+
+/* ── Encadrés .note : info (gris), .amber (à retenir), .red (alerte) ─ */
+.legal .note{display:flex;gap:14px;align-items:flex-start;margin:22px 0 0;padding:18px 20px;border-radius:var(--r2);background:#f5f5f7;color:var(--fg)}
+.legal .note.amber{background:#fff4de}
+.legal .note.red{background:#fdecee}
+.legal .note .ico{flex:0 0 auto;display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:#fff;font-size:20px;line-height:1}
+.legal .note>div:last-child{flex:1 1 auto;min-width:0}
+.legal .note .t{margin:0 0 4px;font-size:15px;line-height:1.35;font-weight:600;letter-spacing:-.01em;color:var(--fg)}
+.legal .note p{font-size:15.5px;line-height:1.5}
+.legal .note .t+p{margin-top:0}
+.legal .card>.note:first-child{margin-top:0}
+
+/* ── Tuiles (Garantie) : grille de deux colonnes ───────────────── */
+.legal .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:22px 0}
+@media(max-width:640px){.legal .grid{grid-template-columns:minmax(0,1fr)}}
+.tile{min-width:0;padding:22px;border-radius:var(--r2);background:#f5f5f7}
+.tile-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:12px}
+.tile-head>div:last-child{min-width:0}
+.tile-ico{flex:0 0 auto;display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:#fff;font-size:22px;line-height:1}
+.tile-title{font-size:17px;line-height:1.25;font-weight:600;letter-spacing:-.015em;color:var(--fg);overflow-wrap:anywhere}
+.chip{display:inline-block;margin-top:7px;padding:3px 11px;border-radius:999px;background:#fff;font-size:12px;line-height:1.4;font-weight:600;letter-spacing:.01em;color:var(--fg)}
+.chip.red{background:rgba(200,16,46,.1);color:var(--red-d)}
+.tile-num{display:grid;place-items:center;width:30px;height:30px;margin-bottom:14px;border-radius:50%;background:#1d1d1f;color:#fff;font-size:13px;font-weight:600;line-height:1}
+.legal .tile p{font-size:15px;line-height:1.55}
+
+/* ── Bouton rouge (Garantie › contact) ─────────────────────────── */
+.legal .btn-red{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 24px;border-radius:999px;background:var(--red);color:#fff;font-size:16px;font-weight:600;line-height:1.25;text-align:center;text-decoration:none;overflow-wrap:anywhere;transition:background .2s}
+.legal .btn-red:hover{background:var(--red-d);color:#fff}
+
+/* ── Pied de document : dernière mise à jour ───────────────────── */
+.legal .meta{margin:clamp(26px,4vw,44px) 0 0;text-align:center}
+.legal .meta p{margin:0 0 6px;font-size:13.5px;line-height:1.5;color:#6e6e73;overflow-wrap:break-word}
+.legal .meta .updated{font-weight:500}
+.legal .meta strong{color:var(--fg);font-weight:600}
+
+/* ── Retour au site (après </main>) ────────────────────────────── */
+.legal-after{background:var(--bg);color:var(--fg)}
+.legal-after .backrow{padding:clamp(8px,1.4vw,16px) var(--gut) clamp(52px,7vw,88px);text-align:center}
+.legal-after .btn-out{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 28px;border:1px solid #1d1d1f;border-radius:999px;background:transparent;color:#1d1d1f;font-size:17px;font-weight:600;letter-spacing:-.01em;line-height:1;text-decoration:none;transition:background .2s,color .2s}
+.legal-after .btn-out:hover{background:#1d1d1f;color:#fff}
+
+/* ── Petits écrans : césure automatique prudente (longs mots allemands), jamais dans les liens ─ */
+@media(max-width:560px){
+  .legal .card p,.legal .card li,.legal .tile-title,.legal .note p,.legal-page .pagehero .lead{hyphens:auto;hyphenate-limit-chars:8 4 3}
+  .legal-page .pagehero .h1,.legal .card h2{hyphens:auto;hyphenate-limit-chars:9 4 3}
+  .legal a{hyphens:none}
+}
+
+/* ── Impression ────────────────────────────────────────────────── */
+@media print{
+  .legal-page .pagehero{padding:0 0 18px;background:none;color:#000}
+  .legal-page .pagehero::before{display:none}
+  .legal-page .pagehero *{color:#000!important}
+  .legal-notice{border-color:#999}
+  .legal{padding:0}
+  .legal .card{padding:0 0 16px;background:none;break-inside:avoid}
+  .legal .card ul,.tile,.legal .note{background:none;border:1px solid #ccc}
+  .legal-after{display:none}
+}

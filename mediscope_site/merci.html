@@ -1,137 +1,131 @@
 <!doctype html>
 <!--
-  merci.html — VitalX
-  Description : Page de remerciement après envoi d'un formulaire Netlify (contact, affiliation)
-  🆕 v1.0 — 17/09/2026 — Yann USSEGLIO
-     • Cible des formulaires action="/merci.html" (la page n'existait pas : les envois aboutissaient sur une 404)
-     • Non indexée (noindex) et exclue du sitemap
-  🆕 08/10/2026 — Yann USSEGLIO : en-tête blanc collant, menu mobile et pied de page sombre COMMUNS à toutes les pages
-     (même balisage que l'accueil ; styles /site-header.css, script unique /site-header.js). Contenu de la page inchangé ; hauteur de la zone centrale calculée avec --nav-h ; traductions EN / DE (i18n-site.js).
+  merci.html — VitalX — refonte « vitrine façon Apple » du 25/10/2026.
+  Fichier GÉNÉRÉ (gabarit commun : build/layout.py ; corps : build/pages/). Styles : /vx.css + /vx-shop.css.
+  Textes en français : la traduction (EN / DE / ES) se fait à l'affichage (i18n.js, clé = texte français ; tables : i18n-site.js, i18n-v3.js).
 -->
 <html lang="fr">
 <head>
 <meta charset="utf-8"/>
-<meta name="google-site-verification" content="ZLZ7OeVEVIpBnfLClCu3hTd3QEuCPHqIFuCaUgMzIJI"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Merci — VitalX</title>
+<meta name="google-site-verification" content="ZLZ7OeVEVIpBnfLClCu3hTd3QEuCPHqIFuCaUgMzIJI"/>
 <meta name="robots" content="noindex, nofollow"/>
-<meta name="theme-color" content="#ffffff"/>
+<meta name="theme-color" content="#000000"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/apple.css">
-<style>
-.thanks{min-height:calc(100vh - var(--nav-h));display:grid;place-items:center;text-align:center;padding:64px 22px;background:#fbfbfd}
-.thanks .ico{width:64px;height:64px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;margin:0 auto 22px}
-.thanks .ico svg{width:30px;height:30px}
-</style>
-<link rel="stylesheet" href="/site-header.css">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+<link rel="manifest" href="/site.webmanifest">
+<script>document.documentElement.className+=' js'</script>
+<link rel="stylesheet" href="/vx.css">
+<link rel="stylesheet" href="/vx-shop.css">
 </head>
 <body>
 <a class="skip" href="#top">Aller au contenu</a>
 
-<!-- EN-TÊTE BLANC COLLANT -->
-<header class="gnav hx-head">
-  <div class="hx-head-in">
-    <a href="/" class="hx-logo" aria-label="VitalX — accueil"><img src="/assets/logo-vitalx.svg" alt="VitalX" width="90" height="30" data-no-lightbox="true"/></a>
-    <nav class="hx-nav" aria-label="Navigation principale">
-      <ul class="hx-links">
+<!-- BARRE DE NAVIGATION (commune à toutes les pages) -->
+<header class="gnav" id="gnav">
+  <div class="vx-nav-in">
+    <a href="/" class="vx-logo" aria-label="VitalX — accueil"><img src="/assets/logo-vitalx-white.svg" alt="VitalX" width="66" height="22" data-no-lightbox="true"/></a>
+    <nav class="vx-nav" aria-label="Navigation principale">
+      <ul class="vx-links">
         <li><a href="/#interfaces">Appareils</a></li>
         <li><a href="/#formateur">Formateur</a></li>
         <li><a href="/#mediacenter">Media Center</a></li>
         <li><a href="/#academy">ACADEMY</a></li>
         <li><a href="/boutique.html">Boutique</a></li>
+        <li><a href="/#revendeurs">Revendeurs</a></li>
         <li><a href="/#contact">Contact</a></li>
       </ul>
     </nav>
-    <div class="hx-tools">
-      <a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="hx-icon hx-hide-m" title="Mode Formateur (web)" aria-label="Mode Formateur (web)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></a>
-      <span class="hx-lang hx-hide-m" role="group" aria-label="Langue">
-        <button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">FR</button>
-        <button type="button" data-lang="en" title="English" aria-label="English">EN</button>
-        <button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">DE</button>
-        <button type="button" data-lang="es" title="Español" aria-label="Español">ES</button>
-      </span>
-      <button class="hx-burger" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
+    <div class="vx-tools">
+      <a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="vx-icon vx-hide-m" title="Mode Formateur (web)" aria-label="Mode Formateur (web)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></a>
+      <span class="vx-lang vx-hide-m" role="group" aria-label="Langue"><button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">FR</button><button type="button" data-lang="en" title="English" aria-label="English">EN</button><button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">DE</button><button type="button" data-lang="es" title="Español" aria-label="Español">ES</button></span>
+      <button class="vx-burger" id="menuBtn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
     </div>
   </div>
 </header>
-<nav id="mobileMenu" class="hx-menu" aria-label="Menu mobile">
+<nav id="mobileMenu" class="vx-menu" aria-label="Menu mobile">
   <a class="big" href="/#interfaces">Appareils</a>
   <a class="big" href="/#formateur">Formateur</a>
   <a class="big" href="/#mediacenter">Media Center</a>
   <a class="big" href="/#academy">ACADEMY</a>
   <a class="big" href="/boutique.html">Boutique</a>
+  <a class="big" href="/#revendeurs">Revendeurs</a>
   <a class="big" href="/#contact">Contact</a>
   <a class="small" href="https://vitalxtrainer.app" target="_blank" rel="noopener">Mode Formateur (web) ›</a>
-  <span class="hx-lang" role="group" aria-label="Langue">
-    <button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">FR</button>
-    <button type="button" data-lang="en" title="English" aria-label="English">EN</button>
-    <button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">DE</button>
-    <button type="button" data-lang="es" title="Español" aria-label="Español">ES</button>
-  </span>
+  <span class="vx-lang" role="group" aria-label="Langue"><button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">FR</button><button type="button" data-lang="en" title="English" aria-label="English">EN</button><button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">DE</button><button type="button" data-lang="es" title="Español" aria-label="Español">ES</button></span>
   <a class="small" href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a>
 </nav>
-<main class="thanks" id="top">
-  <div class="wrap-narrow">
-    <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
-    <span class="fr-badge"><i class="fr-flag" aria-hidden="true"></i>Conçu &amp; assemblé en France 🇫🇷</span>
-    <h1 class="t-section" style="margin-top:14px">Merci, c'est bien reçu.</h1>
-    <p class="t-section-lead">Nous revenons vers vous sous 24 h ouvrées, par e-mail ou par téléphone. En attendant, vous pouvez découvrir les interfaces constructeurs ou parcourir la boutique.</p>
-    <div class="links" style="margin-top:26px">
-      <a href="/" class="btn">Retour à l'accueil</a>
-      <a href="/#interfaces" class="more">Voir les interfaces</a>
-      <a href="/boutique.html" class="more">Voir la boutique</a>
+
+<!-- REMERCIEMENT après l'envoi d'un formulaire Netlify (contact, affiliation) : page sombre centrée, non indexée (noindex repris de l'ancienne page) -->
+<main id="top" class="tk-page">
+  <section class="tk t-dark" aria-labelledby="thanksTitle">
+    <div class="wrap wrap--narrow">
+      <div class="tk-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <p class="pill"><i class="flag" aria-hidden="true"></i>Conçu &amp; assemblé en France</p>
+      <h1 class="h1" id="thanksTitle">Merci, c'est bien reçu.</h1>
+      <p class="lead">Nous revenons vers vous sous 24 h ouvrées, par e-mail ou par téléphone. En attendant, vous pouvez découvrir les interfaces constructeurs ou parcourir la boutique.</p>
+      <p class="cta"><a href="/" class="btn">Retour à l'accueil</a><a href="/#interfaces" class="link">Voir les interfaces</a><a href="/boutique.html" class="link">Voir la boutique</a></p>
+      <p class="small tk-note">Une question urgente ? Écrivez-nous à <a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a>.</p>
     </div>
-    <p class="t-caption" style="margin-top:36px">Une question urgente ? Écrivez-nous à <a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a>.</p>
-  </div>
+  </section>
 </main>
-<!-- PIED DE PAGE -->
-<footer class="hx-foot">
-  <div class="tricolor" aria-hidden="true"></div>
-  <div class="hx-wrap">
-    <div class="hx-foot-top">
-      <a href="/" class="hx-foot-logo" aria-label="VitalX — accueil"><img src="/assets/logo-vitalx-white.svg" alt="VitalX" width="90" height="30" data-no-lightbox="true"/></a>
-      <nav class="hx-foot-cols" aria-label="Pied de page">
-        <div>
-          <h3>Société</h3>
-          <ul>
-            <li><a href="/qui-sommes-nous.html">Qui sommes-nous</a></li>
-            <li><a href="/affiliation.html">Affiliation</a></li>
-            <li><a href="/affiliation.html" class="hx-reco">Recommandez VitalX</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3>Informations</h3>
-          <ul>
-            <li><a href="/mentions-legales.html">Mentions légales</a></li>
-            <li><a href="/cgv.html">CGV</a></li>
-            <li><a href="/politique-confidentialite.html">Confidentialité</a></li>
-            <li><a href="/garantie.html">Garantie</a></li>
-            <li><a href="/formulaire_retractation.pdf" download>Rétractation</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3>Contact</h3>
-          <ul>
-            <li><a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a></li>
-          </ul>
-        </div>
-      </nav>
-    </div>
-    <div class="hx-legal"><p>Interfaces reproduites avec l'autorisation de leurs fabricants, à des fins de formation uniquement. Le simulateur VitalX est conçu et développé par VitalX ; il n'est ni fabriqué, ni distribué, ni approuvé comme dispositif médical par ces constructeurs. Marques citées : propriétés de leurs titulaires.</p></div>
-    <div class="hx-foot-bottom">
+
+<!-- PIED DE PAGE (commun à toutes les pages) -->
+<footer class="vx-foot">
+  <div class="vx-foot-in">
+    <p class="vx-foot-legal">Interfaces reproduites avec l'autorisation de leurs fabricants, à des fins de formation uniquement. Le simulateur VitalX est conçu et développé par VitalX ; il n'est ni fabriqué, ni distribué, ni approuvé comme dispositif médical par ces constructeurs. Marques citées : propriétés de leurs titulaires.</p>
+    <nav class="vx-foot-cols" aria-label="Pied de page">
+      <div>
+        <h2>Produits</h2>
+        <ul>
+          <li><a href="/#interfaces">Appareils</a></li>
+          <li><a href="/#formateur">Formateur</a></li>
+          <li><a href="/#mediacenter">Media Center</a></li>
+          <li><a href="/#academy">ACADEMY</a></li>
+          <li><a href="/boutique.html">Boutique</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Société</h2>
+        <ul>
+          <li><a href="/qui-sommes-nous.html">Qui sommes-nous</a></li>
+          <li><a href="/#revendeurs">Revendeurs</a></li>
+          <li><a href="/affiliation.html">Affiliation</a></li>
+          <li><a href="/affiliation.html" class="vx-reco">Recommandez VitalX</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Informations</h2>
+        <ul>
+          <li><a href="/mentions-legales.html">Mentions légales</a></li>
+          <li><a href="/cgv.html">CGV</a></li>
+          <li><a href="/politique-confidentialite.html">Confidentialité</a></li>
+          <li><a href="/garantie.html">Garantie</a></li>
+          <li><a href="/formulaire_retractation.pdf" download>Rétractation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a></li>
+          <li><a href="https://vitalxtrainer.app" target="_blank" rel="noopener">Mode Formateur (web)</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="vx-foot-bottom">
       <span>© <span id="year"></span> VitalX. Tous droits réservés.</span>
-      <span id="langSwitch" class="hx-lang" role="group" aria-label="Langue">
-        <button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">Français</button>
-        <button type="button" data-lang="en" title="English" aria-label="English">English</button>
-        <button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">Deutsch</button>
-        <button type="button" data-lang="es" title="Español" aria-label="Español">Español</button>
-      </span>
+      <span class="vx-fr"><i aria-hidden="true"></i>Conçu &amp; assemblé en France</span>
+      <span id="langSwitch" class="vx-lang" role="group" aria-label="Langue"><button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">Français</button><button type="button" data-lang="en" title="English" aria-label="English">English</button><button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">Deutsch</button><button type="button" data-lang="es" title="Español" aria-label="Español">Español</button></span>
     </div>
   </div>
 </footer>
+
 <script src="/site-header.js" defer></script>
 <script src="/i18n-site.js" defer></script>
+<script src="/i18n-v3-merci.js" defer></script>
 <script src="/i18n.js" defer></script>
 </body>
 </html>

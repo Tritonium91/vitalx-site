@@ -1,34 +1,16 @@
-<!DOCTYPE html>
+<!doctype html>
 <!--
-  boutique.html — VitalX
-  Description : Boutique officielle (packs + licences sur devis, écussons au panier)
-  🆕 v4.0 — 13/09/2026 — Yann USSEGLIO
-     • Refonte complète dans un style épuré façon Apple (voir /apple.css)
-     • Barre de navigation globale + sous-navigation « Boutique » avec bouton Devis
-     • Cartes produits blanches sur fond gris, visuel en haut, liste de contenu, bouton pilule
-     • Gamme : VitalX Plus · VitalX Ultra · POD'S Classic · POD'S Pro · Licence · Mise à niveau (packs VitalX et Pro retirés le 17/09/2026)
-     • v4.2 : hero épuré (badge + titre), logo VitalX blanc sur la carte Licence
-     • Écussons : panier Stripe conservé à l'identique (mêmes identifiants et SKU), tiroir restylé
-     • Aucun prix affiché sur les packs / licences (devis)
-     • v4.1 : encart « Dans chaque pack iPad » retiré, paiement Stripe ouvert dans un nouvel onglet, rappels bleu-blanc-rouge (Made in France)
-     • Ancres conservées : #pack #pods #licence #ecussons (+ redirection #licenses → #licence)
-  🆕 v5.0 — 08/10/2026 — Yann USSEGLIO
-     • Boutique refaite dans le style de l'accueil (voir /boutique.css) : grand héros sombre, bandeaux gris à titre rouge,
-       cartes claires « image + une ligne + boutons », texte visible divisé par plus de 2
-     • En-tête, menu mobile et pied de page COMMUNS à toutes les pages (/site-header.css, /site-header.js)
-     • Sous-navigation .lnav conservée sous l'en-tête (avec le bouton Panier #openCart) ; détails de licence et informations de vente repliés
-       (TVA, délais, garantie, rétractation : conservés dans « Informations de vente »)
-     • PANIER ET PAIEMENT INCHANGÉS : mêmes boutons .add-to-cart (data-sku / data-name / data-price / data-image), mêmes identifiants,
-       même script, même appel POST /.netlify/functions/create-checkout
+  boutique.html — VitalX — refonte « vitrine façon Apple » du 25/10/2026.
+  Fichier GÉNÉRÉ (gabarit commun : build/layout.py ; corps : build/pages/). Styles : /vx.css + /vx-shop.css.
+  Textes en français : la traduction (EN / DE / ES) se fait à l'affichage (i18n.js, clé = texte français ; tables : i18n-site.js, i18n-v3.js).
 -->
 <html lang="fr">
 <head>
-  <meta charset="utf-8"/>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Boutique VitalX — Scopes de simulation iPad, POD'S, licence et écussons</title>
 <meta name="google-site-verification" content="ZLZ7OeVEVIpBnfLClCu3hTd3QEuCPHqIFuCaUgMzIJI"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Boutique VitalX — Scopes de simulation iPad, POD'S, licence et écussons</title>
-  <meta name="description" content="Scopes de simulation VitalX Plus et Ultra sur iPad, POD'S sur iPhone, licence VitalX seule et écussons. Tarifs sur devis sous 24 h, licence à vie, assemblé en France."/>
-<link rel="canonical" href="https://vitalx.org/boutique.html"/>
+<meta name="description" content="Scopes de simulation VitalX Plus et Ultra sur iPad, POD'S sur iPhone, licence VitalX seule et écussons. Tarifs sur devis sous 24 h, licence à vie, assemblé en France."/>
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1"/>
 <meta property="og:site_name" content="VitalX"/>
 <meta property="og:locale" content="fr_FR"/>
@@ -44,346 +26,269 @@
 <meta name="twitter:title" content="Boutique VitalX — Scopes de simulation iPad, POD'S, licence et écussons"/>
 <meta name="twitter:description" content="Scopes de simulation VitalX Plus et Ultra sur iPad, POD'S sur iPhone, licence VitalX seule et écussons. Tarifs sur devis sous 24 h, licence à vie, assemblé en France."/>
 <meta name="twitter:image" content="https://vitalx.org/og-image.png"/>
+<link rel="canonical" href="https://vitalx.org/boutique.html"/>
 <script type="application/ld+json" data-seo>{"@context":"https://schema.org","@type":"ItemList","name":"Boutique VitalX","itemListElement":[{"@type":"ListItem","position":1,"item":{"@context":"https://schema.org","@type":"Product","name":"VitalX Plus","description":"Scope de simulation médicale : deux iPad 11 pouces (moniteur et formateur), châssis VitalX, housse Bagheera, connectique complète, interfaces constructeurs et licence à vie.","image":"https://vitalx.org/assets/pack-vitalx1.png","url":"https://vitalx.org/fiche-technique.html","brand":{"@type":"Brand","name":"VitalX"},"manufacturer":{"@id":"https://vitalx.org/#organization"},"countryOfOrigin":"FR","offers":{"@type":"Offer","url":"https://vitalx.org/fiche-technique.html","availability":"https://schema.org/InStock","priceCurrency":"EUR","priceSpecification":{"@type":"PriceSpecification","priceCurrency":"EUR","description":"Tarif sur devis, sous 24 h"},"seller":{"@id":"https://vitalx.org/#organization"}}}},{"@type":"ListItem","position":2,"item":{"@context":"https://schema.org","@type":"Product","name":"VitalX Ultra","description":"Scope de simulation médicale : iPad Air 13 pouces moniteur et iPad 11 pouces formateur, châssis V2, housse Bagheera V2 Premium, connectique complète et licence à vie.","image":"https://vitalx.org/assets/vitalxv2pro.PNG","url":"https://vitalx.org/fiche-technique-ultimate.html","brand":{"@type":"Brand","name":"VitalX"},"manufacturer":{"@id":"https://vitalx.org/#organization"},"countryOfOrigin":"FR","offers":{"@type":"Offer","url":"https://vitalx.org/fiche-technique-ultimate.html","availability":"https://schema.org/InStock","priceCurrency":"EUR","priceSpecification":{"@type":"PriceSpecification","priceCurrency":"EUR","description":"Tarif sur devis, sous 24 h"},"seller":{"@id":"https://vitalx.org/#organization"}}}},{"@type":"ListItem","position":3,"item":{"@context":"https://schema.org","@type":"Product","name":"VitalX POD'S Classic","description":"Scope de simulation compact sur iPhone : boîtier VitalX POD'S, brassard, capteur SpO₂ / SpCO, patch DSA, pochette Bagheera.","image":"https://vitalx.org/assets/vitalxpodsclassic.PNG","url":"https://vitalx.org/vitalx-pods.html","brand":{"@type":"Brand","name":"VitalX"},"manufacturer":{"@id":"https://vitalx.org/#organization"},"countryOfOrigin":"FR","offers":{"@type":"Offer","url":"https://vitalx.org/vitalx-pods.html","availability":"https://schema.org/InStock","priceCurrency":"EUR","priceSpecification":{"@type":"PriceSpecification","priceCurrency":"EUR","description":"Tarif sur devis, sous 24 h"},"seller":{"@id":"https://vitalx.org/#organization"}}}},{"@type":"ListItem","position":4,"item":{"@context":"https://schema.org","@type":"Product","name":"VitalX POD'S Pro","description":"Scope de simulation compact sur iPhone avec iPad 11 pouces formateur inclus.","image":"https://vitalx.org/assets/vitalxpodspremium.png","url":"https://vitalx.org/vitalx-pods.html","brand":{"@type":"Brand","name":"VitalX"},"manufacturer":{"@id":"https://vitalx.org/#organization"},"countryOfOrigin":"FR","offers":{"@type":"Offer","url":"https://vitalx.org/vitalx-pods.html","availability":"https://schema.org/InStock","priceCurrency":"EUR","priceSpecification":{"@type":"PriceSpecification","priceCurrency":"EUR","description":"Tarif sur devis, sous 24 h"},"seller":{"@id":"https://vitalx.org/#organization"}}}},{"@type":"ListItem","position":5,"item":{"@type":"Product","name":"Écusson Chat Noir","image":"https://vitalx.org/assets/logo chat noir.png","brand":{"@type":"Brand","name":"VitalX"},"offers":{"@type":"Offer","price":"7.90","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://vitalx.org/boutique.html#ecussons"}}},{"@type":"ListItem","position":6,"item":{"@type":"Product","name":"Écusson VitalX 2K26","image":"https://vitalx.org/assets/logo vitalX 2K26.png","brand":{"@type":"Brand","name":"VitalX"},"offers":{"@type":"Offer","price":"7.90","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://vitalx.org/boutique.html#ecussons"}}},{"@type":"ListItem","position":7,"item":{"@type":"Product","name":"Écusson Stop Blood","image":"https://vitalx.org/assets/logo stop blood.png","brand":{"@type":"Brand","name":"VitalX"},"offers":{"@type":"Offer","price":"7.90","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://vitalx.org/boutique.html#ecussons"}}}]}</script>
 <script type="application/ld+json" data-seo>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"VitalX","item":"https://vitalx.org/"},{"@type":"ListItem","position":2,"name":"Boutique VitalX — Scopes de simulation iPad, POD'S, licence et écussons","item":"https://vitalx.org/boutique.html"}]}</script>
-  <meta name="theme-color" content="#ffffff"/>
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
-  <link rel="stylesheet" href="/apple.css">
-  <link rel="stylesheet" href="/site-header.css">
-  <link rel="stylesheet" href="/boutique.css">
-  <noscript><style>.sr{opacity:1;transform:none}</style></noscript>
+<meta name="theme-color" content="#000000"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+<link rel="manifest" href="/site.webmanifest">
+<script>document.documentElement.className+=' js'</script>
+<link rel="stylesheet" href="/vx.css">
+<link rel="stylesheet" href="/vx-shop.css">
 </head>
 <body>
 <a class="skip" href="#top">Aller au contenu</a>
 
-<!-- EN-TÊTE BLANC COLLANT -->
-<header class="gnav hx-head">
-  <div class="hx-head-in">
-    <a href="/" class="hx-logo" aria-label="VitalX — accueil"><img src="/assets/logo-vitalx.svg" alt="VitalX" width="90" height="30" data-no-lightbox="true"/></a>
-    <nav class="hx-nav" aria-label="Navigation principale">
-      <ul class="hx-links">
+<!-- BARRE DE NAVIGATION (commune à toutes les pages) -->
+<header class="gnav" id="gnav">
+  <div class="vx-nav-in">
+    <a href="/" class="vx-logo" aria-label="VitalX — accueil"><img src="/assets/logo-vitalx-white.svg" alt="VitalX" width="66" height="22" data-no-lightbox="true"/></a>
+    <nav class="vx-nav" aria-label="Navigation principale">
+      <ul class="vx-links">
         <li><a href="/#interfaces">Appareils</a></li>
         <li><a href="/#formateur">Formateur</a></li>
         <li><a href="/#mediacenter">Media Center</a></li>
         <li><a href="/#academy">ACADEMY</a></li>
         <li><a href="/boutique.html" aria-current="page">Boutique</a></li>
+        <li><a href="/#revendeurs">Revendeurs</a></li>
         <li><a href="/#contact">Contact</a></li>
       </ul>
     </nav>
-    <div class="hx-tools">
-      <a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="hx-icon hx-hide-m" title="Mode Formateur (web)" aria-label="Mode Formateur (web)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></a>
-      <span class="hx-lang hx-hide-m" role="group" aria-label="Langue">
-        <button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">FR</button>
-        <button type="button" data-lang="en" title="English" aria-label="English">EN</button>
-        <button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">DE</button>
-        <button type="button" data-lang="es" title="Español" aria-label="Español">ES</button>
-      </span>
-      <button class="hx-burger" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
+    <div class="vx-tools">
+      <a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="vx-icon vx-hide-m" title="Mode Formateur (web)" aria-label="Mode Formateur (web)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></a>
+      <span class="vx-lang vx-hide-m" role="group" aria-label="Langue"><button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">FR</button><button type="button" data-lang="en" title="English" aria-label="English">EN</button><button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">DE</button><button type="button" data-lang="es" title="Español" aria-label="Español">ES</button></span>
+      <button class="vx-burger" id="menuBtn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
     </div>
   </div>
 </header>
-<nav id="mobileMenu" class="hx-menu" aria-label="Menu mobile">
+<nav id="mobileMenu" class="vx-menu" aria-label="Menu mobile">
   <a class="big" href="/#interfaces">Appareils</a>
   <a class="big" href="/#formateur">Formateur</a>
   <a class="big" href="/#mediacenter">Media Center</a>
   <a class="big" href="/#academy">ACADEMY</a>
   <a class="big" href="/boutique.html" aria-current="page">Boutique</a>
+  <a class="big" href="/#revendeurs">Revendeurs</a>
   <a class="big" href="/#contact">Contact</a>
   <a class="small" href="https://vitalxtrainer.app" target="_blank" rel="noopener">Mode Formateur (web) ›</a>
-  <span class="hx-lang" role="group" aria-label="Langue">
-    <button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">FR</button>
-    <button type="button" data-lang="en" title="English" aria-label="English">EN</button>
-    <button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">DE</button>
-    <button type="button" data-lang="es" title="Español" aria-label="Español">ES</button>
-  </span>
+  <span class="vx-lang" role="group" aria-label="Langue"><button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">FR</button><button type="button" data-lang="en" title="English" aria-label="English">EN</button><button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">DE</button><button type="button" data-lang="es" title="Español" aria-label="Español">ES</button></span>
   <a class="small" href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a>
 </nav>
 
-  <!-- SOUS-NAVIGATION BOUTIQUE (sous l'en-tête commun) -->
-  <div class="lnav">
-    <div class="wrap">
-      <a href="#top" class="lnav-title">Boutique</a>
-      <ul class="lnav-links">
-        <li><a href="#pack">Packs iPad</a></li>
-        <li><a href="#pods">POD'S</a></li>
-        <li><a href="#licence">Licence</a></li>
-        <li><a href="#ecussons">Écussons</a></li>
-      </ul>
-      <div class="lnav-right">
-        <button id="openCart" type="button" class="shop-cart" title="Panier" aria-label="Panier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8h12l1 13H5L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span id="cartCount" class="cart-badge">0</span></button>
-        <a href="/#contact" class="btn btn-xs">Demander un devis</a>
-      </div>
+<!-- SOUS-NAVIGATION BOUTIQUE : collante sous la barre de navigation ; liens de section, bouton Panier (#openCart + pastille #cartCount), devis -->
+<div class="subnav subnav--dark">
+  <div class="subnav-in">
+    <a href="#top" class="subnav-title">Boutique</a>
+    <nav class="subnav-links" aria-label="Boutique">
+      <a href="#pack">Packs iPad</a>
+      <a href="#pods">POD'S</a>
+      <a href="#licence">Licence</a>
+      <a href="#ecussons">Écussons</a>
+    </nav>
+    <div class="subnav-right">
+      <button id="openCart" type="button" class="shop-cart" title="Panier" aria-label="Panier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8h12l1 13H5L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span id="cartCount" class="cart-badge">0</span></button>
+      <a href="/#contact" class="btn btn--sm">Demander un devis</a>
     </div>
   </div>
+</div>
 
-  <main id="top">
+<main id="top">
 
-    <!-- HÉROS -->
-    <section class="hx-hero" aria-labelledby="shopTitle">
-      <div class="hx-hero-in">
-        <div class="hx-hero-copy">
-          <span class="hx-badge hero-in">Conçu et assemblé en France 🇫🇷</span>
-          <h1 class="hx-h1 hero-in hero-in-2" id="shopTitle">Choisissez votre scope.</h1>
-          <p class="hx-sub hero-in hero-in-2">Packs iPad, POD'S iPhone, licence à vie et écussons. Devis sous 24 h.</p>
-          <div class="hx-cta hero-in hero-in-3">
-            <a href="/#contact" class="hx-btn hx-btn-red">Demander un devis</a>
-            <a href="#pack" class="hx-btn hx-btn-line">Voir les packs</a>
-          </div>
-        </div>
-        <div class="hx-hero-art hero-in hero-in-3">
-          <img src="/assets/vitalxv2pro.webp" width="1536" height="1024" alt="Pack VitalX Ultra — moniteur iPad Air 13 pouces dans sa housse et tablette formateur" fetchpriority="high" decoding="async" data-no-lightbox="true"/>
-        </div>
-      </div>
-    </section>
-
-    <!-- PACKS IPAD (#pack) -->
-    <section id="pack" class="hx-sec" aria-labelledby="packTitle">
-      <div class="hx-band"><h2 id="packTitle">Scopes iPad</h2></div>
-      <div class="wrap-wide hx-body">
-        <p class="hx-lead">Les interfaces SCHILLER et WEINMANN sont incluses. <a href="/#interfaces" class="hx-link">Voir les appareils</a></p>
-        <ul class="shop-grid">
-      <li class="sr">
-        <article class="shop-card">
-          <div class="shop-pic"><span class="shop-tag">Best-seller</span><img src="/assets/pack-plus.webp" width="960" height="646" alt="VitalX Plus : moniteur iPad dans sa housse" loading="lazy" decoding="async"/></div>
-          <div class="shop-card-b">
-            <h3>VitalX Plus</h3>
-            <p>2 iPad 11" — moniteur + formateur</p>
-            <div class="shop-actions">
-              <a href="/#contact" class="hx-btn hx-btn-red hx-btn-sm">Demander un devis</a>
-              <a href="/fiche-technique.html" class="hx-link">Fiche technique</a>
-            </div>
-          </div>
-        </article>
-      </li>
-      <li class="sr">
-        <article class="shop-card">
-          <div class="shop-pic"><span class="shop-tag">Le plus complet</span><img src="/assets/vitalxv2pro.webp" width="1536" height="1024" alt="Pack VitalX Ultra — moniteur iPad Air 13 pouces dans sa housse et tablette formateur" loading="lazy" decoding="async"/></div>
-          <div class="shop-card-b">
-            <h3>VitalX Ultra</h3>
-            <p>iPad Air 13" + iPad 11" formateur</p>
-            <div class="shop-actions">
-              <a href="/#contact" class="hx-btn hx-btn-red hx-btn-sm">Demander un devis</a>
-              <a href="/fiche-technique-ultimate.html" class="hx-link">Fiche technique</a>
-            </div>
-          </div>
-        </article>
-      </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- POD'S (#pods) -->
-    <section id="pods" class="hx-sec" aria-labelledby="podsTitle">
-      <div class="hx-band"><h2 id="podsTitle">POD'S iPhone</h2></div>
-      <div class="wrap-wide hx-body">
-        <ul class="shop-grid">
-      <li class="sr">
-        <article class="shop-card">
-          <div class="shop-pic"><span class="shop-tag">Compact</span><img src="/assets/pack-pods.webp" width="700" height="680" alt="VitalX POD'S — boîtier iPhone, brassard, capteur SpO₂ et patch DSA" loading="lazy" decoding="async"/></div>
-          <div class="shop-card-b">
-            <h3>POD'S Classic</h3>
-            <p>1 iPhone 12/13 — moniteur</p>
-            <div class="shop-actions">
-              <a href="/#contact" class="hx-btn hx-btn-red hx-btn-sm">Demander un devis</a>
-              <a href="/vitalx-pods.html" class="hx-link">Fiche technique</a>
-            </div>
-          </div>
-        </article>
-      </li>
-      <li class="sr">
-        <article class="shop-card">
-          <div class="shop-pic"><span class="shop-tag">Formateur inclus</span><img src="/assets/pack-pods-pro.webp" width="671" height="886" alt="POD'S Pro : boîtier, iPhone et iPad formateur" loading="lazy" decoding="async"/></div>
-          <div class="shop-card-b">
-            <h3>POD'S Pro</h3>
-            <p>1 iPhone 12/13 + 1 iPad 11" formateur</p>
-            <div class="shop-actions">
-              <a href="/#contact" class="hx-btn hx-btn-red hx-btn-sm">Demander un devis</a>
-              <a href="/vitalx-pods.html" class="hx-link">Fiche technique</a>
-            </div>
-          </div>
-        </article>
-      </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- LICENCE (#licence) -->
-    <section id="licence" class="hx-sec" aria-labelledby="licTitle">
-      <div class="hx-band"><h2 id="licTitle">Licence</h2></div>
-      <div class="wrap-wide hx-body">
-        <ul class="shop-grid">
-          <li class="sr">
-            <article class="shop-card">
-              <div class="shop-pic is-cover"><span class="shop-tag">Logiciel seul</span><img src="/assets/licence-life.webp" width="800" height="600" alt="Licence VitalX" loading="lazy" decoding="async"/></div>
-              <div class="shop-card-b">
-                <h3>Licence VitalX</h3>
-                <p>Pour les centres déjà équipés en iPad</p>
-                <div class="shop-actions">
-                  <a href="/#contact" class="hx-btn hx-btn-red hx-btn-sm">Demander un devis</a>
-                </div>
-                <details class="shop-more">
-                  <summary>Détails</summary>
-                  <div class="lic-row"><b>Appareils</b><span>Un code d'activation pour 3 appareils au total — chacun peut être moniteur ou formateur, iPad ou iPhone.</span></div>
-                  <div class="lic-row"><b>Contenu</b><span>Moniteur VitalX, interfaces constructeurs, ECG 12D, DSA, Media Center, scénarios, mode formateur iPad et web.</span></div>
-                  <div class="lic-row"><b>Durée</b><span>À vie. Sans abonnement. Mises à jour et nouvelles interfaces incluses.</span></div>
-                  <div class="lic-row"><b>Activation</b><span>Installez VitalX Scope depuis l'App Store, saisissez le code : prêt en 30 secondes.</span></div>
-                </details>
-              </div>
-            </article>
-          </li>
-          <li class="sr sr-d1">
-            <article class="shop-card">
-              <div class="shop-pic"><span class="shop-tag">Code existant</span><img src="/assets/licence-pods.webp" width="800" height="194" alt="Passage POD'S vers VitalX" loading="lazy" decoding="async"/></div>
-              <div class="shop-card-b">
-                <h3>Passage POD'S → VitalX</h3>
-                <p>Mise à niveau pour les clients POD'S</p>
-                <div class="shop-actions">
-                  <a href="/#contact" class="hx-btn hx-btn-red hx-btn-sm">Demander la mise à niveau</a>
-                </div>
-                <details class="shop-more">
-                  <summary>Détails</summary>
-                  <div class="lic-row"><b>Ce qui change</b><span>Votre code POD'S devient une licence VitalX complète : scope sur iPad, interfaces constructeurs, écrans premium.</span></div>
-                  <div class="lic-row"><b>Ce qui reste</b><span>Le même code, les mêmes appareils déjà activés, le scope iPhone et le mode formateur.</span></div>
-                  <div class="lic-row"><b>Matériel</b><span>Aucun. Vous ajoutez l'iPad de votre choix — ou demandez un châssis VitalX dans le même devis.</span></div>
-                  <div class="lic-row"><b>Délai</b><span>Activation à distance, sans renvoi de matériel.</span></div>
-                  <div class="lic-row"><b>Votre code</b><span>Indiquez votre code POD'S dans le message pour accélérer l'activation.</span></div>
-                </details>
-              </div>
-            </article>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ÉCUSSONS (#ecussons) — vendus en ligne, panier ci-dessous -->
-    <section id="ecussons" class="hx-sec" aria-labelledby="ecuTitle">
-      <div class="hx-band"><h2 id="ecuTitle">Écussons</h2></div>
-      <div class="wrap-wide hx-body hx-body-tight">
-        <p class="hx-lead">Paiement en ligne. Livraison 3,80 € : France, Belgique, Suisse, Luxembourg.</p>
-        <ul class="shop-grid shop-grid-3">
-      <li class="sr sr-d1">
-        <article class="shop-card">
-          <div class="shop-pic is-light"><img src="/assets/ecusson-chat-noir.webp" width="800" height="800" alt="Écusson logo chat noir" class="ecusson-img" loading="lazy" decoding="async"/></div>
-          <div class="shop-card-b">
-            <h3>Écusson Chat Noir</h3>
-            <p>PVC 3D souple · thermocollant</p>
-            <div class="price"><b>7,90 €</b><span>TTC</span></div>
-            <button data-sku="sku_ecusson_chat_noir" data-name="Écusson logo chat noir" data-price="790" data-image="/assets/logo chat noir.png" class="add-to-cart btn btn-block">Ajouter au panier</button>
-          </div>
-        </article>
-      </li>
-      <li class="sr sr-d2">
-        <article class="shop-card">
-          <div class="shop-pic is-light"><img src="/assets/ecusson-vitalx-2k26.webp" width="800" height="800" alt="Écusson logo VitalX 2K26" class="ecusson-img" loading="lazy" decoding="async"/></div>
-          <div class="shop-card-b">
-            <h3>Écusson VitalX 2K26</h3>
-            <p>PVC 3D souple · thermocollant</p>
-            <div class="price"><b>7,90 €</b><span>TTC</span></div>
-            <button data-sku="sku_ecusson_vitalx_2k26" data-name="Écusson logo VitalX 2K26" data-price="790" data-image="/assets/logo vitalX 2K26.png" class="add-to-cart btn btn-block">Ajouter au panier</button>
-          </div>
-        </article>
-      </li>
-      <li class="sr sr-d3">
-        <article class="shop-card">
-          <div class="shop-pic is-light"><img src="/assets/ecusson-stop-blood.webp" width="800" height="800" alt="Écusson logo stop blood" class="ecusson-img" loading="lazy" decoding="async"/></div>
-          <div class="shop-card-b">
-            <h3>Écusson Stop Blood</h3>
-            <p>PVC 3D souple · thermocollant</p>
-            <div class="price"><b>7,90 €</b><span>TTC</span></div>
-            <button data-sku="sku_ecusson_stop_blood" data-name="Écusson logo stop blood" data-price="790" data-image="/assets/logo stop blood.png" class="add-to-cart btn btn-block">Ajouter au panier</button>
-          </div>
-        </article>
-      </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- INFORMATIONS DE VENTE (repliées) : TVA, délais, garantie, rétractation, CGV -->
-    <section class="hx-sec shop-sale" aria-label="Informations de vente">
-      <details class="shop-info" id="infos-vente">
-        <summary>Informations de vente</summary>
-        <div class="shop-info-b">
-          <p>TVA non applicable, art. 293 B du CGI. Règlement à la commande, livraison des packs 15 à 30 jours ouvrés. Châssis et housse garantis 10 ans ; iPad et iPhone couverts par la garantie Apple.</p>
-          <p>Les iPad sont livrés non configurés : vous installez l'application VitalX Scope depuis l'App Store et saisissez votre code de licence. Un code active jusqu'à 3 appareils, moniteur ou formateur.</p>
-          <p>La licence POD'S couvre le scope sur iPhone et le mode formateur. Les scopes iPad et les interfaces constructeurs nécessitent la licence VitalX (passage possible à tout moment).</p>
-          <p><a href="/cgv.html">CGV</a> · <a href="/formulaire_retractation.pdf" download>Rétractation</a> · <a href="/garantie.html">Garantie</a></p>
-        </div>
-      </details>
-    </section>
-
-    <!-- DÉMO -->
-    <section class="shop-demo" aria-labelledby="demoTitle">
-      <h2 id="demoTitle">Vous souhaitez voir VitalX en action ?</h2>
-      <a href="/#contact" class="hx-btn hx-btn-red">Demander une démo</a>
-    </section>
-
-    <!-- PANIER (écussons uniquement) -->
-    <div id="cartOverlay" class="cart-overlay hidden"></div>
-    <aside id="cartDrawer" class="cart" aria-label="Panier">
-      <div class="cart-head"><h2>Votre panier</h2><button id="closeCart" class="cart-close" aria-label="Fermer">✕</button></div>
-      <div id="cartItems" class="cart-items"></div>
-      <div class="cart-foot">
-        <div class="cart-sub"><span>Sous-total</span><b id="cartSubtotal">0 €</b></div>
-        <p class="t-fine" style="margin:6px 0 14px">Livraison écussons 3,80 € · Les packs et licences se commandent sur devis.</p>
-        <button id="checkoutBtn" class="btn btn-block">Payer maintenant</button>
-        <div class="pay-logos"><span>Paiement sécurisé</span><span>Stripe</span><span>Visa</span><span>Mastercard</span><span>Apple Pay</span><span>PayPal</span></div>
-      </div>
-    </aside>
-  </main>
-
-  <button id="cartFab" type="button" class="btn btn-dark cart-fab">Panier <em id="cartFabCount">0</em></button>
-  <div id="toast" class="toast">Ajouté au panier ✓</div>
-
-  <!-- PIED DE PAGE -->
-<footer class="hx-foot">
-  <div class="tricolor" aria-hidden="true"></div>
-  <div class="hx-wrap">
-    <div class="hx-foot-top">
-      <a href="/" class="hx-foot-logo" aria-label="VitalX — accueil"><img src="/assets/logo-vitalx-white.svg" alt="VitalX" width="90" height="30" data-no-lightbox="true"/></a>
-      <nav class="hx-foot-cols" aria-label="Pied de page">
-        <div>
-          <h3>Société</h3>
-          <ul>
-            <li><a href="/qui-sommes-nous.html">Qui sommes-nous</a></li>
-            <li><a href="/affiliation.html">Affiliation</a></li>
-            <li><a href="/affiliation.html" class="hx-reco">Recommandez VitalX</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3>Informations</h3>
-          <ul>
-            <li><a href="/mentions-legales.html">Mentions légales</a></li>
-            <li><a href="/cgv.html">CGV</a></li>
-            <li><a href="/politique-confidentialite.html">Confidentialité</a></li>
-            <li><a href="/garantie.html">Garantie</a></li>
-            <li><a href="/formulaire_retractation.pdf" download>Rétractation</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3>Contact</h3>
-          <ul>
-            <li><a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a></li>
-          </ul>
-        </div>
-      </nav>
-    </div>
-    <div class="hx-legal"><p>Interfaces reproduites avec l'autorisation de leurs fabricants, à des fins de formation uniquement. Le simulateur VitalX est conçu et développé par VitalX ; il n'est ni fabriqué, ni distribué, ni approuvé comme dispositif médical par ces constructeurs. Marques citées : propriétés de leurs titulaires.</p></div>
-    <div class="hx-foot-bottom">
-      <span>© <span id="year"></span> VitalX. Tous droits réservés.</span>
-      <span id="langSwitch" class="hx-lang" role="group" aria-label="Langue">
-        <button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">Français</button>
-        <button type="button" data-lang="en" title="English" aria-label="English">English</button>
-        <button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">Deutsch</button>
-        <button type="button" data-lang="es" title="Español" aria-label="Español">Español</button>
-      </span>
-    </div>
+<!-- HÉROS : titre, appel au devis, puis le pack VitalX Ultra sur un halo rouge -->
+<section class="pagehero shop-hero t-dark pagehero--glow" aria-labelledby="shopTitle">
+  <div class="wrap">
+    <p class="pill rv"><i class="flag" aria-hidden="true"></i>Conçu &amp; assemblé en France</p>
+    <h1 class="h1 rv rv-1" id="shopTitle">Choisissez votre scope.</h1>
+    <p class="lead rv rv-2">Packs iPad, POD'S iPhone, licence à vie et écussons. Devis sous 24 h.</p>
+    <p class="cta rv rv-3"><a href="/#contact" class="btn">Demander un devis</a><a href="#pack" class="link">Voir les packs</a></p>
+    <div class="shop-hero-art rv rv-2"><img src="/assets/vitalxv2pro.webp" width="1536" height="1024" alt="Pack VitalX Ultra — moniteur iPad Air 13 pouces dans sa housse et tablette formateur" fetchpriority="high" decoding="async" data-no-lightbox="true" srcset="/assets/v3/r/vitalxv2pro-480.webp 480w, /assets/v3/r/vitalxv2pro-800.webp 800w, /assets/v3/r/vitalxv2pro-1200.webp 1200w, /assets/vitalxv2pro.webp 1536w" sizes="(max-width: 900px) 92vw, 900px"/></div>
   </div>
-</footer>
+</section>
 
-  <div id="ecussonLightbox" class="lightbox hidden" aria-hidden="true"><button id="ecussonLightboxClose" class="lightbox-close" aria-label="Fermer">✕</button><img id="ecussonLightboxImg" src="" alt=""/></div>
+<!-- PACKS IPAD (ancre #pack) -->
+<section id="pack" class="sec shop-sec t-light" aria-labelledby="packTitle">
+  <div class="wrap">
+    <div class="head rv">
+      <h2 class="h2" id="packTitle">Scopes iPad</h2>
+      <p class="lead">Les interfaces SCHILLER et WEINMANN sont incluses.</p>
+      <p class="cta"><a href="/#interfaces" class="link">Voir les appareils</a></p>
+    </div>
+    <ul class="grid g2">
+      <li class="card shop-card rv">
+        <div class="shop-pic"><span class="shop-tag">Best-seller</span><img src="/assets/pack-plus.webp" width="960" height="646" alt="VitalX Plus : moniteur iPad dans sa housse" data-no-lightbox="true" loading="lazy" decoding="async"/></div>
+        <div class="shop-b">
+          <h3 class="h3">VitalX Plus</h3>
+          <p class="shop-line">2 iPad 11" — moniteur + formateur</p>
+          <div class="shop-links"><a href="/#contact" class="btn">Demander un devis</a><a href="/fiche-technique.html" class="link">Fiche technique</a></div>
+        </div>
+      </li>
+      <li class="card shop-card rv rv-1">
+        <div class="shop-pic"><span class="shop-tag">Le plus complet</span><img src="/assets/vitalxv2pro.webp" width="1536" height="1024" alt="Pack VitalX Ultra — moniteur iPad Air 13 pouces dans sa housse et tablette formateur" data-no-lightbox="true" loading="lazy" decoding="async" srcset="/assets/v3/r/vitalxv2pro-480.webp 480w, /assets/v3/r/vitalxv2pro-800.webp 800w, /assets/v3/r/vitalxv2pro-1200.webp 1200w, /assets/vitalxv2pro.webp 1536w" sizes="(max-width: 640px) 80vw, 480px"/></div>
+        <div class="shop-b">
+          <h3 class="h3">VitalX Ultra</h3>
+          <p class="shop-line">iPad Air 13" + iPad 11" formateur</p>
+          <div class="shop-links"><a href="/#contact" class="btn">Demander un devis</a><a href="/fiche-technique-ultimate.html" class="link">Fiche technique</a></div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
 
+<!-- POD'S IPHONE (ancre #pods) -->
+<section id="pods" class="sec shop-sec t-gray" aria-labelledby="podsTitle">
+  <div class="wrap">
+    <div class="head rv">
+      <h2 class="h2" id="podsTitle">POD'S iPhone</h2>
+    </div>
+    <ul class="grid g2">
+      <li class="card shop-card rv">
+        <div class="shop-pic"><span class="shop-tag">Compact</span><img src="/assets/pack-pods.webp" width="700" height="680" alt="VitalX POD'S — boîtier iPhone, brassard, capteur SpO₂ et patch DSA" data-no-lightbox="true" loading="lazy" decoding="async"/></div>
+        <div class="shop-b">
+          <h3 class="h3">POD'S Classic</h3>
+          <p class="shop-line">1 iPhone 12/13 — moniteur</p>
+          <div class="shop-links"><a href="/#contact" class="btn">Demander un devis</a><a href="/vitalx-pods.html" class="link">Fiche technique</a></div>
+        </div>
+      </li>
+      <li class="card shop-card rv rv-1">
+        <div class="shop-pic"><span class="shop-tag">Formateur inclus</span><img src="/assets/pack-pods-pro.webp" width="671" height="886" alt="POD'S Pro : boîtier, iPhone et iPad formateur" data-no-lightbox="true" loading="lazy" decoding="async"/></div>
+        <div class="shop-b">
+          <h3 class="h3">POD'S Pro</h3>
+          <p class="shop-line">1 iPhone 12/13 + 1 iPad 11" formateur</p>
+          <div class="shop-links"><a href="/#contact" class="btn">Demander un devis</a><a href="/vitalx-pods.html" class="link">Fiche technique</a></div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- LICENCE (ancre #licence) : licence seule et passage POD'S → VitalX ; détails repliés -->
+<section id="licence" class="sec shop-sec t-dark" aria-labelledby="licTitle">
+  <div class="wrap">
+    <div class="head rv">
+      <h2 class="h2" id="licTitle">Licence</h2>
+    </div>
+    <ul class="grid g2">
+      <li class="card shop-card shop-card--lic rv">
+        <div class="shop-pic shop-pic--cover"><span class="shop-tag">Logiciel seul</span><img src="/assets/licence-life.webp" width="800" height="600" alt="Licence VitalX" data-no-lightbox="true" loading="lazy" decoding="async"/></div>
+        <div class="shop-b">
+          <h3 class="h3">Licence VitalX</h3>
+          <p class="shop-line">Pour les centres déjà équipés en iPad</p>
+          <div class="shop-links"><a href="/#contact" class="btn">Demander un devis</a></div>
+          <details class="shop-more">
+            <summary>Détails</summary>
+            <div class="lic-row"><b>Appareils</b><span>Un code d'activation pour 3 appareils au total — chacun peut être moniteur ou formateur, iPad ou iPhone.</span></div>
+            <div class="lic-row"><b>Contenu</b><span>Moniteur VitalX, interfaces constructeurs, ECG 12D, DSA, Media Center, scénarios, mode formateur iPad et web.</span></div>
+            <div class="lic-row"><b>Durée</b><span>À vie. Sans abonnement. Mises à jour et nouvelles interfaces incluses.</span></div>
+            <div class="lic-row"><b>Activation</b><span>Installez VitalX Scope depuis l'App Store, saisissez le code : prêt en 30 secondes.</span></div>
+          </details>
+        </div>
+      </li>
+      <li class="card shop-card shop-card--lic rv rv-1">
+        <div class="shop-pic shop-pic--logo"><span class="shop-tag">Code existant</span><img src="/assets/licence-pods.webp" width="800" height="194" alt="Passage POD'S vers VitalX" data-no-lightbox="true" loading="lazy" decoding="async"/></div>
+        <div class="shop-b">
+          <h3 class="h3">Passage POD'S → VitalX</h3>
+          <p class="shop-line">Mise à niveau pour les clients POD'S</p>
+          <div class="shop-links"><a href="/#contact" class="btn">Demander la mise à niveau</a></div>
+          <details class="shop-more">
+            <summary>Détails</summary>
+            <div class="lic-row"><b>Ce qui change</b><span>Votre code POD'S devient une licence VitalX complète : scope sur iPad, interfaces constructeurs, écrans premium.</span></div>
+            <div class="lic-row"><b>Ce qui reste</b><span>Le même code, les mêmes appareils déjà activés, le scope iPhone et le mode formateur.</span></div>
+            <div class="lic-row"><b>Matériel</b><span>Aucun. Vous ajoutez l'iPad de votre choix — ou demandez un châssis VitalX dans le même devis.</span></div>
+            <div class="lic-row"><b>Délai</b><span>Activation à distance, sans renvoi de matériel.</span></div>
+            <div class="lic-row"><b>Votre code</b><span>Indiquez votre code POD'S dans le message pour accélérer l'activation.</span></div>
+          </details>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ÉCUSSONS (ancre #ecussons) : seuls articles vendus en ligne (panier ci-dessous) ; trois cartes, galerie à balayage sur téléphone -->
+<section id="ecussons" class="sec shop-sec t-light" aria-labelledby="ecuTitle">
+  <div class="wrap">
+    <div class="head rv">
+      <h2 class="h2" id="ecuTitle">Écussons</h2>
+      <p class="lead">Paiement en ligne. Livraison 3,80 € : France, Belgique, Suisse, Luxembourg.</p>
+    </div>
+    <ul class="grid g3 shop-ecus">
+      <li class="card shop-card rv">
+        <div class="shop-pic"><img src="/assets/ecusson-chat-noir.webp" width="800" height="800" alt="Écusson logo chat noir" class="ecusson-img" data-no-lightbox="true" loading="lazy" decoding="async"/></div>
+        <div class="shop-b">
+          <h3 class="h3">Écusson Chat Noir</h3>
+          <p class="shop-line">PVC 3D souple · thermocollant</p>
+          <div class="price"><b>7,90 €</b><span>TTC</span></div>
+          <button type="button" data-sku="sku_ecusson_chat_noir" data-name="Écusson logo chat noir" data-price="790" data-image="/assets/logo chat noir.png" class="add-to-cart btn btn--block">Ajouter au panier</button>
+        </div>
+      </li>
+      <li class="card shop-card rv rv-1">
+        <div class="shop-pic"><img src="/assets/ecusson-vitalx-2k26.webp" width="800" height="800" alt="Écusson logo VitalX 2K26" class="ecusson-img" data-no-lightbox="true" loading="lazy" decoding="async"/></div>
+        <div class="shop-b">
+          <h3 class="h3">Écusson VitalX 2K26</h3>
+          <p class="shop-line">PVC 3D souple · thermocollant</p>
+          <div class="price"><b>7,90 €</b><span>TTC</span></div>
+          <button type="button" data-sku="sku_ecusson_vitalx_2k26" data-name="Écusson logo VitalX 2K26" data-price="790" data-image="/assets/logo vitalX 2K26.png" class="add-to-cart btn btn--block">Ajouter au panier</button>
+        </div>
+      </li>
+      <li class="card shop-card rv rv-2">
+        <div class="shop-pic"><img src="/assets/ecusson-stop-blood.webp" width="800" height="800" alt="Écusson logo stop blood" class="ecusson-img" data-no-lightbox="true" loading="lazy" decoding="async"/></div>
+        <div class="shop-b">
+          <h3 class="h3">Écusson Stop Blood</h3>
+          <p class="shop-line">PVC 3D souple · thermocollant</p>
+          <div class="price"><b>7,90 €</b><span>TTC</span></div>
+          <button type="button" data-sku="sku_ecusson_stop_blood" data-name="Écusson logo stop blood" data-price="790" data-image="/assets/logo stop blood.png" class="add-to-cart btn btn--block">Ajouter au panier</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- INFORMATIONS DE VENTE (repliées) : TVA, délais, garantie, rétractation, CGV -->
+<section class="sec shop-sale t-gray" aria-label="Informations de vente">
+  <div class="wrap">
+    <details class="shop-info" id="infos-vente">
+      <summary>Informations de vente</summary>
+      <div class="shop-info-b">
+        <p>TVA non applicable, art. 293 B du CGI. Règlement à la commande, livraison des packs 15 à 30 jours ouvrés. Châssis et housse garantis 10 ans ; iPad et iPhone couverts par la garantie Apple.</p>
+        <p>Les iPad sont livrés non configurés : vous installez l'application VitalX Scope depuis l'App Store et saisissez votre code de licence. Un code active jusqu'à 3 appareils, moniteur ou formateur.</p>
+        <p>La licence POD'S couvre le scope sur iPhone et le mode formateur. Les scopes iPad et les interfaces constructeurs nécessitent la licence VitalX (passage possible à tout moment).</p>
+        <p><a href="/cgv.html">CGV</a> · <a href="/formulaire_retractation.pdf" download>Rétractation</a> · <a href="/garantie.html">Garantie</a></p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- DÉMO -->
+<section class="sec t-dark shop-demo" aria-labelledby="demoTitle">
+  <div class="wrap">
+    <h2 class="h2 rv" id="demoTitle">Vous souhaitez voir VitalX en action ?</h2>
+    <p class="cta rv rv-1"><a href="/#contact" class="btn">Demander une démo</a></p>
+  </div>
+</section>
+
+</main>
+
+<!-- PANIER (écussons uniquement) : fond, tiroir, bouton flottant (téléphone), message, visionneuse d'écusson.
+     Les identifiants et les deux scripts ci-dessous sont ceux de la boutique d'origine : ne pas les modifier (panier Stripe). -->
+<div id="cartOverlay" class="cart-overlay hidden"></div>
+<aside id="cartDrawer" class="cart" aria-label="Panier">
+  <div class="cart-head"><h2>Votre panier</h2><button id="closeCart" type="button" class="cart-close" aria-label="Fermer">✕</button></div>
+  <div id="cartItems" class="cart-items"></div>
+  <div class="cart-foot">
+    <div class="cart-sub"><span>Sous-total</span><b id="cartSubtotal">0 €</b></div>
+    <p class="fine cart-note">Livraison écussons 3,80 € · Les packs et licences se commandent sur devis.</p>
+    <button id="checkoutBtn" type="button" class="btn btn--block">Payer maintenant</button>
+    <div class="pay-logos"><span>Paiement sécurisé</span><span>Stripe</span><span>Visa</span><span>Mastercard</span><span>Apple Pay</span><span>PayPal</span></div>
+  </div>
+</aside>
+
+<button id="cartFab" type="button" class="btn btn--dark cart-fab">Panier <em id="cartFabCount">0</em></button>
+<div id="toast" class="toast" role="status" aria-live="polite">Ajouté au panier ✓</div>
+
+<div id="ecussonLightbox" class="lightbox hidden" aria-hidden="true"><button id="ecussonLightboxClose" type="button" class="lightbox-close" aria-label="Fermer">✕</button><img id="ecussonLightboxImg" src="" alt="" width="800" height="800"/></div>
+
+<!-- Script 1 (d'origine) : apparition « .sr » (sans objet ici : l'apparition passe par .rv / site-header.js), visionneuse des écussons, anciens liens #licenses → #licence, défilement vers l'ancre -->
   <script>
     // Apparition au défilement
     (function(){const els=document.querySelectorAll('.sr');if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('show'));return}const io=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});els.forEach(el=>io.observe(el))})();
@@ -393,6 +298,8 @@
     if(location.hash==='#licenses')history.replaceState(null,'','#licence');
     if(location.hash){const t=document.querySelector(location.hash);if(t)t.scrollIntoView({behavior:'smooth',block:'start'})}
   </script>
+
+<!-- Script 2 (d'origine) : panier Stripe — mêmes identifiants, même clé localStorage « vitalx_cart_v1 », même appel POST /.netlify/functions/create-checkout -->
   <script>
     /* 🛒 Panier — écussons uniquement */
     const CART_KEY='vitalx_cart_v1';const elCart=document.getElementById('cartDrawer'),elOverlay=document.getElementById('cartOverlay'),elOpen=document.getElementById('openCart'),elClose=document.getElementById('closeCart'),elItems=document.getElementById('cartItems'),elSubtotal=document.getElementById('cartSubtotal'),elCount=document.getElementById('cartCount'),elFabCount=document.getElementById('cartFabCount'),elFab=document.getElementById('cartFab'),elCheckout=document.getElementById('checkoutBtn'),elToast=document.getElementById('toast');
@@ -412,8 +319,60 @@
       try{const res=await fetch('/.netlify/functions/create-checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items,mode:'payment'})});const data=await res.json();if(data&&data.url){if(win){win.location.href=data.url}else{window.open(data.url,'_blank')||(location.href=data.url)}}else{throw new Error(data&&data.error?data.error:'Erreur inconnue')}}catch(err){console.error(err);if(win)win.close();alert("Le paiement n'est pas encore configuré.")}finally{elCheckout.disabled=false;elCheckout.textContent='Payer maintenant'}});
     updateCount(loadCart());
   </script>
-    <script src="/site-header.js" defer></script>
-  <script src="/i18n-site.js" defer></script>
-  <script src="/i18n.js" defer></script>
+
+<!-- PIED DE PAGE (commun à toutes les pages) -->
+<footer class="vx-foot">
+  <div class="vx-foot-in">
+    <p class="vx-foot-legal">Interfaces reproduites avec l'autorisation de leurs fabricants, à des fins de formation uniquement. Le simulateur VitalX est conçu et développé par VitalX ; il n'est ni fabriqué, ni distribué, ni approuvé comme dispositif médical par ces constructeurs. Marques citées : propriétés de leurs titulaires.</p>
+    <nav class="vx-foot-cols" aria-label="Pied de page">
+      <div>
+        <h2>Produits</h2>
+        <ul>
+          <li><a href="/#interfaces">Appareils</a></li>
+          <li><a href="/#formateur">Formateur</a></li>
+          <li><a href="/#mediacenter">Media Center</a></li>
+          <li><a href="/#academy">ACADEMY</a></li>
+          <li><a href="/boutique.html">Boutique</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Société</h2>
+        <ul>
+          <li><a href="/qui-sommes-nous.html">Qui sommes-nous</a></li>
+          <li><a href="/#revendeurs">Revendeurs</a></li>
+          <li><a href="/affiliation.html">Affiliation</a></li>
+          <li><a href="/affiliation.html" class="vx-reco">Recommandez VitalX</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Informations</h2>
+        <ul>
+          <li><a href="/mentions-legales.html">Mentions légales</a></li>
+          <li><a href="/cgv.html">CGV</a></li>
+          <li><a href="/politique-confidentialite.html">Confidentialité</a></li>
+          <li><a href="/garantie.html">Garantie</a></li>
+          <li><a href="/formulaire_retractation.pdf" download>Rétractation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a></li>
+          <li><a href="https://vitalxtrainer.app" target="_blank" rel="noopener">Mode Formateur (web)</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="vx-foot-bottom">
+      <span>© <span id="year"></span> VitalX. Tous droits réservés.</span>
+      <span class="vx-fr"><i aria-hidden="true"></i>Conçu &amp; assemblé en France</span>
+      <span id="langSwitch" class="vx-lang" role="group" aria-label="Langue"><button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">Français</button><button type="button" data-lang="en" title="English" aria-label="English">English</button><button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">Deutsch</button><button type="button" data-lang="es" title="Español" aria-label="Español">Español</button></span>
+    </div>
+  </div>
+</footer>
+
+<script src="/site-header.js" defer></script>
+<script src="/i18n-site.js" defer></script>
+<script src="/i18n-v3-boutique.js" defer></script>
+<script src="/i18n.js" defer></script>
 </body>
 </html>

@@ -1,448 +1,212 @@
-<!DOCTYPE html>
+<!doctype html>
 <!--
-  merci-commande.html — VitalX
-  🆕 08/10/2026 — Yann USSEGLIO : en-tête blanc collant, menu mobile et pied de page sombre COMMUNS à toutes les pages
-     (même balisage que l'accueil ; styles /site-header.css, script unique /site-header.js). Contenu de la page inchangé ; traductions EN / DE (i18n-site.js, phrases à balises traduites d'un seul tenant : data-i18n-html).
+  merci-commande.html — VitalX — refonte « vitrine façon Apple » du 25/10/2026.
+  Fichier GÉNÉRÉ (gabarit commun : build/layout.py ; corps : build/pages/). Styles : /vx.css + /vx-shop.css.
+  Textes en français : la traduction (EN / DE / ES) se fait à l'affichage (i18n.js, clé = texte français ; tables : i18n-site.js, i18n-v3.js).
 -->
-<html lang="fr" class="h-full">
+<html lang="fr">
 <head>
-  <meta charset="utf-8" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Merci pour votre commande — VitalX</title>
 <meta name="google-site-verification" content="ZLZ7OeVEVIpBnfLClCu3hTd3QEuCPHqIFuCaUgMzIJI"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Merci pour votre commande — VitalX</title>
-  <meta name="robots" content="noindex" />
-  <link rel="icon" href="/favicon.ico" />
-  
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind = window.tailwind || {};
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-            display: ['Space Grotesk', 'Inter', 'sans-serif']
-          },
-          animation: {
-            'fade-in': 'fadeIn 0.6s ease-out',
-            'slide-up': 'slideUp 0.7s ease-out',
-            'scale-in': 'scaleIn 0.5s ease-out',
-            'bounce-slow': 'bounce 2s infinite',
-            'shimmer': 'shimmer 2s infinite',
-            'pulse-glow': 'pulseGlow 2s ease-in-out infinite'
-          },
-          keyframes: {
-            fadeIn: {
-              '0%': { opacity: '0' },
-              '100%': { opacity: '1' }
-            },
-            slideUp: {
-              '0%': { transform: 'translateY(30px)', opacity: '0' },
-              '100%': { transform: 'translateY(0)', opacity: '1' }
-            },
-            scaleIn: {
-              '0%': { transform: 'scale(0.9)', opacity: '0' },
-              '100%': { transform: 'scale(1)', opacity: '1' }
-            },
-            shimmer: {
-              '0%': { backgroundPosition: '-200% 0' },
-              '100%': { backgroundPosition: '200% 0' }
-            },
-            pulseGlow: {
-              '0%, 100%': { boxShadow: '0 0 20px rgba(16, 185, 129, 0.3)' },
-              '50%': { boxShadow: '0 0 40px rgba(16, 185, 129, 0.6)' }
-            }
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    body {
-      background: linear-gradient(135deg, #0a0a0b 0%, #1a0f1f 50%, #0f1419 100%);
-      background-attachment: fixed;
-    }
-    
-    .ring-gradient {
-      box-shadow: 0 0 0 1px rgba(255,255,255,.08), inset 0 0 0 1px rgba(255,255,255,.06);
-    }
-    
-    .glass {
-      background: rgba(20, 20, 30, 0.7);
-      backdrop-filter: saturate(130%) blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    
-    .glass-card {
-      background: rgba(30, 30, 40, 0.5);
-      backdrop-filter: blur(12px);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    .glass-card:hover {
-      background: rgba(40, 40, 50, 0.6);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 40px rgba(16, 185, 129, 0.15);
-    }
-    
-    .cta-anim {
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .cta-anim::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: left 0.5s;
-    }
-    
-    .cta-anim:hover::before {
-      left: 100%;
-    }
-    
-    .cta-anim:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-    }
-    
-    .cta-anim:active {
-      transform: translateY(0px);
-    }
-    
-    .success-badge {
-      animation: scaleIn 0.5s ease-out 0.3s both;
-    }
-    
-    .checkmark-circle {
-      animation: pulseGlow 2s ease-in-out infinite;
-    }
-    
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-    }
-    
-    .float-anim {
-      animation: float 3s ease-in-out infinite;
-    }
-    
-    .shimmer-text {
-      background: linear-gradient(90deg, #fff 0%, #10b981 50%, #fff 100%);
-      background-size: 200% auto;
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: shimmer 3s linear infinite;
-    }
-    
-    .fade-in-section {
-      animation: fadeIn 0.6s ease-out;
-    }
-    
-    .slide-up-section {
-      animation: slideUp 0.7s ease-out;
-    }
-  </style>
-<link rel="stylesheet" href="/site-header.css">
+<meta name="robots" content="noindex" />
+<meta name="theme-color" content="#000000"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+<link rel="manifest" href="/site.webmanifest">
+<script>document.documentElement.className+=' js'</script>
+<link rel="stylesheet" href="/vx.css">
+<link rel="stylesheet" href="/vx-shop.css">
 </head>
-<body class="min-h-full text-white font-sans antialiased">
-  <!-- Animated Background Gradient -->
-  <div class="fixed inset-0 overflow-hidden pointer-events-none opacity-30">
-    <div class="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-radial from-emerald-500/20 to-transparent blur-3xl animate-pulse-glow"></div>
-    <div class="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-radial from-purple-500/20 to-transparent blur-3xl animate-pulse-glow" style="animation-delay: 1s;"></div>
-  </div>
+<body>
+<a class="skip" href="#top">Aller au contenu</a>
 
-  <a class="skip" href="#top">Aller au contenu</a>
-
-<!-- EN-TÊTE BLANC COLLANT -->
-<header class="gnav hx-head">
-  <div class="hx-head-in">
-    <a href="/" class="hx-logo" aria-label="VitalX — accueil"><img src="/assets/logo-vitalx.svg" alt="VitalX" width="90" height="30" data-no-lightbox="true"/></a>
-    <nav class="hx-nav" aria-label="Navigation principale">
-      <ul class="hx-links">
+<!-- BARRE DE NAVIGATION (commune à toutes les pages) -->
+<header class="gnav" id="gnav">
+  <div class="vx-nav-in">
+    <a href="/" class="vx-logo" aria-label="VitalX — accueil"><img src="/assets/logo-vitalx-white.svg" alt="VitalX" width="66" height="22" data-no-lightbox="true"/></a>
+    <nav class="vx-nav" aria-label="Navigation principale">
+      <ul class="vx-links">
         <li><a href="/#interfaces">Appareils</a></li>
         <li><a href="/#formateur">Formateur</a></li>
         <li><a href="/#mediacenter">Media Center</a></li>
         <li><a href="/#academy">ACADEMY</a></li>
         <li><a href="/boutique.html">Boutique</a></li>
+        <li><a href="/#revendeurs">Revendeurs</a></li>
         <li><a href="/#contact">Contact</a></li>
       </ul>
     </nav>
-    <div class="hx-tools">
-      <a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="hx-icon hx-hide-m" title="Mode Formateur (web)" aria-label="Mode Formateur (web)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></a>
-      <span class="hx-lang hx-hide-m" role="group" aria-label="Langue">
-        <button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">FR</button>
-        <button type="button" data-lang="en" title="English" aria-label="English">EN</button>
-        <button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">DE</button>
-        <button type="button" data-lang="es" title="Español" aria-label="Español">ES</button>
-      </span>
-      <button class="hx-burger" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
+    <div class="vx-tools">
+      <a href="https://vitalxtrainer.app" target="_blank" rel="noopener" class="vx-icon vx-hide-m" title="Mode Formateur (web)" aria-label="Mode Formateur (web)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></a>
+      <span class="vx-lang vx-hide-m" role="group" aria-label="Langue"><button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">FR</button><button type="button" data-lang="en" title="English" aria-label="English">EN</button><button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">DE</button><button type="button" data-lang="es" title="Español" aria-label="Español">ES</button></span>
+      <button class="vx-burger" id="menuBtn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
     </div>
   </div>
 </header>
-<nav id="mobileMenu" class="hx-menu" aria-label="Menu mobile">
+<nav id="mobileMenu" class="vx-menu" aria-label="Menu mobile">
   <a class="big" href="/#interfaces">Appareils</a>
   <a class="big" href="/#formateur">Formateur</a>
   <a class="big" href="/#mediacenter">Media Center</a>
   <a class="big" href="/#academy">ACADEMY</a>
   <a class="big" href="/boutique.html">Boutique</a>
+  <a class="big" href="/#revendeurs">Revendeurs</a>
   <a class="big" href="/#contact">Contact</a>
   <a class="small" href="https://vitalxtrainer.app" target="_blank" rel="noopener">Mode Formateur (web) ›</a>
-  <span class="hx-lang" role="group" aria-label="Langue">
-    <button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">FR</button>
-    <button type="button" data-lang="en" title="English" aria-label="English">EN</button>
-    <button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">DE</button>
-    <button type="button" data-lang="es" title="Español" aria-label="Español">ES</button>
-  </span>
+  <span class="vx-lang" role="group" aria-label="Langue"><button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">FR</button><button type="button" data-lang="en" title="English" aria-label="English">EN</button><button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">DE</button><button type="button" data-lang="es" title="Español" aria-label="Español">ES</button></span>
   <a class="small" href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a>
 </nav>
 
-  <!-- Main -->
-  <main id="top" class="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-16">
-    <!-- Success Card -->
-    <section class="glass rounded-3xl p-8 sm:p-12 shadow-2xl slide-up-section">
-      <!-- Success Badge with Animation -->
-      <div class="flex items-center justify-center mb-8">
-        <div class="relative success-badge float-anim">
-          <div class="checkmark-circle w-24 h-24 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center">
-            <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
-            </svg>
-          </div>
-          <div class="absolute inset-0 bg-emerald-500/30 rounded-full blur-2xl animate-pulse"></div>
-        </div>
-      </div>
+<!-- REMERCIEMENT après un paiement Stripe (retour de Stripe : ?session_id=…) : coche, titre, ID de session à copier, aide, trois étapes.
+     Page non indexée (noindex repris de l'ancienne page). Aucun framework CSS ni police en ligne : tout vient de /vx.css et /vx-shop.css. -->
+<main id="top" class="tk-page">
 
-      <div class="text-center mb-8">
-        <div class="inline-flex items-center gap-2 rounded-full bg-emerald-500/20 text-emerald-300 text-sm font-semibold px-4 py-2 border border-emerald-500/30 mb-6 animate-scale-in">
-          <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
-          Paiement confirmé
-        </div>
+  <section class="tk t-dark" aria-labelledby="thanksTitle">
+    <div class="wrap">
+      <div class="tk-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <p class="pill pill--dot">Paiement confirmé</p>
+      <h1 class="h1" id="thanksTitle">Merci pour votre commande !</h1>
+      <p class="lead" data-i18n-html>Votre paiement a bien été validé. Nous préparons l'activation de votre licence et/ou l'expédition de votre pack. Vous recevrez un e-mail de confirmation avec votre <strong>code licence</strong> sous <strong>48 heures</strong> maximum.</p>
 
-        <h1 class="font-display text-4xl sm:text-5xl font-bold tracking-tight mb-4 shimmer-text">
-          Merci pour votre commande !
-        </h1>
-
-        <p class="text-lg text-zinc-300 max-w-2xl mx-auto leading-relaxed" data-i18n-html>
-          Votre paiement a bien été validé. Nous préparons l'activation de votre licence et/ou l'expédition de votre pack.
-          Vous recevrez un e-mail de confirmation avec votre <strong class="text-emerald-400">code licence</strong> sous <strong class="text-white">48 heures</strong> maximum.
-        </p>
-      </div>
-
-      <!-- Info Cards Grid -->
-      <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-5">
-        <!-- Session ID Card -->
-        <div class="glass-card rounded-2xl border border-white/10 p-6 group">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center border border-white/10">
-              <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-              </svg>
-            </div>
+      <div class="tk-cards">
+        <!-- Identifiant de session Stripe : #sid (rempli par le script ci-dessous) et #copySid -->
+        <div class="card card--pad tk-card">
+          <div class="tk-card-h">
+            <span class="icon-sq" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></span>
             <div>
-              <div class="text-sm font-semibold text-white">ID de session Stripe</div>
-              <div class="text-xs text-zinc-500">Pour le support client</div>
+              <h2 class="h4">ID de session Stripe</h2>
+              <p class="small">Pour le support client</p>
             </div>
           </div>
-          
-          <div class="flex items-center gap-2 mt-4">
-            <code id="sid" class="flex-1 text-sm font-mono bg-black/60 border border-white/10 rounded-lg px-3 py-2.5 select-all text-emerald-300 truncate">…</code>
-            <button id="copySid" class="flex-shrink-0 inline-flex items-center gap-2 rounded-lg bg-white/10 px-4 py-2.5 text-sm font-medium hover:bg-white/20 cta-anim border border-white/10">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-              </svg>
-              Copier
+          <div class="tk-sid">
+            <code><span id="sid">…</span></code>
+            <button id="copySid" type="button" class="btn btn--sm btn--light tk-copy">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+              <svg class="ic-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>
+              <span class="copy-lbl" aria-live="polite"><span class="t-copy">Copier</span><span class="t-ok">Copié !</span></span>
             </button>
           </div>
-          
-          <p class="mt-3 text-xs text-zinc-500 leading-relaxed">
-            Communiquez cet identifiant si vous contactez le support pour nous aider à retrouver votre commande rapidement.
-          </p>
+          <p>Communiquez cet identifiant si vous contactez le support pour nous aider à retrouver votre commande rapidement.</p>
         </div>
 
-        <!-- Support Card -->
-        <div class="glass-card rounded-2xl border border-white/10 p-6 group">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500/20 to-teal-500/20 flex items-center justify-center border border-white/10">
-              <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path>
-              </svg>
-            </div>
+        <!-- Aide -->
+        <div class="card card--pad tk-card">
+          <div class="tk-card-h">
+            <span class="icon-sq" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/></svg></span>
             <div>
-              <div class="text-sm font-semibold text-white">Besoin d'aide ?</div>
-              <div class="text-xs text-zinc-500">Notre équipe est là pour vous</div>
+              <h2 class="h4">Besoin d'aide ?</h2>
+              <p class="small">Notre équipe est là pour vous</p>
             </div>
           </div>
-          
-          <p class="mt-4 text-sm text-zinc-300 leading-relaxed">
-            Une question sur votre commande ? Contactez-nous par email et nous vous répondrons rapidement.
-          </p>
-          
-          <a href="mailto:vitalxscope@gmail.com" class="mt-4 inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-medium text-sm group/link transition-colors">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-            </svg>
-            vitalxscope@gmail.com
-            <svg class="w-4 h-4 transform transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-            </svg>
-          </a>
+          <p>Une question sur votre commande ? Contactez-nous par email et nous vous répondrons rapidement.</p>
+          <a href="mailto:vitalxscope@gmail.com" class="tk-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>vitalxscope@gmail.com</a>
         </div>
       </div>
 
-      <!-- CTA Buttons -->
-      <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
-        <a href="/boutique.html" class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-7 py-4 font-display font-semibold shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50 cta-anim text-sm sm:text-base">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
-          </svg>
-          Continuer mes achats
-        </a>
-        <a href="/" class="inline-flex items-center gap-2 rounded-xl bg-white/5 text-white px-7 py-4 font-display font-semibold border border-white/10 hover:bg-white/10 cta-anim text-sm sm:text-base">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-          </svg>
-          Retour à l'accueil
-        </a>
-      </div>
-    </section>
-
-    <!-- Next Steps Section -->
-    <section class="mt-12 glass rounded-2xl p-6 sm:p-8 border border-white/10 fade-in-section" style="animation-delay: 0.3s;">
-      <div class="flex items-center gap-3 mb-6">
-        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center border border-white/10">
-          <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
-          </svg>
-        </div>
-        <h2 class="font-display text-2xl font-bold text-white">Et maintenant ?</h2>
-      </div>
-      
-      <div class="space-y-4">
-        <div class="flex items-start gap-4 group">
-          <div class="flex-shrink-0 w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400 font-bold border border-emerald-500/30 group-hover:scale-110 transition-transform">1</div>
-          <div class="flex-1">
-            <h3 class="font-semibold text-white mb-1">Surveillez vos emails</h3>
-            <p class="text-sm text-zinc-400 leading-relaxed">Vous recevrez les instructions d'activation (iOS) et votre code licence dans les prochaines heures.</p>
-          </div>
-        </div>
-        
-        <div class="flex items-start gap-4 group">
-          <div class="flex-shrink-0 w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400 font-bold border border-emerald-500/30 group-hover:scale-110 transition-transform">2</div>
-          <div class="flex-1">
-            <h3 class="font-semibold text-white mb-1">Suivez votre colis</h3>
-            <p class="text-sm text-zinc-400 leading-relaxed" data-i18n-html>Si vous avez acheté un <strong class="text-white">pack physique</strong>, nous vous enverrons le numéro de suivi dès l'expédition.</p>
-          </div>
-        </div>
-        
-        <div class="flex items-start gap-4 group">
-          <div class="flex-shrink-0 w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400 font-bold border border-emerald-500/30 group-hover:scale-110 transition-transform">3</div>
-          <div class="flex-1">
-            <h3 class="font-semibold text-white mb-1">Activez votre licence</h3>
-            <p class="text-sm text-zinc-400 leading-relaxed">Suivez les instructions reçues par email pour activer votre licence VitalX et profiter de toutes les fonctionnalités.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- PIED DE PAGE -->
-<footer class="hx-foot">
-  <div class="tricolor" aria-hidden="true"></div>
-  <div class="hx-wrap">
-    <div class="hx-foot-top">
-      <a href="/" class="hx-foot-logo" aria-label="VitalX — accueil"><img src="/assets/logo-vitalx-white.svg" alt="VitalX" width="90" height="30" data-no-lightbox="true"/></a>
-      <nav class="hx-foot-cols" aria-label="Pied de page">
-        <div>
-          <h3>Société</h3>
-          <ul>
-            <li><a href="/qui-sommes-nous.html">Qui sommes-nous</a></li>
-            <li><a href="/affiliation.html">Affiliation</a></li>
-            <li><a href="/affiliation.html" class="hx-reco">Recommandez VitalX</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3>Informations</h3>
-          <ul>
-            <li><a href="/mentions-legales.html">Mentions légales</a></li>
-            <li><a href="/cgv.html">CGV</a></li>
-            <li><a href="/politique-confidentialite.html">Confidentialité</a></li>
-            <li><a href="/garantie.html">Garantie</a></li>
-            <li><a href="/formulaire_retractation.pdf" download>Rétractation</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3>Contact</h3>
-          <ul>
-            <li><a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a></li>
-          </ul>
-        </div>
-      </nav>
+      <p class="cta"><a href="/boutique.html" class="btn">Continuer mes achats</a><a href="/" class="btn btn--ghost">Retour à l'accueil</a></p>
     </div>
-    <div class="hx-legal"><p>Interfaces reproduites avec l'autorisation de leurs fabricants, à des fins de formation uniquement. Le simulateur VitalX est conçu et développé par VitalX ; il n'est ni fabriqué, ni distribué, ni approuvé comme dispositif médical par ces constructeurs. Marques citées : propriétés de leurs titulaires.</p></div>
-    <div class="hx-foot-bottom">
+  </section>
+
+  <!-- ET MAINTENANT ? : trois étapes numérotées (numéros par compteur CSS) -->
+  <section class="sec t-dark2" aria-labelledby="nextTitle">
+    <div class="wrap">
+      <div class="head rv">
+        <h2 class="h2" id="nextTitle">Et maintenant ?</h2>
+      </div>
+      <ol class="tk-steps">
+        <li class="tk-step rv">
+          <h3 class="h4">Surveillez vos emails</h3>
+          <p>Vous recevrez les instructions d'activation (iOS) et votre code licence dans les prochaines heures.</p>
+        </li>
+        <li class="tk-step rv rv-1">
+          <h3 class="h4">Suivez votre colis</h3>
+          <p data-i18n-html>Si vous avez acheté un <strong>pack physique</strong>, nous vous enverrons le numéro de suivi dès l'expédition.</p>
+        </li>
+        <li class="tk-step rv rv-2">
+          <h3 class="h4">Activez votre licence</h3>
+          <p>Suivez les instructions reçues par email pour activer votre licence VitalX et profiter de toutes les fonctionnalités.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  // Récupère et affiche l'ID de session Stripe (?session_id=…)
+  const p = new URLSearchParams(location.search);
+  const sid = p.get('session_id') || 'inconnu';
+  document.getElementById('sid').textContent = sid;
+
+  // Copier l'ID : le bouton affiche « Copié ! » (classe .is-done) pendant 2 secondes
+  document.getElementById('copySid').addEventListener('click', async () => {
+    const btn = document.getElementById('copySid');
+    try {
+      await navigator.clipboard.writeText(sid);
+      btn.classList.add('is-done');
+      clearTimeout(btn._t);
+      btn._t = setTimeout(() => btn.classList.remove('is-done'), 2000);
+    } catch (e) {
+      console.error('Erreur lors de la copie:', e);
+    }
+  });
+</script>
+
+<!-- PIED DE PAGE (commun à toutes les pages) -->
+<footer class="vx-foot">
+  <div class="vx-foot-in">
+    <p class="vx-foot-legal">Interfaces reproduites avec l'autorisation de leurs fabricants, à des fins de formation uniquement. Le simulateur VitalX est conçu et développé par VitalX ; il n'est ni fabriqué, ni distribué, ni approuvé comme dispositif médical par ces constructeurs. Marques citées : propriétés de leurs titulaires.</p>
+    <nav class="vx-foot-cols" aria-label="Pied de page">
+      <div>
+        <h2>Produits</h2>
+        <ul>
+          <li><a href="/#interfaces">Appareils</a></li>
+          <li><a href="/#formateur">Formateur</a></li>
+          <li><a href="/#mediacenter">Media Center</a></li>
+          <li><a href="/#academy">ACADEMY</a></li>
+          <li><a href="/boutique.html">Boutique</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Société</h2>
+        <ul>
+          <li><a href="/qui-sommes-nous.html">Qui sommes-nous</a></li>
+          <li><a href="/#revendeurs">Revendeurs</a></li>
+          <li><a href="/affiliation.html">Affiliation</a></li>
+          <li><a href="/affiliation.html" class="vx-reco">Recommandez VitalX</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Informations</h2>
+        <ul>
+          <li><a href="/mentions-legales.html">Mentions légales</a></li>
+          <li><a href="/cgv.html">CGV</a></li>
+          <li><a href="/politique-confidentialite.html">Confidentialité</a></li>
+          <li><a href="/garantie.html">Garantie</a></li>
+          <li><a href="/formulaire_retractation.pdf" download>Rétractation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="mailto:vitalxscope@gmail.com">vitalxscope@gmail.com</a></li>
+          <li><a href="https://vitalxtrainer.app" target="_blank" rel="noopener">Mode Formateur (web)</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="vx-foot-bottom">
       <span>© <span id="year"></span> VitalX. Tous droits réservés.</span>
-      <span id="langSwitch" class="hx-lang" role="group" aria-label="Langue">
-        <button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">Français</button>
-        <button type="button" data-lang="en" title="English" aria-label="English">English</button>
-        <button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">Deutsch</button>
-        <button type="button" data-lang="es" title="Español" aria-label="Español">Español</button>
-      </span>
+      <span class="vx-fr"><i aria-hidden="true"></i>Conçu &amp; assemblé en France</span>
+      <span id="langSwitch" class="vx-lang" role="group" aria-label="Langue"><button type="button" data-lang="fr" class="is-active" title="Français" aria-label="Français">Français</button><button type="button" data-lang="en" title="English" aria-label="English">English</button><button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">Deutsch</button><button type="button" data-lang="es" title="Español" aria-label="Español">Español</button></span>
     </div>
   </div>
 </footer>
 
-  <script>
-    // Récupère et affiche l'ID de session Stripe
-    const p = new URLSearchParams(location.search);
-    const sid = p.get('session_id') || 'inconnu';
-    document.getElementById('sid').textContent = sid;
-
-    // Copier l'ID avec animation améliorée
-    document.getElementById('copySid').addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText(sid);
-        const btn = document.getElementById('copySid');
-        const originalHTML = btn.innerHTML;
-        
-        btn.innerHTML = `
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-          </svg>
-          Copié !
-        `;
-        btn.classList.add('bg-emerald-500/20', 'border-emerald-500/30', 'text-emerald-300');
-        
-        setTimeout(() => {
-          btn.innerHTML = originalHTML;
-          btn.classList.remove('bg-emerald-500/20', 'border-emerald-500/30', 'text-emerald-300');
-        }, 2000);
-      } catch(e) {
-        console.error('Erreur lors de la copie:', e);
-      }
-    });
-
-    // Animation de confettis au chargement (optionnel)
-    window.addEventListener('load', () => {
-      // Ajouter un léger délai pour l'expérience utilisateur
-      setTimeout(() => {
-        console.log('Page de confirmation chargée avec succès');
-      }, 500);
-    });
-  </script>
 <script src="/site-header.js" defer></script>
 <script src="/i18n-site.js" defer></script>
+<script src="/i18n-v3-merci-commande.js" defer></script>
 <script src="/i18n.js" defer></script>
 </body>
 </html>
